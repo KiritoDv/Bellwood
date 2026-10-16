@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_aki_pal:
+  type: TEXTURE
+  offset: 0x814520A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_fukubukuro_pal:
+  type: TEXTURE
+  offset: 0x814520C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_kutu_pal:
+  type: TEXTURE
+  offset: 0x814520E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_akikan_tex:
+  type: TEXTURE
+  offset: 0x81452100
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_fukubukuro_tex:
+  type: TEXTURE
+  offset: 0x81452300
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_taiya_tex:
+  type: TEXTURE
+  offset: 0x81452500
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_kutu_tex:
+  type: TEXTURE
+  offset: 0x81452700
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

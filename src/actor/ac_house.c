@@ -6,6 +6,8 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "m_debug.h"
+#include "assets/data/model/obj_house1_shadow.h"
+#include "assets/data/model/obj_s_house1.h"
 
 enum {
     aHUS_ACTION_WAIT,
@@ -39,7 +41,7 @@ enum {
 #define aHUS_GET_LIGHT_PERCENT(h) ((h)->arg1_f)
 
 #define aHUS_SET_LOOKS(h, v) ((h)->arg0 = (v))
-#define aHUS_SET_ANIMAL_P(h, v) ((h)->arg1 = (int)(v))
+#define aHUS_SET_ANIMAL_P(h, v) ((h)->arg1 = (intptr_t)(v))
 #define aHUS_SET_ANIMAL_IDX(h, v) ((h)->arg2 = (v))
 #define aHUS_SET_LIGHT_PERCENT(h, v) ((h)->arg1_f = (v))
 
@@ -71,20 +73,9 @@ static void change_FGUnit(ACTOR* actorx, int keep_flag);
 static void aHUS_set_bgOffset(ACTOR* actorx, int idx);
 static f32 aHUS_ctrl_light(HOUSE_ACTOR* house);
 
-extern Vtx obj_house1_shadow_v[];
-extern Gfx obj_house1_shadow_model[];
 
-extern Vtx obj_s_house2_shadow_v[];
-extern Gfx obj_s_house2_shadow_model[];
 
-extern Vtx obj_s_house3_shadow_v[];
-extern Gfx obj_s_house3_shadow_model[];
 
-extern Vtx obj_s_house4_shadow_v[];
-extern Gfx obj_s_house4_shadow_model[];
-
-extern Vtx obj_s_house5_shadow_v[];
-extern Gfx obj_s_house5_shadow_model[];
 
 // clang-format off
 static u8 aHUS_shadow_vtx_fix_flg_table0[] = {
@@ -159,17 +150,6 @@ static bIT_ShadowData_c aHUS_shadow_data4 = {
     obj_s_house5_shadow_model,
 };
 
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_house1;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_house2;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_house3;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_house4;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_house5;
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_house1;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_house2;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_house3;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_house4;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_house5;
 
 // clang-format off
 static cKF_Skeleton_R_c* aHUS_house_model_normal[] = {

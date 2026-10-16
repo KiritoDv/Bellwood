@@ -1,9 +1,7 @@
 #include "ef_effect_control.h"
 
 #include "m_common_data.h"
-
-extern Gfx ef_siawase01_00_modelT[];
-extern EVW_ANIME_DATA ef_siawase01_00_evw_anime;
+#include "assets/data/model/ef_siawase01_00.h"
 
 static void eSSHKR_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eSSHKR_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -45,7 +43,7 @@ static void eSSHKR_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg) {
 static void eSSHKR_mv(eEC_Effect_c* effect, GAME* game) {
     f32 scale;
 
-    sAdo_OngenPos((u32)effect, 14, &effect->position);
+    sAdo_OngenPos((uintptr_t)effect, 14, &effect->position);
 
     eEC_CLIP->set_continious_env_proc(effect, 22, 122);
 

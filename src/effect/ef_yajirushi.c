@@ -2,6 +2,7 @@
 
 #include "m_common_data.h"
 #include "m_rcp.h"
+#include "assets/data/model/ef_kore.h"
 
 static void eYajirushi_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eYajirushi_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -42,8 +43,6 @@ static void eYajirushi_mv(eEC_Effect_c* effect, GAME* game) {
         eYajirushi_ALPHA = eEC_CLIP->calc_adjust_proc(6 - effect->timer, 0, 6, 255.0f, 0.0f);
     }
 }
-
-extern Gfx ef_kore_modelT[];
 
 static void eYajirushi_dw(eEC_Effect_c* effect, GAME* game) {
     OPEN_DISP(game->graph);

@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_taisou5_b:
+  type: AC:NPC_ANIM
+  offset: 0x81310904
+  joints: 26
+  counts: { flags: 26, data: 1149, keys: 53, fixed: 28 }

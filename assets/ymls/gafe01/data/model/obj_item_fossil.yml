@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_fossil_pal:
+  type: TEXTURE
+  offset: 0x8138ECE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_fossil_tex:
+  type: TEXTURE
+  offset: 0x8138ED00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8138ECE0
+
+obj_item_fossil_v:
+  type: VTX
+  offset: 0x8138EF00
+  count: 25
+
+obj_shop_fossil_mat_model:
+  type: GFX
+  offset: 0x8138F090
+  size: 0x48
+
+obj_shop_fossil_gfx_model:
+  type: GFX
+  offset: 0x8138F0D8
+  size: 0x40

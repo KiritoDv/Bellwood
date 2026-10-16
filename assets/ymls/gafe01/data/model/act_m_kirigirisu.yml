@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_kirigirisu_pal:
+  type: TEXTURE
+  offset: 0x81266380
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_kirigirisu:
+  type: TEXTURE
+  offset: 0x812663A0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81266380
+
+act_m_kirigirisu_v:
+  type: VTX
+  offset: 0x812665A0
+  count: 19
+
+act_m_kirigirisu1T_model:
+  type: GFX
+  offset: 0x812666D0
+  size: 0x68
+
+act_m_kirigirisu2_2T_model:
+  type: GFX
+  offset: 0x81266738
+  size: 0x58

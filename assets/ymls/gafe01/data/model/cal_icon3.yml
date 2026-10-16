@@ -1,0 +1,35 @@
+:config:
+  strict_declarations: true
+
+cal_win_mark2_tex:
+  type: TEXTURE
+  offset: 0x813D15C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_icon3_v:
+  type: VTX
+  offset: 0x813D1640
+  count: 10
+
+cal_icon_sakana_model:
+  type: GFX
+  offset: 0x813D16E0
+  size: 0x48
+
+cal_icon_yajirushi_model:
+  type: GFX
+  offset: 0x813D1728
+  size: 0x20
+
+cal_icon_yajirushi_gfx:
+  type: GFX
+  offset: 0x813D1748
+  size: 0x18
+
+cal_icon_yajirushi_gfx2:
+  type: GFX
+  offset: 0x813D1760
+  size: 0x18

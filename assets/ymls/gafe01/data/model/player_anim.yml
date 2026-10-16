@@ -1,0 +1,1352 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_ply_1_wait1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81134B30
+  joints: 26
+  counts: { flags: 26, data: 444, keys: 49, fixed: 32 }
+
+cKF_ba_r_ply_1_walk1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81134FAC
+  joints: 26
+  counts: { flags: 26, data: 468, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_axe1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81135080
+  joints: 26
+  counts: { flags: 26, data: 0, keys: 0, fixed: 81 }
+
+cKF_ba_r_ply_1_run1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81135594
+  joints: 26
+  counts: { flags: 26, data: 543, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_push1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81135A4C
+  joints: 26
+  counts: { flags: 26, data: 498, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_pull1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81135F6C
+  joints: 26
+  counts: { flags: 26, data: 549, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_hold_wait1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81136384
+  joints: 26
+  counts: { flags: 26, data: 417, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_pickup1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81136998
+  joints: 26
+  counts: { flags: 26, data: 672, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_Lturn1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81136D30
+  joints: 26
+  counts: { flags: 26, data: 354, keys: 51, fixed: 30 }
+
+cKF_ba_r_ply_1_Rturn1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811370A0
+  joints: 26
+  counts: { flags: 26, data: 333, keys: 51, fixed: 30 }
+
+cKF_ba_r_ply_1_get1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81137414
+  joints: 26
+  counts: { flags: 26, data: 336, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_get_change1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81137BCC
+  joints: 26
+  counts: { flags: 26, data: 882, keys: 54, fixed: 27 }
+
+ply_1_get_change11_tex_index:
+  type: ARRAY
+  offset: 0x81137BE0
+  count: 93
+  array_type: u8
+
+ply_1_get_change12_tex_index:
+  type: ARRAY
+  offset: 0x81137C40
+  count: 93
+  array_type: u8
+
+cKF_ba_r_ply_1_get_putaway1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81138260
+  joints: 26
+  counts: { flags: 26, data: 639, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_open1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81138C00
+  joints: 26
+  counts: { flags: 26, data: 1125, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_putaway1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81139000
+  joints: 26
+  counts: { flags: 26, data: 405, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_trans_wait1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811393B8
+  joints: 26
+  counts: { flags: 26, data: 369, keys: 52, fixed: 29 }
+
+cKF_ba_r_ply_1_transfer1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81139C3C
+  joints: 26
+  counts: { flags: 26, data: 984, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_umb_open1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113A1F0
+  joints: 26
+  counts: { flags: 26, data: 624, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_umbrella1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113A2C4
+  joints: 26
+  counts: { flags: 26, data: 0, keys: 0, fixed: 81 }
+
+cKF_ba_r_ply_1_dash1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113A7A0
+  joints: 26
+  counts: { flags: 26, data: 516, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_run_slip1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113A874
+  joints: 26
+  counts: { flags: 26, data: 0, keys: 0, fixed: 81 }
+
+cKF_ba_r_ply_1_get_pull1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113AC5C
+  joints: 26
+  counts: { flags: 26, data: 393, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_get_m1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113B44C
+  joints: 26
+  counts: { flags: 26, data: 909, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_kamae_move_m1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113B96C
+  joints: 26
+  counts: { flags: 26, data: 549, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_kamae_wait_m1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113BDC0
+  joints: 26
+  counts: { flags: 26, data: 447, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_kokeru_a1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113C2D4
+  joints: 26
+  counts: { flags: 26, data: 543, keys: 54, fixed: 27 }
+
+ply_1_kokeru_a11_tex_index:
+  type: ARRAY
+  offset: 0x8113C2E8
+  count: 17
+  array_type: u8
+
+ply_1_kokeru_a12_tex_index:
+  type: ARRAY
+  offset: 0x8113C2FC
+  count: 17
+  array_type: u8
+
+cKF_ba_r_ply_1_kokeru_getup_a1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113C94C
+  joints: 26
+  counts: { flags: 26, data: 702, keys: 54, fixed: 27 }
+
+ply_1_kokeru_getup_a11_tex_index:
+  type: ARRAY
+  offset: 0x8113C960
+  count: 32
+  array_type: u8
+
+ply_1_kokeru_getup_a12_tex_index:
+  type: ARRAY
+  offset: 0x8113C980
+  count: 32
+  array_type: u8
+
+cKF_ba_r_ply_1_kokeru_getup_n1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113CF7C
+  joints: 26
+  counts: { flags: 26, data: 654, keys: 54, fixed: 27 }
+
+ply_1_kokeru_getup_n11_tex_index:
+  type: ARRAY
+  offset: 0x8113CF90
+  count: 32
+  array_type: u8
+
+ply_1_kokeru_getup_n12_tex_index:
+  type: ARRAY
+  offset: 0x8113CFB0
+  count: 32
+  array_type: u8
+
+cKF_ba_r_ply_1_kokeru_n1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113D4C4
+  joints: 26
+  counts: { flags: 26, data: 537, keys: 54, fixed: 27 }
+
+ply_1_kokeru_n11_tex_index:
+  type: ARRAY
+  offset: 0x8113D4D8
+  count: 17
+  array_type: u8
+
+ply_1_kokeru_n12_tex_index:
+  type: ARRAY
+  offset: 0x8113D4EC
+  count: 17
+  array_type: u8
+
+cKF_ba_r_ply_1_net1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113D5C0
+  joints: 26
+  counts: { flags: 26, data: 0, keys: 0, fixed: 81 }
+
+cKF_ba_r_ply_1_net_swing1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113DB58
+  joints: 26
+  counts: { flags: 26, data: 609, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_axe_swing1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113E324
+  joints: 26
+  counts: { flags: 26, data: 891, keys: 54, fixed: 27 }
+
+ply_1_axe_swing11_tex_index:
+  type: ARRAY
+  offset: 0x8113E338
+  count: 30
+  array_type: u8
+
+ply_1_axe_swing12_tex_index:
+  type: ARRAY
+  offset: 0x8113E358
+  count: 30
+  array_type: u8
+
+cKF_ba_r_ply_1_kamae_slip_m1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113E438
+  joints: 26
+  counts: { flags: 26, data: 0, keys: 0, fixed: 81 }
+
+cKF_ba_r_ply_1_kokeru1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113E908
+  joints: 26
+  counts: { flags: 26, data: 510, keys: 54, fixed: 27 }
+
+ply_1_kokeru11_tex_index:
+  type: ARRAY
+  offset: 0x8113E91C
+  count: 17
+  array_type: u8
+
+ply_1_kokeru12_tex_index:
+  type: ARRAY
+  offset: 0x8113E930
+  count: 17
+  array_type: u8
+
+cKF_ba_r_ply_1_kokeru_getup1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113EEEC
+  joints: 26
+  counts: { flags: 26, data: 627, keys: 54, fixed: 27 }
+
+ply_1_kokeru_getup11_tex_index:
+  type: ARRAY
+  offset: 0x8113EF00
+  count: 32
+  array_type: u8
+
+ply_1_kokeru_getup12_tex_index:
+  type: ARRAY
+  offset: 0x8113EF20
+  count: 32
+  array_type: u8
+
+cKF_ba_r_ply_1_sitdown1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113F6C0
+  joints: 26
+  counts: { flags: 26, data: 864, keys: 57, fixed: 24 }
+
+cKF_ba_r_ply_1_sitdown_wait1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8113FAF0
+  joints: 26
+  counts: { flags: 26, data: 429, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_standup1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114019C
+  joints: 26
+  counts: { flags: 26, data: 747, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_putaway_m1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811406A4
+  joints: 26
+  counts: { flags: 26, data: 537, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_bed_wait1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81140A80
+  joints: 26
+  counts: { flags: 26, data: 387, keys: 57, fixed: 24 }
+
+cKF_ba_r_ply_1_inbed_L1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811411C8
+  joints: 26
+  counts: { flags: 26, data: 825, keys: 57, fixed: 24 }
+
+cKF_ba_r_ply_1_inbed_R1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114191C
+  joints: 26
+  counts: { flags: 26, data: 831, keys: 57, fixed: 24 }
+
+cKF_ba_r_ply_1_intrain1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81142410
+  joints: 26
+  counts: { flags: 26, data: 1296, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_kagu_open_d1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81142A50
+  joints: 26
+  counts: { flags: 26, data: 693, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_kagu_open_h1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81142E14
+  joints: 26
+  counts: { flags: 26, data: 375, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_kagu_open_k1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81143208
+  joints: 26
+  counts: { flags: 26, data: 399, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_negaeri_L1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114389C
+  joints: 26
+  counts: { flags: 26, data: 735, keys: 57, fixed: 24 }
+
+cKF_ba_r_ply_1_negaeri_R1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81143F30
+  joints: 26
+  counts: { flags: 26, data: 735, keys: 57, fixed: 24 }
+
+cKF_ba_r_ply_1_outbed_L1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811446B4
+  joints: 26
+  counts: { flags: 26, data: 855, keys: 57, fixed: 24 }
+
+cKF_ba_r_ply_1_outbed_R1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81144E38
+  joints: 26
+  counts: { flags: 26, data: 855, keys: 57, fixed: 24 }
+
+cKF_ba_r_ply_1_outtrain1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81145548
+  joints: 26
+  counts: { flags: 26, data: 798, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_kagu_close_d1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81145AC8
+  joints: 26
+  counts: { flags: 26, data: 597, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_kagu_close_h1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81145E6C
+  joints: 26
+  counts: { flags: 26, data: 360, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_kagu_close_k1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81146264
+  joints: 26
+  counts: { flags: 26, data: 402, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_kagu_wait_d1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811466F4
+  joints: 26
+  counts: { flags: 26, data: 477, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_kagu_wait_h1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81146B30
+  joints: 26
+  counts: { flags: 26, data: 435, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_kagu_wait_k1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81146F78
+  joints: 26
+  counts: { flags: 26, data: 441, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_go_out_o1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114788C
+  joints: 26
+  counts: { flags: 26, data: 1056, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_go_out_s1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81147E78
+  joints: 26
+  counts: { flags: 26, data: 651, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_into_s1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81148410
+  joints: 26
+  counts: { flags: 26, data: 609, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_axe_hane1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81148CF4
+  joints: 26
+  counts: { flags: 26, data: 1032, keys: 54, fixed: 27 }
+
+ply_1_axe_hane11_tex_index:
+  type: ARRAY
+  offset: 0x81148D08
+  count: 38
+  array_type: u8
+
+ply_1_axe_hane12_tex_index:
+  type: ARRAY
+  offset: 0x81148D30
+  count: 38
+  array_type: u8
+
+cKF_ba_r_ply_1_axe_suka1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811495EC
+  joints: 26
+  counts: { flags: 26, data: 1002, keys: 54, fixed: 27 }
+
+ply_1_axe_suka11_tex_index:
+  type: ARRAY
+  offset: 0x81149600
+  count: 41
+  array_type: u8
+
+ply_1_axe_suka12_tex_index:
+  type: ARRAY
+  offset: 0x8114962C
+  count: 41
+  array_type: u8
+
+cKF_ba_r_ply_1_hold_wait_h1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81149718
+  joints: 26
+  counts: { flags: 26, data: 0, keys: 0, fixed: 81 }
+
+cKF_ba_r_ply_1_hold_wait_o1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811497EC
+  joints: 26
+  counts: { flags: 26, data: 0, keys: 0, fixed: 81 }
+
+cKF_ba_r_ply_1_get_t1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81149C88
+  joints: 26
+  counts: { flags: 26, data: 483, keys: 54, fixed: 27 }
+
+ply_1_get_t11_tex_index:
+  type: ARRAY
+  offset: 0x81149C9C
+  count: 22
+  array_type: u8
+
+ply_1_get_t12_tex_index:
+  type: ARRAY
+  offset: 0x81149CB4
+  count: 22
+  array_type: u8
+
+cKF_ba_r_ply_1_get_t2:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114A310
+  joints: 26
+  counts: { flags: 26, data: 705, keys: 54, fixed: 27 }
+
+ply_1_get_t21_tex_index:
+  type: ARRAY
+  offset: 0x8114A324
+  count: 34
+  array_type: u8
+
+cKF_ba_r_ply_1_putaway_t1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114A83C
+  joints: 26
+  counts: { flags: 26, data: 537, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_sao1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114A910
+  joints: 26
+  counts: { flags: 26, data: 0, keys: 0, fixed: 81 }
+
+cKF_ba_r_ply_1_sao_swing1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114AFB4
+  joints: 26
+  counts: { flags: 26, data: 744, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_turi_hiki1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114B508
+  joints: 26
+  counts: { flags: 26, data: 576, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_turi_wait1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114B924
+  joints: 26
+  counts: { flags: 26, data: 420, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_not_get_t1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114BE3C
+  joints: 26
+  counts: { flags: 26, data: 546, keys: 54, fixed: 27 }
+
+ply_1_not_get_t11_tex_index:
+  type: ARRAY
+  offset: 0x8114BE50
+  count: 27
+  array_type: u8
+
+cKF_ba_r_ply_1_menu_catch1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114C1E4
+  joints: 26
+  counts: { flags: 26, data: 348, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_menu_change1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114CA40
+  joints: 26
+  counts: { flags: 26, data: 963, keys: 54, fixed: 27 }
+
+ply_1_menu_change11_tex_index:
+  type: ARRAY
+  offset: 0x8114CA54
+  count: 93
+  array_type: u8
+
+ply_1_menu_change12_tex_index:
+  type: ARRAY
+  offset: 0x8114CAB4
+  count: 93
+  array_type: u8
+
+cKF_ba_r_ply_1_umb_close1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114D294
+  joints: 26
+  counts: { flags: 26, data: 864, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_not_sao_swing1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114D754
+  joints: 26
+  counts: { flags: 26, data: 501, keys: 45, fixed: 36 }
+
+ply_1_not_sao_swing11_tex_index:
+  type: ARRAY
+  offset: 0x8114D768
+  count: 25
+  array_type: u8
+
+ply_1_not_sao_swing12_tex_index:
+  type: ARRAY
+  offset: 0x8114D784
+  count: 25
+  array_type: u8
+
+cKF_ba_r_ply_1_intrain_wait1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114DB54
+  joints: 26
+  counts: { flags: 26, data: 378, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_clear_table1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114E458
+  joints: 26
+  counts: { flags: 26, data: 1047, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_dig1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114EE2C
+  joints: 26
+  counts: { flags: 26, data: 1152, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_fill_up1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8114FA94
+  joints: 26
+  counts: { flags: 26, data: 1482, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_not_dig1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811503B0
+  joints: 26
+  counts: { flags: 26, data: 1059, keys: 54, fixed: 27 }
+
+ply_1_not_dig11_tex_index:
+  type: ARRAY
+  offset: 0x811503C4
+  count: 35
+  array_type: u8
+
+ply_1_not_dig12_tex_index:
+  type: ARRAY
+  offset: 0x811503E8
+  count: 35
+  array_type: u8
+
+cKF_ba_r_ply_1_clear_table_l1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81150D20
+  joints: 26
+  counts: { flags: 26, data: 1065, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_pickup_l1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811513D8
+  joints: 26
+  counts: { flags: 26, data: 753, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_scoop1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811514AC
+  joints: 26
+  counts: { flags: 26, data: 0, keys: 0, fixed: 81 }
+
+cKF_ba_r_ply_1_confirm1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81151BD4
+  joints: 26
+  counts: { flags: 26, data: 810, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_dig_suka1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811524B8
+  joints: 26
+  counts: { flags: 26, data: 1032, keys: 54, fixed: 27 }
+
+ply_1_dig_suka11_tex_index:
+  type: ARRAY
+  offset: 0x811524CC
+  count: 41
+  array_type: u8
+
+ply_1_dig_suka12_tex_index:
+  type: ARRAY
+  offset: 0x811524F8
+  count: 41
+  array_type: u8
+
+cKF_ba_r_ply_1_get_d1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811533D0
+  joints: 26
+  counts: { flags: 26, data: 1782, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_putaway_d1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811538D8
+  joints: 26
+  counts: { flags: 26, data: 537, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_dig_kabu1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115460C
+  joints: 26
+  counts: { flags: 26, data: 1584, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_fill_up_i1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811554FC
+  joints: 26
+  counts: { flags: 26, data: 1806, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_send_mail1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81155CA4
+  joints: 26
+  counts: { flags: 26, data: 873, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_get_f1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81156018
+  joints: 26
+  counts: { flags: 26, data: 336, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_get_pull_f1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811563AC
+  joints: 26
+  counts: { flags: 26, data: 351, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_get_putaway_f1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115696C
+  joints: 26
+  counts: { flags: 26, data: 630, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_trans_wait_f1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81156D3C
+  joints: 26
+  counts: { flags: 26, data: 381, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_transfer_f1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811575CC
+  joints: 26
+  counts: { flags: 26, data: 990, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_shake1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81157E64
+  joints: 26
+  counts: { flags: 26, data: 993, keys: 54, fixed: 27 }
+
+ply_1_shake12_tex_index:
+  type: ARRAY
+  offset: 0x81157E78
+  count: 39
+  array_type: u8
+
+cKF_ba_r_ply_1_tired1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81158304
+  joints: 26
+  counts: { flags: 26, data: 465, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_wash1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81158878
+  joints: 26
+  counts: { flags: 26, data: 591, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_wash2:
+  type: AC:CKF_ANIMATION
+  offset: 0x81158D90
+  joints: 26
+  counts: { flags: 26, data: 546, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_wash3:
+  type: AC:CKF_ANIMATION
+  offset: 0x81159224
+  joints: 26
+  counts: { flags: 26, data: 480, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_wash4:
+  type: AC:CKF_ANIMATION
+  offset: 0x81159660
+  joints: 26
+  counts: { flags: 26, data: 435, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_wash5:
+  type: AC:CKF_ANIMATION
+  offset: 0x81159AC0
+  joints: 26
+  counts: { flags: 26, data: 453, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_fukubiki1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115A208
+  joints: 26
+  counts: { flags: 26, data: 825, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_omairi1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115ABE8
+  joints: 26
+  counts: { flags: 26, data: 1158, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_saisen1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115B340
+  joints: 26
+  counts: { flags: 26, data: 834, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_return_mail1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115B708
+  joints: 26
+  counts: { flags: 26, data: 378, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_return_mail2:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115BC44
+  joints: 26
+  counts: { flags: 26, data: 564, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_return_mail3:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115C14C
+  joints: 26
+  counts: { flags: 26, data: 537, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_eat1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115C90C
+  joints: 26
+  counts: { flags: 26, data: 885, keys: 51, fixed: 30 }
+
+ply_1_eat11_tex_index:
+  type: ARRAY
+  offset: 0x8115C920
+  count: 82
+  array_type: u8
+
+ply_1_eat12_tex_index:
+  type: ARRAY
+  offset: 0x8115C974
+  count: 82
+  array_type: u8
+
+cKF_ba_r_ply_1_gaaan1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115CDA0
+  joints: 26
+  counts: { flags: 26, data: 396, keys: 45, fixed: 36 }
+
+ply_1_gaaan11_tex_index:
+  type: ARRAY
+  offset: 0x8115CDB4
+  count: 11
+  array_type: u8
+
+ply_1_gaaan12_tex_index:
+  type: ARRAY
+  offset: 0x8115CDC0
+  count: 11
+  array_type: u8
+
+cKF_ba_r_ply_1_gaaan2:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115D158
+  joints: 26
+  counts: { flags: 26, data: 357, keys: 45, fixed: 36 }
+
+cKF_ba_r_ply_1_deru1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115D82C
+  joints: 26
+  counts: { flags: 26, data: 768, keys: 54, fixed: 27 }
+
+ply_1_deru11_tex_index:
+  type: ARRAY
+  offset: 0x8115D840
+  count: 57
+  array_type: u8
+
+ply_1_deru12_tex_index:
+  type: ARRAY
+  offset: 0x8115D87C
+  count: 57
+  array_type: u8
+
+cKF_ba_r_ply_1_guratuku1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115DF14
+  joints: 26
+  counts: { flags: 26, data: 717, keys: 54, fixed: 27 }
+
+ply_1_guratuku11_tex_index:
+  type: ARRAY
+  offset: 0x8115DF28
+  count: 25
+  array_type: u8
+
+ply_1_guratuku12_tex_index:
+  type: ARRAY
+  offset: 0x8115DF44
+  count: 25
+  array_type: u8
+
+cKF_ba_r_ply_1_mogaku1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115E688
+  joints: 26
+  counts: { flags: 26, data: 819, keys: 54, fixed: 27 }
+
+ply_1_mogaku11_tex_index:
+  type: ARRAY
+  offset: 0x8115E69C
+  count: 41
+  array_type: u8
+
+cKF_ba_r_ply_1_otiru1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115EADC
+  joints: 26
+  counts: { flags: 26, data: 426, keys: 54, fixed: 27 }
+
+ply_1_otiru11_tex_index:
+  type: ARRAY
+  offset: 0x8115EAF0
+  count: 9
+  array_type: u8
+
+ply_1_otiru12_tex_index:
+  type: ARRAY
+  offset: 0x8115EAFC
+  count: 9
+  array_type: u8
+
+cKF_ba_r_ply_1_zassou1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115F104
+  joints: 26
+  counts: { flags: 26, data: 669, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_knock1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115F78C
+  joints: 26
+  counts: { flags: 26, data: 729, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_biku1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8115FECC
+  joints: 26
+  counts: { flags: 26, data: 822, keys: 54, fixed: 27 }
+
+ply_1_biku11_tex_index:
+  type: ARRAY
+  offset: 0x8115FEE0
+  count: 25
+  array_type: u8
+
+ply_1_biku12_tex_index:
+  type: ARRAY
+  offset: 0x8115FEFC
+  count: 25
+  array_type: u8
+
+cKF_ba_r_ply_1_hati1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81160D84
+  joints: 26
+  counts: { flags: 26, data: 1749, keys: 54, fixed: 27 }
+
+ply_1_hati11_tex_index:
+  type: ARRAY
+  offset: 0x81160D98
+  count: 65
+  array_type: u8
+
+ply_1_hati12_tex_index:
+  type: ARRAY
+  offset: 0x81160DDC
+  count: 65
+  array_type: u8
+
+cKF_ba_r_ply_1_hati2:
+  type: AC:CKF_ANIMATION
+  offset: 0x811615C4
+  joints: 26
+  counts: { flags: 26, data: 882, keys: 54, fixed: 27 }
+
+ply_1_hati21_tex_index:
+  type: ARRAY
+  offset: 0x811615D8
+  count: 62
+  array_type: u8
+
+ply_1_hati22_tex_index:
+  type: ARRAY
+  offset: 0x81161618
+  count: 62
+  array_type: u8
+
+cKF_ba_r_ply_1_hati3:
+  type: AC:CKF_ANIMATION
+  offset: 0x81161E68
+  joints: 26
+  counts: { flags: 26, data: 936, keys: 57, fixed: 24 }
+
+ply_1_hati31_tex_index:
+  type: ARRAY
+  offset: 0x81161E7C
+  count: 32
+  array_type: u8
+
+ply_1_hati32_tex_index:
+  type: ARRAY
+  offset: 0x81161E9C
+  count: 32
+  array_type: u8
+
+cKF_ba_r_ply_1_push_yuki1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116238C
+  joints: 26
+  counts: { flags: 26, data: 519, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_deru2:
+  type: AC:CKF_ANIMATION
+  offset: 0x81162B38
+  joints: 26
+  counts: { flags: 26, data: 876, keys: 54, fixed: 27 }
+
+ply_1_deru21_tex_index:
+  type: ARRAY
+  offset: 0x81162B4C
+  count: 57
+  array_type: u8
+
+ply_1_deru22_tex_index:
+  type: ARRAY
+  offset: 0x81162B88
+  count: 57
+  array_type: u8
+
+cKF_ba_r_ply_1_otiru2:
+  type: AC:CKF_ANIMATION
+  offset: 0x81162FE4
+  joints: 26
+  counts: { flags: 26, data: 432, keys: 54, fixed: 27 }
+
+ply_1_otiru21_tex_index:
+  type: ARRAY
+  offset: 0x81162FF8
+  count: 9
+  array_type: u8
+
+ply_1_otiru22_tex_index:
+  type: ARRAY
+  offset: 0x81163004
+  count: 9
+  array_type: u8
+
+cKF_ba_r_ply_1_itazura1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811639E8
+  joints: 26
+  counts: { flags: 26, data: 1164, keys: 54, fixed: 27 }
+
+ply_1_itazura11_tex_index:
+  type: ARRAY
+  offset: 0x811639FC
+  count: 49
+  array_type: u8
+
+ply_1_itazura12_tex_index:
+  type: ARRAY
+  offset: 0x81163A30
+  count: 49
+  array_type: u8
+
+cKF_ba_r_ply_1_umb_rot1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81164040
+  joints: 26
+  counts: { flags: 26, data: 654, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_pickup_wait1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81164674
+  joints: 26
+  counts: { flags: 26, data: 687, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_yatta1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811652AC
+  joints: 26
+  counts: { flags: 26, data: 1458, keys: 54, fixed: 27 }
+
+ply_1_yatta11_tex_index:
+  type: ARRAY
+  offset: 0x811652C0
+  count: 53
+  array_type: u8
+
+ply_1_yatta12_tex_index:
+  type: ARRAY
+  offset: 0x811652F8
+  count: 53
+  array_type: u8
+
+cKF_ba_r_ply_1_yatta2:
+  type: AC:CKF_ANIMATION
+  offset: 0x81165FBC
+  joints: 26
+  counts: { flags: 26, data: 1509, keys: 54, fixed: 27 }
+
+ply_1_yatta21_tex_index:
+  type: ARRAY
+  offset: 0x81165FD0
+  count: 53
+  array_type: u8
+
+ply_1_yatta22_tex_index:
+  type: ARRAY
+  offset: 0x81166008
+  count: 53
+  array_type: u8
+
+cKF_ba_r_ply_1_yatta3:
+  type: AC:CKF_ANIMATION
+  offset: 0x81166C24
+  joints: 26
+  counts: { flags: 26, data: 1425, keys: 50, fixed: 31 }
+
+ply_1_yatta31_tex_index:
+  type: ARRAY
+  offset: 0x81166C38
+  count: 53
+  array_type: u8
+
+ply_1_yatta32_tex_index:
+  type: ARRAY
+  offset: 0x81166C70
+  count: 53
+  array_type: u8
+
+cKF_ba_r_ply_1_kaza1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81166D68
+  joints: 26
+  counts: { flags: 26, data: 0, keys: 0, fixed: 81 }
+
+cKF_ba_r_ply_1_mosquito1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811673DC
+  joints: 26
+  counts: { flags: 26, data: 720, keys: 54, fixed: 27 }
+
+ply_1_mosquito11_tex_index:
+  type: ARRAY
+  offset: 0x811673F0
+  count: 31
+  array_type: u8
+
+ply_1_mosquito12_tex_index:
+  type: ARRAY
+  offset: 0x81167410
+  count: 31
+  array_type: u8
+
+cKF_ba_r_ply_1_mosquito2:
+  type: AC:CKF_ANIMATION
+  offset: 0x811677EC
+  joints: 26
+  counts: { flags: 26, data: 381, keys: 51, fixed: 30 }
+
+cKF_ba_r_ply_1_ride1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116809C
+  joints: 26
+  counts: { flags: 26, data: 1005, keys: 56, fixed: 25 }
+
+cKF_ba_r_ply_1_ride2:
+  type: AC:CKF_ANIMATION
+  offset: 0x811688D4
+  joints: 26
+  counts: { flags: 26, data: 945, keys: 57, fixed: 24 }
+
+cKF_ba_r_ply_1_ridewait:
+  type: AC:CKF_ANIMATION
+  offset: 0x81168D28
+  joints: 26
+  counts: { flags: 26, data: 447, keys: 57, fixed: 24 }
+
+cKF_ba_r_ply_1_getoff1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81169888
+  joints: 26
+  counts: { flags: 26, data: 1350, keys: 57, fixed: 24 }
+
+cKF_ba_r_ply_1_getoff2:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116A120
+  joints: 26
+  counts: { flags: 26, data: 993, keys: 57, fixed: 24 }
+
+cKF_ba_r_ply_1_utiwa_wait1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116A2A8
+  joints: 26
+  counts: { flags: 26, data: 90, keys: 9, fixed: 72 }
+
+cKF_ba_r_ply_1_utiwa_d1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116A49C
+  joints: 26
+  counts: { flags: 26, data: 144, keys: 12, fixed: 69 }
+
+cKF_ba_r_ply_1_axe_break1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116AF38
+  joints: 26
+  counts: { flags: 26, data: 1251, keys: 54, fixed: 27 }
+
+ply_1_axe_break11_tex_index:
+  type: ARRAY
+  offset: 0x8116AF4C
+  count: 61
+  array_type: u8
+
+ply_1_axe_break12_tex_index:
+  type: ARRAY
+  offset: 0x8116AF8C
+  count: 61
+  array_type: u8
+
+cKF_ba_r_ply_1_axe_breakwait1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116B598
+  joints: 26
+  counts: { flags: 26, data: 645, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_light_on1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116BD7C
+  joints: 26
+  counts: { flags: 26, data: 903, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_taisou1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116C344
+  joints: 26
+  counts: { flags: 26, data: 633, keys: 33, fixed: 48 }
+
+cKF_ba_r_ply_1_taisou2_1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116C75C
+  joints: 26
+  counts: { flags: 26, data: 417, keys: 43, fixed: 38 }
+
+cKF_ba_r_ply_1_taisou2_2:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116CB44
+  joints: 26
+  counts: { flags: 26, data: 393, keys: 43, fixed: 38 }
+
+cKF_ba_r_ply_1_taisou3:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116DE2C
+  joints: 26
+  counts: { flags: 26, data: 2313, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_taisou4_1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116E5CC
+  joints: 26
+  counts: { flags: 26, data: 870, keys: 52, fixed: 29 }
+
+cKF_ba_r_ply_1_taisou4_2:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116ED5C
+  joints: 26
+  counts: { flags: 26, data: 861, keys: 51, fixed: 30 }
+
+cKF_ba_r_ply_1_taisou5_1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8116F72C
+  joints: 26
+  counts: { flags: 26, data: 1149, keys: 54, fixed: 27 }
+
+cKF_ba_r_ply_1_taisou5_2:
+  type: AC:CKF_ANIMATION
+  offset: 0x811700FC
+  joints: 26
+  counts: { flags: 26, data: 1149, keys: 53, fixed: 28 }
+
+cKF_ba_r_ply_1_taisou6_1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811707C4
+  joints: 26
+  counts: { flags: 26, data: 762, keys: 52, fixed: 29 }
+
+cKF_ba_r_ply_1_taisou6_2:
+  type: AC:CKF_ANIMATION
+  offset: 0x81170E98
+  joints: 26
+  counts: { flags: 26, data: 768, keys: 52, fixed: 29 }
+
+cKF_ba_r_ply_1_taisou7_1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811713EC
+  joints: 26
+  counts: { flags: 26, data: 576, keys: 46, fixed: 35 }
+
+cKF_ba_r_ply_1_taisou7_2:
+  type: AC:CKF_ANIMATION
+  offset: 0x81171948
+  joints: 26
+  counts: { flags: 26, data: 579, keys: 46, fixed: 35 }
+
+cKF_ba_r_ply_1_omairi_us1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81171DDC
+  joints: 26
+  counts: { flags: 26, data: 480, keys: 54, fixed: 27 }

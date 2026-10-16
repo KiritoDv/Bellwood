@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+lat_letter32_v:
+  type: VTX
+  offset: 0x81480738
+  count: 16
+
+lat_letter32_model:
+  type: GFX
+  offset: 0x81480838
+  size: 0x78
+
+lat_letter32_sen_model:
+  type: GFX
+  offset: 0x814808B0
+  size: 0x30

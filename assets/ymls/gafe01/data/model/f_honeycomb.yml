@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_f_honeycomb_pal:
+  type: TEXTURE
+  offset: 0x810AE620
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+obj_f_honeycomb_tex:
+  type: TEXTURE
+  offset: 0x810AE640
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: n64
+  tlut: 0x810AE620
+
+obj_f_honeycomb_v:
+  type: VTX
+  offset: 0x810AE840
+  count: 4
+
+obj_f_honeycombT_mat_model:
+  type: GFX
+  offset: 0x810AE880
+  size: 0x78
+
+obj_f_honeycombT_gfx_model:
+  type: GFX
+  offset: 0x810AE8F8
+  size: 0x18

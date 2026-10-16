@@ -1,10 +1,6 @@
-extern Gfx int_kob_mastersword_onT_model[];
-extern Gfx int_kob_mastersword_on_model[];
-extern Gfx int_kob_mastersword_onT_model[];
+#include "assets/data/model/int_kob_mastersword.h"
 static void aKobMasterSword_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aKobMasterSword01_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
-
-extern Gfx int_kob_mastersword_env_model[];
 
 static void aKobMasterSword_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
 }

@@ -1,0 +1,281 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_int_hnw_off:
+  type: AC:CKF_ANIMATION
+  offset: 0x81088A20
+  joints: 7
+  counts: { flags: 7, data: 0, keys: 0, fixed: 24 }
+
+int_nog_kamakura_off_pal:
+  type: TEXTURE
+  offset: 0x8108A4C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_kamakura_on_pal:
+  type: TEXTURE
+  offset: 0x8108A4E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_kouban_on_pal:
+  type: TEXTURE
+  offset: 0x8108A680
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_kouban_off_pal:
+  type: TEXTURE
+  offset: 0x8108A6A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_museum_off_pal:
+  type: TEXTURE
+  offset: 0x8108A880
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_museum_on_pal:
+  type: TEXTURE
+  offset: 0x8108A8A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station1_a_pal:
+  type: TEXTURE
+  offset: 0x8108AD00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station1_b_pal:
+  type: TEXTURE
+  offset: 0x8108AD20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station1_c_pal:
+  type: TEXTURE
+  offset: 0x8108AD40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station1_d_pal:
+  type: TEXTURE
+  offset: 0x8108AD60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station1_e_pal:
+  type: TEXTURE
+  offset: 0x8108AD80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station2_a_pal:
+  type: TEXTURE
+  offset: 0x8108ADA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station2_b_pal:
+  type: TEXTURE
+  offset: 0x8108ADC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station2_c_pal:
+  type: TEXTURE
+  offset: 0x8108ADE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station2_d_pal:
+  type: TEXTURE
+  offset: 0x8108AE00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station2_e_pal:
+  type: TEXTURE
+  offset: 0x8108AE20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station3_a_pal:
+  type: TEXTURE
+  offset: 0x8108AE40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station3_b_pal:
+  type: TEXTURE
+  offset: 0x8108AE60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station3_c_pal:
+  type: TEXTURE
+  offset: 0x8108AE80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station3_d_pal:
+  type: TEXTURE
+  offset: 0x8108AEA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_station3_e_pal:
+  type: TEXTURE
+  offset: 0x8108AEC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_shop1_on_pal:
+  type: TEXTURE
+  offset: 0x8108B060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_shop1_off_pal:
+  type: TEXTURE
+  offset: 0x8108B080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_uranai_off_pal:
+  type: TEXTURE
+  offset: 0x8108B400
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_uranai_on_pal:
+  type: TEXTURE
+  offset: 0x8108B420
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_yamishop_off_pal:
+  type: TEXTURE
+  offset: 0x8108B4A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_yamishop_on_pal:
+  type: TEXTURE
+  offset: 0x8108B4C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_yubin_on_pal:
+  type: TEXTURE
+  offset: 0x8108B540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_yubin_off_pal:
+  type: TEXTURE
+  offset: 0x8108B560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_tailor_on_pal:
+  type: TEXTURE
+  offset: 0x81090D00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_tailor_off_pal:
+  type: TEXTURE
+  offset: 0x81090D20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+radio_pal:
+  type: TEXTURE
+  offset: 0x81091100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yaz_fish_trophy_pal:
+  type: TEXTURE
+  offset: 0x81091FC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_tent_on_pal:
+  type: TEXTURE
+  offset: 0x81092640
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_tent_off_pal:
+  type: TEXTURE
+  offset: 0x81092660
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yaz_fish_trophy2_pal:
+  type: TEXTURE
+  offset: 0x81092740
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_flower_a_pal:
+  type: TEXTURE
+  offset: 0x81092B80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_flower_b_pal:
+  type: TEXTURE
+  offset: 0x81092BA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_flower_c_pal:
+  type: TEXTURE
+  offset: 0x81092BC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx

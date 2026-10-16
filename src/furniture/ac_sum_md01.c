@@ -1,4 +1,4 @@
-extern Gfx int_sum_md01_on_model[];
+#include "assets/data/model/int_sum_md01.h"
 static void aSumMd01_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aSumMd01_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aSumMd01_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);

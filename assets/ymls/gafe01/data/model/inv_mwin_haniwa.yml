@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_haniwa_pal:
+  type: TEXTURE
+  offset: 0x81451E80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_haniwa_tex:
+  type: TEXTURE
+  offset: 0x81451EA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

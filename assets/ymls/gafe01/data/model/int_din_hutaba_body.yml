@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_din_hutaba_pal:
+  type: TEXTURE
+  offset: 0x81633CE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_din_hutaba_body_tex:
+  type: TEXTURE
+  offset: 0x81633D00
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81633CE0
+
+int_din_hutaba_fin_tex:
+  type: TEXTURE
+  offset: 0x81633E80
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81633CE0
+
+int_din_hutaba_poleC_tex:
+  type: TEXTURE
+  offset: 0x81634080
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81633CE0
+
+int_din_hutaba_baceC_tex:
+  type: TEXTURE
+  offset: 0x81634100
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81633CE0
+
+int_din_hutaba_hara_tex:
+  type: TEXTURE
+  offset: 0x81634300
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81633CE0
+
+int_din_hutaba_body_v:
+  type: VTX
+  offset: 0x81634480
+  count: 53
+
+int_din_hutaba_body_model:
+  type: GFX
+  offset: 0x816347D0
+  size: 0x68
+
+int_din_hutaba_bodyT_model:
+  type: GFX
+  offset: 0x81634838
+  size: 0xE0

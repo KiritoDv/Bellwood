@@ -1,0 +1,78 @@
+:config:
+  strict_declarations: true
+
+int_sum_hal_chair01_pal:
+  type: TEXTURE
+  offset: 0x819FB480
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_hal_chair01_seat_tex:
+  type: TEXTURE
+  offset: 0x819FB4A0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819FB480
+
+int_sum_hal_chair01_back_tex:
+  type: TEXTURE
+  offset: 0x819FB6A0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819FB480
+
+int_sum_hal_chair01_side_tex:
+  type: TEXTURE
+  offset: 0x819FB8A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819FB480
+
+int_sum_hal_chair01_top_tex:
+  type: TEXTURE
+  offset: 0x819FB9A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819FB480
+
+int_sum_hal_chair01_kuki_tex:
+  type: TEXTURE
+  offset: 0x819FBA20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819FB480
+
+int_sum_hal_chair01_armside_tex:
+  type: TEXTURE
+  offset: 0x819FBAA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819FB480
+
+int_sum_hal_chair01_v:
+  type: VTX
+  offset: 0x819FBCA0
+  count: 71
+
+int_sum_hal_chair01_on_model:
+  type: GFX
+  offset: 0x819FC110
+  size: 0xA0
+
+int_sum_hal_chair01_onT_model:
+  type: GFX
+  offset: 0x819FC1B0
+  size: 0xE0

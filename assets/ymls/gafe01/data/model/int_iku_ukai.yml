@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_iku_ukai_pal:
+  type: TEXTURE
+  offset: 0x8186A520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_ukai_all_tex_txt:
+  type: TEXTURE
+  offset: 0x8186A540
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8186A520
+
+int_iku_ukai_v:
+  type: VTX
+  offset: 0x8186A940
+  count: 94
+
+int_iku_ukai_mode_a_model:
+  type: GFX
+  offset: 0x8186AF20
+  size: 0xC0

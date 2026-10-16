@@ -1,6 +1,4 @@
-extern Gfx int_sum_classcwardrope01_on_model[];
-extern Gfx int_sum_classcwardrope01_onT_model[];
-extern Gfx int_sum_classicwardrope_envT_model[];
+#include "assets/data/model/int_sum_classicwardrope01.h"
 
 aFTR_PROFILE iam_sum_classicwardrope01 = {
 	int_sum_classcwardrope01_on_model,

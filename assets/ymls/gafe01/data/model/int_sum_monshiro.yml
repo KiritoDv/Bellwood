@@ -1,0 +1,107 @@
+:config:
+  strict_declarations: true
+
+int_sum_monshiro_pal:
+  type: TEXTURE
+  offset: 0x81A2D5C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_monshiro_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A2D5E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_monshiro_body_txt:
+  type: TEXTURE
+  offset: 0x81A2D600
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A2D5C0
+
+int_sum_monshiro_base_txt:
+  type: TEXTURE
+  offset: 0x81A2D680
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A2D5C0
+
+int_sum_monshiro_top_txt:
+  type: TEXTURE
+  offset: 0x81A2D700
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A2D5C0
+
+int_sum_monshiro_side_txt:
+  type: TEXTURE
+  offset: 0x81A2D900
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A2D5C0
+
+int_sum_monshiro_hand_txt:
+  type: TEXTURE
+  offset: 0x81A2DB00
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A2D5E0
+
+int_sum_monshiro_v:
+  type: VTX
+  offset: 0x81A2DC00
+  count: 61
+
+int_sum_monshiro_body_L_model:
+  type: GFX
+  offset: 0x81A2DFD0
+  size: 0x58
+
+int_sum_monshiro_side_model:
+  type: GFX
+  offset: 0x81A2E028
+  size: 0x68
+
+int_sum_monshiro_komado_model:
+  type: GFX
+  offset: 0x81A2E090
+  size: 0x58
+
+int_sum_monshiro_glass_model:
+  type: GFX
+  offset: 0x81A2E0E8
+  size: 0x68
+
+int_sum_monshiro_base_model:
+  type: GFX
+  offset: 0x81A2E150
+  size: 0xA0
+
+int_sum_monshiro_body_R_model:
+  type: GFX
+  offset: 0x81A2E1F0
+  size: 0x58
+
+cKF_ba_r_int_sum_monshiro:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A2E324
+  joints: 8
+  counts: { flags: 8, data: 78, keys: 12, fixed: 15 }
+
+cKF_bs_r_int_sum_monshiro:
+  type: AC:CKF_SKELETON
+  offset: 0x81A2E398
+  counts: { joints: 8 }

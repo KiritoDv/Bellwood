@@ -1,5 +1,4 @@
-extern Gfx int_sum_uwa_vase01_on_model[];
-extern Gfx int_sum_uwa_vase01_onT_model[];
+#include "assets/data/model/int_sum_uwa_vase01.h"
 
 aFTR_PROFILE iam_sum_uwa_vase01 = {
 	int_sum_uwa_vase01_on_model,

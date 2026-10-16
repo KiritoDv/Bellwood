@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_s_yubinkyoku.h"
 // clang-format off
 static Door_data_c aPOFF_post_office_door_data = {
     SCENE_POST_OFFICE,
@@ -10,11 +11,6 @@ static Door_data_c aPOFF_post_office_door_data = {
     {0, 0, 0},
 };
 // clang-format on
-
-extern cKF_Animation_R_c cKF_ba_r_obj_s_yubinkyoku;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_yubinkyoku_out;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_yubinkyoku;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_yubinkyoku_out;
 
 static void aPOFF_set_door_SE_sub(STRUCTURE_ACTOR* office, u16 se_no) {
     sAdo_OngenTrgStart(se_no, &office->actor_class.world.position);

@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+tol_umb11_pal:
+  type: TEXTURE
+  offset: 0x815D0B20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb11_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x815D0B40
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x815D0B20
+
+tol_umb11_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x815D0D40
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x815D0B20
+
+tol_umb11_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x815D0D80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815D0B20
+
+tol_umb_11_v:
+  type: VTX
+  offset: 0x815D0F80
+  count: 57
+
+kasa_umb11_model:
+  type: GFX
+  offset: 0x815D1310
+  size: 0x78
+
+e_umb11_model:
+  type: GFX
+  offset: 0x815D1388
+  size: 0x90

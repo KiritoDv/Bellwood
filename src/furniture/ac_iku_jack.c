@@ -1,4 +1,4 @@
-extern Gfx int_iku_jack_model_model[];
+#include "assets/data/model/int_iku_jack.h"
 
 aFTR_PROFILE iam_iku_jack = {
 	int_iku_jack_model_model,

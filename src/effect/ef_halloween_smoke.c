@@ -1,12 +1,7 @@
 #include "ef_effect_control.h"
 
 #include "m_common_data.h"
-
-extern Gfx ef_haro01_00_modelT[];
-extern u8 ef_dust01_0[];
-extern u8 ef_dust01_1[];
-extern u8 ef_dust01_2[];
-extern u8 ef_dust01_3[];
+#include "assets/data/model/ef_dust01_00.h"
 
 static u8* eHalloween_texture_table[] = {
     ef_dust01_0,

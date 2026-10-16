@@ -1,0 +1,109 @@
+:config:
+  strict_declarations: true
+
+int_ike_tent_bike01_pal:
+  type: TEXTURE
+  offset: 0x81848A80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_tent_bike_tire1_tex_txt:
+  type: TEXTURE
+  offset: 0x81848AA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81848A80
+
+int_ike_tent_bike_tire2_tex_txt:
+  type: TEXTURE
+  offset: 0x81848CA0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81848A80
+
+int_ike_tent_bike_pedal1_tex_txt:
+  type: TEXTURE
+  offset: 0x81848D20
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81848A80
+
+int_ike_tent_bike_tire3_tex_txt:
+  type: TEXTURE
+  offset: 0x81848D60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81848A80
+
+int_ike_tent_bike_handle2_tex_txt:
+  type: TEXTURE
+  offset: 0x81848E60
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81848A80
+
+int_ike_tent_bike_frame2_tex_txt:
+  type: TEXTURE
+  offset: 0x81848EE0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81848A80
+
+int_ike_tent_bike_handle1_tex_txt:
+  type: TEXTURE
+  offset: 0x81848F60
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81848A80
+
+int_ike_tent_bike_chiar1_tex_txt:
+  type: TEXTURE
+  offset: 0x81848FE0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81848A80
+
+int_ike_tent_bike_chiar2_tex_txt:
+  type: TEXTURE
+  offset: 0x81849020
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81848A80
+
+int_ike_tent_bike_frame1_tex_txt:
+  type: TEXTURE
+  offset: 0x81849060
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81848A80
+
+int_ike_tent_bike01_v:
+  type: VTX
+  offset: 0x81849460
+  count: 105
+
+int_ike_tent_bike01_model:
+  type: GFX
+  offset: 0x81849AF0
+  size: 0x268

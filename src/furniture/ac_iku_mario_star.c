@@ -1,3 +1,4 @@
+#include "assets/data/model/int_iku_mario_star.h"
 static void fIMS_ct(FTR_ACTOR* ftr_actor, u8* data) {
     ftr_actor->switch_bit = FALSE;
 }
@@ -5,7 +6,7 @@ static void fIMS_ct(FTR_ACTOR* ftr_actor, u8* data) {
 static void fIMS_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     if (aFTR_CAN_PLAY_SE(ftr_actor)) {
         if (ftr_actor->switch_bit == TRUE) {
-            sAdo_OngenPos((u32)ftr_actor, 0x5F, &ftr_actor->position);
+            sAdo_OngenPos((uintptr_t)ftr_actor, 0x5F, &ftr_actor->position);
             mPlib_Set_change_color_request();
         }
 
@@ -16,19 +17,12 @@ static void fIMS_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* 
     }
 }
 
-extern u16 int_iku_mario_star_a_pal[];
-extern u16 int_iku_mario_star_b_pal[];
-extern u16 int_iku_mario_star_c_pal[];
-extern u16 int_iku_mario_star_d_pal[];
-
 static u16* fIMS_palette_table[] = {
     int_iku_mario_star_a_pal,
     int_iku_mario_star_b_pal,
     int_iku_mario_star_c_pal,
     int_iku_mario_star_d_pal,
 };
-
-extern Gfx int_iku_mario_star_model[];
 
 static void fIMS_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     GAME_PLAY* play = (GAME_PLAY*)game;

@@ -1,0 +1,6 @@
+:config:
+  strict_declarations: true
+
+tol_hata_01_evw_anime:
+  type: AC:EVW_ANIME
+  offset: 0x815C3C98

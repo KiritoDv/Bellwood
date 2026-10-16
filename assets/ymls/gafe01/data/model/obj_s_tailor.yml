@@ -1,0 +1,170 @@
+:config:
+  strict_declarations: true
+
+obj_s_tailor_1_tex_txt:
+  type: TEXTURE
+  offset: 0x815A4640
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_s_tailor_3_tex_txt:
+  type: TEXTURE
+  offset: 0x815A4E40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_s_tailor_2_tex_txt:
+  type: TEXTURE
+  offset: 0x815A5640
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_s_tailor_window_tex_txt:
+  type: TEXTURE
+  offset: 0x815A5E40
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_tailor_v:
+  type: VTX
+  offset: 0x815A5EC0
+  count: 95
+
+obj_s_tailor_window_model:
+  type: GFX
+  offset: 0x815A64B0
+  size: 0x48
+
+obj_s_tailor_light_model:
+  type: GFX
+  offset: 0x815A64F8
+  size: 0x50
+
+obj_s_tailor_3_model:
+  type: GFX
+  offset: 0x815A6548
+  size: 0xA0
+
+obj_s_tailor_2_model:
+  type: GFX
+  offset: 0x815A65E8
+  size: 0x60
+
+obj_s_tailor_1_model:
+  type: GFX
+  offset: 0x815A6648
+  size: 0x60
+
+obj_s_tailor_door_model:
+  type: GFX
+  offset: 0x815A66A8
+  size: 0x58
+
+cKF_bs_r_obj_s_tailor:
+  type: AC:CKF_SKELETON
+  offset: 0x815A6754
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_s_tailor:
+  type: AC:CKF_ANIMATION
+  offset: 0x815A67DC
+  joints: 7
+  counts: { flags: 7, data: 33, keys: 1, fixed: 23 }
+
+cKF_ba_r_obj_s_tailor_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x815A687C
+  joints: 7
+  counts: { flags: 7, data: 39, keys: 1, fixed: 23 }
+
+obj_w_tailor_1_tex_txt:
+  type: TEXTURE
+  offset: 0x815A68A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_w_tailor_window_tex_txt:
+  type: TEXTURE
+  offset: 0x815A70A0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_tailor_2_tex_txt:
+  type: TEXTURE
+  offset: 0x815A71A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_w_tailor_3_tex_txt:
+  type: TEXTURE
+  offset: 0x815A79A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_w_tailor_v:
+  type: VTX
+  offset: 0x815A81A0
+  count: 95
+
+obj_w_tailor_window_model:
+  type: GFX
+  offset: 0x815A8790
+  size: 0x48
+
+obj_w_tailor_light_model:
+  type: GFX
+  offset: 0x815A87D8
+  size: 0x50
+
+obj_w_tailor_3_model:
+  type: GFX
+  offset: 0x815A8828
+  size: 0xA0
+
+obj_w_tailor_2_model:
+  type: GFX
+  offset: 0x815A88C8
+  size: 0x60
+
+obj_w_tailor_1_model:
+  type: GFX
+  offset: 0x815A8928
+  size: 0x60
+
+obj_w_tailor_door_model:
+  type: GFX
+  offset: 0x815A8988
+  size: 0x58
+
+cKF_bs_r_obj_w_tailor:
+  type: AC:CKF_SKELETON
+  offset: 0x815A8A34
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_w_tailor:
+  type: AC:CKF_ANIMATION
+  offset: 0x815A8ABC
+  joints: 7
+  counts: { flags: 7, data: 33, keys: 1, fixed: 23 }
+
+cKF_ba_r_obj_w_tailor_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x815A8B5C
+  joints: 7
+  counts: { flags: 7, data: 39, keys: 1, fixed: 23 }

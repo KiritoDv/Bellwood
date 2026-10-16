@@ -1,7 +1,5 @@
+#include "assets/data/model/int_sum_kingyo.h"
 extern aFTR_rig_c aSumKingyo_key_anime_data;
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_sum_kingyo;
-extern cKF_Animation_R_c cKF_ba_r_int_sum_kingyo;
 
 aFTR_rig_c aSumKingyo_key_anime_data= {
     &cKF_bs_r_int_sum_kingyo,

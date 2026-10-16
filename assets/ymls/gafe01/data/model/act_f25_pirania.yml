@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f25_pirania_pal:
+  type: TEXTURE
+  offset: 0x812432E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f25_pirania_tex:
+  type: TEXTURE
+  offset: 0x81243300
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x812432E0
+
+act_f25_pirania_a_v:
+  type: VTX
+  offset: 0x81243500
+  count: 9
+
+act_f25_pirania_aT_model:
+  type: GFX
+  offset: 0x81243590
+  size: 0x68
+
+act_f25_pirania_b_v:
+  type: VTX
+  offset: 0x812435F8
+  count: 9
+
+act_f25_pirania_bT_model:
+  type: GFX
+  offset: 0x81243688
+  size: 0x68
+
+act_f25_pirania_c_v:
+  type: VTX
+  offset: 0x812436F0
+  count: 9
+
+act_f25_pirania_cT_model:
+  type: GFX
+  offset: 0x81243780
+  size: 0x68

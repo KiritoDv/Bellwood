@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_din_stego_pal:
+  type: TEXTURE
+  offset: 0x8163BF20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_din_stego_fin_tex:
+  type: TEXTURE
+  offset: 0x8163BF40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8163BF20
+
+int_din_stego_kubi2C_tex:
+  type: TEXTURE
+  offset: 0x8163C140
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8163BF20
+
+int_din_stego_baceC_tex:
+  type: TEXTURE
+  offset: 0x8163C1C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8163BF20
+
+int_din_stego_poleC_tex:
+  type: TEXTURE
+  offset: 0x8163C3C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8163BF20
+
+int_din_stego_tail_v:
+  type: VTX
+  offset: 0x8163C440
+  count: 60
+
+int_din_stego_tail_model:
+  type: GFX
+  offset: 0x8163C800
+  size: 0x68
+
+int_din_stego_tailT_model:
+  type: GFX
+  offset: 0x8163C868
+  size: 0xC8

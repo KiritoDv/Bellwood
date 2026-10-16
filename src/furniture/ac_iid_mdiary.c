@@ -1,4 +1,4 @@
-extern Gfx int_iid_mdiary_model[];
+#include "assets/data/model/int_iid_mdiary.h"
 
 aFTR_PROFILE iam_iid_mdiary = {
 	int_iid_mdiary_model,

@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_shovel2_pal:
+  type: TEXTURE
+  offset: 0x8188F840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_shovel2_tex:
+  type: TEXTURE
+  offset: 0x8188F860
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8188F840
+
+obj_item_shovel2_v:
+  type: VTX
+  offset: 0x8188FA60
+  count: 4
+
+obj_item_shovel2T_mat_model:
+  type: GFX
+  offset: 0x8188FAA0
+  size: 0x48
+
+obj_item_shovel2T_gfx_model:
+  type: GFX
+  offset: 0x8188FAE8
+  size: 0x18

@@ -1,10 +1,5 @@
-u16 aKOI_obj_e_koinobori_a_pal[] = {
-    #include "assets/aKOI_obj_e_koinobori_a_pal.inc"
-};
+#include "assets/actor/ac_koinobori.h"
 
-u16 obj_e_koinobori_b_pal[] = {
-    #include "assets/obj_e_koinobori_b_pal.inc"
-};
 
 static void aKOI_actor_draw(ACTOR* actor, GAME* game) {
     KOINOBORI_ACTOR* koinobori;
@@ -13,7 +8,6 @@ static void aKOI_actor_draw(ACTOR* actor, GAME* game) {
     Mtx* mtx;
     u16* pal;
     Gfx* gfx;
-
 
     koinobori = (KOINOBORI_ACTOR*)actor;
     graph = game->graph;

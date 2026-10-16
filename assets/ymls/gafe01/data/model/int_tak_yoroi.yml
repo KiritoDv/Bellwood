@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_tak_yoroi_pal:
+  type: TEXTURE
+  offset: 0x81AAEFA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_yoroi_yari_tex:
+  type: TEXTURE
+  offset: 0x81AAEFC0
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AAEFA0
+
+int_tak_yoroi_head_tex:
+  type: TEXTURE
+  offset: 0x81AAF000
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AAEFA0
+
+int_tak_yoroi_body_tex:
+  type: TEXTURE
+  offset: 0x81AAF100
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AAEFA0
+
+int_tak_yoroi_leg_tex:
+  type: TEXTURE
+  offset: 0x81AAF300
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81AAEFA0
+
+int_tak_yoroi_arm_tex:
+  type: TEXTURE
+  offset: 0x81AAF500
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81AAEFA0
+
+int_tak_yoroi_v:
+  type: VTX
+  offset: 0x81AAF700
+  count: 150
+
+int_tak_yoroi_on_model:
+  type: GFX
+  offset: 0x81AB0060
+  size: 0x170
+
+int_tak_yoroi_onT_model:
+  type: GFX
+  offset: 0x81AB01D0
+  size: 0xD0

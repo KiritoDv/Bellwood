@@ -1,13 +1,8 @@
+#include "assets/data/model/int_tak_nes01.h"
 static void aKobDisksystem8_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aKobDisksystem8_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aKobDisksystem8_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aKobDisksystem8_dt(FTR_ACTOR* ftr_actor, u8* data);
-
-extern u8 int_tak_nes_ds_tex_rgb_i4[];
-extern u16 int_tak_nes_cl_pal[];
-extern Gfx int_tak_nes01_on_model[];
-extern Gfx int_tak_nes01_onT_model[];
-extern Gfx int_tak_nes01_game_on_model[];
 
 static void aKobDisksystem8_ct(FTR_ACTOR* ftr_actor, u8* data){
 

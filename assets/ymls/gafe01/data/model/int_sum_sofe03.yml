@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_sum_sofe03_pal:
+  type: TEXTURE
+  offset: 0x81A5E680
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_sofe03_backside_txt:
+  type: TEXTURE
+  offset: 0x81A5E6A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A5E680
+
+int_sum_sofe03_front_txt:
+  type: TEXTURE
+  offset: 0x81A5E8A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A5E680
+
+int_sum_sofe03_side_txt:
+  type: TEXTURE
+  offset: 0x81A5EAA0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A5E680
+
+int_sum_sofe03_hijikake_txt:
+  type: TEXTURE
+  offset: 0x81A5ECA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A5E680
+
+int_sum_sofe03_foot_txt:
+  type: TEXTURE
+  offset: 0x81A5EDA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A5E680
+
+int_sum_sofe03_v:
+  type: VTX
+  offset: 0x81A5EEA0
+  count: 58
+
+int_sum_sofe03_on_model:
+  type: GFX
+  offset: 0x81A5F240
+  size: 0xE8
+
+int_sum_sofe03_onT_model:
+  type: GFX
+  offset: 0x81A5F328
+  size: 0x68

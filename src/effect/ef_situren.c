@@ -8,10 +8,7 @@
 #include "m_rcp.h"
 #include "sys_math3d.h"
 #include "sys_matrix.h"
-
-extern Gfx ef_situren01_00_modelT[];
-extern Gfx ef_situren01_01_modelT[];
-extern Gfx ef_situren01_02_modelT[];
+#include "assets/data/model/ef_situren01_00.h"
 
 static void eSN_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eSN_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);

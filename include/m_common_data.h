@@ -147,7 +147,7 @@ typedef struct Save_s {
     /* 0x0213F0 */ PlusBridge_c bridge;         /* additional bridge info */
     /* 0x021400 */ mNW_needlework_c needlework; /* Able Sisters' designs */
     /* 0x022500 */ u8 _tmp7[0x22528 - 0x22500];
-    /* 0x022528 */ OSTime time_delta; /* time delta against GC RTC */
+    /* 0x022528 */ ACTime time_delta; /* time delta against GC RTC */
     /* 0x022540 */ Island_c island;   /* island data */
     /* 0x023E40 */ mAGrw_AllGrow_c allgrow_ss_pos_info;
     /* 0x023E68 */ mFR_record_c fishRecord[mFR_RECORD_NUM];
@@ -168,10 +168,12 @@ typedef struct Save_s {
     /* 0x024189 */ u8 first_present;
     /* 0x02418A */ u8 town_day;
     /* 0x02418B */ u8 _2418B[0x24198 - 0x2418B];
-    /* 0x024198 */ OSTime travel_hard_time;
+    /* 0x024198 */ ACTime travel_hard_time;
     /* 0x0241A0 */ lbRTC_time_c saved_auto_nwrite_time; /* save data notice time used for fishing tourney results? */
     /* 0x0241A8 */ u8 _241A8[0x242A0 - 0x241A8];
 } Save_t;
+
+static_assert(sizeof(Save_t) == 0x242A0, "Save_t must keep its GameCube layout");
 
 typedef union save_u {
     Save_t save;

@@ -4,18 +4,13 @@
 #include "m_debug.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_sibuki01_00.h"
 
 static void eSandsplash_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eSandsplash_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
 static void eSandsplash_mv(eEC_Effect_c* effect, GAME* game);
 static void eSandsplash_dw(eEC_Effect_c* effect, GAME* game);
 
-extern Gfx ef_sunahane01_00_modelT[];
-
-extern u8 ef_sunahane01_0_inta_ia8[];
-extern u8 ef_sunahane01_1_inta_ia8[];
-extern u8 ef_sunahane01_2_inta_ia8[];
-extern u8 ef_sunahane01_3_inta_ia8[];
 
 eEC_PROFILE_c iam_ef_sandsplash = {
     // clang-format off

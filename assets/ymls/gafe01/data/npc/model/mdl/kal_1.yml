@@ -1,0 +1,67 @@
+:config:
+  strict_declarations: true
+
+kal_1_v:
+  type: VTX
+  offset: 0x81288DC0
+  count: 361
+
+head_kal_model:
+  type: GFX
+  offset: 0x8128A450
+  size: 0x1B0
+
+Rarm2_kal_model:
+  type: GFX
+  offset: 0x8128A600
+  size: 0x88
+
+Rarm1_kal_model:
+  type: GFX
+  offset: 0x8128A688
+  size: 0x78
+
+Larm2_kal_model:
+  type: GFX
+  offset: 0x8128A700
+  size: 0x88
+
+Larm1_kal_model:
+  type: GFX
+  offset: 0x8128A788
+  size: 0x78
+
+chest_kal_model:
+  type: GFX
+  offset: 0x8128A800
+  size: 0xA8
+
+Rfoot2_kal_model:
+  type: GFX
+  offset: 0x8128A8A8
+  size: 0x80
+
+Rfoot1_kal_model:
+  type: GFX
+  offset: 0x8128A928
+  size: 0xC0
+
+Lfoot2_kal_model:
+  type: GFX
+  offset: 0x8128A9E8
+  size: 0x80
+
+Lfoot1_kal_model:
+  type: GFX
+  offset: 0x8128AA68
+  size: 0xC0
+
+base_kal_model:
+  type: GFX
+  offset: 0x8128AB28
+  size: 0x70
+
+cKF_bs_r_kal_1:
+  type: AC:CKF_SKELETON
+  offset: 0x8128ACD0
+  counts: { joints: 26 }

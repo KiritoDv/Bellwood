@@ -1,10 +1,5 @@
-extern Gfx int_sum_bla_lanp_on_model[];
-extern Gfx int_sum_bla_lanp_onT_model[];
+#include "assets/data/model/int_sum_bla_lanp.h"
 static void aSumBlaLanp_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
-
-extern Gfx int_sum_bla_lanp_off_model[];
-extern Gfx int_sum_bla_lanp_onT_model[];
-extern Gfx int_sum_bla_lanp_offT_model[];
 
 static void aSumBlaLanp_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     OPEN_DISP(game->graph);

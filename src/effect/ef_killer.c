@@ -3,6 +3,7 @@
 #include "m_common_data.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/act_killer.h"
 
 static void eKL_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eKL_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -134,8 +135,6 @@ static void eKL_mv(eEC_Effect_c* effect, GAME* game) {
         }
     }
 }
-
-extern Gfx act_killer_model[];
 
 static void eKL_dw(eEC_Effect_c* effect, GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;

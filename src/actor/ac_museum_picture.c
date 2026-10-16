@@ -10,6 +10,29 @@
 #include "m_room_type.h"
 #include "m_msg.h"
 #include "m_common_data.h"
+#include "assets/data/model/obj_art01.h"
+#include "assets/data/model/obj_art02.h"
+#include "assets/data/model/obj_art03.h"
+#include "assets/data/model/obj_art04.h"
+#include "assets/data/model/obj_art05.h"
+#include "assets/data/model/obj_art06.h"
+#include "assets/data/model/obj_art07.h"
+#include "assets/data/model/obj_art08.h"
+#include "assets/data/model/obj_art09.h"
+#include "assets/data/model/obj_art10.h"
+#include "assets/data/model/obj_art11.h"
+#include "assets/data/model/obj_art12.h"
+#include "assets/data/model/obj_art13.h"
+#include "assets/data/model/obj_art14.h"
+#include "assets/data/model/obj_art15.h"
+#include "assets/data/model/obj_art_dummy01.h"
+#include "assets/data/model/obj_art_dummy02.h"
+#include "assets/data/model/obj_art_dummy03.h"
+#include "assets/data/model/obj_art_dummy04.h"
+#include "assets/data/model/obj_art_dummy05.h"
+#include "assets/data/model/obj_art_dummy06.h"
+#include "assets/data/model/obj_art_dummy07.h"
+#include "assets/data/model/obj_art_dummy08.h"
 
 typedef struct {
     s16 x;
@@ -41,30 +64,6 @@ ACTOR_PROFILE Museum_Picture_Profile = {
     NULL,
 };
 
-extern Gfx obj_art01_model[];
-extern Gfx obj_art02_model[];
-extern Gfx obj_art03_model[];
-extern Gfx obj_art04_model[];
-extern Gfx obj_art05_model[];
-extern Gfx obj_art06_model[];
-extern Gfx obj_art07_model[];
-extern Gfx obj_art08_model[];
-extern Gfx obj_art09_model[];
-extern Gfx obj_art10_model[];
-extern Gfx obj_art11_model[];
-extern Gfx obj_art12_model[];
-extern Gfx obj_art13_model[];
-extern Gfx obj_art14_model[];
-extern Gfx obj_art15_model[];
-
-extern Gfx obj_art_dummy01_model[];
-extern Gfx obj_art_dummy02_model[];
-extern Gfx obj_art_dummy03_model[];
-extern Gfx obj_art_dummy04_model[];
-extern Gfx obj_art_dummy05_model[];
-extern Gfx obj_art_dummy06_model[];
-extern Gfx obj_art_dummy07_model[];
-extern Gfx obj_art_dummy08_model[];
 
 static aMP_art_data_c aMP_art_data_table[mMmd_ART_NUM] = {
     { obj_art01_model, obj_art_dummy01_model, 7, 1 },  { obj_art02_model, obj_art_dummy03_model, 1, 9 },

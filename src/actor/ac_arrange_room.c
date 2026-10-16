@@ -3,12 +3,10 @@
 #include "m_malloc.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/rom_myhome2_floor.h"
+#include "assets/data/model/rom_myhome2_wall.h"
 
 static void aAR_Redma();
-
-extern Gfx rom_myhome2_floor_model[];
-extern Gfx rom_myhome2_wall_model[];
-extern Gfx rom_myhome2_wall_modelT[];
 
 static void Arrange_Room_Actor_ct(ACTOR* actor, GAME* game);
 static void Arrange_Room_Actor_dt(ACTOR* actor, GAME* game);

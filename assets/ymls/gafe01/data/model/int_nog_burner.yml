@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+int_nog_burner_pal:
+  type: TEXTURE
+  offset: 0x818F3540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_burner_gas_tex:
+  type: TEXTURE
+  offset: 0x818F3560
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818F3540
+
+int_nog_burner_side_tex:
+  type: TEXTURE
+  offset: 0x818F3660
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x818F3540
+
+int_nog_burner_top_tex:
+  type: TEXTURE
+  offset: 0x818F3A60
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x818F3540
+
+int_nog_burner_v:
+  type: VTX
+  offset: 0x818F3C60
+  count: 111
+
+int_nog_burner_model:
+  type: GFX
+  offset: 0x818F4350
+  size: 0x150

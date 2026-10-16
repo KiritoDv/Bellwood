@@ -1,5 +1,4 @@
-extern Gfx int_sum_pl_compacta_on_model[];
-extern Gfx int_sum_pl_compacta_onT_model[];
+#include "assets/data/model/int_sum_pl_compacta.h"
 
 aFTR_PROFILE iam_sum_pl_compacta = {
 	int_sum_pl_compacta_on_model,

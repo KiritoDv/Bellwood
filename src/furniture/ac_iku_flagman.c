@@ -1,4 +1,4 @@
-extern Gfx int_iku_flagman_model_model[];
+#include "assets/data/model/int_iku_flagman.h"
 
 aFTR_PROFILE iam_iku_flagman = {
 	int_iku_flagman_model_model,

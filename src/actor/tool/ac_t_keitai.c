@@ -5,10 +5,9 @@
 #include "m_lib.h"
 #include "m_rcp.h"
 #include "m_common_data.h"
-
-extern cKF_Animation_R_c cKF_ba_r_tol_keitai_1_keitai_on1;
-extern cKF_Animation_R_c cKF_ba_r_tol_keitai_1_keitai_off1;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_keitai_1;
+#include "assets/data/model/cKF_ba_r_tol_keitai_1_keitai_off1.h"
+#include "assets/data/model/cKF_ba_r_tol_keitai_1_keitai_on1.h"
+#include "assets/data/model/tol_keitai_1.h"
 
 KEITAI_ACTION_ANIM aTKT_anm_dt[6] = {
     { &cKF_ba_r_tol_keitai_1_keitai_on1, 1.0f, 1.0f },   { &cKF_ba_r_tol_keitai_1_keitai_on1, 1.0f, 68.0f },

@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+act_m_genji_pal:
+  type: TEXTURE
+  offset: 0x8186D380
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_genji:
+  type: TEXTURE
+  offset: 0x8186D3A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8186D380
+
+act_m_genji_v:
+  type: VTX
+  offset: 0x8186D4A0
+  count: 6
+
+act_m_mu_genji_modelT:
+  type: GFX
+  offset: 0x8186D500
+  size: 0x60

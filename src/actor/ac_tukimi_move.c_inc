@@ -1,5 +1,4 @@
-extern cKF_Animation_R_c cKF_ba_r_obj_e_tukimi_l;
-extern cKF_Animation_R_c cKF_ba_r_obj_e_tukimi_r;
+#include "assets/data/model/obj_e_tukimi_r.h"
 
 static void aTUK_set_bgOffset(STRUCTURE_ACTOR* tukimi, int id) {
     id = id == 0 ? 6 : 6;

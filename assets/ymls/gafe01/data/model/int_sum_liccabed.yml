@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_sum_liccabed_pal:
+  type: TEXTURE
+  offset: 0x81A153C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_liccabed_mat_tex:
+  type: TEXTURE
+  offset: 0x81A153E0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A153C0
+
+int_sum_liccabed_head_tex:
+  type: TEXTURE
+  offset: 0x81A156E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A153C0
+
+int_sum_liccabed_foot_tex:
+  type: TEXTURE
+  offset: 0x81A158E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A153C0
+
+int_sum_liccabed_pillow_tex:
+  type: TEXTURE
+  offset: 0x81A15960
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A153C0
+
+int_sum_liccabed_v:
+  type: VTX
+  offset: 0x81A15A60
+  count: 64
+
+int_sum_liccabed_on_model:
+  type: GFX
+  offset: 0x81A15E60
+  size: 0x88
+
+int_sum_liccabed_onT_model:
+  type: GFX
+  offset: 0x81A15EE8
+  size: 0xA0

@@ -1,0 +1,76 @@
+:config:
+  strict_declarations: true
+
+int_sum_pl_draca02_pal:
+  type: TEXTURE
+  offset: 0x81A41260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_pl_kuroton_pal:
+  type: TEXTURE
+  offset: 0x81A41280
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_pl_draca02_stand2_tex:
+  type: TEXTURE
+  offset: 0x81A412A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A41260
+
+int_sum_pl_draca02_stand_tex:
+  type: TEXTURE
+  offset: 0x81A413A0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A41260
+
+int_sum_pl_draca02_leaf_tex:
+  type: TEXTURE
+  offset: 0x81A41520
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A41260
+
+int_sum_pl_draca02_hachi_tex:
+  type: TEXTURE
+  offset: 0x81A416A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A41280
+
+int_sum_pl_draca02_earth_tex:
+  type: TEXTURE
+  offset: 0x81A417A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A41260
+
+int_sum_pl_draca02_v:
+  type: VTX
+  offset: 0x81A41820
+  count: 101
+
+int_sum_pl_draca02_on_model:
+  type: GFX
+  offset: 0x81A41E70
+  size: 0x58
+
+int_sum_pl_draca02_onT_model:
+  type: GFX
+  offset: 0x81A41EC8
+  size: 0x110

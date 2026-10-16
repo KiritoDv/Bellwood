@@ -1,5 +1,4 @@
-extern Gfx int_tak_snowisu_on_model[];
-extern Gfx int_tak_snowisu_onT_model[];
+#include "assets/data/model/int_tak_snowisu.h"
 
 aFTR_PROFILE iam_tak_snowisu = {
 	int_tak_snowisu_on_model,

@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+tol_kaza_5_pal:
+  type: TEXTURE
+  offset: 0x813922A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_kaza_5_a_tex_txt:
+  type: TEXTURE
+  offset: 0x813922C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813922A0
+
+tol_kaza_5_c_tex_txt:
+  type: TEXTURE
+  offset: 0x813924C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813922A0
+
+tol_kaza_5_b_tex_txt:
+  type: TEXTURE
+  offset: 0x813926C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x813922A0
+
+obj_shop_kaza5_v:
+  type: VTX
+  offset: 0x813927C0
+  count: 54
+
+obj_shop_kaza5_model:
+  type: GFX
+  offset: 0x81392B20
+  size: 0xF0

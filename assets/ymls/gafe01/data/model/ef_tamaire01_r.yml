@@ -1,0 +1,35 @@
+:config:
+  strict_declarations: true
+
+ef_tamaire01_r_pal:
+  type: TEXTURE
+  offset: 0x815C9960
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tama01_r_tex:
+  type: TEXTURE
+  offset: 0x815C9980
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_tamaire01_r_v:
+  type: VTX
+  offset: 0x815C9B80
+  count: 4
+
+tama01_model:
+  type: GFX
+  offset: 0x815C9BC0
+  size: 0x30
+
+tama01_w_tex:
+  type: TEXTURE
+  offset: 0x815C9C00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

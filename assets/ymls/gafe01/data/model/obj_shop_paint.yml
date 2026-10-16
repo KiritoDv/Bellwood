@@ -1,0 +1,169 @@
+:config:
+  strict_declarations: true
+
+obj_shop_paint_a_pal:
+  type: TEXTURE
+  offset: 0x81396B60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_paint_b_pal:
+  type: TEXTURE
+  offset: 0x81396B80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_paint_c_pal:
+  type: TEXTURE
+  offset: 0x81396BA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_paint_d_pal:
+  type: TEXTURE
+  offset: 0x81396BC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_paint_e_pal:
+  type: TEXTURE
+  offset: 0x81396BE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_paint_f_pal:
+  type: TEXTURE
+  offset: 0x81396C00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_paint_g_pal:
+  type: TEXTURE
+  offset: 0x81396C20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_paint_h_pal:
+  type: TEXTURE
+  offset: 0x81396C40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_paint_i_pal:
+  type: TEXTURE
+  offset: 0x81396C60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_paint_j_pal:
+  type: TEXTURE
+  offset: 0x81396C80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_paint_k_pal:
+  type: TEXTURE
+  offset: 0x81396CA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_paint_l_pal:
+  type: TEXTURE
+  offset: 0x81396CC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_paint_tex:
+  type: TEXTURE
+  offset: 0x81396CE0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+obj_shop_paint_v:
+  type: VTX
+  offset: 0x813970E0
+  count: 27
+
+obj_shop_paintT_mat_model:
+  type: GFX
+  offset: 0x81397290
+  size: 0x40
+
+obj_paintT_a_mat_model:
+  type: GFX
+  offset: 0x813972D0
+  size: 0x18
+
+obj_paintT_b_mat_model:
+  type: GFX
+  offset: 0x813972E8
+  size: 0x18
+
+obj_paintT_c_mat_model:
+  type: GFX
+  offset: 0x81397300
+  size: 0x18
+
+obj_paintT_d_mat_model:
+  type: GFX
+  offset: 0x81397318
+  size: 0x18
+
+obj_paintT_e_mat_model:
+  type: GFX
+  offset: 0x81397330
+  size: 0x18
+
+obj_paintT_f_mat_model:
+  type: GFX
+  offset: 0x81397348
+  size: 0x18
+
+obj_paintT_g_mat_model:
+  type: GFX
+  offset: 0x81397360
+  size: 0x18
+
+obj_paintT_h_mat_model:
+  type: GFX
+  offset: 0x81397378
+  size: 0x18
+
+obj_paintT_i_mat_model:
+  type: GFX
+  offset: 0x81397390
+  size: 0x18
+
+obj_paintT_j_mat_model:
+  type: GFX
+  offset: 0x813973A8
+  size: 0x18
+
+obj_paintT_k_mat_model:
+  type: GFX
+  offset: 0x813973C0
+  size: 0x18
+
+obj_paintT_l_mat_model:
+  type: GFX
+  offset: 0x813973D8
+  size: 0x18
+
+obj_paintT_gfx_model:
+  type: GFX
+  offset: 0x813973F0
+  size: 0x40

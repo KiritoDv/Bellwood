@@ -1,0 +1,131 @@
+:config:
+  strict_declarations: true
+
+flg_6_pal:
+  type: TEXTURE
+  offset: 0x81215360
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+flg_6_eye1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81215380
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_eye2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81215480
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_eye3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81215580
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_eye4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81215680
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_eye5_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81215780
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_eye6_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81215880
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_eye7_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81215980
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_eye8_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81215A80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_mouth1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81215B80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_mouth2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81215C80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_mouth3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81215D80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_mouth4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81215E80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_mouth5_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81215F80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_mouth6_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81216080
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+flg_6_tmem_txt:
+  type: AC:TEX_ATLAS
+  offset: 0x81216180
+  size: 0x400
+  regions:
+    - { offset: 0x0, format: CI4, width: 32, height: 8 }
+    - { offset: 0x80, format: CI4, width: 32, height: 40 }
+    - { offset: 0x300, format: CI4, width: 16, height: 16 }
+    - { offset: 0x380, format: CI4, width: 16, height: 16 }

@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_3haku_e1:
+  type: AC:NPC_ANIM
+  offset: 0x81316AAC
+  joints: 26
+  counts: { flags: 26, data: 618, keys: 51, fixed: 30 }

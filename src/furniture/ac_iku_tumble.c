@@ -1,4 +1,4 @@
-extern Gfx int_iku_tumble_model[];
+#include "assets/data/model/int_iku_tumble.h"
 
 aFTR_PROFILE iam_iku_tumble = {
 	int_iku_tumble_model,

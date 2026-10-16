@@ -1,0 +1,94 @@
+:config:
+  strict_declarations: true
+
+int_ike_jny_syon01_tex:
+  type: TEXTURE
+  offset: 0x8182F0A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_jny_syonfoot2_tex_txt:
+  type: TEXTURE
+  offset: 0x8182F0C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8182F0A0
+
+int_ike_jny_syonfoot1_tex_txt:
+  type: TEXTURE
+  offset: 0x8182F1C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8182F0A0
+
+int_ike_jny_syonbody2_tex_txt:
+  type: TEXTURE
+  offset: 0x8182F2C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182F0A0
+
+int_ike_jny_syonhead_tex_txt:
+  type: TEXTURE
+  offset: 0x8182F4C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182F0A0
+
+int_ike_jny_syonbody1_tex_txt:
+  type: TEXTURE
+  offset: 0x8182F5C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182F0A0
+
+int_ike_jny_syonface_tex_txt:
+  type: TEXTURE
+  offset: 0x8182F7C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182F0A0
+
+int_ike_jny_syonwater1_pic_i4:
+  type: TEXTURE
+  offset: 0x8182F8C0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_ike_jny_syonwater2_pic_i4:
+  type: TEXTURE
+  offset: 0x8182FAC0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_ike_jny_syon01_v:
+  type: VTX
+  offset: 0x8182FCC0
+  count: 108
+
+int_ike_jny_syon01_on_model:
+  type: GFX
+  offset: 0x81830380
+  size: 0x1F0
+
+int_ike_jny_syon01_off_model:
+  type: GFX
+  offset: 0x81830570
+  size: 0x70

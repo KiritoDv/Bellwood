@@ -1,7 +1,5 @@
+#include "assets/data/model/int_sum_gupi.h"
 extern aFTR_rig_c aSumGupi_key_anime_data;
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_sum_gupi;
-extern cKF_Animation_R_c cKF_ba_r_int_sum_gupi;
 
 aFTR_rig_c aSumGupi_key_anime_data= {
     &cKF_bs_r_int_sum_gupi,

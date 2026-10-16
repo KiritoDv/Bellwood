@@ -1,0 +1,98 @@
+:config:
+  strict_declarations: true
+
+int_sum_clchest03_pal01_pal:
+  type: TEXTURE
+  offset: 0x819C2760
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_clchest03_hiki_txt:
+  type: TEXTURE
+  offset: 0x819C2780
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819C2760
+
+int_sum_clchest03_hikiura_txt:
+  type: TEXTURE
+  offset: 0x819C2880
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819C2760
+
+int_sum_clchest03_top_txt:
+  type: TEXTURE
+  offset: 0x819C2980
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819C2760
+
+int_sum_clchest03_stand_txt:
+  type: TEXTURE
+  offset: 0x819C2A80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C2760
+
+int_sum_clchest03_front_txt:
+  type: TEXTURE
+  offset: 0x819C2B00
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819C2760
+
+int_sum_clchest03_side_txt:
+  type: TEXTURE
+  offset: 0x819C2C80
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819C2760
+
+int_sum_clchest03_hisasi_txt:
+  type: TEXTURE
+  offset: 0x819C2E00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C2760
+
+int_sum_clchest03_v:
+  type: VTX
+  offset: 0x819C2E80
+  count: 72
+
+int_sum_clchest03_door_model:
+  type: GFX
+  offset: 0x819C3300
+  size: 0x90
+
+int_sum_clchest03_base_model:
+  type: GFX
+  offset: 0x819C3390
+  size: 0xF8
+
+cKF_ba_r_int_sum_clchest03:
+  type: AC:CKF_ANIMATION
+  offset: 0x819C3500
+  joints: 3
+  counts: { flags: 3, data: 45, keys: 6, fixed: 6 }
+
+cKF_bs_r_int_sum_clchest03:
+  type: AC:CKF_SKELETON
+  offset: 0x819C3538
+  counts: { joints: 3 }

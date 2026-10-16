@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_iku_work_pal:
+  type: TEXTURE
+  offset: 0x8186AFE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_work_all_tex_txt:
+  type: TEXTURE
+  offset: 0x8186B000
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8186AFE0
+
+int_iku_work_v:
+  type: VTX
+  offset: 0x8186B400
+  count: 94
+
+int_iku_work_model_model:
+  type: GFX
+  offset: 0x8186B9E0
+  size: 0xC0

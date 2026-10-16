@@ -7,6 +7,7 @@
 #include "sys_matrix.h"
 #include "m_player_lib.h"
 #include "m_rcp.h"
+#include "assets/data/model/obj_e_kago_shadow.h"
 
 static void aKAG_actor_ct(ACTOR*, GAME*);
 static void aKAG_actor_init(ACTOR*, GAME*);
@@ -25,9 +26,6 @@ ACTOR_PROFILE Kago_Profile = {
     &aKAG_actor_draw,
     NULL,
 };
-
-extern Vtx obj_e_kago_shadow_v[];
-extern Gfx obj_e_kago_shadow_model[];
 
 u8 aKAG_shadow_vtx_fix_flg_table[] = { 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1 };
 bIT_ShadowData_c aKAG_shadow_data = {

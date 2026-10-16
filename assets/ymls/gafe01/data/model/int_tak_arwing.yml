@@ -1,0 +1,114 @@
+:config:
+  strict_declarations: true
+
+int_tak_arwing_pal:
+  type: TEXTURE
+  offset: 0x81A8E120
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_arwing_boost:
+  type: TEXTURE
+  offset: 0x81A8E140
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8E120
+
+int_tak_arwing_bottom:
+  type: TEXTURE
+  offset: 0x81A8E1C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A8E120
+
+int_tak_arwing_bulue1:
+  type: TEXTURE
+  offset: 0x81A8E2C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8E120
+
+int_tak_arwing_front:
+  type: TEXTURE
+  offset: 0x81A8E340
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A8E120
+
+int_tak_arwing_mark:
+  type: TEXTURE
+  offset: 0x81A8E440
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8E120
+
+int_tak_arwing_side:
+  type: TEXTURE
+  offset: 0x81A8E4C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A8E120
+
+int_tak_arwing_window:
+  type: TEXTURE
+  offset: 0x81A8E5C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8E120
+
+int_tak_arwing_bou:
+  type: TEXTURE
+  offset: 0x81A8E640
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8E120
+
+int_tak_arwing_dai:
+  type: TEXTURE
+  offset: 0x81A8E6C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A8E120
+
+int_tak_arwing_wing:
+  type: TEXTURE
+  offset: 0x81A8E8C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8E120
+
+int_tak_arwing_v:
+  type: VTX
+  offset: 0x81A8E940
+  count: 113
+
+int_tak_arwing_on_model:
+  type: GFX
+  offset: 0x81A8F050
+  size: 0x170
+
+int_tak_arwing_onT_model:
+  type: GFX
+  offset: 0x81A8F1C0
+  size: 0x58

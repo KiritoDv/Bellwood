@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+act_m_shiokara_pal:
+  type: TEXTURE
+  offset: 0x81269C80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_shiokara:
+  type: TEXTURE
+  offset: 0x81269CA0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81269C80
+
+act_m_shiokara_v:
+  type: VTX
+  offset: 0x81269E20
+  count: 18
+
+act_m_shiokara1_1T_model:
+  type: GFX
+  offset: 0x81269F40
+  size: 0x60
+
+act_m_shiokara1_2T_model:
+  type: GFX
+  offset: 0x81269FA0
+  size: 0x60
+
+act_m_shiokara2_2T_model:
+  type: GFX
+  offset: 0x8126A000
+  size: 0x60

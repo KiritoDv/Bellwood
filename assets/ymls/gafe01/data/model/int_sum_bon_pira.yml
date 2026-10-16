@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_bon_pira_pal:
+  type: TEXTURE
+  offset: 0x819B2DE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bon_pira_hachi_tex:
+  type: TEXTURE
+  offset: 0x819B2E00
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B2DE0
+
+int_sum_bon_pira_tree_tex:
+  type: TEXTURE
+  offset: 0x819B2F00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B2DE0
+
+int_sum_bon_pira_leaf_tex:
+  type: TEXTURE
+  offset: 0x819B3000
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B2DE0
+
+int_sum_bon_pira_treeside_tex:
+  type: TEXTURE
+  offset: 0x819B3300
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B2DE0
+
+int_sum_bon_pira_mi_tex:
+  type: TEXTURE
+  offset: 0x819B3400
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B2DE0
+
+int_sum_bon_pira_earth_tex:
+  type: TEXTURE
+  offset: 0x819B3500
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B2DE0
+
+int_sum_bon_pira_minileaf_tex:
+  type: TEXTURE
+  offset: 0x819B3580
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B2DE0
+
+int_sum_bon_pira_v:
+  type: VTX
+  offset: 0x819B3600
+  count: 110
+
+int_sum_boke_pira_on_model:
+  type: GFX
+  offset: 0x819B3CE0
+  size: 0x60
+
+int_sum_boke_pira_onT_model:
+  type: GFX
+  offset: 0x819B3D40
+  size: 0x130

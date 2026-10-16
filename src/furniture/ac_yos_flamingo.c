@@ -1,4 +1,4 @@
-extern Gfx int_yos_flamingo_body_model[];
+#include "assets/data/model/int_yos_flamingo.h"
 
 aFTR_PROFILE iam_yos_flamingo = {
 	int_yos_flamingo_body_model,

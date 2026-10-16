@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_sum_ratan_screen_pal:
+  type: TEXTURE
+  offset: 0x81A541E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_ratan_screen_front_tex:
+  type: TEXTURE
+  offset: 0x81A54200
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A541E0
+
+int_sum_ratan_screen_v:
+  type: VTX
+  offset: 0x81A54400
+  count: 14
+
+int_sum_ratan_screen_onT_model:
+  type: GFX
+  offset: 0x81A544E0
+  size: 0x88

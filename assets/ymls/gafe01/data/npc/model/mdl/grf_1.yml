@@ -1,0 +1,82 @@
+:config:
+  strict_declarations: true
+
+grf_1_v:
+  type: VTX
+  offset: 0x811D6080
+  count: 430
+
+head_grf_model:
+  type: GFX
+  offset: 0x811D7B60
+  size: 0x220
+
+mouth_grf_model:
+  type: GFX
+  offset: 0x811D7D80
+  size: 0xD8
+
+Rarm2_grf_model:
+  type: GFX
+  offset: 0x811D7E58
+  size: 0x88
+
+Rarm1_grf_model:
+  type: GFX
+  offset: 0x811D7EE0
+  size: 0x78
+
+Larm2_grf_model:
+  type: GFX
+  offset: 0x811D7F58
+  size: 0x88
+
+Larm1_grf_model:
+  type: GFX
+  offset: 0x811D7FE0
+  size: 0x78
+
+chest_grf_model:
+  type: GFX
+  offset: 0x811D8058
+  size: 0x130
+
+tail1_grf_model:
+  type: GFX
+  offset: 0x811D8188
+  size: 0x58
+
+tail2_grf_model:
+  type: GFX
+  offset: 0x811D81E0
+  size: 0x90
+
+Rfoot2_grf_model:
+  type: GFX
+  offset: 0x811D8270
+  size: 0xA0
+
+Rfoot1_grf_model:
+  type: GFX
+  offset: 0x811D8310
+  size: 0x60
+
+Lfoot2_grf_model:
+  type: GFX
+  offset: 0x811D8370
+  size: 0xA0
+
+Lfoot1_grf_model:
+  type: GFX
+  offset: 0x811D8410
+  size: 0x60
+
+base_grf_model:
+  type: GFX
+  offset: 0x811D8470
+  size: 0x78
+
+cKF_bs_r_grf_1:
+  type: AC:CKF_SKELETON
+  offset: 0x811D8620
+  counts: { joints: 26 }

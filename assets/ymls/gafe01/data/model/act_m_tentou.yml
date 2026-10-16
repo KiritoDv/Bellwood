@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_tentou_pal:
+  type: TEXTURE
+  offset: 0x8126AB80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_tentou:
+  type: TEXTURE
+  offset: 0x8126ABA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8126AB80
+
+act_m_tentou_v:
+  type: VTX
+  offset: 0x8126ACA0
+  count: 29
+
+act_m_tentou1T_model:
+  type: GFX
+  offset: 0x8126AE70
+  size: 0x70
+
+act_m_tentou2T_model:
+  type: GFX
+  offset: 0x8126AEE0
+  size: 0x70

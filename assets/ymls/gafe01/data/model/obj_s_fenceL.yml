@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_fence_pal:
+  type: TEXTURE
+  offset: 0x81102180
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_fence_tex:
+  type: TEXTURE
+  offset: 0x811021A0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81102180
+
+obj_s_fenceL_v:
+  type: VTX
+  offset: 0x811025A0
+  count: 4
+
+obj_s_fenceLT_mat_model:
+  type: GFX
+  offset: 0x811025E0
+  size: 0x28
+
+obj_s_fenceLT_gfx_model:
+  type: GFX
+  offset: 0x81102608
+  size: 0x18

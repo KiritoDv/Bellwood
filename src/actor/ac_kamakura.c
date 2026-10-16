@@ -11,6 +11,7 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "libforest/gbi_extensions.h"
+#include "assets/data/model/obj_w_kamakura_shadow.h"
 
 enum {
     aKKR_ACTION_WAIT,
@@ -55,9 +56,6 @@ static u8 aKKR_shadow_vtx_fix_flg_table[] = {
     FALSE, TRUE, TRUE, FALSE
 };
 // clang-format on
-
-extern Vtx obj_w_kamakura_shadow_v[];
-extern Gfx obj_e_kamakura_shadow_model[];
 
 // clang-format off
 static bIT_ShadowData_c aKKR_shadow_data = {

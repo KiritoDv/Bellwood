@@ -1,6 +1,7 @@
 #include "ef_effect_control.h"
 
 #include "m_common_data.h"
+#include "assets/data/model/ef_warau01_00.h"
 
 static void eWU_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eWU_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -34,14 +35,9 @@ static void eWU_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg) {
 }
 
 static void eWU_mv(eEC_Effect_c* effect, GAME* game) {
-    sAdo_OngenPos((u32)effect, 15, &effect->position);
+    sAdo_OngenPos((uintptr_t)effect, 15, &effect->position);
     eEC_CLIP->set_continious_env_proc(effect, 24, 24);
 }
-
-extern Gfx ef_warau01_00_modelT[];
-extern Gfx ef_warau01_01_modelT[];
-extern Gfx ef_warau01_02_modelT[];
-extern Gfx ef_warau01_03_modelT[];
 
 static Gfx* eWU_DispTable[12] = {
     // clang-format off

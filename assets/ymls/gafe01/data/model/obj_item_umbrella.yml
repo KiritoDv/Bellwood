@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_umbrella_pal:
+  type: TEXTURE
+  offset: 0x81895B40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_umbrella_tex:
+  type: TEXTURE
+  offset: 0x81895B60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81895B40
+
+obj_item_umbrella_v:
+  type: VTX
+  offset: 0x81895D60
+  count: 4
+
+obj_item_umbrellaT_mat_model:
+  type: GFX
+  offset: 0x81895DA0
+  size: 0x48
+
+obj_item_umbrellaT_gfx_model:
+  type: GFX
+  offset: 0x81895DE8
+  size: 0x18

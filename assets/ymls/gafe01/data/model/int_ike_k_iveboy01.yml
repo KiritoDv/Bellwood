@@ -1,0 +1,145 @@
+:config:
+  strict_declarations: true
+
+int_ike_k_iveboy01_pal:
+  type: TEXTURE
+  offset: 0x81833B00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_k_iveboyseat2_tex:
+  type: TEXTURE
+  offset: 0x81833B20
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81833B00
+
+int_ike_k_iveboymir1_tex:
+  type: TEXTURE
+  offset: 0x81833B60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81833B00
+
+int_ike_k_iveboylighttex:
+  type: TEXTURE
+  offset: 0x81833BE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81833B00
+
+int_ike_k_iveboyhand_tex:
+  type: TEXTURE
+  offset: 0x81833C60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81833B00
+
+int_ike_k_iveboyback_tex:
+  type: TEXTURE
+  offset: 0x81833CE0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81833B00
+
+int_ike_k_iveboybase1_tex:
+  type: TEXTURE
+  offset: 0x81833D20
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81833B00
+
+int_ike_k_iveboymir2_tex:
+  type: TEXTURE
+  offset: 0x81833D60
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81833B00
+
+int_ike_k_iveboyside1_tex:
+  type: TEXTURE
+  offset: 0x81833DA0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81833B00
+
+int_ike_k_iveboyseat_tex:
+  type: TEXTURE
+  offset: 0x81833FA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81833B00
+
+int_ike_k_iveboytire_tex:
+  type: TEXTURE
+  offset: 0x818340A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81833B00
+
+int_ike_k_iveboysidein_tex:
+  type: TEXTURE
+  offset: 0x81834120
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81833B00
+
+int_ike_k_iveboyfront1_tex:
+  type: TEXTURE
+  offset: 0x818341A0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81833B00
+
+int_ike_k_iveboybase3_rgb_i4:
+  type: TEXTURE
+  offset: 0x818343A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_ike_k_iveboy01_v:
+  type: VTX
+  offset: 0x818345A0
+  count: 170
+
+int_ike_k_iveboy01_on_model:
+  type: GFX
+  offset: 0x81835040
+  size: 0xD8
+
+int_ike_k_iveboy01_off_model:
+  type: GFX
+  offset: 0x81835118
+  size: 0x68
+
+int_ike_k_iveboy01_onT_model:
+  type: GFX
+  offset: 0x81835180
+  size: 0x1C0

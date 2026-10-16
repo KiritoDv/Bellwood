@@ -1,3 +1,4 @@
+#include "assets/data/model/int_sum_tv02.h"
 // Aus version changed the naming to use their 'standard'
 // It also updates the mv func to remove the animation frame logic.
 // The dw function was updated to use the game frame instead of an internal counter.
@@ -22,12 +23,6 @@ static void fST02_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8*
     }
 }
 
-extern u8 int_sum_tv02_front1_TA_tex_txt[];
-extern u8 int_sum_tv02_front2_TA_tex_txt[];
-extern u8 int_sum_tv02_front3_TA_tex_txt[];
-
-extern Gfx int_sum_tv02_on_model[];
-extern Gfx int_sum_tv02_off_model[];
 
 static u8* fST02_on_anime[] = {
     int_sum_tv02_front2_TA_tex_txt, int_sum_tv02_front2_TA_tex_txt, int_sum_tv02_front3_TA_tex_txt,
@@ -99,7 +94,7 @@ static void fST02_ct(FTR_ACTOR* ftr_actor, u8* data) {
 static void fST02_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     if (ftr_actor->switch_bit) {
         if (aFTR_CAN_PLAY_SE(ftr_actor)) {
-            sAdo_OngenPos((u32)ftr_actor, 4, &ftr_actor->position);
+            sAdo_OngenPos((uintptr_t)ftr_actor, 4, &ftr_actor->position);
         }
 
         ftr_actor->tex_animation.frame++;
@@ -117,12 +112,6 @@ static void fST02_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8*
     }
 }
 
-extern u8 int_sum_tv02_front1_TA_tex_txt[];
-extern u8 int_sum_tv02_front2_TA_tex_txt[];
-extern u8 int_sum_tv02_front3_TA_tex_txt[];
-
-extern Gfx int_sum_tv02_on_model[];
-extern Gfx int_sum_tv02_off_model[];
 
 static u8* fST02_on_anime[] = {
     int_sum_tv02_front2_TA_tex_txt, int_sum_tv02_front2_TA_tex_txt, int_sum_tv02_front3_TA_tex_txt,

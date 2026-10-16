@@ -1,5 +1,4 @@
-extern Gfx int_kon_snowsofa_model[];
-extern Gfx int_kon_snowsofaT_model[];
+#include "assets/data/model/int_kon_snowsofa.h"
 
 aFTR_PROFILE iam_kon_snowsofa = {
 	int_kon_snowsofa_model,

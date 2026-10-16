@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_amenbo_pal:
+  type: TEXTURE
+  offset: 0x81262940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_amenbo_tex:
+  type: TEXTURE
+  offset: 0x81262960
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81262940
+
+act_m_amenbo_v:
+  type: VTX
+  offset: 0x81262AE0
+  count: 14
+
+act_m_amenbo1T_model:
+  type: GFX
+  offset: 0x81262BC0
+  size: 0x60
+
+act_m_amenbo2T_model:
+  type: GFX
+  offset: 0x81262C20
+  size: 0x60

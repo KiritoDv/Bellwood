@@ -1,4 +1,4 @@
-extern Gfx int_sum_saiconpo_on_model[];
+#include "assets/data/model/int_sum_saiconpo.h"
 static void aSumSaiconpo_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aSumSaiconpo_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aSumSaiconpo_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);

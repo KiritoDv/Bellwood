@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+int_sugi_kpool_pal:
+  type: TEXTURE
+  offset: 0x819810C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sugi_kpool_all_tex_txt:
+  type: TEXTURE
+  offset: 0x819810E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x819810C0
+
+int_sugi_kpool_water_tex_4i4_pic_i4:
+  type: TEXTURE
+  offset: 0x819818E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_sugi_kpool_v:
+  type: VTX
+  offset: 0x81981960
+  count: 114
+
+sugi_kpool_w_model:
+  type: GFX
+  offset: 0x81982080
+  size: 0x68
+
+sugi_kpool_t_model:
+  type: GFX
+  offset: 0x819820E8
+  size: 0xD0
+
+sugi_kpool_model:
+  type: GFX
+  offset: 0x819821B8
+  size: 0x78

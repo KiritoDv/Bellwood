@@ -1,0 +1,105 @@
+:config:
+  strict_declarations: true
+
+int_iku_turkey_bed_pal:
+  type: TEXTURE
+  offset: 0x81866A20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_turkey_bed_h_tex_txt:
+  type: TEXTURE
+  offset: 0x81866A40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81866A20
+
+int_iku_turkey_bed_d_tex_txt:
+  type: TEXTURE
+  offset: 0x81866B40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81866A20
+
+int_iku_turkey_bed_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81866C40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81866A20
+
+int_iku_turkey_bed_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81866D40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81866A20
+
+int_iku_turkey_bed_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81866E40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81866A20
+
+int_iku_turkey_bed_f_tex_txt:
+  type: TEXTURE
+  offset: 0x81867040
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81866A20
+
+int_iku_turkey_bed_e_tex_txt:
+  type: TEXTURE
+  offset: 0x81867140
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81866A20
+
+int_iku_turkey_bed_g_tex_txt:
+  type: TEXTURE
+  offset: 0x81867240
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81866A20
+
+int_iku_turkey_bed_i_tex_txt:
+  type: TEXTURE
+  offset: 0x81867340
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81866A20
+
+int_iku_turkey_bed_v:
+  type: VTX
+  offset: 0x81867440
+  count: 96
+
+int_iku_turkey_bed_modl_a_model:
+  type: GFX
+  offset: 0x81867A40
+  size: 0x198
+
+int_iku_turkey_bed_model_b_model:
+  type: GFX
+  offset: 0x81867BD8
+  size: 0x60

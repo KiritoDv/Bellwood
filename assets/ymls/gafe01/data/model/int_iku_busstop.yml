@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_iku_busstop_pal:
+  type: TEXTURE
+  offset: 0x8184F5C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_basstop_all_tex_txt:
+  type: TEXTURE
+  offset: 0x8184F5E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8184F5C0
+
+int_iku_busstop_v:
+  type: VTX
+  offset: 0x8184FDE0
+  count: 77
+
+int_iku_busstop_model_model:
+  type: GFX
+  offset: 0x818502B0
+  size: 0xC0

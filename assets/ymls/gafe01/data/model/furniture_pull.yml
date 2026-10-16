@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_furniture_pull:
+  type: AC:CKF_ANIMATION
+  offset: 0x812C4668
+  joints: 1
+  counts: { flags: 1, data: 66, keys: 1, fixed: 5 }

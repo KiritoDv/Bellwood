@@ -1,0 +1,79 @@
+:config:
+  strict_declarations: true
+
+kan_win_waku4_tex:
+  type: TEXTURE
+  offset: 0x814AF3A0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kan_win_waku3_tex:
+  type: TEXTURE
+  offset: 0x814B03A0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kan_win_waku5_tex:
+  type: TEXTURE
+  offset: 0x814B13A0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kan_win_waku1a_tex:
+  type: TEXTURE
+  offset: 0x814B23A0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kan_win_waku1b_tex:
+  type: TEXTURE
+  offset: 0x814B33A0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kan_waku_v:
+  type: VTX
+  offset: 0x814B43A0
+  count: 20
+
+kan_waku_w1T_model:
+  type: GFX
+  offset: 0x814B44E0
+  size: 0x48
+  hints:
+    dl_index:
+      - { segment: 0x0B, targets: [0x814B9FB8, 0x814BA048] }
+
+kan_waku_w2T_model:
+  type: GFX
+  offset: 0x814B4528
+  size: 0x30
+  hints:
+    dl_index:
+      - { segment: 0x0B, targets: [0x814B9FB8, 0x814BA048] }
+
+kan_waku_w3T_model:
+  type: GFX
+  offset: 0x814B4558
+  size: 0x30
+  hints:
+    dl_index:
+      - { segment: 0x0B, targets: [0x814B9FB8, 0x814BA048] }
+
+kan_waku_w4T_model:
+  type: GFX
+  offset: 0x814B4588
+  size: 0x30
+  hints:
+    dl_index:
+      - { segment: 0x0B, targets: [0x814B9FB8, 0x814BA048] }

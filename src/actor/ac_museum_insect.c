@@ -1,87 +1,48 @@
 #include "ac_museum_insect_priv.h"
+#include "assets/data/model/act_m_abura2.h"
+#include "assets/data/model/act_m_akiakane2.h"
+#include "assets/data/model/act_m_amenbo2.h"
+#include "assets/data/model/act_m_ari2.h"
+#include "assets/data/model/act_m_dango2.h"
+#include "assets/data/model/act_m_danna2.h"
+#include "assets/data/model/act_m_genji22.h"
+#include "assets/data/model/act_m_ginyanma2.h"
+#include "assets/data/model/act_m_gomadara2.h"
+#include "assets/data/model/act_m_hachi2.h"
+#include "assets/data/model/act_m_higurashi2.h"
+#include "assets/data/model/act_m_hirata2.h"
+#include "assets/data/model/act_m_ka2.h"
+#include "assets/data/model/act_m_kabuto2.h"
+#include "assets/data/model/act_m_kamakiri2.h"
+#include "assets/data/model/act_m_kanabun2.h"
+#include "assets/data/model/act_m_kera2.h"
+#include "assets/data/model/act_m_kiageha2.h"
+#include "assets/data/model/act_m_kirigirisu2.h"
+#include "assets/data/model/act_m_koorogi2.h"
+#include "assets/data/model/act_m_kumo2.h"
+#include "assets/data/model/act_m_maimai2.h"
+#include "assets/data/model/act_m_matumushi.h"
+#include "assets/data/model/act_m_minmin2.h"
+#include "assets/data/model/act_m_mino2.h"
+#include "assets/data/model/act_m_miyama2.h"
+#include "assets/data/model/act_m_monki2.h"
+#include "assets/data/model/act_m_monshiro2.h"
+#include "assets/data/model/act_m_nanahoshi2.h"
+#include "assets/data/model/act_m_nokogiri2.h"
+#include "assets/data/model/act_m_ohmurasaki2.h"
+#include "assets/data/model/act_m_okuwa2.h"
+#include "assets/data/model/act_m_oniyanma2.h"
+#include "assets/data/model/act_m_shiokara2.h"
+#include "assets/data/model/act_m_suzumushi2.h"
+#include "assets/data/model/act_m_syouryou2.h"
+#include "assets/data/model/act_m_tamamushi2.h"
+#include "assets/data/model/act_m_tentou2.h"
+#include "assets/data/model/act_m_tonosama2.h"
+#include "assets/data/model/act_m_tukutuku2.h"
+#include "assets/data/model/obj_museum4_water.h"
+#include "assets/data/model/obj_museum4_water_evw_anime.h"
 // clang-format off
-extern Gfx
-    act_m_mu_monshiro1T_model,
-    act_m_mu_monshiro2T_model,
-    act_m_mu_monki1T_model,
-    act_m_mu_monki2T_model,
-    act_m_mu_kiageha1T_model,
-    act_m_mu_kiageha2T_model,
-    act_m_mu_ohmurasaki1T_model,
-    act_m_mu_ohmurasaki2T_model,
-    act_m_mu_minmin1_1T_model,
-    act_m_mu_minmin1_2T_model,
-    act_m_mu_tukutuku1_1T_model,
-    act_m_mu_tukutuku1_2T_model,
-    act_m_mu_higurashi1_1T_model,
-    act_m_mu_higurashi1_2T_model,
-    act_m_mu_abura1_1T_model,
-    act_m_mu_abura1_2T_model,
-    act_m_mu_shiokara1_1T_model,
-    act_m_mu_shiokara1_2T_model,
-    act_m_mu_shiokara2_2T_model,
-    act_m_mu_akiakane1_1T_model,
-    act_m_mu_akiakane1_2T_model,
-    act_m_mu_akiakane2_2T_model,
-    act_m_mu_ginyanma1_1T_model,
-    act_m_mu_ginyanma1_2T_model,
-    act_m_mu_ginyanma2_2T_model,
-    act_m_mu_oniyanma1_1T_model,
-    act_m_mu_oniyanma1_2T_model,
-    act_m_mu_oniyanma2_2T_model,
-    act_m_mu_syouryou1T_model,
-    act_m_mu_syouryou2_2T_model,
-    act_m_mu_tonosama1T_model,
-    act_m_mu_tonosama2_2T_model,
-    act_m_mu_koorogi1T_model,
-    act_m_mu_koorogi2_2T_model,
-    act_m_mu_kirigirisu1T_model,
-    act_m_mu_kirigirisu2_2T_model,
-    act_m_mu_suzumushi1T_model,
-    act_m_mu_suzumushi2_2T_model,
-    act_m_mu_matumushi1T_model,
-    act_m_mu_matumushi2_2T_model,
-    act_m_mu_tentou1T_model,
-    act_m_mu_tentou2T_model,
-    act_m_mu_nanahoshi1T_model,
-    act_m_mu_nanahoshi2T_model,
-    act_m_mu_kamakiri1T_model,
-    act_m_mu_kamakiri2_2T_model,
-    act_m_mu_maimaiT_model,
-    act_m_mu_hachi1_1T_model,
-    act_m_mu_hachi1_2T_model,
-    act_m_mu_hachi2_2T_model,
-    act_m_mu_kanabun1T_model,
-    act_m_mu_kabuto1T_model,
-    act_m_mu_hirata1T_model,
-    act_m_mu_tamamushi1T_model,
-    act_m_mu_gomadara1T_model,
-    act_m_mu_nokogiri1T_model,
-    act_m_mu_miyama1T_model,
-    act_m_mu_okuwa1T_model,
-    act_m_mu_amenbo1T_model,
-    act_m_mu_amenbo2T_model,
-    act_m_mu_mino1_1T_model,
-    act_m_mu_mino1_2T_model,
-    act_m_mu_mino2T_model,
-    act_m_mu_kumo1_1T_mode,
-    act_m_mu_kumo1_2T_mode,
-    act_m_mu_kumo2T_model,
-    act_m_mu_kumo1_1T_model,
-    act_m_mu_kumo1_2T_model,
-    act_m_mu_danna1T_model,
-    act_m_mu_danna2T_model,
-    act_m_mu_genji2_a_model,
-    act_m_mu_genji2_b_model,
-    act_m_mu_genji2_c_model,
-    act_m_mu_genji2_d_model,
-    act_m_mu_dango1T_model,
-    act_m_mu_dango2T_model,
-    act_m_mu_ariT_model,
-    act_m_mu_keraT_model,
-    act_m_mu_ka1T_model,
-    act_m_mu_ka2_1T_model,
-    act_m_mu_ka2_2T_model;
+extern Gfx act_m_mu_kumo1_1T_mode, act_m_mu_kumo1_2T_mode;
 
 ACTOR_PROFILE Museum_Insect_Profile = {
     mAc_PROFILE_MUSEUM_INSECT,
@@ -850,9 +811,6 @@ void Museum_Insect_Actor_move(ACTOR* actorx, GAME* game) {
         }
     }
 }
-
-extern EVW_ANIME_DATA obj_museum4_water_evw_anime;
-extern Gfx obj_museum4_water_modelT[];
 
 void Museum_Insect_Actor_draw(ACTOR* actorx, GAME* game) {
     MUSEUM_INSECT_ACTOR* actor = (MUSEUM_INSECT_ACTOR*)actorx;

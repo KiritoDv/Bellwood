@@ -1,0 +1,108 @@
+:config:
+  strict_declarations: true
+
+int_kon_snowclock_pal:
+  type: TEXTURE
+  offset: 0x818B0C40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_snowclock06_tex_txt:
+  type: TEXTURE
+  offset: 0x818B0C60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B0C40
+
+int_kon_snowclock05_tex_txt:
+  type: TEXTURE
+  offset: 0x818B0CE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B0C40
+
+int_kon_snowclock07_tex_txt:
+  type: TEXTURE
+  offset: 0x818B0D60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B0C40
+
+int_kon_snowclock04_tex_txt:
+  type: TEXTURE
+  offset: 0x818B0DE0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B0C40
+
+int_kon_snowclock01_tex_txt:
+  type: TEXTURE
+  offset: 0x818B0EE0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x818B0C40
+
+int_kon_snowclock02_tex_txt:
+  type: TEXTURE
+  offset: 0x818B10E0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x818B0C40
+
+int_kon_snowclock03_tex_txt:
+  type: TEXTURE
+  offset: 0x818B12E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B0C40
+
+int_kon_snowclock_v:
+  type: VTX
+  offset: 0x818B1360
+  count: 65
+
+int_kon_snowclock_long_model:
+  type: GFX
+  offset: 0x818B1770
+  size: 0x58
+
+int_kon_snowclock_body_model:
+  type: GFX
+  offset: 0x818B17C8
+  size: 0xF0
+
+int_kon_snowclock_short_model:
+  type: GFX
+  offset: 0x818B18B8
+  size: 0x58
+
+int_kon_snowclock_arm_model:
+  type: GFX
+  offset: 0x818B1910
+  size: 0x78
+
+cKF_ba_r_int_kon_snowclock:
+  type: AC:CKF_ANIMATION
+  offset: 0x818B1A78
+  joints: 8
+  counts: { flags: 8, data: 87, keys: 12, fixed: 15 }
+
+cKF_bs_r_int_kon_snowclock:
+  type: AC:CKF_SKELETON
+  offset: 0x818B1AEC
+  counts: { joints: 8 }

@@ -1,4 +1,4 @@
-extern Gfx int_sum_liccasofa_on_model[];
+#include "assets/data/model/int_sum_liccasofa.h"
 
 aFTR_PROFILE iam_sum_liccasofa = {
 	int_sum_liccasofa_on_model,

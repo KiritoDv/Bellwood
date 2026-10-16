@@ -1,4 +1,4 @@
-extern Gfx int_ike_k_mame01_body_model[];
+#include "assets/data/model/int_ike_k_mame01.h"
 
 aFTR_PROFILE iam_ike_k_mame01 = {
     int_ike_k_mame01_body_model,

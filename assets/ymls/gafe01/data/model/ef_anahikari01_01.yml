@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+ef_anahikari01_02_int_i4:
+  type: TEXTURE
+  offset: 0x8165F9C0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+ef_anahikari01_01_v:
+  type: VTX
+  offset: 0x8165FAC0
+  count: 20
+
+ef_anahikari01_01_modelT:
+  type: GFX
+  offset: 0x8165FC00
+  size: 0x88
+
+ef_anahikari01_01_int_i4:
+  type: TEXTURE
+  offset: 0x8165FCA0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+ef_anahikari01_02_v:
+  type: VTX
+  offset: 0x8165FDA0
+  count: 20
+
+ef_anahikari01_02_modelT:
+  type: GFX
+  offset: 0x8165FEE0
+  size: 0x88
+
+ef_anahikari01_01_evw_anime:
+  type: AC:EVW_ANIME
+  offset: 0x8165FF70
+
+ef_anahikari01_02_evw_anime:
+  type: AC:EVW_ANIME
+  offset: 0x8165FF80

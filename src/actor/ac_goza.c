@@ -11,6 +11,7 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "libforest/gbi_extensions.h"
+#include "assets/data/model/obj_e_hfes_shadow_a.h"
 
 enum {
     aGOZ_UNKNOWN,
@@ -62,9 +63,6 @@ static u8 aGOZ_shadow_vtx_fix_flg_tableB[] = {
 };
 // clang-format on
 
-extern Vtx obj_e_hfes_shadow_a_v[];
-extern Gfx obj_e_hfes_shadow_a_modelT[];
-
 // clang-format off
 static bIT_ShadowData_c aGOZ_shadow_dataA = {
     28,
@@ -74,9 +72,6 @@ static bIT_ShadowData_c aGOZ_shadow_dataA = {
     obj_e_hfes_shadow_a_modelT
 };
 // clang-format on
-
-extern Vtx obj_e_hfes_shadow_b_v[];
-extern Gfx obj_e_hfes_shadow_b_modelT[];
 
 // clang-format off
 static bIT_ShadowData_c aGOZ_shadow_dataB = {

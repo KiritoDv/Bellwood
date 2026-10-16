@@ -1,5 +1,6 @@
 #define aNPC_NPC2
 #include "ac_npc2.h"
+#include "ac_port.h"
 #include "ac_npc.h"
 
 #include "libultra/libultra.h"
@@ -10,7 +11,7 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "jsyswrap.h"
-#include "dolphin/os.h"
+#include "gc_compat.h"
 #include "ac_ev_ghost.h"
 #include "m_melody.h"
 #include "m_actor_shadow.h"

@@ -1,5 +1,4 @@
-extern Gfx int_nog_zassou_model[];
-extern Gfx int_nog_zassouT_model[];
+#include "assets/data/model/int_nog_zassou.h"
 
 aFTR_PROFILE iam_nog_zassou = {
 	int_nog_zassou_model,

@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_sum_art08_pal:
+  type: TEXTURE
+  offset: 0x8198B400
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_art08_front_tex:
+  type: TEXTURE
+  offset: 0x8198B420
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x8198B400
+
+int_sum_art08_stand_tex:
+  type: TEXTURE
+  offset: 0x8198B620
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x8198B400
+
+int_sum_art08_odoriko_tex:
+  type: TEXTURE
+  offset: 0x8198B820
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x8198B400
+
+int_sum_art08_gaku_tex:
+  type: TEXTURE
+  offset: 0x8198BB20
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8198B400
+
+int_sum_art08_v:
+  type: VTX
+  offset: 0x8198BC20
+  count: 52
+
+int_sum_art08_on_model:
+  type: GFX
+  offset: 0x8198BF60
+  size: 0x88
+
+int_sum_art08_onT_model:
+  type: GFX
+  offset: 0x8198BFE8
+  size: 0xA0

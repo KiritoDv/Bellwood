@@ -1,6 +1,4 @@
-extern Gfx int_sum_whi_mirror_evw_model[];
-extern Gfx int_sum_whi_mirror_on_model[];
-extern Gfx int_sum_whi_mirror_onT_model[];
+#include "assets/data/model/int_sum_whi_mirror.h"
 
 static void aSumWhiMirror_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     OPEN_DISP(game->graph);

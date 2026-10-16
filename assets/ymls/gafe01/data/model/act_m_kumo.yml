@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+act_m_kumo_pal:
+  type: TEXTURE
+  offset: 0x81266EE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_kumo_tex:
+  type: TEXTURE
+  offset: 0x81266F00
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81266EE0
+
+act_m_kumo_v:
+  type: VTX
+  offset: 0x81267080
+  count: 16
+
+act_m_kumo1_1T_model:
+  type: GFX
+  offset: 0x81267180
+  size: 0x60
+
+act_m_kumo1_2T_model:
+  type: GFX
+  offset: 0x812671E0
+  size: 0x60
+
+act_m_kumo2T_model:
+  type: GFX
+  offset: 0x81267240
+  size: 0x58

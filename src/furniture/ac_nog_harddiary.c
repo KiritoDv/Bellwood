@@ -1,4 +1,4 @@
-extern Gfx int_nog_harddiaryT_model[];
+#include "assets/data/model/int_nog_harddiary.h"
 
 aFTR_PROFILE iam_nog_harddiary = {
 	NULL,

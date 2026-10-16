@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_iku_cow_pal:
+  type: TEXTURE
+  offset: 0x81853BA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_cow_5_tex_txt:
+  type: TEXTURE
+  offset: 0x81853BC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81853BA0
+
+int_iku_cow1_tex_txt:
+  type: TEXTURE
+  offset: 0x81853CC0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81853BA0
+
+int_iku_cow_4_tex_txt:
+  type: TEXTURE
+  offset: 0x818540C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81853BA0
+
+int_iku_cow_3_tex_txt:
+  type: TEXTURE
+  offset: 0x818541C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81853BA0
+
+int_iku_cow_2_tex_txt:
+  type: TEXTURE
+  offset: 0x818542C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81853BA0
+
+int_iku_cow_v:
+  type: VTX
+  offset: 0x818543C0
+  count: 54
+
+int_iku_cow_model:
+  type: GFX
+  offset: 0x81854720
+  size: 0x130

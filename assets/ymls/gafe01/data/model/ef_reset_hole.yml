@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+ef_reset_hole_pal:
+  type: TEXTURE
+  offset: 0x8166F540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+ef_reset_hole_tex:
+  type: TEXTURE
+  offset: 0x8166F560
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8166F540
+
+ef_reset_hole_v:
+  type: VTX
+  offset: 0x8166F660
+  count: 98
+
+ef_reset_hole_modelT:
+  type: GFX
+  offset: 0x8166FC80
+  size: 0xD0

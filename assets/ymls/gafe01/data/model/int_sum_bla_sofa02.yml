@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_sum_bla_sofa02_pal:
+  type: TEXTURE
+  offset: 0x819A5640
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bla_sofa02_back_tex:
+  type: TEXTURE
+  offset: 0x819A5660
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819A5640
+
+int_sum_bla_sofa02_seat_tex:
+  type: TEXTURE
+  offset: 0x819A5860
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x819A5640
+
+int_sum_bla_sofa02_seatside_tex:
+  type: TEXTURE
+  offset: 0x819A5B60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819A5640
+
+int_sum_bla_sofa02_backside_tex:
+  type: TEXTURE
+  offset: 0x819A5C60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819A5640
+
+int_sum_bla_sofa02_foot_tex:
+  type: TEXTURE
+  offset: 0x819A5CE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819A5640
+
+int_sum_bla_sofa02_v:
+  type: VTX
+  offset: 0x819A5D60
+  count: 57
+
+int_sum_bla_sofa02_on_model:
+  type: GFX
+  offset: 0x819A60F0
+  size: 0xD0
+
+int_sum_bla_sofa02_onT_model:
+  type: GFX
+  offset: 0x819A61C0
+  size: 0x68

@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+no_txt:
+  type: TEXTURE
+  offset: 0x8188B870
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: n64
+
+np_txt:
+  type: TEXTURE
+  offset: 0x8188B970
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: n64
+
+nt_txt:
+  type: TEXTURE
+  offset: 0x8188BA70
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: n64
+
+nx_txt:
+  type: TEXTURE
+  offset: 0x8188BB70
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: n64
+
+darrow_model:
+  type: GFX
+  offset: 0x8188BC70
+  size: 0x60
+
+darrow_v:
+  type: VTX
+  offset: 0x8188BCD0
+  count: 36
+
+camera_model:
+  type: GFX
+  offset: 0x8188BF10
+  size: 0x78
+
+camera_v:
+  type: VTX
+  offset: 0x8188BF88
+  count: 40
+
+v_debug_texture:
+  type: VTX
+  offset: 0x8188C208
+  count: 4
+
+RCP_debug_texture_16x16_8:
+  type: GFX
+  offset: 0x8188C248
+  size: 0x18

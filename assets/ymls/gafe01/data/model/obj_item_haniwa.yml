@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_haniwa_pal:
+  type: TEXTURE
+  offset: 0x81892780
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_haniwa_tex:
+  type: TEXTURE
+  offset: 0x818927A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81892780
+
+obj_item_haniwa_v:
+  type: VTX
+  offset: 0x818929A0
+  count: 4
+
+obj_haniwaT_mat_model:
+  type: GFX
+  offset: 0x818929E0
+  size: 0x48
+
+obj_haniwaT_gfx_model:
+  type: GFX
+  offset: 0x81892A28
+  size: 0x18

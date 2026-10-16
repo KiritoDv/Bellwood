@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+act_killer_pal:
+  type: TEXTURE
+  offset: 0x81669960
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_killer_tex_txt:
+  type: TEXTURE
+  offset: 0x81669980
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81669960
+
+act_killer_v:
+  type: VTX
+  offset: 0x81669B80
+  count: 25
+
+act_killer_model:
+  type: GFX
+  offset: 0x81669D10
+  size: 0x98

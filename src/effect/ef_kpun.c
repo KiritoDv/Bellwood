@@ -2,18 +2,12 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_pun01_00.h"
 
 static void eKPun_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eKPun_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
 static void eKPun_mv(eEC_Effect_c* effect, GAME* game);
 static void eKPun_dw(eEC_Effect_c* effect, GAME* game);
-
-extern u8 ef_pun01_0_int_i4[];
-extern u8 ef_pun01_1_int_i4[];
-extern u8 ef_pun01_2_int_i4[];
-extern u8 ef_pun01_3_int_i4[];
-extern u8 ef_pun01_4_int_i4[];
-extern Gfx ef_pun01_00_modelT[];
 
 static u8* eKPun_yuge_texture_table[] = {
     ef_pun01_0_int_i4, ef_pun01_1_int_i4, ef_pun01_2_int_i4, ef_pun01_3_int_i4, ef_pun01_4_int_i4,

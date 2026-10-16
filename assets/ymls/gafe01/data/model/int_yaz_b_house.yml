@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_yaz_b_house_pal:
+  type: TEXTURE
+  offset: 0x81ACA520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yaz_b_house_kabu_tex_txt:
+  type: TEXTURE
+  offset: 0x81ACA540
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ACA520
+
+int_yaz_b_house_kabe01_tex_txt:
+  type: TEXTURE
+  offset: 0x81ACA640
+  format: CI4
+  width: 32
+  height: 40
+  source_encoding: gx
+  tlut: 0x81ACA520
+
+int_yaz_b_house_kabe02_tex_txt:
+  type: TEXTURE
+  offset: 0x81ACA8C0
+  format: CI4
+  width: 32
+  height: 40
+  source_encoding: gx
+  tlut: 0x81ACA520
+
+int_yaz_b_house_ita_tex_txt:
+  type: TEXTURE
+  offset: 0x81ACAB40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81ACA520
+
+int_yaz_b_house_pole_tex_txt:
+  type: TEXTURE
+  offset: 0x81ACAC40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ACA520
+
+int_yaz_b_house_v:
+  type: VTX
+  offset: 0x81ACAD40
+  count: 79
+
+int_yaz_b_house_body_model:
+  type: GFX
+  offset: 0x81ACB230
+  size: 0x158

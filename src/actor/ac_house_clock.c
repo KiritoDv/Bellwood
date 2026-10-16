@@ -6,6 +6,14 @@
 #include "sys_matrix.h"
 #include "m_malloc.h"
 #include "m_common_data.h"
+#include "assets/data/model/obj_clock_koban.h"
+#include "assets/data/model/obj_clock_museum1.h"
+#include "assets/data/model/obj_clock_shop1.h"
+#include "assets/data/model/obj_clock_shop2.h"
+#include "assets/data/model/obj_clock_shop3.h"
+#include "assets/data/model/obj_clock_shop4.h"
+#include "assets/data/model/obj_clock_tailor.h"
+#include "assets/data/model/obj_clock_yub.h"
 
 enum {
     aHC_ENV_MAP_NONE,
@@ -25,47 +33,14 @@ typedef struct house_clock_draw_data_s {
     s16 env_map_type;
 } aHC_draw_data_c;
 
-extern cKF_Skeleton_R_c cKF_bs_r_obj_clock_shop1;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_clock_shop2;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_clock_shop3;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_clock_shop4;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_clock_yub;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_clock_koban;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_clock_museum1;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_clock_tailor;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_clock_shop1;
-extern cKF_Animation_R_c cKF_ba_r_obj_clock_shop2;
-extern cKF_Animation_R_c cKF_ba_r_obj_clock_shop3;
-extern cKF_Animation_R_c cKF_ba_r_obj_clock_shop4;
-extern cKF_Animation_R_c cKF_ba_r_obj_clock_yub;
-extern cKF_Animation_R_c cKF_ba_r_obj_clock_koban;
-extern cKF_Animation_R_c cKF_ba_r_obj_clock_museum1;
-extern cKF_Animation_R_c cKF_ba_r_obj_clock_tailor;
 
-extern Gfx obj_clock_shop1_short_model[];
-extern Gfx obj_clock_shop1_long_model[];
 
-extern Gfx obj_clock_shop2_short_model[];
-extern Gfx obj_clock_shop2_long_model[];
 
-extern Gfx obj_clock_shop3_short_model[];
-extern Gfx obj_clock_shop3_long_model[];
 
-extern Gfx obj_clock_shop4_short_model[];
-extern Gfx obj_clock_shop4_long_model[];
 
-extern Gfx obj_clock_yub_short_model[];
-extern Gfx obj_clock_yub_long_model[];
 
-extern Gfx obj_clock_koban_short_model[];
-extern Gfx obj_clock_koban_long_model[];
 
-extern Gfx obj_clock_museum1_short_model[];
-extern Gfx obj_clock_museum1_long_model[];
-
-extern Gfx obj_clock_tailor_short_model[];
-extern Gfx obj_clock_tailor_long_model[];
 
 // clang-format off
 static aHC_draw_data_c aHC_draw_data[] = {

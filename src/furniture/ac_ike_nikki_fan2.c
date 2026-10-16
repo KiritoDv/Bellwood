@@ -1,4 +1,4 @@
-extern Gfx int_ike_nikki_fan2_on_model[];
+#include "assets/data/model/int_ike_nikki_fan2.h"
 
 aFTR_PROFILE iam_ike_nikki_fan2 = {
 	int_ike_nikki_fan2_on_model,

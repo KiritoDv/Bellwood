@@ -1,4 +1,4 @@
-extern Gfx obj_tent_lamp_offT_model[];
+#include "assets/data/model/int_tak_tent_lamp.h"
 
 aFTR_PROFILE iam_tak_tent_lamp = {
 	obj_tent_lamp_offT_model,

@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_s_toudai.h"
 static void aTOU_rewrite_door(ACTOR* actor, GAME_PLAY* play){
     TOUDAI_ACTOR* light = (TOUDAI_ACTOR*)actor;
     
@@ -152,9 +153,6 @@ static void aTOU_lightout(ACTOR* actor, GAME_PLAY* play){
             aTOU_setup_action(actor, 1);
         }
 }
-
-extern cKF_Animation_R_c cKF_ba_r_obj_s_toudai;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_toudai;
 
 static void aTOU_setup_action(ACTOR* actor, int action) {
     TOUDAI_ACTOR* light = (TOUDAI_ACTOR*)actor; 

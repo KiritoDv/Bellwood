@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_ari_nagaisu1_pal:
+  type: TEXTURE
+  offset: 0x8160B560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ari_table01_0_tex:
+  type: TEXTURE
+  offset: 0x8160B580
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8160B560
+
+int_ari_table01_1_tex:
+  type: TEXTURE
+  offset: 0x8160B980
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8160B560
+
+int_ari_table01_2_tex:
+  type: TEXTURE
+  offset: 0x8160BA80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8160B560
+
+int_ari_table01_3_tex:
+  type: TEXTURE
+  offset: 0x8160BB80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8160B560
+
+int_ari_table01_v:
+  type: VTX
+  offset: 0x8160BD80
+  count: 63
+
+int_ari_table01_01_model:
+  type: GFX
+  offset: 0x8160C170
+  size: 0xE0
+
+int_ari_table01_01T_model:
+  type: GFX
+  offset: 0x8160C250
+  size: 0x58

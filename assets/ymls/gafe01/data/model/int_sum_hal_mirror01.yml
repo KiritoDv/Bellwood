@@ -1,0 +1,99 @@
+:config:
+  strict_declarations: true
+
+int_sum_hal_mirror01_pal:
+  type: TEXTURE
+  offset: 0x81A00820
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_hal_mirror01_glass_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A00840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_hal_mirror01_front_tex:
+  type: TEXTURE
+  offset: 0x81A00860
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A00820
+
+int_sum_hal_mirror01_mirror_tex:
+  type: TEXTURE
+  offset: 0x81A00960
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A00820
+
+int_sum_hal_mirror01_top_tex:
+  type: TEXTURE
+  offset: 0x81A00C60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A00820
+
+int_sum_hal_mirror01_hikite_tex:
+  type: TEXTURE
+  offset: 0x81A00CE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A00820
+
+int_sum_hal_mirror01_kuki_tex:
+  type: TEXTURE
+  offset: 0x81A00D60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A00820
+
+int_sum_hal_mirror01_side_tex:
+  type: TEXTURE
+  offset: 0x81A00DE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A00820
+
+int_sum_hal_mirror01_glass_tex:
+  type: TEXTURE
+  offset: 0x81A00E60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A00840
+
+int_sum_hal_mirror01_v:
+  type: VTX
+  offset: 0x81A01060
+  count: 68
+
+int_sum_hal_mirror01_on_model:
+  type: GFX
+  offset: 0x81A014A0
+  size: 0xF8
+
+int_sum_hal_mirror01_evw_model:
+  type: GFX
+  offset: 0x81A01598
+  size: 0x58
+
+int_sum_hal_mirror01_onT_model:
+  type: GFX
+  offset: 0x81A015F0
+  size: 0x60

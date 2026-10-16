@@ -3,6 +3,7 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_ha01_00.h"
 
 #define EFFECT_LIFETIME 56
 
@@ -10,7 +11,6 @@ static void eHA_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, 
 static void eHA_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
 static void eHA_mv(eEC_Effect_c* effect, GAME* game);
 static void eHA_dw(eEC_Effect_c* effect, GAME* game);
-extern Gfx ef_ha01_00_modelT[];
 eEC_PROFILE_c iam_ef_ha = {
     // clang-format off
     &eHA_init,

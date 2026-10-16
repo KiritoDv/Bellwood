@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_nog_mikanbox_pal:
+  type: TEXTURE
+  offset: 0x81908CE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_mikanbox_tex:
+  type: TEXTURE
+  offset: 0x81908D00
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81908CE0
+
+int_nog_mikanbox_v:
+  type: VTX
+  offset: 0x81909100
+  count: 24
+
+int_nog_mikanbox_model:
+  type: GFX
+  offset: 0x81909280
+  size: 0x70

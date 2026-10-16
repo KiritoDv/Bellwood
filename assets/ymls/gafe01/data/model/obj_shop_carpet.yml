@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_carpet_pal:
+  type: TEXTURE
+  offset: 0x8138E3E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_carpet_tex:
+  type: TEXTURE
+  offset: 0x8138E400
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8138E3E0
+
+obj_shop_carpet_v:
+  type: VTX
+  offset: 0x8138E600
+  count: 47
+
+obj_carpetT_mat_model:
+  type: GFX
+  offset: 0x8138E8F0
+  size: 0x48
+
+obj_carpetT_gfx_model:
+  type: GFX
+  offset: 0x8138E938
+  size: 0x80

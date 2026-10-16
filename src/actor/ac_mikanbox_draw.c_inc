@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_e_mikanbox.h"
 // clang-format off
 static Vtx obj_e_mikanbox_v[] = {
     {{ {-2048,  128, 0}, 0, {  (0 << 5),  (0 << 5)}, {180, 180, 180, 180} }},
@@ -6,9 +7,6 @@ static Vtx obj_e_mikanbox_v[] = {
     {{ { 2048,  128, 0}, 0, {(256 << 5),  (0 << 5)}, {180, 180, 180, 180} }},
 };
 // clang-format on
-
-extern Gfx obj_e_mikanbox_copyrightT_model[];
-extern Gfx obj_e_mikanbox_copyrightT_model2[];
 
 // Aus version redid the copyright model so it doesn't need
 // scaling nor draw commands in the func body
@@ -48,8 +46,6 @@ static void aMIK_copyright_draw(GAME* game) {
     mFont_UnSetMatrix(graph, mFont_MODE_FONT);
 }
 
-extern Gfx obj_e_mikanbox_model[];
-
 static void aMIK_actor_draw(ACTOR* actorx, GAME* game) {
     GRAPH* graph = game->graph;
     u16* pal = (u16*)CLIP(structure_clip)->get_pal_segment_proc(aSTR_PAL_MIKANBOX);
@@ -60,7 +56,7 @@ static void aMIK_actor_draw(ACTOR* actorx, GAME* game) {
 
         OPEN_POLY_OPA_DISP(graph);
 
-        gDPSetTextureAdjustMode(POLY_OPA_DISP++, G_TA_DOLPHIN);
+        gDPSetTextureAdjustMode(POLY_OPA_DISP++, G_TA_HALFTEXEL);
         gDPSetTexEdgeAlpha(POLY_OPA_DISP++, 127);
         gSPMatrix(POLY_OPA_DISP++, mtx, G_MTX_LOAD | G_MTX_NOPUSH);
         gSPSegment(POLY_OPA_DISP++, ANIME_1_TXT_SEG, pal);

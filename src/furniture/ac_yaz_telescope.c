@@ -1,4 +1,4 @@
-extern Gfx int_yaz_telescope_body_model[];
+#include "assets/data/model/int_yaz_telescope.h"
 
 aFTR_PROFILE iam_yaz_telescope = {
 	NULL,

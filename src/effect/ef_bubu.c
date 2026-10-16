@@ -1,5 +1,6 @@
 #include "ef_effect_control.h"
 #include "m_common_data.h"
+#include "assets/data/model/ef_peke01_00.h"
 
 static void eBubu_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eBubu_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -17,7 +18,6 @@ eEC_PROFILE_c iam_ef_bubu = {
     eEC_DEFAULT_DEATH_DIST,
     // clang-format on
 };
-extern Gfx ef_peke01_00_modelT[];
 
 
 static void eBubu_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1) {

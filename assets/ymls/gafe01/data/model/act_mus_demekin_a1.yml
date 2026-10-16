@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_demekin_pal:
+  type: TEXTURE
+  offset: 0x8167C240
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_demekin_body_txt:
+  type: TEXTURE
+  offset: 0x8167C260
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8167C240
+
+act_mus_demekin_a1_v:
+  type: VTX
+  offset: 0x8167C460
+  count: 100
+
+act_mus_demekin_sakana_body_model:
+  type: GFX
+  offset: 0x8167CAA0
+  size: 0x118
+
+act_mus_demekin_sakana_head_model:
+  type: GFX
+  offset: 0x8167CBB8
+  size: 0xA8
+
+cKF_bs_r_act_mus_demekin_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x8167CC84
+  counts: { joints: 3 }

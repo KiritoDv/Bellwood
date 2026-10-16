@@ -1,5 +1,4 @@
-extern Gfx int_sum_asi_taiko_on_model[];
-extern Gfx int_sum_asi_taiko_onT_model[];
+#include "assets/data/model/int_sum_asi_taiko.h"
 static void aSumasitaiko_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aSumasitaiko_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aSumasitaiko_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);

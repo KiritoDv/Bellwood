@@ -1,5 +1,4 @@
-extern Gfx int_din_stego_tailT_model[];
-extern Gfx int_din_stego_tail_model[];
+#include "assets/data/model/int_din_stego_tail.h"
 
 aFTR_PROFILE iam_din_stego_tail = {
 	int_din_stego_tailT_model,

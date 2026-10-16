@@ -1,12 +1,6 @@
-extern u8 int_sum_bdcake01_a_candol1_TA_tex_txt[];
-extern u8 int_sum_bdcake01_a_candol2_TA_tex_txt[];
+#include "assets/data/model/int_sum_bdcake01.h"
 
-extern u8 int_sum_bdcake01_b_candol1_TA_tex_txt[];
-extern u8 int_sum_bdcake01_b_candol2_TA_tex_txt[];
 
-extern Gfx int_sum_bdcake01_on_model[];
-extern Gfx int_sum_bdcake01_off_model[];
-extern Gfx int_sum_bdcake01_off1_model[];
 
 static void aSB_SumBdcake01Draw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     s16 frame = ftr_actor->dynamic_work_s[0] & 1;

@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_present_pal:
+  type: TEXTURE
+  offset: 0x81894B40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_present_tex:
+  type: TEXTURE
+  offset: 0x81894B60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81894B40
+
+obj_item_present_v:
+  type: VTX
+  offset: 0x81894D60
+  count: 4
+
+present_DL_mode:
+  type: GFX
+  offset: 0x81894DA0
+  size: 0x48
+
+present_DL_vtx:
+  type: GFX
+  offset: 0x81894DE8
+  size: 0x18

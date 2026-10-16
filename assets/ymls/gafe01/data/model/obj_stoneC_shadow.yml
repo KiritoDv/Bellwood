@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+obj_stoneC_shadow_v:
+  type: VTX
+  offset: 0x8110E7C0
+  count: 12
+
+obj_stoneC_shadowT_gfx_model:
+  type: GFX
+  offset: 0x8110E880
+  size: 0x20

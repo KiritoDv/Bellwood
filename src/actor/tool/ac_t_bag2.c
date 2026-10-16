@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_lib.h"
 #include "m_rcp.h"
+#include "assets/data/model/crw_bag2.h"
 
 
 static void aTBG2_actor_ct(ACTOR* actor, GAME*);
@@ -25,9 +26,7 @@ ACTOR_PROFILE T_Bag2_Profile = {
     NULL
 };
 
-extern Gfx crw_bag2_body_model[];
-
-static void aTBG2_actor_ct(ACTOR* actor, GAME*){
+static void aTBG2_actor_ct(ACTOR* actor, GAME* arg1){
 
     aTBG2_setupAction(actor,4);
 }
@@ -50,7 +49,7 @@ static void aTBG2_setupAction(ACTOR*actor, int action){
 
 }
 
-static void aTBG2_actor_move(ACTOR* actor, GAME*){
+static void aTBG2_actor_move(ACTOR* actor, GAME* arg1){
     BAG2_ACTOR* bag = (BAG2_ACTOR*)actor;
 
     if(bag->tools_class.work0 != bag->current_id){

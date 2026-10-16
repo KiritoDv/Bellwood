@@ -1,4 +1,4 @@
-extern Gfx int_wagon_body_model[];
+#include "assets/data/model/int_yaz_wagon.h"
 
 aFTR_PROFILE iam_yaz_wagon = {
 	int_wagon_body_model,

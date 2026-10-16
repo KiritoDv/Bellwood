@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+obj_sightmap_shadow_tex:
+  type: TEXTURE
+  offset: 0x8110DE00
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_sightmap_shadow_v:
+  type: VTX
+  offset: 0x8110E000
+  count: 4
+
+obj_sightmap_shadowT_mat_model:
+  type: GFX
+  offset: 0x8110E040
+  size: 0x20
+
+obj_sightmap_shadowT_gfx_model:
+  type: GFX
+  offset: 0x8110E060
+  size: 0x10

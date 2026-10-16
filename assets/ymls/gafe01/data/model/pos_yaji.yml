@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+pos_win_yajirushi_tex:
+  type: TEXTURE
+  offset: 0x814ADCC8
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: n64
+
+pos_yaji_v:
+  type: VTX
+  offset: 0x814AE0C8
+  count: 4
+
+pos_yaji_wakuT_model:
+  type: GFX
+  offset: 0x814AE108
+  size: 0x80

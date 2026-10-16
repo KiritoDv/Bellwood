@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_tak_snoisu_tex_pal:
+  type: TEXTURE
+  offset: 0x81AA4660
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_snowisu_back_tex:
+  type: TEXTURE
+  offset: 0x81AA4680
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA4660
+
+int_tak_snowisu_face_tex:
+  type: TEXTURE
+  offset: 0x81AA4780
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA4660
+
+int_tak_snowisu_futi_tex:
+  type: TEXTURE
+  offset: 0x81AA4880
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA4660
+
+int_tak_snowisu_body2_tex:
+  type: TEXTURE
+  offset: 0x81AA4900
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA4660
+
+int_tak_snowisu_side_tex:
+  type: TEXTURE
+  offset: 0x81AA4A00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA4660
+
+int_tak_snowisu_v:
+  type: VTX
+  offset: 0x81AA4A80
+  count: 50
+
+int_tak_snowisu_on_model:
+  type: GFX
+  offset: 0x81AA4DA0
+  size: 0x78
+
+int_tak_snowisu_onT_model:
+  type: GFX
+  offset: 0x81AA4E18
+  size: 0xD8

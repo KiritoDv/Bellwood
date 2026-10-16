@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_iku_turkey_lamp_pal:
+  type: TEXTURE
+  offset: 0x81867C40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_turkey_lamp_c_txt:
+  type: TEXTURE
+  offset: 0x81867C60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81867C40
+
+int_iku_turkey_lamp_d_txt:
+  type: TEXTURE
+  offset: 0x81867D60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81867C40
+
+int_iku_turkey_lamp_e_txt:
+  type: TEXTURE
+  offset: 0x81867E60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81867C40
+
+int_iku_turkey_lamp_b_txt:
+  type: TEXTURE
+  offset: 0x81868060
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81867C40
+
+int_iku_turkey_lamp_a_txt:
+  type: TEXTURE
+  offset: 0x81868260
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81867C40
+
+int_iku_turkey_lamp_v:
+  type: VTX
+  offset: 0x81868460
+  count: 72
+
+int_iku_turkey_lamp_model:
+  type: GFX
+  offset: 0x818688E0
+  size: 0x138

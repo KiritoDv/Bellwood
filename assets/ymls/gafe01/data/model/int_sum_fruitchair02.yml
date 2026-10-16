@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+int_sum_fruitchair02_pal:
+  type: TEXTURE
+  offset: 0x819DE580
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_fruitchair02_leaf_tex_txt:
+  type: TEXTURE
+  offset: 0x819DE5A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819DE580
+
+int_sum_fruitchair02_side_tex_txt:
+  type: TEXTURE
+  offset: 0x819DE620
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x819DE580
+
+int_sum_fruitchair02_seat_tex_txt:
+  type: TEXTURE
+  offset: 0x819DE920
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819DE580
+
+int_sum_fruitchair02_top_tex_txt:
+  type: TEXTURE
+  offset: 0x819DEB20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819DE580
+
+int_sum_fruitchair02_v:
+  type: VTX
+  offset: 0x819DEBA0
+  count: 42
+
+int_sum_fruitchair02_on_model:
+  type: GFX
+  offset: 0x819DEE40
+  size: 0x130

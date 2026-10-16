@@ -1,0 +1,22 @@
+:config:
+  strict_declarations: true
+
+ef_s_cedar5_cutR_v:
+  type: VTX
+  offset: 0x8164B440
+  count: 74
+
+ef_s_cedar5_cutR_leaf_model:
+  type: GFX
+  offset: 0x8164B8E0
+  size: 0x70
+
+ef_s_cedar5_cutR_trunk_model:
+  type: GFX
+  offset: 0x8164B950
+  size: 0x38
+
+cKF_bs_r_ef_s_cedar5_cutR:
+  type: AC:CKF_SKELETON
+  offset: 0x8164B9B8
+  counts: { joints: 4 }

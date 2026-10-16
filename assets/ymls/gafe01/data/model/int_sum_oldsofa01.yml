@@ -1,0 +1,73 @@
+:config:
+  strict_declarations: true
+
+int_sum_oldsofa01_pal:
+  type: TEXTURE
+  offset: 0x81A37F40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_oldsofa01_seat:
+  type: TEXTURE
+  offset: 0x81A37F60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A37F40
+
+int_sum_oldsofa01_side1:
+  type: TEXTURE
+  offset: 0x81A38160
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A37F40
+
+int_sum_oldsofa01_side2:
+  type: TEXTURE
+  offset: 0x81A38260
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A37F40
+
+int_sum_oldsofa01_top:
+  type: TEXTURE
+  offset: 0x81A38360
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A37F40
+
+int_sum_oldsofa01_side3:
+  type: TEXTURE
+  offset: 0x81A38560
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A37F40
+
+int_sum_oldsofa01_foot:
+  type: TEXTURE
+  offset: 0x81A38660
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A37F40
+
+int_sum_oldsofa01_v:
+  type: VTX
+  offset: 0x81A386E0
+  count: 63
+
+int_sum_oldsofa01_onT_model:
+  type: GFX
+  offset: 0x81A38AD0
+  size: 0x150

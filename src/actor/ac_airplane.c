@@ -12,6 +12,7 @@
 #include "m_common_data.h"
 #include "m_actor_shadow.h"
 #include "m_rcp.h"
+#include "assets/data/model/glider.h"
 
 static void Airplane_Actor_ct(ACTOR* actor, GAME* game);
 static void Airplane_Actor_dt(ACTOR* actor, GAME* game);
@@ -61,8 +62,6 @@ static void Airplane_Actor_ct(ACTOR* actor, GAME* game) {
 
 static void Airplane_Actor_dt(ACTOR* actor, GAME* game) {
 }
-
-extern Gfx glider_model[];
 
 static void Airplane_Actor_draw(ACTOR* actor, GAME* game) {
     AIRPLANE_ACTOR* airplane = (AIRPLANE_ACTOR*)actor;

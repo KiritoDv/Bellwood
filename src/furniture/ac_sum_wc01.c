@@ -1,6 +1,4 @@
-extern Gfx int_sum_wc01_on_model[];
-extern Gfx int_sum_wc01_onT_model[];
-extern Gfx int_sum_wc01_envT_model[];
+#include "assets/data/model/int_sum_wc01.h"
 
 aFTR_PROFILE iam_sum_wc01 = {
 	int_sum_wc01_on_model,

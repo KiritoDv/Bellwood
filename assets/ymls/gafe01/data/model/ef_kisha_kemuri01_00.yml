@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+ef_kisha_kemuri01_0:
+  type: TEXTURE
+  offset: 0x81669DC0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_kisha_kemuri01_1:
+  type: TEXTURE
+  offset: 0x81669E40
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_kisha_kemuri01_00_v:
+  type: VTX
+  offset: 0x81669EC0
+  count: 4
+
+ef_kisha_kemuri01_modelT:
+  type: GFX
+  offset: 0x81669F00
+  size: 0x60

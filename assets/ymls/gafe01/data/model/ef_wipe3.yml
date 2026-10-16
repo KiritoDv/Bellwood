@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+ef_wipe3_v:
+  type: VTX
+  offset: 0x8188CD28
+  count: 70
+
+ef_wipe3_modelT:
+  type: GFX
+  offset: 0x8188D188
+  size: 0xF0

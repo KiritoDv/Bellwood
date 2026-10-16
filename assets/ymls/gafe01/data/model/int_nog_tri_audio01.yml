@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_nog_tri_audio01_pal:
+  type: TEXTURE
+  offset: 0x8191DC80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_nog_tri_audio01_tex:
+  type: TEXTURE
+  offset: 0x8191DCA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8191DC80
+
+int_nog_tri_audio01_v:
+  type: VTX
+  offset: 0x8191E4A0
+  count: 20
+
+int_nog_tri_audio01_model:
+  type: GFX
+  offset: 0x8191E5E0
+  size: 0x68

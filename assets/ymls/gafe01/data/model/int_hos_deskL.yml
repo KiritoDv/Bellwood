@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_hos_deskL_pal:
+  type: TEXTURE
+  offset: 0x8180E240
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_hos_deskL_tex_txt:
+  type: TEXTURE
+  offset: 0x8180E260
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8180E240
+
+int_hos_deskL_v:
+  type: VTX
+  offset: 0x8180EA60
+  count: 89
+
+int_hos_deskL_model_model:
+  type: GFX
+  offset: 0x8180EFF0
+  size: 0xF0

@@ -1,0 +1,6 @@
+:config:
+  strict_declarations: true
+
+obj_s_post_flag_on_wait1_evw_anime:
+  type: AC:EVW_ANIME
+  offset: 0x8129BCA8

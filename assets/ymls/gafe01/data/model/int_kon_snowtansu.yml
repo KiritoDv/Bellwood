@@ -1,0 +1,98 @@
+:config:
+  strict_declarations: true
+
+int_kon_snowtansu_tex_pal:
+  type: TEXTURE
+  offset: 0x818B3EE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_snowtansu04_tex_txt:
+  type: TEXTURE
+  offset: 0x818B3F00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B3EE0
+
+int_kon_snowtansu06_tex_txt:
+  type: TEXTURE
+  offset: 0x818B3F80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B3EE0
+
+int_kon_snowtansu05_tex_txt:
+  type: TEXTURE
+  offset: 0x818B4000
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B3EE0
+
+int_kon_snowtansu01_tex_txt:
+  type: TEXTURE
+  offset: 0x818B4080
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x818B3EE0
+
+int_kon_snowtansu02_tex_txt:
+  type: TEXTURE
+  offset: 0x818B4200
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x818B3EE0
+
+int_kon_snowtansu07_tex_txt:
+  type: TEXTURE
+  offset: 0x818B4380
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B3EE0
+
+int_kon_snowtansu03_tex_txt:
+  type: TEXTURE
+  offset: 0x818B4480
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B3EE0
+
+int_kon_snowtansu_v:
+  type: VTX
+  offset: 0x818B4500
+  count: 64
+
+int_kon_snowtansu_hiki_model:
+  type: GFX
+  offset: 0x818B4900
+  size: 0x90
+
+int_kon_snowtansu_base_model:
+  type: GFX
+  offset: 0x818B4990
+  size: 0x108
+
+cKF_ba_r_int_kon_snowtansu:
+  type: AC:CKF_ANIMATION
+  offset: 0x818B4B24
+  joints: 3
+  counts: { flags: 3, data: 54, keys: 9, fixed: 3 }
+
+cKF_bs_r_int_kon_snowtansu:
+  type: AC:CKF_SKELETON
+  offset: 0x818B4B5C
+  counts: { joints: 3 }

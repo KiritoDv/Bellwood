@@ -1,0 +1,1157 @@
+:config:
+  strict_declarations: true
+
+obj_s_house1_a_pal:
+  type: TEXTURE
+  offset: 0x81500720
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house1_b_pal:
+  type: TEXTURE
+  offset: 0x81500740
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house1_c_pal:
+  type: TEXTURE
+  offset: 0x81500760
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house1_d_pal:
+  type: TEXTURE
+  offset: 0x81500780
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house1_e_pal:
+  type: TEXTURE
+  offset: 0x815007A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house2_e_pal:
+  type: TEXTURE
+  offset: 0x815007C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house2_d_pal:
+  type: TEXTURE
+  offset: 0x815007E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house2_c_pal:
+  type: TEXTURE
+  offset: 0x81500800
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house2_b_pal:
+  type: TEXTURE
+  offset: 0x81500820
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house2_a_pal:
+  type: TEXTURE
+  offset: 0x81500840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house3_e_pal:
+  type: TEXTURE
+  offset: 0x81500860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house3_d_pal:
+  type: TEXTURE
+  offset: 0x81500880
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house3_c_pal:
+  type: TEXTURE
+  offset: 0x815008A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house3_b_pal:
+  type: TEXTURE
+  offset: 0x815008C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house3_a_pal:
+  type: TEXTURE
+  offset: 0x815008E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house4_e_pal:
+  type: TEXTURE
+  offset: 0x81500900
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house4_d_pal:
+  type: TEXTURE
+  offset: 0x81500920
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house4_c_pal:
+  type: TEXTURE
+  offset: 0x81500940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house4_b_pal:
+  type: TEXTURE
+  offset: 0x81500960
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house4_a_pal:
+  type: TEXTURE
+  offset: 0x81500980
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house5_e_pal:
+  type: TEXTURE
+  offset: 0x815009A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house5_d_pal:
+  type: TEXTURE
+  offset: 0x815009C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house5_c_pal:
+  type: TEXTURE
+  offset: 0x815009E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house5_b_pal:
+  type: TEXTURE
+  offset: 0x81500A00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house5_a_pal:
+  type: TEXTURE
+  offset: 0x81500A20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house1_a_pal:
+  type: TEXTURE
+  offset: 0x81500A40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house1_b_pal:
+  type: TEXTURE
+  offset: 0x81500A60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house1_c_pal:
+  type: TEXTURE
+  offset: 0x81500A80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house1_d_pal:
+  type: TEXTURE
+  offset: 0x81500AA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house1_e_pal:
+  type: TEXTURE
+  offset: 0x81500AC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house2_e_pal:
+  type: TEXTURE
+  offset: 0x81500AE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house2_d_pal:
+  type: TEXTURE
+  offset: 0x81500B00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house2_c_pal:
+  type: TEXTURE
+  offset: 0x81500B20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house2_b_pal:
+  type: TEXTURE
+  offset: 0x81500B40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house2_a_pal:
+  type: TEXTURE
+  offset: 0x81500B60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house3_e_pal:
+  type: TEXTURE
+  offset: 0x81500B80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house3_d_pal:
+  type: TEXTURE
+  offset: 0x81500BA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house3_c_pal:
+  type: TEXTURE
+  offset: 0x81500BC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house3_b_pal:
+  type: TEXTURE
+  offset: 0x81500BE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house3_a_pal:
+  type: TEXTURE
+  offset: 0x81500C00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house4_e_pal:
+  type: TEXTURE
+  offset: 0x81500C20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house4_d_pal:
+  type: TEXTURE
+  offset: 0x81500C40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house4_c_pal:
+  type: TEXTURE
+  offset: 0x81500C60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house4_b_pal:
+  type: TEXTURE
+  offset: 0x81500C80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house4_a_pal:
+  type: TEXTURE
+  offset: 0x81500CA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house5_e_pal:
+  type: TEXTURE
+  offset: 0x81500CC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house5_d_pal:
+  type: TEXTURE
+  offset: 0x81500CE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house5_c_pal:
+  type: TEXTURE
+  offset: 0x81500D00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house5_b_pal:
+  type: TEXTURE
+  offset: 0x81500D20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house5_a_pal:
+  type: TEXTURE
+  offset: 0x81500D40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_myhome_a_pal:
+  type: TEXTURE
+  offset: 0x81500D60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_myhome_b_pal:
+  type: TEXTURE
+  offset: 0x81500D80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_myhome_d_pal:
+  type: TEXTURE
+  offset: 0x81500DA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_myhome_c_pal:
+  type: TEXTURE
+  offset: 0x81500DC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_myhome_e_pal:
+  type: TEXTURE
+  offset: 0x81500DE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_myhome_f_pal:
+  type: TEXTURE
+  offset: 0x81500E00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_myhome_g_pal:
+  type: TEXTURE
+  offset: 0x81500E20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_myhome_h_pal:
+  type: TEXTURE
+  offset: 0x81500E40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_myhome_i_pal:
+  type: TEXTURE
+  offset: 0x81500E60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_myhome_j_pal:
+  type: TEXTURE
+  offset: 0x81500E80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_myhome_k_pal:
+  type: TEXTURE
+  offset: 0x81500EA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_myhome_l_pal:
+  type: TEXTURE
+  offset: 0x81500EC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_myhome_a_pal:
+  type: TEXTURE
+  offset: 0x81500EE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_myhome_b_pal:
+  type: TEXTURE
+  offset: 0x81500F00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_myhome_d_pal:
+  type: TEXTURE
+  offset: 0x81500F20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_myhome_c_pal:
+  type: TEXTURE
+  offset: 0x81500F40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_myhome_e_pal:
+  type: TEXTURE
+  offset: 0x81500F60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_myhome_f_pal:
+  type: TEXTURE
+  offset: 0x81500F80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_myhome_g_pal:
+  type: TEXTURE
+  offset: 0x81500FA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_myhome_h_pal:
+  type: TEXTURE
+  offset: 0x81500FC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_myhome_i_pal:
+  type: TEXTURE
+  offset: 0x81500FE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_myhome_j_pal:
+  type: TEXTURE
+  offset: 0x81501000
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_myhome_k_pal:
+  type: TEXTURE
+  offset: 0x81501020
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_myhome_l_pal:
+  type: TEXTURE
+  offset: 0x81501040
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop1_pal:
+  type: TEXTURE
+  offset: 0x81501060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop1_winter_pal:
+  type: TEXTURE
+  offset: 0x81501080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop2_pal:
+  type: TEXTURE
+  offset: 0x815010A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop2_winter_pal:
+  type: TEXTURE
+  offset: 0x815010C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop3_pal:
+  type: TEXTURE
+  offset: 0x815010E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop3_winter_pal:
+  type: TEXTURE
+  offset: 0x81501100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop4_pal:
+  type: TEXTURE
+  offset: 0x81501120
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop4_winter_pal:
+  type: TEXTURE
+  offset: 0x81501140
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+br_shop_pal:
+  type: TEXTURE
+  offset: 0x81501160
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+br_shop_winter_pal:
+  type: TEXTURE
+  offset: 0x81501180
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_post_office_pal:
+  type: TEXTURE
+  offset: 0x815011A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_post_office_winter_pal:
+  type: TEXTURE
+  offset: 0x815011C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station1_a_pal:
+  type: TEXTURE
+  offset: 0x815011E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station1_b_pal:
+  type: TEXTURE
+  offset: 0x81501200
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station1_c_pal:
+  type: TEXTURE
+  offset: 0x81501220
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station1_d_pal:
+  type: TEXTURE
+  offset: 0x81501240
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station1_e_pal:
+  type: TEXTURE
+  offset: 0x81501260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station2_a_pal:
+  type: TEXTURE
+  offset: 0x81501280
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station2_b_pal:
+  type: TEXTURE
+  offset: 0x815012A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station2_c_pal:
+  type: TEXTURE
+  offset: 0x815012C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station2_d_pal:
+  type: TEXTURE
+  offset: 0x815012E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station2_e_pal:
+  type: TEXTURE
+  offset: 0x81501300
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station3_a_pal:
+  type: TEXTURE
+  offset: 0x81501320
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station3_b_pal:
+  type: TEXTURE
+  offset: 0x81501340
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station3_c_pal:
+  type: TEXTURE
+  offset: 0x81501360
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station3_d_pal:
+  type: TEXTURE
+  offset: 0x81501380
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_station3_e_pal:
+  type: TEXTURE
+  offset: 0x815013A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station1_a_pal:
+  type: TEXTURE
+  offset: 0x815013C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station1_b_pal:
+  type: TEXTURE
+  offset: 0x815013E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station1_c_pal:
+  type: TEXTURE
+  offset: 0x81501400
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station1_d_pal:
+  type: TEXTURE
+  offset: 0x81501420
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station1_e_pal:
+  type: TEXTURE
+  offset: 0x81501440
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station2_a_pal:
+  type: TEXTURE
+  offset: 0x81501460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station2_d_pal:
+  type: TEXTURE
+  offset: 0x81501480
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station2_b_pal:
+  type: TEXTURE
+  offset: 0x815014A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station2_c_pal:
+  type: TEXTURE
+  offset: 0x815014C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station2_e_pal:
+  type: TEXTURE
+  offset: 0x815014E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station3_a_pal:
+  type: TEXTURE
+  offset: 0x81501500
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station3_d_pal:
+  type: TEXTURE
+  offset: 0x81501520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station3_b_pal:
+  type: TEXTURE
+  offset: 0x81501540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station3_c_pal:
+  type: TEXTURE
+  offset: 0x81501560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_station3_e_pal:
+  type: TEXTURE
+  offset: 0x81501580
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_train1_a1_pal:
+  type: TEXTURE
+  offset: 0x815015A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_train1_a1_winter_pal:
+  type: TEXTURE
+  offset: 0x815015C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_train1_a2_pal:
+  type: TEXTURE
+  offset: 0x815015E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_train1_a2_winter_pal:
+  type: TEXTURE
+  offset: 0x81501600
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_police_box_pal:
+  type: TEXTURE
+  offset: 0x81501620
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_police_box_winter_pal:
+  type: TEXTURE
+  offset: 0x81501640
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+reserve_pal:
+  type: TEXTURE
+  offset: 0x81501660
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+reserve_winter_pal:
+  type: TEXTURE
+  offset: 0x81501680
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_buggy_pal:
+  type: TEXTURE
+  offset: 0x815016A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_buggy_winter_pal:
+  type: TEXTURE
+  offset: 0x815016C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+s_car_pal:
+  type: TEXTURE
+  offset: 0x815016E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_kamakura_pal:
+  type: TEXTURE
+  offset: 0x81501700
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_shrine_pal:
+  type: TEXTURE
+  offset: 0x81501720
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_shrine_pal:
+  type: TEXTURE
+  offset: 0x81501740
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_goza_pal:
+  type: TEXTURE
+  offset: 0x81501760
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_radio_pal:
+  type: TEXTURE
+  offset: 0x81501780
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_yatai_pal:
+  type: TEXTURE
+  offset: 0x815017A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_tukimi_pal:
+  type: TEXTURE
+  offset: 0x815017C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_mikuji_pal:
+  type: TEXTURE
+  offset: 0x815017E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_count_pal:
+  type: TEXTURE
+  offset: 0x81501800
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_count02_pal:
+  type: TEXTURE
+  offset: 0x81501820
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_kago_r_pal:
+  type: TEXTURE
+  offset: 0x81501840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_kago_w_pal:
+  type: TEXTURE
+  offset: 0x81501860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_turi_pal:
+  type: TEXTURE
+  offset: 0x81501880
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_koinobori_a_pal:
+  type: TEXTURE
+  offset: 0x815018A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_dump_pal:
+  type: TEXTURE
+  offset: 0x815018C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_windmill_a_pal:
+  type: TEXTURE
+  offset: 0x815018E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_windmill_b_pal:
+  type: TEXTURE
+  offset: 0x81501900
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_windmill_c_pal:
+  type: TEXTURE
+  offset: 0x81501920
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_windmill_d_pal:
+  type: TEXTURE
+  offset: 0x81501940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_windmill_e_pal:
+  type: TEXTURE
+  offset: 0x81501960
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_windmill_a_pal:
+  type: TEXTURE
+  offset: 0x81501980
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_windmill_b_pal:
+  type: TEXTURE
+  offset: 0x815019A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_windmill_c_pal:
+  type: TEXTURE
+  offset: 0x815019C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_windmill_d_pal:
+  type: TEXTURE
+  offset: 0x815019E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_windmill_e_pal:
+  type: TEXTURE
+  offset: 0x81501A00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_01_lotus_pal:
+  type: TEXTURE
+  offset: 0x81501A20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_mikanbox_pal:
+  type: TEXTURE
+  offset: 0x81501A40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_douzou_dai_pal:
+  type: TEXTURE
+  offset: 0x81501A60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_douzou_pal:
+  type: TEXTURE
+  offset: 0x81501A80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_toudai_pal:
+  type: TEXTURE
+  offset: 0x81501AA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_toudai_pal:
+  type: TEXTURE
+  offset: 0x81501AC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_museum_pal:
+  type: TEXTURE
+  offset: 0x81501AE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_museum_winter_pal:
+  type: TEXTURE
+  offset: 0x81501B00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_boat_pal:
+  type: TEXTURE
+  offset: 0x81501B20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_tailor_pal:
+  type: TEXTURE
+  offset: 0x81501B40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_tailor_pal:
+  type: TEXTURE
+  offset: 0x81501B60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_myhome_island_pal:
+  type: TEXTURE
+  offset: 0x81501B80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_house_i_pal:
+  type: TEXTURE
+  offset: 0x81501BA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx

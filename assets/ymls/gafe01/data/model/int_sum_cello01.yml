@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_cello01_pal:
+  type: TEXTURE
+  offset: 0x819B8EC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_cello01_front_tex:
+  type: TEXTURE
+  offset: 0x819B8EE0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x819B8EC0
+
+int_sum_cello01_back_tex:
+  type: TEXTURE
+  offset: 0x819B91E0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819B8EC0
+
+int_sum_cello01_side_tex:
+  type: TEXTURE
+  offset: 0x819B9360
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B8EC0
+
+int_sum_cello01_neck_tex:
+  type: TEXTURE
+  offset: 0x819B93E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B8EC0
+
+int_sum_cello01_neckback_tex:
+  type: TEXTURE
+  offset: 0x819B94E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B8EC0
+
+int_sum_cello01_hand_tex:
+  type: TEXTURE
+  offset: 0x819B9560
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B8EC0
+
+int_sum_cello01_stand_tex:
+  type: TEXTURE
+  offset: 0x819B95E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B8EC0
+
+int_sum_cello01_v:
+  type: VTX
+  offset: 0x819B96E0
+  count: 57
+
+int_sum_cello01_on_model:
+  type: GFX
+  offset: 0x819B9A70
+  size: 0x88
+
+int_sum_cello01_onT_model:
+  type: GFX
+  offset: 0x819B9AF8
+  size: 0xF8

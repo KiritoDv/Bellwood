@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_syouryou_v:
+  type: VTX
+  offset: 0x81878470
+  count: 17
+
+act_m_syouryou_pal:
+  type: TEXTURE
+  offset: 0x81878580
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_syouryou:
+  type: TEXTURE
+  offset: 0x818785A0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: n64
+  tlut: 0x81878580
+
+act_m_mu_syouryou1T_model:
+  type: GFX
+  offset: 0x818787A0
+  size: 0xD8
+
+act_m_mu_syouryou2_2T_model:
+  type: GFX
+  offset: 0x81878878
+  size: 0xC0

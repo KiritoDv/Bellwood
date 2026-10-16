@@ -3,6 +3,7 @@
 #include "m_debug.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_s_youngtree_00.h"
 
 static void eYoung_Tree_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eYoung_Tree_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -109,14 +110,6 @@ static void eYoung_Tree_mv(eEC_Effect_c* effect, GAME* game) {
     }
 }
 
-extern Gfx ef_w_young_palm_modelT[];
-extern Gfx ef_s_young_palm_modelT[];
-extern Gfx ef_w_young_cedar_modelT[];
-extern Gfx ef_s_young_cedar_modelT[];
-extern Gfx ef_w_youngtree_00_modelT[];
-extern Gfx ef_f_youngtree_00_modelT[];
-extern Gfx ef_s_youngtree_00_modelT[];
-
 static void eYoung_Tree_dw(eEC_Effect_c* effect, GAME* game) {
     GRAPH* graph;
     mFM_field_pal_c* field_pal = mFI_GetFieldPal();
@@ -161,7 +154,7 @@ static void eYoung_Tree_dw(eEC_Effect_c* effect, GAME* game) {
     }
 
     gDPSetPrimColor(NEXT_POLY_XLU_DISP, 0, 255, 255, 255, 255, alpha);
-    gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_DOLPHIN);
+    gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_HALFTEXEL);
 
     if (effect->arg1 == 1) {
         if (effect->effect_specific[0] == 3) {

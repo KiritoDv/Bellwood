@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+act_ball_b_pal:
+  type: TEXTURE
+  offset: 0x8109FC28
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_ball_b_1_tex:
+  type: TEXTURE
+  offset: 0x8109FC48
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+  tlut: 0x8109FC28
+
+act_ball_b_v:
+  type: VTX
+  offset: 0x8109FCC8
+  count: 26
+
+act_ball_b_model:
+  type: GFX
+  offset: 0x8109FE68
+  size: 0x170

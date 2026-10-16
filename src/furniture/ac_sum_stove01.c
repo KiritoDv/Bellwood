@@ -1,6 +1,4 @@
-extern Gfx int_sum_stove01_on_model[];
-extern Gfx int_sum_stove01_onT_model[];
-extern Gfx int_sum_stove_offT_model[];
+#include "assets/data/model/int_sum_stove01.h"
 
 static void aSumStove01_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     OPEN_DISP(game->graph);

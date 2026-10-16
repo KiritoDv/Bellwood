@@ -1,0 +1,101 @@
+:config:
+  strict_declarations: true
+
+rom_museum3_wall_pal:
+  type: TEXTURE
+  offset: 0x818D6940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_museum3_back_pal:
+  type: TEXTURE
+  offset: 0x818D6960
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_museum3_floor_pal:
+  type: TEXTURE
+  offset: 0x818D6980
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_museum3_wallA_tex:
+  type: TEXTURE
+  offset: 0x818D69A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818D6940
+
+rom_museum3_wallB_tex:
+  type: TEXTURE
+  offset: 0x818D71A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818D6940
+
+rom_museum3_back_tex:
+  type: TEXTURE
+  offset: 0x818D79A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818D6960
+
+rom_museum3_floorA_tex:
+  type: TEXTURE
+  offset: 0x818D81A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818D6980
+
+rom_museum3_step_tex:
+  type: TEXTURE
+  offset: 0x818D89A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818D6960
+
+rom_museum3_hasira_tex:
+  type: TEXTURE
+  offset: 0x818D91A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818D6940
+
+rom_museum3_backside_tex:
+  type: TEXTURE
+  offset: 0x818D92A0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x818D6960
+
+rom_museum3_v:
+  type: VTX
+  offset: 0x818D9420
+  count: 283
+
+rom_museum3_modelT:
+  type: GFX
+  offset: 0x818DA5D0
+  size: 0x8
+
+rom_museum3_model:
+  type: GFX
+  offset: 0x818DA5D8
+  size: 0x340

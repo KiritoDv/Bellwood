@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f20_iwana_pal:
+  type: TEXTURE
+  offset: 0x81241E80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f20_iwana_tex:
+  type: TEXTURE
+  offset: 0x81241EA0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81241E80
+
+act_f20_iwana_a_v:
+  type: VTX
+  offset: 0x812421A0
+  count: 9
+
+act_f20_iwana_aT_model:
+  type: GFX
+  offset: 0x81242230
+  size: 0x68
+
+act_f20_iwana_b_v:
+  type: VTX
+  offset: 0x81242298
+  count: 9
+
+act_f20_iwana_bT_model:
+  type: GFX
+  offset: 0x81242328
+  size: 0x68
+
+act_f20_iwana_c_v:
+  type: VTX
+  offset: 0x81242390
+  count: 9
+
+act_f20_iwana_cT_model:
+  type: GFX
+  offset: 0x81242420
+  size: 0x68

@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_sum_ratan_bed01_pal:
+  type: TEXTURE
+  offset: 0x81A4E380
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_ratan_bed01_top_tax:
+  type: TEXTURE
+  offset: 0x81A4E3A0
+  format: CI4
+  width: 48
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A4E380
+
+int_sum_ratan_bed01_head_tax:
+  type: TEXTURE
+  offset: 0x81A4E520
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A4E380
+
+int_sum_ratan_bed01_side_tax:
+  type: TEXTURE
+  offset: 0x81A4E620
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A4E380
+
+int_sum_ratan_bed01_foot_tax:
+  type: TEXTURE
+  offset: 0x81A4E820
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A4E380
+
+int_sum_ratan_bed01_pillow_tax:
+  type: TEXTURE
+  offset: 0x81A4E8A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A4E380
+
+int_sum_ratan_bed01_v:
+  type: VTX
+  offset: 0x81A4E9A0
+  count: 64
+
+int_sum_ratan_bed01_on_model:
+  type: GFX
+  offset: 0x81A4EDA0
+  size: 0xC0
+
+int_sum_ratan_bed01_onT_model:
+  type: GFX
+  offset: 0x81A4EE60
+  size: 0x90

@@ -1,0 +1,62 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_gmushi_pal:
+  type: TEXTURE
+  offset: 0x81445900
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_gturi_pal:
+  type: TEXTURE
+  offset: 0x81445920
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_gscoop_pal:
+  type: TEXTURE
+  offset: 0x81445940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_gono_pal:
+  type: TEXTURE
+  offset: 0x81445960
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_gmushi_tex:
+  type: TEXTURE
+  offset: 0x81445980
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_gturi_tex:
+  type: TEXTURE
+  offset: 0x81445B80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_gscoop_tex:
+  type: TEXTURE
+  offset: 0x81445D80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_gono_tex:
+  type: TEXTURE
+  offset: 0x81445F80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

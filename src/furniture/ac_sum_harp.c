@@ -1,5 +1,4 @@
-extern Gfx int_sum_harp_on_model[];
-extern Gfx int_sum_harp_onT_model[];
+#include "assets/data/model/int_sum_harp.h"
 static void aSumHarp_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aSumHarp_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aSumHarp_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);

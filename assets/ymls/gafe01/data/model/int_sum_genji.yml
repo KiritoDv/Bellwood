@@ -1,0 +1,107 @@
+:config:
+  strict_declarations: true
+
+int_sum_genji_pal:
+  type: TEXTURE
+  offset: 0x819E6260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_genji_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x819E6280
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_genji_body_txt:
+  type: TEXTURE
+  offset: 0x819E62A0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819E6260
+
+int_sum_genji_base_txt:
+  type: TEXTURE
+  offset: 0x819E64A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E6260
+
+int_sum_genji_top_txt:
+  type: TEXTURE
+  offset: 0x819E6520
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E6260
+
+int_sum_genji_side_txt:
+  type: TEXTURE
+  offset: 0x819E6720
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E6260
+
+int_sum_genji_hand_txt:
+  type: TEXTURE
+  offset: 0x819E6920
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E6280
+
+int_sum_genji_v:
+  type: VTX
+  offset: 0x819E6A20
+  count: 60
+
+int_sum_genji_side_model:
+  type: GFX
+  offset: 0x819E6DE0
+  size: 0x68
+
+int_sum_genji_komado_model:
+  type: GFX
+  offset: 0x819E6E48
+  size: 0x58
+
+int_sum_genji_glass_model:
+  type: GFX
+  offset: 0x819E6EA0
+  size: 0x68
+
+int_sum_genji_base_model:
+  type: GFX
+  offset: 0x819E6F08
+  size: 0x98
+
+int_sum_genji_off_model:
+  type: GFX
+  offset: 0x819E6FA0
+  size: 0x60
+
+int_sum_genji_body_model:
+  type: GFX
+  offset: 0x819E7000
+  size: 0x60
+
+cKF_ba_r_int_sum_genji:
+  type: AC:CKF_ANIMATION
+  offset: 0x819E7128
+  joints: 7
+  counts: { flags: 7, data: 72, keys: 6, fixed: 18 }
+
+cKF_bs_r_int_sum_genji:
+  type: AC:CKF_SKELETON
+  offset: 0x819E7190
+  counts: { joints: 7 }

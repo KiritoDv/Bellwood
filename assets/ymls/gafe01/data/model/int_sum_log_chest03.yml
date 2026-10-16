@@ -1,0 +1,105 @@
+:config:
+  strict_declarations: true
+
+int_sum_log_chest03_pal:
+  type: TEXTURE
+  offset: 0x81A21F60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_log_chest03_back_tex:
+  type: TEXTURE
+  offset: 0x81A21F80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A21F60
+
+int_sum_log_chest03_front_tex:
+  type: TEXTURE
+  offset: 0x81A22080
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A21F60
+
+int_sum_log_chest03_top_tex:
+  type: TEXTURE
+  offset: 0x81A22280
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A21F60
+
+int_sum_log_chest03_top2_tex:
+  type: TEXTURE
+  offset: 0x81A22380
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A21F60
+
+int_sum_log_chest03_draw_tex:
+  type: TEXTURE
+  offset: 0x81A22400
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A21F60
+
+int_sum_log_chest03_side_tex:
+  type: TEXTURE
+  offset: 0x81A22480
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A21F60
+
+int_sum_log_chest03_foot_tex:
+  type: TEXTURE
+  offset: 0x81A22580
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A21F60
+
+int_sum_log_chest03_book_tex:
+  type: TEXTURE
+  offset: 0x81A22680
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A21F60
+
+int_sum_log_chest03_book2_tex:
+  type: TEXTURE
+  offset: 0x81A22700
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A21F60
+
+int_sum_log_chest03_v:
+  type: VTX
+  offset: 0x81A22780
+  count: 76
+
+int_sum_log_chest03_on_model:
+  type: GFX
+  offset: 0x81A22C40
+  size: 0xE0
+
+int_sum_log_chest03_onT_model:
+  type: GFX
+  offset: 0x81A22D20
+  size: 0xC8

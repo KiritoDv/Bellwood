@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_taisou_pal:
+  type: TEXTURE
+  offset: 0x8188FB00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_taisou_tex:
+  type: TEXTURE
+  offset: 0x8188FB20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8188FB00
+
+obj_item_taisou_v:
+  type: VTX
+  offset: 0x8188FD20
+  count: 4
+
+obj_item_taisouT_mat_model:
+  type: GFX
+  offset: 0x8188FD60
+  size: 0x48
+
+obj_item_taisouT_gfx_model:
+  type: GFX
+  offset: 0x8188FDA8
+  size: 0x18

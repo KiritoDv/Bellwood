@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_nog_earth_pal:
+  type: TEXTURE
+  offset: 0x818F82A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_earth_tex:
+  type: TEXTURE
+  offset: 0x818F82C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818F82A0
+
+int_nog_earth_v:
+  type: VTX
+  offset: 0x818F84C0
+  count: 4
+
+int_nog_earth_model:
+  type: GFX
+  offset: 0x818F8500
+  size: 0x58

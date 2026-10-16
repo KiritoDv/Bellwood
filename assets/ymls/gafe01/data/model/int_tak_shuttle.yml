@@ -1,0 +1,96 @@
+:config:
+  strict_declarations: true
+
+int_tak_shuttle_pal:
+  type: TEXTURE
+  offset: 0x81AA3840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_shuttle_back:
+  type: TEXTURE
+  offset: 0x81AA3860
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA3840
+
+int_tak_shuttle_eg:
+  type: TEXTURE
+  offset: 0x81AA38E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA3840
+
+int_tak_shuttle_fin:
+  type: TEXTURE
+  offset: 0x81AA3960
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA3840
+
+int_tak_shuttle_wing:
+  type: TEXTURE
+  offset: 0x81AA39E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA3840
+
+int_tak_shuttle_face1:
+  type: TEXTURE
+  offset: 0x81AA3BE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA3840
+
+int_tak_shuttle_face2:
+  type: TEXTURE
+  offset: 0x81AA3C60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA3840
+
+int_tak_shuttle_face4:
+  type: TEXTURE
+  offset: 0x81AA3CE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA3840
+
+int_tak_shuttle_body3:
+  type: TEXTURE
+  offset: 0x81AA3D60
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81AA3840
+
+int_tak_shuttle_v:
+  type: VTX
+  offset: 0x81AA4060
+  count: 67
+
+int_tak_shuttle_on_model:
+  type: GFX
+  offset: 0x81AA4490
+  size: 0x140
+
+int_tak_shuttle_onT_model:
+  type: GFX
+  offset: 0x81AA45D0
+  size: 0x78

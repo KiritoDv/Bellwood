@@ -1,6 +1,12 @@
 #include "m_field_make.h"
 #include "m_field_info.h"
 #include "m_scene.h"
+#include "assets/data/model/museum_entrance_actable.h"
+#include "assets/data/model/museum_fish_actable.h"
+#include "assets/data/model/museum_fossil_actable.h"
+#include "assets/data/model/museum_insect_actable.h"
+#include "assets/data/model/museum_picture_actable.h"
+#include "assets/data/model/needlework_actable.h"
 
 extern mFM_move_actor_data_c broker_shop_actable[];
 extern mFM_move_actor_data_c buggy_actable[];
@@ -12,12 +18,6 @@ extern mFM_move_actor_data_c fd4_actable[];
 extern mFM_move_actor_data_c fd_npc_land_actable[];
 extern mFM_move_actor_data_c fgout_actable[];
 extern mFM_move_actor_data_c kamakura_actable[];
-extern mFM_move_actor_data_c museum_entrance_actable[];
-extern mFM_move_actor_data_c museum_fish_actable[];
-extern mFM_move_actor_data_c museum_fossil_actable[];
-extern mFM_move_actor_data_c museum_insect_actable[];
-extern mFM_move_actor_data_c museum_picture_actable[];
-extern mFM_move_actor_data_c needlework_actable[];
 extern mFM_move_actor_data_c npcRoom001_actable[];
 extern mFM_move_actor_data_c playerRMM_actable[];
 extern mFM_move_actor_data_c playerRMS_actable[];

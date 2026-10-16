@@ -4,8 +4,9 @@
 #include "types.h"
 #include "PR/mbi.h"
 #include "THA_GA.h"
-#include "dolphin/os/OSMessage.h"
+#include "libultra/osMesg.h"
 #include "boot.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -50,9 +51,9 @@ typedef struct graph_s {
     /* 0x001C */ Gfx* Gfx_list09; /* light */
     /* 0x0020 */ Gfx* gfxsave;
     /* 0x0024 */ u8 _unk24[32];
-    /* 0x0044 */ OSMessage graphReplyMesgBuf[GRAPH_MSG_BUF_COUNT];
-    /* 0x0064 */ OSMessageQueue* schedMesgQueue;
-    /* 0x0068 */ OSMessageQueue graphReplyMesgQueue;
+    /* 0x0044 */ OSMesg graphReplyMesgBuf[GRAPH_MSG_BUF_COUNT];
+    /* 0x0064 */ OSMesgQueue* schedMesgQueue;
+    /* 0x0068 */ OSMesgQueue graphReplyMesgQueue;
     /* 0x0088 */ u8 _unused_ossctask00p[0x68]; /* real type = OSScTask */
     /* 0x00F0 */ u8 _unused_ossctask01p[0x68]; /* real type = OSScTask */
     /* 0x0158 */ u8 _unused_ossctask02p[0x68]; /* real type = OSScTask */
@@ -88,7 +89,7 @@ typedef struct graph_s {
     /* 0x0364 */ Gfx* Gfx_list11; /* new1 (highlight/reflections?) */
 } GRAPH ATTRIBUTE_ALIGN(8);       // one of the missing structs is likely aligned to 8 bytes.
 
-extern void graph_proc(void* arg);
+extern Gfx* gAC_PendingDL;
 extern void graph_ct(GRAPH* graph);
 extern void graph_dt(GRAPH* graph);
 
@@ -101,14 +102,14 @@ extern void graph_dt(GRAPH* graph);
     do {} while (0);              \
     {                             \
         GRAPH* __graph = (graph); \
-        int __gfx_opened = 0;     \
+        int __gfx_opened = FrameInterpolation_RecordOpenChildScope(__FILE__, __LINE__); \
         do {} while (0)
 // clang-format on
 
 // clang-format off
 #define CLOSE_DISP(graph)   \
         do {} while (0);    \
-        (void)__gfx_opened; \
+        FrameInterpolation_RecordCloseChildScope(__gfx_opened); \
     }                       \
     do {} while (0)
 // clang-format on
@@ -259,7 +260,7 @@ extern void graph_dt(GRAPH* graph);
 
 #define GRAPH_ALLOC(graph, size)                        \
     ((void*)((graph)->polygon_opaque_thaga.tha.tail_p = \
-                 (char*)((int)(graph)->polygon_opaque_thaga.tha.tail_p - (int)(size))))
+                 (graph)->polygon_opaque_thaga.tha.tail_p - (size)))
 #define GRAPH_ALLOC_TYPE(graph, type, num) (GRAPH_ALLOC(graph, sizeof(type) * (num)))
 
 #if VERSION != VER_GAFU01_00

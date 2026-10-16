@@ -3,6 +3,7 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_kamihubuki01_00.h"
 
 static void eKamifubuki_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eKamifubuki_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -71,7 +72,6 @@ static void eKamifubuki_mv(eEC_Effect_c* effect, GAME* game) {
     effect->acceleration.x += RANDOM_F(0.15f) * sin_s(effect->effect_specific[0]);
     effect->effect_specific[0] += effect->effect_specific[1];
 }
-extern Gfx ef_kamihubuki01_00_model[];
 static void eKamifubuki_one_draw(eEC_Effect_c* effect, xyz_t* pos, GAME* game) {
     OPEN_DISP(game->graph);
     Matrix_translate(pos->x, pos->y, pos->z, MTX_LOAD);

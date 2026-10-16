@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_nog_rail_pal:
+  type: TEXTURE
+  offset: 0x81910EE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_rail_tex:
+  type: TEXTURE
+  offset: 0x81910F00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81910EE0
+
+int_nog_rail_v:
+  type: VTX
+  offset: 0x81910F80
+  count: 16
+
+int_nog_rail_model:
+  type: GFX
+  offset: 0x81911080
+  size: 0x68

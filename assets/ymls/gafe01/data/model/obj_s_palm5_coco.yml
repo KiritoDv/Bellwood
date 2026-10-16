@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+obj_s_palm5_coco_v:
+  type: VTX
+  offset: 0x8110B960
+  count: 8
+
+obj_s_palm5_cocoT_gfx_model:
+  type: GFX
+  offset: 0x8110B9E0
+  size: 0x20

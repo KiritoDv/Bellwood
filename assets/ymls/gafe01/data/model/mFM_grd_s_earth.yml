@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_s_earth_tex:
+  type: TEXTURE
+  offset: 0x81642D80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+mFM_grd_s_earth_2_tex:
+  type: TEXTURE
+  offset: 0x81643580
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+mFM_grd_s_earth_3_tex:
+  type: TEXTURE
+  offset: 0x81643D80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx

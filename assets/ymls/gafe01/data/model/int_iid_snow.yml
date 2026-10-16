@@ -1,0 +1,141 @@
+:config:
+  strict_declarations: true
+
+int_iid_snow_pal:
+  type: TEXTURE
+  offset: 0x818176C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iid_snow_ashiue_tex:
+  type: TEXTURE
+  offset: 0x818176E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818176C0
+
+int_iid_snow_ashiyoko_tex:
+  type: TEXTURE
+  offset: 0x81817760
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818176C0
+
+int_iid_snow_ashimae_tex:
+  type: TEXTURE
+  offset: 0x81817860
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818176C0
+
+int_iid_snow_ashisoko_tex:
+  type: TEXTURE
+  offset: 0x818178E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818176C0
+
+int_iid_snow_ashiback_tex:
+  type: TEXTURE
+  offset: 0x818179E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818176C0
+
+int_iid_snow_bordue_tex:
+  type: TEXTURE
+  offset: 0x81817A60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818176C0
+
+int_iid_snow_bordshita_tex:
+  type: TEXTURE
+  offset: 0x81817B60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818176C0
+
+int_iid_snow_bordyoko_tex:
+  type: TEXTURE
+  offset: 0x81817BE0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x818176C0
+
+int_iid_snow_bordkakato_tex:
+  type: TEXTURE
+  offset: 0x81817C00
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818176C0
+
+int_iid_snow_bordura_tex:
+  type: TEXTURE
+  offset: 0x81817D00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818176C0
+
+int_iid_snow_bordana_tex:
+  type: TEXTURE
+  offset: 0x81817D80
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x818176C0
+
+int_iid_snow_bordpin_tex:
+  type: TEXTURE
+  offset: 0x81817DA0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x818176C0
+
+int_iid_snow_bordtate_tex:
+  type: TEXTURE
+  offset: 0x81817DC0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x818176C0
+
+int_iid_snow_v:
+  type: VTX
+  offset: 0x81817DE0
+  count: 397
+
+int_iid_snow_model:
+  type: GFX
+  offset: 0x818196B0
+  size: 0x318
+
+int_iid_snowT_model:
+  type: GFX
+  offset: 0x818199C8
+  size: 0x128

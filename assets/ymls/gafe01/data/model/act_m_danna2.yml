@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_danna_v:
+  type: VTX
+  offset: 0x8186CF00
+  count: 12
+
+act_m_danna_pal:
+  type: TEXTURE
+  offset: 0x8186CFC0
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_danna:
+  type: TEXTURE
+  offset: 0x8186CFE0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: n64
+  tlut: 0x8186CFC0
+
+act_m_mu_danna1T_model:
+  type: GFX
+  offset: 0x8186D1E0
+  size: 0xC8
+
+act_m_mu_danna2T_model:
+  type: GFX
+  offset: 0x8186D2A8
+  size: 0xC8

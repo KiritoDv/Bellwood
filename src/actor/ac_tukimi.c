@@ -6,6 +6,8 @@
 #include "m_rcp.h"
 #include "m_common_data.h"
 #include "m_player_lib.h"
+#include "assets/data/model/obj_e_tukimi_l_shadow.h"
+#include "assets/data/model/obj_e_tukimi_r.h"
 
 static void aTUK_actor_ct(ACTOR* actor, GAME* game);
 static void aTUK_actor_dt(ACTOR* actor, GAME* game);
@@ -31,8 +33,6 @@ u8 aTUK_shadow_vtx_fix_flg_table[8] = {
     TRUE, FALSE, TRUE, FALSE
 };
 
-extern Vtx obj_e_tukimi_l_shadow_v[];
-extern Gfx obj_e_tukimi_l_shadow_model[];
 static bIT_ShadowData_c aTUK_shadow_data_l = {
   8, aTUK_shadow_vtx_fix_flg_table,
   60.0f,
@@ -40,17 +40,12 @@ static bIT_ShadowData_c aTUK_shadow_data_l = {
   obj_e_tukimi_l_shadow_model
 };
 
-extern Vtx obj_e_tukimi_r_shadow_v[];
-extern Gfx obj_e_tukimi_r_shadow_model[];
 static bIT_ShadowData_c aTUK_shadow_data_r = {
   8, aTUK_shadow_vtx_fix_flg_table,
   60.0f,
   obj_e_tukimi_r_shadow_v,
   obj_e_tukimi_r_shadow_model
 };
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_e_tukimi_l;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_e_tukimi_r;
 
 static void aTUK_set_bgOffset(STRUCTURE_ACTOR* tukimi, int idx);
 static void aTUK_setup_action(ACTOR* actor);

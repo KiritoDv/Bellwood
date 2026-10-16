@@ -1,0 +1,10 @@
+:config:
+  strict_declarations: true
+
+log_win_logo4_tex:
+  type: TEXTURE
+  offset: 0x815E5420
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: n64

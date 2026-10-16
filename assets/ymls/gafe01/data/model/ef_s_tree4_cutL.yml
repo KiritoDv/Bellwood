@@ -1,0 +1,22 @@
+:config:
+  strict_declarations: true
+
+ef_s_tree4_cutL_v:
+  type: VTX
+  offset: 0x81651890
+  count: 16
+
+ef_s_tree4_cutL_leaf_model:
+  type: GFX
+  offset: 0x81651990
+  size: 0x38
+
+ef_s_tree4_cutL_trunk_model:
+  type: GFX
+  offset: 0x816519C8
+  size: 0x38
+
+cKF_bs_r_ef_s_tree4_cutL:
+  type: AC:CKF_SKELETON
+  offset: 0x81651A30
+  counts: { joints: 4 }

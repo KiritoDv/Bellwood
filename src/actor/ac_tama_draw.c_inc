@@ -1,5 +1,4 @@
-extern Gfx kago_r_ball_DL_model[];
-extern Gfx kago_w_ball_DL_model[];
+#include "assets/data/model/obj_e_kago_r.h"
 
 static void aTAM_actor_draw(ACTOR* actorx, GAME* game) {
   static Gfx* model[2] = { kago_r_ball_DL_model, kago_w_ball_DL_model };

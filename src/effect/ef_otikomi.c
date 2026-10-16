@@ -4,9 +4,8 @@
 #include "m_debug.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
-
-extern Gfx ef_doyon01_00_modelT[];
-extern Gfx ef_otikomi_us2_model[];
+#include "assets/data/model/ef_doyon01_00.h"
+#include "assets/data/model/ef_otikomi_us2.h"
 
 static void eOMN_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eOMN_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -78,11 +77,11 @@ static void eOMN_dw(eEC_Effect_c* effect, GAME* game) {
             scale_y = eEC_CLIP->calc_adjust_proc(timer, 10, 21, 0.0f, 0.0135f);
             alpha = 255;
             alpha2 = 100;
-            sAdo_OngenPos((u32)effect, 0x59, &effect->position);
+            sAdo_OngenPos((uintptr_t)effect, 0x59, &effect->position);
             break;
 
         case eEC_STATE_CONTINUOUS:
-            sAdo_OngenPos((u32)effect, 0x59, &effect->position);
+            sAdo_OngenPos((uintptr_t)effect, 0x59, &effect->position);
             scale_m = 0.01f;
             alpha = 255;
             scale_y = 0.0135f;

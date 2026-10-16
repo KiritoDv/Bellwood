@@ -1,6 +1,4 @@
-extern Gfx int_tak_cube_body_on_model[];
-extern Gfx int_tak_cube_evwT_model[];
-extern Gfx int_tak_cube_glass_onT_model[];
+#include "assets/data/model/int_tak_cube.h"
 
 aFTR_PROFILE iam_tak_cube = {
 	int_tak_cube_body_on_model,

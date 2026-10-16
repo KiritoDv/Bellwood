@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+obj_e_radio_t1_tex:
+  type: TEXTURE
+  offset: 0x815791C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_radio_t2_tex:
+  type: TEXTURE
+  offset: 0x815799C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_radio_v:
+  type: VTX
+  offset: 0x8157A1C0
+  count: 40
+
+obj_e_radio_t1_model:
+  type: GFX
+  offset: 0x8157A440
+  size: 0x40
+
+obj_e_radio_t2T_model:
+  type: GFX
+  offset: 0x8157A480
+  size: 0x58
+
+radio_DL_model:
+  type: GFX
+  offset: 0x8157A4D8
+  size: 0x40

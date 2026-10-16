@@ -1,0 +1,43 @@
+:config:
+  strict_declarations: true
+
+int_sum_kaseki_pal:
+  type: TEXTURE
+  offset: 0x816833A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_kaseki_body_txt:
+  type: TEXTURE
+  offset: 0x816833C0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x816833A0
+
+act_mus_kaseki_a1_v:
+  type: VTX
+  offset: 0x816837C0
+  count: 89
+
+act_mus_kaseki_sakana_leg_model:
+  type: GFX
+  offset: 0x81683D50
+  size: 0x68
+
+act_mus_kaseki_sakana_body_model:
+  type: GFX
+  offset: 0x81683DB8
+  size: 0x88
+
+act_mus_kaseki_sakana_head_model:
+  type: GFX
+  offset: 0x81683E40
+  size: 0x60
+
+cKF_bs_r_act_mus_kaseki_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x81683ED0
+  counts: { joints: 4 }

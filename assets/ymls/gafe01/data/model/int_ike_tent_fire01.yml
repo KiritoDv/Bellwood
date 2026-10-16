@@ -1,0 +1,110 @@
+:config:
+  strict_declarations: true
+
+int_sum_ayu_pal:
+  type: TEXTURE
+  offset: 0x81849D60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_tent_fire01_pal:
+  type: TEXTURE
+  offset: 0x81849D80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_kama_danro01_pal:
+  type: TEXTURE
+  offset: 0x81849DA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_ayu_body_txt:
+  type: TEXTURE
+  offset: 0x81849DC0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81849D60
+
+int_ike_tent_fire01_pole1_tex_txt:
+  type: TEXTURE
+  offset: 0x8184A0C0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81849D80
+
+int_ike_tent_fire01_tree2_tex_txt:
+  type: TEXTURE
+  offset: 0x8184A140
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81849D80
+
+int_ike_tent_fire01_tree1_tex_txt:
+  type: TEXTURE
+  offset: 0x8184A1C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81849D80
+
+int_ike_kama_danrotree1_tex_txt:
+  type: TEXTURE
+  offset: 0x8184A240
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81849DA0
+
+int_ike_tent_fire01_fire_pic_i4:
+  type: TEXTURE
+  offset: 0x8184A2C0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_ike_tent_fire01_fire2_pic_i4:
+  type: TEXTURE
+  offset: 0x8184A4C0
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+int_ike_tent_fire01_v:
+  type: VTX
+  offset: 0x8184A8C0
+  count: 126
+
+int_ike_tent_firetree_model:
+  type: GFX
+  offset: 0x8184B0A0
+  size: 0x378
+
+int_ike_fire_model:
+  type: GFX
+  offset: 0x8184B418
+  size: 0x70
+
+cKF_ba_r_int_ike_tent_fire01:
+  type: AC:CKF_ANIMATION
+  offset: 0x8184B4A4
+  joints: 3
+  counts: { flags: 3, data: 0, keys: 0, fixed: 12 }
+
+cKF_bs_r_int_ike_tent_fire01:
+  type: AC:CKF_SKELETON
+  offset: 0x8184B4DC
+  counts: { joints: 3 }

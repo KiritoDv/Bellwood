@@ -1,0 +1,254 @@
+:config:
+  strict_declarations: true
+
+rom_uranai_floor_tex_pal:
+  type: TEXTURE
+  offset: 0x81AC2120
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+rom_uranai_wall_tex_pal:
+  type: TEXTURE
+  offset: 0x81AC2140
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+rom_uranai_table_tex_pal:
+  type: TEXTURE
+  offset: 0x81AC2160
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+rom_uranai_tubo_tex_pal:
+  type: TEXTURE
+  offset: 0x81AC2180
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+rom_uranai_stand_tex_pal:
+  type: TEXTURE
+  offset: 0x81AC21A0
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+rom_uranai_tex_nuno_pal:
+  type: TEXTURE
+  offset: 0x81AC21C0
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+rom_uranai_tex_bace_pal:
+  type: TEXTURE
+  offset: 0x81AC21E0
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+rom_uranai_card_tex_pal:
+  type: TEXTURE
+  offset: 0x81AC2200
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+rom_uranai_floor_tex:
+  type: TEXTURE
+  offset: 0x81AC2220
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: n64
+  tlut: 0x81AC2120
+
+rom_uranai_wall01_tex:
+  type: TEXTURE
+  offset: 0x81AC2A20
+  format: CI4
+  width: 48
+  height: 64
+  source_encoding: n64
+  tlut: 0x81AC2140
+
+rom_uranai_wall02_tex:
+  type: TEXTURE
+  offset: 0x81AC3020
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: n64
+  tlut: 0x81AC2140
+
+rom_uranai_wall03_tex:
+  type: TEXTURE
+  offset: 0x81AC3420
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: n64
+  tlut: 0x81AC2140
+
+rom_uranai_table01_tex:
+  type: TEXTURE
+  offset: 0x81AC3820
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+  tlut: 0x81AC2160
+
+rom_uranai_table02_tex:
+  type: TEXTURE
+  offset: 0x81AC38A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+  tlut: 0x81AC2160
+
+rom_uranai_tubo_tex:
+  type: TEXTURE
+  offset: 0x81AC3920
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: n64
+  tlut: 0x81AC2180
+
+rom_uranai_shadow01_tex:
+  type: TEXTURE
+  offset: 0x81AC3B20
+  format: I4
+  width: 16
+  height: 32
+  source_encoding: n64
+
+rom_uranai_vell_tex:
+  type: TEXTURE
+  offset: 0x81AC3C20
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: n64
+
+rom_uranai_vell02_tex:
+  type: TEXTURE
+  offset: 0x81AC4020
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: n64
+
+rom_uranai_stand01_tex:
+  type: TEXTURE
+  offset: 0x81AC4420
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: n64
+  tlut: 0x81AC21A0
+
+rom_uranai_nuno01_tex:
+  type: TEXTURE
+  offset: 0x81AC4620
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+  tlut: 0x81AC21C0
+
+rom_uranai_nuno02_tex:
+  type: TEXTURE
+  offset: 0x81AC46A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+  tlut: 0x81AC21C0
+
+rom_uranai_bace_tex:
+  type: TEXTURE
+  offset: 0x81AC4720
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: n64
+  tlut: 0x81AC21E0
+
+rom_uranai_card01_tex:
+  type: TEXTURE
+  offset: 0x81AC4920
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: n64
+  tlut: 0x81AC2200
+
+rom_uranai_shadow02_tex:
+  type: TEXTURE
+  offset: 0x81AC4B20
+  format: I4
+  width: 16
+  height: 32
+  source_encoding: n64
+
+rom_uranai_card02_tex:
+  type: TEXTURE
+  offset: 0x81AC4C20
+  format: CI4
+  width: 48
+  height: 48
+  source_encoding: n64
+  tlut: 0x81AC2200
+
+rom_uranai_cris02_tex:
+  type: TEXTURE
+  offset: 0x81AC50A0
+  format: RGBA16
+  width: 32
+  height: 32
+  source_encoding: n64
+
+rom_uranai_cris01_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81AC58A0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: n64
+
+rom_uranai_hi02_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81AC5CA0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: n64
+
+rom_uranai_hi03_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81AC5EA0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: n64
+
+rom_uranai_v:
+  type: VTX
+  offset: 0x81AC60A0
+  count: 334
+
+rom_uranai_modelT:
+  type: GFX
+  offset: 0x81AC7580
+  size: 0x500
+
+rom_uranai_model:
+  type: GFX
+  offset: 0x81AC7A80
+  size: 0x8E8

@@ -1,0 +1,56 @@
+:config:
+  strict_declarations: true
+
+ef_onpu01_0:
+  type: TEXTURE
+  offset: 0x8166D880
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_onpu01_00_v:
+  type: VTX
+  offset: 0x8166D980
+  count: 4
+
+ef_onpu01_00_modelT:
+  type: GFX
+  offset: 0x8166D9C0
+  size: 0x48
+
+ef_onpu01_1:
+  type: TEXTURE
+  offset: 0x8166DA20
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_onpu01_01_v:
+  type: VTX
+  offset: 0x8166DB20
+  count: 4
+
+ef_onpu01_01_modelT:
+  type: GFX
+  offset: 0x8166DB60
+  size: 0x50
+
+ef_onpu01_2:
+  type: TEXTURE
+  offset: 0x8166DBC0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_onpu01_02_v:
+  type: VTX
+  offset: 0x8166DCC0
+  count: 4
+
+ef_onpu01_02_modelT:
+  type: GFX
+  offset: 0x8166DD00
+  size: 0x50

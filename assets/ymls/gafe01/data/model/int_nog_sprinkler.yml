@@ -1,0 +1,49 @@
+:config:
+  strict_declarations: true
+
+int_noga_sprinkler:
+  type: TEXTURE
+  offset: 0x81915D20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_sprinkler_tex:
+  type: TEXTURE
+  offset: 0x81915D40
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81915D20
+
+int_nog_sprinkler_fade_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81916540
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_sprinkler_water_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x819165C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_sprinkler_v:
+  type: VTX
+  offset: 0x81916640
+  count: 99
+
+int_nog_sprinkler_water_model:
+  type: GFX
+  offset: 0x81916C70
+  size: 0x80
+
+int_nog_sprinkler_bodyT_model:
+  type: GFX
+  offset: 0x81916CF0
+  size: 0x118

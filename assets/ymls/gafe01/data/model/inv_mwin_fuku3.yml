@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_fuku3_pal:
+  type: TEXTURE
+  offset: 0x814500A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_fuku3_tex:
+  type: TEXTURE
+  offset: 0x814500C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

@@ -4,8 +4,7 @@
 #include "m_debug.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
-
-extern Gfx ef_reset_hole_modelT[];
+#include "assets/data/model/ef_reset_hole.h"
 
 static void eReset_Hole_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eReset_Hole_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);

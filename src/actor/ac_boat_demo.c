@@ -5,6 +5,7 @@
 #include "m_bg_item.h"
 #include "m_bgm.h"
 #include "m_msg.h"
+#include "assets/actor/ac_boat_demo.h"
 
 /* For whatever reason, this file seems to have -pool off */
 #pragma push
@@ -31,16 +32,8 @@ ACTOR_PROFILE Boat_Demo_Profile = {
 static mDemo_Clip_c aBTD_clip;
 
 #ifndef __INTELLISENSE__
-static u8 aBTD_island_prg[] = {
-#include "assets/aBTD_island_prg.inc"
-};
 
-static u8 aBTD_island_ldr[] = {
-#include "assets/aBTD_island_ldr.inc"
-};
 #else
-extern u8 aBTD_island_prg[];
-extern u8 aBTD_island_ldr[];
 #endif
 
 static void aBTD_setupAction(BOAT_DEMO_ACTOR* boat_demo, GAME_PLAY* play, int action);

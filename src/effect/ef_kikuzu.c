@@ -3,6 +3,7 @@
 #include "m_common_data.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/ef_kikuzu01_00.h"
 
 static void eKikuzu_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eKikuzu_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -75,8 +76,6 @@ static void eKikuzu_mv(eEC_Effect_c* effect, GAME* game) {
         effect->velocity.z *= -0.6f;
     }
 }
-
-extern Gfx ef_kikuzu01_00_modelT[];
 
 static void eKikuzu_dw(eEC_Effect_c* effect, GAME* game) {
     u8 a = (int)eEC_CLIP->calc_adjust_proc(effect->timer, 0, 16, 0.0f, 255.0f);

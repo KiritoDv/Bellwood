@@ -1,0 +1,50 @@
+:config:
+  strict_declarations: true
+
+ef_warau01us:
+  type: TEXTURE
+  offset: 0x81675E00
+  format: IA8
+  width: 64
+  height: 32
+  source_encoding: gx
+
+ef_warau01_00_v:
+  type: VTX
+  offset: 0x81676600
+  count: 8
+
+ef_warau01_00_modelT:
+  type: GFX
+  offset: 0x81676680
+  size: 0x60
+
+ef_warau01_01_v:
+  type: VTX
+  offset: 0x816766E0
+  count: 8
+
+ef_warau01_01_modelT:
+  type: GFX
+  offset: 0x81676760
+  size: 0x60
+
+ef_warau01_02_v:
+  type: VTX
+  offset: 0x816767C0
+  count: 8
+
+ef_warau01_02_modelT:
+  type: GFX
+  offset: 0x81676840
+  size: 0x60
+
+ef_warau01_03_v:
+  type: VTX
+  offset: 0x816768A0
+  count: 8
+
+ef_warau01_03_modelT:
+  type: GFX
+  offset: 0x81676920
+  size: 0x60

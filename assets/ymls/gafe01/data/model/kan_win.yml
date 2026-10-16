@@ -1,0 +1,374 @@
+:config:
+  strict_declarations: true
+
+kan_win_map_tex:
+  type: TEXTURE
+  offset: 0x814B45C0
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+kan_win_waku2a_tex:
+  type: TEXTURE
+  offset: 0x814B47C0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+testa:
+  type: TEXTURE
+  offset: 0x814B57C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_b_tex:
+  type: TEXTURE
+  offset: 0x814B58C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_c_tex:
+  type: TEXTURE
+  offset: 0x814B59C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_w1_tex:
+  type: TEXTURE
+  offset: 0x814B5AC0
+  format: IA8
+  width: 128
+  height: 32
+  source_encoding: gx
+
+kan_win_w2_tex:
+  type: TEXTURE
+  offset: 0x814B6AC0
+  format: IA8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+kan_win_w3_tex:
+  type: TEXTURE
+  offset: 0x814B72C0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_win_d_tex:
+  type: TEXTURE
+  offset: 0x814B76C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_e_tex:
+  type: TEXTURE
+  offset: 0x814B77C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_f_tex:
+  type: TEXTURE
+  offset: 0x814B78C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_suuji1_tex:
+  type: TEXTURE
+  offset: 0x814B79C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_saki_tex:
+  type: TEXTURE
+  offset: 0x814B7AC0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_win_acre_tex:
+  type: TEXTURE
+  offset: 0x814B7EC0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kan_win_ga_tex:
+  type: TEXTURE
+  offset: 0x814B7FC0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_ga2_tex:
+  type: TEXTURE
+  offset: 0x814B80C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_suuji2_tex:
+  type: TEXTURE
+  offset: 0x814B81C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_suuji3_tex:
+  type: TEXTURE
+  offset: 0x814B82C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_suuji4_tex:
+  type: TEXTURE
+  offset: 0x814B83C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_suuji5_tex:
+  type: TEXTURE
+  offset: 0x814B84C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_ga3_tex:
+  type: TEXTURE
+  offset: 0x814B85C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_ga4_tex:
+  type: TEXTURE
+  offset: 0x814B86C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_a_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814B87C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_b_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814B88C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_c_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814B89C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_d_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814B8AC0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_e_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814B8BC0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_f_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814B8CC0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_suuji1_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814B8DC0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_suuji2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814B8EC0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_suuji3_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814B8FC0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_suuji4_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814B90C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_suuji5_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814B91C0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_v:
+  type: VTX
+  offset: 0x814B92C0
+  count: 131
+
+kan_win_moji1_model:
+  type: GFX
+  offset: 0x814B9AF0
+  size: 0x30
+  hints:
+    dl_index:
+      - { segment: 0x0B, targets: [0x814B9FB8, 0x814BA048] }
+
+kan_win_moji2_model:
+  type: GFX
+  offset: 0x814B9B20
+  size: 0x30
+  hints:
+    dl_index:
+      - { segment: 0x0B, targets: [0x814B9FB8, 0x814BA048] }
+
+kan_win_bou_model:
+  type: GFX
+  offset: 0x814B9B50
+  size: 0x20
+
+kan_win_kiwakuT_model:
+  type: GFX
+  offset: 0x814B9B70
+  size: 0x78
+
+kan_win_futiT_model:
+  type: GFX
+  offset: 0x814B9BE8
+  size: 0x78
+  hints:
+    dl_index:
+      - { segment: 0x0B, targets: [0x814B9FB8, 0x814BA048] }
+
+kan_win_futi2T_model:
+  type: GFX
+  offset: 0x814B9C60
+  size: 0x78
+  hints:
+    dl_index:
+      - { segment: 0x0B, targets: [0x814B9FB8, 0x814BA048] }
+
+kan_win_wakuT_model:
+  type: GFX
+  offset: 0x814B9CD8
+  size: 0x30
+  hints:
+    dl_index:
+      - { segment: 0x0B, targets: [0x814B9FB8, 0x814BA048] }
+
+kan_win_ban2T_model:
+  type: GFX
+  offset: 0x814B9D08
+  size: 0x38
+
+kan_win_banT_model:
+  type: GFX
+  offset: 0x814B9D40
+  size: 0x98
+
+kan_win_tyouT_model:
+  type: GFX
+  offset: 0x814B9DD8
+  size: 0xB0
+
+kan_win_tyou2T_model:
+  type: GFX
+  offset: 0x814B9E88
+  size: 0x38
+
+kan_win_sakiT_model:
+  type: GFX
+  offset: 0x814B9EC0
+  size: 0x30
+  hints:
+    dl_index:
+      - { segment: 0x0B, targets: [0x814B9FB8, 0x814BA048] }
+
+kan_win_mode:
+  type: GFX
+  offset: 0x814B9EF0
+  size: 0x20
+
+kan_win_model:
+  type: GFX
+  offset: 0x814B9F10
+  size: 0x20
+
+kan_win_model2:
+  type: GFX
+  offset: 0x814B9F30
+  size: 0x88
+
+kan_win_color0_mode:
+  type: GFX
+  offset: 0x814B9FB8
+  size: 0x90
+
+kan_win_color1_mode:
+  type: GFX
+  offset: 0x814BA048
+  size: 0x90

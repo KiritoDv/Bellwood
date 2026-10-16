@@ -1,0 +1,59 @@
+:config:
+  strict_declarations: true
+
+logo_us_back_4_tex_4i4_txt:
+  type: TEXTURE
+  offset: 0x815EA2E0
+  format: I4
+  width: 64
+  height: 128
+  source_encoding: gx
+
+logo_us_back_3_tex_4i4_txt:
+  type: TEXTURE
+  offset: 0x815EB2E0
+  format: I4
+  width: 64
+  height: 128
+  source_encoding: gx
+
+logo_us_back_1_tex_4i4_txt:
+  type: TEXTURE
+  offset: 0x815EC2E0
+  format: I4
+  width: 64
+  height: 128
+  source_encoding: gx
+
+logo_us_back_2_tex_4i4_txt:
+  type: TEXTURE
+  offset: 0x815ED2E0
+  format: I4
+  width: 64
+  height: 128
+  source_encoding: gx
+
+logo_us_back_v:
+  type: VTX
+  offset: 0x815EE2E0
+  count: 16
+
+logo_us_backD_model:
+  type: GFX
+  offset: 0x815EE3E0
+  size: 0x28
+
+logo_us_backC_model:
+  type: GFX
+  offset: 0x815EE408
+  size: 0x28
+
+logo_us_backB_model:
+  type: GFX
+  offset: 0x815EE430
+  size: 0x28
+
+logo_us_backA_model:
+  type: GFX
+  offset: 0x815EE458
+  size: 0x28

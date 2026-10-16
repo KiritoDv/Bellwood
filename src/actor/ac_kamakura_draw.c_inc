@@ -1,5 +1,4 @@
-extern Gfx kamakura_DL_model[];
-extern Gfx obj_w_kamakura_window_model[];
+#include "assets/data/model/obj_w_kamakura.h"
 
 static void aKKR_actor_draw(ACTOR* actor, GAME* game) {
     STRUCTURE_ACTOR* kamakura;

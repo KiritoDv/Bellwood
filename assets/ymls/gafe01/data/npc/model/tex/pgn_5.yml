@@ -1,0 +1,88 @@
+:config:
+  strict_declarations: true
+
+pgn_5_pal:
+  type: TEXTURE
+  offset: 0x813392C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+pgn_5_eye1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x813392E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+pgn_5_eye2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x813393E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+pgn_5_eye3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x813394E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+pgn_5_eye4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x813395E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+pgn_5_eye5_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x813396E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+pgn_5_eye6_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x813397E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+pgn_5_eye7_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x813398E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+pgn_5_eye8_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x813399E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+pgn_5_tmem_txt:
+  type: AC:TEX_ATLAS
+  offset: 0x81339AE0
+  size: 0x580
+  regions:
+    - { offset: 0x0, format: CI4, width: 32, height: 8 }
+    - { offset: 0x80, format: CI4, width: 32, height: 16 }
+    - { offset: 0x180, format: CI4, width: 32, height: 8 }
+    - { offset: 0x200, format: CI4, width: 32, height: 8 }
+    - { offset: 0x280, format: CI4, width: 32, height: 16 }
+    - { offset: 0x380, format: CI4, width: 16, height: 16 }
+    - { offset: 0x400, format: CI4, width: 32, height: 8 }
+    - { offset: 0x480, format: CI4, width: 16, height: 16 }
+    - { offset: 0x500, format: CI4, width: 32, height: 8 }

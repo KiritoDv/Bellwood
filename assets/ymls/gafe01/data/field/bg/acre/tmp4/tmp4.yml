@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+tmp4_v:
+  type: VTX
+  offset: 0x81615F08
+  count: 204
+
+tmp4_modelT:
+  type: GFX
+  offset: 0x81616BC8
+  size: 0x8
+
+tmp4_model:
+  type: GFX
+  offset: 0x81616BD0
+  size: 0x5C8

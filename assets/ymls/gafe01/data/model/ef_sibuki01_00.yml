@@ -1,0 +1,86 @@
+:config:
+  strict_declarations: true
+
+ef_sibuki01_1_int_i4:
+  type: TEXTURE
+  offset: 0x81670FA0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_sibuki01_2_int_i4:
+  type: TEXTURE
+  offset: 0x81671020
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_sibuki01_3_int_i4:
+  type: TEXTURE
+  offset: 0x816710A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_sibuki01_4_int_i4:
+  type: TEXTURE
+  offset: 0x81671120
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_sibuki01_00_v:
+  type: VTX
+  offset: 0x816711A0
+  count: 4
+
+ef_sibuki01_00_modelT:
+  type: GFX
+  offset: 0x816711E0
+  size: 0x48
+
+ef_sunahane01_0_inta_ia8:
+  type: TEXTURE
+  offset: 0x81671240
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_sunahane01_1_inta_ia8:
+  type: TEXTURE
+  offset: 0x81671340
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_sunahane01_2_inta_ia8:
+  type: TEXTURE
+  offset: 0x81671440
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_sunahane01_3_inta_ia8:
+  type: TEXTURE
+  offset: 0x81671540
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_sunahane01_00_v:
+  type: VTX
+  offset: 0x81671640
+  count: 4
+
+ef_sunahane01_00_modelT:
+  type: GFX
+  offset: 0x81671680
+  size: 0x48

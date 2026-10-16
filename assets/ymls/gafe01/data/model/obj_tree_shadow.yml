@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+obj_tree_shadow_tex:
+  type: TEXTURE
+  offset: 0x81110E00
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_tree3_shadow_v:
+  type: VTX
+  offset: 0x81111000
+  count: 4
+
+obj_tree3_shadowT_mat_model:
+  type: GFX
+  offset: 0x81111040
+  size: 0x20
+
+obj_tree3_shadowT_gfx_model:
+  type: GFX
+  offset: 0x81111060
+  size: 0x10

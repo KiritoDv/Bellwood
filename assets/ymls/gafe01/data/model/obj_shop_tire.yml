@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_tire_pal:
+  type: TEXTURE
+  offset: 0x8139B480
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_tire_tex:
+  type: TEXTURE
+  offset: 0x8139B4A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8139B480
+
+obj_shop_tire_v:
+  type: VTX
+  offset: 0x8139B6A0
+  count: 44
+
+obj_g1T_mat_model:
+  type: GFX
+  offset: 0x8139B960
+  size: 0x48
+
+obj_g1T_gfx_model:
+  type: GFX
+  offset: 0x8139B9A8
+  size: 0x60

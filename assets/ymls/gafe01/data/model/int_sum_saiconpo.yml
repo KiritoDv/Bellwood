@@ -1,0 +1,37 @@
+:config:
+  strict_declarations: true
+
+int_saiconpo_pal:
+  type: TEXTURE
+  offset: 0x81A58B00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_saiconpo_body_tex:
+  type: TEXTURE
+  offset: 0x81A58B20
+  format: CI4
+  width: 48
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A58B00
+
+int_sum_saiconpo_side_tex:
+  type: TEXTURE
+  offset: 0x81A58FA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A58B00
+
+int_sum_saiconpo_v:
+  type: VTX
+  offset: 0x81A590A0
+  count: 16
+
+int_sum_saiconpo_on_model:
+  type: GFX
+  offset: 0x81A591A0
+  size: 0x80

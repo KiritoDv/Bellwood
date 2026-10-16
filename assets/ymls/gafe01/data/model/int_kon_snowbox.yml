@@ -1,0 +1,98 @@
+:config:
+  strict_declarations: true
+
+int_kon_snowbox_tex_pal:
+  type: TEXTURE
+  offset: 0x818AFDC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_snowbox05_tex_txt:
+  type: TEXTURE
+  offset: 0x818AFDE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818AFDC0
+
+int_kon_snowbox07_tex_txt:
+  type: TEXTURE
+  offset: 0x818AFFE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AFDC0
+
+int_kon_snowbox03_tex_txt:
+  type: TEXTURE
+  offset: 0x818B0060
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AFDC0
+
+int_kon_snowbox04_tex_txt:
+  type: TEXTURE
+  offset: 0x818B0160
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AFDC0
+
+int_kon_snowbox06_tex_txt:
+  type: TEXTURE
+  offset: 0x818B01E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AFDC0
+
+int_kon_snowbox01_tex_txt:
+  type: TEXTURE
+  offset: 0x818B0260
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x818AFDC0
+
+int_kon_snowbox02_tex_txt:
+  type: TEXTURE
+  offset: 0x818B0460
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x818AFDC0
+
+int_kon_snowbox_v:
+  type: VTX
+  offset: 0x818B0660
+  count: 61
+
+int_kon_snowbox_door_model:
+  type: GFX
+  offset: 0x818B0A30
+  size: 0x80
+
+int_kon_snowbox_base_model:
+  type: GFX
+  offset: 0x818B0AB0
+  size: 0xF8
+
+cKF_ba_r_int_kon_snowbox:
+  type: AC:CKF_ANIMATION
+  offset: 0x818B0BF4
+  joints: 3
+  counts: { flags: 3, data: 21, keys: 1, fixed: 11 }
+
+cKF_bs_r_int_kon_snowbox:
+  type: AC:CKF_SKELETON
+  offset: 0x818B0C2C
+  counts: { joints: 3 }

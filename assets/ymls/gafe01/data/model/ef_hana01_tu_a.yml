@@ -1,0 +1,74 @@
+:config:
+  strict_declarations: true
+
+ef_hana01_tu_a_tex:
+  type: TEXTURE
+  offset: 0x81665E60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_hana01_tu_a_v:
+  type: VTX
+  offset: 0x81665EE0
+  count: 5
+
+ef_hana01_tu_a_modelT:
+  type: GFX
+  offset: 0x81665F30
+  size: 0x58
+
+ef_hana01_co_a_tex:
+  type: TEXTURE
+  offset: 0x81665FA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_hana01_co_a_v:
+  type: VTX
+  offset: 0x81666020
+  count: 5
+
+ef_hana01_co_a_modelT:
+  type: GFX
+  offset: 0x81666070
+  size: 0x58
+
+ef_hana01_pa_a_tex:
+  type: TEXTURE
+  offset: 0x816660E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_hana01_pa_a_v:
+  type: VTX
+  offset: 0x81666160
+  count: 5
+
+ef_hana01_pa_a_modelT:
+  type: GFX
+  offset: 0x816661B0
+  size: 0x58
+
+ef_hana01_ha_a_tex:
+  type: TEXTURE
+  offset: 0x81666220
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_hana01_ha_a_v:
+  type: VTX
+  offset: 0x816662A0
+  count: 5
+
+ef_hana01_ha_a_modelT:
+  type: GFX
+  offset: 0x816662F0
+  size: 0x58

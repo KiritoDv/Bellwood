@@ -1,5 +1,4 @@
-extern Gfx int_ike_jpn_tansu01_on_model[];
-extern Gfx int_ike_jpn_tansu01_onT_model[];
+#include "assets/data/model/int_ike_jpn_tansu01.h"
 
 aFTR_PROFILE iam_ike_jpn_tansu01 = {
     int_ike_jpn_tansu01_on_model,

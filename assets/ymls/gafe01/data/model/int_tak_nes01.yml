@@ -1,0 +1,358 @@
+:config:
+  strict_declarations: true
+
+int_tak_nes01_pal:
+  type: TEXTURE
+  offset: 0x81A9DF60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_cl_pal:
+  type: TEXTURE
+  offset: 0x81A9DF80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_af_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9DFA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_bb_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9DFC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_bf_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9DFE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_d2_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E000
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_d3_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E020
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_dk_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E040
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_eb_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_g_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_ic_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E0A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_mb_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E0C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_pb_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E0E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_po_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_sa_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E120
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_sm_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E140
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_so_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E160
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_t_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E180
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_wm_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E1A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes_zl_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A9E1C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nes01_top_tex:
+  type: TEXTURE
+  offset: 0x81A9E1E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A9DF60
+
+int_tak_nes01_side_tex:
+  type: TEXTURE
+  offset: 0x81A9E3E0
+  format: CI4
+  width: 128
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9DF60
+
+int_tak_nes01_con_tex:
+  type: TEXTURE
+  offset: 0x81A9E7E0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A9DF60
+
+int_tak_nes01_code_tex:
+  type: TEXTURE
+  offset: 0x81A9E820
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9DF60
+
+int_tak_nes_cl_tex:
+  type: TEXTURE
+  offset: 0x81A9E8A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_af_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81A9EAA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_bb_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81A9ECA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_bf_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81A9EEA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_d2_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81A9F0A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_d3_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81A9F2A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_dk_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81A9F4A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_eb_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81A9F6A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_g_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81A9F8A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_ic_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81A9FAA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_mb_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81A9FCA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_pb_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81A9FEA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_po_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81AA00A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_sa_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81AA02A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_sm_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81AA04A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_so_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81AA06A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_t_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81AA08A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_wm_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81AA0AA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_zl_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81AA0CA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes_ds_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81AA0EA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_nes01_v:
+  type: VTX
+  offset: 0x81AA10A0
+  count: 100
+
+int_tak_nes01_on_model:
+  type: GFX
+  offset: 0x81AA16E0
+  size: 0xF0
+
+int_tak_nes01_game_on_model:
+  type: GFX
+  offset: 0x81AA17D0
+  size: 0x68
+
+int_tak_nes01_onT_model:
+  type: GFX
+  offset: 0x81AA1838
+  size: 0x60

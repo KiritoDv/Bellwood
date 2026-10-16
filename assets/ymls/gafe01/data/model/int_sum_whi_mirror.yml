@@ -1,0 +1,99 @@
+:config:
+  strict_declarations: true
+
+int_sum_whi_mirror_pal:
+  type: TEXTURE
+  offset: 0x81A81C40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_whi_mirror_glass_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A81C60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_whi_mirror_front_tex:
+  type: TEXTURE
+  offset: 0x81A81C80
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A81C40
+
+int_sum_whi_mirror_side_tex:
+  type: TEXTURE
+  offset: 0x81A81E00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A81C40
+
+int_sum_whi_mirror_short_tex:
+  type: TEXTURE
+  offset: 0x81A82000
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A81C40
+
+int_sum_whi_mirror_mirror_tex:
+  type: TEXTURE
+  offset: 0x81A82080
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A81C40
+
+int_sum_whi_mirror_top_tex:
+  type: TEXTURE
+  offset: 0x81A82280
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A81C40
+
+int_sum_whi_mirror_up_tex:
+  type: TEXTURE
+  offset: 0x81A82380
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A81C40
+
+int_sum_whi_mirror_glass_tex:
+  type: TEXTURE
+  offset: 0x81A82400
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A81C60
+
+int_sum_whi_mirror_v:
+  type: VTX
+  offset: 0x81A82480
+  count: 66
+
+int_sum_whi_mirror_on_model:
+  type: GFX
+  offset: 0x81A828A0
+  size: 0x90
+
+int_sum_whi_mirror_evw_model:
+  type: GFX
+  offset: 0x81A82930
+  size: 0x58
+
+int_sum_whi_mirror_onT_model:
+  type: GFX
+  offset: 0x81A82988
+  size: 0xE8

@@ -1,0 +1,94 @@
+:config:
+  strict_declarations: true
+
+int_yaz_turkey_closet_pal:
+  type: TEXTURE
+  offset: 0x81AD1E80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yaz_turkey_closet_door_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD1EA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AD1E80
+
+int_yaz_turkey_closet_knob_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD1FA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD1E80
+
+int_yaz_turkey_closet_back_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD2020
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AD1E80
+
+int_yaz_turkey_closet_side2_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD2120
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AD1E80
+
+int_yaz_turkey_closet_asi_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD2220
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD1E80
+
+int_yaz_turkey_closet_frnt_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD2260
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81AD1E80
+
+int_yaz_turkey_closet_v:
+  type: VTX
+  offset: 0x81AD2660
+  count: 78
+
+int_yaz_turkey_closet_doorL_model:
+  type: GFX
+  offset: 0x81AD2B40
+  size: 0x78
+
+int_yaz_turkey_closet_body_model:
+  type: GFX
+  offset: 0x81AD2BB8
+  size: 0x140
+
+int_yaz_turkey_closet_doorR_model:
+  type: GFX
+  offset: 0x81AD2CF8
+  size: 0x78
+
+cKF_ba_r_int_yaz_turkey_closet:
+  type: AC:CKF_ANIMATION
+  offset: 0x81AD2E38
+  joints: 5
+  counts: { flags: 5, data: 78, keys: 12, fixed: 6 }
+
+cKF_bs_r_int_yaz_turkey_closet:
+  type: AC:CKF_SKELETON
+  offset: 0x81AD2E88
+  counts: { joints: 5 }

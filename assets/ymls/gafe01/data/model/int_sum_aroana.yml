@@ -1,0 +1,97 @@
+:config:
+  strict_declarations: true
+
+int_sum_aroana_pal:
+  type: TEXTURE
+  offset: 0x81987420
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_aroana_glass_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81987440
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_aroana_body_txt:
+  type: TEXTURE
+  offset: 0x81987460
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81987420
+
+int_sum_aroana_side_txt:
+  type: TEXTURE
+  offset: 0x81987760
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81987420
+
+int_sum_aroana_base_txt:
+  type: TEXTURE
+  offset: 0x81987960
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81987420
+
+int_sum_aroana_top_txt:
+  type: TEXTURE
+  offset: 0x819879E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81987420
+
+int_sum_aroana_glass_txt:
+  type: TEXTURE
+  offset: 0x81987AE0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81987440
+
+int_sum_aroana_v:
+  type: VTX
+  offset: 0x81987BE0
+  count: 45
+
+int_sum_aroana_sakana_model:
+  type: GFX
+  offset: 0x81987EB0
+  size: 0x70
+
+int_sum_aroana_top_model:
+  type: GFX
+  offset: 0x81987F20
+  size: 0x58
+
+int_sum_aroana_evw_model:
+  type: GFX
+  offset: 0x81987F78
+  size: 0x68
+
+int_sum_aroana_base_model:
+  type: GFX
+  offset: 0x81987FE0
+  size: 0x90
+
+cKF_ba_r_int_sum_aroana:
+  type: AC:CKF_ANIMATION
+  offset: 0x81988124
+  joints: 5
+  counts: { flags: 5, data: 66, keys: 9, fixed: 9 }
+
+cKF_bs_r_int_sum_aroana:
+  type: AC:CKF_SKELETON
+  offset: 0x81988174
+  counts: { joints: 5 }

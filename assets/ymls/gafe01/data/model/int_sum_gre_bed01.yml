@@ -1,0 +1,78 @@
+:config:
+  strict_declarations: true
+
+int_sum_gre_bed01_pal:
+  type: TEXTURE
+  offset: 0x819ED740
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_gre_bed01_headback_tex:
+  type: TEXTURE
+  offset: 0x819ED760
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819ED740
+
+int_sum_gre_bed01_headfront_tex:
+  type: TEXTURE
+  offset: 0x819ED960
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819ED740
+
+int_sum_gre_bed01_top_tex:
+  type: TEXTURE
+  offset: 0x819EDA60
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x819ED740
+
+int_sum_gre_bed01_pillow_tex:
+  type: TEXTURE
+  offset: 0x819EDD60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819ED740
+
+int_sum_gre_bed01_side2_tex:
+  type: TEXTURE
+  offset: 0x819EDDE0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819ED740
+
+int_sum_gre_bed01_book_tex:
+  type: TEXTURE
+  offset: 0x819EDEE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819ED740
+
+int_sum_gre_bed01_v:
+  type: VTX
+  offset: 0x819EDF60
+  count: 56
+
+int_sum_gre_bed01_on_model:
+  type: GFX
+  offset: 0x819EE2E0
+  size: 0x80
+
+int_sum_gre_bed01_onT_model:
+  type: GFX
+  offset: 0x819EE360
+  size: 0xF0

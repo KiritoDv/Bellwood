@@ -1,8 +1,5 @@
-extern Gfx obj_e_hanami_a_model[];
-extern Gfx obj_e_hanami_b_model[];
+#include "assets/data/model/obj_e_hanami_a.h"
 
-extern Gfx obj_e_hanami_a_modelT[];
-extern Gfx obj_e_hanami_b_modelT[];
 
 static void aGOZ_actor_draw(ACTOR* actor, GAME* game) {
     static Gfx* gfx_opa_table[] = { obj_e_hanami_a_model, obj_e_hanami_b_model };

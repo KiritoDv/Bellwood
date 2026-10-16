@@ -1,5 +1,4 @@
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_pawnB;
-extern cKF_Animation_R_c cKF_ba_r_int_nog_pawnB;
+#include "assets/data/model/int_nog_pawnB.h"
 
 static void aNogPawnB_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyframe = &ftr_actor->keyframe;
@@ -17,8 +16,6 @@ static void aNogPawnB_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game,
     cKF_SkeletonInfo_R_play(keyframe);
     keyframe->frame_control.speed = 0.5f;
 }
-
-extern Gfx int_nog_pawnB_top_model[];
 
 static int aNogPawnB_DwAfter(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
                              u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {

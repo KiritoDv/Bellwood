@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_e_mikuji.h"
 static void aMIK_actor_draw(ACTOR* actor, GAME* game){
     MIKUJI_ACTOR* mikuji = (MIKUJI_ACTOR*)actor;
 

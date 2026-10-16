@@ -1,3 +1,6 @@
+#include "assets/data/model/furniture_pull.h"
+#include "assets/data/model/furniture_push.h"
+#include "assets/data/model/furniture_stop.h"
 #define aMR_IS_SHOP() (mFI_CheckShop() == TRUE || mFI_GetFieldId() == mFI_FIELD_ROOM_BROKER_SHOP)
 
 typedef struct process_info_s {
@@ -724,8 +727,6 @@ static void aMR_AllContactCheck(MY_ROOM_ACTOR* my_room, aMR_contact_info_c* cont
     }
 }
 
-extern cKF_Animation_R_c cKF_ba_r_furniture_pull;
-
 // Aus plays move animation at half speed
 static void aMR_SetPullMoveAnime(FTR_ACTOR* ftr_actor, GAME* game, MY_ROOM_ACTOR* my_room,
                                  aMR_contact_info_c* contact_info) {
@@ -751,8 +752,6 @@ static void aMR_SetPullMoveAnime(FTR_ACTOR* ftr_actor, GAME* game, MY_ROOM_ACTOR
 
     cKF_SkeletonInfo_R_play(keyframe);
 }
-
-extern cKF_Animation_R_c cKF_ba_r_furniture_push;
 
 // Aus plays move animation at half speed
 static void aMR_SetPushMoveAnime(FTR_ACTOR* ftr_actor, GAME* game, MY_ROOM_ACTOR* my_room,
@@ -2899,7 +2898,7 @@ static void My_Room_Actor_move(ACTOR* actorx, GAME* game) {
 
             if (my_room->bgm_info.md_no != BGM_SPORTSFAIR_AEROBICS) {
                 mBGMPsComp_MDPlayerPos_param_set(&md_ftr_actor->position, md_angle,
-                                                 aMR_Fname2ConpoIndex(md_ftr_actor->name), (u32)md_ftr_actor);
+                                                 aMR_Fname2ConpoIndex(md_ftr_actor->name), (uintptr_t)md_ftr_actor);
             }
         }
     }

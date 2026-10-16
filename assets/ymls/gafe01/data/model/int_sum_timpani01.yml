@@ -1,0 +1,73 @@
+:config:
+  strict_declarations: true
+
+int_sum_timpani01_pal:
+  type: TEXTURE
+  offset: 0x81A6B0A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_timpani01_legtop_tex_txt:
+  type: TEXTURE
+  offset: 0x81A6B0C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A6B0A0
+
+int_sum_timpani01_top_tex_txt:
+  type: TEXTURE
+  offset: 0x81A6B140
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A6B0A0
+
+int_sum_timpani01_leg_tex_txt:
+  type: TEXTURE
+  offset: 0x81A6B340
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A6B0A0
+
+int_sum_timpani01_pedal_tex_txt:
+  type: TEXTURE
+  offset: 0x81A6B4C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A6B0A0
+
+int_sum_timpani01_crown_tex_txt:
+  type: TEXTURE
+  offset: 0x81A6B5C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A6B0A0
+
+int_sum_timpani01_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81A6B7C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A6B0A0
+
+int_sum_timpani01_v:
+  type: VTX
+  offset: 0x81A6B8C0
+  count: 80
+
+int_sum_timpani01_on_model:
+  type: GFX
+  offset: 0x81A6BDC0
+  size: 0x148

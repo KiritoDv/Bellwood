@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_cedar_light_pal:
+  type: TEXTURE
+  offset: 0x81120020
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_x_cedar_light_tex:
+  type: TEXTURE
+  offset: 0x81120040
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81120020
+
+obj_x_cedar5_light_v:
+  type: VTX
+  offset: 0x81120240
+  count: 28
+
+obj_x_ceder5_lightT_mat_model:
+  type: GFX
+  offset: 0x81120400
+  size: 0x48
+
+obj_x_ceder5_lightT_gfx_model:
+  type: GFX
+  offset: 0x81120448
+  size: 0x40

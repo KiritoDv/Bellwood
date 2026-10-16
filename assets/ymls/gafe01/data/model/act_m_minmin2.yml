@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_minmin_v:
+  type: VTX
+  offset: 0x81872C48
+  count: 22
+
+act_m_minmin_pal:
+  type: TEXTURE
+  offset: 0x81872DA8
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_minmin:
+  type: TEXTURE
+  offset: 0x81872DC8
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: n64
+  tlut: 0x81872DA8
+
+act_m_mu_minmin1_1T_model:
+  type: GFX
+  offset: 0x81872FC8
+  size: 0xC8
+
+act_m_mu_minmin1_2T_model:
+  type: GFX
+  offset: 0x81873090
+  size: 0xC8

@@ -1,0 +1,502 @@
+:config:
+  strict_declarations: true
+
+kai_sousa_icons_tex:
+  type: TEXTURE
+  offset: 0x8140D8C0
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+kai_sousa_lwaku_tex:
+  type: TEXTURE
+  offset: 0x8140DAC0
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+kai_sousa_letters_tex:
+  type: TEXTURE
+  offset: 0x8140DCC0
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+kai_sousa_rcontroller_tex:
+  type: TEXTURE
+  offset: 0x8140DEC0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kai_sousa_lcontroller_a_tex:
+  type: TEXTURE
+  offset: 0x8140E2C0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kai_sousa_punct_tex:
+  type: TEXTURE
+  offset: 0x8140F2C0
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+kai_sousa_lcontroller_b_tex:
+  type: TEXTURE
+  offset: 0x8140F4C0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kai_sousa_lcontroller_c_tex:
+  type: TEXTURE
+  offset: 0x814104C0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kai_sousa_lcontroller_d_tex:
+  type: TEXTURE
+  offset: 0x814114C0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kai_sousa_mojiban_tex:
+  type: TEXTURE
+  offset: 0x814124C0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kai_sousa_mojiban2_tex:
+  type: TEXTURE
+  offset: 0x814128C0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kai_sousa_kirikae_tex:
+  type: TEXTURE
+  offset: 0x81412CC0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kai_sousa_3D_tex:
+  type: TEXTURE
+  offset: 0x81412EC0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kai_sousa_ok_tex:
+  type: TEXTURE
+  offset: 0x814132C0
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kai_sousa_backspace_tex:
+  type: TEXTURE
+  offset: 0x814134C0
+  format: IA8
+  width: 80
+  height: 16
+  source_encoding: gx
+
+kai_sousa_cursor_tex:
+  type: TEXTURE
+  offset: 0x814139C0
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+kai_sousa_button3_tex:
+  type: TEXTURE
+  offset: 0x81413DC0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kai_sousa_shita_tex:
+  type: TEXTURE
+  offset: 0x81413EC0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kai_sousa_space_tex:
+  type: TEXTURE
+  offset: 0x814142C0
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+kai_sousa_caps_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x814146C0
+  format: I4
+  width: 48
+  height: 16
+  source_encoding: gx
+
+kai_sousa_small_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81414840
+  format: I4
+  width: 48
+  height: 16
+  source_encoding: gx
+
+kai_sousa_rbutton2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814149C0
+  format: IA8
+  width: 64
+  height: 32
+  source_encoding: gx
+
+kai_sousa_rbutton_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814151C0
+  format: IA8
+  width: 64
+  height: 32
+  source_encoding: gx
+
+kai_sousa_3Dst2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814159C0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kai_sousa_3Dst3_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814169C0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kai_sousa_3Dst4_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814179C0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kai_sousa_3Dst5_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814189C0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kai_sousa_3Dst6_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814199C0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kai_sousa_3Dst_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141A9C0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kai_sousa_button1a_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141B9C0
+  format: IA8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+kai_sousa_button1b_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141C1C0
+  format: IA8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+kai_sousa_button2a_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141C9C0
+  format: IA8
+  width: 16
+  height: 32
+  source_encoding: gx
+
+kai_sousa_button2b_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141CBC0
+  format: IA8
+  width: 16
+  height: 32
+  source_encoding: gx
+
+kai_sousa_controllpad1_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141CDC0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kai_sousa_controllpad2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141D1C0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kai_sousa_controllpad3_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141D5C0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kai_sousa_controllpad4_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141D9C0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kai_sousa_controllpad5_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141DDC0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kai_sousa_lbutton2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141E1C0
+  format: IA8
+  width: 64
+  height: 32
+  source_encoding: gx
+
+kai_sousa_lbutton_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141E9C0
+  format: IA8
+  width: 64
+  height: 32
+  source_encoding: gx
+
+kai_sousa_xbutton2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141F1C0
+  format: IA8
+  width: 16
+  height: 32
+  source_encoding: gx
+
+kai_sousa_xbutton_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141F3C0
+  format: IA8
+  width: 16
+  height: 32
+  source_encoding: gx
+
+kai_sousa_ybutton2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141F5C0
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kai_sousa_ybutton_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8141F7C0
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kai_sousa_lwaku_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x8141F9C0
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+kai_sousa_v:
+  type: VTX
+  offset: 0x8141FBC0
+  count: 131
+
+kai_sousa_mode:
+  type: GFX
+  offset: 0x814203F0
+  size: 0x28
+
+kai_sousa_lwaku_model:
+  type: GFX
+  offset: 0x81420418
+  size: 0x30
+
+kai_sousa_kirikae_model:
+  type: GFX
+  offset: 0x81420448
+  size: 0x38
+
+kai_sousa_henkan_model:
+  type: GFX
+  offset: 0x81420480
+  size: 0x38
+
+kai_sousa_letter_model:
+  type: GFX
+  offset: 0x814204B8
+  size: 0x30
+
+kai_sousa_sign_model:
+  type: GFX
+  offset: 0x814204E8
+  size: 0x30
+
+kai_sousa_mark_model:
+  type: GFX
+  offset: 0x81420518
+  size: 0x30
+
+kai_sousa_yajirushi_model:
+  type: GFX
+  offset: 0x81420548
+  size: 0x28
+
+kai_sousa_lmoji_model:
+  type: GFX
+  offset: 0x81420570
+  size: 0x38
+
+kai_sousa_lbuttonT_model:
+  type: GFX
+  offset: 0x814205A8
+  size: 0x40
+
+kai_sousa_rbuttonT_model:
+  type: GFX
+  offset: 0x814205E8
+  size: 0x40
+
+kai_sousa_controllerT_model:
+  type: GFX
+  offset: 0x81420628
+  size: 0x88
+
+kai_sousa_shitaT_model:
+  type: GFX
+  offset: 0x814206B0
+  size: 0x40
+
+kai_sousa_controller2T_model:
+  type: GFX
+  offset: 0x814206F0
+  size: 0x40
+
+kai_sousa_mojibanT_model:
+  type: GFX
+  offset: 0x81420730
+  size: 0x68
+
+kai_sousa_controllpadT_model:
+  type: GFX
+  offset: 0x81420798
+  size: 0x40
+
+kai_sousa_ybuttonT_model:
+  type: GFX
+  offset: 0x814207D8
+  size: 0x40
+
+kai_sousa_xbuttonT_model:
+  type: GFX
+  offset: 0x81420818
+  size: 0x40
+
+kai_sousa_3DT_model:
+  type: GFX
+  offset: 0x81420858
+  size: 0x40
+
+kai_sousa_3DstT_model:
+  type: GFX
+  offset: 0x81420898
+  size: 0x40
+
+kai_sousa_bbuttonT_model:
+  type: GFX
+  offset: 0x814208D8
+  size: 0x40
+
+kai_sousa_abuttonT_model:
+  type: GFX
+  offset: 0x81420918
+  size: 0x40
+
+kai_sousa_startbuttonT_model:
+  type: GFX
+  offset: 0x81420958
+  size: 0x40
+
+kai_sousa_endT_model:
+  type: GFX
+  offset: 0x81420998
+  size: 0x40
+
+kai_sousa_cancelT_model:
+  type: GFX
+  offset: 0x814209D8
+  size: 0x40
+
+kai_sousa_cursorT_model:
+  type: GFX
+  offset: 0x81420A18
+  size: 0x40
+
+kai_sousa_spaceT_model:
+  type: GFX
+  offset: 0x81420A58
+  size: 0x40

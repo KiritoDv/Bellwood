@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+int_ike_k_mame01_pal:
+  type: TEXTURE
+  offset: 0x81837B20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_k_mamebox1_tex_txt:
+  type: TEXTURE
+  offset: 0x81837B40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81837B20
+
+int_ike_k_mamemame1_tex_txt:
+  type: TEXTURE
+  offset: 0x81837C40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81837B20
+
+int_ike_k_mamen_tex_txt:
+  type: TEXTURE
+  offset: 0x81837CC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81837B20
+
+int_ike_k_mamehimo_tex_txt:
+  type: TEXTURE
+  offset: 0x81837EC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81837B20
+
+int_ike_k_mame01_v:
+  type: VTX
+  offset: 0x81837FC0
+  count: 69
+
+int_ike_k_mame01_body_model:
+  type: GFX
+  offset: 0x81838410
+  size: 0x110

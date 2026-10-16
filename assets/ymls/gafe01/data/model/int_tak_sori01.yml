@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_tak_sori01_pal:
+  type: TEXTURE
+  offset: 0x81AA5900
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_sori01_body_tex:
+  type: TEXTURE
+  offset: 0x81AA5920
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA5900
+
+int_tak_sori01_ita_tex:
+  type: TEXTURE
+  offset: 0x81AA5D20
+  format: CI4
+  width: 8
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA5900
+
+int_tak_sori01_sofa_tex:
+  type: TEXTURE
+  offset: 0x81AA5DA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA5900
+
+int_tak_sori01_ropeside_tex:
+  type: TEXTURE
+  offset: 0x81AA5EA0
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA5900
+
+int_tak_sori01_v:
+  type: VTX
+  offset: 0x81AA5EE0
+  count: 158
+
+int_tak_sori01_on_model:
+  type: GFX
+  offset: 0x81AA68C0
+  size: 0x170
+
+int_tak_sori01_onT_model:
+  type: GFX
+  offset: 0x81AA6A30
+  size: 0xC8

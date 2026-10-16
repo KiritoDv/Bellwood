@@ -6,6 +6,7 @@
 #include "m_rcp.h"
 #include "m_common_data.h"
 #include "m_player_lib.h"
+#include "assets/data/model/obj_s_lotus.h"
 
 enum {
   aLOT_ACTION_WAIT1,
@@ -47,8 +48,6 @@ static ClObjPipeData_c lotus_CoInfoData = {
 };
 
 ClObjPipe_c pipeinfo;
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_lotus;
 
 static void aLOT_setup_action(LOTUS_ACTOR* lotus, int action);
 static int aLOT_getPalNo();

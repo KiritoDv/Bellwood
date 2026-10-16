@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_diary_pal:
+  type: TEXTURE
+  offset: 0x81891C20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_diary_tex:
+  type: TEXTURE
+  offset: 0x81891C40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81891C20
+
+obj_item_diary_v:
+  type: VTX
+  offset: 0x81891E40
+  count: 4
+
+obj_item_diaryT_mat_model:
+  type: GFX
+  offset: 0x81891E80
+  size: 0x48
+
+obj_item_diaryT_gfx_model:
+  type: GFX
+  offset: 0x81891EC8
+  size: 0x18

@@ -1,0 +1,134 @@
+:config:
+  strict_declarations: true
+
+rom_shop1_pal:
+  type: TEXTURE
+  offset: 0x81972180
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop1_w_pal:
+  type: TEXTURE
+  offset: 0x819721A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop1_f_pal:
+  type: TEXTURE
+  offset: 0x819721C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop_kouhaku_pal:
+  type: TEXTURE
+  offset: 0x819721E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop1_table_tex:
+  type: TEXTURE
+  offset: 0x81972200
+  format: CI4
+  width: 64
+  height: 48
+  source_encoding: gx
+  tlut: 0x81972180
+
+rom_shop1_window_tex:
+  type: TEXTURE
+  offset: 0x81972800
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81972180
+
+rom_shop1_shadow_tex:
+  type: TEXTURE
+  offset: 0x81973000
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+rom_shop1_w1_tex:
+  type: TEXTURE
+  offset: 0x81973400
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x819721A0
+
+rom_shop1_w2_tex:
+  type: TEXTURE
+  offset: 0x81973C00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x819721A0
+
+rom_shop1_f1_tex:
+  type: TEXTURE
+  offset: 0x81974400
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x819721C0
+
+rom_shop1_f2_tex:
+  type: TEXTURE
+  offset: 0x81974C00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x819721C0
+
+rom_shop1_f3_tex:
+  type: TEXTURE
+  offset: 0x81975400
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x819721C0
+
+rom_shop1_f4_tex:
+  type: TEXTURE
+  offset: 0x81975C00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x819721C0
+
+rom_shop_kouhaku_tex:
+  type: TEXTURE
+  offset: 0x81976400
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x819721E0
+
+rom_shop1_fuku_v:
+  type: VTX
+  offset: 0x81976C00
+  count: 233
+
+rom_shop1_fuku_modelT:
+  type: GFX
+  offset: 0x81977A90
+  size: 0x70
+
+rom_shop1_fuku_model:
+  type: GFX
+  offset: 0x81977B00
+  size: 0x340

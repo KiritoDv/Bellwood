@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_yukihane01_00.h"
 
 static void eYukihane_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eYukihane_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -48,17 +49,10 @@ static void eYukihane_mv(eEC_Effect_c* effect, GAME* game) {
     xyz_t_add(&effect->position, &effect->velocity, &effect->position);
 }
 
-extern u8 ef_yukihane01_0_inta_ia8[];
-extern u8 ef_yukihane01_1_inta_ia8[];
-extern u8 ef_yukihane01_2_inta_ia8[];
-extern u8 ef_yukihane01_3_inta_ia8[];
-
 static u8* eYukihane_pattern_table[] = {
     ef_yukihane01_0_inta_ia8, ef_yukihane01_0_inta_ia8, ef_yukihane01_1_inta_ia8, ef_yukihane01_1_inta_ia8,
     ef_yukihane01_2_inta_ia8, ef_yukihane01_2_inta_ia8, ef_yukihane01_3_inta_ia8, ef_yukihane01_3_inta_ia8,
 };
-
-extern Gfx ef_yukihane01_00_modelT[];
 
 static void eYukihane_dw(eEC_Effect_c* effect, GAME* game) {
     s16 elapsed_time = (s16)(16 - effect->timer) >> 1;

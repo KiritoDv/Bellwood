@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_niko_f1:
+  type: AC:NPC_ANIM
+  offset: 0x813005E4
+  joints: 26
+  counts: { flags: 26, data: 510, keys: 54, fixed: 27 }

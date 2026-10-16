@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_w_station_tex:
+  type: TEXTURE
+  offset: 0x81979A60
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+mFM_grd_w_station_2_tex:
+  type: TEXTURE
+  offset: 0x8197A260
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+mFM_grd_w_station_3_tex:
+  type: TEXTURE
+  offset: 0x8197AA60
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx

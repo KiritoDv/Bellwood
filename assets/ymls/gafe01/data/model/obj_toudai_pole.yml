@@ -1,0 +1,135 @@
+:config:
+  strict_declarations: true
+
+obj_toudai_pole_pal:
+  type: TEXTURE
+  offset: 0x81292080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_toudai_poleA_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x812920A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_toudai_poleE_tex_txt:
+  type: TEXTURE
+  offset: 0x812920C0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81292080
+
+obj_toudai_pole_kage_txt:
+  type: TEXTURE
+  offset: 0x812920E0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_toudai_poleB_tex_txt:
+  type: TEXTURE
+  offset: 0x812921E0
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x81292080
+
+obj_toudai_poleC_tex_txt:
+  type: TEXTURE
+  offset: 0x81292220
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81292080
+
+obj_toudai_poleD_tex_txt:
+  type: TEXTURE
+  offset: 0x81292420
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81292080
+
+obj_toudai_poleA_tex_txt:
+  type: TEXTURE
+  offset: 0x81292460
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x812920A0
+
+obj_toudai_pole_v:
+  type: VTX
+  offset: 0x812924A0
+  count: 355
+
+obj_toudai_pole_kage_model:
+  type: GFX
+  offset: 0x81293AD0
+  size: 0x118
+
+obj_toudai_pole_evw_model:
+  type: GFX
+  offset: 0x81293BE8
+  size: 0x120
+
+obj_toudai_poleE_model:
+  type: GFX
+  offset: 0x81293D08
+  size: 0xA0
+
+obj_toudai_poleD1_model:
+  type: GFX
+  offset: 0x81293DA8
+  size: 0x78
+
+obj_toudai_poleC1_model:
+  type: GFX
+  offset: 0x81293E20
+  size: 0x68
+
+obj_toudai_poleB_model:
+  type: GFX
+  offset: 0x81293E88
+  size: 0x78
+
+obj_toudai_poleD2_model:
+  type: GFX
+  offset: 0x81293F00
+  size: 0x88
+
+obj_toudai_poleC2_model:
+  type: GFX
+  offset: 0x81293F88
+  size: 0x68
+
+obj_toudai_poleD3_model:
+  type: GFX
+  offset: 0x81293FF0
+  size: 0x88
+
+obj_toudai_poleC3_model:
+  type: GFX
+  offset: 0x81294078
+  size: 0x78
+
+cKF_ba_r_obj_toudai_pole:
+  type: AC:CKF_ANIMATION
+  offset: 0x81294180
+  joints: 14
+  counts: { flags: 14, data: 18, keys: 3, fixed: 42 }
+
+cKF_bs_r_obj_toudai_pole:
+  type: AC:CKF_SKELETON
+  offset: 0x8129423C
+  counts: { joints: 14 }

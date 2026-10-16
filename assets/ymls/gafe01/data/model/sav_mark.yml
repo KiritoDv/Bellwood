@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+inv_original_mark_tex:
+  type: TEXTURE
+  offset: 0x814C3880
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+sav_mark_v:
+  type: VTX
+  offset: 0x814C3980
+  count: 4
+
+sav_mark_winT_before_model:
+  type: GFX
+  offset: 0x814C39C0
+  size: 0x30
+
+sav_mark_winT_model:
+  type: GFX
+  offset: 0x814C39F0
+  size: 0x18

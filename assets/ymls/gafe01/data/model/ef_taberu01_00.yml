@@ -1,0 +1,50 @@
+:config:
+  strict_declarations: true
+
+ef_taberu01_0:
+  type: TEXTURE
+  offset: 0x81672500
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_taberu01_00_v:
+  type: VTX
+  offset: 0x81672600
+  count: 20
+
+ef_taberu01_00_modelT:
+  type: GFX
+  offset: 0x81672740
+  size: 0x68
+
+ef_taberu01_01_v:
+  type: VTX
+  offset: 0x816727A8
+  count: 20
+
+ef_taberu01_01_modelT:
+  type: GFX
+  offset: 0x816728E8
+  size: 0x68
+
+ef_taberu01_02_v:
+  type: VTX
+  offset: 0x81672950
+  count: 20
+
+ef_taberu01_02_modelT:
+  type: GFX
+  offset: 0x81672A90
+  size: 0x68
+
+ef_taberu01_03_v:
+  type: VTX
+  offset: 0x81672AF8
+  count: 20
+
+ef_taberu01_03_modelT:
+  type: GFX
+  offset: 0x81672C38
+  size: 0x68

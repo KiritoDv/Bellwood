@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_kyoro1:
+  type: AC:NPC_ANIM
+  offset: 0x812D727C
+  joints: 26
+  counts: { flags: 26, data: 549, keys: 54, fixed: 27 }

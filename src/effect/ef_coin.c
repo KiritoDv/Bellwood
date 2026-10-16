@@ -3,6 +3,8 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_coin.h"
+#include "assets/effect/ef_coin.h"
 
 static void eCoin_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eCoin_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -131,18 +133,7 @@ static void eCoin_mv(eEC_Effect_c* effect, GAME* game) {
     }
 }
 
-static u16 ef_coin_gold_pal[16] ATTRIBUTE_ALIGN(32) = {
-#include "assets/ef_coin_gold_pal.inc"
-};
-
-static u16 ef_coin_silver_pal[16] ATTRIBUTE_ALIGN(32) = {
-#include "assets/ef_coin_silver_pal.inc"
-};
-
 static u16* eCoin_pal_table[2] = { ef_coin_gold_pal, ef_coin_silver_pal };
-
-extern Gfx ef_coin_model[];
-extern Gfx ef_coin_modelT[];
 
 static void eCoin_dw(eEC_Effect_c* effect, GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;

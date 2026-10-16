@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+__Creator__:
+  type: BLOB
+  offset: 0x800B05E8
+  size: 0xC
+
+__DateTime__:
+  type: BLOB
+  offset: 0x800B05F4
+  size: 0x12

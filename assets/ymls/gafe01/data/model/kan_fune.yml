@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+kan_win_fune_tex:
+  type: TEXTURE
+  offset: 0x814AE340
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_fune_v:
+  type: VTX
+  offset: 0x814AE440
+  count: 4
+
+kan_win_funeT_model:
+  type: GFX
+  offset: 0x814AE480
+  size: 0x48

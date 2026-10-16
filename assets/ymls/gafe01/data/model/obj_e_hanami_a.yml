@@ -1,0 +1,114 @@
+:config:
+  strict_declarations: true
+
+obj_e_hanami_t1_pal:
+  type: TEXTURE
+  offset: 0x815283E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_hanami_t2_pal:
+  type: TEXTURE
+  offset: 0x81528400
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_hanami_t3_pal:
+  type: TEXTURE
+  offset: 0x81528420
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_hanami_t5_pal:
+  type: TEXTURE
+  offset: 0x81528440
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_hanami_t1:
+  type: TEXTURE
+  offset: 0x81528460
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x815283E0
+
+obj_e_hanami_t2:
+  type: TEXTURE
+  offset: 0x81528C60
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81528400
+
+obj_e_hanami_t3:
+  type: TEXTURE
+  offset: 0x81529060
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81528420
+
+obj_e_hanami_t4:
+  type: TEXTURE
+  offset: 0x81529260
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x81528420
+
+obj_e_hanami_t5:
+  type: TEXTURE
+  offset: 0x815292A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81528440
+
+obj_e_hanami_t6:
+  type: TEXTURE
+  offset: 0x81529320
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81528440
+
+obj_e_hanami_a_v:
+  type: VTX
+  offset: 0x81529340
+  count: 177
+
+obj_e_hanami_a_modelT:
+  type: GFX
+  offset: 0x81529E50
+  size: 0x8
+
+obj_e_hanami_a_model:
+  type: GFX
+  offset: 0x81529E58
+  size: 0x230
+
+obj_e_hanami_b_v:
+  type: VTX
+  offset: 0x8152A088
+  count: 190
+
+obj_e_hanami_b_modelT:
+  type: GFX
+  offset: 0x8152AC68
+  size: 0x8
+
+obj_e_hanami_b_model:
+  type: GFX
+  offset: 0x8152AC70
+  size: 0x240

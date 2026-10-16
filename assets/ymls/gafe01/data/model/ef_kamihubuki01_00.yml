@@ -1,0 +1,22 @@
+:config:
+  strict_declarations: true
+
+ef_kamihubuki01_00_v:
+  type: VTX
+  offset: 0x81662C30
+  count: 6
+
+ef_kamihubuki01_00_model:
+  type: GFX
+  offset: 0x81662C90
+  size: 0x40
+
+ef_tape01_01_v:
+  type: VTX
+  offset: 0x81662CD0
+  count: 22
+
+ef_tape01_01_model:
+  type: GFX
+  offset: 0x81662E30
+  size: 0x90

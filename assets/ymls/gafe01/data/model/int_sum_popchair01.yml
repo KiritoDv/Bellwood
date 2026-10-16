@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_sum_poptable01_pal:
+  type: TEXTURE
+  offset: 0x81A48380
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_popchair01_top_tex:
+  type: TEXTURE
+  offset: 0x81A483A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A48380
+
+int_sum_popchair01_standtop_tex:
+  type: TEXTURE
+  offset: 0x81A485A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A48380
+
+int_sum_popchair01_side1_tex:
+  type: TEXTURE
+  offset: 0x81A48620
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A48380
+
+int_sum_popchair01_stand_tex:
+  type: TEXTURE
+  offset: 0x81A48720
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A48380
+
+int_sum_popchair01_board_tex:
+  type: TEXTURE
+  offset: 0x81A48820
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A48380
+
+int_sum_popchair01_v:
+  type: VTX
+  offset: 0x81A48A20
+  count: 50
+
+int_sum_popchair01_onT_model:
+  type: GFX
+  offset: 0x81A48D40
+  size: 0x108

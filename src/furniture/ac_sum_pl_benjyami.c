@@ -1,5 +1,4 @@
-extern Gfx int_sum_pl_benjyami_on_model[];
-extern Gfx int_sum_pl_benjyami_onT_model[];
+#include "assets/data/model/int_sum_pl_benjyami.h"
 
 aFTR_PROFILE iam_sum_pl_benjyami = {
 	int_sum_pl_benjyami_on_model,

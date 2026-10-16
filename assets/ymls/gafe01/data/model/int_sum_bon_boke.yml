@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_sum_bon_boke_pal:
+  type: TEXTURE
+  offset: 0x819AE7C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bon_boke_hachi_tex:
+  type: TEXTURE
+  offset: 0x819AE7E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819AE7C0
+
+int_sum_bon_boke_stand_tex:
+  type: TEXTURE
+  offset: 0x819AE8E0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x819AE7C0
+
+int_sum_bon_boke_standside_tex:
+  type: TEXTURE
+  offset: 0x819AECE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819AE7C0
+
+int_sum_bon_boke_hana_tex:
+  type: TEXTURE
+  offset: 0x819AEEE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819AE7C0
+
+int_sum_bon_boke_earth_tex:
+  type: TEXTURE
+  offset: 0x819AEF60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819AE7C0
+
+int_sum_bon_boke_v:
+  type: VTX
+  offset: 0x819AEFE0
+  count: 58
+
+int_sum_bon_boke_on_model:
+  type: GFX
+  offset: 0x819AF380
+  size: 0x60
+
+int_sum_bon_boke_onT_model:
+  type: GFX
+  offset: 0x819AF3E0
+  size: 0xE8

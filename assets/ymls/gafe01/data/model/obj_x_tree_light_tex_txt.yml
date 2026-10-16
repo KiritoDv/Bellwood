@@ -1,0 +1,42 @@
+:config:
+  strict_declarations: true
+
+obj_tree_light_pal:
+  type: TEXTURE
+  offset: 0x8165E7A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_tree_leaf_tex_txt:
+  type: TEXTURE
+  offset: 0x8165E7C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_w_tree_cutS_tex_txt:
+  type: TEXTURE
+  offset: 0x8165EFC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_w_tree_cutL_tex_txt:
+  type: TEXTURE
+  offset: 0x8165F1C0
+  format: CI4
+  width: 64
+  height: 48
+  source_encoding: gx
+
+obj_x_tree_light_tex_txt:
+  type: TEXTURE
+  offset: 0x8165F7C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8165E7A0

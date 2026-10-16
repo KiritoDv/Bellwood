@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_obj_romtrain_door:
+  type: AC:CKF_ANIMATION
+  offset: 0x815FBF54
+  joints: 4
+  counts: { flags: 4, data: 72, keys: 9, fixed: 6 }

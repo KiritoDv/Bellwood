@@ -1,0 +1,6 @@
+if(EXISTS "${SRC_DIR}/config.yml")
+    file(COPY "${SRC_DIR}/config.yml" DESTINATION "${DST_DIR}")
+endif()
+if(IS_DIRECTORY "${SRC_DIR}/assets/ymls")
+    file(COPY "${SRC_DIR}/assets/ymls" DESTINATION "${DST_DIR}/assets")
+endif()

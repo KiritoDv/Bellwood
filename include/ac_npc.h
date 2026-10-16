@@ -295,6 +295,8 @@ typedef int (*aNPC_CLIP_THINK_PROC)(NPC_ACTOR*, GAME_PLAY*, int, int);
 typedef int (*aNPC_FORCE_CALL_REQ_PROC)(NPC_ACTOR*, int);
 typedef void (*aNPC_SET_START_POS_PROC)(ACTOR* actorx);
 
+#define aNPC_ACTOR_CLASS_SIZE 0x1800
+
 struct ac_npc_clip_s {
     /* 0x000 */ aNPC_SETUP_ACTOR_PROC setupActor_proc;
     /* 0x004 */ aNPC_GET_OVERLAY_AREA_PROC get_overlay_area_proc;

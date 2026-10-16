@@ -1,0 +1,133 @@
+:config:
+  strict_declarations: true
+
+kan_win_yane_tex:
+  type: TEXTURE
+  offset: 0x814AE6E0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_yashiro_tex:
+  type: TEXTURE
+  offset: 0x814AE7E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_yubin_tex:
+  type: TEXTURE
+  offset: 0x814AE860
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_kouban_tex:
+  type: TEXTURE
+  offset: 0x814AE8E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_omise_tex:
+  type: TEXTURE
+  offset: 0x814AE960
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_play_tex:
+  type: TEXTURE
+  offset: 0x814AE9E0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_ply_tex:
+  type: TEXTURE
+  offset: 0x814AEAE0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_hyouji2_v:
+  type: VTX
+  offset: 0x814AEBE0
+  count: 36
+
+kan_win_genzaiT_model:
+  type: GFX
+  offset: 0x814AEE20
+  size: 0x48
+
+kan_win_npc2T_base_model:
+  type: GFX
+  offset: 0x814AEE68
+  size: 0x38
+
+kan_win_npc2T_1_model:
+  type: GFX
+  offset: 0x814AEEA0
+  size: 0x20
+
+kan_win_npc2T_2_model:
+  type: GFX
+  offset: 0x814AEEC0
+  size: 0x20
+
+kan_win_npc2T_3_model:
+  type: GFX
+  offset: 0x814AEEE0
+  size: 0x20
+
+kan_win_npcT_base_model:
+  type: GFX
+  offset: 0x814AEF00
+  size: 0x38
+
+kan_win_npcT_1_model:
+  type: GFX
+  offset: 0x814AEF38
+  size: 0x20
+
+kan_win_npcT_2_model:
+  type: GFX
+  offset: 0x814AEF58
+  size: 0x20
+
+kan_win_npcT_3_model:
+  type: GFX
+  offset: 0x814AEF78
+  size: 0x20
+
+kan_win_koubanT_model:
+  type: GFX
+  offset: 0x814AEF98
+  size: 0x40
+
+kan_win_yashiroT_model:
+  type: GFX
+  offset: 0x814AEFD8
+  size: 0x50
+
+kan_win_omiseT_model:
+  type: GFX
+  offset: 0x814AF028
+  size: 0x40
+
+kan_win_yuuT_model:
+  type: GFX
+  offset: 0x814AF068
+  size: 0x40
+
+kan_win_playerT_model:
+  type: GFX
+  offset: 0x814AF0A8
+  size: 0x48

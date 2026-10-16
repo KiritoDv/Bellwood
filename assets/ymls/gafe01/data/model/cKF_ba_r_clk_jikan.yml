@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_clk_jikan:
+  type: AC:CKF_ANIMATION
+  offset: 0x81888464
+  joints: 4
+  counts: { flags: 4, data: 15, keys: 1, fixed: 14 }

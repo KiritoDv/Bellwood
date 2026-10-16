@@ -1,0 +1,82 @@
+:config:
+  strict_declarations: true
+
+int_sum_doll02_pal:
+  type: TEXTURE
+  offset: 0x819D53C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_doll02_top_txt_txt:
+  type: TEXTURE
+  offset: 0x819D53E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D53C0
+
+int_sum_doll02_face_txt_txt:
+  type: TEXTURE
+  offset: 0x819D54E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D53C0
+
+int_sum_doll02_back_txt_txt:
+  type: TEXTURE
+  offset: 0x819D56E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D53C0
+
+int_sum_doll02_ear_txt_txt:
+  type: TEXTURE
+  offset: 0x819D57E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D53C0
+
+int_sum_doll02_hand_txt_txt:
+  type: TEXTURE
+  offset: 0x819D5860
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D53C0
+
+int_sum_doll02_footdown_txt_txt:
+  type: TEXTURE
+  offset: 0x819D5960
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D53C0
+
+int_sum_doll02_foot_txt_txt:
+  type: TEXTURE
+  offset: 0x819D59E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D53C0
+
+int_sum_doll02_v:
+  type: VTX
+  offset: 0x819D5AE0
+  count: 74
+
+int_sum_doll02_on_model:
+  type: GFX
+  offset: 0x819D5F80
+  size: 0x1D8

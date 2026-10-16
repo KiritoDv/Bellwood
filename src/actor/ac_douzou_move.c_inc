@@ -12,6 +12,7 @@
 #include "libc64/qrand.h"
 #include "m_demo.h"
 #include "m_player_lib.h"
+#include "assets/data/model/obj_s_douzou.h"
 
 static int aDOU_set_check(int house_no) {
     int player_no = mHS_get_pl_no(house_no);
@@ -252,9 +253,6 @@ static void aDOU_wait(STRUCTURE_ACTOR* douzou, GAME_PLAY* play) {
         }
     }
 }
-
-extern cKF_Animation_R_c cKF_ba_r_obj_s_douzou;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_douzou;
 
 static void aDOU_setup_action(ACTOR* actor, int action) {
     static cKF_Animation_R_c* ani[2] = { &cKF_ba_r_obj_s_douzou, &cKF_ba_r_obj_w_douzou };

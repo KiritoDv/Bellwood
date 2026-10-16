@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+int_sum_baketu_pal:
+  type: TEXTURE
+  offset: 0x819998A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_baketu_side_tex:
+  type: TEXTURE
+  offset: 0x819998C0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x819998A0
+
+int_sum_baketu_stand_tex:
+  type: TEXTURE
+  offset: 0x81999BC0
+  format: CI4
+  width: 16
+  height: 80
+  source_encoding: gx
+  tlut: 0x819998A0
+
+int_sum_baketu_s_side_tex:
+  type: TEXTURE
+  offset: 0x81999E40
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819998A0
+
+int_sum_baketu_hand_tex:
+  type: TEXTURE
+  offset: 0x8199A040
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819998A0
+
+int_sum_baketu_v:
+  type: VTX
+  offset: 0x8199A0C0
+  count: 34
+
+int_sum_baketu_onT_model:
+  type: GFX
+  offset: 0x8199A2E0
+  size: 0xD8

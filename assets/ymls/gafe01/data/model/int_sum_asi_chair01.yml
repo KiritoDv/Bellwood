@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_sum_asi_chair01_pal:
+  type: TEXTURE
+  offset: 0x819925A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_asi_chair01_front_tex:
+  type: TEXTURE
+  offset: 0x819925C0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x819925A0
+
+int_sum_asi_chair01_seat_tex:
+  type: TEXTURE
+  offset: 0x819928C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819925A0
+
+int_sum_asi_chair01_arm_tex:
+  type: TEXTURE
+  offset: 0x819929C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819925A0
+
+int_sum_asi_chair01_foot_tex:
+  type: TEXTURE
+  offset: 0x81992AC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819925A0
+
+int_sum_asi_chair01_side_tex:
+  type: TEXTURE
+  offset: 0x81992BC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819925A0
+
+int_sum_asi_chair01_v:
+  type: VTX
+  offset: 0x81992CC0
+  count: 72
+
+int_sum_asi_chair01_on_model:
+  type: GFX
+  offset: 0x81993140
+  size: 0x58
+
+int_sum_asi_chair01_onT_model:
+  type: GFX
+  offset: 0x81993198
+  size: 0x128

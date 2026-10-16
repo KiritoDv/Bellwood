@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+ef_yuki01_1:
+  type: TEXTURE
+  offset: 0x814EAEE0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_yuki01_00_v:
+  type: VTX
+  offset: 0x814EAF60
+  count: 4
+
+ef_yuki01_setmode:
+  type: GFX
+  offset: 0x814EAFA0
+  size: 0x48
+
+ef_yuki01_00_model:
+  type: GFX
+  offset: 0x814EAFE8
+  size: 0x18

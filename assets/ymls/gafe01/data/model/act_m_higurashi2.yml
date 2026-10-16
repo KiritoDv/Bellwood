@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_higurashi_v:
+  type: VTX
+  offset: 0x8186E958
+  count: 22
+
+act_m_higurashi_pal:
+  type: TEXTURE
+  offset: 0x8186EAB8
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_higurashi:
+  type: TEXTURE
+  offset: 0x8186EAD8
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: n64
+  tlut: 0x8186EAB8
+
+act_m_mu_higurashi1_1T_model:
+  type: GFX
+  offset: 0x8186ECD8
+  size: 0xC8
+
+act_m_mu_higurashi1_2T_model:
+  type: GFX
+  offset: 0x8186EDA0
+  size: 0xC8

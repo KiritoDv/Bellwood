@@ -1,0 +1,79 @@
+:config:
+  strict_declarations: true
+
+obj_lotus_flower_tex_txt:
+  type: TEXTURE
+  offset: 0x81539E60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_lotus_leaf_tex_txt:
+  type: TEXTURE
+  offset: 0x8153A060
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+obj_s_lotus_v:
+  type: VTX
+  offset: 0x8153A460
+  count: 156
+
+obj_s_lotus_flower1_model:
+  type: GFX
+  offset: 0x8153AE20
+  size: 0xA0
+
+obj_s_lotus_leafH_model:
+  type: GFX
+  offset: 0x8153AEC0
+  size: 0x48
+
+obj_s_lotus_leafG_model:
+  type: GFX
+  offset: 0x8153AF08
+  size: 0x48
+
+obj_s_lotus_leafF_model:
+  type: GFX
+  offset: 0x8153AF50
+  size: 0x48
+
+obj_s_lotus_leafE_model:
+  type: GFX
+  offset: 0x8153AF98
+  size: 0x48
+
+obj_s_lotus_leafD_model:
+  type: GFX
+  offset: 0x8153AFE0
+  size: 0x48
+
+obj_s_lotus_leafC_model:
+  type: GFX
+  offset: 0x8153B028
+  size: 0x48
+
+obj_s_lotus_leafB_model:
+  type: GFX
+  offset: 0x8153B070
+  size: 0x48
+
+obj_s_lotus_leafA_model:
+  type: GFX
+  offset: 0x8153B0B8
+  size: 0x48
+
+cKF_bs_r_obj_s_lotus:
+  type: AC:CKF_SKELETON
+  offset: 0x8153B1E4
+  counts: { joints: 19 }
+
+cKF_ba_r_obj_s_lotus:
+  type: AC:CKF_ANIMATION
+  offset: 0x8153B3E0
+  joints: 19
+  counts: { flags: 19, data: 177, keys: 21, fixed: 39 }

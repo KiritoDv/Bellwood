@@ -1,0 +1,35 @@
+:config:
+  strict_declarations: true
+
+obj_s_cedar_trunk_tex:
+  type: TEXTURE
+  offset: 0x81100700
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_s_cedar4_v:
+  type: VTX
+  offset: 0x81100F00
+  count: 54
+
+obj_s_cedar4_trunkT_mat_model:
+  type: GFX
+  offset: 0x81101260
+  size: 0x20
+
+obj_s_cedar4_trunkT_gfx_model:
+  type: GFX
+  offset: 0x81101280
+  size: 0x20
+
+obj_s_cedar4_leafT_mat_model:
+  type: GFX
+  offset: 0x811012A0
+  size: 0x20
+
+obj_s_cedar4_leafT_gfx_model:
+  type: GFX
+  offset: 0x811012C0
+  size: 0x48

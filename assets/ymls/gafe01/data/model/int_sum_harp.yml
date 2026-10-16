@@ -1,0 +1,105 @@
+:config:
+  strict_declarations: true
+
+int_sum_harp_pal:
+  type: TEXTURE
+  offset: 0x81A03CE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_harp_stand_tex:
+  type: TEXTURE
+  offset: 0x81A03D00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A03CE0
+
+int_sum_harp_standdown_tex:
+  type: TEXTURE
+  offset: 0x81A03E00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A03CE0
+
+int_sum_harp_borad_tex:
+  type: TEXTURE
+  offset: 0x81A03F00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A03CE0
+
+int_sum_harp_boraddown_tex:
+  type: TEXTURE
+  offset: 0x81A04000
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A03CE0
+
+int_sum_harp_gen_tex:
+  type: TEXTURE
+  offset: 0x81A04100
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A03CE0
+
+int_sum_harp_kata_tex:
+  type: TEXTURE
+  offset: 0x81A04200
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A03CE0
+
+int_sum_harp_pedal_tex:
+  type: TEXTURE
+  offset: 0x81A04280
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A03CE0
+
+int_sum_harp_base_tex:
+  type: TEXTURE
+  offset: 0x81A04380
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A03CE0
+
+int_sum_harp_baseside_tex:
+  type: TEXTURE
+  offset: 0x81A04400
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A03CE0
+
+int_sum_harp_v:
+  type: VTX
+  offset: 0x81A04480
+  count: 63
+
+int_sum_harp_on_model:
+  type: GFX
+  offset: 0x81A04870
+  size: 0xB0
+
+int_sum_harp_onT_model:
+  type: GFX
+  offset: 0x81A04920
+  size: 0xF0

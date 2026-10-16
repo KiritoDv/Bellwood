@@ -1,0 +1,106 @@
+:config:
+  strict_declarations: true
+  directory: text
+
+mail_data:
+  type: BLOB
+  file: forest_1st.arc/data/mail_data.bin
+
+mail_data_table:
+  type: AC:STRUCT_ARRAY
+  file: forest_1st.arc/data/mail_data_table.bin
+  fields: [u32]
+
+maila_data:
+  type: BLOB
+  file: forest_1st.arc/data/maila_data.bin
+
+maila_data_table:
+  type: AC:STRUCT_ARRAY
+  file: forest_1st.arc/data/maila_data_table.bin
+  fields: [u32]
+
+mailb_data:
+  type: BLOB
+  file: forest_1st.arc/data/mailb_data.bin
+
+mailb_data_table:
+  type: AC:STRUCT_ARRAY
+  file: forest_1st.arc/data/mailb_data_table.bin
+  fields: [u32]
+
+mailc_data:
+  type: BLOB
+  file: forest_1st.arc/data/mailc_data.bin
+
+mailc_data_table:
+  type: AC:STRUCT_ARRAY
+  file: forest_1st.arc/data/mailc_data_table.bin
+  fields: [u32]
+
+ps_data:
+  type: BLOB
+  file: forest_1st.arc/data/ps_data.bin
+
+ps_data_table:
+  type: AC:STRUCT_ARRAY
+  file: forest_1st.arc/data/ps_data_table.bin
+  fields: [u32]
+
+psz_data:
+  type: BLOB
+  file: forest_1st.arc/data/psz_data.bin
+
+psz_data_table:
+  type: AC:STRUCT_ARRAY
+  file: forest_1st.arc/data/psz_data_table.bin
+  fields: [u32]
+
+select_data:
+  type: BLOB
+  file: forest_1st.arc/data/select_data.bin
+
+select_data_table:
+  type: AC:STRUCT_ARRAY
+  file: forest_1st.arc/data/select_data_table.bin
+  fields: [u32]
+
+string_data:
+  type: BLOB
+  file: forest_1st.arc/data/string_data.bin
+
+string_data_table:
+  type: AC:STRUCT_ARRAY
+  file: forest_1st.arc/data/string_data_table.bin
+  fields: [u32]
+
+super_data:
+  type: BLOB
+  file: forest_1st.arc/data/super_data.bin
+
+super_data_table:
+  type: AC:STRUCT_ARRAY
+  file: forest_1st.arc/data/super_data_table.bin
+  fields: [u32]
+
+superz_data:
+  type: BLOB
+  file: forest_1st.arc/data/superz_data.bin
+
+superz_data_table:
+  type: AC:STRUCT_ARRAY
+  file: forest_1st.arc/data/superz_data_table.bin
+  fields: [u32]
+
+message_data:
+  type: BLOB
+  file: forest_2nd.arc/data/message_data.bin
+
+message_data_table:
+  type: AC:STRUCT_ARRAY
+  file: forest_2nd.arc/data/message_data_table.bin
+  fields: [u32]
+
+npc_name_str_table:
+  type: BLOB
+  file: forest_2nd.arc/data/npc_name_str_table.bin

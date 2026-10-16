@@ -1,4 +1,4 @@
-extern Gfx int_sum_baketu_onT_model[];
+#include "assets/data/model/int_sum_baketu.h"
 
 aFTR_PROFILE iam_sum_baketu = {
 	int_sum_baketu_onT_model,

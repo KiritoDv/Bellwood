@@ -1,3 +1,4 @@
+#include "assets/data/model/int_tak_stew.h"
 static void fTSW_ct(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
@@ -8,7 +9,7 @@ static void fTSW_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* 
     if (aFTR_CAN_PLAY_SE(ftr_actor)) {
         u32 frame = play->game_frame;
 
-        sAdo_OngenPos((u32)ftr_actor, 0x54, &ftr_actor->position);
+        sAdo_OngenPos((uintptr_t)ftr_actor, 0x54, &ftr_actor->position);
 
         if ((frame & 7) == 0) {
             xyz_t effect_pos = ftr_actor->position;
@@ -24,14 +25,7 @@ static void fTSW_dt(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
 
-extern u8 int_tak_stew_a1_tex[];
-extern u8 int_tak_stew_a2_tex_rgb_ci4[];
-
 static u8* fTSW_texture_table[] = { int_tak_stew_a1_tex, int_tak_stew_a2_tex_rgb_ci4 };
-
-extern Gfx int_tak_stew_nabe_on_model[];
-extern Gfx int_tak_stew_nabe_onT_model[];
-extern Gfx int_tak_stew_a1T_model[];
 
 static void fTSW_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     GAME_PLAY* play = (GAME_PLAY*)game;

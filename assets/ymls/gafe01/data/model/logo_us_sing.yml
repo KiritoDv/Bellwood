@@ -1,0 +1,89 @@
+:config:
+  strict_declarations: true
+
+logo_us_pal:
+  type: TEXTURE
+  offset: 0x815F1760
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+logo_us_g_1_tex_txt:
+  type: TEXTURE
+  offset: 0x815F1780
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x815F1760
+
+logo_us_g_2_tex_txt:
+  type: TEXTURE
+  offset: 0x815F1F80
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x815F1760
+
+logo_us_n_tex_txt:
+  type: TEXTURE
+  offset: 0x815F2380
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x815F1760
+
+logo_us_i_tex_txt:
+  type: TEXTURE
+  offset: 0x815F2B80
+  format: CI4
+  width: 32
+  height: 96
+  source_encoding: gx
+  tlut: 0x815F1760
+
+logo_us_s_tex_txt:
+  type: TEXTURE
+  offset: 0x815F3180
+  format: CI4
+  width: 48
+  height: 64
+  source_encoding: gx
+  tlut: 0x815F1760
+
+logo_us_sing_v:
+  type: VTX
+  offset: 0x815F3780
+  count: 20
+
+logo_us_zss_model:
+  type: GFX
+  offset: 0x815F38C0
+  size: 0x30
+
+logo_us_znn_model:
+  type: GFX
+  offset: 0x815F38F0
+  size: 0x30
+
+logo_us_zii_model:
+  type: GFX
+  offset: 0x815F3920
+  size: 0x30
+
+logo_us_zgB_model:
+  type: GFX
+  offset: 0x815F3950
+  size: 0x30
+
+logo_us_zgA_model:
+  type: GFX
+  offset: 0x815F3980
+  size: 0x30
+
+cKF_bs_r_logo_us_sing:
+  type: AC:CKF_SKELETON
+  offset: 0x815F3A58
+  counts: { joints: 14 }

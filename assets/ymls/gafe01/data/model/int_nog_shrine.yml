@@ -1,0 +1,70 @@
+:config:
+  strict_declarations: true
+
+int_nog_shrine_pal:
+  type: TEXTURE
+  offset: 0x81914380
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_shrine_figure_tex:
+  type: TEXTURE
+  offset: 0x819143A0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81914380
+
+int_nog_shrine_base_tex:
+  type: TEXTURE
+  offset: 0x819145A0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81914380
+
+int_nog_shrine_grass_tex:
+  type: TEXTURE
+  offset: 0x819147A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81914380
+
+int_nog_shrine_water_tex:
+  type: TEXTURE
+  offset: 0x81914820
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81914380
+
+int_nog_shrine_v:
+  type: VTX
+  offset: 0x819148A0
+  count: 154
+
+int_nog_shrine_grass_model:
+  type: GFX
+  offset: 0x81915240
+  size: 0x58
+
+int_nog_shrine_figure_model:
+  type: GFX
+  offset: 0x81915298
+  size: 0x88
+
+int_nog_shrine_baseT_model:
+  type: GFX
+  offset: 0x81915320
+  size: 0xD8
+
+int_nog_shrine_waterT_model:
+  type: GFX
+  offset: 0x819153F8
+  size: 0xA8

@@ -1,5 +1,4 @@
-extern Gfx it_sum_kitchair01_on_model[];
-extern Gfx it_sum_kitchair01_onT_model[];
+#include "assets/data/model/int_sum_kitchair01.h"
 
 aFTR_PROFILE iam_sum_kitchair01 = {
 	it_sum_kitchair01_on_model,

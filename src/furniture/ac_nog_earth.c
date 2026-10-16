@@ -1,4 +1,4 @@
-extern Gfx int_nog_earth_model[];
+#include "assets/data/model/int_nog_earth.h"
 
 aFTR_PROFILE iam_nog_earth = {
 	int_nog_earth_model,

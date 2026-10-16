@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_act_mus_zari:
+  type: AC:CKF_ANIMATION
+  offset: 0x81690084
+  joints: 9
+  counts: { flags: 9, data: 129, keys: 4, fixed: 26 }

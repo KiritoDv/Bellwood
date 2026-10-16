@@ -1,0 +1,57 @@
+:config:
+  strict_declarations: true
+
+act_f37_kurage_pal:
+  type: TEXTURE
+  offset: 0x8123F3C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f37_kurage_head_tex:
+  type: TEXTURE
+  offset: 0x8123F3E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8123F3C0
+
+act_f37_kurage_foot_tex:
+  type: TEXTURE
+  offset: 0x8123F4E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8123F3C0
+
+act_f37_kurage_a_v:
+  type: VTX
+  offset: 0x8123F5E0
+  count: 13
+
+act_f37_kurage_aT_model:
+  type: GFX
+  offset: 0x8123F6B0
+  size: 0x80
+
+act_f37_kurage_b_v:
+  type: VTX
+  offset: 0x8123F730
+  count: 13
+
+act_f37_kurage_bT_model:
+  type: GFX
+  offset: 0x8123F800
+  size: 0x80
+
+act_f37_kurage_c_v:
+  type: VTX
+  offset: 0x8123F880
+  count: 13
+
+act_f37_kurage_cT_model:
+  type: GFX
+  offset: 0x8123F950
+  size: 0x80

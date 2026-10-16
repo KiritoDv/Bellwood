@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+tol_cracker_1_pal:
+  type: TEXTURE
+  offset: 0x815C34C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_cracker_1_tex:
+  type: TEXTURE
+  offset: 0x815C34E0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x815C34C0
+
+tol_cracker_1_v:
+  type: VTX
+  offset: 0x815C36E0
+  count: 28
+
+tol_cracker_1T_model:
+  type: GFX
+  offset: 0x815C38A0
+  size: 0x78

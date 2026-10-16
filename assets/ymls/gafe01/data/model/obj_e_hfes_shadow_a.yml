@@ -1,0 +1,40 @@
+:config:
+  strict_declarations: true
+
+obj_e_hfes_shadow_tex:
+  type: TEXTURE
+  offset: 0x81503340
+  format: I4
+  width: 8
+  height: 16
+  source_encoding: gx
+
+obj_e_hfes_shadow_a_v:
+  type: VTX
+  offset: 0x81503380
+  count: 28
+
+obj_e_hfes_shadow_a_modelT:
+  type: GFX
+  offset: 0x81503540
+  size: 0x68
+
+obj_e_hfes_shadow_b_v:
+  type: VTX
+  offset: 0x815035A8
+  count: 28
+
+obj_e_hfes_shadow_b_modelT:
+  type: GFX
+  offset: 0x81503768
+  size: 0x68
+
+obj_e_hfes_shadow_c_v:
+  type: VTX
+  offset: 0x815037D0
+  count: 28
+
+obj_e_hfes_shadow_c_modelT:
+  type: GFX
+  offset: 0x81503990
+  size: 0x68

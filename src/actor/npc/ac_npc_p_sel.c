@@ -11,7 +11,7 @@
 #include "m_msg.h"
 #include "m_vibctl.h"
 #include "libultra/libultra.h"
-#include "dolphin/os/OSRtc.h"
+#include "gc_compat.h"
 
 enum {
     aNPS_TALK_CHK_SETUP_SOUND,

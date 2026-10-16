@@ -1,0 +1,81 @@
+:config:
+  strict_declarations: true
+
+int_sum_jukebox_pal:
+  type: TEXTURE
+  offset: 0x81A09320
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_jukebox_glass_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A09340
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_jukebox_front_tex:
+  type: TEXTURE
+  offset: 0x81A09360
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A09320
+
+int_sum_jukebox_back_tex:
+  type: TEXTURE
+  offset: 0x81A09660
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A09320
+
+int_sum_jukebox_in_tex:
+  type: TEXTURE
+  offset: 0x81A097E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A09320
+
+int_sum_jukebox_reco_tex:
+  type: TEXTURE
+  offset: 0x81A098E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A09320
+
+int_sum_jukebox_glass_tex:
+  type: TEXTURE
+  offset: 0x81A099E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A09340
+
+int_sum_jukebox_v:
+  type: VTX
+  offset: 0x81A09A60
+  count: 42
+
+int_sum_jukebox_on_model:
+  type: GFX
+  offset: 0x81A09D00
+  size: 0x60
+
+int_sum_jukebox_evw_model:
+  type: GFX
+  offset: 0x81A09D60
+  size: 0x58
+
+int_sum_jukebox_onT_model:
+  type: GFX
+  offset: 0x81A09DB8
+  size: 0xD0

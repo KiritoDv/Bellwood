@@ -3,14 +3,8 @@
 #include "m_common_data.h"
 #include "m_debug.h"
 #include "sys_math3d.h"
+#include "assets/data/model/ef_dust01_00.h"
 
-extern Gfx ef_dust01_modelT[];
-extern Gfx ef_dust01_stew_modelT[];
-
-extern u8 ef_dust01_0[];
-extern u8 ef_dust01_1[];
-extern u8 ef_dust01_2[];
-extern u8 ef_dust01_3[];
 
 static u8* eSoba_Yuge_texture_table[] = {
     ef_dust01_0,

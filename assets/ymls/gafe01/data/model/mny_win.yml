@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+mny_win_money_tex:
+  type: TEXTURE
+  offset: 0x818966A0
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+fri_win_bell_tex:
+  type: TEXTURE
+  offset: 0x818968A0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+mny_win_u_tex:
+  type: TEXTURE
+  offset: 0x818969A0
+  format: I4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+mny_win_v:
+  type: VTX
+  offset: 0x818971A0
+  count: 16
+
+mny_win_beruT_model:
+  type: GFX
+  offset: 0x818972A0
+  size: 0x30
+
+mny_win_mojiT_model:
+  type: GFX
+  offset: 0x818972D0
+  size: 0x30
+
+mny_win_ueT_model:
+  type: GFX
+  offset: 0x81897300
+  size: 0x38

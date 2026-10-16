@@ -11,6 +11,8 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "libforest/gbi_extensions.h"
+#include "assets/data/model/obj_s_tailor.h"
+#include "assets/data/model/obj_s_tailor_shadow.h"
 
 enum {
     aNW_ACTION_WAIT,
@@ -44,9 +46,6 @@ ACTOR_PROFILE Needlework_Shop_Profile = {
 
 static u8 aNW_shadow_vtx_fix_flg_table[8] = { TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE };
 
-extern Vtx obj_s_tailor_shadow_v[];
-extern Gfx obj_s_tailor_shadowT_model[];
-
 // clang-format off
 static bIT_ShadowData_c aNW_shadow_data = {
     6,
@@ -61,9 +60,6 @@ static void aNW_set_bgOffset(STRUCTURE_ACTOR* shop, int idx);
 static void aNW_setup_animation(STRUCTURE_ACTOR* shop, f32 speed);
 static void aNW_setup_action(STRUCTURE_ACTOR* shop, int action);
 static int aNW_ctrl_light(STRUCTURE_ACTOR* shop);
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_tailor;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_tailor;
 
 static void aNW_actor_ct(ACTOR* actor, GAME* game) {
     static cKF_Skeleton_R_c* skl[] = { &cKF_bs_r_obj_s_tailor, &cKF_bs_r_obj_w_tailor };

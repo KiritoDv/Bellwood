@@ -1,3 +1,4 @@
+#include "assets/data/model/int_yaz_candle.h"
 static void fYC_ct(FTR_ACTOR* ftr_actor, u8* data) {
     ftr_actor->dynamic_work_s[0] = -1;
 }
@@ -6,11 +7,6 @@ static void fYC_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* d
     // nothing
 }
 
-extern Gfx int_yaz_candle_body_model[];
-extern Gfx int_yaz_candle_fire_model[];
-
-extern u8 int_yaz_candle_fire1_tex_txt[];
-extern u8 int_yaz_candle_fire2_tex_txt[];
 
 static void fYC_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     GAME_PLAY* play = (GAME_PLAY*)game;

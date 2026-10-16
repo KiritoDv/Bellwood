@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_iku_tumble_pal:
+  type: TEXTURE
+  offset: 0x81865DE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_tumble_tex_txt:
+  type: TEXTURE
+  offset: 0x81865E00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81865DE0
+
+int_iku_tumble_v:
+  type: VTX
+  offset: 0x81866600
+  count: 53
+
+int_iku_tumble_model:
+  type: GFX
+  offset: 0x81866950
+  size: 0xB8

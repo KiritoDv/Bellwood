@@ -8,6 +8,19 @@
 #include "m_rcp.h"
 #include "m_mark_room.h"
 #include "sys_matrix.h"
+#include "assets/data/model/obj_myhome_step_down.h"
+#include "assets/data/model/obj_myhome_step_up.h"
+#include "assets/data/model/rom_myhome1_floor.h"
+#include "assets/data/model/rom_myhome1_wall.h"
+#include "assets/data/model/rom_myhome2B_flooar.h"
+#include "assets/data/model/rom_myhome2B_wall.h"
+#include "assets/data/model/rom_myhome3_floor.h"
+#include "assets/data/model/rom_myhome3_wall.h"
+#include "assets/data/model/rom_myhome4_1_floor.h"
+#include "assets/data/model/rom_myhome4_1_wall.h"
+#include "assets/data/model/rom_myhome4_2_floor.h"
+#include "assets/data/model/rom_myhome4_2_wall.h"
+#include "assets/data/model/rom_myhome_ug.h"
 
 enum {
     aMI_ROOM_KIND_S,
@@ -50,42 +63,10 @@ typedef struct {
     s16 room_kind;
 } aMI_room_kind_data_c;
 
-extern Gfx rom_myhome1_floor_model[];
-extern Gfx rom_myhome1_wall_model[];
-extern Gfx rom_myhome1_floor_new_model[];
-extern Gfx rom_myhome1_wall_new_model[];
-extern Gfx rom_myhome1_floor_new2_model[];
-extern Gfx rom_myhome1_wall_new2_model[];
 
-extern Gfx rom_myhome2B_floor_model[];
-extern Gfx rom_myhome2B_wall_model[];
-extern Gfx rom_myhome2B_floor_new_model[];
-extern Gfx rom_myhome2B_wall_new_model[];
-extern Gfx rom_myhome2B_floor_new2_model[];
-extern Gfx rom_myhome2B_wall_new2_model[];
 
-extern Gfx rom_myhome3_floor_model[];
-extern Gfx rom_myhome3_wall_model[];
-extern Gfx rom_myhome3_floor_new_model[];
-extern Gfx rom_myhome3_wall_new_model[];
-extern Gfx rom_myhome3_floor_new2_model[];
-extern Gfx rom_myhome3_wall_new2_model[];
 
-extern Gfx rom_myhome4_1_floor_model[];
-extern Gfx rom_myhome4_1_wall_model[];
-extern Gfx rom_myhome4_1_floor_new_model[];
-extern Gfx rom_myhome4_1_wall_new_model[];
-extern Gfx rom_myhome4_1_floor_new2_model[];
-extern Gfx rom_myhome4_1_wall_new2_model[];
 
-extern Gfx rom_myhome4_2_floor_model[];
-extern Gfx rom_myhome4_2_wall_model[];
-extern Gfx rom_myhome4_2_floor_new_model[];
-extern Gfx rom_myhome4_2_wall_new_model[];
-extern Gfx rom_myhome4_2_floor_new2_model[];
-extern Gfx rom_myhome4_2_wall_new2_model[];
-
-extern Gfx rom_myhome_ug_model[];
 
 // clang-format off
 static aMI_size_disp_data_c aMI_size_dsp_table[aMI_ROOM_KIND_NUM] = {
@@ -127,9 +108,6 @@ static aMI_size_disp_data_c aMI_size_dsp_table[aMI_ROOM_KIND_NUM] = {
     },
 };
 // clang-format on
-
-extern Gfx obj_myhome_step_down_model[];
-extern Gfx obj_myhome_step_up_model[];
 
 static aMI_room_step_data_c aMI_step_data[aMI_STEP_TYPE_NUM] = {
     { obj_myhome_step_down_model, 0 },

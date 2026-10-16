@@ -1,0 +1,37 @@
+:config:
+  strict_declarations: true
+
+int_yos_kflag_pat:
+  type: TEXTURE
+  offset: 0x81AD7D00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yos_kflag_pole_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD7D20
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81AD7D00
+
+int_yos_kflag_flag_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD7DA0
+  format: CI4
+  width: 32
+  height: 24
+  source_encoding: gx
+  tlut: 0x81AD7D00
+
+int_yos_kflag_v:
+  type: VTX
+  offset: 0x81AD7F20
+  count: 69
+
+int_yos_kflag_obj_model:
+  type: GFX
+  offset: 0x81AD8370
+  size: 0xD0

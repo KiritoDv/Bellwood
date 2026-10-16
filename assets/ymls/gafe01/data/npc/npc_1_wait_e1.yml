@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_wait_e1:
+  type: AC:NPC_ANIM
+  offset: 0x81317D20
+  joints: 26
+  counts: { flags: 26, data: 447, keys: 54, fixed: 27 }

@@ -1,5 +1,4 @@
-extern Gfx sugi_barbecue_model[];
-extern Gfx sugi_barbecue_b_model[];
+#include "assets/data/model/int_sugi_barbecue.h"
 
 static void gSBBQ_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     GAME_PLAY* play = (GAME_PLAY*)game;
@@ -7,7 +6,7 @@ static void gSBBQ_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8*
     if (aFTR_CAN_PLAY_SE(ftr_actor)) {
         u32 ctr = play->game_frame;
 
-        sAdo_OngenPos((u32)ftr_actor, 0x55, &ftr_actor->position);
+        sAdo_OngenPos((uintptr_t)ftr_actor, 0x55, &ftr_actor->position);
         if ((ctr & 15) == 0) {
             xyz_t pos = ftr_actor->position;
 

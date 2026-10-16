@@ -1,0 +1,94 @@
+:config:
+  strict_declarations: true
+
+int_sum_log_chest02_pal:
+  type: TEXTURE
+  offset: 0x81A210A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_log_chest02_drawside_tex_txt:
+  type: TEXTURE
+  offset: 0x81A210C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A210A0
+
+int_sum_log_chest02_door_tex_txt:
+  type: TEXTURE
+  offset: 0x81A21140
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A210A0
+
+int_sum_log_chest02_draw_tex_txt:
+  type: TEXTURE
+  offset: 0x81A211C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A210A0
+
+int_sum_log_chest02_back_tex_txt:
+  type: TEXTURE
+  offset: 0x81A21240
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A210A0
+
+int_sum_log_chest02_top_tex_txt:
+  type: TEXTURE
+  offset: 0x81A21340
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A210A0
+
+int_sum_log_chest02_front_tex_txt:
+  type: TEXTURE
+  offset: 0x81A21440
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A210A0
+
+int_sum_log_chest02_v:
+  type: VTX
+  offset: 0x81A21640
+  count: 92
+
+int_sum_lg_ch2_doorL_model:
+  type: GFX
+  offset: 0x81A21C00
+  size: 0xA8
+
+int_sum_lg_ch2_base_model:
+  type: GFX
+  offset: 0x81A21CA8
+  size: 0xF0
+
+int_sum_lg_ch2_doorR_model:
+  type: GFX
+  offset: 0x81A21D98
+  size: 0xA0
+
+cKF_ba_r_int_sum_log_chest02:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A21F00
+  joints: 5
+  counts: { flags: 5, data: 78, keys: 12, fixed: 6 }
+
+cKF_bs_r_int_sum_log_chest02:
+  type: AC:CKF_SKELETON
+  offset: 0x81A21F50
+  counts: { joints: 5 }

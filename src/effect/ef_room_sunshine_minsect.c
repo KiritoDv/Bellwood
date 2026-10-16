@@ -6,18 +6,16 @@
 #include "m_collision_bg.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/obj_museum4_shine.h"
+#include "assets/data/model/rom_museum4.h"
+#include "assets/data/model/rom_museum4_ue.h"
 
-void Ef_Room_Sunshine_Minsect_actor_ct(ACTOR* actor, GAME* play);
+static void Ef_Room_Sunshine_Minsect_actor_ct(ACTOR* actor, GAME* play);
 void Ef_Room_Sunshine_Minsect_actor_dt(ACTOR* actor, GAME* play);
-void Ef_Room_Sunshine_MinsectL_actor_draw(ACTOR* actor, GAME* play);
-void Ef_Room_Sunshine_MinsectL_actor_move(ACTOR* actor, GAME* play);
-void Ef_Room_Sunshine_MinsectR_actor_draw(ACTOR* actor, GAME* play);
-void Ef_Room_Sunshine_MinsectR_actor_move(ACTOR* actor, GAME* play);
-
-extern Gfx rom_museum4_ue_model[];
-extern Gfx rom_museum4_model[];
-extern Gfx obj_museum4_shine_1T_model[];
-extern Gfx obj_museum4_shine_2T_model[];
+static void Ef_Room_Sunshine_MinsectL_actor_draw(ACTOR* actor, GAME* play);
+static void Ef_Room_Sunshine_MinsectL_actor_move(ACTOR* actor, GAME* play);
+static void Ef_Room_Sunshine_MinsectR_actor_draw(ACTOR* actor, GAME* play);
+static void Ef_Room_Sunshine_MinsectR_actor_move(ACTOR* actor, GAME* play);
 
 u8 draw_status;
 

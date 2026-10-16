@@ -12,6 +12,7 @@
 #include "m_player_lib.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/obj_e_turi_l_shadow.h"
 
 enum {
     aTUR_ACT_WAIT,
@@ -41,11 +42,6 @@ ACTOR_PROFILE Turi_Profile = {
 };
 // clang-format on
 
-extern Vtx obj_e_turi_l_shadow_v[];
-extern Gfx obj_e_turi_l_shadow_model[];
-
-extern Vtx obj_e_turi_r_shadow_v[];
-extern Gfx obj_e_turi_r_shadow_model[];
 
 static u8 aTUR_shadow_vtx_fix_flg_table[] = { TRUE, FALSE, FALSE, TRUE, FALSE, TRUE };
 static bIT_ShadowData_c aTUR_shadow_data_l = { 6, aTUR_shadow_vtx_fix_flg_table, 60.0f, obj_e_turi_l_shadow_v, obj_e_turi_l_shadow_model, };

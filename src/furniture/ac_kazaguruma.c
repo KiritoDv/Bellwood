@@ -1,3 +1,11 @@
+#include "assets/data/model/obj_shop_kaza1.h"
+#include "assets/data/model/obj_shop_kaza2.h"
+#include "assets/data/model/obj_shop_kaza3.h"
+#include "assets/data/model/obj_shop_kaza4.h"
+#include "assets/data/model/obj_shop_kaza5.h"
+#include "assets/data/model/obj_shop_kaza6.h"
+#include "assets/data/model/obj_shop_kaza7.h"
+#include "assets/data/model/obj_shop_kaza8.h"
 static void fKZ_ct(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
@@ -9,15 +17,6 @@ static void fKZ_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* d
 static void fKZ_dt(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
-
-extern Gfx obj_shop_kaza1_model[];
-extern Gfx obj_shop_kaza2_model[];
-extern Gfx obj_shop_kaza3_model[];
-extern Gfx obj_shop_kaza4_model[];
-extern Gfx obj_shop_kaza5_model[];
-extern Gfx obj_shop_kaza6_model[];
-extern Gfx obj_shop_kaza7_model[];
-extern Gfx obj_shop_kaza8_model[];
 
 static Gfx* fKZ_model_table[] = {
     obj_shop_kaza1_model, obj_shop_kaza2_model, obj_shop_kaza3_model, obj_shop_kaza4_model,

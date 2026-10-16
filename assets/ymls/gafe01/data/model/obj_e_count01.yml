@@ -1,0 +1,85 @@
+:config:
+  strict_declarations: true
+
+obj_e_count_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81517E40
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_count_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x81518640
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_count_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81518E40
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_count01_spot_tex_sgi_i4:
+  type: TEXTURE
+  offset: 0x81519640
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_e_count01_v:
+  type: VTX
+  offset: 0x815196C0
+  count: 59
+
+obj_e_count_spot_model:
+  type: GFX
+  offset: 0x81519A70
+  size: 0x68
+
+obj_e_count_lamp_model:
+  type: GFX
+  offset: 0x81519AD8
+  size: 0x68
+
+obj_e_count_front_model:
+  type: GFX
+  offset: 0x81519B40
+  size: 0x78
+
+obj_e_count_baloon_model:
+  type: GFX
+  offset: 0x81519BB8
+  size: 0x78
+
+obj_e_count_back_model:
+  type: GFX
+  offset: 0x81519C30
+  size: 0x58
+
+obj_e_count_new_model:
+  type: GFX
+  offset: 0x81519C88
+  size: 0x50
+
+obj_e_count_down_model:
+  type: GFX
+  offset: 0x81519CD8
+  size: 0x58
+
+cKF_bs_r_obj_e_count01:
+  type: AC:CKF_SKELETON
+  offset: 0x81519D9C
+  counts: { joints: 9 }
+
+cKF_ba_r_obj_e_count01:
+  type: AC:CKF_ANIMATION
+  offset: 0x81519E90
+  joints: 9
+  counts: { flags: 9, data: 81, keys: 2, fixed: 28 }

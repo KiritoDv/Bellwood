@@ -1,0 +1,146 @@
+:config:
+  strict_declarations: true
+
+obj_myhome1_shadowE:
+  type: TEXTURE
+  offset: 0x81506320
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_myhome1_shadowE_v:
+  type: VTX
+  offset: 0x81506520
+  count: 18
+
+obj_myhome1_shadowET_model:
+  type: GFX
+  offset: 0x81506640
+  size: 0x70
+
+obj_myhome1_shadowW:
+  type: TEXTURE
+  offset: 0x815066C0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_myhome1_shadowW_v:
+  type: VTX
+  offset: 0x815068C0
+  count: 18
+
+obj_myhome1_shadowWT_model:
+  type: GFX
+  offset: 0x815069E0
+  size: 0x70
+
+obj_myhome2_shadowE:
+  type: TEXTURE
+  offset: 0x81506A60
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_myhome2_shadowE_v:
+  type: VTX
+  offset: 0x81506C60
+  count: 18
+
+obj_myhome2_shadowET_model:
+  type: GFX
+  offset: 0x81506D80
+  size: 0x70
+
+obj_myhome2_shadowW:
+  type: TEXTURE
+  offset: 0x81506E00
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_myhome2_shadowW_v:
+  type: VTX
+  offset: 0x81507000
+  count: 18
+
+obj_myhome2_shadowWT_model:
+  type: GFX
+  offset: 0x81507120
+  size: 0x70
+
+obj_myhome3_shadowE:
+  type: TEXTURE
+  offset: 0x815071A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_myhome3_shadowE_v:
+  type: VTX
+  offset: 0x815073A0
+  count: 18
+
+obj_myhome3_shadowET_model:
+  type: GFX
+  offset: 0x815074C0
+  size: 0x70
+
+obj_myhome3_shadowW:
+  type: TEXTURE
+  offset: 0x81507540
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_myhome3_shadowW_v:
+  type: VTX
+  offset: 0x81507740
+  count: 18
+
+obj_myhome3_shadowWT_model:
+  type: GFX
+  offset: 0x81507860
+  size: 0x70
+
+obj_myhome4_shadowE:
+  type: TEXTURE
+  offset: 0x815078E0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_myhome4_shadowE_v:
+  type: VTX
+  offset: 0x81507AE0
+  count: 18
+
+obj_myhome4_shadowET_model:
+  type: GFX
+  offset: 0x81507C00
+  size: 0x70
+
+obj_myhome4_shadowW:
+  type: TEXTURE
+  offset: 0x81507C80
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_myhome4_shadowW_v:
+  type: VTX
+  offset: 0x81507E80
+  count: 18
+
+obj_myhome4_shadowWT_model:
+  type: GFX
+  offset: 0x81507FA0
+  size: 0x70

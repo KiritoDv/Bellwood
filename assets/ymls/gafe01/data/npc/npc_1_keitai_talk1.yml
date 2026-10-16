@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_keitai_talk1:
+  type: AC:NPC_ANIM
+  offset: 0x812EDE50
+  joints: 26
+  counts: { flags: 26, data: 360, keys: 54, fixed: 27, eye_seq: 15, mouth_seq: 15 }

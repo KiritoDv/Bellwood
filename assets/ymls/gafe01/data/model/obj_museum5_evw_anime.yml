@@ -1,0 +1,6 @@
+:config:
+  strict_declarations: true
+
+obj_museum5_evw_anime:
+  type: AC:EVW_ANIME
+  offset: 0x816949E8

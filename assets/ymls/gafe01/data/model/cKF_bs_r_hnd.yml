@@ -1,0 +1,137 @@
+:config:
+  strict_declarations: true
+
+hnd_pal:
+  type: TEXTURE
+  offset: 0x8142AC00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+hnd_white_txt:
+  type: TEXTURE
+  offset: 0x8142AC20
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x8142AC00
+
+hnd_fin_txt:
+  type: TEXTURE
+  offset: 0x8142AC40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8142AC00
+
+hnd_back_txt:
+  type: TEXTURE
+  offset: 0x8142ACC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8142AC00
+
+hnd_neck_txt:
+  type: TEXTURE
+  offset: 0x8142AEC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8142AC00
+
+hnd_front_txt:
+  type: TEXTURE
+  offset: 0x8142AF40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8142AC00
+
+hnd_v:
+  type: VTX
+  offset: 0x8142B140
+  count: 306
+
+ko_hnd_model:
+  type: GFX
+  offset: 0x8142C460
+  size: 0x78
+
+koT_hnd_model:
+  type: GFX
+  offset: 0x8142C4D8
+  size: 0x78
+
+kusuri_hnd_model:
+  type: GFX
+  offset: 0x8142C550
+  size: 0x78
+
+kusuriT_hnd_model:
+  type: GFX
+  offset: 0x8142C5C8
+  size: 0x78
+
+naka_hnd_model:
+  type: GFX
+  offset: 0x8142C640
+  size: 0x78
+
+nakaT_hnd_model:
+  type: GFX
+  offset: 0x8142C6B8
+  size: 0x78
+
+hito_hnd_model:
+  type: GFX
+  offset: 0x8142C730
+  size: 0x78
+
+hitoT_hnd_model:
+  type: GFX
+  offset: 0x8142C7A8
+  size: 0x78
+
+oya_hnd_model:
+  type: GFX
+  offset: 0x8142C820
+  size: 0xB8
+
+oyaT_hnd_model:
+  type: GFX
+  offset: 0x8142C8D8
+  size: 0x78
+
+body_hnd_model:
+  type: GFX
+  offset: 0x8142C950
+  size: 0x108
+
+cKF_ba_r_hnd_sasu:
+  type: AC:CKF_ANIMATION
+  offset: 0x8142CD1C
+  joints: 28
+  counts: { flags: 28, data: 252, keys: 7, fixed: 80 }
+
+cKF_ba_r_hnd_side:
+  type: AC:CKF_ANIMATION
+  offset: 0x8142CFF4
+  joints: 28
+  counts: { flags: 28, data: 252, keys: 7, fixed: 80 }
+
+cKF_ba_r_hnd_catch:
+  type: AC:CKF_ANIMATION
+  offset: 0x8142D290
+  joints: 28
+  counts: { flags: 28, data: 222, keys: 13, fixed: 74 }
+
+cKF_bs_r_hnd:
+  type: AC:CKF_SKELETON
+  offset: 0x8142D3F4
+  counts: { joints: 28 }

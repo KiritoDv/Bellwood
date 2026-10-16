@@ -1,4 +1,4 @@
-extern Gfx int_nog_cornucopiaT_model[];
+#include "assets/data/model/int_nog_cornucopia.h"
 
 aFTR_PROFILE iam_nog_cornucopia = {
 	int_nog_cornucopiaT_model,

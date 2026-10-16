@@ -1,0 +1,106 @@
+:config:
+  strict_declarations: true
+
+int_sum_angel_pal:
+  type: TEXTURE
+  offset: 0x81986560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_angel_glass_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81986580
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_angel_body_txt:
+  type: TEXTURE
+  offset: 0x819865A0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81986560
+
+int_sum_angel_top_txt:
+  type: TEXTURE
+  offset: 0x819868A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81986560
+
+int_sum_angel_side_txt:
+  type: TEXTURE
+  offset: 0x819869A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81986560
+
+int_sum_angel_base_txt:
+  type: TEXTURE
+  offset: 0x81986BA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81986560
+
+int_sum_angel_etc_txt:
+  type: TEXTURE
+  offset: 0x81986C20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81986560
+
+int_sum_angel_glass_txt:
+  type: TEXTURE
+  offset: 0x81986CA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81986580
+
+int_sum_angel_v:
+  type: VTX
+  offset: 0x81986DA0
+  count: 55
+
+int_sum_angel_sakana_model:
+  type: GFX
+  offset: 0x81987110
+  size: 0x70
+
+int_sum_angel_top_model:
+  type: GFX
+  offset: 0x81987180
+  size: 0x58
+
+int_sum_angel_evw_model:
+  type: GFX
+  offset: 0x819871D8
+  size: 0x68
+
+int_sum_angel_base_model:
+  type: GFX
+  offset: 0x81987240
+  size: 0xB8
+
+cKF_ba_r_int_sum_angel:
+  type: AC:CKF_ANIMATION
+  offset: 0x819873C0
+  joints: 5
+  counts: { flags: 5, data: 75, keys: 9, fixed: 9 }
+
+cKF_bs_r_int_sum_angel:
+  type: AC:CKF_SKELETON
+  offset: 0x81987410
+  counts: { joints: 5 }

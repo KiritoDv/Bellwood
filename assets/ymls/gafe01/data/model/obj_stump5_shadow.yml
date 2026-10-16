@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+obj_stump5_shadow_v:
+  type: VTX
+  offset: 0x8110F690
+  count: 4
+
+obj_stump5_shadowT_mat_model:
+  type: GFX
+  offset: 0x8110F6D0
+  size: 0x20
+
+obj_stump5_shadowT_gfx_model:
+  type: GFX
+  offset: 0x8110F6F0
+  size: 0x10

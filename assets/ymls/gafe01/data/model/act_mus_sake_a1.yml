@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_sake_pal:
+  type: TEXTURE
+  offset: 0x8168B840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_sake_body_txt:
+  type: TEXTURE
+  offset: 0x8168B860
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x8168B840
+
+act_mus_sake_a1_v:
+  type: VTX
+  offset: 0x8168BB60
+  count: 62
+
+act_mus_sake_sakana_body_model:
+  type: GFX
+  offset: 0x8168BF40
+  size: 0x88
+
+act_mus_sake_sakana_head_model:
+  type: GFX
+  offset: 0x8168BFC8
+  size: 0x60
+
+cKF_bs_r_act_mus_sake_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x8168C04C
+  counts: { joints: 3 }

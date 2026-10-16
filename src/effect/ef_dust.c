@@ -1,11 +1,7 @@
 #include "ef_effect_control.h"
 
 #include "m_common_data.h"
-
-extern u8 ef_dust01_0[];
-extern u8 ef_dust01_1[];
-extern u8 ef_dust01_2[];
-extern u8 ef_dust01_3[];
+#include "assets/data/model/ef_dust01_00.h"
 
 static u8* eDT_texture_table[] = {
     ef_dust01_0,
@@ -177,8 +173,6 @@ static u8 eDT_prim_f[18] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00,
 };
-
-extern Gfx ef_dust01_modelT[];
 
 static void eDT_dw(eEC_Effect_c* effect, GAME* game) {
     s16 counter = (18 - effect->timer) >> 1;

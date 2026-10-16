@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_fish_v:
+  type: VTX
+  offset: 0x81891EE0
+  count: 4
+
+obj_item_fish_pal:
+  type: TEXTURE
+  offset: 0x81891F20
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+obj_item_fish_tex:
+  type: TEXTURE
+  offset: 0x81891F40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: n64
+  tlut: 0x81891F20
+
+fish_DL_mode:
+  type: GFX
+  offset: 0x81892140
+  size: 0xA0
+
+fish_DL_vtx:
+  type: GFX
+  offset: 0x818921E0
+  size: 0x20

@@ -1,0 +1,78 @@
+:config:
+  strict_declarations: true
+
+int_tak_snowlamp_tex_pal:
+  type: TEXTURE
+  offset: 0x81AA4F00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_snowlamp_face_tex:
+  type: TEXTURE
+  offset: 0x81AA4F20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA4F00
+
+int_tak_snowlamp_back_tex:
+  type: TEXTURE
+  offset: 0x81AA4FA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA4F00
+
+int_tak_snowlamp_bou_tex:
+  type: TEXTURE
+  offset: 0x81AA5020
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA4F00
+
+int_tak_snowlamp_asi_tex:
+  type: TEXTURE
+  offset: 0x81AA5120
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA4F00
+
+int_tak_snowlamp_body_tex:
+  type: TEXTURE
+  offset: 0x81AA51A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA4F00
+
+int_tak_snowlamp_side_tex:
+  type: TEXTURE
+  offset: 0x81AA53A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA4F00
+
+int_tak_snowlamp_v:
+  type: VTX
+  offset: 0x81AA5420
+  count: 55
+
+int_tak_snowlamp_off_model:
+  type: GFX
+  offset: 0x81AA5790
+  size: 0xA8
+
+int_tak_snowlamp_offT_model:
+  type: GFX
+  offset: 0x81AA5838
+  size: 0xB8

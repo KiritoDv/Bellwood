@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+int_ari_nagaisu1_pal:
+  type: TEXTURE
+  offset: 0x81609440
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ari_isu01_1_tex:
+  type: TEXTURE
+  offset: 0x81609460
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81609440
+
+int_ari_isu01_0_tex:
+  type: TEXTURE
+  offset: 0x81609660
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81609440
+
+int_ari_isu01_2_tex:
+  type: TEXTURE
+  offset: 0x81609A60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81609440
+
+int_ari_isu01_v:
+  type: VTX
+  offset: 0x81609C60
+  count: 38
+
+int_ari_isu01_00T_model:
+  type: GFX
+  offset: 0x81609EC0
+  size: 0xD0

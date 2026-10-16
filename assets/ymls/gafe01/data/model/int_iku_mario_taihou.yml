@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_iku_mario_taihou_pal:
+  type: TEXTURE
+  offset: 0x8185F780
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_mario_taihou_a_tex_txt:
+  type: TEXTURE
+  offset: 0x8185F7A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8185F780
+
+int_iku_mario_taihou_e_tex_txt:
+  type: TEXTURE
+  offset: 0x8185F9A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8185F780
+
+int_iku_mario_taihou_d_tex_txt:
+  type: TEXTURE
+  offset: 0x8185FBA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8185F780
+
+int_iku_mario_taihou_c_tex_txt:
+  type: TEXTURE
+  offset: 0x8185FDA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8185F780
+
+int_iku_mario_taihou_b_tex_txt:
+  type: TEXTURE
+  offset: 0x8185FEA0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8185F780
+
+int_iku_mario_taihou_v:
+  type: VTX
+  offset: 0x818602A0
+  count: 60
+
+int_iku_mario_taihou_model:
+  type: GFX
+  offset: 0x81860660
+  size: 0x140

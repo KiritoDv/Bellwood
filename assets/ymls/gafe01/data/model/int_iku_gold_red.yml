@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_iku_gold_red_pal:
+  type: TEXTURE
+  offset: 0x81857C40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_gold_red5_tex_txt:
+  type: TEXTURE
+  offset: 0x81857C60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81857C40
+
+int_iku_gold_red2_tex_txt:
+  type: TEXTURE
+  offset: 0x81857D60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81857C40
+
+int_iku_gold_red3_tex_txt:
+  type: TEXTURE
+  offset: 0x81857F60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81857C40
+
+int_iku_gold_red1_tex_txt:
+  type: TEXTURE
+  offset: 0x81858160
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81857C40
+
+int_iku_gold_red4_tex_txt:
+  type: TEXTURE
+  offset: 0x81858360
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81857C40
+
+int_iku_gold_red_v:
+  type: VTX
+  offset: 0x81858460
+  count: 62
+
+int_iku_gold_red_model:
+  type: GFX
+  offset: 0x81858840
+  size: 0x138

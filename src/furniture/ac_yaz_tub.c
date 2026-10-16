@@ -1,5 +1,4 @@
-extern Gfx int_yaz_tub_body_model[];
-extern Gfx int_yaz_tub_water_model[];
+#include "assets/data/model/int_yaz_tub.h"
 
 aFTR_PROFILE iam_yaz_tub = {
 	int_yaz_tub_body_model,

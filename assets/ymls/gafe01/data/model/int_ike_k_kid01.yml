@@ -1,0 +1,150 @@
+:config:
+  strict_declarations: true
+
+int_ike_k_kid01_pal:
+  type: TEXTURE
+  offset: 0x81835340
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_k_kidfront1_tex:
+  type: TEXTURE
+  offset: 0x81835360
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kidfront2_tex:
+  type: TEXTURE
+  offset: 0x818353E0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kidfront3_tex:
+  type: TEXTURE
+  offset: 0x81835420
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kidfront4_tex:
+  type: TEXTURE
+  offset: 0x81835620
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kidtire_tex:
+  type: TEXTURE
+  offset: 0x81835660
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kidtunagi_tex:
+  type: TEXTURE
+  offset: 0x818356A0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kidsumi_tex:
+  type: TEXTURE
+  offset: 0x818356E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kidyane_tex:
+  type: TEXTURE
+  offset: 0x81835760
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kidunder_tex:
+  type: TEXTURE
+  offset: 0x818357A0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kidside2_tex:
+  type: TEXTURE
+  offset: 0x818357E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kidside3_tex:
+  type: TEXTURE
+  offset: 0x818358E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kidside4_tex:
+  type: TEXTURE
+  offset: 0x81835960
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kidside1_tex:
+  type: TEXTURE
+  offset: 0x81835A60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kidbase_tex:
+  type: TEXTURE
+  offset: 0x81835B60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81835340
+
+int_ike_k_kid01_v:
+  type: VTX
+  offset: 0x81835BE0
+  count: 180
+
+int_ike_k_kid01_on_model:
+  type: GFX
+  offset: 0x81836720
+  size: 0x180
+
+int_ike_k_kid01_onT_model:
+  type: GFX
+  offset: 0x818368A0
+  size: 0x170

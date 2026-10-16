@@ -6,6 +6,7 @@
 #include "m_play.h"
 #include "audio.h"
 #include "m_common_data.h"
+#include "assets/data/model/rom_kamakura.h"
 
 static void Kamakura_Indoor_Actor_ct(ACTOR* actorx, GAME* game);
 static void Kamakura_Indoor_Actor_dt(ACTOR* actorx, GAME* game);
@@ -45,8 +46,6 @@ static void Kamakura_Indoor_Actor_dt(ACTOR* actorx, GAME* game) {
 
     mCoBG_CrossOffMoveBg(k_indoor->mochi.move_bg_idx);
 }
-
-extern Gfx rom_kamakura_ring_modelT[];
 
 static void aKI_DrawKamakuraIndoorCandleRing(KAMAKURA_INDOOR_ACTOR* k_indoor, GAME* game) {
     static xyz_t candle_ring_pos[] = { { 142.0f, 106.0f, 38.0f }, { 178.0f, 106.0f, 38.0f } };
@@ -88,13 +87,7 @@ static Gfx* aKI_MakePrimEnvColorXluDisp(u8 r, u8 g, u8 b, u8 a, u8 f, u8 env_r, 
     }
 }
 
-extern u8 rom_kamakura_a1[];
-extern u8 rom_kamakura_a2_rgb_ci4[];
-
 static u8* rom_kamakura_evw_anime_4_tex_table[] = { rom_kamakura_a1, rom_kamakura_a2_rgb_ci4 };
-
-extern Gfx rom_kamakura_model[];
-extern Gfx rom_kamakura_modelT[];
 
 static void aKI_DrawKamakuraIndoorBG(KAMAKURA_INDOOR_ACTOR* k_indoor, GAME* game) {
     Gfx* gfx0 = aKI_MakePrimEnvColorXluDisp(k_indoor->candle_fire[0].color.r, k_indoor->candle_fire[0].color.g, k_indoor->candle_fire[0].color.b, k_indoor->candle_fire[0].color.a, 128, 255, 50, 0, 255, game);
@@ -276,10 +269,6 @@ static rgba_t aKI_candle_fire_rgba_data[] = {
 };
 // clang-format on
 
-extern u8 rom_kamakura_fire1_rgb_i4[];
-extern u8 rom_kamakura_fire2_rgb_i4[];
-extern u8 rom_kamakura_fire3_rgb_i4[];
-
 // clang-format off
 static u8* aKI_candle_fire_anime_data[] = {
     rom_kamakura_fire2_rgb_i4,
@@ -320,7 +309,7 @@ static void Kamakura_Indoor_Actor_move(ACTOR* actorx, GAME* game) {
     int i;
     s16 timer;
 
-    sAdo_OngenPos((u32)actorx, NA_SE_KOKORO_TOGURU, &k_indoor->mochi.pos);
+    sAdo_OngenPos((uintptr_t)actorx, NA_SE_KOKORO_TOGURU, &k_indoor->mochi.pos);
     if ((play->game_frame & 7) == 0) {
         xyz_t soba_yuge_pos = k_indoor->mochi.pos;
 

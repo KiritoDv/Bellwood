@@ -1,0 +1,74 @@
+:config:
+  strict_declarations: true
+
+int_nog_beachtable_pal:
+  type: TEXTURE
+  offset: 0x818F0C40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_beachtable_fruit_tex:
+  type: TEXTURE
+  offset: 0x818F0C60
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x818F0C40
+
+int_nog_beachtable_pole_tex:
+  type: TEXTURE
+  offset: 0x818F0E60
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x818F0C40
+
+int_nog_beachtable_top_tex:
+  type: TEXTURE
+  offset: 0x818F1060
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x818F0C40
+
+int_nog_beachtable_bubble_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x818F1460
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818F0C40
+
+int_nog_beachtable_juice_tex:
+  type: TEXTURE
+  offset: 0x818F14E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818F0C40
+
+int_nog_beachtable_v:
+  type: VTX
+  offset: 0x818F15E0
+  count: 195
+
+int_nog_beachtable_bodyT_model:
+  type: GFX
+  offset: 0x818F2210
+  size: 0x178
+
+int_nog_beachtable_glassT_model:
+  type: GFX
+  offset: 0x818F2388
+  size: 0xD0
+
+int_nog_beachtable_bubbleT_model:
+  type: GFX
+  offset: 0x818F2458
+  size: 0x60

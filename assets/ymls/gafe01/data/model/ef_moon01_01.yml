@@ -1,0 +1,32 @@
+:config:
+  strict_declarations: true
+
+ef_moon01_01_evw_anime:
+  type: AC:EVW_ANIME
+  offset: 0x8166C2C8
+
+ef_moon01_1_int_i4:
+  type: TEXTURE
+  offset: 0x8166C2E0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_moon01_2_int_i4:
+  type: TEXTURE
+  offset: 0x8166C4E0
+  format: I4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+ef_moon01_01_v:
+  type: VTX
+  offset: 0x8166CCE0
+  count: 4
+
+ef_moon01_01_modelT:
+  type: GFX
+  offset: 0x8166CD20
+  size: 0x68

@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_honegai_pal:
+  type: TEXTURE
+  offset: 0x81397FE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_honegai_tex:
+  type: TEXTURE
+  offset: 0x81398000
+  format: CI4
+  width: 16
+  height: 24
+  source_encoding: gx
+  tlut: 0x81397FE0
+
+obj_shop_honegai_v:
+  type: VTX
+  offset: 0x813980C0
+  count: 7
+
+obj_honegaiT_mat_model:
+  type: GFX
+  offset: 0x81398130
+  size: 0x48
+
+obj_honegaiT_gfx_model:
+  type: GFX
+  offset: 0x81398178
+  size: 0x20

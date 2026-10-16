@@ -1,0 +1,75 @@
+:config:
+  strict_declarations: true
+
+att_win_waku1_tex:
+  type: TEXTURE
+  offset: 0x814E9600
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+att_win_waku2_tex:
+  type: TEXTURE
+  offset: 0x814E9A00
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+att_win_waku3_tex:
+  type: TEXTURE
+  offset: 0x814E9E00
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+att_win_waku4_tex:
+  type: TEXTURE
+  offset: 0x814EA200
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+att_win_waku5_tex:
+  type: TEXTURE
+  offset: 0x814EA600
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+att_win_waku6_tex:
+  type: TEXTURE
+  offset: 0x814EAA00
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+att_win_v:
+  type: VTX
+  offset: 0x814EAA80
+  count: 47
+
+att_win_cursor_model:
+  type: GFX
+  offset: 0x814EAD70
+  size: 0x38
+
+att_win_winT_model:
+  type: GFX
+  offset: 0x814EADA8
+  size: 0xF0
+
+att_win_mode:
+  type: GFX
+  offset: 0x814EAE98
+  size: 0x28
+
+att_win_model:
+  type: GFX
+  offset: 0x814EAEC0
+  size: 0x18

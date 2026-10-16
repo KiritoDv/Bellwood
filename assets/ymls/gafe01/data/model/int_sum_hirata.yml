@@ -1,0 +1,102 @@
+:config:
+  strict_declarations: true
+
+int_sum_hirata_pal:
+  type: TEXTURE
+  offset: 0x81A06A00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_hirata_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A06A20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_hirata_base_txt:
+  type: TEXTURE
+  offset: 0x81A06A40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A06A00
+
+int_sum_hirata_top_txt:
+  type: TEXTURE
+  offset: 0x81A06AC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A06A00
+
+int_sum_hirata_side_txt:
+  type: TEXTURE
+  offset: 0x81A06CC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A06A00
+
+int_sum_hirata_body_txt:
+  type: TEXTURE
+  offset: 0x81A06EC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A06A00
+
+int_sum_hirata_hand_txt:
+  type: TEXTURE
+  offset: 0x81A06FC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A06A20
+
+int_sum_hirata_v:
+  type: VTX
+  offset: 0x81A070C0
+  count: 58
+
+int_sum_hirata_side_model:
+  type: GFX
+  offset: 0x81A07460
+  size: 0x68
+
+int_sum_hirata_komado_model:
+  type: GFX
+  offset: 0x81A074C8
+  size: 0x58
+
+int_sum_hirata_glass_model:
+  type: GFX
+  offset: 0x81A07520
+  size: 0x68
+
+int_sum_hirata_base_model:
+  type: GFX
+  offset: 0x81A07588
+  size: 0xA0
+
+int_sum_hirata_body_model:
+  type: GFX
+  offset: 0x81A07628
+  size: 0x68
+
+cKF_ba_r_int_sum_hirata:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A07754
+  joints: 6
+  counts: { flags: 6, data: 72, keys: 6, fixed: 15 }
+
+cKF_bs_r_int_sum_hirata:
+  type: AC:CKF_SKELETON
+  offset: 0x81A077B0
+  counts: { joints: 6 }

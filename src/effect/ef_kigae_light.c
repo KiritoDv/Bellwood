@@ -1,6 +1,7 @@
 #include "ef_effect_control.h"
 
 #include "m_common_data.h"
+#include "assets/data/model/ef_takurami01_yoko.h"
 
 static void eKigae_Light_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eKigae_Light_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -62,9 +63,6 @@ static void eKigae_Light_mv(eEC_Effect_c* effect, GAME* game) {
     xyz_t_add(&effect->velocity, &effect->acceleration, &effect->velocity);
     xyz_t_add(&effect->position, &effect->velocity, &effect->position);
 }
-
-extern Gfx ef_takurami01_normal_render_mode[];
-extern Gfx ef_takurami01_kira_modelT[];
 
 static void eKigae_Light_dw(eEC_Effect_c* effect, GAME* game) {
     OPEN_DISP(game->graph);

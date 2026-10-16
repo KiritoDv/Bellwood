@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_tak_syogi01_pal:
+  type: TEXTURE
+  offset: 0x81AA8000
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_syogi01_1_tex:
+  type: TEXTURE
+  offset: 0x81AA8020
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA8000
+
+int_tak_syogi_v:
+  type: VTX
+  offset: 0x81AA8420
+  count: 26
+
+int_tak_syogi01_on_model:
+  type: GFX
+  offset: 0x81AA85C0
+  size: 0x70

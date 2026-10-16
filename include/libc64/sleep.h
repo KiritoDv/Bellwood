@@ -2,7 +2,7 @@
 #define SLEEP_H
 
 #include "types.h"
-#include <dolphin/os.h>
+#include <libultraship/libultra/time.h>
 
 #ifdef __cplusplus
 extern "C" {

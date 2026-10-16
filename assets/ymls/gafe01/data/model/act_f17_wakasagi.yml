@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f17_wakasagi_pal:
+  type: TEXTURE
+  offset: 0x812465E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f17_wakasagi_tex:
+  type: TEXTURE
+  offset: 0x81246600
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x812465E0
+
+act_f17_wakasagi_a_v:
+  type: VTX
+  offset: 0x81246700
+  count: 9
+
+act_f17_wakasagi_aT_model:
+  type: GFX
+  offset: 0x81246790
+  size: 0x68
+
+act_f17_wakasagi_b_v:
+  type: VTX
+  offset: 0x812467F8
+  count: 9
+
+act_f17_wakasagi_bT_model:
+  type: GFX
+  offset: 0x81246888
+  size: 0x68
+
+act_f17_wakasagi_c_v:
+  type: VTX
+  offset: 0x812468F0
+  count: 9
+
+act_f17_wakasagi_cT_model:
+  type: GFX
+  offset: 0x81246980
+  size: 0x68

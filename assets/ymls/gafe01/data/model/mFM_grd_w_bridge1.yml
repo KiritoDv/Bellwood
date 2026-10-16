@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_w_bridge1_tex:
+  type: TEXTURE
+  offset: 0x81622160
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+mFM_grd_w_bridge1_2_tex:
+  type: TEXTURE
+  offset: 0x81622960
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+mFM_grd_w_bridge1_3_tex:
+  type: TEXTURE
+  offset: 0x81623160
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx

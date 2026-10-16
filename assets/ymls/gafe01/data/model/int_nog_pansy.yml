@@ -1,0 +1,41 @@
+:config:
+  strict_declarations: true
+
+int_nog_pansy_grass_tex:
+  type: TEXTURE
+  offset: 0x8190DC20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_pansy_leaf_tex:
+  type: TEXTURE
+  offset: 0x8190DCA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_pansy_flower_tex:
+  type: TEXTURE
+  offset: 0x8190DD20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+int_nog_pansy_v:
+  type: VTX
+  offset: 0x8190DE20
+  count: 52
+
+int_nog_pansy_model:
+  type: GFX
+  offset: 0x8190E160
+  size: 0x58
+
+int_nog_pansyT_model:
+  type: GFX
+  offset: 0x8190E1B8
+  size: 0xA8

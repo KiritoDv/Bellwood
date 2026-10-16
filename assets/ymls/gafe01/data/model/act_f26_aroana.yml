@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f26_aroana_pal:
+  type: TEXTURE
+  offset: 0x81238720
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f26_aroana_tex:
+  type: TEXTURE
+  offset: 0x81238740
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81238720
+
+act_f26_aroana_a_v:
+  type: VTX
+  offset: 0x81238A40
+  count: 9
+
+act_f26_aroana_aT_model:
+  type: GFX
+  offset: 0x81238AD0
+  size: 0x68
+
+act_f26_aroana_b_v:
+  type: VTX
+  offset: 0x81238B38
+  count: 9
+
+act_f26_aroana_bT_model:
+  type: GFX
+  offset: 0x81238BC8
+  size: 0x68
+
+act_f26_aroana_c_v:
+  type: VTX
+  offset: 0x81238C30
+  count: 9
+
+act_f26_aroana_cT_model:
+  type: GFX
+  offset: 0x81238CC0
+  size: 0x68

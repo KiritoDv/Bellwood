@@ -1,0 +1,97 @@
+:config:
+  strict_declarations: true
+
+int_kon_blueclock_pal:
+  type: TEXTURE
+  offset: 0x818A1BE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_blueclock_grass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x818A1C00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_blueclock_d_tex_txt:
+  type: TEXTURE
+  offset: 0x818A1C20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A1BE0
+
+int_kon_blueclock_a_tex_txt:
+  type: TEXTURE
+  offset: 0x818A1CA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A1BE0
+
+int_kon_blueclock_c_tex_txt:
+  type: TEXTURE
+  offset: 0x818A1DA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A1BE0
+
+int_kon_blueclock_b_tex_txt:
+  type: TEXTURE
+  offset: 0x818A1E20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A1BE0
+
+int_kon_blueclock_grass_tex_txt:
+  type: TEXTURE
+  offset: 0x818A1F20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A1C00
+
+int_kon_blueclock_v:
+  type: VTX
+  offset: 0x818A2120
+  count: 40
+
+int_kon_blueclock_long_model:
+  type: GFX
+  offset: 0x818A23A0
+  size: 0x58
+
+int_kon_blueclock_evw_model:
+  type: GFX
+  offset: 0x818A23F8
+  size: 0x80
+
+int_kon_blueclock_base_model:
+  type: GFX
+  offset: 0x818A2478
+  size: 0xA8
+
+int_kon_blueclock_short_model:
+  type: GFX
+  offset: 0x818A2520
+  size: 0x58
+
+cKF_ba_r_int_kon_blueclock:
+  type: AC:CKF_ANIMATION
+  offset: 0x818A25AC
+  joints: 6
+  counts: { flags: 6, data: 0, keys: 0, fixed: 21 }
+
+cKF_bs_r_int_kon_blueclock:
+  type: AC:CKF_SKELETON
+  offset: 0x818A2608
+  counts: { joints: 6 }

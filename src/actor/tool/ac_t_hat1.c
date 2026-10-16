@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_lib.h"
 #include "m_rcp.h"
+#include "assets/data/model/crw_hat1.h"
 
 
 static void aTHT1_actor_ct(ACTOR* actor, GAME*);
@@ -25,9 +26,7 @@ ACTOR_PROFILE T_Hat1_Profile = {
     NULL
 };
 
-extern Gfx crw_hat1_body_model[];
-
-static void aTHT1_actor_ct(ACTOR* actor, GAME*){
+static void aTHT1_actor_ct(ACTOR* actor, GAME* arg1){
 
     aTHT1_setupAction(actor,4);
 }
@@ -50,7 +49,7 @@ static void aTHT1_setupAction(ACTOR*actor, int action){
 
 }
 
-static void aTHT1_actor_move(ACTOR* actor, GAME*){
+static void aTHT1_actor_move(ACTOR* actor, GAME* arg1){
     HAT1_ACTOR* hat = (HAT1_ACTOR*)actor;
 
     if(hat->tools_class.work0 != hat->current_id){

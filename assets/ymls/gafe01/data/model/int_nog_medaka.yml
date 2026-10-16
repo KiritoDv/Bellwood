@@ -1,0 +1,106 @@
+:config:
+  strict_declarations: true
+
+int_nog_medaka_pal:
+  type: TEXTURE
+  offset: 0x81907F60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_medaka_glass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81907F80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_medaka_body_tex_txt:
+  type: TEXTURE
+  offset: 0x81907FA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81907F60
+
+int_nog_medaka_top_tex_txt:
+  type: TEXTURE
+  offset: 0x819080A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81907F60
+
+int_nog_medaka_side_tex_txt:
+  type: TEXTURE
+  offset: 0x819081A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81907F60
+
+int_nog_medaka_base_tex_txt:
+  type: TEXTURE
+  offset: 0x819083A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81907F60
+
+int_nog_medaka_etc_tex_txt:
+  type: TEXTURE
+  offset: 0x81908420
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81907F60
+
+int_nog_medaka_glass_tex_pic_ci4:
+  type: TEXTURE
+  offset: 0x819084A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81907F80
+
+int_nog_medaka_v:
+  type: VTX
+  offset: 0x819085A0
+  count: 67
+
+int_nog_medaka_sakana_model:
+  type: GFX
+  offset: 0x819089D0
+  size: 0x90
+
+int_sum_medaka_top_model:
+  type: GFX
+  offset: 0x81908A60
+  size: 0x58
+
+int_sum_medaka_evw_model:
+  type: GFX
+  offset: 0x81908AB8
+  size: 0x68
+
+int_sum_medaka_base_model:
+  type: GFX
+  offset: 0x81908B20
+  size: 0xB8
+
+cKF_ba_r_int_nog_medaka:
+  type: AC:CKF_ANIMATION
+  offset: 0x81908C80
+  joints: 5
+  counts: { flags: 5, data: 60, keys: 3, fixed: 15 }
+
+cKF_bs_r_int_nog_medaka:
+  type: AC:CKF_SKELETON
+  offset: 0x81908CD0
+  counts: { joints: 5 }

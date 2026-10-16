@@ -1,10 +1,8 @@
+#include "assets/data/model/int_nog_tri_chest01.h"
 static void aNogTriChest01_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aNogTriChest01_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aNogTriChest01_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aNogTriChest01_dt(FTR_ACTOR* ftr_actor, u8* data);
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_tri_chest01;
-extern cKF_Animation_R_c cKF_ba_r_int_nog_tri_chest01;
 
 static void aNogTriChest01_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyframe = &ftr_actor->keyframe;

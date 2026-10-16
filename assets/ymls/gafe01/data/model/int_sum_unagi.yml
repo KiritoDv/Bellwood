@@ -1,0 +1,97 @@
+:config:
+  strict_declarations: true
+
+int_sum_unagi_pal:
+  type: TEXTURE
+  offset: 0x81A774C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_unagi_glass_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A774E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_unagi_body_txt:
+  type: TEXTURE
+  offset: 0x81A77500
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A774C0
+
+int_sum_unagi_side_txt:
+  type: TEXTURE
+  offset: 0x81A77700
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A774C0
+
+int_sum_unagi_base_txt:
+  type: TEXTURE
+  offset: 0x81A77900
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A774C0
+
+int_sum_unagi_top_txt:
+  type: TEXTURE
+  offset: 0x81A77980
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A774C0
+
+int_sum_unagi_glass_txt:
+  type: TEXTURE
+  offset: 0x81A77A80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A774E0
+
+int_sum_unagi_v:
+  type: VTX
+  offset: 0x81A77B80
+  count: 45
+
+int_sum_unagi_sakana_model:
+  type: GFX
+  offset: 0x81A77E50
+  size: 0x70
+
+int_sum_unagi_top_model:
+  type: GFX
+  offset: 0x81A77EC0
+  size: 0x58
+
+int_sum_unagi_evw_model:
+  type: GFX
+  offset: 0x81A77F18
+  size: 0x68
+
+int_sum_unagi_base_model:
+  type: GFX
+  offset: 0x81A77F80
+  size: 0x90
+
+cKF_ba_r_int_sum_unagi:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A780D0
+  joints: 5
+  counts: { flags: 5, data: 72, keys: 9, fixed: 9 }
+
+cKF_bs_r_int_sum_unagi:
+  type: AC:CKF_SKELETON
+  offset: 0x81A78120
+  counts: { joints: 5 }

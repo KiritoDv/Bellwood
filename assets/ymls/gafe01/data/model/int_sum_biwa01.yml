@@ -1,0 +1,105 @@
+:config:
+  strict_declarations: true
+
+int_sum_biwa01_pal:
+  type: TEXTURE
+  offset: 0x8199F780
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_biwa01_front_tex:
+  type: TEXTURE
+  offset: 0x8199F7A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8199F780
+
+int_sum_biwa01_nec_tex:
+  type: TEXTURE
+  offset: 0x8199F9A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8199F780
+
+int_sum_biwa01_back_tex:
+  type: TEXTURE
+  offset: 0x8199FAA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8199F780
+
+int_sum_biwa01_necback_tex:
+  type: TEXTURE
+  offset: 0x8199FB20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8199F780
+
+int_sum_biwa01_head_tex:
+  type: TEXTURE
+  offset: 0x8199FBA0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x8199F780
+
+int_sum_biwa01_headtop_tex:
+  type: TEXTURE
+  offset: 0x8199FC20
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x8199F780
+
+int_sum_biwa01_headfront_tex:
+  type: TEXTURE
+  offset: 0x8199FCA0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x8199F780
+
+int_sum_biwa01_stand_tex:
+  type: TEXTURE
+  offset: 0x8199FCE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8199F780
+
+int_sum_biwa01_standhand_tex:
+  type: TEXTURE
+  offset: 0x8199FDE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8199F780
+
+int_sum_biwa01_v:
+  type: VTX
+  offset: 0x8199FE60
+  count: 65
+
+int_sum_biwa01_on_model:
+  type: GFX
+  offset: 0x819A0270
+  size: 0xC8
+
+int_sum_biwa01_onT_model:
+  type: GFX
+  offset: 0x819A0338
+  size: 0xD8

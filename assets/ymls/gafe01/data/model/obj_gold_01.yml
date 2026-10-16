@@ -1,0 +1,9 @@
+:config:
+  strict_declarations: true
+
+mFM_obj_gold_01_pal_dol:
+  type: TEXTURE
+  offset: 0x810FE6A0
+  format: TLUT
+  colors: 224
+  source_encoding: gx

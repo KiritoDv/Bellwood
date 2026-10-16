@@ -1,0 +1,94 @@
+:config:
+  strict_declarations: true
+
+obj_e_ghog_m_pal:
+  type: TEXTURE
+  offset: 0x815278A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_ghog_n_pal:
+  type: TEXTURE
+  offset: 0x815278C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_ghog_m1:
+  type: TEXTURE
+  offset: 0x815278E0
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x815278A0
+
+obj_e_ghog_m2:
+  type: TEXTURE
+  offset: 0x81527920
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x815278A0
+
+obj_e_ghog_m3:
+  type: TEXTURE
+  offset: 0x81527960
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x815278A0
+
+obj_e_ghog_m4:
+  type: TEXTURE
+  offset: 0x81527A60
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x815278A0
+
+obj_e_ghog_m5:
+  type: TEXTURE
+  offset: 0x81527AE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x815278A0
+
+obj_e_ghog_n2:
+  type: TEXTURE
+  offset: 0x81527B60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x815278C0
+
+obj_e_ghog_n1:
+  type: TEXTURE
+  offset: 0x81527BE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815278C0
+
+obj_e_ghog_v:
+  type: VTX
+  offset: 0x81527DE0
+  count: 69
+
+obj_e_ghog_modelT:
+  type: GFX
+  offset: 0x81528230
+  size: 0x110
+
+obj_e_ghog_model:
+  type: GFX
+  offset: 0x81528340
+  size: 0x90

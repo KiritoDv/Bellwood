@@ -1,3 +1,4 @@
+#include "assets/actor/npc/ac_npc_needlework.h"
 // Aus version increased client program size by 0x04 bytes
 // and loader program by 0x3C bytes
 #if VERSION >= VER_GAFU01_00
@@ -9,16 +10,8 @@
 #endif
 
 #ifndef __INTELLISENSE__
-static u8 aNNW_client_prg[] = {
-#include "assets/aNNW_client_prg.inc"
-};
 
-static u8 aNNW_client_ldr[] = {
-#include "assets/aNNW_client_ldr.inc"
-};
 #else
-extern u8 aNNW_client_prg[];
-extern u8 aNNW_client_ldr[];
 #endif
 
 static u8 aNNW_trance_data[0x1100] ATTRIBUTE_ALIGN(32);

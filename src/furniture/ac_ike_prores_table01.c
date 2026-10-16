@@ -1,5 +1,4 @@
-extern Gfx int_ike_prores_table01_on_model[];
-extern Gfx int_ike_prores_table01_onT_model[];
+#include "assets/data/model/int_ike_prores_table01.h"
 
 aFTR_PROFILE iam_ike_prores_table01 = {
 	int_ike_prores_table01_on_model,

@@ -1,0 +1,234 @@
+:config:
+  strict_declarations: true
+
+obj_s_shrine_pal:
+  type: TEXTURE
+  offset: 0x8158EDA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_shrine_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x8158EDC0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8158EDA0
+
+obj_s_shrine_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x8158F5C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8158EDA0
+
+obj_s_shrine_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8158FDC0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8158EDA0
+
+obj_s_shrine_t4_tex_txt:
+  type: TEXTURE
+  offset: 0x815905C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8158EDA0
+
+obj_s_shrine_sprash_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x815909C0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_shrine_water_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x81590AC0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_shrine_wave_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x81590BC0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_shrine_v:
+  type: VTX
+  offset: 0x81590CC0
+  count: 529
+
+obj_s_shrine_water_model:
+  type: GFX
+  offset: 0x81592DD0
+  size: 0xE8
+
+obj_s_shrine_trunk_model:
+  type: GFX
+  offset: 0x81592EB8
+  size: 0xA8
+
+obj_s_shrine_statue_model:
+  type: GFX
+  offset: 0x81592F60
+  size: 0x148
+
+obj_s_shrine_sprash_model:
+  type: GFX
+  offset: 0x815930A8
+  size: 0x88
+
+obj_s_shrine_leaf_model:
+  type: GFX
+  offset: 0x81593130
+  size: 0x80
+
+obj_s_shrine_figure_model:
+  type: GFX
+  offset: 0x815931B0
+  size: 0xA0
+
+obj_s_shrine_bubble_model:
+  type: GFX
+  offset: 0x81593250
+  size: 0x60
+
+obj_s_shrine_base_model:
+  type: GFX
+  offset: 0x815932B0
+  size: 0x1A8
+
+obj_w_shrine_pal:
+  type: TEXTURE
+  offset: 0x81593460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_shrine_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81593480
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81593460
+
+obj_w_shrine_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81593C80
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81593460
+
+obj_w_shrine_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x81594480
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81593460
+
+obj_w_shrine_t4_tex_txt:
+  type: TEXTURE
+  offset: 0x81594C80
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81593460
+
+obj_w_shrine_bubble_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x81595080
+  format: I4
+  width: 16
+  height: 64
+  source_encoding: gx
+
+obj_w_shrine_sprash_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x81595280
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_shrine_water_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x81595380
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_shrine_wave_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x81595480
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_shrine_v:
+  type: VTX
+  offset: 0x81595580
+  count: 529
+
+obj_w_shrine_water_model:
+  type: GFX
+  offset: 0x81597690
+  size: 0xE8
+
+obj_w_shrine_trunk_model:
+  type: GFX
+  offset: 0x81597778
+  size: 0xA8
+
+obj_w_shrine_statue_model:
+  type: GFX
+  offset: 0x81597820
+  size: 0x148
+
+obj_w_shrine_sprash_model:
+  type: GFX
+  offset: 0x81597968
+  size: 0x88
+
+obj_w_shrine_leaf_model:
+  type: GFX
+  offset: 0x815979F0
+  size: 0x80
+
+obj_w_shrine_figure_model:
+  type: GFX
+  offset: 0x81597A70
+  size: 0xA0
+
+obj_w_shrine_bubble_model:
+  type: GFX
+  offset: 0x81597B10
+  size: 0x60
+
+obj_w_shrine_base_model:
+  type: GFX
+  offset: 0x81597B70
+  size: 0x1A8

@@ -1,4 +1,4 @@
-extern Gfx int_kob_tobibako_on_model[];
+#include "assets/data/model/int_kob_tobibako.h"
 
 aFTR_PROFILE iam_kob_tobibako = {
 	int_kob_tobibako_on_model,

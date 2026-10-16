@@ -1,6 +1,4 @@
-extern Gfx int_sum_bla_chest02_on_model[];
-extern Gfx int_sum_bla_chest02_onT_model[];
-extern Gfx int_sum_bla_chest02_evwT_model[];
+#include "assets/data/model/int_sum_bla_chest02.h"
 
 aFTR_PROFILE iam_sum_bla_chest02 = {
 	int_sum_bla_chest02_on_model,

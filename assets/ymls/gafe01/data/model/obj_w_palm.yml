@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+obj_w_palm_baby_tex:
+  type: TEXTURE
+  offset: 0x811073E0
+  format: CI4
+  width: 32
+  height: 24
+  source_encoding: gx
+
+obj_s_palm1_v:
+  type: VTX
+  offset: 0x81107560
+  count: 4
+
+obj_w_palm1T_mat_model:
+  type: GFX
+  offset: 0x811075A0
+  size: 0x20
+
+obj_w_palm1T_gfx_model:
+  type: GFX
+  offset: 0x811075C0
+  size: 0x18

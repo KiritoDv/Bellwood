@@ -1,0 +1,111 @@
+:config:
+  strict_declarations: true
+
+int_sum_blue_clk_pal:
+  type: TEXTURE
+  offset: 0x819AC440
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_blue_clk_grass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x819AC460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_blue_clk_hari_tex_txt:
+  type: TEXTURE
+  offset: 0x819AC480
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819AC440
+
+int_sum_blue_clk_intop_tex_txt:
+  type: TEXTURE
+  offset: 0x819AC500
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819AC440
+
+int_sum_blue_clk_side_tex_txt:
+  type: TEXTURE
+  offset: 0x819AC580
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819AC440
+
+int_sum_blue_clk_front_tex_txt:
+  type: TEXTURE
+  offset: 0x819AC780
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x819AC440
+
+int_sum_blue_clk_fuliko_tex_txt:
+  type: TEXTURE
+  offset: 0x819ACB80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819AC440
+
+int_sum_blue_clk_grass_tex_txt:
+  type: TEXTURE
+  offset: 0x819ACC00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819AC460
+
+int_sum_blue_clk_v:
+  type: VTX
+  offset: 0x819ACC80
+  count: 49
+
+int_sum_blue_clk_long_model:
+  type: GFX
+  offset: 0x819ACF90
+  size: 0x60
+
+int_sum_blue_clk_evw_model:
+  type: GFX
+  offset: 0x819ACFF0
+  size: 0x58
+
+int_sum_blue_clk_base_model:
+  type: GFX
+  offset: 0x819AD048
+  size: 0xE0
+
+int_sum_blue_clk_short_model:
+  type: GFX
+  offset: 0x819AD128
+  size: 0x60
+
+int_sum_blue_clk_huriko_model:
+  type: GFX
+  offset: 0x819AD188
+  size: 0x58
+
+cKF_ba_r_int_sum_blue_clk:
+  type: AC:CKF_ANIMATION
+  offset: 0x819AD234
+  joints: 8
+  counts: { flags: 8, data: 9, keys: 1, fixed: 26 }
+
+cKF_bs_r_int_sum_blue_clk:
+  type: AC:CKF_SKELETON
+  offset: 0x819AD2A8
+  counts: { joints: 8 }

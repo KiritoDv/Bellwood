@@ -1,0 +1,114 @@
+:config:
+  strict_declarations: true
+
+int_kob_rika_desk_pal:
+  type: TEXTURE
+  offset: 0x8189E680
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kob_rika_desk_top_tex:
+  type: TEXTURE
+  offset: 0x8189E6A0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189E680
+
+int_kob_rika_desk_side1_tex:
+  type: TEXTURE
+  offset: 0x8189E8A0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189E680
+
+int_kob_rika_desk_side2_tex:
+  type: TEXTURE
+  offset: 0x8189EAA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189E680
+
+int_kob_rika_desk_side3_tex:
+  type: TEXTURE
+  offset: 0x8189EB20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189E680
+
+int_kob_rika_desk_nagashi1_tex:
+  type: TEXTURE
+  offset: 0x8189EBA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189E680
+
+int_kob_rika_desk_nagashi2_tex:
+  type: TEXTURE
+  offset: 0x8189EC20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189E680
+
+int_kob_rika_desk_jyaguti1_tex:
+  type: TEXTURE
+  offset: 0x8189ECA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189E680
+
+int_kob_rika_desk_jyaguti2_tex:
+  type: TEXTURE
+  offset: 0x8189ED20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189E680
+
+int_kob_rika_desk_jikken1_tex:
+  type: TEXTURE
+  offset: 0x8189EDA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189E680
+
+int_kob_rika_desk_jikken2_tex:
+  type: TEXTURE
+  offset: 0x8189EE20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189E680
+
+int_kob_rika_desk_v:
+  type: VTX
+  offset: 0x8189EEA0
+  count: 78
+
+int_kob_rika_desk_on_model:
+  type: GFX
+  offset: 0x8189F380
+  size: 0xD8
+
+int_kob_rika_desk_onT_model:
+  type: GFX
+  offset: 0x8189F458
+  size: 0x108

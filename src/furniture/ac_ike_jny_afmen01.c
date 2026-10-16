@@ -1,5 +1,4 @@
-extern Gfx int_ike_jny_afmen01_on_model[];
-extern Gfx int_ike_jny_afmen01_onT_model[];
+#include "assets/data/model/int_ike_jny_afmen01.h"
 
 aFTR_PROFILE iam_ike_jny_afmen01 = {
 	int_ike_jny_afmen01_on_model,

@@ -2,7 +2,7 @@
 #define INITIALIZE_H
 
 #include "types.h"
-#include "dolphin/os/OSTime.h"
+#include <libultraship/libultra/time.h>
 
 #ifdef __cplusplus
 extern "C" {

@@ -1,0 +1,32 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_fukubukuro2_pal:
+  type: TEXTURE
+  offset: 0x814454C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_fukubukuro2_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x814454E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_fukubukuro_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81445500
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_fukubukuro2_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81445700
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+obj_cedar_shadow_tex:
+  type: TEXTURE
+  offset: 0x810FEA60
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_cedar5_shadow_v:
+  type: VTX
+  offset: 0x810FEC60
+  count: 4
+
+obj_cedar5_shadowT_mat_model:
+  type: GFX
+  offset: 0x810FECA0
+  size: 0x20
+
+obj_cedar5_shadowT_gfx_model:
+  type: GFX
+  offset: 0x810FECC0
+  size: 0x10

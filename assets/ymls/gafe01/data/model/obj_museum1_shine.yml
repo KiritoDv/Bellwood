@@ -1,0 +1,49 @@
+:config:
+  strict_declarations: true
+
+obj_museum1_shine_2_pal:
+  type: TEXTURE
+  offset: 0x813794C8
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+obj_museum1_shine_2_tex:
+  type: TEXTURE
+  offset: 0x813794E8
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: n64
+  tlut: 0x813794C8
+
+obj_museum1_shine_1_tex:
+  type: TEXTURE
+  offset: 0x813798E8
+  format: RGBA16
+  width: 16
+  height: 64
+  source_encoding: n64
+
+obj_museum1_shine_3__tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x8137A0E8
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: n64
+
+obj_museum1_shine_v:
+  type: VTX
+  offset: 0x8137A168
+  count: 20
+
+obj_museum1_shine_modelT:
+  type: GFX
+  offset: 0x8137A2A8
+  size: 0xB8
+
+obj_museum1_shine_model:
+  type: GFX
+  offset: 0x8137A360
+  size: 0xF0

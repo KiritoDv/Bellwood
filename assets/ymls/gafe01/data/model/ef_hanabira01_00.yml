@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+ef_hanabira01_0:
+  type: TEXTURE
+  offset: 0x8137BAA0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_hanabira01_00_v:
+  type: VTX
+  offset: 0x8137BBA0
+  count: 4
+
+ef_hanabira01_00_setmode:
+  type: GFX
+  offset: 0x8137BBE0
+  size: 0x48
+
+ef_hanabira01_00_modelT:
+  type: GFX
+  offset: 0x8137BC28
+  size: 0x20

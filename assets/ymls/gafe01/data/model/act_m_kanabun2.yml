@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+act_m_kanabun_v:
+  type: VTX
+  offset: 0x81870C68
+  count: 12
+
+act_m_kanabun_pal:
+  type: TEXTURE
+  offset: 0x81870D28
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_kanabun:
+  type: TEXTURE
+  offset: 0x81870D48
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: n64
+  tlut: 0x81870D28
+
+act_m_mu_kanabun1T_model:
+  type: GFX
+  offset: 0x81870F48
+  size: 0xC8

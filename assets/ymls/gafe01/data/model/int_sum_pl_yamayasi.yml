@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_sum_pl_yamayasi_pal:
+  type: TEXTURE
+  offset: 0x81A47640
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_pl_yamayasi_earth_tex:
+  type: TEXTURE
+  offset: 0x81A47660
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A47640
+
+int_sum_pl_yamayasi_hachi_tex:
+  type: TEXTURE
+  offset: 0x81A476E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A47640
+
+int_sum_pl_yamayasi_leaf_tex:
+  type: TEXTURE
+  offset: 0x81A477E0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A47640
+
+int_sum_pl_yamayasi_stand_tex:
+  type: TEXTURE
+  offset: 0x81A47BE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A47640
+
+int_sum_pl_yamayasi_v:
+  type: VTX
+  offset: 0x81A47CE0
+  count: 84
+
+int_sum_pl_yamayasi_on_model:
+  type: GFX
+  offset: 0x81A48220
+  size: 0x60
+
+int_sum_pl_yamayasi_onT_model:
+  type: GFX
+  offset: 0x81A48280
+  size: 0xE8

@@ -1,0 +1,6 @@
+:config:
+  strict_declarations: true
+
+grd_s_m_r1_b_2_evw_anime:
+  type: AC:EVW_ANIME
+  offset: 0x8172A418

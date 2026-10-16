@@ -1,0 +1,106 @@
+:config:
+  strict_declarations: true
+
+int_sum_namazu_pal:
+  type: TEXTURE
+  offset: 0x81A2E3A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_namazu_glass_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A2E3C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_namazu_body_txt:
+  type: TEXTURE
+  offset: 0x81A2E3E0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A2E3A0
+
+int_sum_namazu_side_txt:
+  type: TEXTURE
+  offset: 0x81A2E6E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A2E3A0
+
+int_sum_namazu_base_txt:
+  type: TEXTURE
+  offset: 0x81A2E8E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A2E3A0
+
+int_sum_namazu_etc_txt:
+  type: TEXTURE
+  offset: 0x81A2E960
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A2E3A0
+
+int_sum_namazu_top_txt:
+  type: TEXTURE
+  offset: 0x81A2E9E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A2E3A0
+
+int_sum_namazu_glass_txt:
+  type: TEXTURE
+  offset: 0x81A2EAE0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A2E3C0
+
+int_sum_namazu_v:
+  type: VTX
+  offset: 0x81A2EBE0
+  count: 49
+
+int_sum_namazu_sakana_model:
+  type: GFX
+  offset: 0x81A2EEF0
+  size: 0x70
+
+int_sum_namazu_top_model:
+  type: GFX
+  offset: 0x81A2EF60
+  size: 0x58
+
+int_sum_namazu_evw_model:
+  type: GFX
+  offset: 0x81A2EFB8
+  size: 0x68
+
+int_sum_namazu_base_model:
+  type: GFX
+  offset: 0x81A2F020
+  size: 0xB8
+
+cKF_ba_r_int_sum_namazu:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A2F18C
+  joints: 5
+  counts: { flags: 5, data: 66, keys: 9, fixed: 9 }
+
+cKF_bs_r_int_sum_namazu:
+  type: AC:CKF_SKELETON
+  offset: 0x81A2F1DC
+  counts: { joints: 5 }

@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+obj_x_tree_light_tex:
+  type: TEXTURE
+  offset: 0x81120780
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8165E7A0
+
+obj_x_tree5_light_v:
+  type: VTX
+  offset: 0x81120980
+  count: 12
+
+obj_x_tree5_lightT_mat_model:
+  type: GFX
+  offset: 0x81120A40
+  size: 0x48
+
+obj_x_tree5_lightT_gfx_model:
+  type: GFX
+  offset: 0x81120A88
+  size: 0x20

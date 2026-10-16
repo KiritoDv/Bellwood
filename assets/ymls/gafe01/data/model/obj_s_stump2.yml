@@ -1,0 +1,22 @@
+:config:
+  strict_declarations: true
+
+obj_s_stump2_v:
+  type: VTX
+  offset: 0x8110EC48
+  count: 7
+
+obj_stump2T_mat_model:
+  type: GFX
+  offset: 0x8110ECB8
+  size: 0x20
+
+obj_gold_stump2T_mat_model:
+  type: GFX
+  offset: 0x8110ECD8
+  size: 0x20
+
+obj_stump2T_gfx_model:
+  type: GFX
+  offset: 0x8110ECF8
+  size: 0x20

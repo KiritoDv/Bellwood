@@ -1,4 +1,4 @@
-extern Gfx int_ike_tent_knap01_model[];
+#include "assets/data/model/int_ike_tent_knap01.h"
 
 aFTR_PROFILE iam_ike_tent_knap01 = {
 	int_ike_tent_knap01_model,

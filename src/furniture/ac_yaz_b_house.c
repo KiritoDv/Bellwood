@@ -1,4 +1,4 @@
-extern Gfx int_yaz_b_house_body_model[];
+#include "assets/data/model/int_yaz_b_house.h"
 
 aFTR_PROFILE iam_yaz_b_house = {
 	int_yaz_b_house_body_model,

@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_koorogi_v:
+  type: VTX
+  offset: 0x81871BB8
+  count: 10
+
+act_m_koorogi_pal:
+  type: TEXTURE
+  offset: 0x81871C58
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_koorogi:
+  type: TEXTURE
+  offset: 0x81871C78
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: n64
+  tlut: 0x81871C58
+
+act_m_mu_koorogi1T_model:
+  type: GFX
+  offset: 0x81871DF8
+  size: 0xC8
+
+act_m_mu_koorogi2_2T_model:
+  type: GFX
+  offset: 0x81871EC0
+  size: 0xC0

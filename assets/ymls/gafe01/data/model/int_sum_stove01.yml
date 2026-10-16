@@ -1,0 +1,110 @@
+:config:
+  strict_declarations: true
+
+int_sum_stove01_pal:
+  type: TEXTURE
+  offset: 0x81A60F40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_stove01_top:
+  type: TEXTURE
+  offset: 0x81A60F60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A60F40
+
+int_sum_stove01_side:
+  type: TEXTURE
+  offset: 0x81A60FE0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A60F40
+
+int_sum_stove01_net:
+  type: TEXTURE
+  offset: 0x81A612E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A60F40
+
+int_sum_stove01_douwn:
+  type: TEXTURE
+  offset: 0x81A61360
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A60F40
+
+int_sum_stove01_side2:
+  type: TEXTURE
+  offset: 0x81A613E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A60F40
+
+int_sum_stove01_top2:
+  type: TEXTURE
+  offset: 0x81A61460
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A60F40
+
+int_sum_stove01_side3:
+  type: TEXTURE
+  offset: 0x81A614E0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A60F40
+
+int_sum_stove01_swich:
+  type: TEXTURE
+  offset: 0x81A61520
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A60F40
+
+int_sum_stove01_fire:
+  type: TEXTURE
+  offset: 0x81A615A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A60F40
+
+int_sum_stove01_v:
+  type: VTX
+  offset: 0x81A61620
+  count: 67
+
+int_sum_stove01_on_model:
+  type: GFX
+  offset: 0x81A61A50
+  size: 0x98
+
+int_sum_stove01_onT_model:
+  type: GFX
+  offset: 0x81A61AE8
+  size: 0xF8
+
+int_sum_stove_offT_model:
+  type: GFX
+  offset: 0x81A61BE0
+  size: 0x58

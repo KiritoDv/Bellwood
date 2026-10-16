@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f11_raigyo_pal:
+  type: TEXTURE
+  offset: 0x81243800
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f11_raigyo_tex:
+  type: TEXTURE
+  offset: 0x81243820
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81243800
+
+act_f11_raigyo_a_v:
+  type: VTX
+  offset: 0x81243C20
+  count: 10
+
+act_f11_raigyo_aT_model:
+  type: GFX
+  offset: 0x81243CC0
+  size: 0x68
+
+act_f11_raigyo_b_v:
+  type: VTX
+  offset: 0x81243D28
+  count: 10
+
+act_f11_raigyo_bT_model:
+  type: GFX
+  offset: 0x81243DC8
+  size: 0x68
+
+act_f11_raigyo_c_v:
+  type: VTX
+  offset: 0x81243E30
+  count: 10
+
+act_f11_raigyo_cT_model:
+  type: GFX
+  offset: 0x81243ED0
+  size: 0x68

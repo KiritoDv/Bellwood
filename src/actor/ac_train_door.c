@@ -3,6 +3,8 @@
 #include "audio.h"
 #include "m_rcp.h"
 #include "m_name_table.h"
+#include "assets/data/model/cKF_ba_r_obj_romtrain_door.h"
+#include "assets/data/model/obj_romtrain_door.h"
 
 static void aTRD_actor_ct(ACTOR* actor, GAME* game);
 static void aTRD_actor_dt(ACTOR* actor, GAME* game);
@@ -22,9 +24,6 @@ ACTOR_PROFILE TrainDoor_Profile = {
     &aTRD_actor_draw,
     NULL,
 };
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_romtrain_door;
-extern cKF_Animation_R_c cKF_ba_r_obj_romtrain_door;
 
 static void aTRD_actor_ct(ACTOR* actor, GAME* game) {
     TRAINDOOR_ACTOR* traindoor = (TRAINDOOR_ACTOR*)actor;

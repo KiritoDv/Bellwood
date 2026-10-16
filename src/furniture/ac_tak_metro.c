@@ -1,5 +1,4 @@
-extern cKF_Skeleton_R_c cKF_bs_r_int_tak_metro;
-extern cKF_Animation_R_c cKF_ba_r_int_tak_metro;
+#include "assets/data/model/int_tak_metro.h"
 
 #define aTakMetro_DISABLED(ftr_actor) (ftr_actor->dynamic_work_s[1])
 

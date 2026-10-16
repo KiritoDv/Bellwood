@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_e_koinobori.h"
 static void aKOI_wait(STRUCTURE_ACTOR* actorx, GAME_PLAY* play) {
 }
 
@@ -18,7 +19,7 @@ static void aKOI_actor_move(ACTOR* actor, GAME* game) {
     cKF_SkeletonInfo_R_play(&koinobori->structure_class.keyframe);
     koinobori->structure_class.action_proc(&koinobori->structure_class, game_play);
 
-    sAdo_OngenPos((u32)actor, 0x35, &actor->world.position);
+    sAdo_OngenPos((uintptr_t)actor, 0x35, &actor->world.position);
 }
 
 static void aKOI_actor_init(ACTOR* actor, GAME* game) {

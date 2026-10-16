@@ -1,0 +1,11 @@
+:config:
+  strict_declarations: true
+  directory: field
+
+fgdata:
+  type: AC:FG_DATA
+  file: forest_1st.arc/data/fgdata.bin
+
+fgnpcdata:
+  type: AC:FG_DATA
+  file: forest_2nd.arc/data/fgnpcdata.bin

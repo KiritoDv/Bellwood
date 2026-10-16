@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+crw_biscus4_pal:
+  type: TEXTURE
+  offset: 0x815C25E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+crw_biscus42_tex_txt:
+  type: TEXTURE
+  offset: 0x815C2600
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x815C25E0
+
+crw_biscus44_tex_txt:
+  type: TEXTURE
+  offset: 0x815C2700
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x815C25E0
+
+crw_biscus43_tex_txt:
+  type: TEXTURE
+  offset: 0x815C2780
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x815C25E0
+
+crw_biscus41_tex_txt:
+  type: TEXTURE
+  offset: 0x815C2800
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815C25E0
+
+crw_biscus4_v:
+  type: VTX
+  offset: 0x815C2A00
+  count: 57
+
+crw_biscus4_body_model:
+  type: GFX
+  offset: 0x815C2D90
+  size: 0x138

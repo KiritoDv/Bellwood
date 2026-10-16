@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_iku_roller_pal:
+  type: TEXTURE
+  offset: 0x81861CC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_roller_g_tex_txt:
+  type: TEXTURE
+  offset: 0x81861CE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81861CC0
+
+int_iku_roller_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81861D60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81861CC0
+
+int_iku_roller_e_tex_txt:
+  type: TEXTURE
+  offset: 0x81861F60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81861CC0
+
+int_iku_roller_d_tex_txt:
+  type: TEXTURE
+  offset: 0x81861FE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81861CC0
+
+int_iku_roller_c_tex_txt:
+  type: TEXTURE
+  offset: 0x818620E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81861CC0
+
+int_iku_roller_f_tex_txt:
+  type: TEXTURE
+  offset: 0x818621E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81861CC0
+
+int_iku_roller_a_tex_txt:
+  type: TEXTURE
+  offset: 0x818622E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81861CC0
+
+int_iku_roller_v:
+  type: VTX
+  offset: 0x818624E0
+  count: 93
+
+int_iku_roller_on_model:
+  type: GFX
+  offset: 0x81862AB0
+  size: 0x158
+
+int_iku_roller_off_model:
+  type: GFX
+  offset: 0x81862C08
+  size: 0x58

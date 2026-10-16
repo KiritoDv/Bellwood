@@ -1,0 +1,75 @@
+:config:
+  strict_declarations: true
+
+int_tak_station_pal:
+  type: TEXTURE
+  offset: 0x81AA6B00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_station_wa_tex_txt:
+  type: TEXTURE
+  offset: 0x81AA6B20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA6B00
+
+int_tak_station_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81AA6D20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA6B00
+
+int_tak_station_bou_tex_txt:
+  type: TEXTURE
+  offset: 0x81AA6DA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA6B00
+
+int_tak_station_top_tex_txt:
+  type: TEXTURE
+  offset: 0x81AA6E20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA6B00
+
+int_tak_station_mado_tex_txt:
+  type: TEXTURE
+  offset: 0x81AA6EA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA6B00
+
+int_tak_station_v:
+  type: VTX
+  offset: 0x81AA6F20
+  count: 70
+
+int_tak_station_on_model:
+  type: GFX
+  offset: 0x81AA7380
+  size: 0x148
+
+cKF_ba_r_int_tak_station:
+  type: AC:CKF_ANIMATION
+  offset: 0x81AA74F4
+  joints: 3
+  counts: { flags: 3, data: 6, keys: 1, fixed: 11 }
+
+cKF_bs_r_int_tak_station:
+  type: AC:CKF_SKELETON
+  offset: 0x81AA752C
+  counts: { joints: 3 }

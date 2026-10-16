@@ -5,6 +5,8 @@
 #include "m_player_lib.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/obj_e_count01.h"
+#include "assets/data/model/obj_e_count_shadow.h"
 
 enum {
     aCOU_ACT_WAIT,
@@ -38,16 +40,10 @@ ACTOR_PROFILE Count_Profile = {
 // @ 8056df2c
 static u8 aCOU_shadow_vtx_fix_flg_table[4] = { 0x00, 0x01, 0x01, 0x00 };
 
-extern Vtx obj_e_count_shadow_v[];
-extern Gfx obj_e_count_shadow_model[];
-
 static bIT_ShadowData_c aCOU_shadow_data = { ARRAY_COUNT(aCOU_shadow_vtx_fix_flg_table), aCOU_shadow_vtx_fix_flg_table,
                                              60.0f, obj_e_count_shadow_v, obj_e_count_shadow_model };
 
 static aCOU_Clip_c aCOU_clip;
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_e_count01;
-extern cKF_Animation_R_c cKF_ba_r_obj_e_count01;
 
 static void aCOU_set_bgOffset(ACTOR* actorx, int idx);
 static void aCOU_init_clip_area(void);

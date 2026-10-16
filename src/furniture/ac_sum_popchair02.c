@@ -1,4 +1,4 @@
-extern Gfx int_sum_popchair02_onT_model[];
+#include "assets/data/model/int_sum_popchair02.h"
 
 aFTR_PROFILE iam_sum_popchair02 = {
 	int_sum_popchair02_onT_model,

@@ -1,0 +1,30 @@
+:config:
+  strict_declarations: true
+
+obj_f_tree_young_tex:
+  type: TEXTURE
+  offset: 0x810AECE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_f_tree2_v:
+  type: VTX
+  offset: 0x810AF4E0
+  count: 7
+
+obj_f_tree2T_mat_model:
+  type: GFX
+  offset: 0x810AF550
+  size: 0x20
+
+obj_f_gold_tree2T_mat_model:
+  type: GFX
+  offset: 0x810AF570
+  size: 0x20
+
+obj_f_tree2T_gfx_model:
+  type: GFX
+  offset: 0x810AF590
+  size: 0x20

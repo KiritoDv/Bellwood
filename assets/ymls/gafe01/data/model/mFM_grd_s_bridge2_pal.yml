@@ -1,0 +1,9 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_s_bridge2_pal:
+  type: TEXTURE
+  offset: 0x81623960
+  format: TLUT
+  colors: 16
+  source_encoding: gx

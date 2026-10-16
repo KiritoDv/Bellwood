@@ -1,0 +1,138 @@
+:config:
+  strict_declarations: true
+
+plc_1_pal:
+  type: TEXTURE
+  offset: 0x8134EF20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+plc_1_eye1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134EF40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_eye2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134F040
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_eye3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134F140
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_eye4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134F240
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_eye5_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134F340
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_eye6_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134F440
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_eye7_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134F540
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_eye8_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134F640
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_mouth1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134F740
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_mouth2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134F840
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_mouth3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134F940
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_mouth4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134FA40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_mouth5_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134FB40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_mouth6_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8134FC40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+plc_1_tmem_txt:
+  type: AC:TEX_ATLAS
+  offset: 0x8134FD40
+  size: 0x6C0
+  regions:
+    - { offset: 0x0, format: CI4, width: 16, height: 16 }
+    - { offset: 0x80, format: CI4, width: 16, height: 8 }
+    - { offset: 0xC0, format: CI4, width: 16, height: 16 }
+    - { offset: 0x140, format: CI4, width: 16, height: 32 }
+    - { offset: 0x240, format: CI4, width: 16, height: 8 }
+    - { offset: 0x280, format: CI4, width: 32, height: 8 }
+    - { offset: 0x300, format: CI4, width: 32, height: 32 }
+    - { offset: 0x500, format: CI4, width: 32, height: 8 }
+    - { offset: 0x580, format: CI4, width: 32, height: 8 }
+    - { offset: 0x600, format: CI4, width: 32, height: 8 }
+    - { offset: 0x680, format: CI4, width: 16, height: 8 }

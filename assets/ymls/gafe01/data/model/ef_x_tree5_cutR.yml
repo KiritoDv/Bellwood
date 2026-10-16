@@ -1,0 +1,27 @@
+:config:
+  strict_declarations: true
+
+ef_x_tree5_cutR_v:
+  type: VTX
+  offset: 0x8165E0D0
+  count: 33
+
+obj_x_tree5_cutR_light_model:
+  type: GFX
+  offset: 0x8165E2E0
+  size: 0x30
+
+ef_x_tree5_cutR_leaf_model:
+  type: GFX
+  offset: 0x8165E310
+  size: 0x48
+
+ef_x_tree5_cutR_trunk_model:
+  type: GFX
+  offset: 0x8165E358
+  size: 0x38
+
+cKF_bs_r_ef_x_tree5_cutR:
+  type: AC:CKF_SKELETON
+  offset: 0x8165E3CC
+  counts: { joints: 5 }

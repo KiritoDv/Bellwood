@@ -1,0 +1,100 @@
+:config:
+  strict_declarations: true
+
+int_nog_nabe_pal:
+  type: TEXTURE
+  offset: 0x8190CD20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_nabe_switch_tex_txt:
+  type: TEXTURE
+  offset: 0x8190CD40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8190CD20
+
+int_nog_nabe_fire1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8190CDC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_nabe_fire2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8190CE40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_nabe_fire3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8190CEC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_nabe_side_tex_txt:
+  type: TEXTURE
+  offset: 0x8190CF40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8190CD20
+
+int_nog_nabe_top_tex_txt:
+  type: TEXTURE
+  offset: 0x8190CFC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8190CD20
+
+int_nog_nabe_conro_tex_txt:
+  type: TEXTURE
+  offset: 0x8190D1C0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x8190CD20
+
+int_nog_nabe_v:
+  type: VTX
+  offset: 0x8190D3C0
+  count: 94
+
+int_nog_nabe_switch_model:
+  type: GFX
+  offset: 0x8190D9A0
+  size: 0x58
+
+int_nog_nabe_fire_model:
+  type: GFX
+  offset: 0x8190D9F8
+  size: 0x70
+
+int_nog_nabe_body_model:
+  type: GFX
+  offset: 0x8190DA68
+  size: 0x110
+
+cKF_ba_r_int_nog_nabe:
+  type: AC:CKF_ANIMATION
+  offset: 0x8190DBC0
+  joints: 4
+  counts: { flags: 4, data: 18, keys: 1, fixed: 14 }
+
+cKF_bs_r_int_nog_nabe:
+  type: AC:CKF_SKELETON
+  offset: 0x8190DC04
+  counts: { joints: 4 }

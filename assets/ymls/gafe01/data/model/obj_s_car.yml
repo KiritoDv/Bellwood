@@ -1,0 +1,66 @@
+:config:
+  strict_declarations: true
+
+obj_s_car_pal:
+  type: TEXTURE
+  offset: 0x8157B960
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_car_t1_tex:
+  type: TEXTURE
+  offset: 0x8157B980
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8157B960
+
+obj_s_car_t2_tex:
+  type: TEXTURE
+  offset: 0x8157C180
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8157B960
+
+obj_s_car_t3_tex:
+  type: TEXTURE
+  offset: 0x8157C980
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8157B960
+
+obj_s_car_v:
+  type: VTX
+  offset: 0x8157D180
+  count: 110
+
+obj_s_car_t1T_model:
+  type: GFX
+  offset: 0x8157D860
+  size: 0x90
+
+obj_s_car_t2T_model:
+  type: GFX
+  offset: 0x8157D8F0
+  size: 0x60
+
+obj_s_car_t3T_model:
+  type: GFX
+  offset: 0x8157D950
+  size: 0x68
+
+obj_s_car_innerT_model:
+  type: GFX
+  offset: 0x8157D9B8
+  size: 0x78
+
+s_car_DL_model:
+  type: GFX
+  offset: 0x8157DA30
+  size: 0x28

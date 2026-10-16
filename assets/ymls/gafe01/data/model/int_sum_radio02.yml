@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_radio02_pal:
+  type: TEXTURE
+  offset: 0x81A4CAA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_radio02_front_tex:
+  type: TEXTURE
+  offset: 0x81A4CAC0
+  format: CI4
+  width: 48
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A4CAA0
+
+int_sum_radio02_side_tex:
+  type: TEXTURE
+  offset: 0x81A4CF40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A4CAA0
+
+int_sum_radio02_hand_tex:
+  type: TEXTURE
+  offset: 0x81A4CFC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A4CAA0
+
+int_sum_radio02_sound_tex:
+  type: TEXTURE
+  offset: 0x81A4D0C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A4CAA0
+
+int_sum_radio02_v:
+  type: VTX
+  offset: 0x81A4D140
+  count: 40
+
+int_sum_radio02_on_model:
+  type: GFX
+  offset: 0x81A4D3C0
+  size: 0x80
+
+int_sum_radio02_onT_model:
+  type: GFX
+  offset: 0x81A4D440
+  size: 0x90

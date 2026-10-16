@@ -1,4 +1,4 @@
-extern Gfx int_iku_mario_koura_model[];
+#include "assets/data/model/int_iku_mario_koura.h"
 
 static void fIMKoura_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     if (aFTR_CAN_PLAY_SE(ftr_actor)) {

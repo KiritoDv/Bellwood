@@ -1,0 +1,49 @@
+:config:
+  strict_declarations: true
+
+int_yaz_fish_trophy_fish_txt:
+  type: TEXTURE
+  offset: 0x81ACC340
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+int_yaz_fish_trophy_grip_txt:
+  type: TEXTURE
+  offset: 0x81ACC440
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+int_yaz_fish_trophy_base_txt:
+  type: TEXTURE
+  offset: 0x81ACC540
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_yaz_fish_trophy_body_txt:
+  type: TEXTURE
+  offset: 0x81ACC740
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+int_yaz_fish_trophy_v:
+  type: VTX
+  offset: 0x81ACC840
+  count: 101
+
+int_yaz_fish_trophy_cup_model:
+  type: GFX
+  offset: 0x81ACCE90
+  size: 0xF8
+
+int_yaz_fish_trophy_base_model:
+  type: GFX
+  offset: 0x81ACCF88
+  size: 0xB8

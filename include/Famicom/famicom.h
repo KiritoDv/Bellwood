@@ -157,6 +157,9 @@ extern u8* nesinfo_get_moriName();
 extern void nesinfo_init();
 extern void highscore_setup_flags(u8* flags);
 
+extern Famicom_MallocInfo* my_malloc_current;
+extern u8 save_game_image;
+
 #ifdef __cplusplus
 }
 #endif

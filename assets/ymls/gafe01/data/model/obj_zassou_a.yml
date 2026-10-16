@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+obj_zassou_tex:
+  type: TEXTURE
+  offset: 0x81103C40
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+obj_zassou_a_v:
+  type: VTX
+  offset: 0x81104040
+  count: 4
+
+obj_zassou_aT_mat_model:
+  type: GFX
+  offset: 0x81104080
+  size: 0x20
+
+obj_zassou_aT_gfx_model:
+  type: GFX
+  offset: 0x811040A0
+  size: 0x18

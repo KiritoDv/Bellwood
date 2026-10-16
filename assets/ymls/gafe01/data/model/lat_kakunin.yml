@@ -1,0 +1,30 @@
+:config:
+  strict_declarations: true
+
+lat_tegami_waku_tex:
+  type: TEXTURE
+  offset: 0x8140B100
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+lat_kakunin_v:
+  type: VTX
+  offset: 0x8140B500
+  count: 7
+
+lat_kakunin_DL_mode:
+  type: GFX
+  offset: 0x8140B570
+  size: 0x30
+
+lat_kakunin_c_model:
+  type: GFX
+  offset: 0x8140B5A0
+  size: 0x30
+
+lat_kakunin_wakuT_model:
+  type: GFX
+  offset: 0x8140B5D0
+  size: 0x50

@@ -1,0 +1,49 @@
+:config:
+  strict_declarations: true
+
+act_balloon_wire_tex_txt:
+  type: TEXTURE
+  offset: 0x810A1120
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+act_balloon_head_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x810A11A0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+act_balloon_v:
+  type: VTX
+  offset: 0x810A15A0
+  count: 52
+
+act_balloon_head_model:
+  type: GFX
+  offset: 0x810A18E0
+  size: 0x90
+
+act_balloon_wireB_model:
+  type: GFX
+  offset: 0x810A1970
+  size: 0x98
+
+act_balloon_wireA_model:
+  type: GFX
+  offset: 0x810A1A08
+  size: 0x58
+
+cKF_ba_r_act_balloon:
+  type: AC:CKF_ANIMATION
+  offset: 0x810A1B2C
+  joints: 4
+  counts: { flags: 4, data: 84, keys: 6, fixed: 9 }
+
+cKF_bs_r_act_balloon:
+  type: AC:CKF_SKELETON
+  offset: 0x810A1B70
+  counts: { joints: 4 }

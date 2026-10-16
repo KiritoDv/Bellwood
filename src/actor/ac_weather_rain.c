@@ -6,14 +6,8 @@
 #include "m_malloc.h"
 #include "m_player_lib.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_ame02_00.h"
 
-extern Gfx ef_ame02_setmode[];
-
-extern Gfx ef_ame02_00_modelT[];
-extern Gfx ef_ame02_01_modelT[];
-extern Gfx ef_ame02_02_modelT[];
-extern Gfx ef_ame02_03_modelT[];
-extern Gfx ef_ame02_04_modelT[];
 
 static Gfx* aWeather_rain_picha_disp[] = {
     ef_ame02_00_modelT,
@@ -93,7 +87,7 @@ static void aWeatherRain_make(ACTOR* actor, GAME* game) {
     }
 }
 
-static void aWeatherRain_ct(aWeather_Priv*, GAME*) {
+static void aWeatherRain_ct(aWeather_Priv* arg0, GAME* arg1) {
 }
 
 static void aWeatherRain_MoveRain(aWeather_Priv* priv) {

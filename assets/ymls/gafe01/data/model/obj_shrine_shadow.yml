@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+obj_shrine_shadow_tex_txt:
+  type: TEXTURE
+  offset: 0x81509F00
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_shrine_shadow_v:
+  type: VTX
+  offset: 0x8150A100
+  count: 16
+
+obj_shrine_shadow_model:
+  type: GFX
+  offset: 0x8150A200
+  size: 0x60

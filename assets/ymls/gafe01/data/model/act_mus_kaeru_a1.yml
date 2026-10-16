@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_mus_kaeru_a1_body_tex_txt:
+  type: TEXTURE
+  offset: 0x81681900
+  format: RGBA16
+  width: 32
+  height: 32
+  source_encoding: gx
+
+act_mus_kaeru_a1_foot_tex_txt:
+  type: TEXTURE
+  offset: 0x81682100
+  format: RGBA16
+  width: 32
+  height: 32
+  source_encoding: gx
+
+act_mus_kaeru_a1_v:
+  type: VTX
+  offset: 0x81682900
+  count: 109
+
+act_mus_kaeru_a1_anime_model:
+  type: GFX
+  offset: 0x81682FD0
+  size: 0x98
+
+act_mus_kaeru_a1_foot2_model:
+  type: GFX
+  offset: 0x81683068
+  size: 0x80
+
+act_mus_kaeru_a1_body_model:
+  type: GFX
+  offset: 0x816830E8
+  size: 0xD0
+
+act_mus_kaeru_a1_foot1_model:
+  type: GFX
+  offset: 0x816831B8
+  size: 0x58
+
+cKF_bs_r_act_mus_kaeru_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x8168324C
+  counts: { joints: 5 }

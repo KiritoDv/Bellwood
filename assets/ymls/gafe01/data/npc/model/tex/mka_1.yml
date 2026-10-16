@@ -1,0 +1,19 @@
+:config:
+  strict_declarations: true
+
+mka_1_pal:
+  type: TEXTURE
+  offset: 0x812A86C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+mka_1_tmem_txt:
+  type: AC:TEX_ATLAS
+  offset: 0x812A86E0
+  size: 0x480
+  regions:
+    - { offset: 0x0, format: CI4, width: 32, height: 16 }
+    - { offset: 0x100, format: CI4, width: 32, height: 32 }
+    - { offset: 0x300, format: CI4, width: 16, height: 16 }
+    - { offset: 0x380, format: CI4, width: 16, height: 32 }

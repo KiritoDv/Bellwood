@@ -7,12 +7,8 @@
 #include "m_malloc.h"
 #include "m_player_lib.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_otiba.h"
 
-extern Gfx ef_otiba01_setmode[];
-
-extern Gfx ef_otiba01_00_modelT[];
-extern Gfx ef_otiba01_01_modelT[];
-extern Gfx ef_otiba01_02_modelT[];
 
 static void aWeatherLeaf_make(ACTOR*, GAME*);
 static void aWeatherLeaf_ct(aWeather_Priv*, GAME*);
@@ -74,7 +70,7 @@ static void aWeatherLeaf_make(ACTOR* actor, GAME* game) {
     }
 }
 
-static void aWeatherLeaf_ct(aWeather_Priv* priv, GAME*) {
+static void aWeatherLeaf_ct(aWeather_Priv* priv, GAME* arg1) {
     priv->work[0] = RANDOM_F(3.0f);
     priv->work[1] = RANDOM_F(65535.0f);
     priv->work[2] = RANDOM_F(65535.0f);
@@ -113,6 +109,7 @@ static void aWeatherLeaf_CheckLeafScroll(aWeather_Priv* priv) {
     int border = aWeatherLeaf_CheckLeafBorder(priv);
 
     if (border != 0) {
+        FrameInterpolation_ResetObject(priv);
         if ((border >> 1) & 1) {
             priv->pos.x += 200.0f;
         }
@@ -134,6 +131,7 @@ static void aWeatherLeaf_CheckLeafScroll(aWeather_Priv* priv) {
         if (weather != NULL) {
             y = 230.0f + weather->pos.y;
             if (priv->pos.y < +weather->pos.y) {
+                FrameInterpolation_ResetObject(priv);
                 priv->pos.y = (y + (priv->pos.y - priv->currentY));
                 priv->currentY = y;
             }

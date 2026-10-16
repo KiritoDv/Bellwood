@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_gekido_r2:
+  type: AC:NPC_ANIM
+  offset: 0x812D8FA4
+  joints: 26
+  counts: { flags: 26, data: 573, keys: 51, fixed: 30, eye_seq: 31 }

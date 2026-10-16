@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+obj_art_dummy05_pal:
+  type: TEXTURE
+  offset: 0x81935448
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+obj_art_dummy05_tex:
+  type: TEXTURE
+  offset: 0x81935468
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+  tlut: 0x81935448
+
+obj_art_dummy05_back_tex:
+  type: TEXTURE
+  offset: 0x819354E8
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: n64
+  tlut: 0x81935448
+
+obj_art_dummy05_name_tex:
+  type: TEXTURE
+  offset: 0x819357E8
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+  tlut: 0x81935448
+
+obj_art_dummy05_v:
+  type: VTX
+  offset: 0x81935868
+  count: 30
+
+obj_art_dummy05_model:
+  type: GFX
+  offset: 0x81935A48
+  size: 0x188

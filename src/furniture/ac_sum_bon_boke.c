@@ -1,5 +1,4 @@
-extern Gfx int_sum_bon_boke_on_model[];
-extern Gfx int_sum_bon_boke_onT_model[];
+#include "assets/data/model/int_sum_bon_boke.h"
 
 aFTR_PROFILE iam_sum_bon_boke = {
 	int_sum_bon_boke_on_model,

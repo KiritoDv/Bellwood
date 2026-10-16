@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_s_tailor.h"
 // clang-format off
 static Door_data_c aNW_needlework_shop_door_data = {
     SCENE_NEEDLEWORK,
@@ -10,11 +11,6 @@ static Door_data_c aNW_needlework_shop_door_data = {
     {0,0,0},
 };
 // clang-format on
-
-extern cKF_Animation_R_c cKF_ba_r_obj_s_tailor;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_tailor_out;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_tailor;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_tailor_out;
 
 static void aNW_set_door_SE_sub(STRUCTURE_ACTOR* shop, u16 se_no) {
     sAdo_OngenTrgStart(se_no, &shop->actor_class.world.position);

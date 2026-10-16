@@ -263,6 +263,8 @@ struct private_s {
     /* 0x2412 */ u8 unused_2412[46];
 };
 
+static_assert(sizeof(Private_c) == 0x2440, "Private_c must keep its GameCube layout");
+
 extern void mPr_ClearPlayerName(u8* buf);
 extern void mPr_CopyPlayerName(u8* dst, u8* src);
 extern int mPr_NullCheckPlayerName(u8* name_p);

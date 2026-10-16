@@ -1,0 +1,65 @@
+:config:
+  strict_declarations: true
+
+ctl_att_w1_tex:
+  type: TEXTURE
+  offset: 0x813C9940
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+ctl_att_w2_tex:
+  type: TEXTURE
+  offset: 0x813C9D40
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+ctl_att_w3_tex:
+  type: TEXTURE
+  offset: 0x813CA140
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+ctl_att_w4_tex:
+  type: TEXTURE
+  offset: 0x813CA540
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+ctl_att_w5_tex:
+  type: TEXTURE
+  offset: 0x813CA940
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+ctl_att_w6_tex:
+  type: TEXTURE
+  offset: 0x813CAD40
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+dia_att_v:
+  type: VTX
+  offset: 0x813CADC0
+  count: 47
+
+dia_att_cursor_model:
+  type: GFX
+  offset: 0x813CB0B0
+  size: 0x38
+
+dia_att_winT_model:
+  type: GFX
+  offset: 0x813CB0E8
+  size: 0x100

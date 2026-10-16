@@ -1,3 +1,4 @@
+#include "assets/data/model/int_yaz_mario_flower.h"
 static void fYMF_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     if (aFTR_CAN_PLAY_SE(ftr_actor)) {
         if (ftr_actor->switch_changed_flag == TRUE) {
@@ -6,20 +7,12 @@ static void fYMF_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* 
     }
 }
 
-extern u16 int_yaz_mario_flower_a_pal[];
-extern u16 int_yaz_mario_flower_b_pal[];
-extern u16 int_yaz_mario_flower_c_pal[];
-extern u16 int_yaz_mario_flower_d_pal[];
-
 static u16* fYMF_palette_table[] = {
     int_yaz_mario_flower_a_pal,
     int_yaz_mario_flower_b_pal,
     int_yaz_mario_flower_c_pal,
     int_yaz_mario_flower_d_pal,
 };
-
-extern Gfx int_yaz_mario_flower_hana_model[];
-extern Gfx int_yaz_mario_flower_body_model[];
 
 static void fYMF_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     GAME_PLAY* play = (GAME_PLAY*)game;

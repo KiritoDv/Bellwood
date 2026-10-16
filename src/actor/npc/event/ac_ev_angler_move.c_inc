@@ -131,6 +131,7 @@ static int set_top_of_angler_size(int size) {
     aEANG_event_data_c* save_p = get_fish_save_area();
 
     save_p->size = size;
+    return 0;
 }
 
 static int now_top_check(void) {

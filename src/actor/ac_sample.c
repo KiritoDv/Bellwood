@@ -7,6 +7,9 @@
 #include "m_rcp.h"
 #include "m_name_table.h"
 #include "m_play.h"
+#include "assets/data/model/hnw_face.h"
+#include "assets/data/model/hnw_model.h"
+#include "assets/data/model/hnw_move.h"
 
 static ClObjPipeData_c Ac_Sample_OcInfoData_forStand = { { 0x39, 0x20, ClObj_TYPE_PIPE }, // collision data
                                                          { 1 },                           // element data
@@ -112,9 +115,6 @@ static void Ac_Sample_Actor_main(ACTOR* actor, GAME* game) {
     (*proc[sample->main_action])(sample, play);
 }
 
-extern cKF_Skeleton_R_c cKF_bs_r_hnw;
-extern cKF_Animation_R_c cKF_ba_r_hnw_move;
-
 static void Ac_Sample_Actor_ct(ACTOR* actor, GAME* game) {
     cKF_SkeletonInfo_R_c* keyframe;
     GAME_PLAY* play = (GAME_PLAY*)game;
@@ -130,9 +130,6 @@ static void Ac_Sample_Actor_ct(ACTOR* actor, GAME* game) {
     bank = &play->object_exchange.banks[actor->data_bank_id];
     sample->obj_bank_ram_start = bank->ram_start;
 }
-
-extern u8 hnw_tmem_txt[];
-extern u16 hnw_face[];
 
 static void Ac_Sample_Actor_draw_normal(SAMPLE_ACTOR* actor, GAME_PLAY* play) {
     cKF_SkeletonInfo_R_c* keyframe = &actor->keyframe;
@@ -156,7 +153,7 @@ static void Ac_Sample_Actor_draw_normal(SAMPLE_ACTOR* actor, GAME_PLAY* play) {
 #else
         gSPSegment(gfx++, G_MWO_SEGMENT_B, hnw_tmem_txt);
         gDPSetPrimColor(gfx++, 0, 128, 255, 255, 255, 255);
-        gDPLoadTLUT_Dolphin(gfx++, 15, 16, 1, hnw_face);
+        gDPLoadTLUT_pal16(gfx++, 15, hnw_face);
 #endif
 
         SET_POLY_OPA_DISP(gfx);

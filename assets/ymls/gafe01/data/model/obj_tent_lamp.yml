@@ -1,0 +1,44 @@
+:config:
+  strict_declarations: true
+
+obj_tent_lamp1_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x816738E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_tent_lamp2_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81673900
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_tent_lamp1:
+  type: TEXTURE
+  offset: 0x81673920
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x816738E0
+
+obj_tent_lamp2_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81673D20
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81673900
+
+obj_tent_lamp_v:
+  type: VTX
+  offset: 0x81674120
+  count: 45
+
+obj_tent_lamp_model:
+  type: GFX
+  offset: 0x816743F0
+  size: 0xA0

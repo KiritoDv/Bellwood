@@ -1,5 +1,4 @@
-extern Gfx int_sum_x_lanp_offT_model[];
-extern Gfx int_sum_x_lanp_onT_model[];
+#include "assets/data/model/int_sum_x_lanp.h"
 
 aFTR_PROFILE iam_sum_x_lanp = {
 	int_sum_x_lanp_offT_model,

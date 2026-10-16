@@ -1,5 +1,4 @@
-extern Gfx int_yaz_rocket_himo_model[];
-extern Gfx int_yaz_rocket_body_model[];
+#include "assets/data/model/int_yaz_rocket.h"
 
 aFTR_PROFILE iam_yaz_rocket = {
 	int_yaz_rocket_himo_model,

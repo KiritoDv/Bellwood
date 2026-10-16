@@ -1,8 +1,5 @@
+#include "assets/data/model/int_nog_beachtable.h"
 static void fNBT_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
-
-extern Gfx int_nog_beachtable_bodyT_model[];
-extern Gfx int_nog_beachtable_bubbleT_model[];
-extern Gfx int_nog_beachtable_glassT_model[];
 
 static void fNBT_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data){
     GAME_PLAY* play = (GAME_PLAY*)game;

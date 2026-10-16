@@ -1,4 +1,4 @@
-extern Gfx int_iku_gold_green_model[];
+#include "assets/data/model/int_iku_gold_green.h"
 
 aFTR_PROFILE iam_iku_gold_green = {
 	int_iku_gold_green_model,

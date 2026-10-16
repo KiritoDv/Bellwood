@@ -3,13 +3,7 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
-
-extern u8 ef_pun01_0_int_i4[];
-extern u8 ef_pun01_1_int_i4[];
-extern u8 ef_pun01_2_int_i4[];
-extern u8 ef_pun01_3_int_i4[];
-extern u8 ef_pun01_4_int_i4[];
-extern Gfx ef_pun01_00_modelT[];
+#include "assets/data/model/ef_pun01_00.h"
 
 static u8* ePunYuge_yuge_texture_table[] = {
     ef_pun01_0_int_i4, ef_pun01_1_int_i4, ef_pun01_2_int_i4, ef_pun01_3_int_i4, ef_pun01_4_int_i4,

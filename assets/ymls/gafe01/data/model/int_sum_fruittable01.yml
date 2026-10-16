@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+int_sum_fruittable01_pal:
+  type: TEXTURE
+  offset: 0x819E2880
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_fruittable01_side_tex_txt:
+  type: TEXTURE
+  offset: 0x819E28A0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x819E2880
+
+int_sum_fruittable01_top_tex_txt:
+  type: TEXTURE
+  offset: 0x819E2BA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E2880
+
+int_sum_fruittable01_douwnside_tex_txt:
+  type: TEXTURE
+  offset: 0x819E2DA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E2880
+
+int_sum_fruittable01_douwntop_tex_txt:
+  type: TEXTURE
+  offset: 0x819E2EA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E2880
+
+int_sum_fruittable01_v:
+  type: VTX
+  offset: 0x819E2F20
+  count: 45
+
+int_sum_fruittable01_on_model:
+  type: GFX
+  offset: 0x819E31F0
+  size: 0x118

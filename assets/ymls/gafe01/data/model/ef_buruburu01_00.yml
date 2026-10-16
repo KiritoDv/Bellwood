@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+ef_buruburu01_0_int_i4:
+  type: TEXTURE
+  offset: 0x816618A0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+ef_buruburu01_1_int_i4:
+  type: TEXTURE
+  offset: 0x816619A0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+ef_buruburu01_00_v:
+  type: VTX
+  offset: 0x81661AA0
+  count: 4
+
+ef_buruburu01_00_modelT:
+  type: GFX
+  offset: 0x81661AE0
+  size: 0x58

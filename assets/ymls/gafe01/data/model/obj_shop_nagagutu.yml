@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_akican_pal:
+  type: TEXTURE
+  offset: 0x8139AF00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_nagagutu_tex:
+  type: TEXTURE
+  offset: 0x8139AF20
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x8139AF00
+
+obj_shop_nagagutu_v:
+  type: VTX
+  offset: 0x8139B120
+  count: 43
+
+obj_nagagutuT_mat_model:
+  type: GFX
+  offset: 0x8139B3D0
+  size: 0x48
+
+obj_nagagutuT_gfx_model:
+  type: GFX
+  offset: 0x8139B418
+  size: 0x68

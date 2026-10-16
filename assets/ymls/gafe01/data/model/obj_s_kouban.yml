@@ -1,0 +1,146 @@
+:config:
+  strict_declarations: true
+
+obj_s_kouban_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81571440
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_kouban_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81571C40
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_kouban_window_tex_txt:
+  type: TEXTURE
+  offset: 0x81572440
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_kouban_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x815724C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_kouban_v:
+  type: VTX
+  offset: 0x81572CC0
+  count: 71
+
+obj_s_kouban_window_model:
+  type: GFX
+  offset: 0x81573130
+  size: 0x48
+
+obj_s_kouban_t3_model:
+  type: GFX
+  offset: 0x81573178
+  size: 0x40
+
+obj_s_kouban_t2_model:
+  type: GFX
+  offset: 0x815731B8
+  size: 0x50
+
+obj_s_kouban_t1_model:
+  type: GFX
+  offset: 0x81573208
+  size: 0x50
+
+obj_s_kouban_neon_model:
+  type: GFX
+  offset: 0x81573258
+  size: 0x58
+
+obj_s_kouban_light_model:
+  type: GFX
+  offset: 0x815732B0
+  size: 0x38
+
+obj_s_kouban_model:
+  type: GFX
+  offset: 0x815732E8
+  size: 0x30
+
+obj_w_kouban_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81573320
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_kouban_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81573B20
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_kouban_window_tex_txt:
+  type: TEXTURE
+  offset: 0x81574320
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_kouban_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x815743A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_kouban_v:
+  type: VTX
+  offset: 0x81574BA0
+  count: 71
+
+obj_w_kouban_window_model:
+  type: GFX
+  offset: 0x81575010
+  size: 0x48
+
+obj_w_kouban_t3_model:
+  type: GFX
+  offset: 0x81575058
+  size: 0x40
+
+obj_w_kouban_t2_model:
+  type: GFX
+  offset: 0x81575098
+  size: 0x50
+
+obj_w_kouban_t1_model:
+  type: GFX
+  offset: 0x815750E8
+  size: 0x50
+
+obj_w_kouban_neon_model:
+  type: GFX
+  offset: 0x81575138
+  size: 0x58
+
+obj_w_kouban_light_model:
+  type: GFX
+  offset: 0x81575190
+  size: 0x38
+
+obj_w_kouban_model:
+  type: GFX
+  offset: 0x815751C8
+  size: 0x30

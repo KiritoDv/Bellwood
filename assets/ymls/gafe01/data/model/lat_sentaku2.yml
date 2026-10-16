@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+lat_tegami_sw3_tex:
+  type: TEXTURE
+  offset: 0x8140C780
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+lat_sentaku2_v:
+  type: VTX
+  offset: 0x8140D780
+  count: 11
+
+lat_sentaku2_c_model:
+  type: GFX
+  offset: 0x8140D830
+  size: 0x38
+
+lat_sentaku2_winT_model:
+  type: GFX
+  offset: 0x8140D868
+  size: 0x58

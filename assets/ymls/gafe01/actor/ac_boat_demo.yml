@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+aBTD_island_prg:
+  type: BLOB
+  offset: 0x8101284C
+  size: 0x15244
+
+aBTD_island_ldr:
+  type: BLOB
+  offset: 0x81027A90
+  size: 0xC83C

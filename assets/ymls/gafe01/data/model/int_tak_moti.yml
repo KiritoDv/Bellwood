@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+int_tak_moti_pal:
+  type: TEXTURE
+  offset: 0x81A9C460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_moti_body_tex:
+  type: TEXTURE
+  offset: 0x81A9C480
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A9C460
+
+int_tak_moti_maru_tex:
+  type: TEXTURE
+  offset: 0x81A9C880
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9C460
+
+int_tak_moti_moti_tex:
+  type: TEXTURE
+  offset: 0x81A9C900
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9C460
+
+int_tak_moti_kine_tex:
+  type: TEXTURE
+  offset: 0x81A9C980
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A9C460
+
+int_tak_moti_v:
+  type: VTX
+  offset: 0x81A9CB80
+  count: 76
+
+int_tak_moti_onT_model:
+  type: GFX
+  offset: 0x81A9D040
+  size: 0x110

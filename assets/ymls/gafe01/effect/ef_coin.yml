@@ -1,0 +1,16 @@
+:config:
+  strict_declarations: true
+
+ef_coin_gold_pal:
+  type: TEXTURE
+  offset: 0x81084BE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+ef_coin_silver_pal:
+  type: TEXTURE
+  offset: 0x81084C00
+  format: TLUT
+  colors: 16
+  source_encoding: gx

@@ -1,4 +1,4 @@
-extern Gfx int_tak_tent_box_on_model[];
+#include "assets/data/model/int_tak_tent_box.h"
 
 aFTR_PROFILE iam_tak_tent_box = {
 	int_tak_tent_box_on_model,

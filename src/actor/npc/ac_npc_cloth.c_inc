@@ -34,12 +34,12 @@ static u32 aNPC_getP_cloth_pal_rom(aNPC_cloth_c* cloth) {
 
 static void aNPC_dma_cloth_tex_data_fg(aNPC_cloth_c* cloth) {
     _JW_GetResourceAram(aNPC_getP_cloth_tex_rom(cloth), (u8*)cloth->texture_bank.ram_start, aNPC_CLOTH_TEX_SIZE);
-    DCStoreRangeNoSync(cloth->texture_bank.ram_start, aNPC_CLOTH_TEX_SIZE);
+    AC_TexInvalidateRange(cloth->texture_bank.ram_start, aNPC_CLOTH_TEX_SIZE);
 }
 
 static void aNPC_dma_cloth_pal_data_fg(aNPC_cloth_c* cloth) {
     _JW_GetResourceAram(aNPC_getP_cloth_pal_rom(cloth), (u8*)cloth->palette_bank.ram_start, aNPC_CLOTH_PAL_SIZE);
-    DCStoreRangeNoSync(cloth->palette_bank.ram_start, aNPC_CLOTH_PAL_SIZE);
+    AC_TexInvalidateRange(cloth->palette_bank.ram_start, aNPC_CLOTH_PAL_SIZE);
 }
 
 static void aNPC_dma_cloth_data_fg(void) {

@@ -23,10 +23,12 @@ static void bPI_draw_item_loop(void) {
     gSPDisplayList(gfx++, draw_work.mode_p);
 
     for (draw_pos; draw_pos->next != 256; draw_pos += draw_pos->next) {
+        FrameInterpolation_RecordOpenChild(draw_pos, 0);
         Matrix_put(&draw_pos->mtx);
 
         gDPPipeSync(gfx++);
         gSPMatrix(gfx++, _Matrix_to_Mtx_new(draw_work.graph), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        FrameInterpolation_RecordCloseChild();
         /* Draw all instances of this item using the loaded texture data */
         gSPDisplayList(gfx++, vtx);
     }

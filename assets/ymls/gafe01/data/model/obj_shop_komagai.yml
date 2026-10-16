@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_komagai_pal:
+  type: TEXTURE
+  offset: 0x813983E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_komagai_tex:
+  type: TEXTURE
+  offset: 0x81398400
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x813983E0
+
+obj_shop_komagai_v:
+  type: VTX
+  offset: 0x81398480
+  count: 7
+
+obj_komagaiT_mat_model:
+  type: GFX
+  offset: 0x813984F0
+  size: 0x48
+
+obj_komagaiT_gfx_model:
+  type: GFX
+  offset: 0x81398538
+  size: 0x20

@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+tmpr4_v:
+  type: VTX
+  offset: 0x816171D8
+  count: 301
+
+tmpr4_modelT:
+  type: GFX
+  offset: 0x816184A8
+  size: 0x408
+
+tmpr4_model:
+  type: GFX
+  offset: 0x816188B0
+  size: 0x4C8

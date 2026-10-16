@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+point_light_v:
+  type: VTX
+  offset: 0x81895E00
+  count: 4
+
+point_light_init_model:
+  type: GFX
+  offset: 0x81895E40
+  size: 0x40
+
+point_light_model:
+  type: GFX
+  offset: 0x81895E80
+  size: 0x20
+
+elf_layA0_txt:
+  type: TEXTURE
+  offset: 0x81895EA0
+  format: I8
+  width: 32
+  height: 64
+  source_encoding: n64

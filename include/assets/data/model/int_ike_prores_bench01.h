@@ -1,0 +1,40 @@
+#ifndef ASSETS_DATA_MODEL_INT_IKE_PRORES_BENCH01_H
+#define ASSETS_DATA_MODEL_INT_IKE_PRORES_BENCH01_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const char int_ike_prores_bench01_pal[];
+extern const char int_ike_prores_bench01_pole1_tex[];
+extern const char int_ike_prores_bench01_pole2_tex[];
+extern const char int_ike_prores_bench01_top1_tex[];
+extern const char int_ike_prores_bench01_side1_tex[];
+extern const char int_ike_prores_bench01_pole3_tex[];
+extern const char int_ike_prores_bench01_bar3_tex[];
+extern const char int_ike_prores_bench01_arei1_tex[];
+extern const char int_ike_prores_bench01_arei2_tex[];
+extern const char int_ike_prores_bench01_pole4_tex[];
+extern const char int_ike_prores_bench01_v[];
+extern const char int_ike_prores_bench01_on_model[];
+extern const char int_ike_prores_bench01_onT_model[];
+
+#define int_ike_prores_bench01_pal_PATH "__OTR__data/model/int_ike_prores_bench01/int_ike_prores_bench01_pal"
+#define int_ike_prores_bench01_pole1_tex_PATH "__OTR__data/model/int_ike_prores_bench01/int_ike_prores_bench01_pole1_tex"
+#define int_ike_prores_bench01_pole2_tex_PATH "__OTR__data/model/int_ike_prores_bench01/int_ike_prores_bench01_pole2_tex"
+#define int_ike_prores_bench01_top1_tex_PATH "__OTR__data/model/int_ike_prores_bench01/int_ike_prores_bench01_top1_tex"
+#define int_ike_prores_bench01_side1_tex_PATH "__OTR__data/model/int_ike_prores_bench01/int_ike_prores_bench01_side1_tex"
+#define int_ike_prores_bench01_pole3_tex_PATH "__OTR__data/model/int_ike_prores_bench01/int_ike_prores_bench01_pole3_tex"
+#define int_ike_prores_bench01_bar3_tex_PATH "__OTR__data/model/int_ike_prores_bench01/int_ike_prores_bench01_bar3_tex"
+#define int_ike_prores_bench01_arei1_tex_PATH "__OTR__data/model/int_ike_prores_bench01/int_ike_prores_bench01_arei1_tex"
+#define int_ike_prores_bench01_arei2_tex_PATH "__OTR__data/model/int_ike_prores_bench01/int_ike_prores_bench01_arei2_tex"
+#define int_ike_prores_bench01_pole4_tex_PATH "__OTR__data/model/int_ike_prores_bench01/int_ike_prores_bench01_pole4_tex"
+#define int_ike_prores_bench01_v_PATH "__OTR__data/model/int_ike_prores_bench01/int_ike_prores_bench01_v"
+#define int_ike_prores_bench01_on_model_PATH "__OTR__data/model/int_ike_prores_bench01/int_ike_prores_bench01_on_model"
+#define int_ike_prores_bench01_onT_model_PATH "__OTR__data/model/int_ike_prores_bench01/int_ike_prores_bench01_onT_model"
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

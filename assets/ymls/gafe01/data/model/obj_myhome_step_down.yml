@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+obj_myhome_step_pal:
+  type: TEXTURE
+  offset: 0x818DA960
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_myhome_step_tex:
+  type: TEXTURE
+  offset: 0x818DA980
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DA960
+
+obj_myhome_step_down_v:
+  type: VTX
+  offset: 0x818DB180
+  count: 24
+
+obj_myhome_step_down_model:
+  type: GFX
+  offset: 0x818DB300
+  size: 0x78

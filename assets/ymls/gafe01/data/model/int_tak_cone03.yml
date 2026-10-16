@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_tak_cone02_asi_tex_pal:
+  type: TEXTURE
+  offset: 0x81A91F00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_cone03_asi_tex:
+  type: TEXTURE
+  offset: 0x81A91F20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A91F00
+
+int_tak_cone03_body_tex:
+  type: TEXTURE
+  offset: 0x81A91FA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A91F00
+
+int_tak_cone03_top_tex:
+  type: TEXTURE
+  offset: 0x81A920A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A91F00
+
+int_tak_cone03_v:
+  type: VTX
+  offset: 0x81A92120
+  count: 32
+
+int_tak_cone03_on_model:
+  type: GFX
+  offset: 0x81A92320
+  size: 0x68
+
+int_tak_cone03_onT_model:
+  type: GFX
+  offset: 0x81A92388
+  size: 0x80

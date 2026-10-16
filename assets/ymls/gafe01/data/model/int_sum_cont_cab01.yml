@@ -1,0 +1,96 @@
+:config:
+  strict_declarations: true
+
+int_sum_cont_cab01_pal:
+  type: TEXTURE
+  offset: 0x819C8FA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_cont_cab01_back_tex:
+  type: TEXTURE
+  offset: 0x819C8FC0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819C8FA0
+
+int_sum_cont_cab01_front_tex:
+  type: TEXTURE
+  offset: 0x819C91C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819C8FA0
+
+int_sum_cont_cab01_side_tex:
+  type: TEXTURE
+  offset: 0x819C93C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819C8FA0
+
+int_sum_cont_cab01_top_tex:
+  type: TEXTURE
+  offset: 0x819C94C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C8FA0
+
+int_sum_cont_cab01_upside_tex:
+  type: TEXTURE
+  offset: 0x819C9540
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819C8FA0
+
+int_sum_cont_cab01_bin_tex:
+  type: TEXTURE
+  offset: 0x819C9640
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C8FA0
+
+int_sum_cont_cab01_reddish_tex:
+  type: TEXTURE
+  offset: 0x819C96C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C8FA0
+
+int_sum_cont_cab01_dish_tex:
+  type: TEXTURE
+  offset: 0x819C9740
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C8FA0
+
+int_sum_cont_cab01_v:
+  type: VTX
+  offset: 0x819C97C0
+  count: 71
+
+int_sum_cont_cab01_on_model:
+  type: GFX
+  offset: 0x819C9C30
+  size: 0x68
+
+int_sum_cont_cab01_onT_model:
+  type: GFX
+  offset: 0x819C9C98
+  size: 0x138

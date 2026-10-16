@@ -5,6 +5,7 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "libultra/libultra.h"
+#include "assets/data/model/obj_garagara.h"
 
 enum {
     aGRGR_STATUS_WAIT,
@@ -125,9 +126,6 @@ static void aGRGR_CommonCt(ACTOR* actorx, GAME* game) {
     garagara->clip.actorx = actorx;
     CLIP(garagara_clip) = &garagara->clip;
 }
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_gara;
-extern cKF_Animation_R_c cKF_ba_r_obj_gara;
 
 static void aGRGR_FukubikiDayCt(ACTOR* actorx, GAME* game) {
     GARAGARA_ACTOR* garagara = (GARAGARA_ACTOR*)actorx;

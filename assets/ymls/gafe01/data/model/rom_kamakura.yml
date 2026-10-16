@@ -1,0 +1,231 @@
+:config:
+  strict_declarations: true
+
+rom_kamakura_carp_pal:
+  type: TEXTURE
+  offset: 0x8187A140
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_kamakura_goza_pal:
+  type: TEXTURE
+  offset: 0x8187A160
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_kamakura_yuki_pal:
+  type: TEXTURE
+  offset: 0x8187A180
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_kamakura_rou_pal:
+  type: TEXTURE
+  offset: 0x8187A1A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_kamakura_a1_pal:
+  type: TEXTURE
+  offset: 0x8187A1C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_kamakura_nabe_pal:
+  type: TEXTURE
+  offset: 0x8187A1E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_kamakura_carp:
+  type: TEXTURE
+  offset: 0x8187A200
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8187A140
+
+rom_kamakura_goza:
+  type: TEXTURE
+  offset: 0x8187AA00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8187A160
+
+rom_kamakura_yuki1:
+  type: TEXTURE
+  offset: 0x8187AC00
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8187A180
+
+rom_kamakura_yuki2:
+  type: TEXTURE
+  offset: 0x8187B000
+  format: CI4
+  width: 32
+  height: 128
+  source_encoding: gx
+  tlut: 0x8187A180
+
+rom_kamakura_yuki3:
+  type: TEXTURE
+  offset: 0x8187B800
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8187A180
+
+rom_kamakura_yuki4:
+  type: TEXTURE
+  offset: 0x8187BC00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8187A180
+
+rom_kamakura_rou:
+  type: TEXTURE
+  offset: 0x8187BE00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8187A1A0
+
+rom_kamakura_a1:
+  type: TEXTURE
+  offset: 0x8187BF00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+rom_kamakura_wa:
+  type: TEXTURE
+  offset: 0x8187C100
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8187A1E0
+
+rom_kamakura_nabe1:
+  type: TEXTURE
+  offset: 0x8187C180
+  format: CI4
+  width: 8
+  height: 32
+  source_encoding: gx
+  tlut: 0x8187A1E0
+
+rom_kamakura_etc:
+  type: TEXTURE
+  offset: 0x8187C200
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8187A1E0
+
+rom_kamakura_kage_us:
+  type: TEXTURE
+  offset: 0x8187CA00
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+rom_kamakura_a2_rgb_ci4:
+  type: TEXTURE
+  offset: 0x8187CA80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+rom_kamakura__takibi1_int_i4:
+  type: TEXTURE
+  offset: 0x8187CC80
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+rom_kamakura__takibi2_int_i4:
+  type: TEXTURE
+  offset: 0x8187CD80
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+rom_kamakura_fire1_rgb_i4:
+  type: TEXTURE
+  offset: 0x8187CE80
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+rom_kamakura_fire2_rgb_i4:
+  type: TEXTURE
+  offset: 0x8187CF00
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+rom_kamakura_fire3_rgb_i4:
+  type: TEXTURE
+  offset: 0x8187CF80
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+rom_kamakura_v:
+  type: VTX
+  offset: 0x8187D000
+  count: 313
+
+rom_kamakura_modelT:
+  type: GFX
+  offset: 0x8187E390
+  size: 0x138
+
+rom_kamakura_model:
+  type: GFX
+  offset: 0x8187E4C8
+  size: 0x3A8
+
+rom_kamakura_ring1:
+  type: TEXTURE
+  offset: 0x8187E870
+  format: I4
+  width: 16
+  height: 32
+  source_encoding: n64
+
+rom_kamakura_ring_v:
+  type: VTX
+  offset: 0x8187E970
+  count: 4
+
+rom_kamakura_ring_modelT:
+  type: GFX
+  offset: 0x8187E9B0
+  size: 0x88

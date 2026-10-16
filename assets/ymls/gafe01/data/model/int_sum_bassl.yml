@@ -1,0 +1,106 @@
+:config:
+  strict_declarations: true
+
+int_sum_bassl_pal:
+  type: TEXTURE
+  offset: 0x8199BE60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bassl_glass_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x8199BE80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bassl_body_txt:
+  type: TEXTURE
+  offset: 0x8199BEA0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x8199BE60
+
+int_sum_bassl_side_txt:
+  type: TEXTURE
+  offset: 0x8199C1A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8199BE60
+
+int_sum_bassl_base_txt:
+  type: TEXTURE
+  offset: 0x8199C3A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8199BE60
+
+int_sum_bassl_etc_txt:
+  type: TEXTURE
+  offset: 0x8199C420
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8199BE60
+
+int_sum_bassl_top_txt:
+  type: TEXTURE
+  offset: 0x8199C4A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8199BE60
+
+int_sum_bassl_glass_pic_ci4:
+  type: TEXTURE
+  offset: 0x8199C5A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8199BE80
+
+int_sum_bassl_v:
+  type: VTX
+  offset: 0x8199C6A0
+  count: 55
+
+int_sum_bassl_sakana_model:
+  type: GFX
+  offset: 0x8199CA10
+  size: 0x70
+
+int_sum_bassl_top_model:
+  type: GFX
+  offset: 0x8199CA80
+  size: 0x58
+
+int_sum_bassl_evw_model:
+  type: GFX
+  offset: 0x8199CAD8
+  size: 0x68
+
+int_sum_bassl_base_model:
+  type: GFX
+  offset: 0x8199CB40
+  size: 0xB8
+
+cKF_ba_r_int_sum_bassl:
+  type: AC:CKF_ANIMATION
+  offset: 0x8199CCAC
+  joints: 5
+  counts: { flags: 5, data: 66, keys: 9, fixed: 9 }
+
+cKF_bs_r_int_sum_bassl:
+  type: AC:CKF_SKELETON
+  offset: 0x8199CCFC
+  counts: { joints: 5 }

@@ -3,11 +3,8 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_tamaire01_r2.h"
 
-extern Gfx ef_tamaire_shadow_modelT[];
-
-extern Gfx ef_tamaire01_r_modelT[];
-extern Gfx ef_tamaire01_w_modelT[];
 static Gfx* tamaire_model[] = { ef_tamaire01_r_modelT, ef_tamaire01_w_modelT };
 
 static void eTamaire_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);

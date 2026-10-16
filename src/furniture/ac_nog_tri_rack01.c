@@ -1,4 +1,4 @@
-extern Gfx int_noga_tri_rack01T_model[];
+#include "assets/data/model/int_nog_tri_rack01.h"
 
 aFTR_PROFILE iam_nog_tri_rack01 = {
 	int_noga_tri_rack01T_model,

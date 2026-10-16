@@ -1,0 +1,102 @@
+:config:
+  strict_declarations: true
+
+int_sum_okuwa_pal:
+  type: TEXTURE
+  offset: 0x81A36260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_okuwa_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A36280
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_okuwa_body_txt:
+  type: TEXTURE
+  offset: 0x81A362A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A36260
+
+int_sum_okuwa_base_txt:
+  type: TEXTURE
+  offset: 0x81A363A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A36260
+
+int_sum_okuwa_top_txt:
+  type: TEXTURE
+  offset: 0x81A36420
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A36260
+
+int_sum_okuwa_side_txt:
+  type: TEXTURE
+  offset: 0x81A36620
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A36260
+
+int_sum_okuwa_hand_txt:
+  type: TEXTURE
+  offset: 0x81A36820
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A36280
+
+int_sum_okuwa_v:
+  type: VTX
+  offset: 0x81A36920
+  count: 58
+
+int_sum_okuwa_side_model:
+  type: GFX
+  offset: 0x81A36CC0
+  size: 0x68
+
+int_sum_okuwa_komado_model:
+  type: GFX
+  offset: 0x81A36D28
+  size: 0x58
+
+int_sum_okuwa_glass_model:
+  type: GFX
+  offset: 0x81A36D80
+  size: 0x68
+
+int_sum_okuwa_base_model:
+  type: GFX
+  offset: 0x81A36DE8
+  size: 0xA0
+
+int_sum_okuwa_body_model:
+  type: GFX
+  offset: 0x81A36E88
+  size: 0x68
+
+cKF_ba_r_int_sum_okuwa:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A36FEC
+  joints: 6
+  counts: { flags: 6, data: 99, keys: 6, fixed: 15 }
+
+cKF_bs_r_int_sum_okuwa:
+  type: AC:CKF_SKELETON
+  offset: 0x81A37048
+  counts: { joints: 6 }

@@ -1,0 +1,9 @@
+:config:
+  strict_declarations: true
+
+mFM_obj_01_zassou_pal:
+  type: TEXTURE
+  offset: 0x810FE860
+  format: TLUT
+  colors: 144
+  source_encoding: gx

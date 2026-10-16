@@ -1,0 +1,112 @@
+:config:
+  strict_declarations: true
+
+int_ike_kama_danro01_pal:
+  type: TEXTURE
+  offset: 0x8183CFC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_kama_danrounder1_tex_txt:
+  type: TEXTURE
+  offset: 0x8183CFE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8183CFC0
+
+int_ike_kama_danrounder2_tex_txt:
+  type: TEXTURE
+  offset: 0x8183D060
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8183CFC0
+
+int_ike_kama_danrotop1_tex_txt:
+  type: TEXTURE
+  offset: 0x8183D160
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8183CFC0
+
+int_ike_kama_danrorenga2_tex_txt:
+  type: TEXTURE
+  offset: 0x8183D1E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8183CFC0
+
+int_ike_kama_danrorenga1_tex_txt:
+  type: TEXTURE
+  offset: 0x8183D2E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8183CFC0
+
+int_ike_kama_danrotop2_tex_txt:
+  type: TEXTURE
+  offset: 0x8183D4E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8183CFC0
+
+int_ike_kama_danrorenga3_tex_txt:
+  type: TEXTURE
+  offset: 0x8183D560
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8183CFC0
+
+int_ike_kama_danrotree1_tex_txt:
+  type: TEXTURE
+  offset: 0x8183D660
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8183CFC0
+
+fire06_int_i4:
+  type: TEXTURE
+  offset: 0x8183D6E0
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+fire08_int_i4:
+  type: TEXTURE
+  offset: 0x8183DAE0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_ike_kama_danro01_v:
+  type: VTX
+  offset: 0x8183DCE0
+  count: 151
+
+int_ike_kama_danrofire_off_model:
+  type: GFX
+  offset: 0x8183E650
+  size: 0x78
+
+int_ike_kama_danro01_on_model:
+  type: GFX
+  offset: 0x8183E6C8
+  size: 0x2A0

@@ -1,0 +1,90 @@
+:config:
+  strict_declarations: true
+
+int_nog_ari_pal:
+  type: TEXTURE
+  offset: 0x818E5A80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_ari_glass_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x818E5AA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_ari_side_tex:
+  type: TEXTURE
+  offset: 0x818E5AC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818E5A80
+
+int_nog_ari_foot_tex:
+  type: TEXTURE
+  offset: 0x818E5CC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818E5A80
+
+int_nog_ari_face_tex:
+  type: TEXTURE
+  offset: 0x818E5D40
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x818E5A80
+
+int_nog_ari_top_tex:
+  type: TEXTURE
+  offset: 0x818E6040
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818E5A80
+
+int_nog_ari_base_tex:
+  type: TEXTURE
+  offset: 0x818E6140
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818E5A80
+
+int_nog_ari_glass_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x818E61C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818E5AA0
+
+int_nog_ari_v:
+  type: VTX
+  offset: 0x818E62C0
+  count: 52
+
+int_nog_ari_on_model:
+  type: GFX
+  offset: 0x818E6600
+  size: 0xC8
+
+int_nog_ari_env_model:
+  type: GFX
+  offset: 0x818E66C8
+  size: 0x68
+
+int_nog_ari_onT_model:
+  type: GFX
+  offset: 0x818E6730
+  size: 0x68

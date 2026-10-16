@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_nittki_pal:
+  type: TEXTURE
+  offset: 0x8145A460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_nittki_tex:
+  type: TEXTURE
+  offset: 0x8145A480
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

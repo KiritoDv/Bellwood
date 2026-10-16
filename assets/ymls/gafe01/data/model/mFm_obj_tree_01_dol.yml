@@ -1,0 +1,9 @@
+:config:
+  strict_declarations: true
+
+mFM_obj_tree_01_pal_dol:
+  type: TEXTURE
+  offset: 0x811121A0
+  format: TLUT
+  colors: 224
+  source_encoding: gx

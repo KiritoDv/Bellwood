@@ -1,0 +1,112 @@
+:config:
+  strict_declarations: true
+
+gam_win_moji1_tex:
+  type: TEXTURE
+  offset: 0x800B9140
+  format: I4
+  width: 80
+  height: 16
+  source_encoding: gx
+
+gam_win_moji2_tex:
+  type: TEXTURE
+  offset: 0x800B93C0
+  format: I4
+  width: 160
+  height: 16
+  source_encoding: gx
+
+yes:
+  type: TEXTURE
+  offset: 0x800B98C0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+no:
+  type: TEXTURE
+  offset: 0x800B99C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+att_win_waku1_tex:
+  type: TEXTURE
+  offset: 0x800B9A40
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+att_win_waku2_tex:
+  type: TEXTURE
+  offset: 0x800B9E40
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+att_win_waku3_tex:
+  type: TEXTURE
+  offset: 0x800BA240
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+att_win_waku4_tex:
+  type: TEXTURE
+  offset: 0x800BA640
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+att_win_waku5_tex:
+  type: TEXTURE
+  offset: 0x800BAA40
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+att_win_waku6_tex:
+  type: TEXTURE
+  offset: 0x800BAE40
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+gam_win1_v:
+  type: VTX
+  offset: 0x800BAEC0
+  count: 63
+
+gam_win1_cursor_model:
+  type: GFX
+  offset: 0x800BB2B0
+  size: 0x40
+
+gam_win1_moji_model:
+  type: GFX
+  offset: 0x800BB2F0
+  size: 0x68
+
+gam_win1_moji2_model:
+  type: GFX
+  offset: 0x800BB358
+  size: 0x50
+
+gam_win1_moji3_model:
+  type: GFX
+  offset: 0x800BB3A8
+  size: 0x50
+
+gam_win1_winT_model:
+  type: GFX
+  offset: 0x800BB3F8
+  size: 0xF8

@@ -1,0 +1,58 @@
+:config:
+  strict_declarations: true
+
+sav_win1_nuno_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813F7260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+sav_win2_nuno_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813F7280
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+sav_win3_nuno_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813F72A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+sav_win4_nuno_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813F72C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+sav_win5_nuno_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813F72E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+sav_win6_nuno_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813F7300
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+sav_win7_nuno_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813F7320
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+sav_win8_nuno_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813F7340
+  format: TLUT
+  colors: 16
+  source_encoding: gx

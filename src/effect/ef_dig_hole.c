@@ -4,6 +4,7 @@
 #include "m_player_lib.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_anahori01_00.h"
 
 static void eDig_Hole_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eDig_Hole_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -150,10 +151,6 @@ static void eDig_Hole_mv(eEC_Effect_c* effect, GAME* game) {
         xyz_t_add(&effect->position, &effect->velocity, &effect->position);
     }
 }
-
-extern Gfx ef_anahori01_00_model[];
-extern Gfx ef_anahori01_01_model[];
-extern Gfx ef_anahori01_02_model[];
 
 static void eDig_Hole_dw(eEC_Effect_c* effect, GAME* game) {
     OPEN_DISP(game->graph);

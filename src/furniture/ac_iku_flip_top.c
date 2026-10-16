@@ -1,5 +1,4 @@
-extern Gfx int_iku_flip_model_a_model[];
-extern Gfx int_iku_flip_model_b_model[];
+#include "assets/data/model/int_iku_flip_top.h"
 
 aFTR_PROFILE iam_iku_flip_top = {
 	int_iku_flip_model_a_model,

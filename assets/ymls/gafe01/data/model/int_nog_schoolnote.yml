@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_nog_schoolnote_pal:
+  type: TEXTURE
+  offset: 0x81912D40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_schoolnote_tex:
+  type: TEXTURE
+  offset: 0x81912D60
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81912D40
+
+int_nog_schoolnote_v:
+  type: VTX
+  offset: 0x81913160
+  count: 61
+
+int_nog_schoolnote_model:
+  type: GFX
+  offset: 0x81913530
+  size: 0xB8

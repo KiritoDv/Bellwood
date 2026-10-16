@@ -20,11 +20,8 @@
 #include "m_submenu.h"
 #include "m_field_info.h"
 #include "m_common_data.h"
-
-extern cKF_Skeleton_R_c cKF_bs_r_hnw;
-extern cKF_Animation_R_c cKF_ba_r_hnw_move;
-extern u8 hnw_tmem_txt[];
-extern u16 hnw_face[];
+#include "assets/data/model/hnw_face.h"
+#include "assets/data/model/hnw_model.h"
 
 static void aHNW_actor_ct(ACTOR* actor, GAME* game);
 static void aHNW_actor_dt(ACTOR* actor, GAME* game);
@@ -85,7 +82,7 @@ static void aHNW_actor_dt(ACTOR* actor, GAME* game) {
 
 static void aHNW_actor_draw(ACTOR* actor, GAME* game) {
     static Gfx hnw_tex_model[] = {
-        gsDPLoadTLUT_Dolphin(15, 16, 1, hnw_face),
+        gsDPLoadTLUT_pal16(15, hnw_face),
         gsSPEndDisplayList(),
     };
 

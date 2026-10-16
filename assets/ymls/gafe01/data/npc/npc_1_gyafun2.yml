@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_gyafun2:
+  type: AC:NPC_ANIM
+  offset: 0x81307B94
+  joints: 26
+  counts: { flags: 26, data: 726, keys: 54, fixed: 27, eye_seq: 28, mouth_seq: 28 }

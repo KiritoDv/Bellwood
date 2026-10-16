@@ -1,5 +1,4 @@
-extern Gfx int_sum_bon_turu_on_model[];
-extern Gfx int_sum_bon_turu_onT_model[];
+#include "assets/data/model/int_sum_bon_turu.h"
 
 aFTR_PROFILE iam_sum_bon_turu = {
 	int_sum_bon_turu_on_model,

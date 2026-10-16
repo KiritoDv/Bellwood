@@ -2,7 +2,7 @@
 #define MAIN_H
 
 #include "types.h"
-#include "dolphin/os/OSThread.h"
+#include "libultra/osThread.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -17,11 +17,7 @@ extern "C" {
 extern int ScreenWidth;
 extern int ScreenHeight;
 
-extern OSThread graphThread;
 extern u8 SegmentBaseAddress[0x40];
-
-void main();
-extern void mainproc(void* val);
 
 #ifdef __cplusplus
 }

@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+grd_s_hole_test_v:
+  type: VTX
+  offset: 0x8170C310
+  count: 243
+
+grd_s_hole_test_modelT:
+  type: GFX
+  offset: 0x8170D240
+  size: 0x8
+
+grd_s_hole_test_model:
+  type: GFX
+  offset: 0x8170D248
+  size: 0x260

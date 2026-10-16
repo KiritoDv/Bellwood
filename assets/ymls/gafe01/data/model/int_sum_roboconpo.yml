@@ -1,0 +1,100 @@
+:config:
+  strict_declarations: true
+
+int_roboconpo_pal:
+  type: TEXTURE
+  offset: 0x81A56AC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_roboconpo_stand_tex_txt:
+  type: TEXTURE
+  offset: 0x81A56AE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A56AC0
+
+int_sum_roboconpo_body_tex_txt:
+  type: TEXTURE
+  offset: 0x81A56B60
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A56AC0
+
+int_sum_roboconpo_spika_tex_txt:
+  type: TEXTURE
+  offset: 0x81A56F60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A56AC0
+
+int_sum_roboconpo_top_tex_txt:
+  type: TEXTURE
+  offset: 0x81A57060
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A56AC0
+
+int_sum_roboconpo_face1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81A57160
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_sum_roboconpo_face2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81A571E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_sum_roboconpo_hed_tex_txt:
+  type: TEXTURE
+  offset: 0x81A57260
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A56AC0
+
+int_sum_roboconpo_neck_tex_txt:
+  type: TEXTURE
+  offset: 0x81A572E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A56AC0
+
+int_sum_roboconpo_v:
+  type: VTX
+  offset: 0x81A57360
+  count: 79
+
+int_sum_roboconpo_on_model:
+  type: GFX
+  offset: 0x81A57850
+  size: 0x158
+
+cKF_ba_r_int_sum_roboconpo:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A579B8
+  joints: 1
+  counts: { flags: 1, data: 0, keys: 0, fixed: 6 }
+
+cKF_bs_r_int_sum_roboconpo:
+  type: AC:CKF_SKELETON
+  offset: 0x81A579D8
+  counts: { joints: 1 }

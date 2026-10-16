@@ -1,0 +1,99 @@
+:config:
+  strict_declarations: true
+
+int_kon_mimiclock_pal:
+  type: TEXTURE
+  offset: 0x818AACA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_mimiclock_c_tex_txt:
+  type: TEXTURE
+  offset: 0x818AACC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818AACA0
+
+int_kon_mimiclock_d_tex_txt:
+  type: TEXTURE
+  offset: 0x818AADC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AACA0
+
+int_kon_mimiclock_b_tex_txt:
+  type: TEXTURE
+  offset: 0x818AAEC0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x818AACA0
+
+int_kon_mimiclock_a_tex_txt:
+  type: TEXTURE
+  offset: 0x818AB040
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x818AACA0
+
+int_kon_mimiclock_e_tex_txt:
+  type: TEXTURE
+  offset: 0x818AB1C0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AACA0
+
+int_kon_mimiclock_f_tex_txt:
+  type: TEXTURE
+  offset: 0x818AB3C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AACA0
+
+int_kon_mimiclock_v:
+  type: VTX
+  offset: 0x818AB440
+  count: 47
+
+int_kon_mimiclock_long_model:
+  type: GFX
+  offset: 0x818AB730
+  size: 0x58
+
+int_kon_mimiclock_base_model:
+  type: GFX
+  offset: 0x818AB788
+  size: 0x100
+
+int_kon_mimiclock_eye_model:
+  type: GFX
+  offset: 0x818AB888
+  size: 0x58
+
+int_kon_mimiclock_short_model:
+  type: GFX
+  offset: 0x818AB8E0
+  size: 0x58
+
+cKF_ba_r_int_kon_mimiclock:
+  type: AC:CKF_ANIMATION
+  offset: 0x818AB98C
+  joints: 7
+  counts: { flags: 7, data: 12, keys: 1, fixed: 23 }
+
+cKF_bs_r_int_kon_mimiclock:
+  type: AC:CKF_SKELETON
+  offset: 0x818AB9F4
+  counts: { joints: 7 }

@@ -3,6 +3,7 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "m_debug_mode.h"
+#include "assets/data/model/ef_car01.h"
 
 static void eCar_Blight_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eCar_Blight_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -40,8 +41,6 @@ eEC_PROFILE_c iam_ef_car_blight = {
     // clang-format on
 };
 
-
-extern Gfx ef_car01_modelT[];
 
 static void eCar_Blight_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1) {
     eEC_CLIP->make_effect_proc(eEC_EFFECT_CAR_BLIGHT, pos, NULL, game, NULL, item_name, prio, arg0, arg1);

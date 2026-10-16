@@ -1,0 +1,42 @@
+:config:
+  strict_declarations: true
+
+obj_shop_umb_30_pal:
+  type: TEXTURE
+  offset: 0x815DBC80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb_30_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x815DBCA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815DBC80
+
+tol_umb_30_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x815DBEA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815DBC80
+
+tol_umb_30_v:
+  type: VTX
+  offset: 0x815DC0A0
+  count: 56
+
+kasa_umb30_model:
+  type: GFX
+  offset: 0x815DC420
+  size: 0x80
+
+e_umb30_model:
+  type: GFX
+  offset: 0x815DC4A0
+  size: 0x70

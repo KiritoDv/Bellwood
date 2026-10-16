@@ -1,0 +1,138 @@
+:config:
+  strict_declarations: true
+
+int_kon_musya_pal:
+  type: TEXTURE
+  offset: 0x818ABA00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_musya_a_tex:
+  type: TEXTURE
+  offset: 0x818ABA20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818ABA00
+
+int_kon_musya_b_tex:
+  type: TEXTURE
+  offset: 0x818ABB20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818ABA00
+
+int_kon_musya_c_tex:
+  type: TEXTURE
+  offset: 0x818ABC20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818ABA00
+
+int_kon_musya_d_tex:
+  type: TEXTURE
+  offset: 0x818ABCA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818ABA00
+
+int_kon_musya_e_tex:
+  type: TEXTURE
+  offset: 0x818ABD20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818ABA00
+
+int_kon_musya_f_tex:
+  type: TEXTURE
+  offset: 0x818ABDA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818ABA00
+
+int_kon_musya_g_tex:
+  type: TEXTURE
+  offset: 0x818ABEA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818ABA00
+
+int_kon_musya_h_tex:
+  type: TEXTURE
+  offset: 0x818ABF20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818ABA00
+
+int_kon_musya_i_tex:
+  type: TEXTURE
+  offset: 0x818ABFA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818ABA00
+
+int_kon_musya_j_tex:
+  type: TEXTURE
+  offset: 0x818AC0A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818ABA00
+
+int_kon_musya_k_tex:
+  type: TEXTURE
+  offset: 0x818AC120
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818ABA00
+
+int_kon_musya_v:
+  type: VTX
+  offset: 0x818AC220
+  count: 82
+
+int_kon_musya_hako_on_model:
+  type: GFX
+  offset: 0x818AC740
+  size: 0x68
+
+int_kon_musya_atama_on_model:
+  type: GFX
+  offset: 0x818AC7A8
+  size: 0x60
+
+int_kon_musya_tare_onT_model:
+  type: GFX
+  offset: 0x818AC808
+  size: 0x98
+
+int_kon_musya_dou_onT_model:
+  type: GFX
+  offset: 0x818AC8A0
+  size: 0x90
+
+int_kon_musya_atama_onT_model:
+  type: GFX
+  offset: 0x818AC930
+  size: 0x98

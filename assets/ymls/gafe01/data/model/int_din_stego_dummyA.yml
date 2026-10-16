@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_din_stego_pal:
+  type: TEXTURE
+  offset: 0x8163AF20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_din_stego_dummy_tex:
+  type: TEXTURE
+  offset: 0x8163AF40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8163AF20
+
+int_din_stego_dummyA_v:
+  type: VTX
+  offset: 0x8163B140
+  count: 8
+
+int_din_stego_dummyA_model:
+  type: GFX
+  offset: 0x8163B1C0
+  size: 0x68

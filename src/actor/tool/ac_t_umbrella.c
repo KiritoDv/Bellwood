@@ -5,6 +5,39 @@
 #include "m_lib.h"
 #include "m_rcp.h"
 #include "m_common_data.h"
+#include "assets/data/model/tol_umb_01.h"
+#include "assets/data/model/tol_umb_02.h"
+#include "assets/data/model/tol_umb_03.h"
+#include "assets/data/model/tol_umb_04.h"
+#include "assets/data/model/tol_umb_05.h"
+#include "assets/data/model/tol_umb_06.h"
+#include "assets/data/model/tol_umb_07.h"
+#include "assets/data/model/tol_umb_08.h"
+#include "assets/data/model/tol_umb_09.h"
+#include "assets/data/model/tol_umb_10.h"
+#include "assets/data/model/tol_umb_11.h"
+#include "assets/data/model/tol_umb_12.h"
+#include "assets/data/model/tol_umb_13.h"
+#include "assets/data/model/tol_umb_14.h"
+#include "assets/data/model/tol_umb_15.h"
+#include "assets/data/model/tol_umb_16.h"
+#include "assets/data/model/tol_umb_17.h"
+#include "assets/data/model/tol_umb_18.h"
+#include "assets/data/model/tol_umb_19.h"
+#include "assets/data/model/tol_umb_20.h"
+#include "assets/data/model/tol_umb_21.h"
+#include "assets/data/model/tol_umb_22.h"
+#include "assets/data/model/tol_umb_23.h"
+#include "assets/data/model/tol_umb_24.h"
+#include "assets/data/model/tol_umb_25.h"
+#include "assets/data/model/tol_umb_26.h"
+#include "assets/data/model/tol_umb_27.h"
+#include "assets/data/model/tol_umb_28.h"
+#include "assets/data/model/tol_umb_29.h"
+#include "assets/data/model/tol_umb_30.h"
+#include "assets/data/model/tol_umb_31.h"
+#include "assets/data/model/tol_umb_32.h"
+#include "assets/data/model/tol_umb_w.h"
 
 enum {
     aTUMB_ACTION_TAKEOUT_BEFORE,
@@ -32,73 +65,6 @@ ACTOR_PROFILE T_Umbrella_Profile = {
     &aTUMB_actor_draw,
     NULL,
 };
-
-extern Gfx e_umb01_model[];
-extern Gfx kasa_umb01_model[];
-extern Gfx e_umb02_model[];
-extern Gfx kasa_umb02_model[];
-extern Gfx e_umb03_model[];
-extern Gfx kasa_umb03_model[];
-extern Gfx e_umb04_model[];
-extern Gfx kasa_umb04_model[];
-extern Gfx e_umb05_model[];
-extern Gfx kasa_umb05_model[];
-extern Gfx e_umb06_model[];
-extern Gfx kasa_umb06_model[];
-extern Gfx e_umb07_model[];
-extern Gfx kasa_umb07_model[];
-extern Gfx e_umb08_model[];
-extern Gfx kasa_umb08_model[];
-extern Gfx e_umb09_model[];
-extern Gfx kasa_umb09_model[];
-extern Gfx e_umb10_model[];
-extern Gfx kasa_umb10_model[];
-extern Gfx e_umb11_model[];
-extern Gfx kasa_umb11_model[];
-extern Gfx e_umb12_model[];
-extern Gfx kasa_umb12_model[];
-extern Gfx e_umb13_model[];
-extern Gfx kasa_umb13_model[];
-extern Gfx e_umb14_model[];
-extern Gfx kasa_umb14_model[];
-extern Gfx e_umb15_model[];
-extern Gfx kasa_umb15_model[];
-extern Gfx e_umb16_model[];
-extern Gfx kasa_umb16_model[];
-extern Gfx e_umb17_model[];
-extern Gfx kasa_umb17_model[];
-extern Gfx e_umb18_model[];
-extern Gfx kasa_umb18_model[];
-extern Gfx e_umb19_model[];
-extern Gfx kasa_umb19_model[];
-extern Gfx e_umb20_model[];
-extern Gfx kasa_umb20_model[];
-extern Gfx e_umb21_model[];
-extern Gfx kasa_umb21_model[];
-extern Gfx e_umb22_model[];
-extern Gfx kasa_umb22_model[];
-extern Gfx e_umb23_model[];
-extern Gfx kasa_umb23_model[];
-extern Gfx e_umb24_model[];
-extern Gfx kasa_umb24_model[];
-extern Gfx e_umb25_model[];
-extern Gfx kasa_umb25_model[];
-extern Gfx e_umb26_model[];
-extern Gfx kasa_umb26_model[];
-extern Gfx e_umb27_model[];
-extern Gfx kasa_umb27_model[];
-extern Gfx e_umb28_model[];
-extern Gfx kasa_umb28_model[];
-extern Gfx e_umb29_model[];
-extern Gfx kasa_umb29_model[];
-extern Gfx e_umb30_model[];
-extern Gfx kasa_umb30_model[];
-extern Gfx e_umb31_model[];
-extern Gfx kasa_umb31_model[];
-extern Gfx e_umb32_model[];
-extern Gfx kasa_umb32_model[];
-extern Gfx e_umb_w_model[];
-extern Gfx kasa_umb_w_model[];
 
 static void aTUMB_setupAction(UMBRELLA_ACTOR* umbrella, int action);
 

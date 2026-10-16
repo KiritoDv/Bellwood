@@ -1,0 +1,44 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_7fukubiki_pal:
+  type: TEXTURE
+  offset: 0x8144FBA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_8fukubiki_pal:
+  type: TEXTURE
+  offset: 0x8144FBC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_9fukubiki_pal:
+  type: TEXTURE
+  offset: 0x8144FBE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_10fukubiki_pal:
+  type: TEXTURE
+  offset: 0x8144FC00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_11fukubiki_pal:
+  type: TEXTURE
+  offset: 0x8144FC20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_12fukubiki_pal:
+  type: TEXTURE
+  offset: 0x8144FC40
+  format: TLUT
+  colors: 16
+  source_encoding: gx

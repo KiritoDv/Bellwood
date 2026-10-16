@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+int_nog_kaeru_pal:
+  type: TEXTURE
+  offset: 0x8123D5E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f36_kaeru_tex:
+  type: TEXTURE
+  offset: 0x8123D600
+  format: CI4
+  width: 16
+  height: 128
+  source_encoding: gx
+  tlut: 0x8123D5E0
+
+act_f36_kaeru_a_v:
+  type: VTX
+  offset: 0x8123DA00
+  count: 8
+
+act_f36_kaeru_aT_model:
+  type: GFX
+  offset: 0x8123DA80
+  size: 0x60
+
+act_f36_kaeru_b_v:
+  type: VTX
+  offset: 0x8123DAE0
+  count: 8
+
+act_f36_kaeru_bT_model:
+  type: GFX
+  offset: 0x8123DB60
+  size: 0x60
+
+act_f36_kaeru_c_v:
+  type: VTX
+  offset: 0x8123DBC0
+  count: 8
+
+act_f36_kaeru_cT_model:
+  type: GFX
+  offset: 0x8123DC40
+  size: 0x60

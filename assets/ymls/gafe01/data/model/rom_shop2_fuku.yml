@@ -1,0 +1,218 @@
+:config:
+  strict_declarations: true
+
+rom_conveni_ent_pal:
+  type: TEXTURE
+  offset: 0x8194F880
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_conveni_cooler_pal:
+  type: TEXTURE
+  offset: 0x8194F8A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop_kouhaku_pal:
+  type: TEXTURE
+  offset: 0x8194F8C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_conveni_tana_pal:
+  type: TEXTURE
+  offset: 0x8194F8E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_conveni_floor_E_pal:
+  type: TEXTURE
+  offset: 0x8194F900
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_conveni_leji_pal:
+  type: TEXTURE
+  offset: 0x8194F920
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_conveni_mirror_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8194F940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_conveni_ent:
+  type: TEXTURE
+  offset: 0x8194F960
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8194F880
+
+rom_conveni_maruwaku:
+  type: TEXTURE
+  offset: 0x8194FB60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8194F8A0
+
+rom_shop_kouhaku_tex:
+  type: TEXTURE
+  offset: 0x8194FD60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8194F8C0
+
+rom_conveni_counter:
+  type: TEXTURE
+  offset: 0x81950560
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8194F880
+
+rom_conveni_bou:
+  type: TEXTURE
+  offset: 0x81950760
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8194F8A0
+
+rom_conveni_tana_bf2:
+  type: TEXTURE
+  offset: 0x819507E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8194F8E0
+
+rom_conveni_floor_E:
+  type: TEXTURE
+  offset: 0x81950860
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8194F900
+
+rom_conveni_tana_f:
+  type: TEXTURE
+  offset: 0x81950A60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8194F8E0
+
+rom_convevi_kage1:
+  type: TEXTURE
+  offset: 0x81950AE0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+rom_conveni_leji_e:
+  type: TEXTURE
+  offset: 0x81950BE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8194F920
+
+rom_conveni_leji_k:
+  type: TEXTURE
+  offset: 0x81950C60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8194F920
+
+rom_conveni_leji_s:
+  type: TEXTURE
+  offset: 0x81950CE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8194F920
+
+rom_conveni_leji_t:
+  type: TEXTURE
+  offset: 0x81950D60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8194F920
+
+rom_conveni_wall_C:
+  type: TEXTURE
+  offset: 0x81950DE0
+  format: CI4
+  width: 16
+  height: 128
+  source_encoding: gx
+  tlut: 0x8194F8A0
+
+rom_conveni_door:
+  type: TEXTURE
+  offset: 0x819511E0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x8194F8A0
+
+rom_conveni_tana_bf:
+  type: TEXTURE
+  offset: 0x819514E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8194F8E0
+
+rom_conveni_mirror_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81951560
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8194F940
+
+rom_shop2_fuku_v:
+  type: VTX
+  offset: 0x819515E0
+  count: 254
+
+rom_shop2_fuku_modelT:
+  type: GFX
+  offset: 0x819525C0
+  size: 0x58
+
+rom_shop2_fuku_model:
+  type: GFX
+  offset: 0x81952618
+  size: 0x450

@@ -1,5 +1,4 @@
-extern Gfx int_ike_island_sensui01_on_model[];
-extern Gfx int_ike_island_sensui01_off_model[];
+#include "assets/data/model/int_ike_island_sensui01.h"
 
 aFTR_PROFILE iam_ike_island_sensui01 = {
 	int_ike_island_sensui01_on_model,

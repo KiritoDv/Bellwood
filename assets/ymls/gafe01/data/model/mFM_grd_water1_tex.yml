@@ -1,0 +1,10 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_water1_tex:
+  type: TEXTURE
+  offset: 0x81AC84F0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx

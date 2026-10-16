@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_sum_taiko01_pal:
+  type: TEXTURE
+  offset: 0x81A649C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_taiko01_foot_txt_txt:
+  type: TEXTURE
+  offset: 0x81A649E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A649C0
+
+int_sum_taiko01_standside_txt_txt:
+  type: TEXTURE
+  offset: 0x81A64A60
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A649C0
+
+int_sum_taiko01_standfront_txt_txt:
+  type: TEXTURE
+  offset: 0x81A64BE0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A649C0
+
+int_sum_taiko01_side_txt_txt:
+  type: TEXTURE
+  offset: 0x81A64D60
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A649C0
+
+int_sum_taiko01_front_txt_txt:
+  type: TEXTURE
+  offset: 0x81A65060
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A649C0
+
+int_sum_taiko01_v:
+  type: VTX
+  offset: 0x81A65160
+  count: 55
+
+int_sum_taiko01_on_model:
+  type: GFX
+  offset: 0x81A654D0
+  size: 0x150

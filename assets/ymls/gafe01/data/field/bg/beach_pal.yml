@@ -1,0 +1,9 @@
+:config:
+  strict_declarations: true
+
+mFM_beach_pal:
+  type: TEXTURE
+  offset: 0x8160C7A8
+  format: TLUT
+  colors: 192
+  source_encoding: gx

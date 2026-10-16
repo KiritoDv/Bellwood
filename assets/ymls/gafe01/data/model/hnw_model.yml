@@ -1,0 +1,32 @@
+:config:
+  strict_declarations: true
+
+hnw_v:
+  type: VTX
+  offset: 0x8124C580
+  count: 276
+
+head_hnw_model:
+  type: GFX
+  offset: 0x8124D6C0
+  size: 0x308
+
+handR_hnw_model:
+  type: GFX
+  offset: 0x8124D9C8
+  size: 0x88
+
+handL_hnw_model:
+  type: GFX
+  offset: 0x8124DA50
+  size: 0x88
+
+body_hnw_model:
+  type: GFX
+  offset: 0x8124DAD8
+  size: 0x118
+
+cKF_bs_r_hnw:
+  type: AC:CKF_SKELETON
+  offset: 0x8124DC44
+  counts: { joints: 7 }

@@ -1,6 +1,6 @@
 #include "ac_npc_majin4.h"
 
-#include <dolphin/os.h>
+#include "gc_compat.h"
 #include "libultra/libultra.h"
 #include "m_common_data.h"
 #include "m_player_lib.h"
@@ -135,7 +135,7 @@ static void aMJN4_prenmi_draw(NPC_MAJIN4_ACTOR* actor, GAME* game) {
 
         if (l_ResetTime != 0) {
             Gfx* gfx = NOW_OVERLAY_DISP;
-            f32 time = OSTicksToMicroseconds(osGetTime() - l_ResetTime);
+            f32 time = OS_CYCLES_TO_USEC(osGetTime() - l_ResetTime);
             f32 line_y;
 
             if (time < 500000.0f) {

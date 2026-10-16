@@ -1,0 +1,182 @@
+:config:
+  strict_declarations: true
+
+obj_e_tukimi_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x815B2740
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_tukimi_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x815B2F40
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_tukimi_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x815B3740
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_tukimi_r_v:
+  type: VTX
+  offset: 0x815B3F40
+  count: 72
+
+obj_e_tukimi_r_ne2_model:
+  type: GFX
+  offset: 0x815B43C0
+  size: 0x38
+
+obj_e_tukimi_r_ne1_model:
+  type: GFX
+  offset: 0x815B43F8
+  size: 0x38
+
+obj_e_tukimi_r_moti_model:
+  type: GFX
+  offset: 0x815B4430
+  size: 0x48
+
+obj_e_tukimi_r_hako_model:
+  type: GFX
+  offset: 0x815B4478
+  size: 0x68
+
+obj_e_tukimi_r_endai_model:
+  type: GFX
+  offset: 0x815B44E0
+  size: 0x60
+
+obj_e_tukimi_r_dai_model:
+  type: GFX
+  offset: 0x815B4540
+  size: 0x48
+
+obj_e_tukimi_r_kuki2_model:
+  type: GFX
+  offset: 0x815B4588
+  size: 0x50
+
+obj_e_tukimi_r_ho2_model:
+  type: GFX
+  offset: 0x815B45D8
+  size: 0x50
+
+obj_e_tukimi_r_kuki1_model:
+  type: GFX
+  offset: 0x815B4628
+  size: 0x50
+
+obj_e_tukimi_r_ho1_model:
+  type: GFX
+  offset: 0x815B4678
+  size: 0x50
+
+cKF_bs_r_obj_e_tukimi_r:
+  type: AC:CKF_SKELETON
+  offset: 0x815B4758
+  counts: { joints: 12 }
+
+cKF_ba_r_obj_e_tukimi_r:
+  type: AC:CKF_ANIMATION
+  offset: 0x815B4864
+  joints: 12
+  counts: { flags: 12, data: 84, keys: 4, fixed: 35 }
+
+obj_e_tukimi_l_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x815B4880
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_tukimi_l_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x815B5080
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_tukimi_l_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x815B5880
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_tukimi_l_v:
+  type: VTX
+  offset: 0x815B6080
+  count: 72
+
+obj_e_tukimi_l_ne2_model:
+  type: GFX
+  offset: 0x815B6500
+  size: 0x38
+
+obj_e_tukimi_l_ne1_model:
+  type: GFX
+  offset: 0x815B6538
+  size: 0x38
+
+obj_e_tukimi_l_moti_model:
+  type: GFX
+  offset: 0x815B6570
+  size: 0x48
+
+obj_e_tukimi_l_hako_model:
+  type: GFX
+  offset: 0x815B65B8
+  size: 0x68
+
+obj_e_tukimi_l_endai_model:
+  type: GFX
+  offset: 0x815B6620
+  size: 0x60
+
+obj_e_tukimi_l_dai_model:
+  type: GFX
+  offset: 0x815B6680
+  size: 0x48
+
+obj_e_tukimi_l_kuki2_model:
+  type: GFX
+  offset: 0x815B66C8
+  size: 0x50
+
+obj_e_tukimi_l_ho2_model:
+  type: GFX
+  offset: 0x815B6718
+  size: 0x50
+
+obj_e_tukimi_l_kuki1_model:
+  type: GFX
+  offset: 0x815B6768
+  size: 0x50
+
+obj_e_tukimi_l_ho1_model:
+  type: GFX
+  offset: 0x815B67B8
+  size: 0x50
+
+cKF_bs_r_obj_e_tukimi_l:
+  type: AC:CKF_SKELETON
+  offset: 0x815B6898
+  counts: { joints: 12 }
+
+cKF_ba_r_obj_e_tukimi_l:
+  type: AC:CKF_ANIMATION
+  offset: 0x815B69A4
+  joints: 12
+  counts: { flags: 12, data: 84, keys: 4, fixed: 35 }

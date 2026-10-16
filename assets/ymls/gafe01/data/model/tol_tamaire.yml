@@ -1,0 +1,67 @@
+:config:
+  strict_declarations: true
+
+tol_tamaire_pal:
+  type: TEXTURE
+  offset: 0x815C9E00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_tamaire_r1_tex:
+  type: TEXTURE
+  offset: 0x815C9E20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_tamaire_r2_tex:
+  type: TEXTURE
+  offset: 0x815CA020
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_tamaire_r3_tex:
+  type: TEXTURE
+  offset: 0x815CA220
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_tamaire_w1_tex:
+  type: TEXTURE
+  offset: 0x815CA420
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_tamaire_w2_tex:
+  type: TEXTURE
+  offset: 0x815CA620
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_tamaire_w3_tex:
+  type: TEXTURE
+  offset: 0x815CA820
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_tamaire_v:
+  type: VTX
+  offset: 0x815CAA20
+  count: 4
+
+tol_tamaire_model:
+  type: GFX
+  offset: 0x815CAA60
+  size: 0x58

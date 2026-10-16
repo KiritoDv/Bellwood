@@ -1,4 +1,4 @@
-extern Gfx int_sum_clbed02_onT_model[];
+#include "assets/data/model/int_sum_clbed02.h"
 
 aFTR_PROFILE iam_sum_clbed02 = {
 	int_sum_clbed02_onT_model,

@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+ef_muka:
+  type: TEXTURE
+  offset: 0x8166BAE0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_muka01_00_v:
+  type: VTX
+  offset: 0x8166BEE0
+  count: 4
+
+ef_muka01_00_modelT:
+  type: GFX
+  offset: 0x8166BF20
+  size: 0x48

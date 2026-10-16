@@ -1,0 +1,1468 @@
+:config:
+  strict_declarations: true
+
+obj_shop_umb_01_pal:
+  type: TEXTURE
+  offset: 0x8139F060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_01_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x8139F080
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8139F060
+
+obj_shop_umb_01_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x8139F280
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8139F060
+
+obj_shop_umb01_v:
+  type: VTX
+  offset: 0x8139F480
+  count: 56
+
+obj_shop_umb01_model:
+  type: GFX
+  offset: 0x8139F800
+  size: 0xB0
+
+obj_shop_umb01_modelT:
+  type: GFX
+  offset: 0x8139F8B0
+  size: 0x8
+
+tol_umb02_pal:
+  type: TEXTURE
+  offset: 0x8139F8C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb02_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x8139F8E0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x8139F8C0
+
+tol_umb02_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x8139FAE0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x8139F8C0
+
+tol_umb02_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x8139FCE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8139F8C0
+
+obj_shop_umb02_v:
+  type: VTX
+  offset: 0x8139FEE0
+  count: 62
+
+obj_shop_umb02_model:
+  type: GFX
+  offset: 0x813A02C0
+  size: 0xD8
+
+obj_shop_umb02_modelT:
+  type: GFX
+  offset: 0x813A0398
+  size: 0x8
+
+obj_shop_umb_03_pal:
+  type: TEXTURE
+  offset: 0x813A03A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_03_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A03C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813A03A0
+
+obj_shop_umb_03_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A07C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A03A0
+
+obj_shop_umb03_v:
+  type: VTX
+  offset: 0x813A09C0
+  count: 56
+
+obj_shop_umb03_model:
+  type: GFX
+  offset: 0x813A0D40
+  size: 0xB8
+
+obj_shop_umb03_modelT:
+  type: GFX
+  offset: 0x813A0DF8
+  size: 0x8
+
+obj_shop_umb_04_pal:
+  type: TEXTURE
+  offset: 0x813A0E00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_04_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x813A0E20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A0E00
+
+obj_shop_umb_04_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A0F20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A0E00
+
+obj_shop_umb_04_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A1020
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A0E00
+
+obj_shop_umb04_v:
+  type: VTX
+  offset: 0x813A1220
+  count: 56
+
+obj_shop_umb04_model:
+  type: GFX
+  offset: 0x813A15A0
+  size: 0xC8
+
+obj_shop_umb04_modelT:
+  type: GFX
+  offset: 0x813A1668
+  size: 0x8
+
+tol_umb_05_pal:
+  type: TEXTURE
+  offset: 0x813A1680
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb_05_kasa_tex_txt:
+  type: TEXTURE
+  offset: 0x813A16A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A1680
+
+tol_umb_05_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813A18A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A1680
+
+obj_shop_umb05_v:
+  type: VTX
+  offset: 0x813A1AA0
+  count: 56
+
+obj_shop_umb05_model:
+  type: GFX
+  offset: 0x813A1E20
+  size: 0xB0
+
+obj_shop_umb05_modelT:
+  type: GFX
+  offset: 0x813A1ED0
+  size: 0x8
+
+obj_shop_umb_06_pal:
+  type: TEXTURE
+  offset: 0x813A1EE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_06_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A1F00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A1EE0
+
+obj_shop_umb_06_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A2100
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A1EE0
+
+obj_shop_umb06_v:
+  type: VTX
+  offset: 0x813A2300
+  count: 94
+
+obj_shop_umb06_model:
+  type: GFX
+  offset: 0x813A28E0
+  size: 0xD8
+
+obj_shop_umb06_modelT:
+  type: GFX
+  offset: 0x813A29B8
+  size: 0x8
+
+tol_umb07_pal:
+  type: TEXTURE
+  offset: 0x813A29C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb07_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x813A29E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A29C0
+
+tol_umb07_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A2AE0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813A29C0
+
+tol_umb07_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813A2EE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A29C0
+
+obj_shop_umb07_v:
+  type: VTX
+  offset: 0x813A30E0
+  count: 38
+
+obj_shop_umb07_modelT:
+  type: GFX
+  offset: 0x813A3340
+  size: 0x8
+
+obj_shop_umb07_model:
+  type: GFX
+  offset: 0x813A3348
+  size: 0xE0
+
+tol_umb08_pal:
+  type: TEXTURE
+  offset: 0x813A3440
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb08_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A3460
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A3440
+
+tol_umb08_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x813A3660
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x813A3440
+
+tol_umb08_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813A36A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A3440
+
+obj_shop_umb08_v:
+  type: VTX
+  offset: 0x813A38A0
+  count: 57
+
+obj_shop_umb08_model:
+  type: GFX
+  offset: 0x813A3C30
+  size: 0xD0
+
+obj_shop_umb08_modelT:
+  type: GFX
+  offset: 0x813A3D00
+  size: 0x8
+
+tol_umb09_pal:
+  type: TEXTURE
+  offset: 0x813A3D20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb09_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A3D40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A3D20
+
+tol_umb09_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x813A3F40
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x813A3D20
+
+tol_umb09_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813A3F80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A3D20
+
+obj_shop_umb09_v:
+  type: VTX
+  offset: 0x813A4180
+  count: 57
+
+obj_shop_umb09_model:
+  type: GFX
+  offset: 0x813A4510
+  size: 0xD0
+
+obj_shop_umb09_modelT:
+  type: GFX
+  offset: 0x813A45E0
+  size: 0x8
+
+tol_umb10_pal:
+  type: TEXTURE
+  offset: 0x813A4600
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb10_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A4620
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x813A4600
+
+tol_umb10_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x813A4820
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x813A4600
+
+tol_umb10_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813A4860
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A4600
+
+obj_shop_umb10_v:
+  type: VTX
+  offset: 0x813A4A60
+  count: 57
+
+obj_shop_umb10_model:
+  type: GFX
+  offset: 0x813A4DF0
+  size: 0xD0
+
+obj_shop_umb10_modelT:
+  type: GFX
+  offset: 0x813A4EC0
+  size: 0x8
+
+tol_umb11_pal:
+  type: TEXTURE
+  offset: 0x813A4EE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb11_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A4F00
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x813A4EE0
+
+tol_umb11_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x813A5100
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x813A4EE0
+
+tol_umb11_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813A5140
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A4EE0
+
+obj_shop_umb11_v:
+  type: VTX
+  offset: 0x813A5340
+  count: 57
+
+obj_shop_umb11_model:
+  type: GFX
+  offset: 0x813A56D0
+  size: 0xD0
+
+obj_shop_umb11_modelT:
+  type: GFX
+  offset: 0x813A57A0
+  size: 0x8
+
+tol_umb12_pal:
+  type: TEXTURE
+  offset: 0x813A57C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb12_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A57E0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813A57C0
+
+tol_umb12_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x813A5BE0
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x813A57C0
+
+tol_umb12_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813A5C20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A57C0
+
+obj_shop_umb12_v:
+  type: VTX
+  offset: 0x813A5E20
+  count: 57
+
+obj_shop_umb12_model:
+  type: GFX
+  offset: 0x813A61B0
+  size: 0xD0
+
+obj_shop_umb12_modelT:
+  type: GFX
+  offset: 0x813A6280
+  size: 0x8
+
+tol_umb13_pal:
+  type: TEXTURE
+  offset: 0x813A62A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb13_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A62C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A62A0
+
+tol_umb13_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x813A64C0
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x813A62A0
+
+tol_umb13_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813A6500
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A62A0
+
+obj_shop_umb13_v:
+  type: VTX
+  offset: 0x813A6700
+  count: 57
+
+obj_shop_umb13_model:
+  type: GFX
+  offset: 0x813A6A90
+  size: 0xD0
+
+obj_shop_umb13_modelT:
+  type: GFX
+  offset: 0x813A6B60
+  size: 0x8
+
+tol_umb_14_pal:
+  type: TEXTURE
+  offset: 0x813A6B80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb_14_kasa_tex_txt:
+  type: TEXTURE
+  offset: 0x813A6BA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A6B80
+
+tol_umb_14_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813A6DA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A6B80
+
+obj_shop_umb14_v:
+  type: VTX
+  offset: 0x813A6FA0
+  count: 56
+
+obj_shop_umb14_model:
+  type: GFX
+  offset: 0x813A7320
+  size: 0xB0
+
+obj_shop_umb14_modelT:
+  type: GFX
+  offset: 0x813A73D0
+  size: 0x8
+
+obj_shop_umb_15_pal:
+  type: TEXTURE
+  offset: 0x813A73E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_15_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A7400
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A73E0
+
+obj_shop_umb_15_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x813A7500
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A73E0
+
+obj_shop_umb_15_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A7700
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A73E0
+
+obj_shop_umb15_v:
+  type: VTX
+  offset: 0x813A7900
+  count: 60
+
+obj_shop_umb15_model:
+  type: GFX
+  offset: 0x813A7CC0
+  size: 0xC0
+
+obj_shop_umb15_modelT:
+  type: GFX
+  offset: 0x813A7D80
+  size: 0x8
+
+obj_shop_umb_16_pal:
+  type: TEXTURE
+  offset: 0x813A7DA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_16_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A7DC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A7DA0
+
+obj_shop_umb_16_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A7FC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A7DA0
+
+obj_shop_umb16_v:
+  type: VTX
+  offset: 0x813A81C0
+  count: 56
+
+obj_shop_umb16_model:
+  type: GFX
+  offset: 0x813A8540
+  size: 0xB0
+
+obj_shop_umb16_modelT:
+  type: GFX
+  offset: 0x813A85F0
+  size: 0x8
+
+obj_shop_umb_17_pal:
+  type: TEXTURE
+  offset: 0x813A8600
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_17_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A8620
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A8600
+
+obj_shop_umb_17_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A8820
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A8600
+
+obj_shop_umb17_v:
+  type: VTX
+  offset: 0x813A8A20
+  count: 77
+
+obj_shop_umb17_model:
+  type: GFX
+  offset: 0x813A8EF0
+  size: 0xD8
+
+obj_shop_umb17_modelT:
+  type: GFX
+  offset: 0x813A8FC8
+  size: 0x8
+
+tol_umb18_pal:
+  type: TEXTURE
+  offset: 0x813A8FE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb18_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813A9000
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A8FE0
+
+tol_umb18_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x813A9100
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x813A8FE0
+
+tol_umb18_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813A9180
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A8FE0
+
+obj_shop_umb18_v:
+  type: VTX
+  offset: 0x813A9380
+  count: 57
+
+obj_shop_umb18_model:
+  type: GFX
+  offset: 0x813A9710
+  size: 0xD0
+
+obj_shop_umb18_modelT:
+  type: GFX
+  offset: 0x813A97E0
+  size: 0x8
+
+obj_shop_umb_19_pal:
+  type: TEXTURE
+  offset: 0x813A9800
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_19_e_tex_txt:
+  type: TEXTURE
+  offset: 0x813A9820
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x813A9800
+
+obj_shop_umb_19_kasa_tex_txt:
+  type: TEXTURE
+  offset: 0x813A98A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A9800
+
+obj_shop_umb_19_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813A9AA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813A9800
+
+obj_shop_umb19_v:
+  type: VTX
+  offset: 0x813A9CA0
+  count: 64
+
+obj_shop_umb19_model:
+  type: GFX
+  offset: 0x813AA0A0
+  size: 0xE0
+
+obj_shop_umb19_modelT:
+  type: GFX
+  offset: 0x813AA180
+  size: 0x8
+
+obj_shop_umb_20_pal:
+  type: TEXTURE
+  offset: 0x813AA1A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_20_e_tex_txt:
+  type: TEXTURE
+  offset: 0x813AA1C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x813AA1A0
+
+obj_shop_umb_20_kasa_tex_txt:
+  type: TEXTURE
+  offset: 0x813AA240
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813AA1A0
+
+obj_shop_umb20_v:
+  type: VTX
+  offset: 0x813AA640
+  count: 39
+
+obj_shop_umb20_model:
+  type: GFX
+  offset: 0x813AA8B0
+  size: 0xB8
+
+obj_shop_umb20_modelT:
+  type: GFX
+  offset: 0x813AA968
+  size: 0x8
+
+obj_shop_umb_21_pal:
+  type: TEXTURE
+  offset: 0x813AA980
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_21_kasa_tex_txt:
+  type: TEXTURE
+  offset: 0x813AA9A0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AA980
+
+obj_shop_umb_21_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813AADA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AA980
+
+obj_shop_umb21_v:
+  type: VTX
+  offset: 0x813AAFA0
+  count: 56
+
+obj_shop_umb21_model:
+  type: GFX
+  offset: 0x813AB320
+  size: 0xC8
+
+obj_shop_umb21_modelT:
+  type: GFX
+  offset: 0x813AB3E8
+  size: 0x8
+
+tol_umb_22_pal:
+  type: TEXTURE
+  offset: 0x813AB400
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_22_pal:
+  type: TEXTURE
+  offset: 0x813AB420
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_22_kasa_tex_txt:
+  type: TEXTURE
+  offset: 0x813AB440
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AB400
+
+obj_shop_umb_22_e_tex_txt:
+  type: TEXTURE
+  offset: 0x813AB640
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AB420
+
+obj_shop_umb22_v:
+  type: VTX
+  offset: 0x813AB740
+  count: 72
+
+obj_shop_umb22_model:
+  type: GFX
+  offset: 0x813ABBC0
+  size: 0xD8
+
+obj_shop_umb22_modelT:
+  type: GFX
+  offset: 0x813ABC98
+  size: 0x8
+
+obj_shop_umb_23_pal:
+  type: TEXTURE
+  offset: 0x813ABCA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_23_kasa_tex_txt:
+  type: TEXTURE
+  offset: 0x813ABCC0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813ABCA0
+
+obj_shop_umb_23_e_tex_txt:
+  type: TEXTURE
+  offset: 0x813AC0C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x813ABCA0
+
+obj_shop_umb_23_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813AC140
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813ABCA0
+
+obj_shop_umb23_v:
+  type: VTX
+  offset: 0x813AC340
+  count: 54
+
+obj_shop_umb23_model:
+  type: GFX
+  offset: 0x813AC6A0
+  size: 0xC8
+
+obj_shop_umb23_modelT:
+  type: GFX
+  offset: 0x813AC768
+  size: 0x8
+
+obj_shop_umb_24_pal:
+  type: TEXTURE
+  offset: 0x813AC780
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_24_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813AC7A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AC780
+
+obj_shop_umb_24_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x813AC9A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AC780
+
+obj_shop_umb_24_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x813ACBA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AC780
+
+obj_shop_umb24_v:
+  type: VTX
+  offset: 0x813ACDA0
+  count: 60
+
+obj_shop_umb24_model:
+  type: GFX
+  offset: 0x813AD160
+  size: 0xC0
+
+obj_shop_umb24_modelT:
+  type: GFX
+  offset: 0x813AD220
+  size: 0x8
+
+tol_umb_25_pal:
+  type: TEXTURE
+  offset: 0x813AD240
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb_25_ya_tex_txt:
+  type: TEXTURE
+  offset: 0x813AD260
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x813AD240
+
+tol_umb_25_kasa_tex_txt:
+  type: TEXTURE
+  offset: 0x813AD460
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AD240
+
+obj_shop_umb25_v:
+  type: VTX
+  offset: 0x813AD660
+  count: 53
+
+obj_shop_umb25_model:
+  type: GFX
+  offset: 0x813AD9B0
+  size: 0xB0
+
+obj_shop_umb25_modelT:
+  type: GFX
+  offset: 0x813ADA60
+  size: 0x8
+
+obj_shop_umb_26_pal:
+  type: TEXTURE
+  offset: 0x813ADA80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_26_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813ADAA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x813ADA80
+
+obj_shop_umb_26_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x813ADBA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813ADA80
+
+obj_shop_umb_26_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x813ADDA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813ADA80
+
+obj_shop_umb26_v:
+  type: VTX
+  offset: 0x813ADFA0
+  count: 60
+
+obj_shop_umb26_model:
+  type: GFX
+  offset: 0x813AE360
+  size: 0xD0
+
+obj_shop_umb26_modelT:
+  type: GFX
+  offset: 0x813AE430
+  size: 0x8
+
+obj_shop_umb_27_pal:
+  type: TEXTURE
+  offset: 0x813AE440
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_27_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813AE460
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AE440
+
+obj_shop_umb_27_kasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x813AE660
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AE440
+
+obj_shop_umb_27_e_tex_txt:
+  type: TEXTURE
+  offset: 0x813AE860
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AE440
+
+obj_shop_umb27_v:
+  type: VTX
+  offset: 0x813AE960
+  count: 72
+
+obj_shop_umb27_model:
+  type: GFX
+  offset: 0x813AEDE0
+  size: 0xF8
+
+obj_shop_umb27_modelT:
+  type: GFX
+  offset: 0x813AEED8
+  size: 0x8
+
+obj_shop_umb_28_pal:
+  type: TEXTURE
+  offset: 0x813AEEE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_28_kasa_tex_txt:
+  type: TEXTURE
+  offset: 0x813AEF00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AEEE0
+
+obj_shop_umb_28_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813AF100
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AEEE0
+
+obj_shop_umb28_v:
+  type: VTX
+  offset: 0x813AF300
+  count: 56
+
+obj_shop_umb28_model:
+  type: GFX
+  offset: 0x813AF680
+  size: 0xB0
+
+obj_shop_umb28_modelT:
+  type: GFX
+  offset: 0x813AF730
+  size: 0x8
+
+obj_shop_umb_29_pal:
+  type: TEXTURE
+  offset: 0x813AF740
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_29_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813AF760
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AF740
+
+obj_shop_umb_29_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x813AF960
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AF740
+
+obj_shop_umb29_v:
+  type: VTX
+  offset: 0x813AFB60
+  count: 56
+
+obj_shop_umb29_model:
+  type: GFX
+  offset: 0x813AFEE0
+  size: 0xB0
+
+obj_shop_umb29_modelT:
+  type: GFX
+  offset: 0x813AFF90
+  size: 0x8
+
+obj_shop_umb_30_pal:
+  type: TEXTURE
+  offset: 0x813AFFA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_30_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813AFFC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AFFA0
+
+obj_shop_umb_30_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x813B01C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813AFFA0
+
+obj_shop_umb30_v:
+  type: VTX
+  offset: 0x813B03C0
+  count: 56
+
+obj_shop_umb30_model:
+  type: GFX
+  offset: 0x813B0740
+  size: 0xB8
+
+obj_shop_umb30_modelT:
+  type: GFX
+  offset: 0x813B07F8
+  size: 0x8
+
+obj_shop_umb_31_pal:
+  type: TEXTURE
+  offset: 0x813B0800
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_31_e_tex_txt:
+  type: TEXTURE
+  offset: 0x813B0820
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x813B0800
+
+obj_shop_umb_31_kasa_tex_txt:
+  type: TEXTURE
+  offset: 0x813B08A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813B0800
+
+obj_shop_umb_31_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813B0AA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813B0800
+
+obj_shop_umb31_v:
+  type: VTX
+  offset: 0x813B0CA0
+  count: 54
+
+obj_shop_umb31_model:
+  type: GFX
+  offset: 0x813B1000
+  size: 0xD0
+
+obj_shop_umb31_modelT:
+  type: GFX
+  offset: 0x813B10D0
+  size: 0x8
+
+obj_shop_umb_32_pal:
+  type: TEXTURE
+  offset: 0x813B10E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_umb_32_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x813B1100
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813B10E0
+
+obj_shop_umb_32_kasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x813B1300
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813B10E0
+
+obj_shop_umb32_v:
+  type: VTX
+  offset: 0x813B1500
+  count: 56
+
+obj_shop_umb32_model:
+  type: GFX
+  offset: 0x813B1880
+  size: 0xB0
+
+obj_shop_umb32_modelT:
+  type: GFX
+  offset: 0x813B1930
+  size: 0x8
+
+tol_umb_w_tuka_pal:
+  type: TEXTURE
+  offset: 0x813B1940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb_w_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x813B1960
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813B1940
+
+obj_shop_umb_w_v:
+  type: VTX
+  offset: 0x813B1B60
+  count: 56
+
+obj_shop_umbmy_model:
+  type: GFX
+  offset: 0x813B1EE0
+  size: 0xC0

@@ -334,7 +334,8 @@ static void aNPC_check_manpu_demoCode(ACTOR* actorx) {
 
         aNPC_Animation_init(actorx, seqNo, talk);
         nactorx->talk_info.demo_code = order;
-    } else if (last_order != aNPC_MANPU_CODE_NONE && nactorx->draw.animation_id == eff_idx_p[last_order] &&
+    } else if (last_order != aNPC_MANPU_CODE_NONE && (u8)last_order < aNPC_MANPU_CODE_RESET_KEKE &&
+               nactorx->draw.animation_id == eff_idx_p[last_order] &&
                nactorx->draw.main_animation_state == cKF_STATE_STOPPED) {
         aNPC_Animation_init(actorx, eff_idx2_p[last_order], FALSE);
     }

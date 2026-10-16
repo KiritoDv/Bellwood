@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_yos_pbstove_pal:
+  type: TEXTURE
+  offset: 0x81ADB0A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yos_pbstove_conpane_asi_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADB0C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ADB0A0
+
+int_yos_pbstove_sima_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADB2C0
+  format: CI4
+  width: 32
+  height: 24
+  source_encoding: gx
+  tlut: 0x81ADB0A0
+
+int_yos_pbstove_mado_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADB440
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ADB0A0
+
+int_yos_pbstove_lever_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADB640
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81ADB0A0
+
+int_yos_pbstove_huta_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADB6C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ADB0A0
+
+int_yos_pbstove_v:
+  type: VTX
+  offset: 0x81ADB8C0
+  count: 94
+
+int_yos_pbstove_body_model:
+  type: GFX
+  offset: 0x81ADBEA0
+  size: 0x198

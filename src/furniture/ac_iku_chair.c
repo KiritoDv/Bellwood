@@ -1,4 +1,4 @@
-extern Gfx int_iku_chair_model_model[];
+#include "assets/data/model/int_iku_chair.h"
 
 aFTR_PROFILE iam_iku_chair = {
 	int_iku_chair_model_model,

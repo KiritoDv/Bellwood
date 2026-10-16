@@ -142,6 +142,7 @@ static aWeather_Priv* aWeather_GetWeatherPrv(u8 status, s16 timer, xyz_t* pos, x
 
     if ((id != -1) && (id < 100)) {
         if (priv[id].use == 0) {
+            FrameInterpolation_ResetObject(&priv[id]);
             priv[id].use = 1;
             priv[id].status = status;
             priv[id].timer = timer;
@@ -489,7 +490,9 @@ static void aWeather_DrawWeatherPrv(ACTOR* actor, GAME* game) {
         if (weather->current_profile->draw != NULL) {
             for (i = 0; i < 100; i++, priv++) {
                 if (priv->use != 0) {
+                    FrameInterpolation_RecordOpenChild(priv, FrameInterpolation_GetObjectEpoch(priv));
                     weather->current_profile->draw(priv, game);
+                    FrameInterpolation_RecordCloseChild();
                 }
             }
         }

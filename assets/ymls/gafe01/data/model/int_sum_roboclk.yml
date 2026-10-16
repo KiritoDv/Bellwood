@@ -1,0 +1,128 @@
+:config:
+  strict_declarations: true
+
+int_roboclk_pal:
+  type: TEXTURE
+  offset: 0x81A55940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_roboclk_hari_tex_txt:
+  type: TEXTURE
+  offset: 0x81A55960
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A55940
+
+int_sum_roboclk_eye1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81A559E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_sum_roboclk_eye2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81A55A60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_sum_roboclk_top_tex_txt:
+  type: TEXTURE
+  offset: 0x81A55AE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A55940
+
+int_sum_roboclk_base_tex_txt:
+  type: TEXTURE
+  offset: 0x81A55B60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A55940
+
+int_sum_roboclk_front_tex_txt:
+  type: TEXTURE
+  offset: 0x81A55BE0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A55940
+
+int_sum_roboclk_antena_tex_txt:
+  type: TEXTURE
+  offset: 0x81A55FE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A55940
+
+int_sum_roboclk_head_tex_txt:
+  type: TEXTURE
+  offset: 0x81A56060
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A55940
+
+int_sum_roboclk_hand_tex_txt:
+  type: TEXTURE
+  offset: 0x81A560E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A55940
+
+int_sum_roboclk_arm_tex_txt:
+  type: TEXTURE
+  offset: 0x81A56160
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A55940
+
+int_sum_roboclk_v:
+  type: VTX
+  offset: 0x81A561E0
+  count: 97
+
+int_sum_roboclk_short_model:
+  type: GFX
+  offset: 0x81A567F0
+  size: 0x58
+
+int_sum_roboclk_base_model:
+  type: GFX
+  offset: 0x81A56848
+  size: 0x188
+
+int_sum_roboclk_long_model:
+  type: GFX
+  offset: 0x81A569D0
+  size: 0x58
+
+cKF_ba_r_int_sum_roboclk:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A56A54
+  joints: 5
+  counts: { flags: 5, data: 0, keys: 0, fixed: 18 }
+
+cKF_bs_r_int_sum_roboclk:
+  type: AC:CKF_SKELETON
+  offset: 0x81A56AA4
+  counts: { joints: 5 }

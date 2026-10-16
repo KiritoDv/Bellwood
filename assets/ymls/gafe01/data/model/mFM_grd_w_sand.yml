@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_w_sand_tex:
+  type: TEXTURE
+  offset: 0x81944360
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+mFM_grd_w_sand_2_tex:
+  type: TEXTURE
+  offset: 0x81944760
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+mFM_grd_w_sand_3_tex:
+  type: TEXTURE
+  offset: 0x81944B60
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx

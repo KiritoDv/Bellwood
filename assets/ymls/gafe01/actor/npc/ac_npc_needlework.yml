@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+aNNW_client_prg:
+  type: BLOB
+  offset: 0x8105D150
+  size: 0xACC0
+
+aNNW_client_ldr:
+  type: BLOB
+  offset: 0x81067E10
+  size: 0x8D20

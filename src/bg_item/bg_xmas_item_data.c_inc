@@ -1,3 +1,133 @@
+#include "assets/data/field/bg/flower/obj_flower.h"
+#include "assets/data/field/bg/flower/obj_flower_leaf.h"
+#include "assets/data/model/obj_cedar3.h"
+#include "assets/data/model/obj_cedar4.h"
+#include "assets/data/model/obj_cedar5.h"
+#include "assets/data/model/obj_crack.h"
+#include "assets/data/model/obj_cstump3.h"
+#include "assets/data/model/obj_cstump4.h"
+#include "assets/data/model/obj_cstump5.h"
+#include "assets/data/model/obj_fenceL_shadow.h"
+#include "assets/data/model/obj_fenceS_shadow.h"
+#include "assets/data/model/obj_hole.h"
+#include "assets/data/model/obj_item_apple2.h"
+#include "assets/data/model/obj_item_axe.h"
+#include "assets/data/model/obj_item_axe2.h"
+#include "assets/data/model/obj_item_bag.h"
+#include "assets/data/model/obj_item_bone.h"
+#include "assets/data/model/obj_item_box.h"
+#include "assets/data/model/obj_item_carpet.h"
+#include "assets/data/model/obj_item_cloth.h"
+#include "assets/data/model/obj_item_coco.h"
+#include "assets/data/model/obj_item_diary.h"
+#include "assets/data/model/obj_item_fish.h"
+#include "assets/data/model/obj_item_fork.h"
+#include "assets/data/model/obj_item_fossil2.h"
+#include "assets/data/model/obj_item_fuku.h"
+#include "assets/data/model/obj_item_haniwa.h"
+#include "assets/data/model/obj_item_kabu2.h"
+#include "assets/data/model/obj_item_kaza.h"
+#include "assets/data/model/obj_item_leaf.h"
+#include "assets/data/model/obj_item_matutake2.h"
+#include "assets/data/model/obj_item_net.h"
+#include "assets/data/model/obj_item_net2.h"
+#include "assets/data/model/obj_item_nuts.h"
+#include "assets/data/model/obj_item_orange2.h"
+#include "assets/data/model/obj_item_other.h"
+#include "assets/data/model/obj_item_otosi.h"
+#include "assets/data/model/obj_item_pack.h"
+#include "assets/data/model/obj_item_paper.h"
+#include "assets/data/model/obj_item_peach.h"
+#include "assets/data/model/obj_item_pear.h"
+#include "assets/data/model/obj_item_present.h"
+#include "assets/data/model/obj_item_rod.h"
+#include "assets/data/model/obj_item_rod2.h"
+#include "assets/data/model/obj_item_roll.h"
+#include "assets/data/model/obj_item_seed.h"
+#include "assets/data/model/obj_item_shellA.h"
+#include "assets/data/model/obj_item_shellB.h"
+#include "assets/data/model/obj_item_shellC.h"
+#include "assets/data/model/obj_item_shovel.h"
+#include "assets/data/model/obj_item_shovel2.h"
+#include "assets/data/model/obj_item_taisou.h"
+#include "assets/data/model/obj_item_tane.h"
+#include "assets/data/model/obj_item_tane2.h"
+#include "assets/data/model/obj_item_ticket.h"
+#include "assets/data/model/obj_item_tool.h"
+#include "assets/data/model/obj_item_trash.h"
+#include "assets/data/model/obj_item_umbrella.h"
+#include "assets/data/model/obj_item_utiwa.h"
+#include "assets/data/model/obj_item_wall.h"
+#include "assets/data/model/obj_melody.h"
+#include "assets/data/model/obj_notice.h"
+#include "assets/data/model/obj_palm3.h"
+#include "assets/data/model/obj_palm4.h"
+#include "assets/data/model/obj_palm5.h"
+#include "assets/data/model/obj_pstump3.h"
+#include "assets/data/model/obj_pstump4.h"
+#include "assets/data/model/obj_pstump5.h"
+#include "assets/data/model/obj_s_stump2.h"
+#include "assets/data/model/obj_s_stump3.h"
+#include "assets/data/model/obj_s_stump4.h"
+#include "assets/data/model/obj_s_stump5.h"
+#include "assets/data/model/obj_s_tree5_apple.h"
+#include "assets/data/model/obj_shop_candy.h"
+#include "assets/data/model/obj_shop_md.h"
+#include "assets/data/model/obj_sightmap_shadow.h"
+#include "assets/data/model/obj_stoneA_shadow.h"
+#include "assets/data/model/obj_stoneB_shadow.h"
+#include "assets/data/model/obj_stoneC_shadow.h"
+#include "assets/data/model/obj_stoneD_shadow.h"
+#include "assets/data/model/obj_stoneE_shadow.h"
+#include "assets/data/model/obj_stump3_shadow.h"
+#include "assets/data/model/obj_stump4_shadow.h"
+#include "assets/data/model/obj_stump5_shadow.h"
+#include "assets/data/model/obj_tree4_shadow.h"
+#include "assets/data/model/obj_tree5_shadow.h"
+#include "assets/data/model/obj_tree_shadow.h"
+#include "assets/data/model/obj_w_cedar1.h"
+#include "assets/data/model/obj_w_cedar1_dead.h"
+#include "assets/data/model/obj_w_cedar2.h"
+#include "assets/data/model/obj_w_cedar3.h"
+#include "assets/data/model/obj_w_cedar4.h"
+#include "assets/data/model/obj_w_cedar5.h"
+#include "assets/data/model/obj_w_cstump2.h"
+#include "assets/data/model/obj_w_cstump3.h"
+#include "assets/data/model/obj_w_cstump4.h"
+#include "assets/data/model/obj_w_cstump5.h"
+#include "assets/data/model/obj_w_fenceL.h"
+#include "assets/data/model/obj_w_fenceS.h"
+#include "assets/data/model/obj_w_melody.h"
+#include "assets/data/model/obj_w_notice.h"
+#include "assets/data/model/obj_w_palm.h"
+#include "assets/data/model/obj_w_palm1_dead.h"
+#include "assets/data/model/obj_w_palm2.h"
+#include "assets/data/model/obj_w_palm3.h"
+#include "assets/data/model/obj_w_palm4.h"
+#include "assets/data/model/obj_w_palm5.h"
+#include "assets/data/model/obj_w_palm5_coco.h"
+#include "assets/data/model/obj_w_pstump2.h"
+#include "assets/data/model/obj_w_pstump3.h"
+#include "assets/data/model/obj_w_pstump4.h"
+#include "assets/data/model/obj_w_pstump5.h"
+#include "assets/data/model/obj_w_sightmap.h"
+#include "assets/data/model/obj_w_stoneA.h"
+#include "assets/data/model/obj_w_stoneB.h"
+#include "assets/data/model/obj_w_stoneC.h"
+#include "assets/data/model/obj_w_stoneD.h"
+#include "assets/data/model/obj_w_stoneE.h"
+#include "assets/data/model/obj_w_tree1.h"
+#include "assets/data/model/obj_w_tree1_dead.h"
+#include "assets/data/model/obj_w_tree2.h"
+#include "assets/data/model/obj_w_tree3.h"
+#include "assets/data/model/obj_w_tree4.h"
+#include "assets/data/model/obj_w_tree5.h"
+#include "assets/data/model/obj_x_cedar5.h"
+#include "assets/data/model/obj_x_honeycomb.h"
+#include "assets/data/model/obj_x_tree5.h"
+#include "assets/data/model/obj_zassou_a.h"
+#include "assets/data/model/obj_zassou_b.h"
+#include "assets/data/model/obj_zassou_c.h"
 static bg_item_type_data_c typeData_table_bgXmasItem[] = {
     { 0, bIT_DRAW_TYPE_NONE, NULL, NULL },                         // 0x0000
     { 0, bIT_DRAW_TYPE_STUMP1, pos_table, pos_table },             // 0x0001
@@ -245,40 +375,6 @@ static bg_item_type_data_c typeData_table_dummy[] = {
     { 0, bIT_DRAW_TYPE_FISH2, pos_table, pos_table },
 };
 
-extern Gfx obj_w_tree5_leafT_mat_model[];
-extern Gfx obj_w_tree5_leafT_gfx_model[];
-extern Gfx obj_w_tree5_trunkT_mat_model[];
-extern Gfx obj_w_tree5_trunkT_gfx_model[];
-extern Gfx obj_tree5_shadowT_mat_model[];
-extern Gfx obj_tree5_shadowT_gfx_model[];
-extern Gfx obj_w_tree4_leafT_mat_model[];
-extern Gfx obj_w_tree4_leafT_gfx_model[];
-extern Gfx obj_w_tree4_trunkT_mat_model[];
-extern Gfx obj_w_tree4_trunkT_gfx_model[];
-extern Gfx obj_tree4_shadowT_mat_model[];
-extern Gfx obj_tree4_shadowT_gfx_model[];
-extern Gfx obj_w_tree3_trunkT_mat_model[];
-extern Gfx obj_w_tree3_trunkT_gfx_model[];
-extern Gfx obj_w_tree3_leafT_mat_model[];
-extern Gfx obj_w_tree3_leafT_gfx_model[];
-extern Gfx obj_tree3_shadowT_mat_model[];
-extern Gfx obj_tree3_shadowT_gfx_model[];
-extern Gfx obj_w_tree2T_mat_model[];
-extern Gfx obj_w_tree2T_gfx_model[];
-extern Gfx obj_w_tree1T_mat_model[];
-extern Gfx obj_w_tree1T_gfx_model[];
-extern Gfx apple_DL_mode[];
-extern Gfx obj_s_tree5_apple_appleT_gfx_model[];
-extern Gfx orange_DL_mode[];
-extern Gfx peach_DL_mode[];
-extern Gfx pear_DL_mode[];
-extern Gfx nuts_DL_mode[];
-extern Gfx bag_DL_mode[];
-extern Gfx obj_w_tree1_deadT_mat_model[];
-extern Gfx obj_w_tree1_deadT_gfx_model[];
-extern Gfx obj_x_tree5_lightT_mat_model[];
-extern Gfx obj_x_tree5_lightT_gfx_model[];
-
 static Gfx* x_tree_DL_table[] = {
     obj_w_tree5_leafT_mat_model,
     obj_w_tree5_leafT_gfx_model,
@@ -429,19 +525,13 @@ static u8 x_tree_shadow_v_fix[] = {
     1,
 };
 
-extern Vtx obj_tree5_shadow_v[];
-
 static bg_item_draw_part_c x_tree4_part = {
     x_tree_DL_table, 2, x_tree0_list_table, 4, obj_tree5_shadow_v, 60.0f, x_tree_shadow_v_fix, &x_tree0_shadow_list,
 };
 
-extern Vtx obj_tree4_shadow_v[];
-
 static bg_item_draw_part_c x_tree3_part = {
     x_tree_DL_table, 2, x_tree1_list_table, 4, obj_tree4_shadow_v, 45.0f, x_tree_shadow_v_fix, &x_tree1_shadow_list,
 };
-
-extern Vtx obj_tree3_shadow_v[];
 
 static bg_item_draw_part_c x_tree2_part = {
     x_tree_DL_table, 2, x_tree2_list_table, 4, obj_tree3_shadow_v, 30.0f, x_tree_shadow_v_fix, &x_tree2_shadow_list,
@@ -455,37 +545,25 @@ static bg_item_draw_part_c x_tree0_part = {
     x_tree_DL_table, 1, x_tree4_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Vtx obj_tree5_shadow_v[];
-
 static bg_item_draw_part_c tree4_ap_part = {
     x_tree_DL_table, 3, tree4_ap_list_table, 4, obj_tree5_shadow_v, 60.0f, x_tree_shadow_v_fix, &x_tree0_shadow_list,
 };
-
-extern Vtx obj_tree5_shadow_v[];
 
 static bg_item_draw_part_c tree4_or_part = {
     x_tree_DL_table, 3, tree4_or_list_table, 4, obj_tree5_shadow_v, 60.0f, x_tree_shadow_v_fix, &x_tree0_shadow_list,
 };
 
-extern Vtx obj_tree5_shadow_v[];
-
 static bg_item_draw_part_c tree4_ph_part = {
     x_tree_DL_table, 3, tree4_ph_list_table, 4, obj_tree5_shadow_v, 60.0f, x_tree_shadow_v_fix, &x_tree0_shadow_list,
 };
-
-extern Vtx obj_tree5_shadow_v[];
 
 static bg_item_draw_part_c tree4_pr_part = {
     x_tree_DL_table, 3, tree4_pr_list_table, 4, obj_tree5_shadow_v, 60.0f, x_tree_shadow_v_fix, &x_tree0_shadow_list,
 };
 
-extern Vtx obj_tree5_shadow_v[];
-
 static bg_item_draw_part_c tree4_nt_part = {
     x_tree_DL_table, 3, tree4_nt_list_table, 4, obj_tree5_shadow_v, 60.0f, x_tree_shadow_v_fix, &x_tree0_shadow_list,
 };
-
-extern Vtx obj_tree5_shadow_v[];
 
 static bg_item_draw_part_c tree4_bg_part = {
     x_tree_DL_table, 3, tree4_bg_list_table, 4, obj_tree5_shadow_v, 60.0f, x_tree_shadow_v_fix, &x_tree0_shadow_list,
@@ -495,38 +573,9 @@ static bg_item_draw_part_c x_tree0_dead_part = {
     x_tree_DL_table, 1, x_tree0_dead_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Vtx obj_tree5_shadow_v[];
-
 static bg_item_draw_part_c tree4_light_part = {
     x_tree_DL_table, 3, tree4_light_list_table, 4, obj_tree5_shadow_v, 60.0f, x_tree_shadow_v_fix, &x_tree0_shadow_list,
 };
-
-extern Gfx obj_w_palm1T_mat_model[];
-extern Gfx obj_w_palm1T_gfx_model[];
-extern Gfx obj_w_palm1_deadT_mat_model[];
-extern Gfx obj_w_palm1_deadT_gfx_model[];
-extern Gfx obj_w_palm2T_mat_model[];
-extern Gfx obj_w_palm2T_gfx_model[];
-extern Gfx obj_w_palm3_leafT_mat_model[];
-extern Gfx obj_w_palm3_leafT_gfx_model[];
-extern Gfx obj_w_palm3_trunkT_mat_model[];
-extern Gfx obj_w_palm3_trunkT_gfx_model[];
-extern Gfx obj_w_palm4_leafT_mat_model[];
-extern Gfx obj_w_palm4_leafT_gfx_model[];
-extern Gfx obj_w_palm4_trunkT_mat_model[];
-extern Gfx obj_w_palm4_trunkT_gfx_model[];
-extern Gfx obj_w_palm5_trunkT_mat_model[];
-extern Gfx obj_w_palm5_trunkT_gfx_model[];
-extern Gfx obj_w_palm5_leafT_mat_model[];
-extern Gfx obj_w_palm5_leafT_gfx_model[];
-extern Gfx obj_item_cocoT_mat_model[];
-extern Gfx obj_w_palm5_cocoT_gfx_model[];
-extern Gfx obj_palm3_shadowT_mat_model[];
-extern Gfx obj_palm3_shadowT_gfx_model[];
-extern Gfx obj_palm4_shadowT_mat_model[];
-extern Gfx obj_palm4_shadowT_gfx_model[];
-extern Gfx obj_palm5_shadowT_mat_model[];
-extern Gfx obj_palm5_shadowT_gfx_model[];
 
 static Gfx* palm_DL_table[] = {
     obj_w_palm1T_mat_model,       obj_w_palm1T_gfx_model,       obj_w_palm1_deadT_mat_model,
@@ -621,25 +670,17 @@ static bg_item_draw_part_c palm001_part = {
     palm_DL_table, 1, palm2_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Vtx obj_palm3_shadow_v[];
-
 static bg_item_draw_part_c palm002_part = {
     palm_DL_table, 2, palm3_list_table, 4, obj_palm3_shadow_v, 30.0f, palm3_shadow_v_fix, &palm3_shadow_list,
 };
-
-extern Vtx obj_palm4_shadow_v[];
 
 static bg_item_draw_part_c palm003_part = {
     palm_DL_table, 2, palm4_list_table, 4, obj_palm4_shadow_v, 45.0f, palm3_shadow_v_fix, &palm4_shadow_list,
 };
 
-extern Vtx obj_palm5_shadow_v[];
-
 static bg_item_draw_part_c palm004_part = {
     palm_DL_table, 2, palm5_list_table, 4, obj_palm5_shadow_v, 60.0f, palm5_shadow_v_fix, &palm5_shadow_list,
 };
-
-extern Vtx obj_palm5_shadow_v[];
 
 static bg_item_draw_part_c palm004_cc_part = {
     palm_DL_table, 3, palm5_cc_list_table, 4, obj_palm5_shadow_v, 60.0f, palm5_shadow_v_fix, &palm5_shadow_list,
@@ -648,33 +689,6 @@ static bg_item_draw_part_c palm004_cc_part = {
 static bg_item_draw_part_c palm000_dead_part = {
     palm_DL_table, 1, palm1_dead_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_cedar3_shadowT_mat_model[];
-extern Gfx obj_cedar3_shadowT_gfx_model[];
-extern Gfx obj_cedar4_shadowT_mat_model[];
-extern Gfx obj_cedar4_shadowT_gfx_model[];
-extern Gfx obj_cedar5_shadowT_mat_model[];
-extern Gfx obj_cedar5_shadowT_gfx_model[];
-extern Gfx obj_w_cedar1T_mat_model[];
-extern Gfx obj_w_cedar1T_gfx_model[];
-extern Gfx obj_w_cedar1_deadT_mat_model[];
-extern Gfx obj_w_cedar1_deadT_gfx_model[];
-extern Gfx obj_w_cedar2T_mat_model[];
-extern Gfx obj_w_cedar2T_gfx_model[];
-extern Gfx obj_w_cedar3_leafT_mat_model[];
-extern Gfx obj_w_cedar3_leafT_gfx_model[];
-extern Gfx obj_w_cedar3_trunkT_mat_model[];
-extern Gfx obj_w_cedar3_trunkT_gfx_model[];
-extern Gfx obj_w_cedar4_trunkT_mat_model[];
-extern Gfx obj_w_cedar4_trunkT_gfx_model[];
-extern Gfx obj_w_cedar4_leafT_mat_model[];
-extern Gfx obj_w_cedar4_leafT_gfx_model[];
-extern Gfx obj_w_cedar5_leafT_mat_model[];
-extern Gfx obj_w_cedar5_leafT_gfx_model[];
-extern Gfx obj_w_cedar5_trunkT_mat_model[];
-extern Gfx obj_w_cedar5_trunkT_gfx_model[];
-extern Gfx obj_x_ceder5_lightT_mat_model[];
-extern Gfx obj_x_ceder5_lightT_gfx_model[];
 
 static Gfx* Cedar_DL_table[] = {
     obj_cedar3_shadowT_mat_model,  obj_cedar3_shadowT_gfx_model,  obj_cedar4_shadowT_mat_model,
@@ -762,25 +776,17 @@ static bg_item_draw_part_c cedar001_part = {
     Cedar_DL_table, 1, cedar2_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Vtx obj_cedar3_shadow_v[];
-
 static bg_item_draw_part_c cedar002_part = {
     Cedar_DL_table, 2, cedar3_list_table, 4, obj_cedar3_shadow_v, 30.0f, cedar_shadow_v_fix, &cedar3_shadow_list,
 };
-
-extern Vtx obj_cedar4_shadow_v[];
 
 static bg_item_draw_part_c cedar003_part = {
     Cedar_DL_table, 2, cedar4_list_table, 4, obj_cedar4_shadow_v, 45.0f, cedar_shadow_v_fix, &cedar3_shadow_list,
 };
 
-extern Vtx obj_cedar5_shadow_v[];
-
 static bg_item_draw_part_c cedar004_part = {
     Cedar_DL_table, 2, cedar5_list_table, 4, obj_cedar5_shadow_v, 60.0f, cedar_shadow_v_fix, &cedar3_shadow_list,
 };
-
-extern Vtx obj_cedar5_shadow_v[];
 
 static bg_item_draw_part_c cedar004_light_part = {
     Cedar_DL_table, 3, cedar5_light_list_table, 4, obj_cedar5_shadow_v, 60.0f, cedar_shadow_v_fix, &cedar3_shadow_list,
@@ -789,31 +795,6 @@ static bg_item_draw_part_c cedar004_light_part = {
 static bg_item_draw_part_c cedar000_dead_part = {
     Cedar_DL_table, 1, cedar1_dead_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_w_gold_tree1T_mat_model[];
-extern Gfx obj_w_tree1T_gfx_model[];
-extern Gfx obj_w_gold_tree1_deadT_mat_model[];
-extern Gfx obj_w_tree1_deadT_gfx_model[];
-extern Gfx obj_w_gold_tree2T_mat_model[];
-extern Gfx obj_w_tree2T_gfx_model[];
-extern Gfx obj_w_gold_tree3_leafT_mat_model[];
-extern Gfx obj_w_tree3_leafT_gfx_model[];
-extern Gfx obj_w_gold_tree3_trunkT_mat_model[];
-extern Gfx obj_w_tree3_trunkT_gfx_model[];
-extern Gfx obj_w_gold_tree4_leafT_mat_model[];
-extern Gfx obj_w_tree4_leafT_gfx_model[];
-extern Gfx obj_w_gold_tree4_trunkT_mat_model[];
-extern Gfx obj_w_tree4_trunkT_gfx_model[];
-extern Gfx obj_w_gold_tree5_leafT_mat_model[];
-extern Gfx obj_w_tree5_leafT_gfx_model[];
-extern Gfx obj_w_gold_tree5_trunkT_mat_model[];
-extern Gfx obj_w_tree5_trunkT_gfx_model[];
-extern Gfx obj_tree3_shadowT_mat_model[];
-extern Gfx obj_tree3_shadowT_gfx_model[];
-extern Gfx obj_tree4_shadowT_mat_model[];
-extern Gfx obj_tree4_shadowT_gfx_model[];
-extern Gfx obj_tree5_shadowT_mat_model[];
-extern Gfx obj_tree5_shadowT_gfx_model[];
 
 static Gfx* GTree_DL_table[] = {
     obj_w_gold_tree1T_mat_model,       obj_w_tree1T_gfx_model,
@@ -896,21 +877,15 @@ static bg_item_draw_part_c gold_tree001_part = {
     GTree_DL_table, 1, gold_tree2_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Vtx obj_tree3_shadow_v[];
-
 static bg_item_draw_part_c gold_tree002_part = {
     GTree_DL_table,     2,     gold_tree3_list_table,  4,
     obj_tree3_shadow_v, 30.0f, gold_tree_shadow_v_fix, &gold_tree3_shadow_list,
 };
 
-extern Vtx obj_tree4_shadow_v[];
-
 static bg_item_draw_part_c gold_tree003_part = {
     GTree_DL_table,     2,     gold_tree4_list_table,  4,
     obj_tree4_shadow_v, 45.0f, gold_tree_shadow_v_fix, &gold_tree4_shadow_list,
 };
-
-extern Vtx obj_tree5_shadow_v[];
 
 static bg_item_draw_part_c gold_tree004_part = {
     GTree_DL_table,     2,     gold_tree5_list_table,  4,
@@ -920,21 +895,6 @@ static bg_item_draw_part_c gold_tree004_part = {
 static bg_item_draw_part_c gold_tree000_dead_part = {
     GTree_DL_table, 1, gold_tree1_dead_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_stump5T_mat_model[];
-extern Gfx obj_stump5T_gfx_model[];
-extern Gfx obj_stump5_shadowT_mat_model[];
-extern Gfx obj_stump5_shadowT_gfx_model[];
-extern Gfx obj_stump4T_mat_model[];
-extern Gfx obj_stump4T_gfx_model[];
-extern Gfx obj_stump4_shadowT_mat_model[];
-extern Gfx obj_stump4_shadowT_gfx_model[];
-extern Gfx obj_stump3T_mat_model[];
-extern Gfx obj_stump3T_gfx_model[];
-extern Gfx obj_stump3_shadowT_mat_model[];
-extern Gfx obj_stump3_shadowT_gfx_model[];
-extern Gfx obj_stump2T_mat_model[];
-extern Gfx obj_stump2T_gfx_model[];
 
 static Gfx* x_stump_DL_table[] = {
     obj_stump5T_mat_model, obj_stump5T_gfx_model, obj_stump5_shadowT_mat_model, obj_stump5_shadowT_gfx_model,
@@ -984,41 +944,20 @@ static bg_item_draw_part_c x_stump_part1 = {
     x_stump_DL_table, 1, x_stump_list_table3, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Vtx obj_stump3_shadow_v[];
-
 static bg_item_draw_part_c x_stump_part2 = {
     x_stump_DL_table,    1,     x_stump_list_table2,  4,
     obj_stump3_shadow_v, 30.0f, x_stump_shadow_v_fix, &x_stump_shadow_list2,
 };
-
-extern Vtx obj_stump4_shadow_v[];
 
 static bg_item_draw_part_c x_stump_part3 = {
     x_stump_DL_table,    1,     x_stump_list_table1,  4,
     obj_stump4_shadow_v, 45.0f, x_stump_shadow_v_fix, &x_stump_shadow_list1,
 };
 
-extern Vtx obj_stump5_shadow_v[];
-
 static bg_item_draw_part_c x_stump_part4 = {
     x_stump_DL_table,    1,     x_stump_list_table0,  4,
     obj_stump5_shadow_v, 50.0f, x_stump_shadow_v_fix, &x_stump_shadow_list0,
 };
-
-extern Gfx obj_pstump3_shadowT_mat_model[];
-extern Gfx obj_pstump3_shadowT_gfx_model[];
-extern Gfx obj_pstump4_shadowT_mat_model[];
-extern Gfx obj_pstump4_shadowT_gfx_model[];
-extern Gfx obj_pstump5_shadowT_mat_model[];
-extern Gfx obj_pstump5_shadowT_gfx_model[];
-extern Gfx obj_w_pstump2T_mat_model[];
-extern Gfx obj_w_pstump2T_gfx_model[];
-extern Gfx obj_w_pstump3T_mat_model[];
-extern Gfx obj_w_pstump3T_gfx_model[];
-extern Gfx obj_w_pstump4T_mat_model[];
-extern Gfx obj_w_pstump4T_gfx_model[];
-extern Gfx obj_w_spstump5T_mat_model[];
-extern Gfx obj_w_spstump5T_gfx_model[];
 
 static Gfx* palm_stump_DL_table[] = {
     obj_pstump3_shadowT_mat_model, obj_pstump3_shadowT_gfx_model, obj_pstump4_shadowT_mat_model,
@@ -1076,41 +1015,20 @@ static bg_item_draw_part_c palm_stump001_part = {
     palm_stump_DL_table, 1, pstump2_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Vtx obj_pstump3_shadow_v[];
-
 static bg_item_draw_part_c palm_stump002_part = {
     palm_stump_DL_table,  1,     pstump3_list_table,   4,
     obj_pstump3_shadow_v, 30.0f, pstump3_shadow_v_fix, &pstump3_shadow_list,
 };
-
-extern Vtx obj_pstump4_shadow_v[];
 
 static bg_item_draw_part_c palm_stump003_part = {
     palm_stump_DL_table,  1,     pstump4_list_table,   4,
     obj_pstump4_shadow_v, 45.0f, pstump3_shadow_v_fix, &pstump4_shadow_list,
 };
 
-extern Vtx obj_pstump5_shadow_v[];
-
 static bg_item_draw_part_c palm_stump004_part = {
     palm_stump_DL_table,  1,     pstump5_list_table,   4,
     obj_pstump5_shadow_v, 50.0f, pstump5_shadow_v_fix, &pstump5_shadow_list,
 };
-
-extern Gfx obj_cstump3_shadowT_mat_model[];
-extern Gfx obj_cstump3_shadowT_gfx_model[];
-extern Gfx obj_cstump4_shadowT_mat_model[];
-extern Gfx obj_cstump4_shadowT_gfx_model[];
-extern Gfx obj_cstump5_shadowT_mat_model[];
-extern Gfx obj_cstump5_shadowT_gfx_model[];
-extern Gfx obj_w_cstump2T_mat_model[];
-extern Gfx obj_w_cstump2T_gfx_model[];
-extern Gfx obj_w_cstump3T_mat_model[];
-extern Gfx obj_w_cstump3T_gfx_model[];
-extern Gfx obj_w_cstump4T_mat_model[];
-extern Gfx obj_w_cstump4T_gfx_model[];
-extern Gfx obj_w_cstump5T_mat_model[];
-extern Gfx obj_w_cstump5T_gfx_model[];
 
 static Gfx* CedarStump_DL_table[] = {
     obj_cstump3_shadowT_mat_model, obj_cstump3_shadowT_gfx_model, obj_cstump4_shadowT_mat_model,
@@ -1161,41 +1079,20 @@ static bg_item_draw_part_c cedar_stump001_part = {
     CedarStump_DL_table, 1, cstump2_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Vtx obj_cstump3_shadow_v[];
-
 static bg_item_draw_part_c cedar_stump002_part = {
     CedarStump_DL_table,  1,     cstump3_list_table,  4,
     obj_cstump3_shadow_v, 30.0f, cstump_shadow_v_fix, &cstump3_shadow_list,
 };
-
-extern Vtx obj_cstump4_shadow_v[];
 
 static bg_item_draw_part_c cedar_stump003_part = {
     CedarStump_DL_table,  1,     cstump4_list_table,  4,
     obj_cstump4_shadow_v, 45.0f, cstump_shadow_v_fix, &cstump4_shadow_list,
 };
 
-extern Vtx obj_cstump5_shadow_v[];
-
 static bg_item_draw_part_c cedar_stump004_part = {
     CedarStump_DL_table,  1,     cstump5_list_table,  4,
     obj_cstump5_shadow_v, 50.0f, cstump_shadow_v_fix, &cstump5_shadow_list,
 };
-
-extern Gfx obj_gold_stump2T_mat_model[];
-extern Gfx obj_stump2T_gfx_model[];
-extern Gfx obj_gold_stump3T_mat_model[];
-extern Gfx obj_stump3T_gfx_model[];
-extern Gfx obj_gold_stump4T_mat_model[];
-extern Gfx obj_stump4T_gfx_model[];
-extern Gfx obj_gold_stump5T_mat_model[];
-extern Gfx obj_stump5T_gfx_model[];
-extern Gfx obj_stump3_shadowT_mat_model[];
-extern Gfx obj_stump3_shadowT_gfx_model[];
-extern Gfx obj_stump4_shadowT_mat_model[];
-extern Gfx obj_stump4_shadowT_gfx_model[];
-extern Gfx obj_stump5_shadowT_mat_model[];
-extern Gfx obj_stump5_shadowT_gfx_model[];
 
 static Gfx* GStump_DL_table[] = {
     obj_gold_stump2T_mat_model,   obj_stump2T_gfx_model,        obj_gold_stump3T_mat_model,
@@ -1246,31 +1143,20 @@ static bg_item_draw_part_c gold_tree_stump001_part = {
     GStump_DL_table, 1, gold_stump2_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Vtx obj_stump3_shadow_v[];
-
 static bg_item_draw_part_c gold_tree_stump002_part = {
     GStump_DL_table,     1,     gold_stump3_list_table,  4,
     obj_stump3_shadow_v, 30.0f, gold_stump_shadow_v_fix, &gold_stump3_shadow_list,
 };
-
-extern Vtx obj_stump4_shadow_v[];
 
 static bg_item_draw_part_c gold_tree_stump003_part = {
     GStump_DL_table,     1,     gold_stump4_list_table,  4,
     obj_stump4_shadow_v, 45.0f, gold_stump_shadow_v_fix, &gold_stump4_shadow_list,
 };
 
-extern Vtx obj_stump5_shadow_v[];
-
 static bg_item_draw_part_c gold_tree_stump004_part = {
     GStump_DL_table,     1,     gold_stump5_list_table,  4,
     obj_stump5_shadow_v, 50.0f, gold_stump_shadow_v_fix, &gold_stump5_shadow_list,
 };
-
-extern Gfx obj_w_fenceLT_mat_model[];
-extern Gfx obj_w_fenceLT_gfx_model[];
-extern Gfx obj_fenceL_shadowT_mat_model[];
-extern Gfx obj_fenceL_shadowT_gfx_model[];
 
 static Gfx* x_fence_DL_table[] = {
     obj_w_fenceLT_mat_model,
@@ -1294,16 +1180,9 @@ static u8 x_fence_shadow_v_fix[] = {
     1,
 };
 
-extern Vtx obj_fenceL_shadow_v[];
-
 static bg_item_draw_part_c x_fence_part = {
     x_fence_DL_table, 1, x_fence_list_table, 4, obj_fenceL_shadow_v, 40.0f, x_fence_shadow_v_fix, &x_fence_shadow_list,
 };
-
-extern Gfx obj_w_noticeT_mat_model[];
-extern Gfx obj_w_noticeT_gfx_model[];
-extern Gfx obj_notice_shadowT_mat_model[];
-extern Gfx obj_notice_shadowT_gfx_model[];
 
 static Gfx* x_notice_DL_table[] = {
     obj_w_noticeT_mat_model,
@@ -1327,17 +1206,10 @@ static u8 x_notice_shadow_v_fix[] = {
     1,
 };
 
-extern Vtx obj_notice_shadow_v[];
-
 static bg_item_draw_part_c x_notice_part = {
     x_notice_DL_table,   1,     x_notice_list_table,   4,
     obj_notice_shadow_v, 60.0f, x_notice_shadow_v_fix, &x_notice_shadow_list,
 };
-
-extern Gfx obj_zassou_aT_mat_model[];
-extern Gfx obj_zassou_aT_gfx_model[];
-extern Gfx obj_zassou_bT_gfx_model[];
-extern Gfx obj_zassou_cT_gfx_model[];
 
 static Gfx* grass_DL_table[] = {
     obj_zassou_aT_mat_model,
@@ -1355,11 +1227,6 @@ static bg_item_draw_list_c* grass_list_table[] = {
 static bg_item_draw_part_c x_grass_part = {
     grass_DL_table, 1, grass_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_w_melodyT_mat_model[];
-extern Gfx obj_w_melodyT_gfx_model[];
-extern Gfx obj_melody_shadowT_mat_model[];
-extern Gfx obj_melody_shadowT_gfx_model[];
 
 static Gfx* x_melody_DL_table[] = {
     obj_w_melodyT_mat_model,
@@ -1383,17 +1250,10 @@ static u8 x_melody_shadow_v_fix[] = {
     1,
 };
 
-extern Vtx obj_melody_shadow_v[];
-
 static bg_item_draw_part_c x_melody_part = {
     x_melody_DL_table,   1,     x_melody_list_table,   4,
     obj_melody_shadow_v, 60.0f, x_melody_shadow_v_fix, &x_melody_shadow_list,
 };
-
-extern Gfx obj_w_fenceST_mat_model[];
-extern Gfx obj_w_fenceST_gfx_model[];
-extern Gfx obj_fenceS_shadowT_mat_model[];
-extern Gfx obj_fenceS_shadowT_gfx_model[];
 
 static Gfx* x_fences_DL_table[] = {
     obj_w_fenceST_mat_model,
@@ -1417,40 +1277,10 @@ static u8 x_fences_shadow_v_fix[] = {
     1,
 };
 
-extern Vtx obj_fenceS_shadow_v[];
-
 static bg_item_draw_part_c x_fences_part = {
     x_fences_DL_table,   1,     x_fences_list_table,   4,
     obj_fenceS_shadow_v, 40.0f, x_fences_shadow_v_fix, &x_fences_shadow_list,
 };
-
-extern Gfx obj_hole0T_g_mat_model[];
-extern Gfx obj_hole0T_s_mat_model[];
-extern Gfx obj_hole0T_gfx_model[];
-extern Gfx obj_hole1T_gfx_model[];
-extern Gfx obj_hole2T_gfx_model[];
-extern Gfx obj_hole3T_gfx_model[];
-extern Gfx obj_hole4T_gfx_model[];
-extern Gfx obj_hole5T_gfx_model[];
-extern Gfx obj_hole6T_gfx_model[];
-extern Gfx obj_hole7T_gfx_model[];
-extern Gfx obj_hole8T_gfx_model[];
-extern Gfx obj_hole9T_gfx_model[];
-extern Gfx obj_hole10T_gfx_model[];
-extern Gfx obj_hole11T_gfx_model[];
-extern Gfx obj_hole12T_gfx_model[];
-extern Gfx obj_hole13T_gfx_model[];
-extern Gfx obj_hole14T_gfx_model[];
-extern Gfx obj_hole15T_gfx_model[];
-extern Gfx obj_hole16T_gfx_model[];
-extern Gfx obj_hole17T_gfx_model[];
-extern Gfx obj_hole18T_gfx_model[];
-extern Gfx obj_hole19T_gfx_model[];
-extern Gfx obj_hole20T_gfx_model[];
-extern Gfx obj_hole21T_gfx_model[];
-extern Gfx obj_hole22T_gfx_model[];
-extern Gfx obj_hole23T_gfx_model[];
-extern Gfx obj_hole24T_gfx_model[];
 
 static Gfx* hole_DL_table[] = {
     obj_hole0T_g_mat_model, obj_hole0T_s_mat_model, obj_hole0T_gfx_model,  obj_hole1T_gfx_model,  obj_hole2T_gfx_model,
@@ -1480,34 +1310,6 @@ static bg_item_draw_list_c* hole00_s_list_table[] = {
 static bg_item_draw_part_c hole00_s_part = {
     hole_DL_table, 1, hole00_s_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_crack0T_g_mat_model[];
-extern Gfx obj_crack0T_s_mat_model[];
-extern Gfx obj_hole0T_gfx_model[];
-extern Gfx obj_hole1T_gfx_model[];
-extern Gfx obj_hole2T_gfx_model[];
-extern Gfx obj_hole3T_gfx_model[];
-extern Gfx obj_hole4T_gfx_model[];
-extern Gfx obj_hole5T_gfx_model[];
-extern Gfx obj_hole6T_gfx_model[];
-extern Gfx obj_hole7T_gfx_model[];
-extern Gfx obj_hole8T_gfx_model[];
-extern Gfx obj_hole9T_gfx_model[];
-extern Gfx obj_hole10T_gfx_model[];
-extern Gfx obj_hole11T_gfx_model[];
-extern Gfx obj_hole12T_gfx_model[];
-extern Gfx obj_hole13T_gfx_model[];
-extern Gfx obj_hole14T_gfx_model[];
-extern Gfx obj_hole15T_gfx_model[];
-extern Gfx obj_hole16T_gfx_model[];
-extern Gfx obj_hole17T_gfx_model[];
-extern Gfx obj_hole18T_gfx_model[];
-extern Gfx obj_hole19T_gfx_model[];
-extern Gfx obj_hole20T_gfx_model[];
-extern Gfx obj_hole21T_gfx_model[];
-extern Gfx obj_hole22T_gfx_model[];
-extern Gfx obj_hole23T_gfx_model[];
-extern Gfx obj_hole24T_gfx_model[];
 
 static Gfx* crack_DL_table[] = {
     obj_crack0T_g_mat_model, obj_crack0T_s_mat_model, obj_hole0T_gfx_model,  obj_hole1T_gfx_model,
@@ -1539,11 +1341,6 @@ static bg_item_draw_part_c crack00_s_part = {
     crack_DL_table, 1, crack00_s_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_w_sightmapT_mat_model[];
-extern Gfx obj_w_sightmapT_gfx_model[];
-extern Gfx obj_sightmap_shadowT_mat_model[];
-extern Gfx obj_sightmap_shadowT_gfx_model[];
-
 static Gfx* x_mapboard_DL_table[] = {
     obj_w_sightmapT_mat_model,
     obj_w_sightmapT_gfx_model,
@@ -1566,15 +1363,10 @@ static u8 x_mapboard_shadow_v_fix[] = {
     1,
 };
 
-extern Vtx obj_sightmap_shadow_v[];
-
 static bg_item_draw_part_c x_mapboard_part = {
     x_mapboard_DL_table,   1,     x_mapboard_list_table,   4,
     obj_sightmap_shadow_v, 60.0f, x_mapboard_shadow_v_fix, &x_mapboard_shadow_list,
 };
-
-extern Gfx obj_flower_leafT_mat_model[];
-extern Gfx obj_flower_leafT_gfx_model[];
 
 static Gfx* x_flower_DL_table[] = {
     obj_flower_leafT_mat_model,
@@ -1590,13 +1382,6 @@ static bg_item_draw_list_c* x_flower_leaf_list_table[] = {
 static bg_item_draw_part_c x_flower_part = {
     x_flower_DL_table, 1, x_flower_leaf_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_flower_aT_mat_model[];
-extern Gfx obj_flower_bT_mat_model[];
-extern Gfx obj_flower_cT_mat_model[];
-extern Gfx obj_flower_aT_gfx_model[];
-extern Gfx obj_flower_bT_gfx_model[];
-extern Gfx obj_flower_cT_gfx_model[];
 
 static Gfx* flower_DL_table[] = {
     obj_flower_aT_mat_model, obj_flower_bT_mat_model, obj_flower_cT_mat_model,
@@ -1633,9 +1418,6 @@ static bg_item_draw_part_c x_flower_part02 = {
     flower_DL_table, 1, x_flower_list_table02, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_x_honeycombT_mat_model[];
-extern Gfx obj_x_honeycombT_gfx_model[];
-
 static Gfx* honycomb_DL_table[] = {
     obj_x_honeycombT_mat_model,
     obj_x_honeycombT_gfx_model,
@@ -1671,19 +1453,6 @@ static u8 stone_e_shadow_v_fix[] = {
     1, 0, 0, 1, 1, 0, 0, 1, 1, 0,
 };
 
-extern Gfx obj_w_stoneA_mat_model[];
-extern Gfx obj_w_stoneA_gfx_model[];
-extern Gfx obj_w_stoneB_gfx_model[];
-extern Gfx obj_w_stoneC_gfx_model[];
-extern Gfx obj_w_stoneD_gfx_model[];
-extern Gfx obj_w_stoneE_gfx_model[];
-extern Gfx obj_stoneA_shadowT_mat_model[];
-extern Gfx obj_stoneA_shadowT_gfx_model[];
-extern Gfx obj_stoneB_shadowT_gfx_model[];
-extern Gfx obj_stoneC_shadowT_gfx_model[];
-extern Gfx obj_stoneD_shadowT_gfx_model[];
-extern Gfx obj_stoneE_shadowT_gfx_model[];
-
 static Gfx* stone_DL_table[] = {
     obj_w_stoneA_mat_model,       obj_w_stoneA_gfx_model,       obj_w_stoneB_gfx_model,
     obj_w_stoneC_gfx_model,       obj_w_stoneD_gfx_model,       obj_w_stoneE_gfx_model,
@@ -1699,38 +1468,25 @@ static bg_item_draw_list_c* stone_a_list_table[] = {
     &stone_a_list,
 };
 
-extern Vtx obj_stoneA_shadow_v[];
-
 static bg_item_draw_part_c stone_a_part = {
     stone_DL_table, 1, stone_a_list_table, 10, obj_stoneA_shadow_v, 30.0f, stone_a_shadow_v_fix, &stone_a_shadow_list,
 };
-
-extern Vtx obj_stoneB_shadow_v[];
 
 static bg_item_draw_part_c stone_b_part = {
     stone_DL_table, 1, stone_a_list_table, 12, obj_stoneB_shadow_v, 20.0f, stone_b_shadow_v_fix, &stone_a_shadow_list,
 };
 
-extern Vtx obj_stoneC_shadow_v[];
-
 static bg_item_draw_part_c stone_c_part = {
     stone_DL_table, 1, stone_a_list_table, 12, obj_stoneC_shadow_v, 20.0f, stone_c_shadow_v_fix, &stone_a_shadow_list,
 };
-
-extern Vtx obj_stoneD_shadow_v[];
 
 static bg_item_draw_part_c stone_d_part = {
     stone_DL_table, 1, stone_a_list_table, 8, obj_stoneD_shadow_v, 20.0f, stone_d_shadow_v_fix, &stone_a_shadow_list,
 };
 
-extern Vtx obj_stoneE_shadow_v[];
-
 static bg_item_draw_part_c stone_e_part = {
     stone_DL_table, 1, stone_a_list_table, 10, obj_stoneE_shadow_v, 20.0f, stone_e_shadow_v_fix, &stone_a_shadow_list,
 };
-
-extern Gfx obj_taneT_mat_model[];
-extern Gfx obj_taneT_gfx_model[];
 
 static Gfx* tane_DL_table[] = {
     obj_taneT_mat_model,
@@ -1759,9 +1515,6 @@ static bg_item_type_data_c typeData_table_crack[] = {
     { 0, bIT_DRAW_TYPE_CRACK00_G, pos_table, pos_table },
 };
 
-extern Gfx apple_DL_mode[];
-extern Gfx apple_DL_vtx[];
-
 static Gfx* apple_DL_table[] = {
     apple_DL_mode,
     apple_DL_vtx,
@@ -1776,9 +1529,6 @@ static bg_item_draw_list_c* apple_list_table[] = {
 static bg_item_draw_part_c apple_part = {
     apple_DL_table, 1, apple_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx orange_DL_mode[];
-extern Gfx orange_DL_vtx[];
 
 static Gfx* orange_DL_table[] = {
     orange_DL_mode,
@@ -1795,9 +1545,6 @@ static bg_item_draw_part_c orange_part = {
     orange_DL_table, 1, orange_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx peach_DL_mode[];
-extern Gfx peach_DL_vtx[];
-
 static Gfx* peach_DL_table[] = {
     peach_DL_mode,
     peach_DL_vtx,
@@ -1812,9 +1559,6 @@ static bg_item_draw_list_c* peach_list_table[] = {
 static bg_item_draw_part_c peach_part = {
     peach_DL_table, 1, peach_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx pear_DL_mode[];
-extern Gfx pear_DL_vtx[];
 
 static Gfx* pear_DL_table[] = {
     pear_DL_mode,
@@ -1831,9 +1575,6 @@ static bg_item_draw_part_c pear_part = {
     pear_DL_table, 1, pear_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx nuts_DL_mode[];
-extern Gfx nuts_DL_vtx[];
-
 static Gfx* nuts_DL_table[] = {
     nuts_DL_mode,
     nuts_DL_vtx,
@@ -1848,9 +1589,6 @@ static bg_item_draw_list_c* nuts_list_table[] = {
 static bg_item_draw_part_c nuts_part = {
     nuts_DL_table, 1, nuts_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx matutake_DL_mode[];
-extern Gfx matutake_DL_vtx[];
 
 static Gfx* matutake_DL_table[] = {
     matutake_DL_mode,
@@ -1867,9 +1605,6 @@ static bg_item_draw_part_c matutake_part = {
     matutake_DL_table, 1, matutake_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx kabu_DL_mode[];
-extern Gfx kabu_DL_vtx[];
-
 static Gfx* kabu_DL_table[] = {
     kabu_DL_mode,
     kabu_DL_vtx,
@@ -1884,9 +1619,6 @@ static bg_item_draw_list_c* kabu_list_table[] = {
 static bg_item_draw_part_c kabu_part = {
     kabu_DL_table, 1, kabu_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx fish_DL_mode[];
-extern Gfx fish_DL_vtx[];
 
 static Gfx* fish_DL_table[] = {
     fish_DL_mode,
@@ -1903,9 +1635,6 @@ static bg_item_draw_part_c fish_part = {
     fish_DL_table, 1, fish_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx bag_DL_mode[];
-extern Gfx bag_DL_vtx[];
-
 static Gfx* bag_DL_table[] = {
     bag_DL_mode,
     bag_DL_vtx,
@@ -1920,9 +1649,6 @@ static bg_item_draw_list_c* bag_list_table[] = {
 static bg_item_draw_part_c bag_part = {
     bag_DL_table, 1, bag_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx leaf_DL_mode[];
-extern Gfx leaf_DL_vtx[];
 
 static Gfx* leaf_DL_table[] = {
     leaf_DL_mode,
@@ -1939,9 +1665,6 @@ static bg_item_draw_part_c leaf_part = {
     leaf_DL_table, 1, leaf_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_rollT_mat_model[];
-extern Gfx obj_rollT_gfx_model[];
-
 static Gfx* roll_DL_table[] = {
     obj_rollT_mat_model,
     obj_rollT_gfx_model,
@@ -1956,9 +1679,6 @@ static bg_item_draw_list_c* roll_list_table[] = {
 static bg_item_draw_part_c roll_part = {
     roll_DL_table, 1, roll_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx box_DL_mode[];
-extern Gfx box_DL_vtx[];
 
 static Gfx* box_DL_table[] = {
     box_DL_mode,
@@ -1975,9 +1695,6 @@ static bg_item_draw_part_c box_part = {
     box_DL_table, 1, box_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx pack_DL_mode[];
-extern Gfx pack_DL_vtx[];
-
 static Gfx* pack_DL_table[] = {
     pack_DL_mode,
     pack_DL_vtx,
@@ -1992,9 +1709,6 @@ static bg_item_draw_list_c* pack_list_table[] = {
 static bg_item_draw_part_c pack_part = {
     pack_DL_table, 1, pack_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx present_DL_mode[];
-extern Gfx present_DL_vtx[];
 
 static Gfx* present_DL_table[] = {
     present_DL_mode,
@@ -2011,9 +1725,6 @@ static bg_item_draw_part_c present_part = {
     present_DL_table, 1, present_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx seed_DL_mode[];
-extern Gfx seed_DL_vtx[];
-
 static Gfx* seed_DL_table[] = {
     seed_DL_mode,
     seed_DL_vtx,
@@ -2028,9 +1739,6 @@ static bg_item_draw_list_c* seed_list_table[] = {
 static bg_item_draw_part_c seed_part = {
     seed_DL_table, 1, seed_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_haniwaT_mat_model[];
-extern Gfx obj_haniwaT_gfx_model[];
 
 static Gfx* haniwa_DL_table[] = {
     obj_haniwaT_mat_model,
@@ -2047,9 +1755,6 @@ static bg_item_draw_part_c haniwa_part = {
     haniwa_DL_table, 1, haniwa_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_boxT_mat_model[];
-extern Gfx obj_boxT_gfx_model[];
-
 static Gfx* other_DL_table[] = {
     obj_boxT_mat_model,
     obj_boxT_gfx_model,
@@ -2064,9 +1769,6 @@ static bg_item_draw_list_c* other_list_table[] = {
 static bg_item_draw_part_c other_part = {
     other_DL_table, 1, other_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_toolT_mat_model[];
-extern Gfx obj_toolT_gfx_model[];
 
 static Gfx* tool_DL_table[] = {
     obj_toolT_mat_model,
@@ -2083,9 +1785,6 @@ static bg_item_draw_part_c tool_part = {
     tool_DL_table, 1, tool_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_fossilT_mat_model[];
-extern Gfx obj_fossilT_gfx_model[];
-
 static Gfx* fossil_DL_table[] = {
     obj_fossilT_mat_model,
     obj_fossilT_gfx_model,
@@ -2100,9 +1799,6 @@ static bg_item_draw_list_c* fossil_list_table[] = {
 static bg_item_draw_part_c fossil_part = {
     fossil_DL_table, 1, fossil_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_trashT_mat_model[];
-extern Gfx obj_trashT_gfx_model[];
 
 static Gfx* trash_DL_table[] = {
     obj_trashT_mat_model,
@@ -2119,9 +1815,6 @@ static bg_item_draw_part_c trash_part = {
     trash_DL_table, 1, trash_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_otosiT_mat_model[];
-extern Gfx obj_otosiT_gfx_model[];
-
 static Gfx* otosi_DL_table[] = {
     obj_otosiT_mat_model,
     obj_otosiT_gfx_model,
@@ -2136,13 +1829,6 @@ static bg_item_draw_list_c* otosi_list_table[] = {
 static bg_item_draw_part_c otosi_part = {
     otosi_DL_table, 1, otosi_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_item_shellAT_mat_model[];
-extern Gfx obj_item_shellAT_gfx_model[];
-extern Gfx obj_item_shellBT_mat_model[];
-extern Gfx obj_item_shellBT_gfx_model[];
-extern Gfx obj_item_shellCT_mat_model[];
-extern Gfx obj_item_shellCT_gfx_model[];
 
 static Gfx* shell_DL_table[] = {
     obj_item_shellAT_mat_model, obj_item_shellAT_gfx_model, obj_item_shellBT_mat_model,
@@ -2179,9 +1865,6 @@ static bg_item_draw_part_c shell_c_part = {
     shell_DL_table, 1, shell_c_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_shop_candy_mat_modelT[];
-extern Gfx obj_shop_candy_gfx_modelT[];
-
 static Gfx* candy_DL_table[] = {
     obj_shop_candy_mat_modelT,
     obj_shop_candy_gfx_modelT,
@@ -2196,9 +1879,6 @@ static bg_item_draw_list_c* candy_list_table[] = {
 static bg_item_draw_part_c candy_part = {
     candy_DL_table, 1, candy_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_item_cocoT_mat_model[];
-extern Gfx obj_item_cocoT_gfx_model[];
 
 static Gfx* coconut_DL_table[] = {
     obj_item_cocoT_mat_model,
@@ -2215,9 +1895,6 @@ static bg_item_draw_part_c coconut_part = {
     coconut_DL_table, 1, coconut_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_item_clothT_mat_model[];
-extern Gfx obj_item_clothT_gfx_model[];
-
 static Gfx* cloth_DL_table[] = {
     obj_item_clothT_mat_model,
     obj_item_clothT_gfx_model,
@@ -2232,9 +1909,6 @@ static bg_item_draw_list_c* cloth_list_table[] = {
 static bg_item_draw_part_c cloth_part = {
     cloth_DL_table, 1, cloth_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_item_carpetT_mat_model[];
-extern Gfx obj_item_carpetT_gfx_model[];
 
 static Gfx* carpet_DL_table[] = {
     obj_item_carpetT_mat_model,
@@ -2251,9 +1925,6 @@ static bg_item_draw_part_c carpet_part = {
     carpet_DL_table, 1, carpet_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_item_wallT_mat_model[];
-extern Gfx obj_item_wallT_gfx_model[];
-
 static Gfx* wall_DL_table[] = {
     obj_item_wallT_mat_model,
     obj_item_wallT_gfx_model,
@@ -2268,9 +1939,6 @@ static bg_item_draw_list_c* wall_list_table[] = {
 static bg_item_draw_part_c wall_part = {
     wall_DL_table, 1, wall_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_item_axeT_mat_model[];
-extern Gfx obj_item_axeT_gfx_model[];
 
 static Gfx* axe_DL_table[] = {
     obj_item_axeT_mat_model,
@@ -2287,9 +1955,6 @@ static bg_item_draw_part_c axe_part = {
     axe_DL_table, 1, axe_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_item_netT_mat_model[];
-extern Gfx obj_item_netT_gfx_model[];
-
 static Gfx* net_DL_table[] = {
     obj_item_netT_mat_model,
     obj_item_netT_gfx_model,
@@ -2304,9 +1969,6 @@ static bg_item_draw_list_c* net_list_table[] = {
 static bg_item_draw_part_c net_part = {
     net_DL_table, 1, net_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_item_rodT_mat_model[];
-extern Gfx obj_item_rodT_gfx_model[];
 
 static Gfx* rod_DL_table[] = {
     obj_item_rodT_mat_model,
@@ -2323,9 +1985,6 @@ static bg_item_draw_part_c rod_part = {
     rod_DL_table, 1, rod_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_item_shovelT_mat_model[];
-extern Gfx obj_item_shovelT_gfx_model[];
-
 static Gfx* scoop_DL_table[] = {
     obj_item_shovelT_mat_model,
     obj_item_shovelT_gfx_model,
@@ -2340,9 +1999,6 @@ static bg_item_draw_list_c* scoop_list_table[] = {
 static bg_item_draw_part_c scoop_part = {
     scoop_DL_table, 1, scoop_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_item_axe2T_mat_model[];
-extern Gfx obj_item_axe2T_gfx_model[];
 
 static Gfx* gold_axe_DL_table[] = {
     obj_item_axe2T_mat_model,
@@ -2359,9 +2015,6 @@ static bg_item_draw_part_c gold_axe_part = {
     gold_axe_DL_table, 1, gold_axe_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_item_net2T_mat_model[];
-extern Gfx obj_item_net2T_gfx_model[];
-
 static Gfx* gold_net_DL_table[] = {
     obj_item_net2T_mat_model,
     obj_item_net2T_gfx_model,
@@ -2376,9 +2029,6 @@ static bg_item_draw_list_c* gold_net_list_table[] = {
 static bg_item_draw_part_c gold_net_part = {
     gold_net_DL_table, 1, gold_net_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_item_rod2T_mat_model[];
-extern Gfx obj_item_rod2T_gfx_model[];
 
 static Gfx* gold_rod_DL_table[] = {
     obj_item_rod2T_mat_model,
@@ -2395,9 +2045,6 @@ static bg_item_draw_part_c gold_rod_part = {
     gold_rod_DL_table, 1, gold_rod_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_item_shovel2T_mat_model[];
-extern Gfx obj_item_shovel2T_gfx_model[];
-
 static Gfx* gold_scoop_DL_table[] = {
     obj_item_shovel2T_mat_model,
     obj_item_shovel2T_gfx_model,
@@ -2412,9 +2059,6 @@ static bg_item_draw_list_c* gold_scoop_list_table[] = {
 static bg_item_draw_part_c gold_scoop_part = {
     gold_scoop_DL_table, 1, gold_scoop_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_item_umbrellaT_mat_model[];
-extern Gfx obj_item_umbrellaT_gfx_model[];
 
 static Gfx* umbrella_DL_table[] = {
     obj_item_umbrellaT_mat_model,
@@ -2431,9 +2075,6 @@ static bg_item_draw_part_c umbrella_part = {
     umbrella_DL_table, 1, umbrella_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_item_kazaT_mat_model[];
-extern Gfx obj_item_kazaT_gfx_model[];
-
 static Gfx* pinwheel_DL_table[] = {
     obj_item_kazaT_mat_model,
     obj_item_kazaT_gfx_model,
@@ -2448,9 +2089,6 @@ static bg_item_draw_list_c* pinwheel_list_table[] = {
 static bg_item_draw_part_c pinwheel_part = {
     pinwheel_DL_table, 1, pinwheel_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_item_utiwaT_mat_model[];
-extern Gfx obj_item_utiwaT_gfx_model[];
 
 static Gfx* fan_DL_table[] = {
     obj_item_utiwaT_mat_model,
@@ -2467,9 +2105,6 @@ static bg_item_draw_part_c fan_part = {
     fan_DL_table, 1, fan_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_item_paperT_mat_model[];
-extern Gfx obj_item_paperT_gfx_model[];
-
 static Gfx* paper_DL_table[] = {
     obj_item_paperT_mat_model,
     obj_item_paperT_gfx_model,
@@ -2484,9 +2119,6 @@ static bg_item_draw_list_c* paper_list_table[] = {
 static bg_item_draw_part_c paper_part = {
     paper_DL_table, 1, paper_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_item_seedT_mat_model[];
-extern Gfx obj_item_seedT_gfx_model[];
 
 static Gfx* seedbag_DL_table[] = {
     obj_item_seedT_mat_model,
@@ -2503,9 +2135,6 @@ static bg_item_draw_part_c seedbag_part = {
     seedbag_DL_table, 1, seedbag_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_item_fukuT_mat_model[];
-extern Gfx obj_item_fukuT_gfx_model[];
-
 static Gfx* luckbag_DL_table[] = {
     obj_item_fukuT_mat_model,
     obj_item_fukuT_gfx_model,
@@ -2520,9 +2149,6 @@ static bg_item_draw_list_c* luckbag_list_table[] = {
 static bg_item_draw_part_c luckbag_part = {
     luckbag_DL_table, 1, luckbag_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_item_taisouT_mat_model[];
-extern Gfx obj_item_taisouT_gfx_model[];
 
 static Gfx* gymcard_DL_table[] = {
     obj_item_taisouT_mat_model,
@@ -2539,9 +2165,6 @@ static bg_item_draw_part_c gymcard_part = {
     gymcard_DL_table, 1, gymcard_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_mdT_mat_model[];
-extern Gfx obj_mdT_gfx_model[];
-
 static Gfx* music_DL_table[] = {
     obj_mdT_mat_model,
     obj_mdT_gfx_model,
@@ -2556,9 +2179,6 @@ static bg_item_draw_list_c* music_list_table[] = {
 static bg_item_draw_part_c music_part = {
     music_DL_table, 1, music_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_item_ticketT_mat_model[];
-extern Gfx obj_item_ticketT_gfx_model[];
 
 static Gfx* lottery_DL_table[] = {
     obj_item_ticketT_mat_model,
@@ -2575,9 +2195,6 @@ static bg_item_draw_part_c lottery_part = {
     lottery_DL_table, 1, lottery_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_item_boneT_mat_model[];
-extern Gfx obj_item_boneT_gfx_model[];
-
 static Gfx* bone_DL_table[] = {
     obj_item_boneT_mat_model,
     obj_item_boneT_gfx_model,
@@ -2593,9 +2210,6 @@ static bg_item_draw_part_c bone_part = {
     bone_DL_table, 1, bone_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
 
-extern Gfx obj_item_diaryT_mat_model[];
-extern Gfx obj_item_diaryT_gfx_model[];
-
 static Gfx* diary_DL_table[] = {
     obj_item_diaryT_mat_model,
     obj_item_diaryT_gfx_model,
@@ -2610,9 +2224,6 @@ static bg_item_draw_list_c* diary_list_table[] = {
 static bg_item_draw_part_c diary_part = {
     diary_DL_table, 1, diary_list_table, 0, NULL, 0.0f, NULL, NULL,
 };
-
-extern Gfx obj_item_fork_onT_mat_model[];
-extern Gfx obj_item_fork_onT_gfx_model[];
 
 static Gfx* fork_DL_table[] = {
     obj_item_fork_onT_mat_model,

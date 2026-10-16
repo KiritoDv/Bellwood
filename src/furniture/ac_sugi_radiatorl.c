@@ -1,4 +1,4 @@
-extern Gfx sugi_radiator_model[];
+#include "assets/data/model/int_sugi_radiator.h"
 
 aFTR_PROFILE iam_sugi_radiatorl = {
 	sugi_radiator_model,

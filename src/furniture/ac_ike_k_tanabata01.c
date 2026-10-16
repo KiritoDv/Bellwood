@@ -1,6 +1,5 @@
+#include "assets/data/model/int_ike_k_tanabata01.h"
 static void fITN_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
-
-extern Gfx int_ike_k_tanabata01_body_model[];
 
 static void fITN_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data){
 

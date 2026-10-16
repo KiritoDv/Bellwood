@@ -1,5 +1,4 @@
-extern cKF_Skeleton_R_c cKF_bs_r_int_sum_okiagari01;
-extern cKF_Animation_R_c cKF_ba_r_int_sum_okiagari01;
+#include "assets/data/model/int_sum_okiagari01.h"
 
 static void aSumOkiagari01_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyframe = &ftr_actor->keyframe;

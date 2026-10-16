@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_ike_pst_tesyu01_pal:
+  type: TEXTURE
+  offset: 0x81848280
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_pst_tesyu01_side1_tex:
+  type: TEXTURE
+  offset: 0x818482A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81848280
+
+int_ike_pst_tesyu01_side2_tex:
+  type: TEXTURE
+  offset: 0x818483A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81848280
+
+int_ike_pst_tesyu01_top1_tex:
+  type: TEXTURE
+  offset: 0x81848420
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81848280
+
+int_ike_pst_tesyu01_tesyu1_tex:
+  type: TEXTURE
+  offset: 0x81848520
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81848280
+
+int_ike_pst_tesyu01_v:
+  type: VTX
+  offset: 0x81848720
+  count: 36
+
+int_ike_pst_tesyu01_on_model:
+  type: GFX
+  offset: 0x81848960
+  size: 0x98
+
+int_ike_pst_tesyu01_offT_model:
+  type: GFX
+  offset: 0x818489F8
+  size: 0x70

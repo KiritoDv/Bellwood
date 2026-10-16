@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_sanddollar_pal:
+  type: TEXTURE
+  offset: 0x814585A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_sanddollar_tex:
+  type: TEXTURE
+  offset: 0x814585C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

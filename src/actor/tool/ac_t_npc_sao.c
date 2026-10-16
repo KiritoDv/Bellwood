@@ -3,6 +3,7 @@
 #include "m_name_table.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/tol_npcsao_1.h"
 
 static void aTNS_setupAction(ACTOR* actorx, u8 action);
 
@@ -65,9 +66,6 @@ extern void aTNS_actor_move(ACTOR* actorx, GAME* game) {
 
     npc_sao->rotation_y = rotation_y;
 }
-
-extern Gfx tol_npcsao_1_sao_model[];
-extern Gfx tol_npcsao_1_uki_model[];
 
 extern void aTNS_actor_draw(ACTOR* actorx, GAME* game) {
     NPC_SAO_TOOL_ACTOR* npc_sao = (NPC_SAO_TOOL_ACTOR*)actorx;

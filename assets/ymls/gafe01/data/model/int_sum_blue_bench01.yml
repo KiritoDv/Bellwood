@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_sum_blue_bench01_pal:
+  type: TEXTURE
+  offset: 0x819A8100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_blue_bench01_back_tex:
+  type: TEXTURE
+  offset: 0x819A8120
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819A8100
+
+int_sum_blue_bench01_seat_tex:
+  type: TEXTURE
+  offset: 0x819A8320
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x819A8100
+
+int_sum_blue_bench01_foot_tex:
+  type: TEXTURE
+  offset: 0x819A8620
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819A8100
+
+int_sum_blue_bench01_v:
+  type: VTX
+  offset: 0x819A8720
+  count: 42
+
+int_sum_blue_bench01_on_model:
+  type: GFX
+  offset: 0x819A89C0
+  size: 0x68
+
+int_sum_blue_bench01_onT_model:
+  type: GFX
+  offset: 0x819A8A28
+  size: 0x90

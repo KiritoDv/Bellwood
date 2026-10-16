@@ -1,0 +1,93 @@
+:config:
+  strict_declarations: true
+
+obj_gara_pal:
+  type: TEXTURE
+  offset: 0x8121E3C0
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+obj_gara_tex_txt:
+  type: TEXTURE
+  offset: 0x8121E3E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: n64
+  tlut: 0x8121E3C0
+
+obj_gara_v:
+  type: VTX
+  offset: 0x8121EBE0
+  count: 66
+
+obj_gara_base_model:
+  type: GFX
+  offset: 0x8121F000
+  size: 0x118
+
+obj_gara_hex_model:
+  type: GFX
+  offset: 0x8121F118
+  size: 0x120
+
+cKF_ba_r_obj_gara:
+  type: AC:CKF_ANIMATION
+  offset: 0x8121F294
+  joints: 3
+  counts: { flags: 3, data: 30, keys: 1, fixed: 11 }
+
+act_fukuball_pal:
+  type: TEXTURE
+  offset: 0x8121F2A8
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_fukutama1_tex:
+  type: TEXTURE
+  offset: 0x8121F2C8
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+
+act_fukutama2_tex:
+  type: TEXTURE
+  offset: 0x8121F348
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+
+act_fukutama3_tex:
+  type: TEXTURE
+  offset: 0x8121F3C8
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+
+act_fukutama4_tex:
+  type: TEXTURE
+  offset: 0x8121F448
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+
+act_fukutama_v:
+  type: VTX
+  offset: 0x8121F4C8
+  count: 5
+
+act_fukutama_modelT:
+  type: GFX
+  offset: 0x8121F518
+  size: 0xC0
+
+cKF_bs_r_obj_gara:
+  type: AC:CKF_SKELETON
+  offset: 0x8121F5FC
+  counts: { joints: 3 }

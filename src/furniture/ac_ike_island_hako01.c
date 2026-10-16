@@ -1,11 +1,8 @@
+#include "assets/data/model/int_ike_island_hako01.h"
 static void fIIH_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void fIIH_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void fIIH_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void fIIH_dt(FTR_ACTOR* ftr_actor, u8* data);
-
-extern cKF_Animation_R_c cKF_ba_r_int_ike_island_hako01;
-extern cKF_Animation_R_c cKF_ba_r_int_ike_island_hako02;
-extern cKF_Skeleton_R_c cKF_bs_r_int_ike_island_hako01;
 
 static void fIIH_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyf;
@@ -28,16 +25,16 @@ static void fIIH_ct(FTR_ACTOR* ftr_actor, u8* data) {
         cKF_SkeletonInfo_R_init_standard_stop(keyf, &cKF_ba_r_int_ike_island_hako01, NULL);
         keyf->frame_control.speed = 0.0f;
         keyf->frame_control.start_frame = 1.0f;
-        keyf->frame_control.end_frame = cKF_ba_r_int_ike_island_hako01.frames;
-        keyf->frame_control.current_frame = cKF_ba_r_int_ike_island_hako01.frames;
+        keyf->frame_control.end_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_ike_island_hako01);
+        keyf->frame_control.current_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_ike_island_hako01);
     } else {
         cKF_SkeletonInfo_R_ct(keyf, &cKF_bs_r_int_ike_island_hako01, &cKF_ba_r_int_ike_island_hako02, joint_work,
                               morph_work);
         cKF_SkeletonInfo_R_init_standard_stop(keyf, &cKF_ba_r_int_ike_island_hako02, NULL);
         keyf->frame_control.speed = 0.0f;
         keyf->frame_control.start_frame = 1.0f;
-        keyf->frame_control.end_frame = cKF_ba_r_int_ike_island_hako02.frames;
-        keyf->frame_control.current_frame = cKF_ba_r_int_ike_island_hako02.frames;
+        keyf->frame_control.end_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_ike_island_hako02);
+        keyf->frame_control.current_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_ike_island_hako02);
     }
     cKF_SkeletonInfo_R_play(keyf);
 }
@@ -60,13 +57,13 @@ void fIIH_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
         if (ftr_actor->dynamic_work_s[0] != FALSE) {
             cKF_SkeletonInfo_R_init_standard_stop(keyf, &cKF_ba_r_int_ike_island_hako01, NULL);
             keyf->frame_control.start_frame = 1.0f;
-            keyf->frame_control.end_frame = cKF_ba_r_int_ike_island_hako01.frames;
+            keyf->frame_control.end_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_ike_island_hako01);
             keyf->frame_control.speed = 0.5f;
             sAdo_OngenTrgStart(0x16AU, &ftr_actor->position);
         } else {
             cKF_SkeletonInfo_R_init_standard_stop(keyf, &cKF_ba_r_int_ike_island_hako02, NULL);
             keyf->frame_control.start_frame = 1.0f;
-            keyf->frame_control.end_frame = cKF_ba_r_int_ike_island_hako02.frames;
+            keyf->frame_control.end_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_ike_island_hako02);
             keyf->frame_control.speed = 0.5f;
             sAdo_OngenTrgStart(0x16B, &ftr_actor->position);
         }
@@ -93,13 +90,13 @@ void fIIH_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
         if (ftr_actor->dynamic_work_s[0] != FALSE) {
             cKF_SkeletonInfo_R_init_standard_stop(keyf, &cKF_ba_r_int_ike_island_hako01, NULL);
             keyf->frame_control.start_frame = 1.0f;
-            keyf->frame_control.end_frame = cKF_ba_r_int_ike_island_hako01.frames;
+            keyf->frame_control.end_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_ike_island_hako01);
             keyf->frame_control.speed = 0.5f;
             sAdo_OngenTrgStart(0x16AU, &ftr_actor->position);
         } else {
             cKF_SkeletonInfo_R_init_standard_stop(keyf, &cKF_ba_r_int_ike_island_hako02, NULL);
             keyf->frame_control.start_frame = 1.0f;
-            keyf->frame_control.end_frame = cKF_ba_r_int_ike_island_hako02.frames;
+            keyf->frame_control.end_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_ike_island_hako02);
             keyf->frame_control.speed = 0.5f;
             sAdo_OngenTrgStart(0x16B, &ftr_actor->position);
         }
@@ -107,10 +104,10 @@ void fIIH_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     if (aFTR_CAN_PLAY_SE(ftr_actor)) {
         if (ftr_actor->dynamic_work_s[0] != 0) {
             if (keyf->frame_control.current_frame > 25.0f) {
-                sAdo_OngenPos((u32)ftr_actor, 0x52, &ftr_actor->position);
+                sAdo_OngenPos((uintptr_t)ftr_actor, 0x52, &ftr_actor->position);
             }
         } else if (keyf->frame_control.current_frame < 25.0f) {
-            sAdo_OngenPos((u32)ftr_actor, 0x52, &ftr_actor->position);
+            sAdo_OngenPos((uintptr_t)ftr_actor, 0x52, &ftr_actor->position);
         }
     }
     if (cKF_SkeletonInfo_R_play(keyf) == cKF_STATE_STOPPED) {

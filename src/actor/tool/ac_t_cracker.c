@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_lib.h"
 #include "m_rcp.h"
+#include "assets/data/model/tol_cracker_1.h"
 
 static void aTCR_actor_ct(ACTOR* actor, GAME* game);
 static void aTCR_actor_move(ACTOR* actor, GAME* game);
@@ -24,8 +25,6 @@ ACTOR_PROFILE T_Cracker_Profile = {
 };
 
 static void aTCR_setupAction(ACTOR* actor, int idx);
-
-extern Gfx tol_cracker_1T_model[];
 
 static void aTCR_actor_ct(ACTOR* actor, GAME* game){
     aTCR_setupAction(actor, 1);

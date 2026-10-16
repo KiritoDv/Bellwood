@@ -1,0 +1,82 @@
+:config:
+  strict_declarations: true
+
+mus_1_v:
+  type: VTX
+  offset: 0x812A99A8
+  count: 384
+
+head_mus_model:
+  type: GFX
+  offset: 0x812AB1A8
+  size: 0x1D8
+
+mouth_mus_model:
+  type: GFX
+  offset: 0x812AB380
+  size: 0x68
+
+Rarm2_mus_model:
+  type: GFX
+  offset: 0x812AB3E8
+  size: 0x88
+
+Rarm1_mus_model:
+  type: GFX
+  offset: 0x812AB470
+  size: 0x78
+
+Larm2_mus_model:
+  type: GFX
+  offset: 0x812AB4E8
+  size: 0x88
+
+Larm1_mus_model:
+  type: GFX
+  offset: 0x812AB570
+  size: 0x78
+
+chest_mus_model:
+  type: GFX
+  offset: 0x812AB5E8
+  size: 0xA8
+
+tail1_mus_model:
+  type: GFX
+  offset: 0x812AB690
+  size: 0x60
+
+tail2_mus_model:
+  type: GFX
+  offset: 0x812AB6F0
+  size: 0x90
+
+Rfoot2_mus_model:
+  type: GFX
+  offset: 0x812AB780
+  size: 0x80
+
+Rfoot1_mus_model:
+  type: GFX
+  offset: 0x812AB800
+  size: 0xC0
+
+Lfoot2_mus_model:
+  type: GFX
+  offset: 0x812AB8C0
+  size: 0x80
+
+Lfoot1_mus_model:
+  type: GFX
+  offset: 0x812AB940
+  size: 0xC0
+
+base_mus_model:
+  type: GFX
+  offset: 0x812ABA00
+  size: 0x70
+
+cKF_bs_r_mus_1:
+  type: AC:CKF_SKELETON
+  offset: 0x812ABBA8
+  counts: { joints: 26 }

@@ -7,6 +7,7 @@
 #include "m_player_lib.h"
 #include "libultra/libultra.h"
 #include "sys_matrix.h"
+#include "assets/data/model/obj_e_boat.h"
 
 #define aBT_FURROW_MAX_SPEED FRAMERATE_ADJ(0.625f)
 
@@ -77,9 +78,6 @@ s16 aBT_init_angleY[aBT_DIRECTION_NUM] = {
 
 static void aBT_setupAction(BOAT_ACTOR* boat_actor, GAME_PLAY* play, int action);
 static int aBT_check_other_boat(ACTOR* actorx, GAME* game);
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_e_boat;
-extern cKF_Animation_R_c cKF_ba_r_obj_e_boat;
 
 static void aBT_actor_ct(ACTOR* actorx, GAME* game) {
     BOAT_ACTOR* boat_actor = (BOAT_ACTOR*)actorx;
@@ -209,13 +207,13 @@ static void aBT_actor_draw(ACTOR* actorx, GAME* game) {
 
             gfx = NOW_POLY_OPA_DISP;
             gDPPipeSync(gfx++);
-            gDPLoadTLUT_Dolphin(gfx++, 15, 16, 1, pal);
+            gDPLoadTLUT_pal16(gfx++, 15, pal);
             SET_POLY_OPA_DISP(gfx);
 
             gfx = NOW_POLY_XLU_DISP;
             gDPPipeSync(gfx++);
             gSPSegment(gfx++, G_MWO_SEGMENT_9, scroll_gfx);
-            gDPLoadTLUT_Dolphin(gfx++, 15, 16, 1, pal);
+            gDPLoadTLUT_pal16(gfx++, 15, pal);
             gDPSetEnvColor(gfx++, 155, 155, 255, aBT_calc_furrow_alpha(boat_actor));
             SET_POLY_XLU_DISP(gfx);
 

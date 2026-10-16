@@ -5,6 +5,7 @@
 #include "m_player_lib.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/obj_shop_manekin.h"
 
 static void Shop_Manekin_Actor_ct(ACTOR* actorx, GAME* game);
 static void Shop_Manekin_Actor_dt(ACTOR* actorx, GAME* game);
@@ -286,8 +287,6 @@ static void Shop_Manekin_Actor_dt(ACTOR* actorx, GAME* game) {
 
     aSM_SetClipProc(actorx, TRUE);
 }
-
-extern Gfx obj_shop_manekin_model[];
 
 static void Shop_Manekin_Actor_draw(ACTOR* actorx, GAME* game) {
     SHOP_MANEKIN_ACTOR* shop_manekin = (SHOP_MANEKIN_ACTOR*)actorx;

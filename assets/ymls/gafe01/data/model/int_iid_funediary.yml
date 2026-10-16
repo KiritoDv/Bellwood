@@ -1,0 +1,73 @@
+:config:
+  strict_declarations: true
+
+int_iid_funediary:
+  type: TEXTURE
+  offset: 0x818147C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iid_funediary_mae_tex:
+  type: TEXTURE
+  offset: 0x818147E0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x818147C0
+
+int_iid_funediary_hyoushi_tex:
+  type: TEXTURE
+  offset: 0x81814800
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818147C0
+
+int_iid_funediary_soko_tex:
+  type: TEXTURE
+  offset: 0x81814A00
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x818147C0
+
+int_iid_funediary_ue_tex:
+  type: TEXTURE
+  offset: 0x81814A20
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x818147C0
+
+int_iid_funediary_esaki_tex:
+  type: TEXTURE
+  offset: 0x81814A40
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x818147C0
+
+int_iid_funediary_ebody_tex:
+  type: TEXTURE
+  offset: 0x81814A60
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x818147C0
+
+int_iid_funediary_v:
+  type: VTX
+  offset: 0x81814A80
+  count: 56
+
+int_iid_funediary_model:
+  type: GFX
+  offset: 0x81814E00
+  size: 0x118

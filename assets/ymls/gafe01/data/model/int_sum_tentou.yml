@@ -1,0 +1,102 @@
+:config:
+  strict_declarations: true
+
+int_sum_tentou_pal:
+  type: TEXTURE
+  offset: 0x81A6A2A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_tentou_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A6A2C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_tentou_base_txt:
+  type: TEXTURE
+  offset: 0x81A6A2E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A6A2A0
+
+int_sum_tentou_top_txt:
+  type: TEXTURE
+  offset: 0x81A6A360
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A6A2A0
+
+int_sum_tentou_side_txt:
+  type: TEXTURE
+  offset: 0x81A6A560
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A6A2A0
+
+int_sum_tentou_body_txt:
+  type: TEXTURE
+  offset: 0x81A6A760
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A6A2A0
+
+int_sum_tentou_hand_txt:
+  type: TEXTURE
+  offset: 0x81A6A860
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A6A2C0
+
+int_sum_tentou_v:
+  type: VTX
+  offset: 0x81A6A960
+  count: 61
+
+int_sum_tentou_side_model:
+  type: GFX
+  offset: 0x81A6AD30
+  size: 0x68
+
+int_sum_tentou_komado_model:
+  type: GFX
+  offset: 0x81A6AD98
+  size: 0x58
+
+int_sum_tentou_glass_model:
+  type: GFX
+  offset: 0x81A6ADF0
+  size: 0x68
+
+int_sum_tentou_base_model:
+  type: GFX
+  offset: 0x81A6AE58
+  size: 0xA0
+
+int_sum_tentou_body_model:
+  type: GFX
+  offset: 0x81A6AEF8
+  size: 0x60
+
+cKF_ba_r_int_sum_tentou:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A6B030
+  joints: 6
+  counts: { flags: 6, data: 81, keys: 6, fixed: 15 }
+
+cKF_bs_r_int_sum_tentou:
+  type: AC:CKF_SKELETON
+  offset: 0x81A6B08C
+  counts: { joints: 6 }

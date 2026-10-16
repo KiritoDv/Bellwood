@@ -1,7 +1,5 @@
+#include "assets/data/model/int_sum_kiageha.h"
 extern aFTR_rig_c aSumKiageha_key_anime_data;
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_sum_kiageha;
-extern cKF_Animation_R_c cKF_ba_r_int_sum_kiageha;
 
 aFTR_rig_c aSumKiageha_key_anime_data= {
     &cKF_bs_r_int_sum_kiageha,

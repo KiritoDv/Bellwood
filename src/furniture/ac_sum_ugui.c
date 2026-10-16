@@ -1,7 +1,5 @@
+#include "assets/data/model/int_sum_ugui.h"
 extern aFTR_rig_c aSumUgui_key_anime_data;
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_sum_ugui;
-extern cKF_Animation_R_c cKF_ba_r_int_sum_ugui;
 
 aFTR_rig_c aSumUgui_key_anime_data= {
     &cKF_bs_r_int_sum_ugui,

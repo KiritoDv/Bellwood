@@ -1,4 +1,4 @@
-extern Gfx int_sum_doll02_on_model[];
+#include "assets/data/model/int_sum_doll02.h"
 
 aFTR_PROFILE iam_sum_doll02 = {
 	int_sum_doll02_on_model,

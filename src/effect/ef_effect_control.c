@@ -312,7 +312,9 @@ static void eEC_actor_draw(ACTOR* actorx, GAME* game) {
 
     for (i = 0; i < eEC_EFFECT_ACTIVE_MAX; i++, active_flags++, effect++) {
         if (*active_flags) {
+            FrameInterpolation_RecordOpenChild(effect, FrameInterpolation_GetObjectEpoch(effect));
             profile_tbl[effect->name]->draw_proc(effect, game);
+            FrameInterpolation_RecordCloseChild();
         }
     }
 }
@@ -421,6 +423,7 @@ static eEC_Effect_c* eEC_MakeEffect(s16 effect_id, xyz_t pos, xyz_t* ofs, GAME* 
 
     use_idx = eEC_GetEffectBuff(prio);
     if (use_idx != -1) {
+        FrameInterpolation_ResetObject(&effects[use_idx]);
         active_flags[use_idx] = prio;
         effects[use_idx].name = effect_id;
         effects[use_idx].position = pos;

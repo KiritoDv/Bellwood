@@ -1,0 +1,644 @@
+:config:
+  strict_declarations: true
+
+obj_s_shop1_front_txt:
+  type: TEXTURE
+  offset: 0x8157DA60
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_shop1_roof_txt:
+  type: TEXTURE
+  offset: 0x8157E260
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_shop1_side_txt:
+  type: TEXTURE
+  offset: 0x8157EA60
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_shop1_window_txt:
+  type: TEXTURE
+  offset: 0x8157F260
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_shop1_v:
+  type: VTX
+  offset: 0x8157F2E0
+  count: 50
+
+obj_s_shop1_window_model:
+  type: GFX
+  offset: 0x8157F600
+  size: 0x58
+
+obj_s_shop1_light_model:
+  type: GFX
+  offset: 0x8157F658
+  size: 0x58
+
+obj_s_shop1_side_model:
+  type: GFX
+  offset: 0x8157F6B0
+  size: 0x48
+
+obj_s_shop1_roof_model:
+  type: GFX
+  offset: 0x8157F6F8
+  size: 0x48
+
+obj_s_shop1_front_model:
+  type: GFX
+  offset: 0x8157F740
+  size: 0x48
+
+obj_s_shop1_door_model:
+  type: GFX
+  offset: 0x8157F788
+  size: 0x38
+
+cKF_bs_r_obj_s_shop1:
+  type: AC:CKF_SKELETON
+  offset: 0x8157F814
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_s_shop1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8157F878
+  joints: 7
+  counts: { flags: 7, data: 15, keys: 1, fixed: 23 }
+
+obj_w_shop1_front_txt:
+  type: TEXTURE
+  offset: 0x8157F8A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_shop1_roof_txt:
+  type: TEXTURE
+  offset: 0x815800A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_shop1_side_txt:
+  type: TEXTURE
+  offset: 0x815808A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_shop1_window_txt:
+  type: TEXTURE
+  offset: 0x815810A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_shop1_v:
+  type: VTX
+  offset: 0x81581120
+  count: 50
+
+obj_w_shop1_window_model:
+  type: GFX
+  offset: 0x81581440
+  size: 0x58
+
+obj_w_shop1_light_model:
+  type: GFX
+  offset: 0x81581498
+  size: 0x58
+
+obj_w_shop1_side_model:
+  type: GFX
+  offset: 0x815814F0
+  size: 0x48
+
+obj_w_shop1_roof_model:
+  type: GFX
+  offset: 0x81581538
+  size: 0x48
+
+obj_w_shop1_front_model:
+  type: GFX
+  offset: 0x81581580
+  size: 0x48
+
+obj_w_shop1_door_model:
+  type: GFX
+  offset: 0x815815C8
+  size: 0x38
+
+cKF_bs_r_obj_w_shop1:
+  type: AC:CKF_SKELETON
+  offset: 0x81581654
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_w_shop1:
+  type: AC:CKF_ANIMATION
+  offset: 0x815816B8
+  joints: 7
+  counts: { flags: 7, data: 15, keys: 1, fixed: 23 }
+
+obj_s_shop2_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x815816E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_s_shop2_window_tex_txt:
+  type: TEXTURE
+  offset: 0x81581EE0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_shop2_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81581F60
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_shop2_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x81582760
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_shop2_v:
+  type: VTX
+  offset: 0x81582F60
+  count: 96
+
+obj_s_shop2_window_model:
+  type: GFX
+  offset: 0x81583560
+  size: 0x50
+
+obj_s_shop2_t2_model:
+  type: GFX
+  offset: 0x815835B0
+  size: 0x68
+
+obj_s_shop2_t1_model:
+  type: GFX
+  offset: 0x81583618
+  size: 0x68
+
+obj_s_shop2_light_model:
+  type: GFX
+  offset: 0x81583680
+  size: 0x88
+
+obj_s_shop2_door1_model:
+  type: GFX
+  offset: 0x81583708
+  size: 0x50
+
+obj_s_shop2_door2_model:
+  type: GFX
+  offset: 0x81583758
+  size: 0x50
+
+cKF_bs_r_obj_s_shop2:
+  type: AC:CKF_SKELETON
+  offset: 0x815837FC
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_s_shop2:
+  type: AC:CKF_ANIMATION
+  offset: 0x815838CC
+  joints: 7
+  counts: { flags: 7, data: 72, keys: 12, fixed: 12 }
+
+obj_w_shop2_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x815838E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_w_shop2_window_tex_txt:
+  type: TEXTURE
+  offset: 0x815840E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_shop2_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81584160
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_shop2_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x81584960
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_shop2_v:
+  type: VTX
+  offset: 0x81585160
+  count: 96
+
+obj_w_shop2_window_model:
+  type: GFX
+  offset: 0x81585760
+  size: 0x50
+
+obj_w_shop2_t2_model:
+  type: GFX
+  offset: 0x815857B0
+  size: 0x68
+
+obj_w_shop2_t1_model:
+  type: GFX
+  offset: 0x81585818
+  size: 0x68
+
+obj_w_shop2_light_model:
+  type: GFX
+  offset: 0x81585880
+  size: 0x88
+
+obj_w_shop2_door1_model:
+  type: GFX
+  offset: 0x81585908
+  size: 0x50
+
+obj_w_shop2_door2_model:
+  type: GFX
+  offset: 0x81585958
+  size: 0x50
+
+cKF_bs_r_obj_w_shop2:
+  type: AC:CKF_SKELETON
+  offset: 0x815859FC
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_w_shop2:
+  type: AC:CKF_ANIMATION
+  offset: 0x81585ACC
+  joints: 7
+  counts: { flags: 7, data: 72, keys: 12, fixed: 12 }
+
+obj_s_shop3_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81585AE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_s_shop3_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x815862E0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_shop3_window_tex_txt:
+  type: TEXTURE
+  offset: 0x81586AE0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_shop3_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81586B60
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_shop3_v:
+  type: VTX
+  offset: 0x81587360
+  count: 116
+
+obj_s_shop3_window_model:
+  type: GFX
+  offset: 0x81587AA0
+  size: 0x50
+
+obj_s_shop3_t2_model:
+  type: GFX
+  offset: 0x81587AF0
+  size: 0x78
+
+obj_s_shop3_t1_model:
+  type: GFX
+  offset: 0x81587B68
+  size: 0x68
+
+obj_s_shop3_light_model:
+  type: GFX
+  offset: 0x81587BD0
+  size: 0x90
+
+obj_s_shop3_door2_model:
+  type: GFX
+  offset: 0x81587C60
+  size: 0x50
+
+cKF_bs_r_obj_s_shop3:
+  type: AC:CKF_SKELETON
+  offset: 0x81587D10
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_s_shop3:
+  type: AC:CKF_ANIMATION
+  offset: 0x81587DE8
+  joints: 8
+  counts: { flags: 8, data: 72, keys: 12, fixed: 15 }
+
+obj_w_shop3_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81587E00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_w_shop3_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x81588600
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_shop3_window_tex_txt:
+  type: TEXTURE
+  offset: 0x81588E00
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_shop3_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81588E80
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_shop3_v:
+  type: VTX
+  offset: 0x81589680
+  count: 116
+
+obj_w_shop3_window_model:
+  type: GFX
+  offset: 0x81589DC0
+  size: 0x50
+
+obj_w_shop3_t2_model:
+  type: GFX
+  offset: 0x81589E10
+  size: 0x78
+
+obj_w_shop3_t1_model:
+  type: GFX
+  offset: 0x81589E88
+  size: 0x68
+
+obj_w_shop3_light_model:
+  type: GFX
+  offset: 0x81589EF0
+  size: 0x90
+
+obj_w_shop3_door2_model:
+  type: GFX
+  offset: 0x81589F80
+  size: 0x50
+
+cKF_bs_r_obj_w_shop3:
+  type: AC:CKF_SKELETON
+  offset: 0x8158A030
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_w_shop3:
+  type: AC:CKF_ANIMATION
+  offset: 0x8158A108
+  joints: 8
+  counts: { flags: 8, data: 72, keys: 12, fixed: 15 }
+
+obj_s_shop4_pal:
+  type: TEXTURE
+  offset: 0x8158A120
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_shop4_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8158A140
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8158A120
+
+obj_s_shop4_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x8158A940
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8158A120
+
+obj_s_shop4_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x8158B140
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8158A120
+
+obj_s_shop4_window_tex_txt:
+  type: TEXTURE
+  offset: 0x8158B940
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_shop4_grass_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8158B9C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_shop4_v:
+  type: VTX
+  offset: 0x8158BA40
+  count: 146
+
+obj_s_shop4_window_model:
+  type: GFX
+  offset: 0x8158C360
+  size: 0x58
+
+obj_s_shop4_t2_model:
+  type: GFX
+  offset: 0x8158C3B8
+  size: 0x90
+
+obj_s_shop4_t1_model:
+  type: GFX
+  offset: 0x8158C448
+  size: 0xA0
+
+obj_s_shop4_light_model:
+  type: GFX
+  offset: 0x8158C4E8
+  size: 0x98
+
+obj_s_shop4_grass_model:
+  type: GFX
+  offset: 0x8158C580
+  size: 0x58
+
+obj_s_shop4_door_model:
+  type: GFX
+  offset: 0x8158C5D8
+  size: 0x58
+
+cKF_bs_r_obj_s_shop4:
+  type: AC:CKF_SKELETON
+  offset: 0x8158C69C
+  counts: { joints: 9 }
+
+cKF_ba_r_obj_s_shop4:
+  type: AC:CKF_ANIMATION
+  offset: 0x8158C784
+  joints: 9
+  counts: { flags: 9, data: 75, keys: 12, fixed: 18 }
+
+obj_w_shop4_pal:
+  type: TEXTURE
+  offset: 0x8158C7A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_shop4_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8158C7C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8158C7A0
+
+obj_w_shop4_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x8158CFC0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8158C7A0
+
+obj_w_shop4_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x8158D7C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8158C7A0
+
+obj_w_shop4_window_tex_txt:
+  type: TEXTURE
+  offset: 0x8158DFC0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_shop4_v:
+  type: VTX
+  offset: 0x8158E040
+  count: 146
+
+obj_w_shop4_window_model:
+  type: GFX
+  offset: 0x8158E960
+  size: 0x58
+
+obj_w_shop4_t2_model:
+  type: GFX
+  offset: 0x8158E9B8
+  size: 0x90
+
+obj_w_shop4_t1_model:
+  type: GFX
+  offset: 0x8158EA48
+  size: 0xA0
+
+obj_w_shop4_light_model:
+  type: GFX
+  offset: 0x8158EAE8
+  size: 0x98
+
+obj_w_shop4_grass_model:
+  type: GFX
+  offset: 0x8158EB80
+  size: 0x58
+
+obj_w_shop4_door_model:
+  type: GFX
+  offset: 0x8158EBD8
+  size: 0x58
+
+cKF_bs_r_obj_w_shop4:
+  type: AC:CKF_SKELETON
+  offset: 0x8158EC9C
+  counts: { joints: 9 }
+
+cKF_ba_r_obj_w_shop4:
+  type: AC:CKF_ANIMATION
+  offset: 0x8158ED84
+  joints: 9
+  counts: { flags: 9, data: 75, keys: 12, fixed: 18 }

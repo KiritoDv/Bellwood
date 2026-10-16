@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_ari_kitchen01_pal:
+  type: TEXTURE
+  offset: 0x81609FA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ari_kitchen01_00_tex:
+  type: TEXTURE
+  offset: 0x81609FC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81609FA0
+
+int_ari_kitchen01_01_tex:
+  type: TEXTURE
+  offset: 0x8160A1C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81609FA0
+
+int_ari_kitchen01_02_tex:
+  type: TEXTURE
+  offset: 0x8160A2C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81609FA0
+
+int_ari_kitchen01_03_tex:
+  type: TEXTURE
+  offset: 0x8160A3C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81609FA0
+
+int_ari_kitchen01_04_tex:
+  type: TEXTURE
+  offset: 0x8160A4C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81609FA0
+
+int_ari_kitchen01_05_tex:
+  type: TEXTURE
+  offset: 0x8160A540
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81609FA0
+
+int_ari_kitchen01_06_tex:
+  type: TEXTURE
+  offset: 0x8160A5C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81609FA0
+
+int_ari_kitchen01_v:
+  type: VTX
+  offset: 0x8160A640
+  count: 42
+
+int_ari_kitchen01_01_model:
+  type: GFX
+  offset: 0x8160A8E0
+  size: 0xD0
+
+int_ari_kitchen01_01T_model:
+  type: GFX
+  offset: 0x8160A9B0
+  size: 0x80

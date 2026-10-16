@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+int_nog_piraluku_pal:
+  type: TEXTURE
+  offset: 0x81242BC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f34_piraluku_tex:
+  type: TEXTURE
+  offset: 0x81242BE0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81242BC0
+
+act_f34_piraluku_a_v:
+  type: VTX
+  offset: 0x81242FE0
+  count: 9
+
+act_f34_piraluku_aT_model:
+  type: GFX
+  offset: 0x81243070
+  size: 0x68
+
+act_f34_piraluku_b_v:
+  type: VTX
+  offset: 0x812430D8
+  count: 9
+
+act_f34_piraluku_bT_model:
+  type: GFX
+  offset: 0x81243168
+  size: 0x68
+
+act_f34_piraluku_c_v:
+  type: VTX
+  offset: 0x812431D0
+  count: 9
+
+act_f34_piraluku_cT_model:
+  type: GFX
+  offset: 0x81243260
+  size: 0x68

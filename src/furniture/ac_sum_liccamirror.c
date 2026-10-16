@@ -1,6 +1,4 @@
-extern Gfx int_sum_liccamirror_on_model[];
-extern Gfx int_sum_liccamirror_onT_model[];
-extern Gfx int_sum_liccamirror_env_model[];
+#include "assets/data/model/int_sum_liccamirror.h"
 
 static void aSumLiccaMirror_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     OPEN_DISP(game->graph);

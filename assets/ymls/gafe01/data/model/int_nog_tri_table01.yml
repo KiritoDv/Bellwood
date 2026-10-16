@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_nog_tri_table01_pal:
+  type: TEXTURE
+  offset: 0x81925200
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_nog_tri_table01_tex:
+  type: TEXTURE
+  offset: 0x81925220
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81925200
+
+int_nog_tri_table01_v:
+  type: VTX
+  offset: 0x81925A20
+  count: 40
+
+int_nog_tri_table01T_model:
+  type: GFX
+  offset: 0x81925CA0
+  size: 0x90

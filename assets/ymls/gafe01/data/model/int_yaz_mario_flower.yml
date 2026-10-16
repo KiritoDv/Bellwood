@@ -1,0 +1,61 @@
+:config:
+  strict_declarations: true
+
+int_yaz_mario_flower_a_pal:
+  type: TEXTURE
+  offset: 0x81ACD040
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yaz_mario_flower_b_pal:
+  type: TEXTURE
+  offset: 0x81ACD060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yaz_mario_flower_c_pal:
+  type: TEXTURE
+  offset: 0x81ACD080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yaz_mario_flower_d_pal:
+  type: TEXTURE
+  offset: 0x81ACD0A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yaz_mario_flower_hana_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81ACD0C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_yaz_mario_flower_ha_tex_txt:
+  type: TEXTURE
+  offset: 0x81ACD2C0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+
+int_yaz_mario_flower_v:
+  type: VTX
+  offset: 0x81ACD5C0
+  count: 31
+
+int_yaz_mario_flower_hana_model:
+  type: GFX
+  offset: 0x81ACD7B0
+  size: 0x68
+
+int_yaz_mario_flower_body_model:
+  type: GFX
+  offset: 0x81ACD818
+  size: 0x98

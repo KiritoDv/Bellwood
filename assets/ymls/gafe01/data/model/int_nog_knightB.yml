@@ -1,0 +1,37 @@
+:config:
+  strict_declarations: true
+
+int_nog_knightB_pal:
+  type: TEXTURE
+  offset: 0x81902020
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_knightB_head_tex:
+  type: TEXTURE
+  offset: 0x81902040
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81902020
+
+int_nog_knightB_top_tex:
+  type: TEXTURE
+  offset: 0x81902440
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81902020
+
+int_nog_knightB_v:
+  type: VTX
+  offset: 0x819024C0
+  count: 62
+
+int_nog_knightBT_model:
+  type: GFX
+  offset: 0x819028A0
+  size: 0xD8

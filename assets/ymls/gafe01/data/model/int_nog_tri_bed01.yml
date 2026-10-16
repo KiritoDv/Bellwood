@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_nog_tri_bed01_pal:
+  type: TEXTURE
+  offset: 0x8191E660
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_nog_tri_bed01_tex:
+  type: TEXTURE
+  offset: 0x8191E680
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8191E660
+
+int_nog_tri_bed01_v:
+  type: VTX
+  offset: 0x8191EE80
+  count: 51
+
+int_nog_tri_bed01T_model:
+  type: GFX
+  offset: 0x8191F1B0
+  size: 0xB0

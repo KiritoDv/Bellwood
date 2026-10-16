@@ -1,0 +1,187 @@
+:config:
+  strict_declarations: true
+
+ctl_win_tagu2_tex:
+  type: TEXTURE
+  offset: 0x813E5F60
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+clg_win_ha2_tex:
+  type: TEXTURE
+  offset: 0x813E6160
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+clg_win_jyuutan2_tex:
+  type: TEXTURE
+  offset: 0x813E61E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+clg_win_kabe2_tex:
+  type: TEXTURE
+  offset: 0x813E6260
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+clg_win_fuku2_tex:
+  type: TEXTURE
+  offset: 0x813E62E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+clg_win_hone2_tex:
+  type: TEXTURE
+  offset: 0x813E6360
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+clg_win_tegami2_tex:
+  type: TEXTURE
+  offset: 0x813E63E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+clg_win_onpu2_tex:
+  type: TEXTURE
+  offset: 0x813E6460
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+clg_win_hani2_tex:
+  type: TEXTURE
+  offset: 0x813E64E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+clg_win_kasa2_tex:
+  type: TEXTURE
+  offset: 0x813E6560
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+clg_tagu_v:
+  type: VTX
+  offset: 0x813E65E0
+  count: 72
+
+clg_tag_win_mode:
+  type: GFX
+  offset: 0x813E6A60
+  size: 0x30
+
+clg_tag_picture_mode:
+  type: GFX
+  offset: 0x813E6A90
+  size: 0x20
+
+clg_win_haT_model:
+  type: GFX
+  offset: 0x813E6AB0
+  size: 0x18
+
+clg_win_kabeT_model:
+  type: GFX
+  offset: 0x813E6AC8
+  size: 0x18
+
+clg_win_jyuutanT_model:
+  type: GFX
+  offset: 0x813E6AE0
+  size: 0x18
+
+clg_win_fukuT_model:
+  type: GFX
+  offset: 0x813E6AF8
+  size: 0x18
+
+clg_win_kasaT_model:
+  type: GFX
+  offset: 0x813E6B10
+  size: 0x18
+
+clg_win_tegamiT_model:
+  type: GFX
+  offset: 0x813E6B28
+  size: 0x18
+
+clg_win_haniwaT_model:
+  type: GFX
+  offset: 0x813E6B40
+  size: 0x18
+
+clg_win_honeT_model:
+  type: GFX
+  offset: 0x813E6B58
+  size: 0x18
+
+clg_win_onpuT_model:
+  type: GFX
+  offset: 0x813E6B70
+  size: 0x18
+
+clg_win_ha2T_model:
+  type: GFX
+  offset: 0x813E6B88
+  size: 0x28
+
+clg_win_kabe2T_model:
+  type: GFX
+  offset: 0x813E6BB0
+  size: 0x28
+
+clg_win_jyuutan2T_model:
+  type: GFX
+  offset: 0x813E6BD8
+  size: 0x28
+
+clg_win_fuku2T_model:
+  type: GFX
+  offset: 0x813E6C00
+  size: 0x28
+
+clg_win_kasa2T_model:
+  type: GFX
+  offset: 0x813E6C28
+  size: 0x28
+
+clg_win_tegami2T_model:
+  type: GFX
+  offset: 0x813E6C50
+  size: 0x28
+
+clg_win_haniwa2T_model:
+  type: GFX
+  offset: 0x813E6C78
+  size: 0x28
+
+clg_win_hone2T_model:
+  type: GFX
+  offset: 0x813E6CA0
+  size: 0x28
+
+clg_win_onpu2T_model:
+  type: GFX
+  offset: 0x813E6CC8
+  size: 0x28

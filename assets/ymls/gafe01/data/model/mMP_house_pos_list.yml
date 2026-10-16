@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+mMP_house_pos_list:
+  type: AC:STRUCT_ARRAY
+  offset: 0x814BA0D8
+  size: 0x978
+  fields: [u16, u8*9, pad]

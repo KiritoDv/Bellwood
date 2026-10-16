@@ -1,4 +1,4 @@
-extern Gfx int_yos_mailbox_body_model[];
+#include "assets/data/model/int_yos_mailbox.h"
 
 aFTR_PROFILE iam_yos_mailbox = {
 	int_yos_mailbox_body_model,

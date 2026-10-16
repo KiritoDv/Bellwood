@@ -1,0 +1,36 @@
+:config:
+  strict_declarations: true
+
+ef_mitiyuge01_0_int_i4:
+  type: TEXTURE
+  offset: 0x8166B8C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_motiyuge01_1_int_i4:
+  type: TEXTURE
+  offset: 0x8166B940
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_motiyuge01_2_int_i4:
+  type: TEXTURE
+  offset: 0x8166B9C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_motiyuge01_00_v:
+  type: VTX
+  offset: 0x8166BA40
+  count: 4
+
+ef_motiyuge01_00_modelT:
+  type: GFX
+  offset: 0x8166BA80
+  size: 0x48

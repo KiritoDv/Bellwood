@@ -1,0 +1,52 @@
+:config:
+  strict_declarations: true
+
+ef_pun01_0_int_i4:
+  type: TEXTURE
+  offset: 0x8166EAA0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_pun01_1_int_i4:
+  type: TEXTURE
+  offset: 0x8166ECA0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_pun01_2_int_i4:
+  type: TEXTURE
+  offset: 0x8166EEA0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_pun01_3_int_i4:
+  type: TEXTURE
+  offset: 0x8166F0A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_pun01_4_int_i4:
+  type: TEXTURE
+  offset: 0x8166F2A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_pun01_00_v:
+  type: VTX
+  offset: 0x8166F4A0
+  count: 4
+
+ef_pun01_00_modelT:
+  type: GFX
+  offset: 0x8166F4E0
+  size: 0x58

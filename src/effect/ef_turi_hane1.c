@@ -3,13 +3,8 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_turi_hane02_00.h"
 
-extern Gfx ef_turi_hane02_00_modelT[];
-
-extern u8 ef_turi_hane02_0_int_i4[];
-extern u8 ef_turi_hane02_1_int_i4[];
-extern u8 ef_turi_hane02_2_int_i4[];
-extern u8 ef_turi_hane02_3_int_i4[];
 
 static void eTH0_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eTH0_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);

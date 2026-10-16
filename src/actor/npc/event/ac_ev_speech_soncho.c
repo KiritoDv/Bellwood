@@ -79,4 +79,4 @@ void aESS_actor_draw(ACTOR* actorx, GAME* game) {
     CLIP(npc_clip)->draw_proc(actorx, game);
 }
 
-#include "src/actor/npc/event/ac_ev_speech_soncho_talk.c_inc"
+#include "ac_ev_speech_soncho_talk.c_inc"

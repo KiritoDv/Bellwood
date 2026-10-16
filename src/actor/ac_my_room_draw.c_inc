@@ -314,13 +314,15 @@ static void aMR_DrawFurniture(MY_ROOM_ACTOR* my_room, GAME_PLAY* play, int ftr_f
                     if (aMR_DrawDolphinMode(ftr_actor->name)) {
                         OPEN_DISP(game->graph);
 
-                        gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_DOLPHIN);
-                        gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_DOLPHIN);
+                        gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_HALFTEXEL);
+                        gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_HALFTEXEL);
 
                         CLOSE_DISP(game->graph);
                     }
 
+                    FrameInterpolation_RecordOpenChild(ftr_actor, FrameInterpolation_GetObjectEpoch(ftr_actor));
                     aMR_DrawOneFurniture(ftr_actor, actorx, game, fit_flag);
+                    FrameInterpolation_RecordCloseChild();
 
                     if (aMR_DrawDolphinMode(ftr_actor->name)) {
                         OPEN_DISP(game->graph);

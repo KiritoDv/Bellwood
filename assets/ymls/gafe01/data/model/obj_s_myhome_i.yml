@@ -1,0 +1,86 @@
+:config:
+  strict_declarations: true
+
+obj_s_myhome_i_1_tex_txt:
+  type: TEXTURE
+  offset: 0x81543160
+  format: CI4
+  width: 32
+  height: 128
+  source_encoding: gx
+
+obj_s_myhome_i_2_tex_txt:
+  type: TEXTURE
+  offset: 0x81543960
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_s_myhome_i_3_tex_txt:
+  type: TEXTURE
+  offset: 0x81544160
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_s_myhome_i_window_tex_txt:
+  type: TEXTURE
+  offset: 0x81544960
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_myhome_i_v:
+  type: VTX
+  offset: 0x815449E0
+  count: 136
+
+obj_s_myhome_i_window_model:
+  type: GFX
+  offset: 0x81545260
+  size: 0x48
+
+obj_s_myhome_i_light_model:
+  type: GFX
+  offset: 0x815452A8
+  size: 0x50
+
+obj_s_myhome_i_3_model:
+  type: GFX
+  offset: 0x815452F8
+  size: 0x60
+
+obj_s_myhome_i_2_model:
+  type: GFX
+  offset: 0x81545358
+  size: 0x68
+
+obj_s_myhome_i_1_model:
+  type: GFX
+  offset: 0x815453C0
+  size: 0xD8
+
+obj_s_myhome_i_door_model:
+  type: GFX
+  offset: 0x81545498
+  size: 0x58
+
+cKF_bs_r_obj_s_myhome_i:
+  type: AC:CKF_SKELETON
+  offset: 0x81545544
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_s_myhome_i:
+  type: AC:CKF_ANIMATION
+  offset: 0x815455CC
+  joints: 7
+  counts: { flags: 7, data: 33, keys: 1, fixed: 23 }
+
+cKF_ba_r_obj_s_myhome_i_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x8154566C
+  joints: 7
+  counts: { flags: 7, data: 39, keys: 1, fixed: 23 }

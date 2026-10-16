@@ -1,0 +1,97 @@
+:config:
+  strict_declarations: true
+
+int_sum_funa_pal:
+  type: TEXTURE
+  offset: 0x819E5460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_funa_glass_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x819E5480
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_funa_body_txt:
+  type: TEXTURE
+  offset: 0x819E54A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E5460
+
+int_sum_funa_top_txt:
+  type: TEXTURE
+  offset: 0x819E56A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E5460
+
+int_sum_funa_side_txt:
+  type: TEXTURE
+  offset: 0x819E57A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E5460
+
+int_sum_funa_base_txt:
+  type: TEXTURE
+  offset: 0x819E59A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E5460
+
+int_sum_funa_glass_txt:
+  type: TEXTURE
+  offset: 0x819E5A20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E5480
+
+int_sum_funa_v:
+  type: VTX
+  offset: 0x819E5C20
+  count: 53
+
+int_sum_funa_sakana_model:
+  type: GFX
+  offset: 0x819E5F70
+  size: 0x80
+
+int_sum_funa_top_model:
+  type: GFX
+  offset: 0x819E5FF0
+  size: 0x58
+
+int_sum_funa_evw_model:
+  type: GFX
+  offset: 0x819E6048
+  size: 0x68
+
+int_sum_funa_base_model:
+  type: GFX
+  offset: 0x819E60B0
+  size: 0x90
+
+cKF_ba_r_int_sum_funa:
+  type: AC:CKF_ANIMATION
+  offset: 0x819E6208
+  joints: 5
+  counts: { flags: 5, data: 75, keys: 9, fixed: 9 }
+
+cKF_bs_r_int_sum_funa:
+  type: AC:CKF_SKELETON
+  offset: 0x819E6258
+  counts: { joints: 5 }

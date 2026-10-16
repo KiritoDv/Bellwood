@@ -1,0 +1,74 @@
+:config:
+  strict_declarations: true
+
+ef_bodyprint01_0:
+  type: TEXTURE
+  offset: 0x8166E280
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+ef_bodyprint01_00_v:
+  type: VTX
+  offset: 0x8166E380
+  count: 4
+
+ef_bodyprint01_00_modelT:
+  type: GFX
+  offset: 0x8166E3C0
+  size: 0x48
+
+ef_footprint01_0:
+  type: TEXTURE
+  offset: 0x8166E420
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_footprint01_00_v:
+  type: VTX
+  offset: 0x8166E4A0
+  count: 4
+
+ef_footprint01_00_modelT:
+  type: GFX
+  offset: 0x8166E4E0
+  size: 0x48
+
+ef_footprint01_1:
+  type: TEXTURE
+  offset: 0x8166E540
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+ef_turn_footprint_v:
+  type: VTX
+  offset: 0x8166E640
+  count: 4
+
+ef_turn_footprint_modelT:
+  type: GFX
+  offset: 0x8166E680
+  size: 0x48
+
+ef_footprint01_2:
+  type: TEXTURE
+  offset: 0x8166E6E0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_footprint01_02_v:
+  type: VTX
+  offset: 0x8166E8E0
+  count: 4
+
+ef_footprint01_02_modelT:
+  type: GFX
+  offset: 0x8166E920
+  size: 0x48

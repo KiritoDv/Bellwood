@@ -11,6 +11,8 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "libforest/gbi_extensions.h"
+#include "assets/data/model/obj_s_yubinkyoku.h"
+#include "assets/data/model/obj_s_yubinkyoku_shadow.h"
 
 enum {
     aPOFF_ACTION_WAIT,
@@ -51,9 +53,6 @@ static u8 aPOFF_shadow_vtx_fix_flg_table[] = {
 };
 // clang-format on
 
-extern Vtx obj_s_yubinkyoku_shadow_v[];
-extern Gfx obj_s_yubinkyoku_shadow_2_model[];
-
 // clang-format off
 static bIT_ShadowData_c aPOFF_shadow_data = {
     14,
@@ -63,9 +62,6 @@ static bIT_ShadowData_c aPOFF_shadow_data = {
     obj_s_yubinkyoku_shadow_2_model
 };
 // clang-format on
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_yubinkyoku;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_yubinkyoku;
 
 static void aPOFF_set_bgOffset(STRUCTURE_ACTOR* office, int idx);
 static void aPOFF_setup_animation(STRUCTURE_ACTOR* office, f32 speed);

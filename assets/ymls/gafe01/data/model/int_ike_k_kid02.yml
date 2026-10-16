@@ -1,0 +1,114 @@
+:config:
+  strict_declarations: true
+
+int_ike_k_kid02_pal:
+  type: TEXTURE
+  offset: 0x81836A20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_k_kid2door1_tex:
+  type: TEXTURE
+  offset: 0x81836A40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81836A20
+
+int_ike_k_kid2yane1_tex:
+  type: TEXTURE
+  offset: 0x81836B40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81836A20
+
+int_ike_k_kid2door2_tex:
+  type: TEXTURE
+  offset: 0x81836C40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81836A20
+
+int_ike_k_kid2under_tex:
+  type: TEXTURE
+  offset: 0x81836D40
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81836A20
+
+int_ike_k_kid2kousi_tex:
+  type: TEXTURE
+  offset: 0x81836D80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81836A20
+
+int_ike_k_kid2side1_tex:
+  type: TEXTURE
+  offset: 0x81836E00
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81836A20
+
+int_ike_k_kid2sunoko_tex:
+  type: TEXTURE
+  offset: 0x81836F00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81836A20
+
+int_ike_k_kid2tire_tex:
+  type: TEXTURE
+  offset: 0x81836F80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81836A20
+
+int_ike_k_kid2tire2_tex:
+  type: TEXTURE
+  offset: 0x81837000
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81836A20
+
+int_ike_k_kid2base_tex:
+  type: TEXTURE
+  offset: 0x81837100
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81836A20
+
+int_ike_k_kid02_v:
+  type: VTX
+  offset: 0x81837180
+  count: 120
+
+int_ike_k_kid02_on_model:
+  type: GFX
+  offset: 0x81837900
+  size: 0xC8
+
+int_ike_k_kid02_onT_model:
+  type: GFX
+  offset: 0x818379C8
+  size: 0x140

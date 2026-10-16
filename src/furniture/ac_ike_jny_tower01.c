@@ -1,4 +1,4 @@
-extern Gfx int_ike_jny_tower01_body_model[];
+#include "assets/data/model/int_ike_jny_tower01.h"
 
 aFTR_PROFILE iam_ike_jny_tower01 = {
 	int_ike_jny_tower01_body_model,

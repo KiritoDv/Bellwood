@@ -1,5 +1,4 @@
-extern Gfx int_din_ptera_RwingT_model[];
-extern Gfx int_din_ptera_Rwing_model[];
+#include "assets/data/model/int_din_ptera_Rwing.h"
 
 aFTR_PROFILE iam_din_ptera_Rwing = {
 	int_din_ptera_RwingT_model,

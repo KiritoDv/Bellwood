@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+obj_s_toudai_shadow_tex:
+  type: TEXTURE
+  offset: 0x8150B8A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_toudai_shadow_v:
+  type: VTX
+  offset: 0x8150B920
+  count: 10
+
+obj_s_toudai_shadow_1_model:
+  type: GFX
+  offset: 0x8150B9C0
+  size: 0x50

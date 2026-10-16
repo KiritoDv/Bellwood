@@ -1,5 +1,4 @@
-extern Gfx int_iid_snow_model[];
-extern Gfx int_iid_snowT_model[];
+#include "assets/data/model/int_iid_snow.h"
 
 aFTR_PROFILE iam_iid_snow = {
 	int_iid_snow_model,

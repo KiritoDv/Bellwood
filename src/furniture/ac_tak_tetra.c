@@ -1,4 +1,4 @@
-extern Gfx int_tak_tetra_on_model[];
+#include "assets/data/model/int_tak_tetra.h"
 
 aFTR_PROFILE iam_tak_tetra = {
 	int_tak_tetra_on_model,

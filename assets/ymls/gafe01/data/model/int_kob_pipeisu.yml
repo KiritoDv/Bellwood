@@ -1,0 +1,78 @@
+:config:
+  strict_declarations: true
+
+int_kob_pipeisu_pal:
+  type: TEXTURE
+  offset: 0x8189DCC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kob_pipeisu_se1_tex:
+  type: TEXTURE
+  offset: 0x8189DCE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189DCC0
+
+int_kob_pipeisu_main1_tex:
+  type: TEXTURE
+  offset: 0x8189DD60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8189DCC0
+
+int_kob_pipeisu_ashi1_tex:
+  type: TEXTURE
+  offset: 0x8189DE60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8189DCC0
+
+int_kob_pipeisu_pipe1_tex:
+  type: TEXTURE
+  offset: 0x8189DF60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189DCC0
+
+int_kob_pipeisu_se2_tex:
+  type: TEXTURE
+  offset: 0x8189DFE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189DCC0
+
+int_kob_pipeisu_pipe2_tex:
+  type: TEXTURE
+  offset: 0x8189E060
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x8189DCC0
+
+int_kob_pipeisu_v:
+  type: VTX
+  offset: 0x8189E1E0
+  count: 51
+
+int_kob_pipeisu_on_model:
+  type: GFX
+  offset: 0x8189E510
+  size: 0xC0
+
+int_kob_pipeisu_onT_model:
+  type: GFX
+  offset: 0x8189E5D0
+  size: 0xA0

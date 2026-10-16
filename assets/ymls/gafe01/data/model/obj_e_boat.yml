@@ -1,0 +1,147 @@
+:config:
+  strict_declarations: true
+
+obj_s_boat_t10_tex_txt:
+  type: TEXTURE
+  offset: 0x8150C720
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_boat_t11_tex_txt:
+  type: TEXTURE
+  offset: 0x8150C7A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_boat_t9_tex_txt:
+  type: TEXTURE
+  offset: 0x8150C820
+  format: CI4
+  width: 48
+  height: 8
+  source_encoding: gx
+
+obj_s_boat_t6_tex_txt:
+  type: TEXTURE
+  offset: 0x8150C8E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+obj_s_boat_t7_tex_txt:
+  type: TEXTURE
+  offset: 0x8150C9E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_boat_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x8150CA60
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+obj_s_boat_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x8150CE60
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+obj_s_boat_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8150D260
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_boat_t5_tex_txt:
+  type: TEXTURE
+  offset: 0x8150D2E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_boat_t8_tex_txt:
+  type: TEXTURE
+  offset: 0x8150D360
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_boat_t4_tex_txt:
+  type: TEXTURE
+  offset: 0x8150D3E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_boat_water1_pic_i4:
+  type: TEXTURE
+  offset: 0x8150D460
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_s_boat_water2_pic_i4:
+  type: TEXTURE
+  offset: 0x8150D660
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_boat_v:
+  type: VTX
+  offset: 0x8150D860
+  count: 156
+
+obj_e_boat_boat1_model:
+  type: GFX
+  offset: 0x8150E220
+  size: 0x188
+
+obj_e_boat_water1_model:
+  type: GFX
+  offset: 0x8150E3A8
+  size: 0x80
+
+obj_e_boat_water2_model:
+  type: GFX
+  offset: 0x8150E428
+  size: 0x90
+
+obj_e_boat_water3_model:
+  type: GFX
+  offset: 0x8150E4B8
+  size: 0xA8
+
+obj_e_boat_oar1_model:
+  type: GFX
+  offset: 0x8150E560
+  size: 0xB8
+
+cKF_bs_r_obj_e_boat:
+  type: AC:CKF_SKELETON
+  offset: 0x8150E66C
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_e_boat:
+  type: AC:CKF_ANIMATION
+  offset: 0x8150E734
+  joints: 7
+  counts: { flags: 7, data: 66, keys: 3, fixed: 21 }

@@ -1,0 +1,257 @@
+:config:
+  strict_declarations: true
+
+tyo_win_icon2_pal:
+  type: TEXTURE
+  offset: 0x813B6200
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tyo_win_nuno_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813B6220
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tyo_win_sw1_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813B6240
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tyo_win_sw2_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813B6260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tyo_win_sw3_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813B6280
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+fkm_win_fuki2_tex:
+  type: TEXTURE
+  offset: 0x813B62A0
+  format: I4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+tyo_win_balance_tex:
+  type: TEXTURE
+  offset: 0x813B6AA0
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+fri_win_bell_tex:
+  type: TEXTURE
+  offset: 0x813B6CA0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+fri_win_cash_tex:
+  type: TEXTURE
+  offset: 0x813B6DA0
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+tyo_win_icon_tex:
+  type: TEXTURE
+  offset: 0x813B6FA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x813B6200
+
+fkm_win_w4_tex:
+  type: TEXTURE
+  offset: 0x813B77A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+fkm_win_w3_tex:
+  type: TEXTURE
+  offset: 0x813B7820
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+fkm_win_w2_tex:
+  type: TEXTURE
+  offset: 0x813B7A20
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+fkm_win_w1_tex:
+  type: TEXTURE
+  offset: 0x813B7C20
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+tyo_win_deposit_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813B8020
+  format: IA8
+  width: 128
+  height: 32
+  source_encoding: gx
+
+tyo_win_withdraw_tex:
+  type: TEXTURE
+  offset: 0x813B9020
+  format: IA8
+  width: 128
+  height: 32
+  source_encoding: gx
+
+tyo_win_nuno_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x813BA020
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813B6220
+
+tyo_win_sw1_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x813BA220
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813B6240
+
+tyo_win_sw2_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x813BA620
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813B6260
+
+tyo_win_sw3_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x813BAA20
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813B6280
+
+tyo_win_v:
+  type: VTX
+  offset: 0x813BAE20
+  count: 116
+
+tyo_win_fuki_model:
+  type: GFX
+  offset: 0x813BB560
+  size: 0x38
+
+tyo_win_moji1_model:
+  type: GFX
+  offset: 0x813BB598
+  size: 0x70
+
+tyo_win_w1T_model:
+  type: GFX
+  offset: 0x813BB608
+  size: 0x30
+
+tyo_win_w2T_model:
+  type: GFX
+  offset: 0x813BB638
+  size: 0x30
+
+tyo_win_w3T_model:
+  type: GFX
+  offset: 0x813BB668
+  size: 0x30
+
+tyo_win_w4T_model:
+  type: GFX
+  offset: 0x813BB698
+  size: 0x30
+
+tyo_win_w5T_model:
+  type: GFX
+  offset: 0x813BB6C8
+  size: 0x30
+
+tyo_win_w6T_model:
+  type: GFX
+  offset: 0x813BB6F8
+  size: 0x30
+
+tyo_win_w7T_model:
+  type: GFX
+  offset: 0x813BB728
+  size: 0x30
+
+tyo_win_w8T_model:
+  type: GFX
+  offset: 0x813BB758
+  size: 0x30
+
+tyo_win_w9T_model:
+  type: GFX
+  offset: 0x813BB788
+  size: 0x30
+
+tyo_win_w10T_model:
+  type: GFX
+  offset: 0x813BB7B8
+  size: 0x30
+
+tyo_win_wakuT_model:
+  type: GFX
+  offset: 0x813BB7E8
+  size: 0xB0
+
+tyo_win_iconT_model:
+  type: GFX
+  offset: 0x813BB898
+  size: 0x40
+
+tyo_win_moji2T_model:
+  type: GFX
+  offset: 0x813BB8D8
+  size: 0x48
+
+tyo_win_moji3T_model:
+  type: GFX
+  offset: 0x813BB920
+  size: 0x28
+
+tyo_win_mode:
+  type: GFX
+  offset: 0x813BB948
+  size: 0x40
+
+tyo_win_model:
+  type: GFX
+  offset: 0x813BB988
+  size: 0xB0

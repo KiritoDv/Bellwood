@@ -1,5 +1,4 @@
-extern Gfx int_nog_rookB_model[];
-extern Gfx int_nog_rookBT_model[];
+#include "assets/data/model/int_nog_rookB.h"
 
 aFTR_PROFILE iam_nog_rookB = {
 	int_nog_rookB_model,

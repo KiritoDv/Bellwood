@@ -1,14 +1,9 @@
+#include "assets/data/model/int_nog_fan.h"
 static void aNogFan_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aNogFan_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aNogFan_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aNogFan_dt(FTR_ACTOR* ftr_actor, u8* data);
 
-extern cKF_Animation_R_c cKF_ba_r_int_nog_fan;
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_fan;
-
-extern u8 int_nog_fan_fan1_TA_tex_txt[];
-extern u8 int_nog_fan_fan2_TA_tex_txt[];
-extern u8 int_nog_fan_fan3_TA_tex_txt[];
 
 static u8* aNogFan_nog_fan01_anim[] = {
     int_nog_fan_fan1_TA_tex_txt,
@@ -66,7 +61,7 @@ static void aNogFan_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u
         add_calc(&ftr_actor->dynamic_work_f[0], 0.5f, CALC_EASE(0.05f), 0.25f, 0.0005f);
 
         if (aFTR_CAN_PLAY_SE(ftr_actor)) {
-            sAdo_OngenPos((u32)ftr_actor, 1, &ftr_actor->position);
+            sAdo_OngenPos((uintptr_t)ftr_actor, 1, &ftr_actor->position);
         }
     } else {
         add_calc(&ftr_actor->dynamic_work_f[0], 0.0f, CALC_EASE(0.05f), 0.25f, 0.0005f);

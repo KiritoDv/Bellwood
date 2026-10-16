@@ -1,7 +1,5 @@
+#include "assets/data/model/int_tak_ufo.h"
 extern aFTR_rig_c aTakUfo_sklkey;
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_tak_ufo;
-extern cKF_Animation_R_c cKF_ba_r_int_tak_ufo;
 
 aFTR_rig_c aTakUfo_sklkey= {
     &cKF_bs_r_int_tak_ufo,

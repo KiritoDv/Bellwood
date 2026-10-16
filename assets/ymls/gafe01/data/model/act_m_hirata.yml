@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_hirata_pal:
+  type: TEXTURE
+  offset: 0x812645A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_hirata:
+  type: TEXTURE
+  offset: 0x812645C0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x812645A0
+
+act_m_hirata_v:
+  type: VTX
+  offset: 0x812647C0
+  count: 12
+
+act_m_hirata1T_model:
+  type: GFX
+  offset: 0x81264880
+  size: 0x60
+
+act_m_hirata2T_model:
+  type: GFX
+  offset: 0x812648E0
+  size: 0x60

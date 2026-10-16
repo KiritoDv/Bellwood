@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f29_angel_pal:
+  type: TEXTURE
+  offset: 0x81238100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f29_angel_tex:
+  type: TEXTURE
+  offset: 0x81238120
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81238100
+
+act_f29_angel_a_v:
+  type: VTX
+  offset: 0x81238420
+  count: 9
+
+act_f29_angel_aT_model:
+  type: GFX
+  offset: 0x812384B0
+  size: 0x68
+
+act_f29_angel_b_v:
+  type: VTX
+  offset: 0x81238518
+  count: 9
+
+act_f29_angel_bT_model:
+  type: GFX
+  offset: 0x812385A8
+  size: 0x68
+
+act_f29_angel_c_v:
+  type: VTX
+  offset: 0x81238610
+  count: 9
+
+act_f29_angel_cT_model:
+  type: GFX
+  offset: 0x812386A0
+  size: 0x68

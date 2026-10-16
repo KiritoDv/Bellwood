@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+lat_tegami_point_tex:
+  type: TEXTURE
+  offset: 0x813C08D0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: n64
+
+lat_point_v:
+  type: VTX
+  offset: 0x813C0950
+  count: 4
+
+lat_point_mT_model:
+  type: GFX
+  offset: 0x813C0990
+  size: 0x78

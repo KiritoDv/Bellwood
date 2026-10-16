@@ -11,6 +11,9 @@
 #include "m_needlework.h"
 #include "m_needlework_ovl.h"
 #include "libultra/libultra.h"
+#include "assets/data/model/obj_frag_shadow.h"
+#include "assets/data/model/obj_s_frag.h"
+#include "assets/data/model/obj_s_kanban.h"
 
 enum {
     aFLAG_ACTION_WAIT,
@@ -45,18 +48,9 @@ ACTOR_PROFILE Flag_Profile = {
 
 static u8 aFLAG_shadow_vtx_fix_flg_table[8] = { FALSE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, TRUE };
 
-extern Vtx obj_frag_shadow_v[];
-extern Gfx obj_frag_shadowT_model[];
 static bIT_ShadowData_c aFLAG_shadow_data = { 8, aFLAG_shadow_vtx_fix_flg_table, 60.0f, obj_frag_shadow_v,
                                               obj_frag_shadowT_model };
 
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_frag;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_frag;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_frag;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_frag;
-
-extern u8 hakushi_tex[];
-extern u16 hakushi_pal[];
 
 static void aFLAG_setup_action(STRUCTURE_ACTOR* flag, int action);
 

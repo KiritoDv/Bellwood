@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+des_sen_v:
+  type: VTX
+  offset: 0x813FA7B0
+  count: 4
+
+des_sen_waku_model:
+  type: GFX
+  offset: 0x813FA7F0
+  size: 0x38

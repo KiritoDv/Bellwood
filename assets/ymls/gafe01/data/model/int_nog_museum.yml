@@ -1,0 +1,56 @@
+:config:
+  strict_declarations: true
+
+int_nog_museum_pal:
+  type: TEXTURE
+  offset: 0x8190A1E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_museum_body_tex:
+  type: TEXTURE
+  offset: 0x8190A200
+  format: CI4
+  width: 128
+  height: 16
+  source_encoding: gx
+  tlut: 0x8190A1E0
+
+int_nog_museum_gate_tex:
+  type: TEXTURE
+  offset: 0x8190A600
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8190A1E0
+
+int_nog_museum_grass_tex:
+  type: TEXTURE
+  offset: 0x8190A700
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8190A1E0
+
+int_nog_museum_v:
+  type: VTX
+  offset: 0x8190A780
+  count: 142
+
+int_nog_museum_on_model:
+  type: GFX
+  offset: 0x8190B060
+  size: 0x58
+
+int_nog_museum_onT_model:
+  type: GFX
+  offset: 0x8190B0B8
+  size: 0x148
+
+int_nog_museum_offT_model:
+  type: GFX
+  offset: 0x8190B200
+  size: 0x58

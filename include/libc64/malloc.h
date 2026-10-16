@@ -7,13 +7,13 @@
 extern "C" {
 #endif
 
-extern void* malloc(size_t size);
-extern void free(void* ptr);
+extern void* ac_malloc(size_t size);
+extern void ac_free(void* ptr);
 
 extern void MallocInit(void* base, size_t len);
 extern void MallocCleanup();
 extern int  MallocIsInitalized();
-extern void GetFreeArena(size_t* max_size, size_t* free_size, size_t* alloc_size);
+extern void GetFreeArena(u32* max_size, u32* free_size, u32* alloc_size);
 extern int CheckArena(); /* @unused */
 extern void DisplayArena();
 

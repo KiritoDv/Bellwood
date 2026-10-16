@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_w_stone_tex:
+  type: TEXTURE
+  offset: 0x8197CA60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+mFM_grd_w_stone_2_tex:
+  type: TEXTURE
+  offset: 0x8197D260
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+mFM_grd_w_stone_3_tex:
+  type: TEXTURE
+  offset: 0x8197DA60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx

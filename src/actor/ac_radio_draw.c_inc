@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_e_radio.h"
 static void aRAD_actor_draw(ACTOR* actor, GAME* game){
     RADIO_ACTOR* radio = (RADIO_ACTOR*)actor;
  

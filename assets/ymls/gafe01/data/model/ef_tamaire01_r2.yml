@@ -1,0 +1,72 @@
+:config:
+  strict_declarations: true
+
+ef_tamaire01_r_pal:
+  type: TEXTURE
+  offset: 0x816731C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+ef_tamaire01_r_tex:
+  type: TEXTURE
+  offset: 0x816731E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x816731C0
+
+ef_tamaire01_r_v:
+  type: VTX
+  offset: 0x816733E0
+  count: 4
+
+ef_tamaire01_r_modelT:
+  type: GFX
+  offset: 0x81673420
+  size: 0x50
+
+ef_tamaire01_w_pal:
+  type: TEXTURE
+  offset: 0x81673480
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+ef_tamaire01_w_tex:
+  type: TEXTURE
+  offset: 0x816734A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81673480
+
+ef_tamaire01_w_v:
+  type: VTX
+  offset: 0x816736A0
+  count: 4
+
+ef_tamaire01_w_modelT:
+  type: GFX
+  offset: 0x816736E0
+  size: 0x50
+
+ef_tama_shadow_in_v:
+  type: VTX
+  offset: 0x81673730
+  count: 4
+
+ef_tama_shadow_in_0:
+  type: TEXTURE
+  offset: 0x81673780
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+ef_tamaire_shadow_modelT:
+  type: GFX
+  offset: 0x81673880
+  size: 0x48

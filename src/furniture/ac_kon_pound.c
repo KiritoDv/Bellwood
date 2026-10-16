@@ -1,6 +1,4 @@
-extern Gfx int_kon_pound_on_model[];
-extern Gfx int_kon_pound_onT_model[];
-extern Gfx int_kon_pound_alphaT_model[];
+#include "assets/data/model/int_kon_pound.h"
 
 aFTR_PROFILE iam_kon_pound = {
 	int_kon_pound_on_model,

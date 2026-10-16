@@ -1,0 +1,116 @@
+:config:
+  strict_declarations: true
+
+int_nog_amenbo_pal:
+  type: TEXTURE
+  offset: 0x818E4B20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_amenbo_glass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x818E4B40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_amenbo_body_tex_txt:
+  type: TEXTURE
+  offset: 0x818E4B60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818E4B20
+
+int_nog_amenbo_base_tex_txt:
+  type: TEXTURE
+  offset: 0x818E4C60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818E4B20
+
+int_nog_amenbo_top_tex_txt:
+  type: TEXTURE
+  offset: 0x818E4CE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818E4B20
+
+int_nog_amenbo_side_tex_txt:
+  type: TEXTURE
+  offset: 0x818E4EE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818E4B20
+
+int_nog_amenbo_water_tex_txt:
+  type: TEXTURE
+  offset: 0x818E50E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818E4B20
+
+int_nog_amenbo_glass_tex_txt:
+  type: TEXTURE
+  offset: 0x818E5160
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818E4B40
+
+int_nog_amenbo_v:
+  type: VTX
+  offset: 0x818E5260
+  count: 59
+
+int_nog_amenbo_body_model:
+  type: GFX
+  offset: 0x818E5610
+  size: 0x60
+
+int_nog_amenbo_water_model:
+  type: GFX
+  offset: 0x818E5670
+  size: 0x60
+
+int_nog_amenbo_side_model:
+  type: GFX
+  offset: 0x818E56D0
+  size: 0x68
+
+int_nog_amenbo_komado_model:
+  type: GFX
+  offset: 0x818E5738
+  size: 0x58
+
+int_nog_amenbo_glass_model:
+  type: GFX
+  offset: 0x818E5790
+  size: 0x68
+
+int_nog_amenbo_base_model:
+  type: GFX
+  offset: 0x818E57F8
+  size: 0xA0
+
+cKF_ba_r_int_nog_amenbo:
+  type: AC:CKF_ANIMATION
+  offset: 0x818E5A08
+  joints: 7
+  counts: { flags: 7, data: 153, keys: 3, fixed: 21 }
+
+cKF_bs_r_int_nog_amenbo:
+  type: AC:CKF_SKELETON
+  offset: 0x818E5A70
+  counts: { joints: 7 }

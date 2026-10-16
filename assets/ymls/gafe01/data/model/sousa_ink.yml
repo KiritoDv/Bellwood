@@ -1,0 +1,59 @@
+:config:
+  strict_declarations: true
+
+kai_sousa_ink_tex:
+  type: TEXTURE
+  offset: 0x81421B60
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kai_sousa_inkmoji_tex:
+  type: TEXTURE
+  offset: 0x81422B60
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kai_sousa_ink2_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81422D60
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kai_sousa_ink3_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81422F60
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+sousa_ink_v:
+  type: VTX
+  offset: 0x81423160
+  count: 12
+
+kai_sousa_ink_mode:
+  type: GFX
+  offset: 0x81423220
+  size: 0x28
+
+kai_sousa_ink_model:
+  type: GFX
+  offset: 0x81423248
+  size: 0x70
+
+kai_sousa_inktuboT_model:
+  type: GFX
+  offset: 0x814232B8
+  size: 0x40
+
+kai_sousa_inkmojiT_model:
+  type: GFX
+  offset: 0x814232F8
+  size: 0x40

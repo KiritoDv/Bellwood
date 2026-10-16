@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_din_ptera_pal:
+  type: TEXTURE
+  offset: 0x81639360
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_din_ptera_body_tex:
+  type: TEXTURE
+  offset: 0x81639380
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81639360
+
+int_din_ptera_leg_tex:
+  type: TEXTURE
+  offset: 0x81639500
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81639360
+
+int_din_ptera_shin_tex:
+  type: TEXTURE
+  offset: 0x81639580
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81639360
+
+int_din_ptera_h_tex:
+  type: TEXTURE
+  offset: 0x81639680
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81639360
+
+int_din_ptera_kubi_tex:
+  type: TEXTURE
+  offset: 0x81639880
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81639360
+
+int_din_ptera_baceB_tex:
+  type: TEXTURE
+  offset: 0x81639900
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81639360
+
+int_din_ptera_poleB_tex:
+  type: TEXTURE
+  offset: 0x81639B00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81639360
+
+int_din_ptera_head_v:
+  type: VTX
+  offset: 0x81639B80
+  count: 71
+
+int_din_ptera_head_model:
+  type: GFX
+  offset: 0x81639FF0
+  size: 0x68
+
+int_din_ptera_headT_model:
+  type: GFX
+  offset: 0x8163A058
+  size: 0x128

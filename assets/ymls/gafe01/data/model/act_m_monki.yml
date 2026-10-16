@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_monki_pal:
+  type: TEXTURE
+  offset: 0x812685A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_monki:
+  type: TEXTURE
+  offset: 0x812685C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x812685A0
+
+act_m_monki_v:
+  type: VTX
+  offset: 0x81268640
+  count: 12
+
+act_m_monki1T_model:
+  type: GFX
+  offset: 0x81268700
+  size: 0x60
+
+act_m_monki2T_model:
+  type: GFX
+  offset: 0x81268760
+  size: 0x60

@@ -3,6 +3,7 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_takurami01_yoko.h"
 
 static void eFlash_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eFlash_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -53,9 +54,6 @@ static void eFlash_mv(eEC_Effect_c* effect, GAME* game) {
     effect->scale.y = scale;
     effect->scale.z = scale;
 }
-
-extern Gfx ef_takurami01_normal_render_mode[];
-extern Gfx ef_takurami01_kira_modelT[];
 
 static void eFlash_dw(eEC_Effect_c* effect, GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;

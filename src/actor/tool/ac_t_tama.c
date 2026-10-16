@@ -5,6 +5,8 @@
 #include "m_lib.h"
 #include "m_rcp.h"
 #include "m_common_data.h"
+#include "assets/data/model/ef_tamaire01_r.h"
+#include "assets/data/model/tol_tamaire.h"
 
 static void aTTM_actor_draw(ACTOR* actor, GAME* game);
 
@@ -22,17 +24,6 @@ ACTOR_PROFILE T_Tama_Profile = {
     NULL
 };
 
-extern Gfx tama01_model[];
-extern Gfx tol_tamaire_model[];
-
-extern u8 tama01_r_tex[];
-extern u8 tama01_w_tex[];
-extern u8 tol_tamaire_r1_tex[];
-extern u8 tol_tamaire_r2_tex[];
-extern u8 tol_tamaire_r3_tex[];
-extern u8 tol_tamaire_w1_tex[];
-extern u8 tol_tamaire_w2_tex[];
-extern u8 tol_tamaire_w3_tex[];
 
 void aTTM_actor_draw(ACTOR* actor, GAME* game) {
     static Gfx* displayList[] = {

@@ -1,4 +1,4 @@
-extern Gfx int_nog_rail_model[];
+#include "assets/data/model/int_nog_rail.h"
 
 aFTR_PROFILE iam_nog_rail = {
 	int_nog_rail_model,

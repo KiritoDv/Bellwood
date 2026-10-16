@@ -1,0 +1,317 @@
+:config:
+  strict_declarations: true
+
+dvd_keikoku_moji1_1_tex:
+  type: TEXTURE
+  offset: 0x800B0A60
+  format: I4
+  width: 160
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji1_2_tex:
+  type: TEXTURE
+  offset: 0x800B0F60
+  format: I4
+  width: 160
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji1_3_tex:
+  type: TEXTURE
+  offset: 0x800B1460
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji1_4_tex:
+  type: TEXTURE
+  offset: 0x800B1660
+  format: I4
+  width: 192
+  height: 16
+  source_encoding: gx
+
+ctl_att_w1_tex:
+  type: TEXTURE
+  offset: 0x800B1C60
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+ctl_att_w2_tex:
+  type: TEXTURE
+  offset: 0x800B2060
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+ctl_att_w3_tex:
+  type: TEXTURE
+  offset: 0x800B2460
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+ctl_att_w4_tex:
+  type: TEXTURE
+  offset: 0x800B2860
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+ctl_att_w5_tex:
+  type: TEXTURE
+  offset: 0x800B2C60
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+ctl_att_w6_tex:
+  type: TEXTURE
+  offset: 0x800B3060
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku1_v:
+  type: VTX
+  offset: 0x800B30E0
+  count: 60
+
+keikoku1_dvd_att_moji_model:
+  type: GFX
+  offset: 0x800B34A0
+  size: 0x98
+
+keikoku1_dvd_att_winT_model:
+  type: GFX
+  offset: 0x800B3538
+  size: 0xF8
+
+dvd_keikoku_moji2_tex:
+  type: TEXTURE
+  offset: 0x800B3640
+  format: I4
+  width: 80
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji2_2_tex:
+  type: TEXTURE
+  offset: 0x800B38C0
+  format: I4
+  width: 192
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji2_3_tex:
+  type: TEXTURE
+  offset: 0x800B3EC0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku2_v:
+  type: VTX
+  offset: 0x800B3F40
+  count: 56
+
+keikoku2_dvd_att_moji_model:
+  type: GFX
+  offset: 0x800B42C0
+  size: 0x80
+
+keikoku2_dvd_att_winT_model:
+  type: GFX
+  offset: 0x800B4340
+  size: 0xF8
+
+dvd_keikoku_moji4_tex:
+  type: TEXTURE
+  offset: 0x800B4440
+  format: I4
+  width: 80
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji3_1_tex:
+  type: TEXTURE
+  offset: 0x800B46C0
+  format: I4
+  width: 192
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji3_2_tex:
+  type: TEXTURE
+  offset: 0x800B4CC0
+  format: I4
+  width: 80
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji3_3_tex:
+  type: TEXTURE
+  offset: 0x800B4F40
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku3_v:
+  type: VTX
+  offset: 0x800B4FC0
+  count: 68
+
+keikoku3_dvd_att_moji_model:
+  type: GFX
+  offset: 0x800B5400
+  size: 0xA8
+
+keikoku3_dvd_att_winT_model:
+  type: GFX
+  offset: 0x800B54A8
+  size: 0xF8
+
+dvd_keikoku_moji5_tex:
+  type: TEXTURE
+  offset: 0x800B55A0
+  format: I4
+  width: 96
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji6_2_tex:
+  type: TEXTURE
+  offset: 0x800B58A0
+  format: I4
+  width: 144
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji6_3_tex:
+  type: TEXTURE
+  offset: 0x800B5D20
+  format: I4
+  width: 80
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji6_tex:
+  type: TEXTURE
+  offset: 0x800B5FA0
+  format: I4
+  width: 128
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji6_1_tex:
+  type: TEXTURE
+  offset: 0x800B63A0
+  format: I4
+  width: 176
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji6_new1_tex:
+  type: TEXTURE
+  offset: 0x800B6920
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji6_new2_tex:
+  type: TEXTURE
+  offset: 0x800B6B20
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku4_v:
+  type: VTX
+  offset: 0x800B6D20
+  count: 72
+
+keikoku4_dvd_att_moji_model:
+  type: GFX
+  offset: 0x800B71A0
+  size: 0xE0
+
+keikoku4_dvd_att_winT_model:
+  type: GFX
+  offset: 0x800B7280
+  size: 0xF8
+
+dvd_keikoku_moji7_tex:
+  type: TEXTURE
+  offset: 0x800B7380
+  format: I4
+  width: 160
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji8_tex:
+  type: TEXTURE
+  offset: 0x800B7880
+  format: I4
+  width: 128
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji10_tex:
+  type: TEXTURE
+  offset: 0x800B7C80
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji11_tex:
+  type: TEXTURE
+  offset: 0x800B7E80
+  format: I4
+  width: 144
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji12_tex:
+  type: TEXTURE
+  offset: 0x800B8300
+  format: I4
+  width: 80
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku_moji9_tex:
+  type: TEXTURE
+  offset: 0x800B8580
+  format: I4
+  width: 160
+  height: 16
+  source_encoding: gx
+
+dvd_keikoku5_v:
+  type: VTX
+  offset: 0x800B8A80
+  count: 68
+
+keikoku5_dvd_att_moji_model:
+  type: GFX
+  offset: 0x800B8EC0
+  size: 0xC8
+
+keikoku5_dvd_att_winT_model:
+  type: GFX
+  offset: 0x800B8F88
+  size: 0xF8

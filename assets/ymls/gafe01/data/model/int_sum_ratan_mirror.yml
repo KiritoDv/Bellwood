@@ -1,0 +1,99 @@
+:config:
+  strict_declarations: true
+
+int_sum_ratan_mirror_pal:
+  type: TEXTURE
+  offset: 0x81A534C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_ratan_mirror_grass_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A534E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_ratan_mirror_table_tex:
+  type: TEXTURE
+  offset: 0x81A53500
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A534C0
+
+int_sum_ratan_mirror_head_tex:
+  type: TEXTURE
+  offset: 0x81A53580
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A534C0
+
+int_sum_ratan_mirror_front_tex:
+  type: TEXTURE
+  offset: 0x81A53680
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A534C0
+
+int_sum_ratan_mirror_back_tex:
+  type: TEXTURE
+  offset: 0x81A53880
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A534C0
+
+int_sum_ratan_mirror_side_tex:
+  type: TEXTURE
+  offset: 0x81A53A80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A534C0
+
+int_sum_ratan_mirror_bin_tex:
+  type: TEXTURE
+  offset: 0x81A53B00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A534C0
+
+int_sum_ratan_mirror_grass_tex:
+  type: TEXTURE
+  offset: 0x81A53B80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A534E0
+
+int_sum_ratan_mirror_v:
+  type: VTX
+  offset: 0x81A53C80
+  count: 56
+
+int_sum_ratan_mirror_on_model:
+  type: GFX
+  offset: 0x81A54000
+  size: 0xB0
+
+int_sum_ratan_mirror_evw_model:
+  type: GFX
+  offset: 0x81A540B0
+  size: 0x58
+
+int_sum_ratan_mirror_onT_model:
+  type: GFX
+  offset: 0x81A54108
+  size: 0xC0

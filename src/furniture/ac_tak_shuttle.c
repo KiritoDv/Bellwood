@@ -1,5 +1,4 @@
-extern Gfx int_tak_shuttle_on_model[];
-extern Gfx int_tak_shuttle_onT_model[];
+#include "assets/data/model/int_tak_shuttle.h"
 
 aFTR_PROFILE iam_tak_shuttle = {
 	int_tak_shuttle_on_model,

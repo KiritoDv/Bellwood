@@ -1,4 +1,4 @@
-extern Gfx int_sum_bla_desk01_on_model[];
+#include "assets/data/model/int_sum_bla_desk01.h"
 
 aFTR_PROFILE iam_sum_bla_desk01 = {
 	int_sum_bla_desk01_on_model,

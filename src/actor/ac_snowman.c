@@ -8,6 +8,8 @@
 #include "m_roll_lib.h"
 #include "m_handbill.h"
 #include "m_malloc.h"
+#include "assets/data/model/act_darumaA.h"
+#include "assets/data/model/act_darumaB.h"
 
 enum {
     aSMAN_PART0,
@@ -997,7 +999,7 @@ static int aSMAN_process_player_push(ACTOR* actorx, GAME* game) {
 
                 aSMAN_Make_Effect_Ground(actorx, game);
                 if (actorx->speed > 1.0f) {
-                    sAdo_OngenPos((u32)actorx, 52, &actorx->world.position);
+                    sAdo_OngenPos((uintptr_t)actorx, 52, &actorx->world.position);
                 }
                 aSMAN_player_push_scroll_request(actorx, game);
             }
@@ -1410,9 +1412,6 @@ static void aSMAN_actor_move(ACTOR* actorx, GAME* game) {
         CollisionCheck_setOC(game, &play->collision_check, &actor->col_pipe.collision_obj);
     }
 }
-
-extern Gfx act_darumaA_model[];
-extern Gfx act_darumaB_model[];
 
 static void aSMAN_actor_draw(ACTOR* actorx, GAME* game) {
     static Gfx* displayList[] = { act_darumaA_model, act_darumaB_model };

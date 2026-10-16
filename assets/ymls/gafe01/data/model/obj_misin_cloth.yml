@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+obj_misin_cloth_v:
+  type: VTX
+  offset: 0x812A8B60
+  count: 4
+
+obj_misin_cloth_model:
+  type: GFX
+  offset: 0x812A8BA0
+  size: 0x58

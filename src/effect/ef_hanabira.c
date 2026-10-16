@@ -3,13 +3,13 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_hana01_tu_a.h"
 
 static void eHanabira_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eHanabira_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
 static void eHanabira_mv(eEC_Effect_c* effect, GAME* game);
 static void eHanabira_dw(eEC_Effect_c* effect, GAME* game);
 #define EFFECT_LIFETIME 60
-extern Gfx ef_hana01_pa_a_modelT[], ef_hana01_co_a_modelT[], ef_hana01_tu_a_modelT[], ef_hana01_ha_a_modelT[];
 Gfx* ef_hanabira_model_tbl[] = { ef_hana01_pa_a_modelT, ef_hana01_co_a_modelT, ef_hana01_tu_a_modelT,
                                  ef_hana01_ha_a_modelT };
 eEC_PROFILE_c iam_ef_hanabira = {

@@ -4,6 +4,9 @@
 #include "m_debug.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/ef_circle_light.h"
+#include "assets/data/model/ef_sphere_light.h"
+#include "assets/data/model/ef_takurami01_yoko.h"
 
 #define eHM_TIMER 2000
 
@@ -109,8 +112,6 @@ static void eMH_mv(eEC_Effect_c* effect, GAME* game) {
     mEnv_OperateReservedPointLight_Color(eMH_special_point_light_num, col, col, col);
 }
 
-extern Gfx ef_sphere_light_model[];
-
 static void eMH_dw(eEC_Effect_c* effect, GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;
     xyz_t* pos = &effect->position;
@@ -204,9 +205,6 @@ static void eMHK_mv(eEC_Effect_c* effect, GAME* game) {
     }
 }
 
-extern Gfx ef_takurami01_normal_render_mode[];
-extern Gfx ef_takurami01_kira_modelT[];
-
 static void eMHK_dw(eEC_Effect_c* effect, GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;
 
@@ -269,8 +267,6 @@ static void eMHL_mv(eEC_Effect_c* effect, GAME* game) {
             effect->effect_specific[0] = 50;
     }
 }
-
-extern Gfx ef_circle_light_model[];
 
 static void eMHL_dw(eEC_Effect_c* effect, GAME* game) {
     u8 alpha = effect->effect_specific[0];

@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+ef_goki01_0_int_i4:
+  type: TEXTURE
+  offset: 0x81665700
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_goki01_1_int_i4:
+  type: TEXTURE
+  offset: 0x81665780
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_goki01_2_int_i4:
+  type: TEXTURE
+  offset: 0x81665800
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_goki01_3_int_i4:
+  type: TEXTURE
+  offset: 0x81665880
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_goki01_01_v:
+  type: VTX
+  offset: 0x81665900
+  count: 4
+
+ef_goki01_01_modelT:
+  type: GFX
+  offset: 0x81665940
+  size: 0x50
+
+ef_goki01_01_evw_anime:
+  type: AC:EVW_ANIME
+  offset: 0x816659B8

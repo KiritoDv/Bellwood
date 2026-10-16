@@ -1,0 +1,77 @@
+:config:
+  strict_declarations: true
+
+plc_1_v:
+  type: VTX
+  offset: 0x8134CE18
+  count: 371
+
+head_plc_model:
+  type: GFX
+  offset: 0x8134E548
+  size: 0x198
+
+Rarm2_plc_model:
+  type: GFX
+  offset: 0x8134E6E0
+  size: 0x80
+
+Rarm1_plc_model:
+  type: GFX
+  offset: 0x8134E760
+  size: 0x88
+
+Larm2_plc_model:
+  type: GFX
+  offset: 0x8134E7E8
+  size: 0x80
+
+Larm1_plc_model:
+  type: GFX
+  offset: 0x8134E868
+  size: 0x88
+
+chest_plc_model:
+  type: GFX
+  offset: 0x8134E8F0
+  size: 0x108
+
+tail1_plc_model:
+  type: GFX
+  offset: 0x8134E9F8
+  size: 0x58
+
+tail2_plc_model:
+  type: GFX
+  offset: 0x8134EA50
+  size: 0xA0
+
+Rfoot2_plc_model:
+  type: GFX
+  offset: 0x8134EAF0
+  size: 0x88
+
+Rfoot1_plc_model:
+  type: GFX
+  offset: 0x8134EB78
+  size: 0x80
+
+Lfoot2_plc_model:
+  type: GFX
+  offset: 0x8134EBF8
+  size: 0x88
+
+Lfoot1_plc_model:
+  type: GFX
+  offset: 0x8134EC80
+  size: 0x80
+
+base_plc_model:
+  type: GFX
+  offset: 0x8134ED00
+  size: 0xD0
+
+cKF_bs_r_plc_1:
+  type: AC:CKF_SKELETON
+  offset: 0x8134EF08
+  counts: { joints: 26 }

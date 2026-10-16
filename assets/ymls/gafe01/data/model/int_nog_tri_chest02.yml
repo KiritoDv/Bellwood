@@ -1,0 +1,49 @@
+:config:
+  strict_declarations: true
+
+int_nog_tri_chest02_pal:
+  type: TEXTURE
+  offset: 0x81920CA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_nog_tri_chest02_tex_txt:
+  type: TEXTURE
+  offset: 0x81920CC0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81920CA0
+
+int_nog_tri_chest02_v:
+  type: VTX
+  offset: 0x819214C0
+  count: 75
+
+int_nog_tri_chest02_doorL_model:
+  type: GFX
+  offset: 0x81921970
+  size: 0x68
+
+int_nog_tri_chest02_base_model:
+  type: GFX
+  offset: 0x819219D8
+  size: 0x88
+
+int_nog_tri_chest02_doorR_model:
+  type: GFX
+  offset: 0x81921A60
+  size: 0x68
+
+cKF_ba_r_int_nog_tri_chest02:
+  type: AC:CKF_ANIMATION
+  offset: 0x81921B90
+  joints: 5
+  counts: { flags: 5, data: 78, keys: 12, fixed: 6 }
+
+cKF_bs_r_int_nog_tri_chest02:
+  type: AC:CKF_SKELETON
+  offset: 0x81921BE0
+  counts: { joints: 5 }

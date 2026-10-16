@@ -1,0 +1,62 @@
+:config:
+  strict_declarations: true
+
+obj_s_tent_mat_pal:
+  type: TEXTURE
+  offset: 0x815A8B80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_tent_main_pal:
+  type: TEXTURE
+  offset: 0x815A8BA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_tent_mat:
+  type: TEXTURE
+  offset: 0x815A8BC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x815A8B80
+
+obj_s_tent_wall1:
+  type: TEXTURE
+  offset: 0x815A8CC0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x815A8BA0
+
+obj_s_tent_wall2:
+  type: TEXTURE
+  offset: 0x815A90C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x815A8BA0
+
+obj_s_tent_wall3:
+  type: TEXTURE
+  offset: 0x815A98C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x815A8BA0
+
+obj_s_tent_v:
+  type: VTX
+  offset: 0x815A9CC0
+  count: 105
+
+obj_s_tent_model:
+  type: GFX
+  offset: 0x815AA350
+  size: 0x190

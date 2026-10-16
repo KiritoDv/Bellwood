@@ -1,0 +1,107 @@
+:config:
+  strict_declarations: true
+
+int_sum_abura_pal:
+  type: TEXTURE
+  offset: 0x81984520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_abura_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81984540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_abura_body_txt:
+  type: TEXTURE
+  offset: 0x81984560
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81984520
+
+int_sum_abura_side_txt:
+  type: TEXTURE
+  offset: 0x81984760
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81984520
+
+int_sum_abura_base_txt:
+  type: TEXTURE
+  offset: 0x81984960
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81984520
+
+int_sum_abura_top_txt:
+  type: TEXTURE
+  offset: 0x819849E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81984520
+
+int_sum_abura_hand_txt:
+  type: TEXTURE
+  offset: 0x81984BE0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81984540
+
+int_sum_abura_v:
+  type: VTX
+  offset: 0x81984CE0
+  count: 71
+
+int_sum_abura_side_model:
+  type: GFX
+  offset: 0x81985150
+  size: 0x68
+
+int_sum_abura_komado_model:
+  type: GFX
+  offset: 0x819851B8
+  size: 0x58
+
+int_sum_abura_glass_model:
+  type: GFX
+  offset: 0x81985210
+  size: 0x68
+
+int_sum_abura_base_model:
+  type: GFX
+  offset: 0x81985278
+  size: 0xD0
+
+int_sum_abura_body_R_model:
+  type: GFX
+  offset: 0x81985348
+  size: 0x58
+
+int_sum_abura_body_L_model:
+  type: GFX
+  offset: 0x819853A0
+  size: 0x58
+
+cKF_ba_r_int_sum_abura:
+  type: AC:CKF_ANIMATION
+  offset: 0x8198554C
+  joints: 8
+  counts: { flags: 8, data: 138, keys: 9, fixed: 18 }
+
+cKF_bs_r_int_sum_abura:
+  type: AC:CKF_SKELETON
+  offset: 0x819855C0
+  counts: { joints: 8 }

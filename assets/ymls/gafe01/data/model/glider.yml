@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+glider_v:
+  type: VTX
+  offset: 0x81092DA0
+  count: 11
+
+glider_model:
+  type: GFX
+  offset: 0x81092E50
+  size: 0x50

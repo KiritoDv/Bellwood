@@ -1,0 +1,96 @@
+:config:
+  strict_declarations: true
+
+kei_win_pin_pal:
+  type: TEXTURE
+  offset: 0x814CD1E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+kei_win_pin_tex:
+  type: TEXTURE
+  offset: 0x814CD200
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x814CD1E0
+
+kei_win_w1_tex:
+  type: TEXTURE
+  offset: 0x814CD400
+  format: IA8
+  width: 128
+  height: 32
+  source_encoding: gx
+
+kei_win_w2_tex:
+  type: TEXTURE
+  offset: 0x814CE400
+  format: IA8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+kei_win_w3_tex:
+  type: TEXTURE
+  offset: 0x814CEC00
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kei_win_kage2_tex:
+  type: TEXTURE
+  offset: 0x814CF000
+  format: IA8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+kei_win_kage3_tex:
+  type: TEXTURE
+  offset: 0x814CF800
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kei_win_kage4_tex:
+  type: TEXTURE
+  offset: 0x814CFC00
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kei_win_v:
+  type: VTX
+  offset: 0x814D0000
+  count: 59
+
+kei_win_kamiT_model:
+  type: GFX
+  offset: 0x814D03B0
+  size: 0x80
+
+kei_win_pinT_model:
+  type: GFX
+  offset: 0x814D0430
+  size: 0x40
+
+kei_win_wakuT_model:
+  type: GFX
+  offset: 0x814D0470
+  size: 0x88
+
+kei_win_mode:
+  type: GFX
+  offset: 0x814D04F8
+  size: 0x20
+
+kei_win_model:
+  type: GFX
+  offset: 0x814D0518
+  size: 0x28

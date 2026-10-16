@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_w_bushB_tex:
+  type: TEXTURE
+  offset: 0x8162A580
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+mFM_grd_w_bushB_2_tex:
+  type: TEXTURE
+  offset: 0x8162A980
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+mFM_grd_w_bushB_3_tex:
+  type: TEXTURE
+  offset: 0x8162AD80
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx

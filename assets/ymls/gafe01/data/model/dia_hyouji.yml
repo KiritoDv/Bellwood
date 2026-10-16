@@ -1,0 +1,85 @@
+:config:
+  strict_declarations: true
+
+dir_win_diary_tex:
+  type: TEXTURE
+  offset: 0x814059A0
+  format: IA8
+  width: 80
+  height: 16
+  source_encoding: gx
+
+kei_win_quit_tex:
+  type: TEXTURE
+  offset: 0x81405EA0
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+lat_tegami_b2_tex:
+  type: TEXTURE
+  offset: 0x814060A0
+  format: RGBA16
+  width: 32
+  height: 32
+  source_encoding: gx
+
+lat_sousa_2b1_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x814068A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+lat_tegami_b3_tex:
+  type: TEXTURE
+  offset: 0x81406AA0
+  format: RGBA16
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kei_win_2b1_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x814072A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+dia_hyouji_v:
+  type: VTX
+  offset: 0x814074A0
+  count: 16
+
+kei_win_b2_model_1_data_4075A0:
+  type: GFX
+  offset: 0x814075A0
+  size: 0x40
+
+dia_win_bb_model:
+  type: GFX
+  offset: 0x814075E0
+  size: 0x40
+
+kei_win_amojiT_model_1_data_407620:
+  type: GFX
+  offset: 0x81407620
+  size: 0x40
+
+dia_win_mojiT_model:
+  type: GFX
+  offset: 0x81407660
+  size: 0x40
+
+dia_init_mode_letter:
+  type: GFX
+  offset: 0x814076A0
+  size: 0x20
+
+dia_init_mode:
+  type: GFX
+  offset: 0x814076C0
+  size: 0x20

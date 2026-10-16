@@ -1,0 +1,67 @@
+:config:
+  strict_declarations: true
+
+obj_e_mikanbox_tex:
+  type: TEXTURE
+  offset: 0x8153B400
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+obj_e_mikanbox_v:
+  type: VTX
+  offset: 0x8153B800
+  count: 28
+
+obj_e_mikanbox_model:
+  type: GFX
+  offset: 0x8153B9C0
+  size: 0x50
+
+copyright_tex:
+  type: TEXTURE
+  offset: 0x8153BA20
+  format: I4
+  width: 256
+  height: 16
+  source_encoding: gx
+
+obj_e_mikanbox_copyrightT_model:
+  type: GFX
+  offset: 0x8153C220
+  size: 0x40
+
+end_notice2_tex:
+  type: TEXTURE
+  offset: 0x8153C260
+  format: I4
+  width: 256
+  height: 16
+  source_encoding: gx
+
+end_notice1_tex:
+  type: TEXTURE
+  offset: 0x8153CA60
+  format: I4
+  width: 256
+  height: 16
+  source_encoding: gx
+
+end_notice3_tex:
+  type: TEXTURE
+  offset: 0x8153D260
+  format: I4
+  width: 256
+  height: 16
+  source_encoding: gx
+
+end_notice_v:
+  type: VTX
+  offset: 0x8153DA60
+  count: 12
+
+obj_e_mikanbox_copyrightT_model2:
+  type: GFX
+  offset: 0x8153DB20
+  size: 0x78

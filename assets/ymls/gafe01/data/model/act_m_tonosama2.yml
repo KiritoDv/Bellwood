@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_tonosama_v:
+  type: VTX
+  offset: 0x818791C0
+  count: 18
+
+act_m_tonosama_pal:
+  type: TEXTURE
+  offset: 0x818792E0
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_tonosama:
+  type: TEXTURE
+  offset: 0x81879300
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: n64
+  tlut: 0x818792E0
+
+act_m_mu_tonosama1T_model:
+  type: GFX
+  offset: 0x81879500
+  size: 0xD8
+
+act_m_mu_tonosama2_2T_model:
+  type: GFX
+  offset: 0x818795D8
+  size: 0xC0

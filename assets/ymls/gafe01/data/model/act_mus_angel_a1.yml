@@ -1,0 +1,30 @@
+:config:
+  strict_declarations: true
+
+act_mus_angel_body_txt:
+  type: TEXTURE
+  offset: 0x816786E0
+  format: RGBA16
+  width: 48
+  height: 32
+  source_encoding: gx
+
+act_mus_angel_a1_v:
+  type: VTX
+  offset: 0x816792E0
+  count: 54
+
+act_mus_angel_sakana_body_model:
+  type: GFX
+  offset: 0x81679640
+  size: 0x70
+
+act_mus_angel_sakana_head_model:
+  type: GFX
+  offset: 0x816796B0
+  size: 0x40
+
+cKF_bs_r_act_mus_angel_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x81679714
+  counts: { joints: 3 }

@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+int_sum_stereo02_pal:
+  type: TEXTURE
+  offset: 0x81A60260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_stereo02_front_tex:
+  type: TEXTURE
+  offset: 0x81A60280
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A60260
+
+int_sum_stereo02_side_tex:
+  type: TEXTURE
+  offset: 0x81A60680
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A60260
+
+int_sum_stereo02_top_tex:
+  type: TEXTURE
+  offset: 0x81A60880
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A60260
+
+int_sum_stereo02_s_side_tex:
+  type: TEXTURE
+  offset: 0x81A60980
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A60260
+
+int_sum_stereo02_v:
+  type: VTX
+  offset: 0x81A60A80
+  count: 60
+
+int_sum_stereo02_on_model:
+  type: GFX
+  offset: 0x81A60E40
+  size: 0xE8

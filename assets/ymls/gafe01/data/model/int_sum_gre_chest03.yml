@@ -1,0 +1,80 @@
+:config:
+  strict_declarations: true
+
+int_sum_gre_chest03_pal:
+  type: TEXTURE
+  offset: 0x819F1860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_gre_chest03_hiki_tex_txt:
+  type: TEXTURE
+  offset: 0x819F1880
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819F1860
+
+int_sum_gre_chest03_in_tex_txt:
+  type: TEXTURE
+  offset: 0x819F1980
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819F1860
+
+int_sum_gre_chest03_front_tex_txt:
+  type: TEXTURE
+  offset: 0x819F1A00
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x819F1860
+
+int_sum_gre_chest03_top_tex_txt:
+  type: TEXTURE
+  offset: 0x819F1E00
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819F1860
+
+int_sum_gre_chest03_side_tex_txt:
+  type: TEXTURE
+  offset: 0x819F1F00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F1860
+
+int_sum_gre_chest03_v:
+  type: VTX
+  offset: 0x819F2000
+  count: 40
+
+int_sum_gre_chest03_door_model:
+  type: GFX
+  offset: 0x819F2280
+  size: 0xA8
+
+int_sum_gre_chest03_base_model:
+  type: GFX
+  offset: 0x819F2328
+  size: 0xA8
+
+cKF_ba_r_int_sum_gre_chest03:
+  type: AC:CKF_ANIMATION
+  offset: 0x819F245C
+  joints: 3
+  counts: { flags: 3, data: 54, keys: 9, fixed: 3 }
+
+cKF_bs_r_int_sum_gre_chest03:
+  type: AC:CKF_SKELETON
+  offset: 0x819F2494
+  counts: { joints: 3 }

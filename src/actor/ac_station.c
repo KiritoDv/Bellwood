@@ -18,6 +18,8 @@
 #include "m_string.h"
 #include "m_card.h"
 #include "m_cpak.h"
+#include "assets/data/model/obj_s_station1.h"
+#include "assets/data/model/obj_station1_shadow.h"
 
 enum {
     aSTA_ACTION_WAIT,
@@ -101,16 +103,6 @@ static u8 aSTA_shadow_vtx_fix_flg_table2[] = {
 };
 // clang-format on
 
-extern Vtx obj_station1_shadow_v[];
-extern Vtx obj_station2_shadow_v[];
-extern Vtx obj_station3_shadow_v[];
-
-extern Gfx obj_station1_shadow_lowT_model[];
-extern Gfx obj_station1_shadow_hiT_model[];
-extern Gfx obj_station2_shadow_low_model[];
-extern Gfx obj_station2_shadow_hi_model[];
-extern Gfx obj_station3_shadow_low_model[];
-extern Gfx obj_station3_shadow_hi_model[];
 
 // clang-format off
 static bIT_ShadowData_c aSTA_shadow_low_data0 = {
@@ -172,19 +164,6 @@ static bIT_ShadowData_c aSTA_shadow_hi_data2 = {
 };
 // clang-format on
 
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_station1;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_station1;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_station2;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_station2;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_station3;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_station3;
-
-extern cKF_Animation_R_c cKF_ba_r_obj_s_station1;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_station1;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_station2;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_station2;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_station3;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_station3;
 
 static void aSTA_setup_action(STATION_ACTOR* station, int action);
 static void aSTC_clip_ct(void);

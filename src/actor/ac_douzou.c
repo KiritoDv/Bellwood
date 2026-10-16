@@ -4,6 +4,8 @@
 #include "m_common_data.h"
 #include "m_name_table.h"
 #include "m_house.h"
+#include "assets/data/model/obj_s_douzou.h"
+#include "assets/data/model/obj_s_douzou_shadow.h"
 
 static void aDOU_actor_ct(ACTOR*, GAME*);
 static void aDOU_actor_dt(ACTOR*, GAME*);
@@ -24,39 +26,6 @@ ACTOR_PROFILE Douzou_Profile = {
     NULL,
 };
 
-extern u8 obj_s_douzou_b1_tex_pic_i4[];
-extern u8 obj_s_douzou_b2_tex_pic_i4[];
-extern u8 obj_s_douzou_b3_tex_pic_i4[];
-extern u8 obj_s_douzou_b4_tex_pic_i4[];
-extern u8 obj_s_douzou_b5_tex_pic_i4[];
-extern u8 obj_s_douzou_b6_tex_pic_i4[];
-extern u8 obj_s_douzou_b7_tex_pic_i4[];
-extern u8 obj_s_douzou_b8_tex_pic_i4[];
-extern u8 obj_s_douzou_g1_tex_pic_i4[];
-extern u8 obj_s_douzou_g2_tex_pic_i4[];
-extern u8 obj_s_douzou_g3_tex_pic_i4[];
-extern u8 obj_s_douzou_g4_tex_pic_i4[];
-extern u8 obj_s_douzou_g5_tex_pic_i4[];
-extern u8 obj_s_douzou_g6_tex_pic_i4[];
-extern u8 obj_s_douzou_b7_tex_pic_i4[];
-extern u8 obj_s_douzou_g8_tex_pic_i4[];
-
-extern u8 obj_w_douzou_b1_tex_pic_i4[];
-extern u8 obj_w_douzou_b2_tex_pic_i4[];
-extern u8 obj_w_douzou_b3_tex_pic_i4[];
-extern u8 obj_w_douzou_b4_tex_pic_i4[];
-extern u8 obj_w_douzou_b5_tex_pic_i4[];
-extern u8 obj_w_douzou_b6_tex_pic_i4[];
-extern u8 obj_w_douzou_b7_tex_pic_i4[];
-extern u8 obj_w_douzou_b8_tex_pic_i4[];
-extern u8 obj_w_douzou_g1_tex_pic_i4[];
-extern u8 obj_w_douzou_g2_tex_pic_i4[];
-extern u8 obj_w_douzou_g3_tex_pic_i4[];
-extern u8 obj_w_douzou_g4_tex_pic_i4[];
-extern u8 obj_w_douzou_g5_tex_pic_i4[];
-extern u8 obj_w_douzou_g6_tex_pic_i4[];
-extern u8 obj_w_douzou_b7_tex_pic_i4[];
-extern u8 obj_w_douzou_g8_tex_pic_i4[];
 
 static u8* eye_tbl[2 * (mPr_SEX_NUM * mPr_FACE_TYPE_NUM)] = {
     obj_s_douzou_b1_tex_pic_i4, obj_s_douzou_b2_tex_pic_i4, obj_s_douzou_b3_tex_pic_i4, obj_s_douzou_b4_tex_pic_i4,
@@ -70,15 +39,6 @@ static u8* eye_tbl[2 * (mPr_SEX_NUM * mPr_FACE_TYPE_NUM)] = {
     obj_w_douzou_g5_tex_pic_i4, obj_w_douzou_g6_tex_pic_i4, obj_w_douzou_b7_tex_pic_i4, obj_w_douzou_g8_tex_pic_i4,
 };
 
-extern u8 obj_s_douzou_bm1_tex_pic_i4[];
-extern u8 obj_s_douzou_bm2_tex_pic_i4[];
-extern u8 obj_s_douzou_gm1_tex_pic_i4[];
-extern u8 obj_s_douzou_gm2_tex_pic_i4[];
-
-extern u8 obj_w_douzou_bm1_tex_pic_i4[];
-extern u8 obj_w_douzou_bm2_tex_pic_i4[];
-extern u8 obj_w_douzou_gm1_tex_pic_i4[];
-extern u8 obj_w_douzou_gm2_tex_pic_i4[];
 
 static u8* mouth_tbl[2 * (mPr_SEX_NUM * mPr_FACE_TYPE_NUM)] = {
     obj_s_douzou_bm2_tex_pic_i4, obj_s_douzou_bm1_tex_pic_i4, obj_s_douzou_bm1_tex_pic_i4, obj_s_douzou_bm2_tex_pic_i4,
@@ -95,14 +55,9 @@ static u8* mouth_tbl[2 * (mPr_SEX_NUM * mPr_FACE_TYPE_NUM)] = {
 static f32 zpostbl[mHS_HOUSE_NUM] = { 200.0f, 200.0f, 280.0f, 280.0f };
 static f32 xpostbl[mHS_HOUSE_NUM] = { 0.0f, 200.0f, -40.0f, 160.0f };
 
-extern Vtx obj_s_douzou_shadow_v[];
-extern Gfx obj_s_douzou_shadow_model[];
 static u8 aDOU_shadow_vtx_fix_flg_table[8] = { TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE };
 static bIT_ShadowData_c aDOU_shadow_data = { 8, aDOU_shadow_vtx_fix_flg_table, 60.0f, obj_s_douzou_shadow_v,
                                              obj_s_douzou_shadow_model };
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_douzou;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_douzou;
 
 static void aDOU_set_bgOffset(ACTOR*, int);
 static void aDOU_setup_action(ACTOR*, int);

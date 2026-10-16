@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_obj_s_post_flag_on1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8129BC58
+  joints: 6
+  counts: { flags: 6, data: 69, keys: 9, fixed: 12 }

@@ -1,0 +1,89 @@
+:config:
+  strict_declarations: true
+
+int_sum_kisha_pal:
+  type: TEXTURE
+  offset: 0x81A10100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_kisha_kishafront_tex_txt:
+  type: TEXTURE
+  offset: 0x81A10120
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A10100
+
+int_sum_kisha_kishaside_tex_txt:
+  type: TEXTURE
+  offset: 0x81A10220
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A10100
+
+int_sum_kisha_kishatop_tex_txt:
+  type: TEXTURE
+  offset: 0x81A10320
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A10100
+
+int_sum_kisha_nidai_tex_txt:
+  type: TEXTURE
+  offset: 0x81A10420
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A10100
+
+int_sum_kisha_top_tex_txt:
+  type: TEXTURE
+  offset: 0x81A10520
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A10100
+
+int_sum_kisha_yama_tex_txt:
+  type: TEXTURE
+  offset: 0x81A10720
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A10100
+
+int_sum_kisha_v:
+  type: VTX
+  offset: 0x81A10920
+  count: 111
+
+int_sum_kisha_kisha_model:
+  type: GFX
+  offset: 0x81A11010
+  size: 0x110
+
+int_sum_kisha_base_model:
+  type: GFX
+  offset: 0x81A11120
+  size: 0x108
+
+cKF_ba_r_int_sum_kisha:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A11254
+  joints: 3
+  counts: { flags: 3, data: 6, keys: 1, fixed: 11 }
+
+cKF_bs_r_int_sum_kisha:
+  type: AC:CKF_SKELETON
+  offset: 0x81A1128C
+  counts: { joints: 3 }

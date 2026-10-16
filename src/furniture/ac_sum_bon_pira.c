@@ -1,5 +1,4 @@
-extern Gfx int_sum_boke_pira_on_model[];
-extern Gfx int_sum_boke_pira_onT_model[];
+#include "assets/data/model/int_sum_bon_pira.h"
 
 aFTR_PROFILE iam_sum_bon_pira = {
 	int_sum_boke_pira_on_model,

@@ -2,7 +2,7 @@
 #define LB_RTC_H
 
 #include "types.h"
-#include "dolphin/os/OSTime.h"
+#include "ac_port.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -98,7 +98,7 @@ enum RTC_EQUALITY_FLAGS {
                     lbRTC_CHECK_YEARS
 };
 
-extern OSTime lbRTC_HardTime();
+extern ACTime lbRTC_HardTime();
 extern int lbRTC_IsAbnormal();
 extern void lbRTC_Sampling();
 extern void lbRTC_SetTime(lbRTC_time_c* time);

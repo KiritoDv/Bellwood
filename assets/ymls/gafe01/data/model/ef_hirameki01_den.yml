@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+ef_hirameki01_0:
+  type: TEXTURE
+  offset: 0x81667D40
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+ef_hirameki01_den_v:
+  type: VTX
+  offset: 0x81667F40
+  count: 4
+
+ef_hirameki01_den_modelT:
+  type: GFX
+  offset: 0x81667F80
+  size: 0x48
+
+ef_hirameki01_1:
+  type: TEXTURE
+  offset: 0x81667FE0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_hirameki01_hikari_v:
+  type: VTX
+  offset: 0x81668060
+  count: 4
+
+ef_hirameki01_hikari_modelT:
+  type: GFX
+  offset: 0x816680A0
+  size: 0x50

@@ -1,5 +1,4 @@
-extern Gfx int_sum_log_table02_on_model[];
-extern Gfx int_sum_log_table02_onT_model[];
+#include "assets/data/model/int_sum_log_table02.h"
 
 aFTR_PROFILE iam_sum_log_table02 = {
 	int_sum_log_table02_on_model,

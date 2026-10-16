@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+int_ike_k_tanabata01_pal:
+  type: TEXTURE
+  offset: 0x8183A680
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_k_tanasasa1_tex_txt:
+  type: TEXTURE
+  offset: 0x8183A6A0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8183A680
+
+int_ike_k_tanasasa2_tex_txt:
+  type: TEXTURE
+  offset: 0x8183AAA0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x8183A680
+
+int_ike_k_tanabase1_tex_txt:
+  type: TEXTURE
+  offset: 0x8183ADA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8183A680
+
+int_ike_k_tanasasa3_tex_txt:
+  type: TEXTURE
+  offset: 0x8183AE20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8183A680
+
+int_ike_k_tanabata01_v:
+  type: VTX
+  offset: 0x8183AF20
+  count: 67
+
+int_ike_k_tanabata01_body_model:
+  type: GFX
+  offset: 0x8183B350
+  size: 0x1B0

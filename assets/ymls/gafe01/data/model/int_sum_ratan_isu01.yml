@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_ratan_isu01_pal:
+  type: TEXTURE
+  offset: 0x81A51460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_ratan_isu01_seat_tax:
+  type: TEXTURE
+  offset: 0x81A51480
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A51460
+
+int_sum_ratan_isu01_back_tax:
+  type: TEXTURE
+  offset: 0x81A51580
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A51460
+
+int_sum_ratan_isu01_board_tax:
+  type: TEXTURE
+  offset: 0x81A51680
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A51460
+
+int_sum_ratan_isu01_side_tax:
+  type: TEXTURE
+  offset: 0x81A51780
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A51460
+
+int_sum_ratan_isu01_outside_tax:
+  type: TEXTURE
+  offset: 0x81A51880
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A51460
+
+int_sum_ratan_isu01_sidein_tax:
+  type: TEXTURE
+  offset: 0x81A51980
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A51460
+
+int_sum_ratan_isu01_foot_tax:
+  type: TEXTURE
+  offset: 0x81A51A80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A51460
+
+int_sum_ratan_isu01_v:
+  type: VTX
+  offset: 0x81A51B00
+  count: 70
+
+int_sum_ratan_isu01_on_model:
+  type: GFX
+  offset: 0x81A51F60
+  size: 0xF0
+
+int_sum_ratan_isu01_onT_model:
+  type: GFX
+  offset: 0x81A52050
+  size: 0x90

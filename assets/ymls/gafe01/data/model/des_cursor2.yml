@@ -1,0 +1,72 @@
+:config:
+  strict_declarations: true
+
+des_cursor_kao1_tex:
+  type: TEXTURE
+  offset: 0x813F9280
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_cursor_kao2_tex:
+  type: TEXTURE
+  offset: 0x813F9680
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_cursor_kao3_tex:
+  type: TEXTURE
+  offset: 0x813F9A80
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_cursor_kao4_tex:
+  type: TEXTURE
+  offset: 0x813F9E80
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_cursor_kao5_tex:
+  type: TEXTURE
+  offset: 0x813FA080
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_cursor2_v:
+  type: VTX
+  offset: 0x813FA280
+  count: 20
+
+des_cursor_kao4_model:
+  type: GFX
+  offset: 0x813FA3C0
+  size: 0x48
+
+des_cursor_kao5_model:
+  type: GFX
+  offset: 0x813FA408
+  size: 0x48
+
+des_cursor_kao1T_model:
+  type: GFX
+  offset: 0x813FA450
+  size: 0x50
+
+des_cursor_kao2T_model:
+  type: GFX
+  offset: 0x813FA4A0
+  size: 0x50
+
+des_cursor_kao3T_model:
+  type: GFX
+  offset: 0x813FA4F0
+  size: 0x50

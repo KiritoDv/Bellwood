@@ -1,0 +1,50 @@
+:config:
+  strict_declarations: true
+
+ef_ase01_0:
+  type: TEXTURE
+  offset: 0x81660140
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_ase02_00_v:
+  type: VTX
+  offset: 0x816601C0
+  count: 20
+
+ef_ase02_00_modelT:
+  type: GFX
+  offset: 0x81660300
+  size: 0x60
+
+ef_ase02_01_v:
+  type: VTX
+  offset: 0x81660360
+  count: 20
+
+ef_ase02_01_modelT:
+  type: GFX
+  offset: 0x816604A0
+  size: 0x68
+
+ef_ase02_02_v:
+  type: VTX
+  offset: 0x81660508
+  count: 20
+
+ef_ase02_02_modelT:
+  type: GFX
+  offset: 0x81660648
+  size: 0x68
+
+ef_ase02_03_v:
+  type: VTX
+  offset: 0x816606B0
+  count: 20
+
+ef_ase02_03_modelT:
+  type: GFX
+  offset: 0x816607F0
+  size: 0x68

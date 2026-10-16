@@ -1,0 +1,16 @@
+:config:
+  strict_declarations: true
+
+obj_b_hole_pal:
+  type: TEXTURE
+  offset: 0x81104EC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_g_hole_pal:
+  type: TEXTURE
+  offset: 0x81104EE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx

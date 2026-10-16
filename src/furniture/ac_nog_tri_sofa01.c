@@ -1,4 +1,4 @@
-extern Gfx int_nog_tri_sofa01_model[];
+#include "assets/data/model/int_nog_tri_sofa01.h"
 
 aFTR_PROFILE iam_nog_tri_sofa01 = {
 	int_nog_tri_sofa01_model,

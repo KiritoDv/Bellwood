@@ -175,6 +175,12 @@ typedef union collision_bg_u {
     u32 raw;
 } mCoBG_Collision_u;
 
+static inline u32 mCoBG_col_key(const mCoBG_Collision_u* col) {
+    return ((u32)col->data.slate_flag << 31) | ((u32)col->data.center << 26) | ((u32)col->data.top_left << 21) |
+           ((u32)col->data.bot_left << 16) | ((u32)col->data.bot_right << 11) | ((u32)col->data.top_right << 6) |
+           (u32)col->data.unit_attribute;
+}
+
 typedef struct collision_unit_info_s {
     mCoBG_Collision_u* collision;
     f32 leftUp_offset;

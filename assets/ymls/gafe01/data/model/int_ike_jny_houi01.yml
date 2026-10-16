@@ -1,0 +1,75 @@
+:config:
+  strict_declarations: true
+
+int_ike_jny_houi01_pal:
+  type: TEXTURE
+  offset: 0x81827180
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_jny_houijisyaku_tex_txt:
+  type: TEXTURE
+  offset: 0x818271A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81827180
+
+int_ike_jny_houi1_tex_txt:
+  type: TEXTURE
+  offset: 0x81827220
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81827180
+
+int_ike_jny_houiface1_tex_txt:
+  type: TEXTURE
+  offset: 0x818272A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81827180
+
+int_ike_jny_houiface2_pic_i4:
+  type: TEXTURE
+  offset: 0x818274A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_ike_jny_houi01_v:
+  type: VTX
+  offset: 0x818276A0
+  count: 39
+
+int_ike_jny_houi01_on_hari_model:
+  type: GFX
+  offset: 0x81827910
+  size: 0x58
+
+int_ike_jny_houi01_on_model:
+  type: GFX
+  offset: 0x81827968
+  size: 0xB8
+
+int_ike_jny_houi01_off_model:
+  type: GFX
+  offset: 0x81827A20
+  size: 0x68
+
+cKF_ba_r_int_ike_jny_houi01:
+  type: AC:CKF_ANIMATION
+  offset: 0x81827B60
+  joints: 4
+  counts: { flags: 4, data: 90, keys: 6, fixed: 9 }
+
+cKF_bs_r_int_ike_jny_houi01:
+  type: AC:CKF_SKELETON
+  offset: 0x81827BA4
+  counts: { joints: 4 }

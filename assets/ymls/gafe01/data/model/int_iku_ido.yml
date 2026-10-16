@@ -1,0 +1,109 @@
+:config:
+  strict_declarations: true
+
+int_iku_ido_pal:
+  type: TEXTURE
+  offset: 0x8185A2E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_ido_ab_tex_txt:
+  type: TEXTURE
+  offset: 0x8185A300
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8185A2E0
+
+int_iku_ido_i_tex_txt:
+  type: TEXTURE
+  offset: 0x8185A500
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8185A2E0
+
+int_iku_ido_h_tex_txt:
+  type: TEXTURE
+  offset: 0x8185A580
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8185A2E0
+
+int_iku_ido_g_tex_txt:
+  type: TEXTURE
+  offset: 0x8185A600
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8185A2E0
+
+int_iku_ido_f_tex_txt:
+  type: TEXTURE
+  offset: 0x8185A680
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8185A2E0
+
+int_iku_ido_e_tex_txt:
+  type: TEXTURE
+  offset: 0x8185A880
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8185A2E0
+
+int_iku_ido_c_tex_txt:
+  type: TEXTURE
+  offset: 0x8185A900
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8185A2E0
+
+int_iku_ido_b_tex_txt:
+  type: TEXTURE
+  offset: 0x8185A980
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8185A2E0
+
+int_iku_ido_j_tex_txt:
+  type: TEXTURE
+  offset: 0x8185AA80
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x8185A2E0
+
+int_iku_ido_d_tex_txt:
+  type: TEXTURE
+  offset: 0x8185AB00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8185A2E0
+
+int_iku_ido_v:
+  type: VTX
+  offset: 0x8185AB80
+  count: 112
+
+int_iku_ido_model:
+  type: GFX
+  offset: 0x8185B280
+  size: 0x1D8

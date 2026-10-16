@@ -1,0 +1,58 @@
+:config:
+  strict_declarations: true
+
+ef_takurami01_0us:
+  type: TEXTURE
+  offset: 0x81672CA0
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+ef_takurami01_yoko_v:
+  type: VTX
+  offset: 0x81672EA0
+  count: 4
+
+ef_takurami01_yoko_v2:
+  type: VTX
+  offset: 0x81672EE0
+  count: 4
+
+ef_takurami01_yoko_modelT:
+  type: GFX
+  offset: 0x81672F20
+  size: 0x50
+
+ef_takurami01_yoko_modelT2:
+  type: GFX
+  offset: 0x81672F70
+  size: 0x50
+
+ef_takurami01_kira_v:
+  type: VTX
+  offset: 0x81672FC0
+  count: 4
+
+ef_takurami01_kira_modelT:
+  type: GFX
+  offset: 0x81673000
+  size: 0x90
+
+ef_takurami01_1:
+  type: TEXTURE
+  offset: 0x81673090
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: n64
+
+ef_takurami01_normal_render_mode:
+  type: GFX
+  offset: 0x81673190
+  size: 0x10
+
+ef_takurami01_menu_render_mode:
+  type: GFX
+  offset: 0x816731A0
+  size: 0x10

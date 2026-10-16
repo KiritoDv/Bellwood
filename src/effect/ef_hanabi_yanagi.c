@@ -3,6 +3,7 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_hanabi_y_00.h"
 
 static void eHanabiYanagi_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eHanabiYanagi_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -78,7 +79,6 @@ eEC_morph_data_c eHanabiYanagi_morph_data_in[] = {
     { 0, 0, FALSE, 0.f, 0.f },     { 0, 0, FALSE, 200.f, 200.f },  { 0, 0, FALSE, 255.f, 255.f },
 };
 
-extern Gfx ef_hanabi_y_00_modelT[];
 static void eHanabiYanagi_dw(eEC_Effect_c* effect, GAME* game) {
     u8 res1[9];
     u8 res2[9];

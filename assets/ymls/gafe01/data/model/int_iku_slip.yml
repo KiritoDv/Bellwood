@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_iku_slip_pal:
+  type: TEXTURE
+  offset: 0x81865320
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_slip_all_tex_txt:
+  type: TEXTURE
+  offset: 0x81865340
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81865320
+
+int_iku_slip_v:
+  type: VTX
+  offset: 0x81865740
+  count: 94
+
+int_iku_slip_model_model:
+  type: GFX
+  offset: 0x81865D20
+  size: 0xC0

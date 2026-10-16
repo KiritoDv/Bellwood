@@ -1,6 +1,6 @@
 #include "ac_npc_mask_cat.h"
 
-#include "dolphin/os/OSRtc.h"
+#include "gc_compat.h"
 #include "libc64/qrand.h"
 #include "libultra/libultra.h"
 #include "m_actor_type.h"

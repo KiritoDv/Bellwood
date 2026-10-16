@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+obj_zassou_b_v:
+  type: VTX
+  offset: 0x811040B8
+  count: 4
+
+obj_zassou_bT_gfx_model:
+  type: GFX
+  offset: 0x811040F8
+  size: 0x18

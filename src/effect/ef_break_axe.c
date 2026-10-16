@@ -4,6 +4,7 @@
 #include "m_debug.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_axe1.h"
 
 static void eBreak_Axe_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eBreak_Axe_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -170,10 +171,6 @@ static void eBreak_Axe_mv(eEC_Effect_c* effect, GAME* game) {
         }
     }
 }
-
-extern Gfx ef_axe1_model[];
-extern Gfx ef_axe2_model[];
-extern Gfx ef_axe3_model[];
 
 static void eBreak_Axe_dw(eEC_Effect_c* effect, GAME* game) {
     u8 a = (int)eEC_CLIP->calc_adjust_proc(effect->timer, 0, (15 + GETREG(TAKREG, 61)) * 2, 0.0f, 255.0f);

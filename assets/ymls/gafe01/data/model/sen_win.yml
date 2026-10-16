@@ -1,0 +1,72 @@
+:config:
+  strict_declarations: true
+
+sen_win_wa1_tex:
+  type: TEXTURE
+  offset: 0x814DDE20
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+sen_win_wa2_tex:
+  type: TEXTURE
+  offset: 0x814DEE20
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+sen_win_waku1_tex:
+  type: TEXTURE
+  offset: 0x814DFE20
+  format: I4
+  width: 64
+  height: 128
+  source_encoding: gx
+
+sen_win_yaji2_tex:
+  type: TEXTURE
+  offset: 0x814E0E20
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+sen_item2_yaji_tex:
+  type: TEXTURE
+  offset: 0x814E0F20
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+sen_win_v:
+  type: VTX
+  offset: 0x814E0FA0
+  count: 34
+
+sen_win_cursor_model:
+  type: GFX
+  offset: 0x814E11C0
+  size: 0x30
+
+sen_win_kageT_model:
+  type: GFX
+  offset: 0x814E11F0
+  size: 0x48
+
+sen_win_wakuT_model:
+  type: GFX
+  offset: 0x814E1238
+  size: 0x70
+
+sen_win_yajirushiT_model:
+  type: GFX
+  offset: 0x814E12A8
+  size: 0x38
+
+sen_win_yajirushi2T_model:
+  type: GFX
+  offset: 0x814E12E0
+  size: 0x40

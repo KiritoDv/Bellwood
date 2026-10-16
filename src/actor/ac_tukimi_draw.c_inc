@@ -1,5 +1,4 @@
-extern Gfx obj_e_tukimi_l_endai_model[];
-extern Gfx obj_e_tukimi_r_endai_model[];
+#include "assets/data/model/obj_e_tukimi_r.h"
 
 static int aTUK_actor_draw_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape, u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {
     if (joint_idx == 7) {

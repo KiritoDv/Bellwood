@@ -1,5 +1,4 @@
-extern Gfx int_sum_classictable01_on_model[];
-extern Gfx int_sum_classictable01_onT_model[];
+#include "assets/data/model/int_sum_classictable01.h"
 
 aFTR_PROFILE iam_sum_classictable01 = {
 	int_sum_classictable01_on_model,

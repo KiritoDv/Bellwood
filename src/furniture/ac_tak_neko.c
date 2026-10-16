@@ -1,5 +1,4 @@
-extern Gfx int_tak_neko_on_model[];
-extern Gfx int_tak_neko_onT_model[];
+#include "assets/data/model/int_tak_neko.h"
 
 aFTR_PROFILE iam_tak_neko = {
 	int_tak_neko_on_model,

@@ -1,0 +1,96 @@
+:config:
+  strict_declarations: true
+
+int_sum_guitar03_pal:
+  type: TEXTURE
+  offset: 0x819F6E00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_guitar03_back_tex:
+  type: TEXTURE
+  offset: 0x819F6E20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F6E00
+
+int_sum_guitar03_side_tex:
+  type: TEXTURE
+  offset: 0x819F7020
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819F6E00
+
+int_sum_guitar03_head_tex:
+  type: TEXTURE
+  offset: 0x819F70A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F6E00
+
+int_sum_guitar03_backhead_tex:
+  type: TEXTURE
+  offset: 0x819F71A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819F6E00
+
+int_sum_guitar03_front_tex:
+  type: TEXTURE
+  offset: 0x819F7220
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F6E00
+
+int_sum_guitar03_hand_tex:
+  type: TEXTURE
+  offset: 0x819F7420
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819F6E00
+
+int_sum_guitar03_chest_tex:
+  type: TEXTURE
+  offset: 0x819F74A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F6E00
+
+int_sum_guitar03_neck_tex:
+  type: TEXTURE
+  offset: 0x819F75A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819F6E00
+
+int_sum_guitar03_v:
+  type: VTX
+  offset: 0x819F7620
+  count: 67
+
+int_sum_guitar_03_on_model:
+  type: GFX
+  offset: 0x819F7A50
+  size: 0xA8
+
+int_sum_guitar_03_onT_model:
+  type: GFX
+  offset: 0x819F7AF8
+  size: 0xE8

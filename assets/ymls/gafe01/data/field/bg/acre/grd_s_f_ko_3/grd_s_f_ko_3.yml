@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+grd_s_f_ko_3_v:
+  type: VTX
+  offset: 0x81702FA0
+  count: 249
+
+grd_s_f_ko_3_modelT:
+  type: GFX
+  offset: 0x81703F30
+  size: 0x78
+
+grd_s_f_ko_3_model:
+  type: GFX
+  offset: 0x81703FA8
+  size: 0x260

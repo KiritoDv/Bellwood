@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_suzumushi_pal:
+  type: TEXTURE
+  offset: 0x8126A060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_suzumushi:
+  type: TEXTURE
+  offset: 0x8126A080
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x8126A060
+
+act_m_suzumushi_v:
+  type: VTX
+  offset: 0x8126A280
+  count: 10
+
+act_m_suzumushi1T_model:
+  type: GFX
+  offset: 0x8126A320
+  size: 0x60
+
+act_m_suzumushi2_2T_model:
+  type: GFX
+  offset: 0x8126A380
+  size: 0x58

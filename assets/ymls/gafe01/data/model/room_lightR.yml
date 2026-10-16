@@ -1,0 +1,50 @@
+:config:
+  strict_declarations: true
+
+light_window:
+  type: TEXTURE
+  offset: 0x81373E80
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: n64
+
+room_lightR_v:
+  type: VTX
+  offset: 0x81373F00
+  count: 10
+
+room_lightL_v:
+  type: VTX
+  offset: 0x81373FA0
+  count: 10
+
+light_shine01_mode:
+  type: GFX
+  offset: 0x81374040
+  size: 0x20
+
+light_shineL01_vtx:
+  type: GFX
+  offset: 0x81374060
+  size: 0x20
+
+light_shineR01_vtx:
+  type: GFX
+  offset: 0x81374080
+  size: 0x20
+
+light_floor01_mode:
+  type: GFX
+  offset: 0x813740A0
+  size: 0x68
+
+light_floorL01_vtx:
+  type: GFX
+  offset: 0x81374108
+  size: 0x18
+
+light_floorR01_vtx:
+  type: GFX
+  offset: 0x81374120
+  size: 0x18

@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+con_waku_swaku3_tex:
+  type: TEXTURE
+  offset: 0x81002380
+  format: I4
+  width: 128
+  height: 64
+  source_encoding: gx
+
+con_sentaku2_v:
+  type: VTX
+  offset: 0x81003380
+  count: 4
+
+con_sentaku2_modelT:
+  type: GFX
+  offset: 0x810033C0
+  size: 0x38

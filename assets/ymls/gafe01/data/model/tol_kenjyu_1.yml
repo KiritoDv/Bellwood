@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+tol_kenjyu_1_pal:
+  type: TEXTURE
+  offset: 0x815C6700
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_kenjyu_1_tex:
+  type: TEXTURE
+  offset: 0x815C6720
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815C6700
+
+tol_kenjyu_1_v:
+  type: VTX
+  offset: 0x815C6920
+  count: 65
+
+tol_kenjyu_1T_model:
+  type: GFX
+  offset: 0x815C6D30
+  size: 0xB0

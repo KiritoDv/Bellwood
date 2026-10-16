@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+rom_museum5_wall_pal:
+  type: TEXTURE
+  offset: 0x818CF7A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_museum5_wallA_tex:
+  type: TEXTURE
+  offset: 0x818CF7C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818CF7A0
+
+rom_museum5_wall_v:
+  type: VTX
+  offset: 0x818CFFC0
+  count: 7
+
+rom_museum5_wall_model:
+  type: GFX
+  offset: 0x818D0030
+  size: 0x58

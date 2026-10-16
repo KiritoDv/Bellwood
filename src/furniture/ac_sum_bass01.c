@@ -1,5 +1,4 @@
-extern Gfx int_sum_bass01_on_model[];
-extern Gfx int_sum_bass01_onT_model[];
+#include "assets/data/model/int_sum_bass01.h"
 static void aSumBass01_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aSumBass01_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aSumBass01_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);

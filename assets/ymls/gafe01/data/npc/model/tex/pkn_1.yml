@@ -1,0 +1,23 @@
+:config:
+  strict_declarations: true
+
+pkn_1_pal:
+  type: TEXTURE
+  offset: 0x8124BEE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+pkn_1_tmem_txt:
+  type: AC:TEX_ATLAS
+  offset: 0x8124BF00
+  size: 0x680
+  regions:
+    - { offset: 0x0, format: CI4, width: 16, height: 8 }
+    - { offset: 0x40, format: CI4, width: 32, height: 16 }
+    - { offset: 0x140, format: CI4, width: 32, height: 8 }
+    - { offset: 0x1C0, format: CI4, width: 16, height: 8 }
+    - { offset: 0x200, format: CI4, width: 48, height: 32 }
+    - { offset: 0x500, format: CI4, width: 16, height: 8 }
+    - { offset: 0x540, format: CI4, width: 16, height: 32 }
+    - { offset: 0x640, format: CI4, width: 16, height: 8 }

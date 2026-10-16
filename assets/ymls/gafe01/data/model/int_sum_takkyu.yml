@@ -1,0 +1,78 @@
+:config:
+  strict_declarations: true
+
+int_sum_takkyu_pal:
+  type: TEXTURE
+  offset: 0x81A65620
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_takkyu_top_tex:
+  type: TEXTURE
+  offset: 0x81A65640
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A65620
+
+int_sum_takkyu_net_tex:
+  type: TEXTURE
+  offset: 0x81A65840
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A65620
+
+int_sum_takkyu_foot_tex:
+  type: TEXTURE
+  offset: 0x81A65940
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A65620
+
+int_sum_takkyu_foot02_tex:
+  type: TEXTURE
+  offset: 0x81A65A40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A65620
+
+int_sum_takkyu_bat_tex:
+  type: TEXTURE
+  offset: 0x81A65B40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A65620
+
+int_sum_takkyu_ball_tex:
+  type: TEXTURE
+  offset: 0x81A65C40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A65620
+
+int_sum_takkyu_v:
+  type: VTX
+  offset: 0x81A65CC0
+  count: 69
+
+int_sum_takkyu_on_model:
+  type: GFX
+  offset: 0x81A66110
+  size: 0x68
+
+int_sum_takkyu_onT_model:
+  type: GFX
+  offset: 0x81A66178
+  size: 0xF8

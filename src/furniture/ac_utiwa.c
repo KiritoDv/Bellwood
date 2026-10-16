@@ -1,3 +1,11 @@
+#include "assets/data/model/obj_shop_utiwa1.h"
+#include "assets/data/model/obj_shop_utiwa2.h"
+#include "assets/data/model/obj_shop_utiwa3.h"
+#include "assets/data/model/obj_shop_utiwa4.h"
+#include "assets/data/model/obj_shop_utiwa5.h"
+#include "assets/data/model/obj_shop_utiwa6.h"
+#include "assets/data/model/obj_shop_utiwa7.h"
+#include "assets/data/model/obj_shop_utiwa8.h"
 static void fUW_ct(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
@@ -10,28 +18,10 @@ static void fUW_dt(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
 
-extern Gfx obj_shop_utiwa1_mat_model[];
-extern Gfx obj_shop_utiwa2_mat_model[];
-extern Gfx obj_shop_utiwa3_mat_model[];
-extern Gfx obj_shop_utiwa4_mat_model[];
-extern Gfx obj_shop_utiwa5_mat_model[];
-extern Gfx obj_shop_utiwa6_mat_model[];
-extern Gfx obj_shop_utiwa7_mat_model[];
-extern Gfx obj_shop_utiwa8_mat_model[];
-
 static Gfx* fUW_mat_table[] = {
     obj_shop_utiwa1_mat_model, obj_shop_utiwa2_mat_model, obj_shop_utiwa3_mat_model, obj_shop_utiwa4_mat_model,
     obj_shop_utiwa5_mat_model, obj_shop_utiwa6_mat_model, obj_shop_utiwa7_mat_model, obj_shop_utiwa8_mat_model,
 };
-
-extern Gfx obj_shop_utiwa1_gfx_model[];
-extern Gfx obj_shop_utiwa2_gfx_model[];
-extern Gfx obj_shop_utiwa3_gfx_model[];
-extern Gfx obj_shop_utiwa4_gfx_model[];
-extern Gfx obj_shop_utiwa5_gfx_model[];
-extern Gfx obj_shop_utiwa6_gfx_model[];
-extern Gfx obj_shop_utiwa7_gfx_model[];
-extern Gfx obj_shop_utiwa8_gfx_model[];
 
 static Gfx* fUW_gfx_table[] = {
     obj_shop_utiwa1_gfx_model, obj_shop_utiwa2_gfx_model, obj_shop_utiwa3_gfx_model, obj_shop_utiwa4_gfx_model,

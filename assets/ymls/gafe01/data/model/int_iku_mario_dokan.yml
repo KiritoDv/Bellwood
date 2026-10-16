@@ -1,0 +1,58 @@
+:config:
+  strict_declarations: true
+
+int_iku_mario_dokan_pal:
+  type: TEXTURE
+  offset: 0x8185CF00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_mario_dokan_b_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x8185CF20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_mario_dokan_a_tex_txt:
+  type: TEXTURE
+  offset: 0x8185CF40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8185CF00
+
+int_iku_mario_dokan_c_tex_txt:
+  type: TEXTURE
+  offset: 0x8185D140
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x8185CF00
+
+int_iku_mario_dokan_b_tex_txt:
+  type: TEXTURE
+  offset: 0x8185D180
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8185CF20
+
+int_iku_mario_dokan_v:
+  type: VTX
+  offset: 0x8185D280
+  count: 47
+
+int_iku_mario_dokan_model_b_model:
+  type: GFX
+  offset: 0x8185D570
+  size: 0x90
+
+int_iku_mario_dokan_model_a_model:
+  type: GFX
+  offset: 0x8185D600
+  size: 0x98

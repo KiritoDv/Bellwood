@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_utiwa_pal:
+  type: TEXTURE
+  offset: 0x81890080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_utiwa_tex:
+  type: TEXTURE
+  offset: 0x818900A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81890080
+
+obj_item_utiwa_v:
+  type: VTX
+  offset: 0x818902A0
+  count: 4
+
+obj_item_utiwaT_mat_model:
+  type: GFX
+  offset: 0x818902E0
+  size: 0x48
+
+obj_item_utiwaT_gfx_model:
+  type: GFX
+  offset: 0x81890328
+  size: 0x18

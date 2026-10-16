@@ -1,0 +1,111 @@
+:config:
+  strict_declarations: true
+
+sen_qitem_kage_tex:
+  type: TEXTURE
+  offset: 0x814DC980
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+sen_win_yaji2_tex:
+  type: TEXTURE
+  offset: 0x814DCD80
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+sen_qitem_waku_tex:
+  type: TEXTURE
+  offset: 0x814DCE80
+  format: IA8
+  width: 64
+  height: 32
+  source_encoding: gx
+
+sen_itemw_yaji2_tex:
+  type: TEXTURE
+  offset: 0x814DD680
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+sen_qitem_yajirushi:
+  type: TEXTURE
+  offset: 0x814DD780
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+sen_qitem_yajirushi2:
+  type: TEXTURE
+  offset: 0x814DD800
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+sen_itemw_yaji_tex:
+  type: TEXTURE
+  offset: 0x814DD900
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+sen_item2_yaji_tex:
+  type: TEXTURE
+  offset: 0x814DD980
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+sen_qitem_v:
+  type: VTX
+  offset: 0x814DDA00
+  count: 32
+
+sen_qitem_kage_model:
+  type: GFX
+  offset: 0x814DDC00
+  size: 0x40
+
+sen_qitem_yajirushi3_model:
+  type: GFX
+  offset: 0x814DDC40
+  size: 0x40
+
+sen_qitem_yajirushi5_model:
+  type: GFX
+  offset: 0x814DDC80
+  size: 0x40
+
+sen_qitem_wakuT_model:
+  type: GFX
+  offset: 0x814DDCC0
+  size: 0x48
+
+sen_qitem_yajirushiT_model:
+  type: GFX
+  offset: 0x814DDD08
+  size: 0x38
+
+sen_qitem_yajirushi2T_model:
+  type: GFX
+  offset: 0x814DDD40
+  size: 0x48
+
+sen_qitem_yajirushi4T_model:
+  type: GFX
+  offset: 0x814DDD88
+  size: 0x48
+
+sen_qitem_yajirushi6T_model:
+  type: GFX
+  offset: 0x814DDDD0
+  size: 0x48

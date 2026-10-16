@@ -1,0 +1,38 @@
+#ifndef ASSETS_DATA_MODEL_INT_SUM_CLASSICWARDROPE01_H
+#define ASSETS_DATA_MODEL_INT_SUM_CLASSICWARDROPE01_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const char int_sum_classicwardrope01_pal01_pal[];
+extern const char int_sum_classicwardrope01_mirror_rgb_ci4_pal[];
+extern const char int_sum_classicwardrope01_back[];
+extern const char int_sum_classicwardrope01_front[];
+extern const char int_sum_classicwardrope01_side[];
+extern const char int_sum_classicwardrope01_top[];
+extern const char int_sum_classicwardrope01_dolls[];
+extern const char int_sum_classicwardrope01_mirror[];
+extern const char int_sum_classicwardrope01_v[];
+extern const char int_sum_classcwardrope01_on_model[];
+extern const char int_sum_classcwardrope01_onT_model[];
+extern const char int_sum_classicwardrope_envT_model[];
+
+#define int_sum_classicwardrope01_pal01_pal_PATH "__OTR__data/model/int_sum_classicwardrope01/int_sum_classicwardrope01_pal01_pal"
+#define int_sum_classicwardrope01_mirror_rgb_ci4_pal_PATH "__OTR__data/model/int_sum_classicwardrope01/int_sum_classicwardrope01_mirror_rgb_ci4_pal"
+#define int_sum_classicwardrope01_back_PATH "__OTR__data/model/int_sum_classicwardrope01/int_sum_classicwardrope01_back"
+#define int_sum_classicwardrope01_front_PATH "__OTR__data/model/int_sum_classicwardrope01/int_sum_classicwardrope01_front"
+#define int_sum_classicwardrope01_side_PATH "__OTR__data/model/int_sum_classicwardrope01/int_sum_classicwardrope01_side"
+#define int_sum_classicwardrope01_top_PATH "__OTR__data/model/int_sum_classicwardrope01/int_sum_classicwardrope01_top"
+#define int_sum_classicwardrope01_dolls_PATH "__OTR__data/model/int_sum_classicwardrope01/int_sum_classicwardrope01_dolls"
+#define int_sum_classicwardrope01_mirror_PATH "__OTR__data/model/int_sum_classicwardrope01/int_sum_classicwardrope01_mirror"
+#define int_sum_classicwardrope01_v_PATH "__OTR__data/model/int_sum_classicwardrope01/int_sum_classicwardrope01_v"
+#define int_sum_classcwardrope01_on_model_PATH "__OTR__data/model/int_sum_classicwardrope01/int_sum_classcwardrope01_on_model"
+#define int_sum_classcwardrope01_onT_model_PATH "__OTR__data/model/int_sum_classicwardrope01/int_sum_classcwardrope01_onT_model"
+#define int_sum_classicwardrope_envT_model_PATH "__OTR__data/model/int_sum_classicwardrope01/int_sum_classicwardrope_envT_model"
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

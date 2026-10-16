@@ -1,0 +1,119 @@
+:config:
+  strict_declarations: true
+
+int_ike_prores_sandbag01_pal:
+  type: TEXTURE
+  offset: 0x81845A60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_prores_sandbag01_bodyic1_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81845A80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_prores_sandbag01_base3_tex_txt:
+  type: TEXTURE
+  offset: 0x81845AA0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81845A60
+
+int_ike_prores_sandbag01_pole3_tex_txt:
+  type: TEXTURE
+  offset: 0x81845B20
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81845A60
+
+int_ike_prores_sandbag01_base1_tex_txt:
+  type: TEXTURE
+  offset: 0x81845B60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81845A60
+
+int_ike_prores_sandbag01_base2_tex_txt:
+  type: TEXTURE
+  offset: 0x81845D60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81845A60
+
+int_ike_prores_sandbag01_pole2_tex_txt:
+  type: TEXTURE
+  offset: 0x81845E60
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81845A60
+
+int_ike_prores_sandbag01_pole1_tex_txt:
+  type: TEXTURE
+  offset: 0x81845EE0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81845A60
+
+int_ike_prores_sandbag01_pole4_tex_txt:
+  type: TEXTURE
+  offset: 0x81845F60
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81845A60
+
+int_ike_prores_sandbag01_bodyic1_tex_txt:
+  type: TEXTURE
+  offset: 0x81845FA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81845A80
+
+int_ike_prores_sandbag01_v:
+  type: VTX
+  offset: 0x818460A0
+  count: 105
+
+int_ike_prores_sandbag_chain_model:
+  type: GFX
+  offset: 0x81846730
+  size: 0xA8
+
+int_ike_prores_sandbag_body_model:
+  type: GFX
+  offset: 0x818467D8
+  size: 0xB8
+
+int_ike_prores_sandbag_base_model:
+  type: GFX
+  offset: 0x81846890
+  size: 0x130
+
+cKF_ba_r_int_ike_prores_sandbag01:
+  type: AC:CKF_ANIMATION
+  offset: 0x81846AA4
+  joints: 3
+  counts: { flags: 3, data: 99, keys: 6, fixed: 6 }
+
+cKF_bs_r_int_ike_prores_sandbag01:
+  type: AC:CKF_SKELETON
+  offset: 0x81846ADC
+  counts: { joints: 3 }

@@ -1,0 +1,24 @@
+:config:
+  strict_declarations: true
+
+hem_1_pal:
+  type: TEXTURE
+  offset: 0x812501E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+hem_1_tmem_txt:
+  type: AC:TEX_ATLAS
+  offset: 0x81250200
+  size: 0x740
+  regions:
+    - { offset: 0x0, format: CI4, width: 32, height: 32 }
+    - { offset: 0x200, format: CI4, width: 16, height: 8 }
+    - { offset: 0x240, format: CI4, width: 16, height: 16 }
+    - { offset: 0x2C0, format: CI4, width: 16, height: 16 }
+    - { offset: 0x340, format: CI4, width: 16, height: 8 }
+    - { offset: 0x380, format: CI4, width: 32, height: 32 }
+    - { offset: 0x580, format: CI4, width: 16, height: 16 }
+    - { offset: 0x600, format: CI4, width: 16, height: 8 }
+    - { offset: 0x640, format: CI4, width: 16, height: 32 }

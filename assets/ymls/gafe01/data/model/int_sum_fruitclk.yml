@@ -1,0 +1,85 @@
+:config:
+  strict_declarations: true
+
+int_sum_fruitclk_pal:
+  type: TEXTURE
+  offset: 0x819E1CC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_fruitclk_hari_tex_txt:
+  type: TEXTURE
+  offset: 0x819E1CE0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E1CC0
+
+int_sum_fruitclk_body_tex_txt:
+  type: TEXTURE
+  offset: 0x819E1DE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E1CC0
+
+int_sum_fruitclk_front_tex_txt:
+  type: TEXTURE
+  offset: 0x819E1FE0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E1CC0
+
+int_sum_fruitclk_antena_tex_txt:
+  type: TEXTURE
+  offset: 0x819E22E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E1CC0
+
+int_sum_fruitclk_ha_tex_txt:
+  type: TEXTURE
+  offset: 0x819E2360
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E1CC0
+
+int_sum_fruitclk_v:
+  type: VTX
+  offset: 0x819E23E0
+  count: 39
+
+int_sum_fruitclk_long_model:
+  type: GFX
+  offset: 0x819E2650
+  size: 0x58
+
+int_sum_fruitclk_base_model:
+  type: GFX
+  offset: 0x819E26A8
+  size: 0xF0
+
+int_sum_fruitclk_short_model:
+  type: GFX
+  offset: 0x819E2798
+  size: 0x58
+
+cKF_ba_r_int_sum_fruitclk:
+  type: AC:CKF_ANIMATION
+  offset: 0x819E281C
+  joints: 5
+  counts: { flags: 5, data: 0, keys: 0, fixed: 18 }
+
+cKF_bs_r_int_sum_fruitclk:
+  type: AC:CKF_SKELETON
+  offset: 0x819E286C
+  counts: { joints: 5 }

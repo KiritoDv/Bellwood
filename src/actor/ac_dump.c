@@ -5,12 +5,9 @@
 #include "sys_matrix.h"
 #include "m_player_lib.h"
 #include "m_common_data.h"
+#include "assets/data/model/obj_dump_shadow.h"
+#include "assets/data/model/obj_s_dump.h"
 
-extern Gfx dump_s_DL_model[];
-extern Gfx dump_w_DL_model[];
-
-extern Vtx obj_dump_shadow_v[];
-extern Gfx obj_dump_shadowT_model[];
 
 static void aDUM_actor_ct(ACTOR* actor, GAME* game);
 static void aDUM_actor_dt(ACTOR* actor, GAME* game);

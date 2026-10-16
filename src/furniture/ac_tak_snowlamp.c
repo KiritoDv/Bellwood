@@ -1,5 +1,4 @@
-extern Gfx int_tak_snowlamp_off_model[];
-extern Gfx int_tak_snowlamp_offT_model[];
+#include "assets/data/model/int_tak_snowlamp.h"
 
 aFTR_PROFILE iam_tak_snowlamp = {
 	int_tak_snowlamp_off_model,

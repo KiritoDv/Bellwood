@@ -1,0 +1,92 @@
+:config:
+  strict_declarations: true
+
+itemName_paper:
+  type: BLOB
+  offset: 0x81272160
+  size: 0x1000
+
+itemName_money:
+  type: BLOB
+  offset: 0x81273160
+  size: 0x40
+
+itemName_tool:
+  type: BLOB
+  offset: 0x812731A0
+  size: 0x5C0
+
+itemName_fish:
+  type: BLOB
+  offset: 0x81273760
+  size: 0x280
+
+itemName_cloth:
+  type: BLOB
+  offset: 0x812739E0
+  size: 0xFF0
+
+itemName_etc:
+  type: BLOB
+  offset: 0x812749D0
+  size: 0x310
+
+itemName_carpet:
+  type: BLOB
+  offset: 0x81274CE0
+  size: 0x430
+
+itemName_wall:
+  type: BLOB
+  offset: 0x81275110
+  size: 0x430
+
+itemName_fruit:
+  type: BLOB
+  offset: 0x81275540
+  size: 0x80
+
+itemName_plant:
+  type: BLOB
+  offset: 0x812755C0
+  size: 0xB0
+
+itemName_minidisk:
+  type: BLOB
+  offset: 0x81275670
+  size: 0x370
+
+itemName_dummy:
+  type: BLOB
+  offset: 0x812759E0
+  size: 0x100
+
+itemName_ticket:
+  type: BLOB
+  offset: 0x81275AE0
+  size: 0x600
+
+itemName_insect:
+  type: BLOB
+  offset: 0x812760E0
+  size: 0x2D0
+
+itemName_hukubukuro:
+  type: BLOB
+  offset: 0x812763B0
+  size: 0x20
+
+itemName_kabu:
+  type: BLOB
+  offset: 0x812763D0
+  size: 0x40
+
+ftrName_table:
+  type: BLOB
+  offset: 0x81276410
+  size: 0x4000
+
+ftrName2_table:
+  type: BLOB
+  offset: 0x8127A410
+  size: 0xF20

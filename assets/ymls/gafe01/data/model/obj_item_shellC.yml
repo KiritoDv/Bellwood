@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_shell_pal:
+  type: TEXTURE
+  offset: 0x81895480
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_shellC_tex:
+  type: TEXTURE
+  offset: 0x818954A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81895480
+
+obj_item_shellC_v:
+  type: VTX
+  offset: 0x81895520
+  count: 4
+
+obj_item_shellCT_mat_model:
+  type: GFX
+  offset: 0x81895560
+  size: 0x48
+
+obj_item_shellCT_gfx_model:
+  type: GFX
+  offset: 0x818955A8
+  size: 0x18

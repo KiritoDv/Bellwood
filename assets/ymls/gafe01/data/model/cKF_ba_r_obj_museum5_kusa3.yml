@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_obj_museum5_kusa3:
+  type: AC:CKF_ANIMATION
+  offset: 0x81696050
+  joints: 4
+  counts: { flags: 4, data: 33, keys: 3, fixed: 12 }

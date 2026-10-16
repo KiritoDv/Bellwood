@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_din_bront_pal:
+  type: TEXTURE
+  offset: 0x81631200
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_din_bront_dummy_tex:
+  type: TEXTURE
+  offset: 0x81631220
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81631200
+
+int_din_bront_dummy_v:
+  type: VTX
+  offset: 0x81631420
+  count: 8
+
+int_din_bront_dummy_model:
+  type: GFX
+  offset: 0x816314A0
+  size: 0x68

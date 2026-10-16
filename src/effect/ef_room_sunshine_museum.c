@@ -5,15 +5,13 @@
 #include "m_debug.h"
 #include "m_collision_bg.h"
 #include "sys_matrix.h"
+#include "assets/data/model/obj_museum1_shine.h"
 
-void Ef_Room_Sunshine_Museum_actor_ct(ACTOR* actorx, GAME* game);
-void Ef_Room_Sunshine_MuseumL_actor_draw(ACTOR* actorx, GAME* game);
-void Ef_Room_Sunshine_MuseumL_actor_move(ACTOR* actorx, GAME* game);
-void Ef_Room_Sunshine_MuseumR_actor_draw(ACTOR* actorx, GAME* game);
-void Ef_Room_Sunshine_MuseumR_actor_move(ACTOR* actorx, GAME* game);
-
-extern Gfx obj_museum1_shine_model[];
-extern Gfx obj_museum1_shine_modelT[];
+static void Ef_Room_Sunshine_Museum_actor_ct(ACTOR* actorx, GAME* game);
+static void Ef_Room_Sunshine_MuseumL_actor_draw(ACTOR* actorx, GAME* game);
+static void Ef_Room_Sunshine_MuseumL_actor_move(ACTOR* actorx, GAME* game);
+static void Ef_Room_Sunshine_MuseumR_actor_draw(ACTOR* actorx, GAME* game);
+static void Ef_Room_Sunshine_MuseumR_actor_move(ACTOR* actorx, GAME* game);
 
 ACTOR_PROFILE Room_Sunshine_Museum_Profile = {
     mAc_PROFILE_ROOM_SUNSHINE_MUSEUM,

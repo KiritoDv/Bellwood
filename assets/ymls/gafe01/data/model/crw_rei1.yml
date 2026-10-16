@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+crw_rei1_pal:
+  type: TEXTURE
+  offset: 0x815C75A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+crw_rei1_tex_txt:
+  type: TEXTURE
+  offset: 0x815C75C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815C75A0
+
+crw_rei1_v:
+  type: VTX
+  offset: 0x815C77C0
+  count: 220
+
+crw_rei1_body_model:
+  type: GFX
+  offset: 0x815C8580
+  size: 0x1E8

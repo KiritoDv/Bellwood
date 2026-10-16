@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+ef_car01_1_int_i4:
+  type: TEXTURE
+  offset: 0x816623C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_car01_v:
+  type: VTX
+  offset: 0x81662440
+  count: 37
+
+ef_car01_modelT:
+  type: GFX
+  offset: 0x81662690
+  size: 0x110
+
+ef_carhosi01_01:
+  type: TEXTURE
+  offset: 0x816627A0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_carhosi01_00_v:
+  type: VTX
+  offset: 0x81662BA0
+  count: 4
+
+ef_carhosi01_00_modelT:
+  type: GFX
+  offset: 0x81662BE0
+  size: 0x50

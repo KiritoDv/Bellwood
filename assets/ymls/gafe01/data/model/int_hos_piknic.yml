@@ -1,0 +1,37 @@
+:config:
+  strict_declarations: true
+
+int_hos_piknic_pal:
+  type: TEXTURE
+  offset: 0x81811E40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_hos_piknic_wood_txt:
+  type: TEXTURE
+  offset: 0x81811E60
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81811E40
+
+int_hos_piknic_cloth_txt:
+  type: TEXTURE
+  offset: 0x81812260
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81811E40
+
+int_hos_piknic_v:
+  type: VTX
+  offset: 0x81812660
+  count: 102
+
+int_hos_piknic_all_model:
+  type: GFX
+  offset: 0x81812CC0
+  size: 0x100

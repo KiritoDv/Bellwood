@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+it_sum_taru01_pal:
+  type: TEXTURE
+  offset: 0x81A67E00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_taru01_side_tex:
+  type: TEXTURE
+  offset: 0x81A67E20
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A67E00
+
+int_sum_taru01_top_tex:
+  type: TEXTURE
+  offset: 0x81A68020
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A67E00
+
+int_sum_taru01_sentop_tex:
+  type: TEXTURE
+  offset: 0x81A68420
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A67E00
+
+int_sum_taru01_v:
+  type: VTX
+  offset: 0x81A684A0
+  count: 50
+
+int_sum_taru01_onT_model:
+  type: GFX
+  offset: 0x81A687C0
+  size: 0x100

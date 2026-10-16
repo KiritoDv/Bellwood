@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_touro01_pal:
+  type: TEXTURE
+  offset: 0x81A6FE80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_touro01_mado_tex:
+  type: TEXTURE
+  offset: 0x81A6FEA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A6FE80
+
+int_sum_touro01_madodown_tex:
+  type: TEXTURE
+  offset: 0x81A6FFA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A6FE80
+
+int_sum_touro01_stand_tex:
+  type: TEXTURE
+  offset: 0x81A70020
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A6FE80
+
+int_sum_touro01_madotop_tex:
+  type: TEXTURE
+  offset: 0x81A70220
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A6FE80
+
+int_sum_touro01_yanetop_tex:
+  type: TEXTURE
+  offset: 0x81A702A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A6FE80
+
+int_sum_touro01_kazari_tex:
+  type: TEXTURE
+  offset: 0x81A703A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A6FE80
+
+int_sum_touro01_yane_tex:
+  type: TEXTURE
+  offset: 0x81A70420
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A6FE80
+
+int_sum_touro01_v:
+  type: VTX
+  offset: 0x81A704A0
+  count: 69
+
+int_sum_touro01_on_model:
+  type: GFX
+  offset: 0x81A708F0
+  size: 0xB8
+
+int_sum_touro01_onT_model:
+  type: GFX
+  offset: 0x81A709A8
+  size: 0xF0

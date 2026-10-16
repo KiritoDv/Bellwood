@@ -1,0 +1,10 @@
+:config:
+  strict_declarations: true
+
+FONT_nes_tex_jyouge:
+  type: TEXTURE
+  offset: 0x8120A700
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx

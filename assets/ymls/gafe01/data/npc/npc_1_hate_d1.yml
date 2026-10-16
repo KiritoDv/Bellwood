@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_hate_d1:
+  type: AC:NPC_ANIM
+  offset: 0x812EBF90
+  joints: 26
+  counts: { flags: 26, data: 372, keys: 51, fixed: 30, eye_seq: 13 }

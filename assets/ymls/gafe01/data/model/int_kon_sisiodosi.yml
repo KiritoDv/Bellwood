@@ -1,0 +1,89 @@
+:config:
+  strict_declarations: true
+
+int_kon_sisiodosi_pal:
+  type: TEXTURE
+  offset: 0x818AE3E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_sisiodosi_tutu_tex_txt:
+  type: TEXTURE
+  offset: 0x818AE400
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818AE3E0
+
+int_kon_sisiodosi_soko_tex_txt:
+  type: TEXTURE
+  offset: 0x818AE500
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AE3E0
+
+int_kon_sisiodosi_mae_tex_txt:
+  type: TEXTURE
+  offset: 0x818AE580
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AE3E0
+
+int_kon_sisiodosi_tuti_tex_txt:
+  type: TEXTURE
+  offset: 0x818AE600
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AE3E0
+
+int_kon_sisiodosi_iwa_tex_txt:
+  type: TEXTURE
+  offset: 0x818AE680
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AE3E0
+
+int_kon_sisiodosi_koisi_tex_txt:
+  type: TEXTURE
+  offset: 0x818AE700
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x818AE3E0
+
+int_kon_sisiodosi_v:
+  type: VTX
+  offset: 0x818AEB00
+  count: 62
+
+int_kon_sisiodisi_ue_model:
+  type: GFX
+  offset: 0x818AEEE0
+  size: 0xA0
+
+int_kon_sisiodosi_sita_model:
+  type: GFX
+  offset: 0x818AEF80
+  size: 0x170
+
+cKF_ba_r_int_kon_sisiodosi:
+  type: AC:CKF_ANIMATION
+  offset: 0x818AF160
+  joints: 3
+  counts: { flags: 3, data: 39, keys: 1, fixed: 11 }
+
+cKF_bs_r_int_kon_sisiodosi:
+  type: AC:CKF_SKELETON
+  offset: 0x818AF198
+  counts: { joints: 3 }

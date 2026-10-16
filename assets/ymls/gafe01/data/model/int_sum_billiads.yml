@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_billards_pal:
+  type: TEXTURE
+  offset: 0x8199EAC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_billiads_cueball_tex:
+  type: TEXTURE
+  offset: 0x8199EAE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8199EAC0
+
+int_sum_billiads_side_tex:
+  type: TEXTURE
+  offset: 0x8199EB60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8199EAC0
+
+int_sum_billiads_top_tex:
+  type: TEXTURE
+  offset: 0x8199EBE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8199EAC0
+
+int_sum_billiads_foot_tex:
+  type: TEXTURE
+  offset: 0x8199EDE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8199EAC0
+
+int_sum_billiads_sitaside_tex:
+  type: TEXTURE
+  offset: 0x8199EEE0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x8199EAC0
+
+int_sum_billiads_cue_tex:
+  type: TEXTURE
+  offset: 0x8199EF60
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x8199EAC0
+
+int_sum_billiads_ball_tex:
+  type: TEXTURE
+  offset: 0x8199EFE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8199EAC0
+
+int_sum_billiads_v:
+  type: VTX
+  offset: 0x8199F1E0
+  count: 66
+
+int_sum_billiads_on_model:
+  type: GFX
+  offset: 0x8199F600
+  size: 0x80
+
+int_sum_billiads_onT_model:
+  type: GFX
+  offset: 0x8199F680
+  size: 0xF8

@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f07_bassm_pal:
+  type: TEXTURE
+  offset: 0x81239980
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f07_bassm_tex:
+  type: TEXTURE
+  offset: 0x812399A0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81239980
+
+act_f07_bassm_a_v:
+  type: VTX
+  offset: 0x81239CA0
+  count: 9
+
+act_f07_bassm_aT_model:
+  type: GFX
+  offset: 0x81239D30
+  size: 0x68
+
+act_f07_bassm_b_v:
+  type: VTX
+  offset: 0x81239D98
+  count: 9
+
+act_f07_bassm_bT_model:
+  type: GFX
+  offset: 0x81239E28
+  size: 0x68
+
+act_f07_bassm_c_v:
+  type: VTX
+  offset: 0x81239E90
+  count: 9
+
+act_f07_bassm_cT_model:
+  type: GFX
+  offset: 0x81239F20
+  size: 0x68

@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_din_stump_pal:
+  type: TEXTURE
+  offset: 0x8163C940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_din_stump_3_tex:
+  type: TEXTURE
+  offset: 0x8163C960
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8163C940
+
+int_din_stump_1_tex:
+  type: TEXTURE
+  offset: 0x8163CB60
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8163C940
+
+int_din_stump_2_tex:
+  type: TEXTURE
+  offset: 0x8163CF60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8163C940
+
+int_din_stump_v:
+  type: VTX
+  offset: 0x8163D060
+  count: 41
+
+int_din_stump_on_model:
+  type: GFX
+  offset: 0x8163D2F0
+  size: 0xB8
+
+int_din_stump_onT_model:
+  type: GFX
+  offset: 0x8163D3A8
+  size: 0x58

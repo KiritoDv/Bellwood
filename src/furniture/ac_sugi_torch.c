@@ -1,5 +1,4 @@
-extern cKF_Skeleton_R_c cKF_bs_r_int_sugi_torch;
-extern cKF_Animation_R_c cKF_ba_r_int_sugi_torch;
+#include "assets/data/model/int_sugi_torch.h"
 
 static void fSGT_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyframe = &ftr_actor->keyframe;
@@ -16,10 +15,8 @@ static void fSGT_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* 
 
     cKF_SkeletonInfo_R_play(keyframe);
     keyframe->frame_control.speed = 0.5f;
-    sAdo_OngenPos((u32)ftr_actor, 0x57, &ftr_actor->position);
+    sAdo_OngenPos((uintptr_t)ftr_actor, 0x57, &ftr_actor->position);
 }
-
-extern Gfx sugi_fireto_model[];
 
 static int fSGT_DwAfter(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape, u8* joint_flags,
                         void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {

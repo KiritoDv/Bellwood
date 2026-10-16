@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_kon_taiju_pal:
+  type: TEXTURE
+  offset: 0x818B59E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_taiju_a_tex:
+  type: TEXTURE
+  offset: 0x818B5A00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B59E0
+
+int_kon_taiju_kubi_tex:
+  type: TEXTURE
+  offset: 0x818B5A80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B59E0
+
+int_kon_taiju_mae_tex:
+  type: TEXTURE
+  offset: 0x818B5B00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818B59E0
+
+int_kon_taiju_waki_tex:
+  type: TEXTURE
+  offset: 0x818B5D00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B59E0
+
+int_kon_taiju_sokumen_tex:
+  type: TEXTURE
+  offset: 0x818B5D80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B59E0
+
+int_kon_taiju_metal_tex:
+  type: TEXTURE
+  offset: 0x818B5E80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B59E0
+
+int_kon_taiju_dai2_tex:
+  type: TEXTURE
+  offset: 0x818B5F00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818B59E0
+
+int_kon_taiju_v:
+  type: VTX
+  offset: 0x818B6100
+  count: 60
+
+int_kon_taiju_on_model:
+  type: GFX
+  offset: 0x818B64C0
+  size: 0xD8
+
+int_kon_taiju_onT_model:
+  type: GFX
+  offset: 0x818B6598
+  size: 0xA0

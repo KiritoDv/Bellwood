@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+obj_e_radio_shadow_tex:
+  type: TEXTURE
+  offset: 0x81508720
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_radio_shadow_v:
+  type: VTX
+  offset: 0x81508920
+  count: 8
+
+obj_e_radio_shadowT_model:
+  type: GFX
+  offset: 0x815089A0
+  size: 0x50

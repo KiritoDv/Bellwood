@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+obj_w_stoneD_v:
+  type: VTX
+  offset: 0x8111DB90
+  count: 15
+
+obj_w_stoneD_gfx_model:
+  type: GFX
+  offset: 0x8111DC80
+  size: 0x38

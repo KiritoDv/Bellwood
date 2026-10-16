@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f06_bass_pal:
+  type: TEXTURE
+  offset: 0x81239FA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f06_bass_tex:
+  type: TEXTURE
+  offset: 0x81239FC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81239FA0
+
+act_f06_bass_a_v:
+  type: VTX
+  offset: 0x8123A1C0
+  count: 9
+
+act_f06_bass_aT_model:
+  type: GFX
+  offset: 0x8123A250
+  size: 0x68
+
+act_f06_bass_b_v:
+  type: VTX
+  offset: 0x8123A2B8
+  count: 9
+
+act_f06_bass_bT_model:
+  type: GFX
+  offset: 0x8123A348
+  size: 0x68
+
+act_f06_bass_c_v:
+  type: VTX
+  offset: 0x8123A3B0
+  count: 9
+
+act_f06_bass_cT_model:
+  type: GFX
+  offset: 0x8123A440
+  size: 0x68

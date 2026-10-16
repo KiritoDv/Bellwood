@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+kan_tizu_v:
+  type: VTX
+  offset: 0x814AF300
+  count: 4
+
+kan_tizu_mode:
+  type: GFX
+  offset: 0x814AF340
+  size: 0x28
+
+kan_tizu_model:
+  type: GFX
+  offset: 0x814AF368
+  size: 0x30

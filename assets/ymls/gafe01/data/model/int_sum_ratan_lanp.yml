@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_sum_ratan_lanp_pal:
+  type: TEXTURE
+  offset: 0x81A52CE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_ratan_lanp_kasa_tax:
+  type: TEXTURE
+  offset: 0x81A52D00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A52CE0
+
+int_sum_ratan_lanp_stand_tax:
+  type: TEXTURE
+  offset: 0x81A52E00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A52CE0
+
+int_sum_ratan_lanp_base_tax:
+  type: TEXTURE
+  offset: 0x81A52F00
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A52CE0
+
+int_sum_ratan_lanp_basetop_tax:
+  type: TEXTURE
+  offset: 0x81A53000
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A52CE0
+
+int_sum_ratan_lanp_hiki_tax:
+  type: TEXTURE
+  offset: 0x81A53080
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A52CE0
+
+int_sum_ratan_lanp_v:
+  type: VTX
+  offset: 0x81A53100
+  count: 40
+
+int_sum_ratan_lanp_off_model:
+  type: GFX
+  offset: 0x81A53380
+  size: 0x88
+
+int_sum_ratan_lanp_offT_model:
+  type: GFX
+  offset: 0x81A53408
+  size: 0xB0

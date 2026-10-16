@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_aroana_pal:
+  type: TEXTURE
+  offset: 0x81679800
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_aroana_body_txt:
+  type: TEXTURE
+  offset: 0x81679820
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81679800
+
+act_mus_aroana_a1_v:
+  type: VTX
+  offset: 0x81679B20
+  count: 52
+
+act_mus_aroana_sakana_body_model:
+  type: GFX
+  offset: 0x81679E60
+  size: 0x90
+
+act_mus_aroana_sakana_head_model:
+  type: GFX
+  offset: 0x81679EF0
+  size: 0x48
+
+cKF_bs_r_act_mus_aroana_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x81679F5C
+  counts: { joints: 3 }

@@ -1,5 +1,4 @@
-extern cKF_Skeleton_R_c cKF_bs_r_int_tak_toudai;
-extern cKF_Animation_R_c cKF_ba_r_int_tak_toudai;
+#include "assets/data/model/int_tak_toudai.h"
 
 static void fTTD_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyframe = &ftr_actor->keyframe;
@@ -44,9 +43,6 @@ static int fTTD_DrawBefore(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint
 
     return TRUE;
 }
-
-extern Gfx int_tak_toudai_evw_model[];
-extern Gfx int_tak_toudai_right_model[];
 
 static int fTTD_DrawAfter(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape, u8* joint_flags,
                           void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {

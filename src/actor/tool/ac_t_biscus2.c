@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_lib.h"
 #include "m_rcp.h"
+#include "assets/data/model/crw_biscus2.h"
 
 
 static void aTB2_actor_ct(ACTOR* actor, GAME*);
@@ -25,9 +26,7 @@ ACTOR_PROFILE T_Biscus2_Profile = {
     NULL
 };
 
-extern Gfx crw_biscus2_body_model[];
-
-static void aTB2_actor_ct(ACTOR* actor, GAME*){
+static void aTB2_actor_ct(ACTOR* actor, GAME* arg1){
 
     aTB2_setupAction(actor,4);
 }
@@ -50,7 +49,7 @@ static void aTB2_setupAction(ACTOR*actor, int action){
 
 }
 
-static void aTB2_actor_move(ACTOR* actor, GAME*){
+static void aTB2_actor_move(ACTOR* actor, GAME* arg1){
     BISCUS2_ACTOR* biscus = (BISCUS2_ACTOR*)actor;
 
     if(biscus->tools_class.work0 != biscus->current_id){

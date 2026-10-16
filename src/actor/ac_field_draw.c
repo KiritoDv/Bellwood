@@ -164,7 +164,7 @@ static int aFD_OperateWaterSound(xyz_t* center_pos, ACTOR* actorx, s16 ongen_typ
                 aFD_ongen_info2_c* info = &ongen_info[i];
 
                 if (info->sound_source_no != -1) {
-                    u32 ongen_id = (u32)actorx + (mFI_GetBlockXMax() * info->bz + info->bx) * mFM_SOUND_SOURCE_NUM +
+                    uintptr_t ongen_id = (uintptr_t)actorx + (mFI_GetBlockXMax() * info->bz + info->bx) * mFM_SOUND_SOURCE_NUM +
                                    info->sound_source_no;
                     mFM_bg_sound_source_c* source = mFI_GetSoundSourcePBlockNum(info->bx, info->bz);
 
@@ -281,7 +281,7 @@ static void Bg_Draw_Actor_move(ACTOR* actorx, GAME* game) {
                 frog_se_pos.y = 0.0f;
                 frog_se_pos.z = mFI_UNIT_BASE_SIZE_F + (f32)pond_z * mFI_UNIT_BASE_SIZE_F;
                 frog_se_pos.y = mCoBG_GetBgY_OnlyCenter_FromWpos(frog_se_pos, 0.0f);
-                sAdo_OngenPos((u32)&Bg_Draw_Actor_move, 0xA1, &frog_se_pos);
+                sAdo_OngenPos((uintptr_t)&Bg_Draw_Actor_move, 0xA1, &frog_se_pos);
             }
 
             /* Pond sound effect */
@@ -289,7 +289,7 @@ static void Bg_Draw_Actor_move(ACTOR* actorx, GAME* game) {
             pond_pos.y = 0.0f;
             pond_pos.z = mFI_UNIT_BASE_SIZE_F * 0.5f + (f32)pond_z * mFI_UNIT_BASE_SIZE_F;
             pond_pos.y = mCoBG_GetBgY_OnlyCenter_FromWpos(pond_pos, 0.0f);
-            sAdo_OngenPos((u32)&Bg_Draw_Actor_ct, 0x16, &pond_pos);
+            sAdo_OngenPos((uintptr_t)&Bg_Draw_Actor_ct, 0x16, &pond_pos);
         }
     }
 
@@ -443,6 +443,7 @@ static void aFD_DrawBlock(aFD_block_c* block, ACTOR* actorx, GAME* game) {
         xlu_gfx = mFI_GetBGDisplayListRom_XLU(block->bx, block->bz);
         anime_data = mFI_GetBGTexAnimInfo(&anime_frame_count, block->bx, block->bz);
 
+        FrameInterpolation_RecordOpenChild(actorx, (block->bx << 8) | block->bz);
         Matrix_translate(block->wpos.x, block->wpos.y, block->wpos.z, MTX_LOAD);
         Matrix_scale(0.0625f, 0.0625f, 0.0625f, MTX_MULT);
         _texture_z_light_fog_prim_xlu(game->graph);
@@ -495,6 +496,7 @@ static void aFD_DrawBlock(aFD_block_c* block, ACTOR* actorx, GAME* game) {
                 aFD_DrawXluBg(xlu_gfx, exist, game);
             }
         }
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -530,8 +532,8 @@ static void Bg_Draw_Actor_draw(ACTOR* actorx, GAME* game) {
 
     gDPSetTexEdgeAlpha(NEXT_BG_OPA_DISP, 144);
     gDPSetTexEdgeAlpha(NEXT_POLY_XLU_DISP, 144);
-    gDPSetTextureAdjustMode(NEXT_BG_OPA_DISP, G_TA_DOLPHIN);
-    gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_DOLPHIN);
+    gDPSetTextureAdjustMode(NEXT_BG_OPA_DISP, G_TA_HALFTEXEL);
+    gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_HALFTEXEL);
 
     CLOSE_DISP(game->graph);
 

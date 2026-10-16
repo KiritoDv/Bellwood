@@ -1,5 +1,4 @@
-extern Gfx int_iku_roller_on_model[];
-extern Gfx int_iku_roller_off_model[];
+#include "assets/data/model/int_iku_roller.h"
 
 aFTR_PROFILE iam_iku_roller = {
 	int_iku_roller_on_model,

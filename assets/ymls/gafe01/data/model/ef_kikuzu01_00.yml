@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+ef_kikuzu01_0:
+  type: TEXTURE
+  offset: 0x816697C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_kikuzu01_00_v:
+  type: VTX
+  offset: 0x81669840
+  count: 12
+
+ef_kikuzu01_00_modelT:
+  type: GFX
+  offset: 0x81669900
+  size: 0x58

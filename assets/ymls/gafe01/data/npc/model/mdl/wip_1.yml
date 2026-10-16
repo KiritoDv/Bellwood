@@ -1,0 +1,67 @@
+:config:
+  strict_declarations: true
+
+wip_1_v:
+  type: VTX
+  offset: 0x8137ECE0
+  count: 368
+
+head_wip_model:
+  type: GFX
+  offset: 0x813803E0
+  size: 0x208
+
+Rarm2_wip_model:
+  type: GFX
+  offset: 0x813805E8
+  size: 0x88
+
+Rarm1_wip_model:
+  type: GFX
+  offset: 0x81380670
+  size: 0x78
+
+Larm2_wip_model:
+  type: GFX
+  offset: 0x813806E8
+  size: 0x88
+
+Larm1_wip_model:
+  type: GFX
+  offset: 0x81380770
+  size: 0x78
+
+chest_wip_model:
+  type: GFX
+  offset: 0x813807E8
+  size: 0x120
+
+Rfoot2_wip_model:
+  type: GFX
+  offset: 0x81380908
+  size: 0x80
+
+Rfoot1_wip_model:
+  type: GFX
+  offset: 0x81380988
+  size: 0x58
+
+Lfoot2_wip_model:
+  type: GFX
+  offset: 0x813809E0
+  size: 0x80
+
+Lfoot1_wip_model:
+  type: GFX
+  offset: 0x81380A60
+  size: 0x58
+
+base_wip_model:
+  type: GFX
+  offset: 0x81380AB8
+  size: 0x78
+
+cKF_bs_r_wip_1:
+  type: AC:CKF_SKELETON
+  offset: 0x81380C68
+  counts: { joints: 26 }

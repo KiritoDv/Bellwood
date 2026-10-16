@@ -1,0 +1,128 @@
+:config:
+  strict_declarations: true
+
+int_sum_clchest01_pal:
+  type: TEXTURE
+  offset: 0x819BDA60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_clchest01_glass_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x819BDA80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_clchest01_hiki_txt:
+  type: TEXTURE
+  offset: 0x819BDAA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819BDA60
+
+int_sum_clchest01_mirback_txt:
+  type: TEXTURE
+  offset: 0x819BDB20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819BDA60
+
+int_sum_clchest01_front_txt:
+  type: TEXTURE
+  offset: 0x819BDBA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819BDA60
+
+int_sum_clchest01_top_txt:
+  type: TEXTURE
+  offset: 0x819BDDA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819BDA60
+
+int_sum_clchest01_side_txt:
+  type: TEXTURE
+  offset: 0x819BDE20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819BDA60
+
+int_sum_clchest01_stand_txt:
+  type: TEXTURE
+  offset: 0x819BDF20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819BDA60
+
+int_sum_clchest01_mirside_txt:
+  type: TEXTURE
+  offset: 0x819BE020
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x819BDA60
+
+int_sum_clchest01_mir_txt:
+  type: TEXTURE
+  offset: 0x819BE060
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819BDA60
+
+int_sum_clchest01_glass_txt:
+  type: TEXTURE
+  offset: 0x819BE0E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819BDA80
+
+int_sum_clchest01_v:
+  type: VTX
+  offset: 0x819BE1E0
+  count: 78
+
+int_sum_clcht1_door_model:
+  type: GFX
+  offset: 0x819BE6C0
+  size: 0xA0
+
+int_sum_clcht1_evw_model:
+  type: GFX
+  offset: 0x819BE760
+  size: 0x58
+
+int_sum_clcht1_base_model:
+  type: GFX
+  offset: 0x819BE7B8
+  size: 0x130
+
+cKF_ba_r_int_sum_clchest01:
+  type: AC:CKF_ANIMATION
+  offset: 0x819BE978
+  joints: 4
+  counts: { flags: 4, data: 54, keys: 9, fixed: 6 }
+
+cKF_bs_r_int_sum_clchest01:
+  type: AC:CKF_SKELETON
+  offset: 0x819BE9BC
+  counts: { joints: 4 }

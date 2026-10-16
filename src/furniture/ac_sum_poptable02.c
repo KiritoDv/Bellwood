@@ -1,5 +1,4 @@
-extern Gfx int_sum_poptable02_on_model[];
-extern Gfx int_sum_poptable02_onT_model[];
+#include "assets/data/model/int_sum_poptable02.h"
 
 aFTR_PROFILE iam_sum_poptable02 = {
 	int_sum_poptable02_on_model,

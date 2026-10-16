@@ -1,0 +1,107 @@
+:config:
+  strict_declarations: true
+
+int_sum_pet01_pal:
+  type: TEXTURE
+  offset: 0x81A3A960
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_pet01_wing_tex_txt:
+  type: TEXTURE
+  offset: 0x81A3A980
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A3A960
+
+int_sum_pet01_belly_tex_txt:
+  type: TEXTURE
+  offset: 0x81A3AB00
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A3A960
+
+int_sum_pet01_stand_tex_txt:
+  type: TEXTURE
+  offset: 0x81A3AC80
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A3A960
+
+int_sum_pet01_wood_tex_txt:
+  type: TEXTURE
+  offset: 0x81A3AE00
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A3A960
+
+int_sum_pet01_hand_tex_txt:
+  type: TEXTURE
+  offset: 0x81A3AE40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A3A960
+
+int_sum_pet01_cagedown_tex_txt:
+  type: TEXTURE
+  offset: 0x81A3AEC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A3A960
+
+int_sum_pet01_cage_tex_txt:
+  type: TEXTURE
+  offset: 0x81A3AF40
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A3A960
+
+int_sum_pet01_foot_tex_txt:
+  type: TEXTURE
+  offset: 0x81A3B0C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A3A960
+
+int_sum_pet01_v:
+  type: VTX
+  offset: 0x81A3B140
+  count: 81
+
+int_sum_pet01_bard_model:
+  type: GFX
+  offset: 0x81A3B650
+  size: 0x90
+
+int_sum_pet01_cage_model:
+  type: GFX
+  offset: 0x81A3B6E0
+  size: 0x1B8
+
+cKF_ba_r_int_sum_pet01:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A3B8E4
+  joints: 3
+  counts: { flags: 3, data: 21, keys: 1, fixed: 11 }
+
+cKF_bs_r_int_sum_pet01:
+  type: AC:CKF_SKELETON
+  offset: 0x81A3B91C
+  counts: { joints: 3 }

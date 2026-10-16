@@ -1,0 +1,56 @@
+:config:
+  strict_declarations: true
+
+obj_e_turi_pal:
+  type: TEXTURE
+  offset: 0x815B69C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_turi_t1_tex:
+  type: TEXTURE
+  offset: 0x815B69E0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x815B69C0
+
+obj_e_turi_t2_tex:
+  type: TEXTURE
+  offset: 0x815B71E0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x815B69C0
+
+obj_e_turi_t3_tex:
+  type: TEXTURE
+  offset: 0x815B79E0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x815B69C0
+
+obj_e_turi_l_v:
+  type: VTX
+  offset: 0x815B81E0
+  count: 91
+
+obj_e_turi_l_modelT:
+  type: GFX
+  offset: 0x815B8790
+  size: 0x118
+
+obj_e_turi_r_v:
+  type: VTX
+  offset: 0x815B88A8
+  count: 89
+
+obj_e_turi_r_modelT:
+  type: GFX
+  offset: 0x815B8E38
+  size: 0x118

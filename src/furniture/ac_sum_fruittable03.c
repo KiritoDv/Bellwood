@@ -1,4 +1,4 @@
-extern Gfx int_sum_fruittable03_on_model[];
+#include "assets/data/model/int_sum_fruittable03.h"
 
 aFTR_PROFILE iam_sum_fruittable03 = {
 	int_sum_fruittable03_on_model,

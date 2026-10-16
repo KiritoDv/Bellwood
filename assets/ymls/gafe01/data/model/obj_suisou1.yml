@@ -1,0 +1,97 @@
+:config:
+  strict_declarations: true
+
+obj_suisou1_pal:
+  type: TEXTURE
+  offset: 0x81696860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_suisou1_evw_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81696880
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_suisou1_front_tex:
+  type: TEXTURE
+  offset: 0x816968A0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81696860
+
+obj_suisou1_futi_tex:
+  type: TEXTURE
+  offset: 0x81696AA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81696860
+
+obj_suisou1_isi_tex:
+  type: TEXTURE
+  offset: 0x81696B20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81696860
+
+obj_suisou1_mizu_tex:
+  type: TEXTURE
+  offset: 0x81697320
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81696860
+
+obj_suisou1_evw_tex:
+  type: TEXTURE
+  offset: 0x816973A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81696880
+
+obj_suisou1_water1_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81697420
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_suisou1_water2_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81697620
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_suisou1_v:
+  type: VTX
+  offset: 0x81697820
+  count: 109
+
+obj_suisou1_modelT:
+  type: GFX
+  offset: 0x81697EF0
+  size: 0x1B0
+
+obj_suisou1_model:
+  type: GFX
+  offset: 0x816980A0
+  size: 0xD0
+
+act_mus_fish_set_mode:
+  type: GFX
+  offset: 0x81698170
+  size: 0x30

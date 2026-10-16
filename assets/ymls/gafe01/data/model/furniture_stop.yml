@@ -1,0 +1,13 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_furniture_stop:
+  type: AC:CKF_ANIMATION
+  offset: 0x812C4740
+  joints: 1
+  counts: { flags: 1, data: 0, keys: 0, fixed: 6 }
+
+cKF_bs_r_furniture_stop:
+  type: AC:CKF_SKELETON
+  offset: 0x812C4760
+  counts: { joints: 1 }

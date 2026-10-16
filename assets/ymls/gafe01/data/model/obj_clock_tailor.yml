@@ -1,0 +1,54 @@
+:config:
+  strict_declarations: true
+
+obj_clock_tailor_1_tex_txt:
+  type: TEXTURE
+  offset: 0x81947800
+  format: RGBA16
+  width: 16
+  height: 64
+  source_encoding: gx
+
+obj_clock_tailor_2_tex_txt:
+  type: TEXTURE
+  offset: 0x81948000
+  format: RGBA16
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_clock_tailor_v:
+  type: VTX
+  offset: 0x81948200
+  count: 62
+
+obj_clock_tailor_base_model:
+  type: GFX
+  offset: 0x819485E0
+  size: 0xB0
+
+obj_clock_tailor_long_model:
+  type: GFX
+  offset: 0x81948690
+  size: 0x50
+
+obj_clock_tailor_short_model:
+  type: GFX
+  offset: 0x819486E0
+  size: 0x50
+
+obj_clock_tailor_furi_model:
+  type: GFX
+  offset: 0x81948730
+  size: 0x50
+
+cKF_ba_r_obj_clock_tailor:
+  type: AC:CKF_ANIMATION
+  offset: 0x819487DC
+  joints: 7
+  counts: { flags: 7, data: 15, keys: 1, fixed: 23 }
+
+cKF_bs_r_obj_clock_tailor:
+  type: AC:CKF_SKELETON
+  offset: 0x81948844
+  counts: { joints: 7 }

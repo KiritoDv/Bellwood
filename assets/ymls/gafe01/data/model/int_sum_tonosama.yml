@@ -1,0 +1,112 @@
+:config:
+  strict_declarations: true
+
+int_sum_tonosama_pal:
+  type: TEXTURE
+  offset: 0x81A6BF20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_tonosama_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A6BF40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_tonosama_base_txt:
+  type: TEXTURE
+  offset: 0x81A6BF60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A6BF20
+
+int_sum_tonosama_top_txt:
+  type: TEXTURE
+  offset: 0x81A6BFE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A6BF20
+
+int_sum_tonosama_side_txt:
+  type: TEXTURE
+  offset: 0x81A6C1E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A6BF20
+
+int_sum_tonosama_body_txt:
+  type: TEXTURE
+  offset: 0x81A6C3E0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A6BF20
+
+int_sum_tonosama_hand_txt:
+  type: TEXTURE
+  offset: 0x81A6C560
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A6BF40
+
+int_sum_tonosama_v:
+  type: VTX
+  offset: 0x81A6C660
+  count: 65
+
+int_sum_tonosama_side_model:
+  type: GFX
+  offset: 0x81A6CA70
+  size: 0x68
+
+int_sum_tonosama_komado_model:
+  type: GFX
+  offset: 0x81A6CAD8
+  size: 0x58
+
+int_sum_tonosama_glass_model:
+  type: GFX
+  offset: 0x81A6CB30
+  size: 0x68
+
+int_sum_tonosama_base_model:
+  type: GFX
+  offset: 0x81A6CB98
+  size: 0xA0
+
+int_sum_tonosama_body_model:
+  type: GFX
+  offset: 0x81A6CC38
+  size: 0x60
+
+int_sum_tonosama_body_R_model:
+  type: GFX
+  offset: 0x81A6CC98
+  size: 0x58
+
+int_sum_tonosama_body_L_model:
+  type: GFX
+  offset: 0x81A6CCF0
+  size: 0x58
+
+cKF_ba_r_int_sum_tonosama:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A6CECC
+  joints: 10
+  counts: { flags: 10, data: 153, keys: 12, fixed: 21 }
+
+cKF_bs_r_int_sum_tonosama:
+  type: AC:CKF_SKELETON
+  offset: 0x81A6CF58
+  counts: { joints: 10 }

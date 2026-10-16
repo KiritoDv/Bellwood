@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_nuts_pal:
+  type: TEXTURE
+  offset: 0x81893540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_nuts_tex:
+  type: TEXTURE
+  offset: 0x81893560
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81893540
+
+obj_item_nuts_v:
+  type: VTX
+  offset: 0x81893760
+  count: 4
+
+nuts_DL_mode:
+  type: GFX
+  offset: 0x818937A0
+  size: 0x48
+
+nuts_DL_vtx:
+  type: GFX
+  offset: 0x818937E8
+  size: 0x18

@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_ef_w_palm5_cutR:
+  type: AC:CKF_ANIMATION
+  offset: 0x8165AB94
+  joints: 4
+  counts: { flags: 4, data: 276, keys: 9, fixed: 6 }

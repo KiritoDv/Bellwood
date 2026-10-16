@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_train1_1.h"
 static void aTR0_actor_draw(ACTOR* actor, GAME* game) {
     u16* pal = (*Common_Get(clip).structure_clip->get_pal_segment_proc)(0x39);
     GRAPH* graph = game->graph;
@@ -17,7 +18,7 @@ static void aTR0_actor_draw(ACTOR* actor, GAME* game) {
 
         gSPMatrix(POLY_OPA_DISP++, _Matrix_to_Mtx_new(graph), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPSegment(POLY_OPA_DISP++, G_MWO_SEGMENT_8, pal);
-        gDPLoadTLUT_Dolphin(POLY_OPA_DISP++, 15, 16, 1, pal);
+        gDPLoadTLUT_pal16(POLY_OPA_DISP++, 15, pal);
         gSPDisplayList(POLY_OPA_DISP++, obj_train1_2_model);
 
         CLOSE_POLY_OPA_DISP(graph);

@@ -1,0 +1,78 @@
+:config:
+  strict_declarations: true
+
+int_sum_bon_satuki_pal:
+  type: TEXTURE
+  offset: 0x819B4E00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bon_satuki_hachi_tex:
+  type: TEXTURE
+  offset: 0x819B4E20
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B4E00
+
+int_sum_bon_satuki_earth_tex:
+  type: TEXTURE
+  offset: 0x819B4F20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B4E00
+
+int_sum_bon_satuki_stand_tex:
+  type: TEXTURE
+  offset: 0x819B4FA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B4E00
+
+int_sum_bon_satuki_standside_tex:
+  type: TEXTURE
+  offset: 0x819B50A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B4E00
+
+int_sum_bon_satuki_hana_tex:
+  type: TEXTURE
+  offset: 0x819B51A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B4E00
+
+int_sum_bon_satuki_leaf_tex:
+  type: TEXTURE
+  offset: 0x819B53A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B4E00
+
+int_sum_bon_satuki_v:
+  type: VTX
+  offset: 0x819B55A0
+  count: 78
+
+int_sum_bon_satuki_on_model:
+  type: GFX
+  offset: 0x819B5A80
+  size: 0x58
+
+int_sum_bon_satuki_onT_model:
+  type: GFX
+  offset: 0x819B5AD8
+  size: 0x110

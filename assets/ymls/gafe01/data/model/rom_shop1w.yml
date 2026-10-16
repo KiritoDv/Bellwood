@@ -1,0 +1,66 @@
+:config:
+  strict_declarations: true
+
+rom_shop1_pal:
+  type: TEXTURE
+  offset: 0x8196ED80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop1_tubo_pal:
+  type: TEXTURE
+  offset: 0x8196EDA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop1_table_tex:
+  type: TEXTURE
+  offset: 0x8196EDC0
+  format: CI4
+  width: 64
+  height: 48
+  source_encoding: gx
+  tlut: 0x8196ED80
+
+rom_shop1_window_tex:
+  type: TEXTURE
+  offset: 0x8196F3C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8196ED80
+
+rom_shop1_shadow_tex:
+  type: TEXTURE
+  offset: 0x8196FBC0
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+rom_shop1_tubo_tex:
+  type: TEXTURE
+  offset: 0x8196FFC0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8196EDA0
+
+rom_shop1w_v:
+  type: VTX
+  offset: 0x819703C0
+  count: 302
+
+rom_shop1w_modelT:
+  type: GFX
+  offset: 0x819716A0
+  size: 0x88
+
+rom_shop1w_model:
+  type: GFX
+  offset: 0x81971728
+  size: 0x370

@@ -1,0 +1,72 @@
+:config:
+  strict_declarations: true
+
+int_sum_licca_mirror01_pal:
+  type: TEXTURE
+  offset: 0x81A1A6E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_liccamirror_glass_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A1A700
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_liccamirror_front_tex:
+  type: TEXTURE
+  offset: 0x81A1A720
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A1A6E0
+
+int_sum_liccamirror_side_tex:
+  type: TEXTURE
+  offset: 0x81A1AB20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A1A6E0
+
+int_sum_liccamirror_top_tex:
+  type: TEXTURE
+  offset: 0x81A1AC20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A1A6E0
+
+int_sum_liccamirror_glass_tex:
+  type: TEXTURE
+  offset: 0x81A1ACA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A1A700
+
+int_sum_liccamirror_v:
+  type: VTX
+  offset: 0x81A1AEA0
+  count: 40
+
+int_sum_liccamirror_on_model:
+  type: GFX
+  offset: 0x81A1B120
+  size: 0x58
+
+int_sum_liccamirror_env_model:
+  type: GFX
+  offset: 0x81A1B178
+  size: 0x58
+
+int_sum_liccamirror_onT_model:
+  type: GFX
+  offset: 0x81A1B1D0
+  size: 0xB0

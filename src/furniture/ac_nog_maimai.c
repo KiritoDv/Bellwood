@@ -1,7 +1,5 @@
+#include "assets/data/model/int_nog_maimai.h"
 extern aFTR_rig_c aNogMaimai_key_anime_data;
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_maimai;
-extern cKF_Animation_R_c cKF_ba_r_int_nog_maimai;
 
 aFTR_rig_c aNogMaimai_key_anime_data= {
     &cKF_bs_r_int_nog_maimai,

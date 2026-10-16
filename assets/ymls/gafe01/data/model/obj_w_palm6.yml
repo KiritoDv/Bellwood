@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+obj_w_palm_leaf_tex_txt:
+  type: TEXTURE
+  offset: 0x8165B560
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_palm_cutS_tex_txt:
+  type: TEXTURE
+  offset: 0x8165BD60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_w_palm_cutL_tex_txt:
+  type: TEXTURE
+  offset: 0x8165BF60
+  format: CI4
+  width: 64
+  height: 48
+  source_encoding: gx

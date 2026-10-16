@@ -1,0 +1,2374 @@
+:config:
+  strict_declarations: true
+
+lat_letter01_pal:
+  type: TEXTURE
+  offset: 0x814868C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter02_pal:
+  type: TEXTURE
+  offset: 0x814868E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter03_pal:
+  type: TEXTURE
+  offset: 0x81486900
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter04_pal:
+  type: TEXTURE
+  offset: 0x81486920
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter05_pal:
+  type: TEXTURE
+  offset: 0x81486940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter06_pal:
+  type: TEXTURE
+  offset: 0x81486960
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter07_pal:
+  type: TEXTURE
+  offset: 0x81486980
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter08_pal:
+  type: TEXTURE
+  offset: 0x814869A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter09_pal:
+  type: TEXTURE
+  offset: 0x814869C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter10_pal:
+  type: TEXTURE
+  offset: 0x814869E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter11_1_pal:
+  type: TEXTURE
+  offset: 0x81486A00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter12_pal:
+  type: TEXTURE
+  offset: 0x81486A20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter13_pal:
+  type: TEXTURE
+  offset: 0x81486A40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter14_pal:
+  type: TEXTURE
+  offset: 0x81486A60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter15_pal:
+  type: TEXTURE
+  offset: 0x81486A80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter16_pal:
+  type: TEXTURE
+  offset: 0x81486AA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter17_pal:
+  type: TEXTURE
+  offset: 0x81486AC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter18_pal:
+  type: TEXTURE
+  offset: 0x81486AE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter19_pal:
+  type: TEXTURE
+  offset: 0x81486B00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter20_pal:
+  type: TEXTURE
+  offset: 0x81486B20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter21_pal:
+  type: TEXTURE
+  offset: 0x81486B40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter22_pal:
+  type: TEXTURE
+  offset: 0x81486B60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter23_pal:
+  type: TEXTURE
+  offset: 0x81486B80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter24_pal:
+  type: TEXTURE
+  offset: 0x81486BA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter25_pal:
+  type: TEXTURE
+  offset: 0x81486BC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter26_pal:
+  type: TEXTURE
+  offset: 0x81486BE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter27_pal:
+  type: TEXTURE
+  offset: 0x81486C00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter28_pal:
+  type: TEXTURE
+  offset: 0x81486C20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter65_pal:
+  type: TEXTURE
+  offset: 0x81486C40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter30_tex:
+  type: TEXTURE
+  offset: 0x81486C60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter31_pal:
+  type: TEXTURE
+  offset: 0x81486C80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter32_pal:
+  type: TEXTURE
+  offset: 0x81486CA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter33_pal:
+  type: TEXTURE
+  offset: 0x81486CC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter34_pal:
+  type: TEXTURE
+  offset: 0x81486CE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter35_pal:
+  type: TEXTURE
+  offset: 0x81486D00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter36_pal:
+  type: TEXTURE
+  offset: 0x81486D20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter37_pal:
+  type: TEXTURE
+  offset: 0x81486D40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter39_pal:
+  type: TEXTURE
+  offset: 0x81486D60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter40_pal:
+  type: TEXTURE
+  offset: 0x81486D80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter42_pal:
+  type: TEXTURE
+  offset: 0x81486DA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter43_pal:
+  type: TEXTURE
+  offset: 0x81486DC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter44_pal:
+  type: TEXTURE
+  offset: 0x81486DE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter45_pal:
+  type: TEXTURE
+  offset: 0x81486E00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter46_pal:
+  type: TEXTURE
+  offset: 0x81486E20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter47_pal:
+  type: TEXTURE
+  offset: 0x81486E40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter48_pal:
+  type: TEXTURE
+  offset: 0x81486E60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter49_pal:
+  type: TEXTURE
+  offset: 0x81486E80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter50_pal:
+  type: TEXTURE
+  offset: 0x81486EA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter51_pal:
+  type: TEXTURE
+  offset: 0x81486EC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter52_pal:
+  type: TEXTURE
+  offset: 0x81486EE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter53_pal:
+  type: TEXTURE
+  offset: 0x81486F00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter54_pal:
+  type: TEXTURE
+  offset: 0x81486F20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter55_pal:
+  type: TEXTURE
+  offset: 0x81486F40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter56_pal:
+  type: TEXTURE
+  offset: 0x81486F60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter57_pal:
+  type: TEXTURE
+  offset: 0x81486F80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter58_pal:
+  type: TEXTURE
+  offset: 0x81486FA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter59_pal:
+  type: TEXTURE
+  offset: 0x81486FC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter60_pal:
+  type: TEXTURE
+  offset: 0x81486FE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter61_pal:
+  type: TEXTURE
+  offset: 0x81487000
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter62_pal:
+  type: TEXTURE
+  offset: 0x81487020
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter63_pal:
+  type: TEXTURE
+  offset: 0x81487040
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter64_pal:
+  type: TEXTURE
+  offset: 0x81487060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter01_01_tex:
+  type: TEXTURE
+  offset: 0x81487080
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x814868C0
+
+lat_letter01_02_tex:
+  type: TEXTURE
+  offset: 0x81487180
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x814868C0
+
+lat_letter01_03_tex:
+  type: TEXTURE
+  offset: 0x81487280
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x814868C0
+
+lat_letter01_04_tex:
+  type: TEXTURE
+  offset: 0x81487680
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x814868C0
+
+lat_tegami_fusen_tex:
+  type: TEXTURE
+  offset: 0x81487700
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter02_01_tex:
+  type: TEXTURE
+  offset: 0x81487780
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x814868E0
+
+lat_letter02_02_tex:
+  type: TEXTURE
+  offset: 0x81487980
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x814868E0
+
+lat_letter02_03_tex:
+  type: TEXTURE
+  offset: 0x81487B80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x814868E0
+
+lat_letter03_01_tex:
+  type: TEXTURE
+  offset: 0x81487D80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486900
+
+lat_letter03_02_tex:
+  type: TEXTURE
+  offset: 0x81487E80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486900
+
+lat_letter03_03_tex:
+  type: TEXTURE
+  offset: 0x81487F80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486900
+
+lat_letter03_04_tex:
+  type: TEXTURE
+  offset: 0x81488080
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486900
+
+lat_letter03_05_tex:
+  type: TEXTURE
+  offset: 0x81488180
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486900
+
+lat_letter03_06_tex:
+  type: TEXTURE
+  offset: 0x81488280
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486900
+
+lat_letter03_07_tex:
+  type: TEXTURE
+  offset: 0x81488380
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486900
+
+lat_letter04_cloth2_tex:
+  type: TEXTURE
+  offset: 0x81488580
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486920
+
+lat_letter04_cloth3_tex:
+  type: TEXTURE
+  offset: 0x81488600
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486920
+
+lat_letter04_cloth4_tex:
+  type: TEXTURE
+  offset: 0x81488680
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486920
+
+lat_letter04_cloth5_tex:
+  type: TEXTURE
+  offset: 0x81488700
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486920
+
+lat_letter04_cloth6_tex:
+  type: TEXTURE
+  offset: 0x81488780
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486920
+
+lat_letter04_cloth1_tex:
+  type: TEXTURE
+  offset: 0x81488800
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486920
+
+lat_letter04_cloth7_tex:
+  type: TEXTURE
+  offset: 0x81488880
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486920
+
+lat_letter04_cloth8_tex:
+  type: TEXTURE
+  offset: 0x81488900
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486920
+
+lat_letter04_fusen_tex:
+  type: TEXTURE
+  offset: 0x81488980
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter04_cloth9_tex:
+  type: TEXTURE
+  offset: 0x81488A00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486920
+
+lat_letter05_1:
+  type: TEXTURE
+  offset: 0x81488A80
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486940
+
+lat_letter05_2:
+  type: TEXTURE
+  offset: 0x81488C80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486940
+
+lat_letter06_1:
+  type: TEXTURE
+  offset: 0x81488D80
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486960
+
+lat_letter06_sen:
+  type: TEXTURE
+  offset: 0x81488F80
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter06_4:
+  type: TEXTURE
+  offset: 0x81489080
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486960
+
+lat_letter06_5:
+  type: TEXTURE
+  offset: 0x81489180
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486960
+
+lat_letter06_6:
+  type: TEXTURE
+  offset: 0x81489380
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486960
+
+lat_letter07_1:
+  type: TEXTURE
+  offset: 0x81489400
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486980
+
+lat_letter07_2:
+  type: TEXTURE
+  offset: 0x81489500
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486980
+
+lat_letter07_sen:
+  type: TEXTURE
+  offset: 0x81489700
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter07_3:
+  type: TEXTURE
+  offset: 0x81489800
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486980
+
+lat_letter08_1:
+  type: TEXTURE
+  offset: 0x81489880
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x814869A0
+
+lat_letter08_2:
+  type: TEXTURE
+  offset: 0x81489A80
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x814869A0
+
+lat_letter08_3:
+  type: TEXTURE
+  offset: 0x81489C80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x814869A0
+
+lat_letter08_sen:
+  type: TEXTURE
+  offset: 0x81489D00
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter09_1:
+  type: TEXTURE
+  offset: 0x81489E00
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x814869C0
+
+lat_letter09_2:
+  type: TEXTURE
+  offset: 0x8148A200
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x814869C0
+
+lat_letter09_3:
+  type: TEXTURE
+  offset: 0x8148A400
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x814869C0
+
+lat_letter10_1:
+  type: TEXTURE
+  offset: 0x8148A500
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x814869E0
+
+lat_letter10_2:
+  type: TEXTURE
+  offset: 0x8148A700
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x814869E0
+
+lat_letter10_3:
+  type: TEXTURE
+  offset: 0x8148A780
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x814869E0
+
+lat_letter10_sen:
+  type: TEXTURE
+  offset: 0x8148A800
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter10_5:
+  type: TEXTURE
+  offset: 0x8148A900
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x814869E0
+
+lat_letter11_1:
+  type: TEXTURE
+  offset: 0x8148A980
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486A00
+
+lat_letter11_2:
+  type: TEXTURE
+  offset: 0x8148AD80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486A00
+
+lat_letter12_1:
+  type: TEXTURE
+  offset: 0x8148AE80
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486A20
+
+lat_letter12_sen:
+  type: TEXTURE
+  offset: 0x8148B280
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter13_1:
+  type: TEXTURE
+  offset: 0x8148B380
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486A40
+
+lat_letter13_3:
+  type: TEXTURE
+  offset: 0x8148B780
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486A40
+
+lat_letter14_1:
+  type: TEXTURE
+  offset: 0x8148B980
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486A60
+
+lat_letter14_2:
+  type: TEXTURE
+  offset: 0x8148BD80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486A60
+
+lat_letter14_3:
+  type: TEXTURE
+  offset: 0x8148BE80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486A60
+
+lat_letter14_4:
+  type: TEXTURE
+  offset: 0x8148BF80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486A60
+
+lat_letter15_1:
+  type: TEXTURE
+  offset: 0x8148C080
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486A80
+
+lat_letter15_2:
+  type: TEXTURE
+  offset: 0x8148C280
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486A80
+
+lat_letter16_1:
+  type: TEXTURE
+  offset: 0x8148C300
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486AA0
+
+lat_letter16_sen:
+  type: TEXTURE
+  offset: 0x8148C500
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter16_3:
+  type: TEXTURE
+  offset: 0x8148C600
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486AA0
+
+lat_letter17_1:
+  type: TEXTURE
+  offset: 0x8148C700
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486AC0
+
+lat_letter17_sen:
+  type: TEXTURE
+  offset: 0x8148CB00
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter18_4:
+  type: TEXTURE
+  offset: 0x8148CC00
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486AE0
+
+lat_letter18_5:
+  type: TEXTURE
+  offset: 0x8148D000
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486AE0
+
+lat_letter18_sen:
+  type: TEXTURE
+  offset: 0x8148D100
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter19_1:
+  type: TEXTURE
+  offset: 0x8148D200
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486B00
+
+lat_letter19_2:
+  type: TEXTURE
+  offset: 0x8148D600
+  format: RGBA16
+  width: 16
+  height: 32
+  source_encoding: gx
+
+lat_letter20_1:
+  type: TEXTURE
+  offset: 0x8148DA00
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486B20
+
+lat_letter20_sen:
+  type: TEXTURE
+  offset: 0x8148DE00
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter21_1:
+  type: TEXTURE
+  offset: 0x8148DF00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486B40
+
+lat_letter21_sen:
+  type: TEXTURE
+  offset: 0x8148E700
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter22_1:
+  type: TEXTURE
+  offset: 0x8148E800
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486B60
+
+lat_letter22_3:
+  type: TEXTURE
+  offset: 0x8148EA00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486B60
+
+lat_letter22_sen:
+  type: TEXTURE
+  offset: 0x8148EA80
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter22_4:
+  type: TEXTURE
+  offset: 0x8148EB80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486B60
+
+lat_letter22_5:
+  type: TEXTURE
+  offset: 0x8148EC80
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486B60
+
+lat_letter23_1:
+  type: TEXTURE
+  offset: 0x8148F080
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486B80
+
+lat_letter23_2:
+  type: TEXTURE
+  offset: 0x8148F280
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486B80
+
+lat_letter23_4:
+  type: TEXTURE
+  offset: 0x8148F2C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486B80
+
+lat_letter24_1:
+  type: TEXTURE
+  offset: 0x8148F4C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486BA0
+
+lat_letter24_5:
+  type: TEXTURE
+  offset: 0x8148F8C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BA0
+
+lat_letter24_3:
+  type: TEXTURE
+  offset: 0x8148F9C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486BA0
+
+lat_letter24_4:
+  type: TEXTURE
+  offset: 0x8148FBC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BA0
+
+lat_letter25_1:
+  type: TEXTURE
+  offset: 0x8148FC40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486BC0
+
+lat_letter25_2:
+  type: TEXTURE
+  offset: 0x8148FD40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BC0
+
+lat_letter25_3:
+  type: TEXTURE
+  offset: 0x8148FDC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486BC0
+
+lat_letter25_4:
+  type: TEXTURE
+  offset: 0x8148FEC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BC0
+
+lat_letter25_5:
+  type: TEXTURE
+  offset: 0x8148FF40
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486BC0
+
+lat_letter26_test1_tex:
+  type: TEXTURE
+  offset: 0x81490340
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BE0
+
+lat_letter26_test2_tex:
+  type: TEXTURE
+  offset: 0x81490440
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BE0
+
+lat_letter26_test4_tex:
+  type: TEXTURE
+  offset: 0x81490540
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BE0
+
+lat_letter26_test5_tex:
+  type: TEXTURE
+  offset: 0x814905C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BE0
+
+lat_letter26_test6_tex:
+  type: TEXTURE
+  offset: 0x81490640
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BE0
+
+lat_letter26_test7_tex:
+  type: TEXTURE
+  offset: 0x81490740
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BE0
+
+lat_letter26_test8_tex:
+  type: TEXTURE
+  offset: 0x814907C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BE0
+
+lat_letter26_test9_tex:
+  type: TEXTURE
+  offset: 0x81490840
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BE0
+
+lat_letter26_test10_tex:
+  type: TEXTURE
+  offset: 0x81490940
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BE0
+
+lat_letter26_test11_tex:
+  type: TEXTURE
+  offset: 0x81490A40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486BE0
+
+lat_letter27_9:
+  type: TEXTURE
+  offset: 0x81490AC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486C00
+
+lat_letter27_4:
+  type: TEXTURE
+  offset: 0x81490BC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486C00
+
+lat_letter27_8:
+  type: TEXTURE
+  offset: 0x81490DC0
+  format: CI4
+  width: 16
+  height: 128
+  source_encoding: gx
+  tlut: 0x81486C00
+
+lat_letter27_6:
+  type: TEXTURE
+  offset: 0x814911C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486C00
+
+lat_letter28_1:
+  type: TEXTURE
+  offset: 0x814912C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486C20
+
+lat_letter28_2:
+  type: TEXTURE
+  offset: 0x814914C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486C20
+
+lat_letter28_9:
+  type: TEXTURE
+  offset: 0x814915C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486C20
+
+lat_letter28_5:
+  type: TEXTURE
+  offset: 0x81491640
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486C20
+
+lat_letter28_6:
+  type: TEXTURE
+  offset: 0x81491740
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486C20
+
+lat_letter28_7:
+  type: TEXTURE
+  offset: 0x81491840
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486C20
+
+lat_letter65_kt_tex:
+  type: TEXTURE
+  offset: 0x81491A40
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486C40
+
+lat_letter65_me_tex:
+  type: TEXTURE
+  offset: 0x81491E40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486C40
+
+lat_letter65_sk_tex:
+  type: TEXTURE
+  offset: 0x81491F40
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486C40
+
+lat_letter65_xk_tex:
+  type: TEXTURE
+  offset: 0x81492140
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter30_ed_tex:
+  type: TEXTURE
+  offset: 0x81492240
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81486C60
+
+lat_letter30_ba_tex:
+  type: TEXTURE
+  offset: 0x81492280
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81486C60
+
+lat_letter30_ki_tex:
+  type: TEXTURE
+  offset: 0x814922C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486C60
+
+lat_letter30_xk_tex:
+  type: TEXTURE
+  offset: 0x814923C0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter31_xk_tex:
+  type: TEXTURE
+  offset: 0x814924C0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter31_ed_tex:
+  type: TEXTURE
+  offset: 0x814925C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486C80
+
+lat_letter32_ce_tex:
+  type: TEXTURE
+  offset: 0x814926C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486CA0
+
+lat_letter32_ed_tex:
+  type: TEXTURE
+  offset: 0x814928C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486CA0
+
+lat_letter32_xk_tex:
+  type: TEXTURE
+  offset: 0x81492CC0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter33_ed_tex:
+  type: TEXTURE
+  offset: 0x81492DC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486CC0
+
+lat_letter33_xk_tex:
+  type: TEXTURE
+  offset: 0x81492FC0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter34_ed_tex:
+  type: TEXTURE
+  offset: 0x814930C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486CE0
+
+lat_letter34_ed2_tex:
+  type: TEXTURE
+  offset: 0x814934C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486CE0
+
+lat_letter34_ce_tex:
+  type: TEXTURE
+  offset: 0x814936C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486CE0
+
+lat_letter34_xk_tex:
+  type: TEXTURE
+  offset: 0x814938C0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter35_ed_tex:
+  type: TEXTURE
+  offset: 0x814939C0
+  format: CI4
+  width: 16
+  height: 128
+  source_encoding: gx
+  tlut: 0x81486D00
+
+lat_letter35_ce_tex:
+  type: TEXTURE
+  offset: 0x81493DC0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486D00
+
+lat_letter35_xk_tex:
+  type: TEXTURE
+  offset: 0x814941C0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter36_ed4_tex:
+  type: TEXTURE
+  offset: 0x814942C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486D20
+
+lat_letter36_ed_tex:
+  type: TEXTURE
+  offset: 0x814943C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486D20
+
+lat_letter36_xk_tex:
+  type: TEXTURE
+  offset: 0x814945C0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter36_ed3_tex:
+  type: TEXTURE
+  offset: 0x814946C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486D20
+
+lat_letter37_ed_tex:
+  type: TEXTURE
+  offset: 0x814947C0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486D40
+
+lat_letter37_kd_tex:
+  type: TEXTURE
+  offset: 0x81494BC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486D40
+
+lat_letter37_k_tex:
+  type: TEXTURE
+  offset: 0x81494DC0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter38_xk_tex:
+  type: TEXTURE
+  offset: 0x81494EC0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter38_ce_tex:
+  type: TEXTURE
+  offset: 0x81494FC0
+  format: RGBA16
+  width: 32
+  height: 32
+  source_encoding: gx
+
+lat_letter39_sk_tex:
+  type: TEXTURE
+  offset: 0x814957C0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486D60
+
+lat_letter39_xk_tex:
+  type: TEXTURE
+  offset: 0x81495BC0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter40_nk_tex:
+  type: TEXTURE
+  offset: 0x81495CC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486D80
+
+lat_letter40_hw_tex:
+  type: TEXTURE
+  offset: 0x81495EC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486D80
+
+lat_letter40_xk_tex:
+  type: TEXTURE
+  offset: 0x81495F40
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter41_gr_tex:
+  type: TEXTURE
+  offset: 0x81496040
+  format: RGBA16
+  width: 32
+  height: 32
+  source_encoding: gx
+
+lat_letter41_xk_tex:
+  type: TEXTURE
+  offset: 0x81496840
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter42_gr_tex:
+  type: TEXTURE
+  offset: 0x81496940
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486DA0
+
+lat_letter42_xk_tex:
+  type: TEXTURE
+  offset: 0x81496B40
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter43_ed_tex:
+  type: TEXTURE
+  offset: 0x81496C40
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486DC0
+
+lat_letter43_xk_tex:
+  type: TEXTURE
+  offset: 0x81497040
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter44_ce_tex:
+  type: TEXTURE
+  offset: 0x81497140
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486DE0
+
+lat_letter44_ed_tex:
+  type: TEXTURE
+  offset: 0x81497340
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486DE0
+
+lat_letter44_xh_tex:
+  type: TEXTURE
+  offset: 0x81497540
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter45_ed2_tex:
+  type: TEXTURE
+  offset: 0x81497640
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486E00
+
+lat_letter45_ed_tex:
+  type: TEXTURE
+  offset: 0x81497A40
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486E00
+
+lat_letter45_xk_tex:
+  type: TEXTURE
+  offset: 0x81497E40
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter46_ce_tex:
+  type: TEXTURE
+  offset: 0x81497F40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486E20
+
+lat_letter46_ed_tex:
+  type: TEXTURE
+  offset: 0x81498140
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486E20
+
+lat_letter46_xk_tex:
+  type: TEXTURE
+  offset: 0x81498540
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter47_ce_tex:
+  type: TEXTURE
+  offset: 0x81498640
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486E40
+
+lat_letter47_xk_tex:
+  type: TEXTURE
+  offset: 0x81498A40
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter48_hn_tex:
+  type: TEXTURE
+  offset: 0x81498B40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486E60
+
+lat_letter48_hn2_tex:
+  type: TEXTURE
+  offset: 0x81498D40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486E60
+
+lat_letter48_hn3_tex:
+  type: TEXTURE
+  offset: 0x81498F40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486E60
+
+lat_letter48_si_tex:
+  type: TEXTURE
+  offset: 0x81498FC0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486E60
+
+lat_letter48_xk_tex:
+  type: TEXTURE
+  offset: 0x814991C0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter49_ki_tex:
+  type: TEXTURE
+  offset: 0x814992C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486E80
+
+lat_letter49_xk_tex:
+  type: TEXTURE
+  offset: 0x814996C0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter50_ed_tex:
+  type: TEXTURE
+  offset: 0x814997C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486EA0
+
+lat_letter50_xk_tex:
+  type: TEXTURE
+  offset: 0x81499BC0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter51_ed_tex:
+  type: TEXTURE
+  offset: 0x81499CC0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486EC0
+
+lat_letter51_ce_tex:
+  type: TEXTURE
+  offset: 0x8149A0C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486EC0
+
+lat_letter51_xk_tex:
+  type: TEXTURE
+  offset: 0x8149A4C0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter52_ed_tex:
+  type: TEXTURE
+  offset: 0x8149A5C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486EE0
+
+lat_letter52_ce_tex:
+  type: TEXTURE
+  offset: 0x8149A9C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486EE0
+
+lat_letter52_xk_tex:
+  type: TEXTURE
+  offset: 0x8149ADC0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter53_ki_tex:
+  type: TEXTURE
+  offset: 0x8149AEC0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486F00
+
+lat_letter53_ed_tex:
+  type: TEXTURE
+  offset: 0x8149B2C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486F00
+
+lat_letter53_xk_tex:
+  type: TEXTURE
+  offset: 0x8149B6C0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter54_ce_tex:
+  type: TEXTURE
+  offset: 0x8149B7C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486F20
+
+lat_letter54_xk_tex:
+  type: TEXTURE
+  offset: 0x8149B9C0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter55_ce_tex:
+  type: TEXTURE
+  offset: 0x8149BAC0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486F40
+
+lat_letter55_bg_tex:
+  type: TEXTURE
+  offset: 0x8149BEC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486F40
+
+lat_letter55_xk_tex:
+  type: TEXTURE
+  offset: 0x8149C0C0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter56_ce_tex:
+  type: TEXTURE
+  offset: 0x8149C1C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486F60
+
+lat_letter56_wh_tex:
+  type: TEXTURE
+  offset: 0x8149C3C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486F60
+
+lat_letter56_xk_tex:
+  type: TEXTURE
+  offset: 0x8149C440
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter57_ce_tex:
+  type: TEXTURE
+  offset: 0x8149C540
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486F80
+
+lat_letter57_xk_tex:
+  type: TEXTURE
+  offset: 0x8149C940
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter58_ed_tex:
+  type: TEXTURE
+  offset: 0x8149CA40
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81486FA0
+
+lat_letter58_xk_tex:
+  type: TEXTURE
+  offset: 0x8149CE40
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter59_sn_tex:
+  type: TEXTURE
+  offset: 0x8149CF40
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486FC0
+
+lat_letter59_xk_tex:
+  type: TEXTURE
+  offset: 0x8149D340
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter60_de_tex:
+  type: TEXTURE
+  offset: 0x8149D440
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486FE0
+
+lat_letter60_ed_tex:
+  type: TEXTURE
+  offset: 0x8149D640
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81486FE0
+
+lat_letter60_gd_tex:
+  type: TEXTURE
+  offset: 0x8149D840
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486FE0
+
+lat_letter60_hw_tex:
+  type: TEXTURE
+  offset: 0x8149D8C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81486FE0
+
+lat_letter61_ed_tex:
+  type: TEXTURE
+  offset: 0x8149D940
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81487000
+
+lat_letter61_kd_tex:
+  type: TEXTURE
+  offset: 0x8149DB40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81487000
+
+lat_letter61_ha_tex:
+  type: TEXTURE
+  offset: 0x8149DD40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81487000
+
+lat_letter61_xk_tex:
+  type: TEXTURE
+  offset: 0x8149DF40
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter62_ch_tex:
+  type: TEXTURE
+  offset: 0x8149E040
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81487020
+
+lat_letter62_hn_tex:
+  type: TEXTURE
+  offset: 0x8149E440
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81487020
+
+lat_letter62_xk_tex:
+  type: TEXTURE
+  offset: 0x8149E840
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter63_cloth3_tex:
+  type: TEXTURE
+  offset: 0x8149E940
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81487040
+
+lat_letter63_cloth4_tex:
+  type: TEXTURE
+  offset: 0x8149E9C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81487040
+
+lat_letter63_cloth5_tex:
+  type: TEXTURE
+  offset: 0x8149EA40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81487040
+
+lat_letter63_cloth6_tex:
+  type: TEXTURE
+  offset: 0x8149EAC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81487040
+
+lat_letter63_cloth7_tex:
+  type: TEXTURE
+  offset: 0x8149EBC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81487040
+
+lat_letter63_cloth8_tex:
+  type: TEXTURE
+  offset: 0x8149ECC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81487040
+
+lat_letter63_cloth1_tex:
+  type: TEXTURE
+  offset: 0x8149EDC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81487040
+
+lat_letter63_fusen_tex:
+  type: TEXTURE
+  offset: 0x8149EE40
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_letter63_cloth2_tex:
+  type: TEXTURE
+  offset: 0x8149EEC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81487040
+
+lat_letter63_cloth9_tex:
+  type: TEXTURE
+  offset: 0x8149EF40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81487040
+
+lat_letter64_ik_tex:
+  type: TEXTURE
+  offset: 0x8149EFC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81487060
+
+lat_letter64_ti_tex:
+  type: TEXTURE
+  offset: 0x8149F1C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81487060
+
+lat_letter64_aw_tex:
+  type: TEXTURE
+  offset: 0x8149F3C0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81487060
+
+lat_letter64_xk_tex:
+  type: TEXTURE
+  offset: 0x8149F7C0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx

@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_tak_rocket1_pal:
+  type: TEXTURE
+  offset: 0x81AA2A80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_rocket1_wing_tex:
+  type: TEXTURE
+  offset: 0x81AA2AA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA2A80
+
+int_tak_rocket1_body1_tex:
+  type: TEXTURE
+  offset: 0x81AA2BA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA2A80
+
+int_tak_rocket1_body2_tex:
+  type: TEXTURE
+  offset: 0x81AA2DA0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81AA2A80
+
+int_tak_rocket1_dai_tex:
+  type: TEXTURE
+  offset: 0x81AA30A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA2A80
+
+int_tak_rocket1_hone_tex:
+  type: TEXTURE
+  offset: 0x81AA3120
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA2A80
+
+int_tak_rocket1_hasi1_tex:
+  type: TEXTURE
+  offset: 0x81AA31A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA2A80
+
+int_tak_rocket1_hasi2_tex:
+  type: TEXTURE
+  offset: 0x81AA3220
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA2A80
+
+int_tak_rocket1_v:
+  type: VTX
+  offset: 0x81AA32A0
+  count: 66
+
+int_tak_rocket1_on_model:
+  type: GFX
+  offset: 0x81AA36C0
+  size: 0xC0
+
+int_tak_rocket1_onT_model:
+  type: GFX
+  offset: 0x81AA3780
+  size: 0xC0

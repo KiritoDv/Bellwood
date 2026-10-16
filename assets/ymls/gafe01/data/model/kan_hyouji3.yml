@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+kan_win_mu_tex:
+  type: TEXTURE
+  offset: 0x814AF100
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_win_ta_tex:
+  type: TEXTURE
+  offset: 0x814AF180
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_hyouji_v:
+  type: VTX
+  offset: 0x814AF200
+  count: 8
+
+kan_win_mu_model:
+  type: GFX
+  offset: 0x814AF280
+  size: 0x40
+
+kan_win_ta_model:
+  type: GFX
+  offset: 0x814AF2C0
+  size: 0x40

@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+int_nog_medaka_pal:
+  type: TEXTURE
+  offset: 0x8123F9E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f33_medaka_tex:
+  type: TEXTURE
+  offset: 0x8123FA00
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8123F9E0
+
+act_f33_medaka_a_v:
+  type: VTX
+  offset: 0x8123FB00
+  count: 9
+
+act_f33_medaka_aT_model:
+  type: GFX
+  offset: 0x8123FB90
+  size: 0x68
+
+act_f33_medaka_b_v:
+  type: VTX
+  offset: 0x8123FBF8
+  count: 9
+
+act_f33_medaka_bT_model:
+  type: GFX
+  offset: 0x8123FC88
+  size: 0x68
+
+act_f33_medaka_c_v:
+  type: VTX
+  offset: 0x8123FCF0
+  count: 9
+
+act_f33_medaka_cT_model:
+  type: GFX
+  offset: 0x8123FD80
+  size: 0x68

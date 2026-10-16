@@ -1,0 +1,56 @@
+:config:
+  strict_declarations: true
+
+int_nog_uranai_pal:
+  type: TEXTURE
+  offset: 0x819272E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_uranai_body_tex:
+  type: TEXTURE
+  offset: 0x81927300
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x819272E0
+
+int_nog_uranai_roof_tex:
+  type: TEXTURE
+  offset: 0x81927700
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819272E0
+
+int_nog_uranai_grass_tex:
+  type: TEXTURE
+  offset: 0x81927900
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819272E0
+
+int_nog_uranai_v:
+  type: VTX
+  offset: 0x81927980
+  count: 37
+
+int_nog_uranai_on_model:
+  type: GFX
+  offset: 0x81927BD0
+  size: 0x80
+
+int_nog_uranai_off_model:
+  type: GFX
+  offset: 0x81927C50
+  size: 0x58
+
+int_nog_uranai_onT_model:
+  type: GFX
+  offset: 0x81927CA8
+  size: 0x70

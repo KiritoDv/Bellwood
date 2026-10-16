@@ -1,6 +1,4 @@
-extern Gfx int_sum_hal_mirror01_evw_model[];
-extern Gfx int_sum_hal_mirror01_onT_model[];
-extern Gfx int_sum_hal_mirror01_on_model[];
+#include "assets/data/model/int_sum_hal_mirror01.h"
 
 static void aSumHalMirror01_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     OPEN_DISP(game->graph);

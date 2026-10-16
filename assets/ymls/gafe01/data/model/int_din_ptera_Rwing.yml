@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_din_ptera_pal:
+  type: TEXTURE
+  offset: 0x816387C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_din_ptera_baceA_tex:
+  type: TEXTURE
+  offset: 0x816387E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x816387C0
+
+int_din_ptera_poleA_tex:
+  type: TEXTURE
+  offset: 0x816389E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x816387C0
+
+int_din_ptera_Rleg_tex:
+  type: TEXTURE
+  offset: 0x81638A60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x816387C0
+
+int_din_ptera_Rthigh_tex:
+  type: TEXTURE
+  offset: 0x81638AE0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x816387C0
+
+int_din_ptera_Lwing_tex:
+  type: TEXTURE
+  offset: 0x81638BE0
+  format: CI4
+  width: 64
+  height: 8
+  source_encoding: gx
+  tlut: 0x816387C0
+
+int_din_ptera_Rwing_v:
+  type: VTX
+  offset: 0x81638CE0
+  count: 33
+
+int_din_ptera_Rwing_model:
+  type: GFX
+  offset: 0x81638EF0
+  size: 0x68
+
+int_din_ptera_RwingT_model:
+  type: GFX
+  offset: 0x81638F58
+  size: 0xE0

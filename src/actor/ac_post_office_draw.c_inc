@@ -1,5 +1,4 @@
-extern Gfx obj_s_yubinkyoku_window_model[];
-extern Gfx obj_w_yubinkyoku_window_model[];
+#include "assets/data/model/obj_s_yubinkyoku.h"
 
 static int aPOFF_actor_draw_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
                                    u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {

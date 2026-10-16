@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f23_sake_pal:
+  type: TEXTURE
+  offset: 0x81243F40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f23_sake_tex:
+  type: TEXTURE
+  offset: 0x81243F60
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81243F40
+
+act_f23_sake_a_v:
+  type: VTX
+  offset: 0x81244260
+  count: 9
+
+act_f23_sake_aT_model:
+  type: GFX
+  offset: 0x812442F0
+  size: 0x68
+
+act_f23_sake_b_v:
+  type: VTX
+  offset: 0x81244358
+  count: 9
+
+act_f23_sake_bT_model:
+  type: GFX
+  offset: 0x812443E8
+  size: 0x68
+
+act_f23_sake_c_v:
+  type: VTX
+  offset: 0x81244450
+  count: 9
+
+act_f23_sake_cT_model:
+  type: GFX
+  offset: 0x812444E0
+  size: 0x68

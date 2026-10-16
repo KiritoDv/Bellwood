@@ -12,10 +12,9 @@
 #include "m_roll_lib.h"
 #include "sys_matrix.h"
 #include "m_collision_bg.h"
-
-extern Gfx act_ball_b_model[];
-extern Gfx act_ball_d_model[];
-extern Gfx act_ball_s_model[];
+#include "assets/data/model/act_ball_b.h"
+#include "assets/data/model/act_ball_d.h"
+#include "assets/data/model/act_ball_s.h"
 
 Gfx* ball_model_tbl[] = {
     act_ball_b_model,
@@ -268,7 +267,7 @@ static void aBALL_BGcheck(BALL_ACTOR* actor) {
     }
 }
 
-static void aBALL_OBJcheck(BALL_ACTOR* actor, GAME*) {
+static void aBALL_OBJcheck(BALL_ACTOR* actor, GAME* arg1) {
     int wade;
     ACTOR* collided;
     xyz_t pos_speed;
@@ -773,6 +772,6 @@ static void aBALL_actor_draw(ACTOR* actor, GAME* game) {
     gDPPipeSync(gfx++);
     gSPMatrix(gfx++, _Matrix_to_Mtx_new(graph), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gfx++, ball_model_tbl[ball->type]);
-    NOW_POLY_OPA_DISP = gfx;
+    SET_POLY_OPA_DISP(gfx);
     CLOSE_DISP(graph);
 }

@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_sum_art04_pal:
+  type: TEXTURE
+  offset: 0x81988E20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_art04_front_tex:
+  type: TEXTURE
+  offset: 0x81988E40
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81988E20
+
+int_sum_art04_stand_tex:
+  type: TEXTURE
+  offset: 0x81989040
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81988E20
+
+int_sum_art04_binas_tex:
+  type: TEXTURE
+  offset: 0x81989240
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81988E20
+
+int_sum_art04_gaku_tex:
+  type: TEXTURE
+  offset: 0x81989540
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81988E20
+
+int_sum_art04_v:
+  type: VTX
+  offset: 0x81989640
+  count: 52
+
+int_sum_art04_on_model:
+  type: GFX
+  offset: 0x81989980
+  size: 0x88
+
+int_sum_art04_onT_model:
+  type: GFX
+  offset: 0x81989A08
+  size: 0xA0

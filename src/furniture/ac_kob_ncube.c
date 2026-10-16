@@ -1,5 +1,4 @@
-extern Gfx int_kob_ncube_on_model[];
-extern Gfx int_kob_ncube_onT_model[];
+#include "assets/data/model/int_kob_ncube.h"
 static void aKobNcube_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aKobNcube_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aKobNcube_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);

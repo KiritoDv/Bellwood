@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f01_funa_pal:
+  type: TEXTURE
+  offset: 0x8123B840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f01_funa_tex:
+  type: TEXTURE
+  offset: 0x8123B860
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8123B840
+
+act_f01_funa_a_v:
+  type: VTX
+  offset: 0x8123BA60
+  count: 9
+
+act_f01_funa_aT_model:
+  type: GFX
+  offset: 0x8123BAF0
+  size: 0x68
+
+act_f01_funa_b_v:
+  type: VTX
+  offset: 0x8123BB58
+  count: 10
+
+act_f01_funa_bT_model:
+  type: GFX
+  offset: 0x8123BBF8
+  size: 0x68
+
+act_f01_funa_c_v:
+  type: VTX
+  offset: 0x8123BC60
+  count: 9
+
+act_f01_funa_cT_model:
+  type: GFX
+  offset: 0x8123BCF0
+  size: 0x68

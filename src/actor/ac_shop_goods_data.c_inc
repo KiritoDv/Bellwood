@@ -1,140 +1,79 @@
-extern Gfx obj_apple2_modelT[];
-extern Gfx obj_axeT_mat_model[];
-extern Gfx obj_axeT_gfx_model[];
-extern Gfx obj_paper_mat_model[];
-extern Gfx obj_paper_gfx_model[];
-extern Gfx obj_carpetT_mat_model[];
-extern Gfx obj_carpetT_gfx_model[];
-extern Gfx item_fish_modelT[];
-extern Gfx obj_shop_fossil_mat_model[];
-extern Gfx obj_shop_fossil_gfx_model[];
-extern Gfx obj_fukuT_mat_model[];
-extern Gfx obj_fukuT_gfx_model[];
-extern Gfx item_kabu_modelT[];
-extern Gfx obj_shop_kanbanT_mat_model[];
-extern Gfx obj_shop_kanbanT_gfx_model[];
-extern Gfx obj_shop_kaza1_model[];
-extern Gfx obj_shop_kaza2_model[];
-extern Gfx obj_shop_kaza3_model[];
-extern Gfx obj_shop_kaza4_model[];
-extern Gfx obj_shop_kaza5_model[];
-extern Gfx obj_shop_kaza6_model[];
-extern Gfx obj_shop_kaza7_model[];
-extern Gfx obj_shop_kaza8_model[];
-extern Gfx item_matutake_modelT[];
-extern Gfx obj_mdT_mat_model[];
-extern Gfx obj_mdT_gfx_model[];
-extern Gfx obj_shop_cnaegiT_mat_model[];
-extern Gfx obj_shop_cnaegiT_gfx_model[];
-extern Gfx obj_naegiT_mat_model[];
-extern Gfx obj_naegiT_gfx_model[];
-extern Gfx obj_netT_mat_model[];
-extern Gfx obj_netT_gfx_model[];
-extern Gfx item_orange_modelT[];
-extern Gfx obj_paintT_a_mat_model[];
-extern Gfx obj_paintT_b_mat_model[];
-extern Gfx obj_paintT_c_mat_model[];
-extern Gfx obj_paintT_d_mat_model[];
-extern Gfx obj_paintT_e_mat_model[];
-extern Gfx obj_paintT_f_mat_model[];
-extern Gfx obj_paintT_g_mat_model[];
-extern Gfx obj_paintT_h_mat_model[];
-extern Gfx obj_paintT_i_mat_model[];
-extern Gfx obj_paintT_j_mat_model[];
-extern Gfx obj_paintT_k_mat_model[];
-extern Gfx obj_paintT_l_mat_model[];
-extern Gfx obj_paintT_gfx_model[];
-extern Gfx obj_rodT_mat_model[];
-extern Gfx obj_rodT_gfx_model[];
-extern Gfx obj_rod_lineT_mat_model[];
-extern Gfx obj_rod_lineT_gfx_model[];
-extern Gfx obj_sangoT_mat_model[];
-extern Gfx obj_sangoT_gfx_model[];
-extern Gfx obj_seed_mat_model[];
-extern Gfx obj_seed_gfx_model[];
-extern Gfx obj_honegaiT_mat_model[];
-extern Gfx obj_honegaiT_gfx_model[];
-extern Gfx obj_horagaiT_mat_model[];
-extern Gfx obj_horagaiT_gfx_model[];
-extern Gfx obj_komagaiT_mat_model[];
-extern Gfx obj_komagaiT_gfx_model[];
-extern Gfx obj_takaragaiT_mat_model[];
-extern Gfx obj_takaragaiT_gfx_model[];
-extern Gfx obj_ougigaiT_mat_model[];
-extern Gfx obj_ougigaiT_gfx_model[];
-extern Gfx obj_sakuragaiT_mat_model[];
-extern Gfx obj_sakuragaiT_gfx_model[];
-extern Gfx obj_shakogaiT_mat_model[];
-extern Gfx obj_shakogaiT_gfx_model[];
-extern Gfx obj_shovelT_mat_model[];
-extern Gfx obj_shovelT_gfx_model[];
-extern Gfx obj_soldoutT_mat_model[];
-extern Gfx obj_soldoutT_gfx_model[];
-extern Gfx obj_ticketT_mat_model[];
-extern Gfx obj_ticketT_gfx_model[];
-extern Gfx obj_axe2T_mat_model[];
-extern Gfx obj_axe2T_gfx_model[];
-extern Gfx obj_net2T_mat_model[];
-extern Gfx obj_net2T_gfx_model[];
-extern Gfx obj_rod2T_mat_model[];
-extern Gfx obj_rod2T_gfx_model[];
-extern Gfx obj_rod2_lineT_mat_model[];
-extern Gfx obj_rod2_lineT_gfx_model[];
-extern Gfx obj_shovel2T_mat_model[];
-extern Gfx obj_shovel2T_gfx_model[];
-extern Gfx obj_g2T_mat_model[];
-extern Gfx obj_g2T_gfx_model[];
-extern Gfx obj_nagagutuT_mat_model[];
-extern Gfx obj_nagagutuT_gfx_model[];
-extern Gfx obj_g1T_mat_model[];
-extern Gfx obj_g1T_gfx_model[];
-extern Gfx obj_shop_utiwa1_mat_model[];
-extern Gfx obj_shop_utiwa1_gfx_model[];
-extern Gfx obj_shop_utiwa2_mat_model[];
-extern Gfx obj_shop_utiwa2_gfx_model[];
-extern Gfx obj_shop_utiwa3_mat_model[];
-extern Gfx obj_shop_utiwa3_gfx_model[];
-extern Gfx obj_shop_utiwa4_mat_model[];
-extern Gfx obj_shop_utiwa4_gfx_model[];
-extern Gfx obj_shop_utiwa5_mat_model[];
-extern Gfx obj_shop_utiwa5_gfx_model[];
-extern Gfx obj_shop_utiwa6_mat_model[];
-extern Gfx obj_shop_utiwa6_gfx_model[];
-extern Gfx obj_shop_utiwa7_mat_model[];
-extern Gfx obj_shop_utiwa7_gfx_model[];
-extern Gfx obj_shop_utiwa8_mat_model[];
-extern Gfx obj_shop_utiwa8_gfx_model[];
-extern Gfx obj_wallT_mat_model[];
-extern Gfx obj_wallT_gfx_model[];
-extern Gfx int_iid_diary_model[];
-extern Gfx int_iid_funediary_model[];
-extern Gfx int_iid_mdiary_model[];
-extern Gfx int_iid_newediary_model[];
-extern Gfx int_ike_nikki_fan1_on_model[];
-extern Gfx int_ike_nikki_fan2_on_model[];
-extern Gfx int_ike_nikki_fan3_on_model[];
-extern Gfx int_ike_nikki_fan4_on_model[];
-extern Gfx int_ike_nikki_fan5_on_model[];
-extern Gfx int_ike_nikki_wafu1_on_model[];
-extern Gfx bag_DL_mode[];
-extern Gfx bag_DL_vtx[];
-extern Gfx obj_shop_candy_modelT[];
-extern Gfx obj_item_cocoT_mat_model[];
-extern Gfx obj_item_cocoT_gfx_model[];
-extern Gfx nuts_DL_mode[];
-extern Gfx nuts_DL_vtx[];
-extern Gfx obj_otosiT_mat_model[];
-extern Gfx obj_otosiT_gfx_model[];
-extern Gfx peach_DL_mode[];
-extern Gfx peach_DL_vtx[];
-extern Gfx pear_DL_mode[];
-extern Gfx pear_DL_vtx[];
-extern Gfx int_nog_collegenote_model[];
-extern Gfx int_nog_harddiaryT_model[];
-extern Gfx int_nog_schoolnote_model[];
-extern Gfx int_nog_systemnote_model[];
-extern Gfx int_nog_tudurinoteT_model[];
-extern Gfx int_tak_nikki01_on_model[];
+#include "assets/data/model/int_iid_diary.h"
+#include "assets/data/model/int_iid_funediary.h"
+#include "assets/data/model/int_iid_mdiary.h"
+#include "assets/data/model/int_iid_newdiary.h"
+#include "assets/data/model/int_ike_nikki_fan1.h"
+#include "assets/data/model/int_ike_nikki_fan2.h"
+#include "assets/data/model/int_ike_nikki_fan3.h"
+#include "assets/data/model/int_ike_nikki_fan4.h"
+#include "assets/data/model/int_ike_nikki_fan5.h"
+#include "assets/data/model/int_ike_nikki_wafu1.h"
+#include "assets/data/model/int_nog_collegenote.h"
+#include "assets/data/model/int_nog_harddiary.h"
+#include "assets/data/model/int_nog_schoolnote.h"
+#include "assets/data/model/int_nog_systemnote.h"
+#include "assets/data/model/int_nog_tudurinote.h"
+#include "assets/data/model/int_tak_nikki01.h"
+#include "assets/data/model/item_fish.h"
+#include "assets/data/model/obj_item_apple.h"
+#include "assets/data/model/obj_item_bag.h"
+#include "assets/data/model/obj_item_coco.h"
+#include "assets/data/model/obj_item_fossil.h"
+#include "assets/data/model/obj_item_kabu.h"
+#include "assets/data/model/obj_item_matutake.h"
+#include "assets/data/model/obj_item_nuts.h"
+#include "assets/data/model/obj_item_orange.h"
+#include "assets/data/model/obj_item_otosi.h"
+#include "assets/data/model/obj_item_peach.h"
+#include "assets/data/model/obj_item_pear.h"
+#include "assets/data/model/obj_shop_akican.h"
+#include "assets/data/model/obj_shop_axe.h"
+#include "assets/data/model/obj_shop_axe2.h"
+#include "assets/data/model/obj_shop_candy.h"
+#include "assets/data/model/obj_shop_carpet.h"
+#include "assets/data/model/obj_shop_cnaegi.h"
+#include "assets/data/model/obj_shop_fuku.h"
+#include "assets/data/model/obj_shop_honegai.h"
+#include "assets/data/model/obj_shop_horagai.h"
+#include "assets/data/model/obj_shop_kanban.h"
+#include "assets/data/model/obj_shop_kaza1.h"
+#include "assets/data/model/obj_shop_kaza2.h"
+#include "assets/data/model/obj_shop_kaza3.h"
+#include "assets/data/model/obj_shop_kaza4.h"
+#include "assets/data/model/obj_shop_kaza5.h"
+#include "assets/data/model/obj_shop_kaza6.h"
+#include "assets/data/model/obj_shop_kaza7.h"
+#include "assets/data/model/obj_shop_kaza8.h"
+#include "assets/data/model/obj_shop_komagai.h"
+#include "assets/data/model/obj_shop_md.h"
+#include "assets/data/model/obj_shop_naegi.h"
+#include "assets/data/model/obj_shop_nagagutu.h"
+#include "assets/data/model/obj_shop_net.h"
+#include "assets/data/model/obj_shop_net2.h"
+#include "assets/data/model/obj_shop_ougigai.h"
+#include "assets/data/model/obj_shop_paint.h"
+#include "assets/data/model/obj_shop_paper.h"
+#include "assets/data/model/obj_shop_rod.h"
+#include "assets/data/model/obj_shop_rod2.h"
+#include "assets/data/model/obj_shop_sakuragai.h"
+#include "assets/data/model/obj_shop_sango.h"
+#include "assets/data/model/obj_shop_seed.h"
+#include "assets/data/model/obj_shop_shakogai.h"
+#include "assets/data/model/obj_shop_shovel.h"
+#include "assets/data/model/obj_shop_shovel2.h"
+#include "assets/data/model/obj_shop_soldout.h"
+#include "assets/data/model/obj_shop_takaragai.h"
+#include "assets/data/model/obj_shop_ticket.h"
+#include "assets/data/model/obj_shop_tire.h"
+#include "assets/data/model/obj_shop_utiwa1.h"
+#include "assets/data/model/obj_shop_utiwa2.h"
+#include "assets/data/model/obj_shop_utiwa3.h"
+#include "assets/data/model/obj_shop_utiwa4.h"
+#include "assets/data/model/obj_shop_utiwa5.h"
+#include "assets/data/model/obj_shop_utiwa6.h"
+#include "assets/data/model/obj_shop_utiwa7.h"
+#include "assets/data/model/obj_shop_utiwa8.h"
+#include "assets/data/model/obj_shop_wall.h"
 
 typedef struct ac_shop_goods_data_s {
     mActor_name_t item_start;

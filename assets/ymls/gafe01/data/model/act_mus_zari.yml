@@ -1,0 +1,53 @@
+:config:
+  strict_declarations: true
+
+act_mus_zari_pal:
+  type: TEXTURE
+  offset: 0x816900A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_zari_tex_txt:
+  type: TEXTURE
+  offset: 0x816900C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x816900A0
+
+act_mus_zari_v:
+  type: VTX
+  offset: 0x816904C0
+  count: 55
+
+act_mus_zari_tail_model:
+  type: GFX
+  offset: 0x81690830
+  size: 0x80
+
+act_mus_zari_right_model:
+  type: GFX
+  offset: 0x816908B0
+  size: 0x40
+
+act_mus_zari_left_model:
+  type: GFX
+  offset: 0x816908F0
+  size: 0x40
+
+act_mus_zari_asi_model:
+  type: GFX
+  offset: 0x81690930
+  size: 0x40
+
+act_mus_zari_base_model:
+  type: GFX
+  offset: 0x81690970
+  size: 0x48
+
+cKF_bs_r_act_mus_zari:
+  type: AC:CKF_SKELETON
+  offset: 0x81690A24
+  counts: { joints: 9 }

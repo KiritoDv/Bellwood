@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+sav_nuki_tex:
+  type: TEXTURE
+  offset: 0x813EF980
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+sav_v:
+  type: VTX
+  offset: 0x813EFB80
+  count: 4
+
+sav_mb_model:
+  type: GFX
+  offset: 0x813EFBC0
+  size: 0x48

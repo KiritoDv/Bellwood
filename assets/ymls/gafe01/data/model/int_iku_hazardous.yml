@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_iku_hazardous_pal:
+  type: TEXTURE
+  offset: 0x81859780
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_hazardous_mark_tex_txt:
+  type: TEXTURE
+  offset: 0x818597A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81859780
+
+int_iku_hazardous_top_tex_txt:
+  type: TEXTURE
+  offset: 0x818599A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81859780
+
+int_iku_hazardous_yoko_tex_txt:
+  type: TEXTURE
+  offset: 0x81859BA0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81859780
+
+int_iku_hazardous_v:
+  type: VTX
+  offset: 0x81859FA0
+  count: 36
+
+int_iku_hazardous_model_b_model:
+  type: GFX
+  offset: 0x8185A1E0
+  size: 0x98
+
+int_iku_hazardous_model_a_model:
+  type: GFX
+  offset: 0x8185A278
+  size: 0x68

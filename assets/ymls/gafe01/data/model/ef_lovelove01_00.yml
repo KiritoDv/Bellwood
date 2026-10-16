@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+ef_lovelove01_0:
+  type: TEXTURE
+  offset: 0x8166A4E0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_lovelove01_00_v:
+  type: VTX
+  offset: 0x8166A5E0
+  count: 4
+
+ef_lovelove01_00_modelT:
+  type: GFX
+  offset: 0x8166A620
+  size: 0x50

@@ -1,10 +1,9 @@
+#include "assets/data/model/obj_shop_manekin.h"
 static void aFmanekin_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aFmanekin_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aFmanekin_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aFmanekin_dt(FTR_ACTOR* ftr_actor, u8* data);
 static void aFmanekin_dma(mActor_name_t ftr_name, u8* data);
-
-extern Gfx obj_shop_manekin_model[];
 
 static void aFmanekin_ct(FTR_ACTOR* ftr_actor, u8* data) {
     

@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+tol_rope_1_pal:
+  type: TEXTURE
+  offset: 0x8137AD00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_rope_1_tex:
+  type: TEXTURE
+  offset: 0x8137AD20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8137AD00
+
+tol_rope_1_v:
+  type: VTX
+  offset: 0x8137AF20
+  count: 60
+
+tol_rope_1T_model:
+  type: GFX
+  offset: 0x8137B2E0
+  size: 0xB0

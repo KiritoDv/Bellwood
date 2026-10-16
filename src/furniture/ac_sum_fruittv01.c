@@ -1,3 +1,4 @@
+#include "assets/data/model/int_sum_fruittv01.h"
 static void aSumFruittv01_ct(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
@@ -5,7 +6,7 @@ static void aSumFruittv01_ct(FTR_ACTOR* ftr_actor, u8* data) {
 static void aSumFruittv01_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     if (ftr_actor->switch_bit) {
         if (aFTR_CAN_PLAY_SE(ftr_actor)) {
-            sAdo_OngenPos((u32)ftr_actor, 6, &ftr_actor->position);
+            sAdo_OngenPos((uintptr_t)ftr_actor, 6, &ftr_actor->position);
         }
 
         ftr_actor->tex_animation.frame++;
@@ -23,13 +24,6 @@ static void aSumFruittv01_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* g
     }
 }
 
-extern u8 int_sum_fruittv01_front1_TA_tex_txt[];
-extern u8 int_sum_fruittv01_front2_TA_tex_txt[];
-extern u8 int_sum_fruittv01_front3_TA_tex_txt[];
-extern u8 int_sum_fruittv01_front4_TA_tex_txt[];
-
-extern Gfx int_sum_fruittv01_on_model[];
-extern Gfx int_sum_fruittv01_off_model[];
 
 static u8* aSumFruittv01_on_anime[] = {
     int_sum_fruittv01_front2_TA_tex_txt, int_sum_fruittv01_front2_TA_tex_txt, int_sum_fruittv01_front2_TA_tex_txt,

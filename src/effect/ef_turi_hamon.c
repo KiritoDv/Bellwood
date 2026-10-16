@@ -4,8 +4,7 @@
 #include "m_debug.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
-
-extern Gfx ef_turi_hamon01_00_modelT[];
+#include "assets/data/model/ef_turi_hamon01_00.h"
 
 static void eTH_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eTH_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);

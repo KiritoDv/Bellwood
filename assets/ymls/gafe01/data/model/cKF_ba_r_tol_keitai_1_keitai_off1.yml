@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_tol_keitai_1_keitai_off1:
+  type: AC:CKF_ANIMATION
+  offset: 0x815C5F24
+  joints: 3
+  counts: { flags: 3, data: 66, keys: 9, fixed: 3 }

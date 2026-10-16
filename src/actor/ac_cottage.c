@@ -11,6 +11,10 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "libforest/gbi_extensions.h"
+#include "assets/data/model/obj_s_house_i.h"
+#include "assets/data/model/obj_s_house_i_shadow.h"
+#include "assets/data/model/obj_s_myhome_i.h"
+#include "assets/data/model/obj_s_myhome_i_shadow.h"
 
 enum {
     Cottage_DATA_PLAYER_STANDARD,
@@ -85,9 +89,6 @@ static u8 Shadow_vtx_fix_flg_cottage_my[] = {
 };
 // clang-format on
 
-extern Vtx obj_s_myhome_i_shadow_v[];
-extern Gfx obj_s_myhome_i_shadowT_model[];
-
 // clang-format off
 static bIT_ShadowData_c bIT_DR_SHADOW_c_cottage_my = {
     22,
@@ -109,9 +110,6 @@ static u8 Shadow_vtx_fix_flg_cottage_npc[] = {
     TRUE, FALSE, FALSE, TRUE
 };
 // clang-format on
-
-extern Vtx obj_s_house_i_shadow_v[];
-extern Gfx obj_s_house_i_shadowT_model[];
 
 // clang-format off
 static bIT_ShadowData_c bIT_DR_SHADOW_c_cottage_npc = {
@@ -158,11 +156,6 @@ static void Cottage_my_demo_door_open(ACTOR* actor);
 static f32 Cottage_my_light_aim(STRUCTURE_ACTOR* cottage);
 static void Cottage_my_ctrl_light(STRUCTURE_ACTOR* cottage);
 
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_myhome_i;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_myhome_i;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_myhome_i_out;
-extern Gfx obj_s_myhome_i_window_model[];
-
 // NPC cottage
 static void Cottage_npc_rewrite_door(ACTOR* actor, GAME_PLAY* play);
 static void Cottage_npc_set_bgOffset(STRUCTURE_ACTOR* cottage, int offs);
@@ -171,11 +164,6 @@ static int Cottage_npc_check_go_out(STRUCTURE_ACTOR* cottage, GAME_PLAY* play);
 static void Cottage_npc_demo_door_open(ACTOR* actor);
 static f32 Cottage_npc_light_aim(STRUCTURE_ACTOR* cottage);
 static void Cottage_npc_ctrl_light(STRUCTURE_ACTOR* cottage);
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_house_i;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_house_i;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_house_i_out;
-extern Gfx obj_s_house_i_window_model[];
 
 // clang-format off
 static const COTTAGE_DATA Cottage_data[4] = {

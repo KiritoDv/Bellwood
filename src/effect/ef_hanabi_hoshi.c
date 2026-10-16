@@ -3,6 +3,7 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_hanabi_h_00.h"
 
 static void eHanabiHoshi_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eHanabiHoshi_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -85,8 +86,6 @@ eEC_morph_data_c eHanabiHoshi_morph_data2[] = {
 };
 
 eEC_morph_data_c* eHanabiHoshi_morph_table[] = { eHanabiHoshi_morph_data1, eHanabiHoshi_morph_data2 };
-
-extern Gfx ef_hanabi_h_00_modelT[];
 
 static void eHanabiHoshi_dw(eEC_Effect_c* effect, GAME* game) {
     u8 result[9];

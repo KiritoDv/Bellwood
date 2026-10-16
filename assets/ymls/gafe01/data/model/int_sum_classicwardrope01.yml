@@ -1,0 +1,90 @@
+:config:
+  strict_declarations: true
+
+int_sum_classicwardrope01_pal01_pal:
+  type: TEXTURE
+  offset: 0x819C0060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_classicwardrope01_mirror_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x819C0080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_classicwardrope01_back:
+  type: TEXTURE
+  offset: 0x819C00A0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819C0060
+
+int_sum_classicwardrope01_front:
+  type: TEXTURE
+  offset: 0x819C02A0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819C0060
+
+int_sum_classicwardrope01_side:
+  type: TEXTURE
+  offset: 0x819C04A0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819C0060
+
+int_sum_classicwardrope01_top:
+  type: TEXTURE
+  offset: 0x819C06A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C0060
+
+int_sum_classicwardrope01_dolls:
+  type: TEXTURE
+  offset: 0x819C0720
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819C0060
+
+int_sum_classicwardrope01_mirror:
+  type: TEXTURE
+  offset: 0x819C0820
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C0080
+
+int_sum_classicwardrope01_v:
+  type: VTX
+  offset: 0x819C08A0
+  count: 63
+
+int_sum_classcwardrope01_on_model:
+  type: GFX
+  offset: 0x819C0C90
+  size: 0x60
+
+int_sum_classcwardrope01_onT_model:
+  type: GFX
+  offset: 0x819C0CF0
+  size: 0x108
+
+int_sum_classicwardrope_envT_model:
+  type: GFX
+  offset: 0x819C0DF8
+  size: 0x60

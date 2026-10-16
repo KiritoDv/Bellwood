@@ -1,0 +1,102 @@
+:config:
+  strict_declarations: true
+
+int_sum_kanabun_pal:
+  type: TEXTURE
+  offset: 0x81A0B9E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_kanabun_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A0BA00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_kanabun_base_txt:
+  type: TEXTURE
+  offset: 0x81A0BA20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A0B9E0
+
+int_sum_kanabun_top_txt:
+  type: TEXTURE
+  offset: 0x81A0BAA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A0B9E0
+
+int_sum_kanabun_side_txt:
+  type: TEXTURE
+  offset: 0x81A0BCA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A0B9E0
+
+int_sum_kanabun_body_txt:
+  type: TEXTURE
+  offset: 0x81A0BEA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A0B9E0
+
+int_sum_kanabun_hand_txt:
+  type: TEXTURE
+  offset: 0x81A0BFA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A0BA00
+
+int_sum_kanabun_v:
+  type: VTX
+  offset: 0x81A0C0A0
+  count: 57
+
+int_sum_kanabun_side_model:
+  type: GFX
+  offset: 0x81A0C430
+  size: 0x68
+
+int_sum_kanabun_komado_model:
+  type: GFX
+  offset: 0x81A0C498
+  size: 0x58
+
+int_sum_kanabun_glass_model:
+  type: GFX
+  offset: 0x81A0C4F0
+  size: 0x68
+
+int_sum_kanabun_base_model:
+  type: GFX
+  offset: 0x81A0C558
+  size: 0x98
+
+int_sum_kanabun_body_model:
+  type: GFX
+  offset: 0x81A0C5F0
+  size: 0x68
+
+cKF_ba_r_int_sum_kanabun:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A0C71C
+  joints: 6
+  counts: { flags: 6, data: 72, keys: 6, fixed: 15 }
+
+cKF_bs_r_int_sum_kanabun:
+  type: AC:CKF_SKELETON
+  offset: 0x81A0C778
+  counts: { joints: 6 }

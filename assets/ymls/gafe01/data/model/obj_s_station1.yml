@@ -1,0 +1,392 @@
+:config:
+  strict_declarations: true
+
+obj_s_station1_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81597D20
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_station1_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x81598520
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_station1_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81598D20
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_station1_v:
+  type: VTX
+  offset: 0x81599520
+  count: 125
+
+obj_s_station1_t3_model:
+  type: GFX
+  offset: 0x81599CF0
+  size: 0x80
+
+obj_s_station1_t2_model:
+  type: GFX
+  offset: 0x81599D70
+  size: 0x48
+
+obj_s_station1_t1_model:
+  type: GFX
+  offset: 0x81599DB8
+  size: 0x70
+
+obj_s_station1_short_model:
+  type: GFX
+  offset: 0x81599E28
+  size: 0x40
+
+obj_s_station1_long_model:
+  type: GFX
+  offset: 0x81599E68
+  size: 0x40
+
+cKF_bs_r_obj_s_station1:
+  type: AC:CKF_SKELETON
+  offset: 0x81599EFC
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_s_station1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81599F3C
+  joints: 7
+  counts: { flags: 7, data: 0, keys: 0, fixed: 24 }
+
+obj_w_station1_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81599F60
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_station1_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8159A760
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_station1_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x8159AF60
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_station1_v:
+  type: VTX
+  offset: 0x8159B760
+  count: 123
+
+obj_w_station1_t3_model:
+  type: GFX
+  offset: 0x8159BF10
+  size: 0x80
+
+obj_w_station1_t2_model:
+  type: GFX
+  offset: 0x8159BF90
+  size: 0x50
+
+obj_w_station1_t1_model:
+  type: GFX
+  offset: 0x8159BFE0
+  size: 0x80
+
+obj_w_station1_short_model:
+  type: GFX
+  offset: 0x8159C060
+  size: 0x40
+
+obj_w_station1_long_model:
+  type: GFX
+  offset: 0x8159C0A0
+  size: 0x40
+
+cKF_bs_r_obj_w_station1:
+  type: AC:CKF_SKELETON
+  offset: 0x8159C134
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_w_station1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8159C174
+  joints: 7
+  counts: { flags: 7, data: 0, keys: 0, fixed: 24 }
+
+obj_s_station2_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x8159C1A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_station2_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8159C9A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_station2_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x8159D1A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_station2_v:
+  type: VTX
+  offset: 0x8159D9A0
+  count: 113
+
+obj_s_station2_t3_model:
+  type: GFX
+  offset: 0x8159E0B0
+  size: 0x60
+
+obj_s_station2_t2_2_model:
+  type: GFX
+  offset: 0x8159E110
+  size: 0x50
+
+obj_s_station2_t1_1_model:
+  type: GFX
+  offset: 0x8159E160
+  size: 0x88
+
+obj_s_station2_short_model:
+  type: GFX
+  offset: 0x8159E1E8
+  size: 0x40
+
+obj_s_station2_long_model:
+  type: GFX
+  offset: 0x8159E228
+  size: 0x40
+
+cKF_bs_r_obj_s_station2:
+  type: AC:CKF_SKELETON
+  offset: 0x8159E2BC
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_s_station2:
+  type: AC:CKF_ANIMATION
+  offset: 0x8159E2FC
+  joints: 7
+  counts: { flags: 7, data: 0, keys: 0, fixed: 24 }
+
+obj_w_station2_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x8159E320
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_station2_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8159EB20
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_station2_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x8159F320
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_station2_v:
+  type: VTX
+  offset: 0x8159FB20
+  count: 115
+
+obj_w_station2_t3_model:
+  type: GFX
+  offset: 0x815A0250
+  size: 0x60
+
+obj_w_station2_t2_1_model:
+  type: GFX
+  offset: 0x815A02B0
+  size: 0x50
+
+obj_w_station2_t1_model:
+  type: GFX
+  offset: 0x815A0300
+  size: 0x88
+
+obj_w_station2_short_model:
+  type: GFX
+  offset: 0x815A0388
+  size: 0x40
+
+obj_w_ststion2_long_model:
+  type: GFX
+  offset: 0x815A03C8
+  size: 0x40
+
+cKF_bs_r_obj_w_station2:
+  type: AC:CKF_SKELETON
+  offset: 0x815A045C
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_w_station2:
+  type: AC:CKF_ANIMATION
+  offset: 0x815A049C
+  joints: 7
+  counts: { flags: 7, data: 0, keys: 0, fixed: 24 }
+
+obj_s_station3_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x815A04C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_station3_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x815A0CC0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_station3_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x815A14C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_station3_v:
+  type: VTX
+  offset: 0x815A1CC0
+  count: 102
+
+obj_s_station3_t3_model:
+  type: GFX
+  offset: 0x815A2320
+  size: 0x50
+
+obj_s_station3_t2_model:
+  type: GFX
+  offset: 0x815A2370
+  size: 0x70
+
+obj_s_station3_t1_model:
+  type: GFX
+  offset: 0x815A23E0
+  size: 0x68
+
+obj_s_station3_shourt_model:
+  type: GFX
+  offset: 0x815A2448
+  size: 0x40
+
+obj_s_ststion3_long_model:
+  type: GFX
+  offset: 0x815A2488
+  size: 0x40
+
+cKF_bs_r_obj_s_station3:
+  type: AC:CKF_SKELETON
+  offset: 0x815A251C
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_s_station3:
+  type: AC:CKF_ANIMATION
+  offset: 0x815A255C
+  joints: 7
+  counts: { flags: 7, data: 0, keys: 0, fixed: 24 }
+
+obj_w_station3_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x815A2580
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_station3_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x815A2D80
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_station3_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x815A3580
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_station3_v:
+  type: VTX
+  offset: 0x815A3D80
+  count: 103
+
+obj_w_station3_t3_model:
+  type: GFX
+  offset: 0x815A43F0
+  size: 0x50
+
+obj_w_station3_t2_model:
+  type: GFX
+  offset: 0x815A4440
+  size: 0x70
+
+obj_w_station3_t1_model:
+  type: GFX
+  offset: 0x815A44B0
+  size: 0x68
+
+obj_w_station3_shourt_model:
+  type: GFX
+  offset: 0x815A4518
+  size: 0x40
+
+obj_w_ststion3_long_model:
+  type: GFX
+  offset: 0x815A4558
+  size: 0x40
+
+cKF_bs_r_obj_w_station3:
+  type: AC:CKF_SKELETON
+  offset: 0x815A45EC
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_w_station3:
+  type: AC:CKF_ANIMATION
+  offset: 0x815A462C
+  joints: 7
+  counts: { flags: 7, data: 0, keys: 0, fixed: 24 }

@@ -1,0 +1,65 @@
+:config:
+  strict_declarations: true
+
+int_sugi_touch_pal:
+  type: TEXTURE
+  offset: 0x81983140
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sugi_touch_all_tex_txt:
+  type: TEXTURE
+  offset: 0x81983160
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81983140
+
+int_fire_a_tex_4i4_pic_i4:
+  type: TEXTURE
+  offset: 0x81983560
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_fire_b_tex_4i4_pic_i4:
+  type: TEXTURE
+  offset: 0x81983760
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+int_sugi_torch_v:
+  type: VTX
+  offset: 0x81983B60
+  count: 108
+
+sugi_tu_core_model:
+  type: GFX
+  offset: 0x81984220
+  size: 0xF8
+
+sugi_tu_bar_model:
+  type: GFX
+  offset: 0x81984318
+  size: 0x120
+
+sugi_fireto_model:
+  type: GFX
+  offset: 0x81984438
+  size: 0x78
+
+cKF_ba_r_int_sugi_torch:
+  type: AC:CKF_ANIMATION
+  offset: 0x819844D4
+  joints: 4
+  counts: { flags: 4, data: 0, keys: 0, fixed: 15 }
+
+cKF_bs_r_int_sugi_torch:
+  type: AC:CKF_SKELETON
+  offset: 0x81984518
+  counts: { joints: 4 }

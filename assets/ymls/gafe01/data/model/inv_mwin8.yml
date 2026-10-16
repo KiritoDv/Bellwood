@@ -1,0 +1,32 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_ana_pal:
+  type: TEXTURE
+  offset: 0x81452900
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_onpu_pal:
+  type: TEXTURE
+  offset: 0x81452920
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_ana_tex:
+  type: TEXTURE
+  offset: 0x81452940
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_onpu_tex:
+  type: TEXTURE
+  offset: 0x81452B40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

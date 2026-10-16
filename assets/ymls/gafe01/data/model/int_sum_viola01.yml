@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_viola01_pal:
+  type: TEXTURE
+  offset: 0x81A7B220
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_viola01_front_tex:
+  type: TEXTURE
+  offset: 0x81A7B240
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A7B220
+
+int_sum_viola01_back_tex:
+  type: TEXTURE
+  offset: 0x81A7B540
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A7B220
+
+int_sum_viola01_side_tex:
+  type: TEXTURE
+  offset: 0x81A7B6C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A7B220
+
+int_sum_viola01_neck_tex:
+  type: TEXTURE
+  offset: 0x81A7B740
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A7B220
+
+int_sum_viola01_neckback_tex:
+  type: TEXTURE
+  offset: 0x81A7B840
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A7B220
+
+int_sum_viola01_hand_tex:
+  type: TEXTURE
+  offset: 0x81A7B8C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A7B220
+
+int_sum_viola01_stand_tex:
+  type: TEXTURE
+  offset: 0x81A7B940
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A7B220
+
+int_sum_viola01_v:
+  type: VTX
+  offset: 0x81A7BA40
+  count: 54
+
+int_sum_viola01_on_model:
+  type: GFX
+  offset: 0x81A7BDA0
+  size: 0x88
+
+int_sum_viola01_onT_model:
+  type: GFX
+  offset: 0x81A7BE28
+  size: 0xF0

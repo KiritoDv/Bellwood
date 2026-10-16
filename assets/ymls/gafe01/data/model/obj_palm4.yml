@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+obj_palm4_shadow_v:
+  type: VTX
+  offset: 0x81106B70
+  count: 4
+
+obj_palm4_shadowT_mat_model:
+  type: GFX
+  offset: 0x81106BB0
+  size: 0x20
+
+obj_palm4_shadowT_gfx_model:
+  type: GFX
+  offset: 0x81106BD0
+  size: 0x10

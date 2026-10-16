@@ -1,5 +1,4 @@
-extern Gfx int_sum_x_piano_on_model[];
-extern Gfx int_sum_x_piano_onT_model[];
+#include "assets/data/model/int_sum_x_piano.h"
 static void aSumX_Piano_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aSumX_Piano_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aSumX_Piano_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);

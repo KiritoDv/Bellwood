@@ -1,0 +1,37 @@
+:config:
+  strict_declarations: true
+
+int_sum_doll05_pal:
+  type: TEXTURE
+  offset: 0x819D7CA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_doll05_face_txt_txt:
+  type: TEXTURE
+  offset: 0x819D7CC0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D7CA0
+
+int_sum_doll05_front_txt_txt:
+  type: TEXTURE
+  offset: 0x819D80C0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x819D7CA0
+
+int_sum_doll05_v:
+  type: VTX
+  offset: 0x819D83C0
+  count: 33
+
+int_sum_doll05_on_model:
+  type: GFX
+  offset: 0x819D85D0
+  size: 0xD8

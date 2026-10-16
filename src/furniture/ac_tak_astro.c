@@ -1,5 +1,4 @@
-extern Gfx int_tak_astro_face_env_model[];
-extern Gfx int_tak_astro_body_on_model[];
+#include "assets/data/model/int_tak_astro.h"
 
 aFTR_PROFILE iam_tak_astro = {
 	int_tak_astro_face_env_model,

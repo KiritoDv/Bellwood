@@ -1,3 +1,4 @@
+#include "assets/data/model/int_tak_lion.h"
 static void fTL_ct(FTR_ACTOR* ftr_actor, u8* data) {
     f32 l;
 
@@ -27,7 +28,7 @@ static void fTL_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* d
 
     if (ftr_actor->dynamic_work_s[0] == 1) {
         if (aFTR_CAN_PLAY_SE(ftr_actor)) {
-            sAdo_OngenPos((u32)ftr_actor, 0x4A, &ftr_actor->position);
+            sAdo_OngenPos((uintptr_t)ftr_actor, 0x4A, &ftr_actor->position);
         }
     }
 
@@ -51,10 +52,6 @@ static void fTL_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* d
 static Gfx* fTL_GetTwoTileGfx(int x0, int y0, int x1, int y1, GAME* game) {
     return two_tex_scroll_dolphin(game->graph, 0, x0, y0, 8, 8, 1, x1, y1, 8, 8);
 }
-
-extern Gfx int_tak_lion_on_model[];
-extern Gfx int_tak_lion_onT_model[];
-extern Gfx int_tak_lion_alphaT_model[];
 
 static void fTL_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     GAME_PLAY* play = (GAME_PLAY*)game;

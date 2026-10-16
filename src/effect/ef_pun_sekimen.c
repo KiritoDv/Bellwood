@@ -1,6 +1,7 @@
 #include "ef_effect_control.h"
 
 #include "m_common_data.h"
+#include "assets/data/model/ef_pun01_01.h"
 
 static void ePunRed_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void ePunRed_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -38,8 +39,6 @@ static void ePunRed_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg) {
 static void ePunRed_mv(eEC_Effect_c* effect, GAME* game) {
     // nothing
 }
-
-extern Gfx ef_pun01_01_modelT[];
 
 static void ePunRed_dw(eEC_Effect_c* effect, GAME* game) {
     int a;

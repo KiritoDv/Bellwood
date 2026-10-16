@@ -1,5 +1,4 @@
-extern Gfx int_sum_pl_cocos_on_model[];
-extern Gfx int_sum_pl_cocos_onT_model[];
+#include "assets/data/model/int_sum_pl_cocos.h"
 
 aFTR_PROFILE iam_sum_pl_cocos = {
 	int_sum_pl_cocos_on_model,

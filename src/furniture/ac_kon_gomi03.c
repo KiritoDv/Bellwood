@@ -1,5 +1,4 @@
-extern Gfx int_kon_gomi03_on_model[];
-extern Gfx int_kon_gomi03_onT_model[];
+#include "assets/data/model/int_kon_gomi03.h"
 
 aFTR_PROFILE iam_kon_gomi03 = {
 	int_kon_gomi03_on_model,

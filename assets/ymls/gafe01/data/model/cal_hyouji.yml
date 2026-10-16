@@ -1,0 +1,111 @@
+:config:
+  strict_declarations: true
+
+cal_win_choose_tex:
+  type: TEXTURE
+  offset: 0x813CB200
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+lat_sousa_2b1_tex:
+  type: TEXTURE
+  offset: 0x813CB600
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+cal_hyouji_yaji2_tex:
+  type: TEXTURE
+  offset: 0x813CB800
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+std_tex:
+  type: TEXTURE
+  offset: 0x813CBC00
+  format: IA8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+cal_hyouji_st1_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813CC400
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+cal_hyouji_st5_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813CD400
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+lat_tegami_b3_tex:
+  type: TEXTURE
+  offset: 0x813CE400
+  format: RGBA16
+  width: 32
+  height: 32
+  source_encoding: gx
+
+cal_hyouji_2b1_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813CEC00
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+cal_hyouji_v:
+  type: VTX
+  offset: 0x813CEE00
+  count: 28
+
+cal_hyouji_b2_model:
+  type: GFX
+  offset: 0x813CEFC0
+  size: 0x58
+
+cal_hyouji_3DT_model:
+  type: GFX
+  offset: 0x813CF018
+  size: 0x50
+
+cal_hyouji_shitaT_model:
+  type: GFX
+  offset: 0x813CF068
+  size: 0x48
+
+cal_hyouji_amojiT_model:
+  type: GFX
+  offset: 0x813CF0B0
+  size: 0x50
+
+cal_hyouji_stT_model:
+  type: GFX
+  offset: 0x813CF100
+  size: 0x40
+
+cal_hyoji_yaji1T_model:
+  type: GFX
+  offset: 0x813CF140
+  size: 0x48
+
+cal_hyoji_yajiA_gfx:
+  type: GFX
+  offset: 0x813CF188
+  size: 0x10
+
+cal_hyoji_yajiB_gfx:
+  type: GFX
+  offset: 0x813CF198
+  size: 0x10

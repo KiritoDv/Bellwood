@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_nog_medaka_pal:
+  type: TEXTURE
+  offset: 0x816859A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_medaka_body_txt:
+  type: TEXTURE
+  offset: 0x816859C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x816859A0
+
+act_mus_medaka_a1_v:
+  type: VTX
+  offset: 0x81685AC0
+  count: 48
+
+act_mus_medaka_sakana_body_model:
+  type: GFX
+  offset: 0x81685DC0
+  size: 0x90
+
+act_mus_medaka_sakana_head_model:
+  type: GFX
+  offset: 0x81685E50
+  size: 0x40
+
+cKF_bs_r_act_mus_medaka_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x81685EB4
+  counts: { joints: 3 }

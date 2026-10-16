@@ -1,0 +1,91 @@
+:config:
+  strict_declarations: true
+
+int_iid_ningyou_pal:
+  type: TEXTURE
+  offset: 0x81815EC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iid_ningyou_hada_tex:
+  type: TEXTURE
+  offset: 0x81815EE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81815EC0
+
+int_iid_ningyou_boushi_tex:
+  type: TEXTURE
+  offset: 0x81815F60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81815EC0
+
+int_iid_ningyou_kao_tex:
+  type: TEXTURE
+  offset: 0x81815FE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81815EC0
+
+int_iid_ningyou_kutushita_tex:
+  type: TEXTURE
+  offset: 0x818161E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81815EC0
+
+int_iid_ningyou_futi_tex:
+  type: TEXTURE
+  offset: 0x81816260
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81815EC0
+
+int_iid_ningyou_fuku_tex:
+  type: TEXTURE
+  offset: 0x81816280
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81815EC0
+
+int_iid_ningyou_ribbon_tex:
+  type: TEXTURE
+  offset: 0x818162A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81815EC0
+
+int_iid_ningyou_ashi_tex:
+  type: TEXTURE
+  offset: 0x81816320
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81815EC0
+
+int_iid_ningyou_v:
+  type: VTX
+  offset: 0x81816360
+  count: 263
+
+int_iid_ningyou_on_model:
+  type: GFX
+  offset: 0x818173D0
+  size: 0x2D8

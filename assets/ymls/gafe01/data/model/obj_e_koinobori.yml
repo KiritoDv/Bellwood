@@ -1,0 +1,94 @@
+:config:
+  strict_declarations: true
+
+obj_e_koinobori_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x815376E0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_koinobori_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81537EE0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_koinobori_v:
+  type: VTX
+  offset: 0x815386E0
+  count: 209
+
+obj_e_koinobori_pole_1_model:
+  type: GFX
+  offset: 0x815393F0
+  size: 0x50
+
+obj_e_koinobori_rope_model:
+  type: GFX
+  offset: 0x81539440
+  size: 0x58
+
+obj_e_koinobori_magoiA_model:
+  type: GFX
+  offset: 0x81539498
+  size: 0x48
+
+obj_e_koinobori_magoiB_model:
+  type: GFX
+  offset: 0x815394E0
+  size: 0x70
+
+obj_e_koinobori_magoiC_model:
+  type: GFX
+  offset: 0x81539550
+  size: 0x88
+
+obj_e_koinobori_higoiA_model:
+  type: GFX
+  offset: 0x815395D8
+  size: 0x68
+
+obj_e_koinobori_higoiB_model:
+  type: GFX
+  offset: 0x81539640
+  size: 0x78
+
+obj_e_koinobori_higoiC_model:
+  type: GFX
+  offset: 0x815396B8
+  size: 0x88
+
+obj_e_koinobori_fukiA_model:
+  type: GFX
+  offset: 0x81539740
+  size: 0x48
+
+obj_e_koinobori_fukiB_model:
+  type: GFX
+  offset: 0x81539788
+  size: 0x70
+
+obj_e_koinobori_fukiC_model:
+  type: GFX
+  offset: 0x815397F8
+  size: 0x90
+
+obj_e_koinobori_yaguruma_model:
+  type: GFX
+  offset: 0x81539888
+  size: 0x40
+
+cKF_bs_r_obj_e_koinobori:
+  type: AC:CKF_SKELETON
+  offset: 0x81539994
+  counts: { joints: 17 }
+
+cKF_ba_r_obj_e_koinobori:
+  type: AC:CKF_ANIMATION
+  offset: 0x81539E3C
+  joints: 17
+  counts: { flags: 17, data: 525, keys: 39, fixed: 15 }

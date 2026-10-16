@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_axe_pal:
+  type: TEXTURE
+  offset: 0x8138DAA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_axe_tex:
+  type: TEXTURE
+  offset: 0x8138DAC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8138DAA0
+
+obj_shop_axe_v:
+  type: VTX
+  offset: 0x8138DCC0
+  count: 26
+
+obj_axeT_mat_model:
+  type: GFX
+  offset: 0x8138DE60
+  size: 0x48
+
+obj_axeT_gfx_model:
+  type: GFX
+  offset: 0x8138DEA8
+  size: 0x38

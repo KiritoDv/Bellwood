@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_tane_pal:
+  type: TEXTURE
+  offset: 0x8110F700
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_tane_tex:
+  type: TEXTURE
+  offset: 0x8110F720
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8110F700
+
+obj_item_tane_v:
+  type: VTX
+  offset: 0x8110F7A0
+  count: 4
+
+obj_taneT_mat_model:
+  type: GFX
+  offset: 0x8110F7E0
+  size: 0x28
+
+obj_taneT_gfx_model:
+  type: GFX
+  offset: 0x8110F808
+  size: 0x18

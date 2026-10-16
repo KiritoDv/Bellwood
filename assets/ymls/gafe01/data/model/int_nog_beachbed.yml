@@ -1,0 +1,37 @@
+:config:
+  strict_declarations: true
+
+int_nog_beachbed_pal:
+  type: TEXTURE
+  offset: 0x818F01E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_beachbed_body_tex:
+  type: TEXTURE
+  offset: 0x818F0200
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x818F01E0
+
+int_nog_beachbed_side_tex:
+  type: TEXTURE
+  offset: 0x818F0600
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818F01E0
+
+int_nog_beachbed_v:
+  type: VTX
+  offset: 0x818F0800
+  count: 52
+
+int_nog_beachbedT_model:
+  type: GFX
+  offset: 0x818F0B40
+  size: 0x100

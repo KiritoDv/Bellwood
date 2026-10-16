@@ -1,0 +1,77 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_pbox1_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8145AA80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_pbox2_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8145AAA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_pbox3_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8145AAC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_pbox4_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8145AAE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_pbox5_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8145AB00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_pbox1_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x8145AB20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_pbox2_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x8145AD20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_pbox3_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x8145AF20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_pbox4_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x8145B120
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_pbox5_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x8145B320
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

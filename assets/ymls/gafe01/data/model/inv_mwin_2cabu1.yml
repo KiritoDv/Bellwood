@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_2cabu1_pal:
+  type: TEXTURE
+  offset: 0x814452A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_2cabu1_tex:
+  type: TEXTURE
+  offset: 0x814452C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

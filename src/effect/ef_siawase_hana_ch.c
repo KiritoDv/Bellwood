@@ -3,8 +3,7 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
-
-extern Gfx ef_siawase01_01_modelT[];
+#include "assets/data/model/ef_siawase01_00.h"
 
 static void eSSHNC_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eSSHNC_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);

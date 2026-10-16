@@ -1,0 +1,42 @@
+:config:
+  strict_declarations: true
+
+int_nog_zassou_pal:
+  type: TEXTURE
+  offset: 0x8192BDA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_zassou_body_tex:
+  type: TEXTURE
+  offset: 0x8192BDC0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8192BDA0
+
+int_nog_zassou_grass_tex:
+  type: TEXTURE
+  offset: 0x8192C1C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8192BDA0
+
+int_nog_zassou_v:
+  type: VTX
+  offset: 0x8192C3C0
+  count: 44
+
+int_nog_zassou_model:
+  type: GFX
+  offset: 0x8192C680
+  size: 0x58
+
+int_nog_zassouT_model:
+  type: GFX
+  offset: 0x8192C6D8
+  size: 0x90

@@ -1,0 +1,104 @@
+:config:
+  strict_declarations: true
+
+int_sum_demekin_pal:
+  type: TEXTURE
+  offset: 0x819D1E40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_demekin_glass_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x819D1E60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_demekin_front_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x819D1E80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_demekin_body_txt:
+  type: TEXTURE
+  offset: 0x819D1EA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D1E40
+
+int_sum_demekin_kuchi_txt:
+  type: TEXTURE
+  offset: 0x819D20A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D1E40
+
+int_sum_demekin_etc_txt:
+  type: TEXTURE
+  offset: 0x819D2120
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D1E40
+
+int_sum_demekin_glass_txt:
+  type: TEXTURE
+  offset: 0x819D21A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D1E60
+
+int_sum_demekin_front_txt:
+  type: TEXTURE
+  offset: 0x819D2220
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D1E80
+
+int_sum_demekin_v:
+  type: VTX
+  offset: 0x819D2420
+  count: 50
+
+int_sum_demekin_sakana_model:
+  type: GFX
+  offset: 0x819D2740
+  size: 0x70
+
+int_sum_demekin_glass_model:
+  type: GFX
+  offset: 0x819D27B0
+  size: 0x68
+
+int_sum_demekin_body_model:
+  type: GFX
+  offset: 0x819D2818
+  size: 0x68
+
+int_sum_demekin_base_model:
+  type: GFX
+  offset: 0x819D2880
+  size: 0x78
+
+cKF_ba_r_int_sum_demekin:
+  type: AC:CKF_ANIMATION
+  offset: 0x819D29C0
+  joints: 5
+  counts: { flags: 5, data: 75, keys: 9, fixed: 9 }
+
+cKF_bs_r_int_sum_demekin:
+  type: AC:CKF_SKELETON
+  offset: 0x819D2A10
+  counts: { joints: 5 }

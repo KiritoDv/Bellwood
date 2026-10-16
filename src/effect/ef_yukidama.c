@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_koke_yuki01_00.h"
 
 static void eYukidama_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eYukidama_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -127,12 +128,6 @@ static void eYukidama_mv(eEC_Effect_c* effect, GAME* game) {
     }
 }
 
-extern u8 ef_koke_yuki01_0_inta_ia8[];
-extern u8 ef_koke_yuki01_1_inta_ia8[];
-extern u8 ef_koke_yuki01_2_inta_ia8[];
-extern u8 ef_koke_yuki01_3_inta_ia8[];
-
-extern Gfx ef_koke_yuki01_00_modelT[];
 
 static void eYukidama_dw(eEC_Effect_c* effect, GAME* game) {
     static u8* yukidama_tex_tbl[] = {

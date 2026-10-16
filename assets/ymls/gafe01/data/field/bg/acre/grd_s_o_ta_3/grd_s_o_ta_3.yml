@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+grd_s_o_ta_3_v:
+  type: VTX
+  offset: 0x8173B6B0
+  count: 47
+
+grd_s_o_ta_3_model:
+  type: GFX
+  offset: 0x8173B9A0
+  size: 0x78
+
+grd_s_o_ta_3_modelT:
+  type: GFX
+  offset: 0x8173BA18
+  size: 0xB0

@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_bassl_pal:
+  type: TEXTURE
+  offset: 0x8167B100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_bassl_body_txt:
+  type: TEXTURE
+  offset: 0x8167B120
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x8167B100
+
+act_mus_bassl_a1_v:
+  type: VTX
+  offset: 0x8167B420
+  count: 58
+
+act_mus_bassl_sakana_body_model:
+  type: GFX
+  offset: 0x8167B7C0
+  size: 0x90
+
+act_mus_bassl_sakana_head_model:
+  type: GFX
+  offset: 0x8167B850
+  size: 0x48
+
+cKF_bs_r_act_mus_bassl_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x8167B8BC
+  counts: { joints: 3 }

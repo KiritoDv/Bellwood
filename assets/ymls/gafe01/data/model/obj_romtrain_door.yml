@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+obj_romtrain_door_pal:
+  type: TEXTURE
+  offset: 0x815FBF80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_romtrain_door_tex_txt:
+  type: TEXTURE
+  offset: 0x815FBFA0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x815FBF80
+
+obj_romtrain_glass_tex_txt:
+  type: TEXTURE
+  offset: 0x815FC3A0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_romtrain_door_v:
+  type: VTX
+  offset: 0x815FC4A0
+  count: 15
+
+obj_romtrain_base_model:
+  type: GFX
+  offset: 0x815FC590
+  size: 0x58
+
+obj_romtrain_glass_model:
+  type: GFX
+  offset: 0x815FC5E8
+  size: 0x58
+
+obj_romtrain_door_model:
+  type: GFX
+  offset: 0x815FC640
+  size: 0x60
+
+cKF_bs_r_obj_romtrain_door:
+  type: AC:CKF_SKELETON
+  offset: 0x815FC6D0
+  counts: { joints: 4 }

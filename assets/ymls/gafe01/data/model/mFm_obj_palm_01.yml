@@ -1,0 +1,9 @@
+:config:
+  strict_declarations: true
+
+mFM_obj_palm_01_pal:
+  type: TEXTURE
+  offset: 0x81111E20
+  format: TLUT
+  colors: 224
+  source_encoding: gx

@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+int_nog_isidai_pal:
+  type: TEXTURE
+  offset: 0x8123C8A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f40_isidai_tex:
+  type: TEXTURE
+  offset: 0x8123C8C0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x8123C8A0
+
+act_f40_isidai_a_v:
+  type: VTX
+  offset: 0x8123CBC0
+  count: 9
+
+act_f40_isidai_aT_model:
+  type: GFX
+  offset: 0x8123CC50
+  size: 0x68
+
+act_f40_isidai_b_v:
+  type: VTX
+  offset: 0x8123CCB8
+  count: 9
+
+act_f40_isidai_bT_model:
+  type: GFX
+  offset: 0x8123CD48
+  size: 0x68
+
+act_f40_isidai_c_v:
+  type: VTX
+  offset: 0x8123CDB0
+  count: 9
+
+act_f40_isidai_cT_model:
+  type: GFX
+  offset: 0x8123CE40
+  size: 0x68

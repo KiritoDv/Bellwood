@@ -6,6 +6,8 @@
 #include "m_rcp.h"
 #include "m_common_data.h"
 #include "m_player_lib.h"
+#include "assets/data/model/obj_e_koinobori.h"
+#include "assets/data/model/obj_e_koinobori_shadow.h"
 
 enum {
   aKOI_ACTION_WAIT,
@@ -29,11 +31,6 @@ ACTOR_PROFILE Koinobori_Profile = {
   &aKOI_actor_draw,
   NULL
 };
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_e_koinobori;
-extern Vtx obj_e_koinobori_shadow_v[];
-extern Gfx obj_e_koinobori_shadowT_model[];
-extern cKF_Animation_R_c cKF_ba_r_obj_e_koinobori;
 
 u8 aKOI_shadow_vtx_fix_flg_table[8] = {
     1, 0, 0, 1,

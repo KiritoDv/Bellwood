@@ -3,13 +3,13 @@
 
 #include "types.h"
 #include "jaudio_NES/audiowork.h"
-#include "PR/mbi.h"
 
 extern void Nap_AudioPortInit(void);
 extern void Nap_SetF32(u32 cmd, f32 param);
 extern void Nap_SetS32(u32 cmd, s32 param);
 extern void Nap_SetS8(u32 cmd, s8 param);
 extern void Nap_SetU16(u32 cmd, u16 param);
+extern void Nap_SetPtr(u32 cmd, void* param);
 extern s32 Nap_SendStart(void);
 extern void Nap_FlushPort(void);
 extern void Nap_Process1Command(AudioPort* port);
@@ -22,6 +22,6 @@ extern s8 Nap_ReadGrpPort(s32 groupId, s32 portId);
 extern void Nap_WaitVsync(void);
 extern u32 Nap_GetRandom(void);
 extern void Nas_InitGAudio(void);
-extern s32 CreateAudioTask(Acmd* cmds, s16* pSamples, u32 nSamples, s32 param_4);
+extern s32 CreateAudioTask(NaAcmd* cmds, s16* pSamples, u32 nSamples, s32 param_4);
 
 #endif

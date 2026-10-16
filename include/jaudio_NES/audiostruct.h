@@ -3,8 +3,8 @@
 
 #include "types.h"
 #include "jaudio_NES/audiocommon.h"
-#include "PR/abi.h"
 #include "libultra/libultra.h"
+#include "jaudio_NES/os.h"
 #include "jaudio_NES/bx.h"
 
 #ifdef __cplusplus
@@ -42,10 +42,17 @@ typedef struct group_ group;
 typedef struct AudioPort_ {
     union {
         struct {
+#if NA_BIG_ENDIAN
             /* 0x00 */ u8 opcode;
             /* 0x01 */ u8 arg0;
             /* 0x02 */ u8 arg1;
             /* 0x03 */ u8 arg2;
+#else
+            u8 arg2;
+            u8 arg1;
+            u8 arg0;
+            u8 opcode;
+#endif
         } command;
         /* 0x00 */ u32 raw_cmd;
     };
@@ -72,7 +79,7 @@ typedef struct ALHeap {
 
 /* sizeof(ArcEntry) == 0x10 */
 typedef struct ArcEntry_ {
-    /* 0x00 */ u32 addr;
+    /* 0x00 */ uintptr_t addr;
     /* 0x04 */ s32 size;
     /* 0x08 */ s8 medium;
     /* 0x09 */ s8 cacheType;
@@ -139,12 +146,21 @@ typedef struct phase_ {
     //     /* 0x00 */ u8 asU8;
     // };
 
+#if NA_BIG_ENDIAN
     /* 0x00 */ u8 _unused : 2;
     /* 0x00 */ u8 type : 2;
     /* 0x00 */ u8 strong_right : 1;
     /* 0x00 */ u8 strong_left : 1;
     /* 0x00 */ u8 strong_reverb_right : 1;
     /* 0x00 */ u8 strong_reverb_left : 1;
+#else
+    u8 strong_reverb_left : 1;
+    u8 strong_reverb_right : 1;
+    u8 strong_left : 1;
+    u8 strong_right : 1;
+    u8 type : 2;
+    u8 _unused : 2;
+#endif
 } phase;
 
 /* sizeof(sweep) == 0x0C */
@@ -584,6 +600,7 @@ struct note_ {
 
     union {
         struct {
+#if NA_BIG_ENDIAN
             /* 0x0A */ u16 skip_volume_update : 1;
             /* 0x0A */ u16 skip_freq_scale_update : 1;
             /* 0x0A */ u16 bit2 : 1;
@@ -600,6 +617,24 @@ struct note_ {
             /* 0x0B */ u16 bitD : 1;
             /* 0x0B */ u16 bitE : 1;
             /* 0x0B */ u16 bitF : 1;
+#else
+            u16 bitF : 1;
+            u16 bitE : 1;
+            u16 bitD : 1;
+            u16 bitC : 1;
+            u16 bitB : 1;
+            u16 bitA : 1;
+            u16 bit9 : 1;
+            u16 skip_pan_update : 1;
+            u16 bit7 : 1;
+            u16 bit6 : 1;
+            u16 bit5 : 1;
+            u16 add_subtrack_transposition : 1;
+            u16 use_vibrato : 1;
+            u16 bit2 : 1;
+            u16 skip_freq_scale_update : 1;
+            u16 skip_volume_update : 1;
+#endif
         } flags;
         /* 0x0A */ u16 asU16;
     } _0A;
@@ -630,7 +665,7 @@ struct note_ {
 
 /* sizeof(Bgloadreq) == 0x14 */
 typedef struct Bgloadreq_ {
-    /* 0x00 */ u32 end_and_medium_key;
+    /* 0x00 */ uintptr_t end_and_medium_key;
     /* 0x04 */ smzwavetable* sample;
     /* 0x08 */ u8* ram_addr;
     /* 0x0C */ u32 encoded_info;
@@ -643,7 +678,7 @@ typedef struct Bgload_ {
     /* 0x01 */ s8 delay;
     /* 0x02 */ s8 medium;
     /* 0x04 */ u8* ram_addr;
-    /* 0x08 */ u32 current_device_addr;
+    /* 0x08 */ uintptr_t current_device_addr;
     /* 0x0C */ u8* current_ram_addr;
     /* 0x10 */ size_t bytes_remaining;
     /* 0x14 */ size_t chunk_size;
@@ -652,7 +687,7 @@ typedef struct Bgload_ {
     /* 0x20 */ OSMesgQueue* ret_mq;
     /* 0x24 */ OSMesgQueue mq;
     /* 0x3C */ OSMesg msg[1];
-    /* 0x40 */ OSIoMesg io_mesg;
+    /* 0x40 */ NaIoMesg io_mesg;
 } Bgload;
 
 /* sizeof(lpscache) == 0x64 */
@@ -661,7 +696,7 @@ typedef struct lpscache_ {
     /* 0x01 */ u8 seq_or_bank_id;
     /* 0x02 */ u16 inst_id;
     /* 0x04 */ s32 unk_medium_param;
-    /* 0x08 */ u32 current_device_addr;
+    /* 0x08 */ uintptr_t current_device_addr;
     /* 0x0C */ u8* current_ram_addr;
     /* 0x10 */ u8* ram_addr;
     /* 0x14 */ s32 status;
@@ -670,13 +705,13 @@ typedef struct lpscache_ {
     /* 0x20 */ smzwavetable sample;
     /* 0x30 */ OSMesgQueue mq;
     /* 0x48 */ OSMesg msg[1];
-    /* 0x4C */ OSIoMesg io_mesg;
+    /* 0x4C */ NaIoMesg io_mesg;
 } lpscache;
 
 /* sizeof(WaveLoad) == 0x10 */
 typedef struct WaveLoad_ {
     /* 0x00 */ u8* ram_addr;
-    /* 0x04 */ u32 device_addr;
+    /* 0x04 */ uintptr_t device_addr;
     /* 0x08 */ u16 size_unused;
     /* 0x0A */ u16 size;
     /* 0x0C */ u8 unused;
@@ -821,10 +856,10 @@ typedef struct AudioGlobals {
     /* 0x1EB0 */ OSMesg preload_sample_mesg_buf[16];
     /* 0x1EF0 */ OSMesgQueue cur_audio_frame_dma_queue;
     /* 0x1F08 */ OSMesg cur_audio_frame_dma_mesg_buf[64];
-    /* 0x2008 */ OSIoMesg cur_adio_frame_dma_io_mesg_buf[64];
+    /* 0x2008 */ NaIoMesg cur_adio_frame_dma_io_mesg_buf[64];
     /* 0x2608 */ OSMesgQueue sync_dma_queue;
     /* 0x2620 */ OSMesg sync_dma_queue_msg[1];
-    /* 0x2624 */ OSIoMesg sync_dma_io_mesg;
+    /* 0x2624 */ NaIoMesg sync_dma_io_mesg;
     /* 0x263C */ WaveLoad* waveload_list;
     /* 0x2640 */ u32 num_waveloads;
     /* 0x2644 */ u32 waveload_count;
@@ -856,8 +891,8 @@ typedef struct AudioGlobals {
     /* 0x28C4 */ s32 current_frame_dma_count;
     /* 0x28C8 */ s32 rsp_task_idx;
     /* 0x28CC */ s32 current_ai_buffer_idx;
-    /* 0x28D0 */ Acmd* abi_cmd_bufs[3];
-    /* 0x28DC */ Acmd* unused_current_abi_cmd_buf;
+    /* 0x28D0 */ NaAcmd* abi_cmd_bufs[3];
+    /* 0x28DC */ NaAcmd* unused_current_abi_cmd_buf;
     /* 0x28E0 */ void* unused_current_audio_task;
     /* 0x28E4 */ u8 unused_rsp_tasks[2][0x50]; // Actually a struct but we don't need it
     /* 0x2984 */ u8 _2984[0x54];               // unsure what this is, new to DnM+/AC?

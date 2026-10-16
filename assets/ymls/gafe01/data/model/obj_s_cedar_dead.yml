@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+obj_s_cedar_dead_tex:
+  type: TEXTURE
+  offset: 0x810FF240
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_cedar1_dead_v:
+  type: VTX
+  offset: 0x810FF340
+  count: 4
+
+obj_s_cedar1_deadT_mat_model:
+  type: GFX
+  offset: 0x810FF380
+  size: 0x20
+
+obj_s_cedar1_deadT_gfx_model:
+  type: GFX
+  offset: 0x810FF3A0
+  size: 0x18

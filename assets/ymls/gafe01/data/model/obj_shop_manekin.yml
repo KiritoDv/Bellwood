@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+obj_shop_manekin_pal:
+  type: TEXTURE
+  offset: 0x8139E840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_manekin_bottom_tex_txt:
+  type: TEXTURE
+  offset: 0x8139E860
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8139E840
+
+obj_shop_manekin_foot_tex_txt:
+  type: TEXTURE
+  offset: 0x8139EA60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8139E840
+
+obj_shop_manekin_top_tex_txt:
+  type: TEXTURE
+  offset: 0x8139EB60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8139E840
+
+obj_shop_manekin_v:
+  type: VTX
+  offset: 0x8139EBE0
+  count: 57
+
+obj_shop_manekin_model:
+  type: GFX
+  offset: 0x8139EF70
+  size: 0xE0

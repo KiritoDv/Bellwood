@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f19_yamame_pal:
+  type: TEXTURE
+  offset: 0x81246A00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f19_yamame_tex:
+  type: TEXTURE
+  offset: 0x81246A20
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81246A00
+
+act_f19_yamame_a_v:
+  type: VTX
+  offset: 0x81246D20
+  count: 9
+
+act_f19_yamame_aT_model:
+  type: GFX
+  offset: 0x81246DB0
+  size: 0x68
+
+act_f19_yamame_b_v:
+  type: VTX
+  offset: 0x81246E18
+  count: 9
+
+act_f19_yamame_bT_model:
+  type: GFX
+  offset: 0x81246EA8
+  size: 0x68
+
+act_f19_yamame_c_v:
+  type: VTX
+  offset: 0x81246F10
+  count: 9
+
+act_f19_yamame_cT_model:
+  type: GFX
+  offset: 0x81246FA0
+  size: 0x68

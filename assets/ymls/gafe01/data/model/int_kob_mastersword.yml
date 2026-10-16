@@ -1,0 +1,90 @@
+:config:
+  strict_declarations: true
+
+int_kob_mastersword_pal:
+  type: TEXTURE
+  offset: 0x8189C200
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kob_mastersword_kan_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8189C220
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kob_mastersword_tuka_tex:
+  type: TEXTURE
+  offset: 0x8189C240
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x8189C200
+
+int_kob_mastersword_tuba_tex:
+  type: TEXTURE
+  offset: 0x8189C3C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189C200
+
+int_kob_mastersword_ishi1_tex:
+  type: TEXTURE
+  offset: 0x8189C4C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189C200
+
+int_kob_mastersword_ishi2_tex:
+  type: TEXTURE
+  offset: 0x8189C540
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189C200
+
+int_kob_mastersword_ishi3_tex:
+  type: TEXTURE
+  offset: 0x8189C5C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189C200
+
+int_kob_mastersword_kan_tex:
+  type: TEXTURE
+  offset: 0x8189C640
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8189C220
+
+int_kob_mastersword_v:
+  type: VTX
+  offset: 0x8189CA40
+  count: 76
+
+int_kob_mastersword_env_model:
+  type: GFX
+  offset: 0x8189CF00
+  size: 0x78
+
+int_kob_mastersword_on_model:
+  type: GFX
+  offset: 0x8189CF78
+  size: 0xB8
+
+int_kob_mastersword_onT_model:
+  type: GFX
+  offset: 0x8189D030
+  size: 0x70

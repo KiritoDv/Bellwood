@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_kanban_pal:
+  type: TEXTURE
+  offset: 0x8138F920
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_kanban_tex:
+  type: TEXTURE
+  offset: 0x8138F940
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8138F920
+
+obj_shop_kanban_v:
+  type: VTX
+  offset: 0x8138FB40
+  count: 14
+
+obj_shop_kanbanT_mat_model:
+  type: GFX
+  offset: 0x8138FC20
+  size: 0x48
+
+obj_shop_kanbanT_gfx_model:
+  type: GFX
+  offset: 0x8138FC68
+  size: 0x28

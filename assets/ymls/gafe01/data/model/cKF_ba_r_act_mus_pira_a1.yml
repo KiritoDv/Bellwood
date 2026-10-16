@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_act_mus_pira_a1:
+  type: AC:CKF_ANIMATION
+  offset: 0x816899C0
+  joints: 4
+  counts: { flags: 4, data: 126, keys: 12, fixed: 3 }

@@ -10,6 +10,7 @@
 #include "m_needlework_ovl.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/obj_s_kanban.h"
 
 enum {
     aSIGN_ACTION_WAIT,
@@ -22,9 +23,6 @@ enum {
 
     aSIGN_ACTION_NUM
 };
-
-extern Vtx obj_kanban_shadow_v[];
-extern Gfx obj_kanban_shadowT_model[];
 
 static u8 aSIGN_shadow_vtx_fix_flg_table[] = { TRUE, FALSE, FALSE, TRUE };
 static bIT_ShadowData_c aSIGN_shadow_data = {
@@ -624,6 +622,7 @@ static void aSIGN_single_birth(SIGN_ACTOR* sign, GAME* game) {
             sign->single[i].scale.z = 0.0001f;
             mFI_Wpos2BkandUtNuminBlock(&sign->single[i].block.x, &sign->single[i].block.z, &sign->single[i].unit.x,
                                        &sign->single[i].unit.z, sign_birth_pos);
+            FrameInterpolation_ResetObject(&sign->single[i]);
             sign->single[i].exist_flag = 1;
             sign->single[i]._24 = 0;
             sign->single[i]._20 = 0.005f;
@@ -808,12 +807,6 @@ static void aSIGN_all_clear(void) {
 
 static void aSIGN_draw_shadow(GAME* game, bIT_ShadowData_c* shadow_data);
 
-extern u8 hakushi_tex[];
-extern u16 hakushi_pal[];
-extern Gfx write_model[];
-extern Gfx obj_sign_s_model[];
-extern Gfx obj_sign_w_model[];
-
 static void aSIGN_single_all_draw(SIGN_ACTOR* sign, GAME* game) {
     static Gfx* mdl[] = { obj_sign_s_model, obj_sign_w_model };
 
@@ -823,7 +816,7 @@ static void aSIGN_single_all_draw(SIGN_ACTOR* sign, GAME* game) {
     _texture_z_light_fog_prim_npc(graph);
 
     OPEN_DISP(graph);
-    gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_DOLPHIN);
+    gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_HALFTEXEL);
     CLOSE_DISP(graph);
 
     for (i = 0; i < aSIGN_SINGLE_NUM; i++) {
@@ -834,6 +827,7 @@ static void aSIGN_single_all_draw(SIGN_ACTOR* sign, GAME* game) {
             u16* pal_p;
             u8* tex_p;
 
+            FrameInterpolation_RecordOpenChild(&sign->single[i], FrameInterpolation_GetObjectEpoch(&sign->single[i]));
             Matrix_push();
             mFI_BkandUtNum2CenterWpos(&sign_pos, sign->single[i].block.x, sign->single[i].block.z,
                                       sign->single[i].unit.x, sign->single[i].unit.z);
@@ -864,6 +858,7 @@ static void aSIGN_single_all_draw(SIGN_ACTOR* sign, GAME* game) {
 
             aSIGN_draw_shadow(game, &aSIGN_shadow_data);
             Matrix_pull();
+            FrameInterpolation_RecordCloseChild();
         }
     }
 
@@ -893,7 +888,7 @@ static void aSIGN_actor_draw(ACTOR* actorx, GAME* game) {
     draw_p = sign->draw;
 
     OPEN_DISP(graph);
-    gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_DOLPHIN);
+    gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_HALFTEXEL);
     CLOSE_DISP(graph);
 
     for (i = 0; i < 2; i++) {
@@ -923,6 +918,7 @@ static void aSIGN_actor_draw(ACTOR* actorx, GAME* game) {
                                 player_no = (item >> 3) & 3;
                                 my_original_idx = item & 7;
 
+                                FrameInterpolation_RecordOpenChild(fg_p, 0);
                                 OPEN_POLY_OPA_DISP(graph);
 
                                 /* Copy sign position to world matrix translation */
@@ -953,6 +949,7 @@ static void aSIGN_actor_draw(ACTOR* actorx, GAME* game) {
                                 mtxf->mf[3][1] = sign_pos.y;
                                 mtxf->mf[3][2] = sign_pos.z - 1.0f;
                                 aSIGN_draw_shadow(game, &aSIGN_shadow_data);
+                                FrameInterpolation_RecordCloseChild();
                             }
                         }
 

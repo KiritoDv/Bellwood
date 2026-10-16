@@ -1,0 +1,96 @@
+:config:
+  strict_declarations: true
+
+int_kob_jimuisu_pal:
+  type: TEXTURE
+  offset: 0x8189AB40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kob_jimuisu_main1_tex:
+  type: TEXTURE
+  offset: 0x8189AB60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8189AB40
+
+int_kob_jimuisu_se1_tex:
+  type: TEXTURE
+  offset: 0x8189AC60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189AB40
+
+int_kob_jimuisu_se2_tex:
+  type: TEXTURE
+  offset: 0x8189ACE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189AB40
+
+int_kob_jimuisu_hone1_tex:
+  type: TEXTURE
+  offset: 0x8189AD60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189AB40
+
+int_kob_jimuisu_ashi1_tex:
+  type: TEXTURE
+  offset: 0x8189ADE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189AB40
+
+int_kob_jimuisu_ashi2_tex:
+  type: TEXTURE
+  offset: 0x8189AE60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189AB40
+
+int_kob_jimuisu_hone2_tex:
+  type: TEXTURE
+  offset: 0x8189AF60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8189AB40
+
+int_kob_jimuisu_ashi3_tex:
+  type: TEXTURE
+  offset: 0x8189B060
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189AB40
+
+int_kob_jimuisu_v:
+  type: VTX
+  offset: 0x8189B160
+  count: 62
+
+int_kob_jimuisu_on_model:
+  type: GFX
+  offset: 0x8189B540
+  size: 0x60
+
+int_kob_jimuisu_onT_model:
+  type: GFX
+  offset: 0x8189B5A0
+  size: 0x130

@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+cal_win_cursor_tex:
+  type: TEXTURE
+  offset: 0x813D1320
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cal_icon1_v:
+  type: VTX
+  offset: 0x813D1420
+  count: 4
+
+cal_icon_cursor_model:
+  type: GFX
+  offset: 0x813D1460
+  size: 0x48

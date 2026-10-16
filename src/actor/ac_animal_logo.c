@@ -21,6 +21,19 @@
 #include "m_font.h"
 #include "libultra/libultra.h"
 #include "m_flashrom.h"
+#include "assets/data/model/cKF_ba_r_logo_us_animal.h"
+#include "assets/data/model/cKF_ba_r_logo_us_cros.h"
+#include "assets/data/model/cKF_ba_r_logo_us_sing.h"
+#include "assets/data/model/log_win_logo3_tex.h"
+#include "assets/data/model/log_win_logo4_tex.h"
+#include "assets/data/model/log_win_nintendo1_tex.h"
+#include "assets/data/model/log_win_nintendo2_tex.h"
+#include "assets/data/model/log_win_nintendo3_tex.h"
+#include "assets/data/model/logo_us_animal.h"
+#include "assets/data/model/logo_us_back.h"
+#include "assets/data/model/logo_us_cros.h"
+#include "assets/data/model/logo_us_sing.h"
+#include "assets/data/model/logo_us_tm.h"
 
 #define G_CC_TITLE PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, PRIMITIVE, 0, TEXEL0, 0
 #define G_CC_TM 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0
@@ -36,23 +49,9 @@
 #define aAL_IN_FRAMES 101.0f
 #endif
 
-extern u8 log_win_nintendo1_tex[];
-extern u8 log_win_nintendo2_tex[];
-extern u8 log_win_nintendo3_tex[];
 
-extern Gfx logo_us_tm_model[];
 
-extern Gfx logo_us_backA_model[];
-extern Gfx logo_us_backB_model[];
-extern Gfx logo_us_backC_model[];
-extern Gfx logo_us_backD_model[];
 
-extern u8 log_win_logo3_tex[];
-extern u8 log_win_logo4_tex[];
-
-extern cKF_Skeleton_R_c cKF_bs_r_logo_us_animal;
-extern cKF_Skeleton_R_c cKF_bs_r_logo_us_cros;
-extern cKF_Skeleton_R_c cKF_bs_r_logo_us_sing;
 
 static void aAL_actor_ct(ACTOR* actor, GAME* game);
 static void aAL_actor_dt(ACTOR* actor, GAME* game);
@@ -262,10 +261,6 @@ static void aAL_fade_out_start_wait(ANIMAL_LOGO_ACTOR* actor, GAME* game) {
     aAL_setupAction(actor, game, aAL_ACTION_OUT);
   }
 }
-
-extern cKF_Animation_R_c cKF_ba_r_logo_us_animal;
-extern cKF_Animation_R_c cKF_ba_r_logo_us_cros;
-extern cKF_Animation_R_c cKF_ba_r_logo_us_sing;
 
 static void aAL_logo_in_init(ANIMAL_LOGO_ACTOR* actor, GAME* game) {
   cKF_SkeletonInfo_R_init(&actor->animal.skeleton, actor->animal.skeleton.skeleton, &cKF_ba_r_logo_us_animal, 1.0f, aAL_IN_FRAMES, 1.0f, 0.5f, 0.0f, cKF_FRAMECONTROL_STOP, NULL);

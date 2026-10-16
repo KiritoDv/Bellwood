@@ -1,0 +1,42 @@
+:config:
+  strict_declarations: true
+
+int_yaz_rocket_pal:
+  type: TEXTURE
+  offset: 0x81ACD8C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yaz_rocket_body_tex_txt:
+  type: TEXTURE
+  offset: 0x81ACD8E0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81ACD8C0
+
+int_yaz_rocket_himo_tex_txt:
+  type: TEXTURE
+  offset: 0x81ACDCE0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81ACD8C0
+
+int_yaz_rocket_v:
+  type: VTX
+  offset: 0x81ACE0E0
+  count: 48
+
+int_yaz_rocket_himo_model:
+  type: GFX
+  offset: 0x81ACE3E0
+  size: 0x58
+
+int_yaz_rocket_body_model:
+  type: GFX
+  offset: 0x81ACE438
+  size: 0xA0

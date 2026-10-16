@@ -1,0 +1,73 @@
+:config:
+  strict_declarations: true
+
+int_ike_jny_gate01_pal:
+  type: TEXTURE
+  offset: 0x818240C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_jny_gate2_tex_txt:
+  type: TEXTURE
+  offset: 0x818240E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818240C0
+
+int_ike_jny_gate1_tex_txt:
+  type: TEXTURE
+  offset: 0x818241E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818240C0
+
+int_ike_jny_gate3_tex_txt:
+  type: TEXTURE
+  offset: 0x818243E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818240C0
+
+int_ike_jny_gatebase1_tex_txt:
+  type: TEXTURE
+  offset: 0x81824460
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818240C0
+
+int_ike_jny_gatebase3_tex_txt:
+  type: TEXTURE
+  offset: 0x81824660
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x818240C0
+
+int_ike_jny_gatebase2_tex_txt:
+  type: TEXTURE
+  offset: 0x818246A0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x818240C0
+
+int_ike_jny_gate01_v:
+  type: VTX
+  offset: 0x818246E0
+  count: 90
+
+int_ike_jny_gate01_body_model:
+  type: GFX
+  offset: 0x81824C80
+  size: 0x188

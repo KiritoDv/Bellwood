@@ -1,4 +1,4 @@
-extern Gfx int_yos_wheel_obj_model[];
+#include "assets/data/model/int_yos_wheel.h"
 
 aFTR_PROFILE iam_yos_wheel = {
 	int_yos_wheel_obj_model,

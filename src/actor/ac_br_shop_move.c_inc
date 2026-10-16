@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_s_yamishop.h"
 
 static void change_FGUnit(ACTOR* actor, int type) {
     xyz_t pos;

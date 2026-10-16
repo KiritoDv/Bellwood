@@ -1,5 +1,4 @@
-extern cKF_Skeleton_R_c cKF_bs_r_int_tak_ice;
-extern cKF_Animation_R_c cKF_ba_r_int_tak_ice;
+#include "assets/data/model/int_tak_ice.h"
 
 static void fTIC_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyframe = &ftr_actor->keyframe;
@@ -48,7 +47,7 @@ static void fTIC_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* 
         }
 
         if (ftr_actor->dynamic_work_f[0] >= 0.01f && ftr_actor->switch_bit == TRUE) {
-            sAdo_OngenPos((u32)ftr_actor, 0x51, &ftr_actor->position);
+            sAdo_OngenPos((uintptr_t)ftr_actor, 0x51, &ftr_actor->position);
         }
     }
 }
@@ -68,9 +67,6 @@ static int fTIC_DrawBefore(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint
 static Gfx* fTIC_GetTwoTileGfx(int x0, int y0, int x1, int y1, GAME* game) {
     return two_tex_scroll_dolphin(game->graph, 0, x0, y0, 8, 32, 1, x1, y1, 8, 32);
 }
-
-extern Gfx int_tak_ice_block_model[];
-extern Gfx int_tak_ice_yuki_model[];
 
 static int fTIC_DrawAfter(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape, u8* joint_flags,
                           void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {

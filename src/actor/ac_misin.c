@@ -5,6 +5,8 @@
 #include "m_player_lib.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/obj_misin.h"
+#include "assets/data/model/obj_misin_cloth.h"
 
 static void Misin_Actor_ct(ACTOR* actorx, GAME* game);
 static void Misin_Actor_dt(ACTOR* actorx, GAME* game);
@@ -88,9 +90,6 @@ static void aMSN_ReqeustMisinMove(void) {
     aMSN_SetMisinStatus(TRUE);
 }
 
-extern cKF_Skeleton_R_c cKF_bs_r_obj_misin;
-extern cKF_Animation_R_c cKF_ba_r_obj_misin;
-
 static void aMSN_MisinCT(aMSN_Misin_c* misin, GAME* game) {
     cKF_SkeletonInfo_R_c* keyframe = &misin->keyframe;
 
@@ -143,8 +142,6 @@ static void Misin_Actor_dt(ACTOR* actorx, GAME* game) {
     Common_Get(clip).misin_clip = NULL;
 }
 
-extern Gfx obj_misin_cloth_model[];
-
 static void aMSN_DrawDustcloth(aMSN_DustCloth_c* dustcloth, GAME* game) {
     s16 target_angle_y = dustcloth->target_angle_y;
 
@@ -185,8 +182,6 @@ static int aMSN_DrawMisinBefore(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int 
 
     return TRUE;
 }
-
-extern Gfx obj_misin_hari_model[];
 
 static int aMSN_DrawMisinAfter(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
                                u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {
@@ -287,7 +282,7 @@ static void aMSN_MoveDustcloth(aMSN_DustCloth_c* dustcloth, GAME* game) {
                 /* Play sewing SFX */
                 xyz_t pos = { 91.0f, 40.0f, 136.0f };
 
-                sAdo_OngenPos((u32)&aMSN_MoveDustcloth, 0x48, &pos);
+                sAdo_OngenPos((uintptr_t)&aMSN_MoveDustcloth, 0x48, &pos);
             }
         } else if (dustcloth->frame >= 120) {
             f32 percent = get_percent(138, 120, dustcloth->frame);

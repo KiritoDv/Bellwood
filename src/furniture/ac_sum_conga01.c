@@ -1,5 +1,4 @@
-extern Gfx int_sum_conga01_on_model[];
-extern Gfx int_sum_conga01_onT_model[];
+#include "assets/data/model/int_sum_conga01.h"
 static void asumconga01_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void asumconga01_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void asumconga01_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);

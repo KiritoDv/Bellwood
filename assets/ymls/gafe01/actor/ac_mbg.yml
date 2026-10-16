@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+mbg_v:
+  type: VTX
+  offset: 0x810376B0
+  count: 8
+
+mbg_model:
+  type: GFX
+  offset: 0x81037730
+  size: 0x60

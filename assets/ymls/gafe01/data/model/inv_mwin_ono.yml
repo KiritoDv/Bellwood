@@ -1,0 +1,18 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_ono2_tex:
+  type: TEXTURE
+  offset: 0x8145A680
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_ono3_tex:
+  type: TEXTURE
+  offset: 0x8145A880
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

@@ -5,6 +5,7 @@
 #include "m_player_lib.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/obj_e_count02_cl.h"
 
 enum {
     aCOU_ACT_INIT,
@@ -33,9 +34,6 @@ ACTOR_PROFILE Count02_Profile = {
     NULL,
     // clang-format on
 };
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_e_count02_cl;
-extern cKF_Animation_R_c cKF_ba_r_obj_e_count02_cl;
 
 static void aCOU_setup_action(STRUCTURE_ACTOR* actor, int action);
 

@@ -1,0 +1,41 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_okane1_pal:
+  type: TEXTURE
+  offset: 0x81456A40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_okane4_tex:
+  type: TEXTURE
+  offset: 0x81456A60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_okane1_tex:
+  type: TEXTURE
+  offset: 0x81456C60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_okane2_tex:
+  type: TEXTURE
+  offset: 0x81456E60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_okane3_tex:
+  type: TEXTURE
+  offset: 0x81457060
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

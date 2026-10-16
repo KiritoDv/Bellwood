@@ -1,0 +1,38 @@
+#ifndef ASSETS_DATA_MODEL_INT_YOS_TURKEY_MIRROR_H
+#define ASSETS_DATA_MODEL_INT_YOS_TURKEY_MIRROR_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const char int_yos_turkey_mirror_pal[];
+extern const char int_yos_turkey_mirror_env_tex_rgb_ci4_pal[];
+extern const char int_yos_turkey_mirror_yoko_tex_txt[];
+extern const char int_yos_turkey_mirror_dai_tex_txt[];
+extern const char int_yos_turkey_mirror_asi_tex_txt[];
+extern const char int_yos_turkey_mirror_ue_tex_txt[];
+extern const char int_yos_turkey_mirror_waku_tex_txt[];
+extern const char int_yos_turkey_mirror_yubi_tex_txt[];
+extern const char int_yos_turkey_mirror_env_tex_txt[];
+extern const char int_yos_turkey_mirror_v[];
+extern const char int_yos_turkey_mirror_obj_model[];
+extern const char int_yos_turkey_mirror_env_model[];
+
+#define int_yos_turkey_mirror_pal_PATH "__OTR__data/model/int_yos_turkey_mirror/int_yos_turkey_mirror_pal"
+#define int_yos_turkey_mirror_env_tex_rgb_ci4_pal_PATH "__OTR__data/model/int_yos_turkey_mirror/int_yos_turkey_mirror_env_tex_rgb_ci4_pal"
+#define int_yos_turkey_mirror_yoko_tex_txt_PATH "__OTR__data/model/int_yos_turkey_mirror/int_yos_turkey_mirror_yoko_tex_txt"
+#define int_yos_turkey_mirror_dai_tex_txt_PATH "__OTR__data/model/int_yos_turkey_mirror/int_yos_turkey_mirror_dai_tex_txt"
+#define int_yos_turkey_mirror_asi_tex_txt_PATH "__OTR__data/model/int_yos_turkey_mirror/int_yos_turkey_mirror_asi_tex_txt"
+#define int_yos_turkey_mirror_ue_tex_txt_PATH "__OTR__data/model/int_yos_turkey_mirror/int_yos_turkey_mirror_ue_tex_txt"
+#define int_yos_turkey_mirror_waku_tex_txt_PATH "__OTR__data/model/int_yos_turkey_mirror/int_yos_turkey_mirror_waku_tex_txt"
+#define int_yos_turkey_mirror_yubi_tex_txt_PATH "__OTR__data/model/int_yos_turkey_mirror/int_yos_turkey_mirror_yubi_tex_txt"
+#define int_yos_turkey_mirror_env_tex_txt_PATH "__OTR__data/model/int_yos_turkey_mirror/int_yos_turkey_mirror_env_tex_txt"
+#define int_yos_turkey_mirror_v_PATH "__OTR__data/model/int_yos_turkey_mirror/int_yos_turkey_mirror_v"
+#define int_yos_turkey_mirror_obj_model_PATH "__OTR__data/model/int_yos_turkey_mirror/int_yos_turkey_mirror_obj_model"
+#define int_yos_turkey_mirror_env_model_PATH "__OTR__data/model/int_yos_turkey_mirror/int_yos_turkey_mirror_env_model"
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

@@ -1,4 +1,4 @@
-extern Gfx int_ike_island_uku01_body_model[];
+#include "assets/data/model/int_ike_island_uku01.h"
 static void fIIUKRR_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 
 static void fIIUKRR_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data){

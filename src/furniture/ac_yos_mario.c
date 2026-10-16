@@ -1,4 +1,4 @@
-extern Gfx int_yos_mario_body_model[];
+#include "assets/data/model/int_yos_mario.h"
 
 aFTR_PROFILE iam_yos_mario = {
 	int_yos_mario_body_model,

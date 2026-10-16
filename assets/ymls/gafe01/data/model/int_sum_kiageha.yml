@@ -1,0 +1,107 @@
+:config:
+  strict_declarations: true
+
+int_sum_kiageha_pal:
+  type: TEXTURE
+  offset: 0x81A0D580
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_kiageha_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A0D5A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_kiageha_body_txt:
+  type: TEXTURE
+  offset: 0x81A0D5C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A0D580
+
+int_sum_kiageha_base_txt:
+  type: TEXTURE
+  offset: 0x81A0D7C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A0D580
+
+int_sum_kiageha_top_txt:
+  type: TEXTURE
+  offset: 0x81A0D840
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A0D580
+
+int_sum_kiageha_side_txt:
+  type: TEXTURE
+  offset: 0x81A0DA40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A0D580
+
+int_sum_kiageha_hand_txt:
+  type: TEXTURE
+  offset: 0x81A0DC40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A0D5A0
+
+int_sum_kiageha_v:
+  type: VTX
+  offset: 0x81A0DD40
+  count: 67
+
+int_sum_kiageha_body_L_model:
+  type: GFX
+  offset: 0x81A0E170
+  size: 0x58
+
+int_sum_kiageha_side_model:
+  type: GFX
+  offset: 0x81A0E1C8
+  size: 0x68
+
+int_sum_kiageha_komado_model:
+  type: GFX
+  offset: 0x81A0E230
+  size: 0x58
+
+int_sum_kiageha_glass_model:
+  type: GFX
+  offset: 0x81A0E288
+  size: 0x68
+
+int_sum_kiageha_base_model:
+  type: GFX
+  offset: 0x81A0E2F0
+  size: 0xA0
+
+int_sum_kiageha_body_R_model:
+  type: GFX
+  offset: 0x81A0E390
+  size: 0x58
+
+cKF_ba_r_int_sum_kiageha:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A0E4C4
+  joints: 8
+  counts: { flags: 8, data: 78, keys: 12, fixed: 15 }
+
+cKF_bs_r_int_sum_kiageha:
+  type: AC:CKF_SKELETON
+  offset: 0x81A0E538
+  counts: { joints: 8 }

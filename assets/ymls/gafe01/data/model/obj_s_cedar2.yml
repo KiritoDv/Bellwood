@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+obj_s_cedar2_v:
+  type: VTX
+  offset: 0x810FF3B8
+  count: 7
+
+obj_s_cedar2T_mat_model:
+  type: GFX
+  offset: 0x810FF428
+  size: 0x20
+
+obj_s_cedar2T_gfx_model:
+  type: GFX
+  offset: 0x810FF448
+  size: 0x20

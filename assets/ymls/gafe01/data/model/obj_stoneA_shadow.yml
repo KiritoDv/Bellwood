@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+obj_stone_shadow_tex:
+  type: TEXTURE
+  offset: 0x8110E3A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_stoneA_shadow_v:
+  type: VTX
+  offset: 0x8110E420
+  count: 10
+
+obj_stoneA_shadowT_mat_model:
+  type: GFX
+  offset: 0x8110E4C0
+  size: 0x20
+
+obj_stoneA_shadowT_gfx_model:
+  type: GFX
+  offset: 0x8110E4E0
+  size: 0x20

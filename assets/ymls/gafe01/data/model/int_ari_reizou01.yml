@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_ari_reizou01_pal:
+  type: TEXTURE
+  offset: 0x8160AA40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ari_reizou01_00_tex:
+  type: TEXTURE
+  offset: 0x8160AA60
+  format: CI4
+  width: 48
+  height: 16
+  source_encoding: gx
+  tlut: 0x8160AA40
+
+int_ari_reizou01_01_tex:
+  type: TEXTURE
+  offset: 0x8160ABE0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x8160AA40
+
+int_ari_reizou01_02_tex:
+  type: TEXTURE
+  offset: 0x8160AEE0
+  format: CI4
+  width: 48
+  height: 16
+  source_encoding: gx
+  tlut: 0x8160AA40
+
+int_ari_reizou01_03_tex:
+  type: TEXTURE
+  offset: 0x8160B060
+  format: CI4
+  width: 48
+  height: 16
+  source_encoding: gx
+  tlut: 0x8160AA40
+
+int_ari_reizou01_04_tex:
+  type: TEXTURE
+  offset: 0x8160B1E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8160AA40
+
+int_ari_reizou01_v:
+  type: VTX
+  offset: 0x8160B260
+  count: 32
+
+int_ari_reizou01_01_model:
+  type: GFX
+  offset: 0x8160B460
+  size: 0xE8

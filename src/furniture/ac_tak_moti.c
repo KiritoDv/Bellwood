@@ -1,4 +1,4 @@
-extern Gfx int_tak_moti_onT_model[];
+#include "assets/data/model/int_tak_moti.h"
 
 aFTR_PROFILE iam_tak_moti = {
 	int_tak_moti_onT_model,

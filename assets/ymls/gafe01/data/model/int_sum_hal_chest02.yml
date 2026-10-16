@@ -1,0 +1,89 @@
+:config:
+  strict_declarations: true
+
+int_sum_hal_chest02_pal:
+  type: TEXTURE
+  offset: 0x819FCFA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_hal_chest02_hiki_tex_txt:
+  type: TEXTURE
+  offset: 0x819FCFC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819FCFA0
+
+int_sum_hal_chest02_hiite_tex_txt:
+  type: TEXTURE
+  offset: 0x819FD1C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819FCFA0
+
+int_sum_hal_chest02_top_tex_txt:
+  type: TEXTURE
+  offset: 0x819FD240
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819FCFA0
+
+int_sum_hal_chest02_front_tex_txt:
+  type: TEXTURE
+  offset: 0x819FD2C0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x819FCFA0
+
+int_sum_hal_chest02_back_tex_txt:
+  type: TEXTURE
+  offset: 0x819FD5C0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819FCFA0
+
+int_sum_hal_chest02_kuki_tex_txt:
+  type: TEXTURE
+  offset: 0x819FD740
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819FCFA0
+
+int_sum_hal_chest02_v:
+  type: VTX
+  offset: 0x819FD7C0
+  count: 78
+
+int_sum_hal_chest01_door_model:
+  type: GFX
+  offset: 0x819FDCA0
+  size: 0x98
+
+int_sum_hal_chest02_base_model:
+  type: GFX
+  offset: 0x819FDD38
+  size: 0x128
+
+cKF_ba_r_int_sum_hal_chest02:
+  type: AC:CKF_ANIMATION
+  offset: 0x819FDED8
+  joints: 3
+  counts: { flags: 3, data: 45, keys: 6, fixed: 6 }
+
+cKF_bs_r_int_sum_hal_chest02:
+  type: AC:CKF_SKELETON
+  offset: 0x819FDF10
+  counts: { joints: 3 }

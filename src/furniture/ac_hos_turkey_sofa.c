@@ -1,4 +1,4 @@
-extern Gfx int_hos_turkey_sofa_body_model[];
+#include "assets/data/model/int_hos_turkey_sofa.h"
 
 aFTR_PROFILE iam_hos_turkey_sofa = {
 	int_hos_turkey_sofa_body_model,

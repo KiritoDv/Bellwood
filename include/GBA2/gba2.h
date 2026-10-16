@@ -2,7 +2,6 @@
 #define GBA2_H
 
 #include "types.h"
-#include "GBA/gba.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -11,6 +10,8 @@ extern "C" {
 #define EAPPLI_LOAD_PROG_MAGIC 'PSAE'
 #define EAPPLI_PROGRAM_CHECK_MAGIC_GC 'GAFJ'
 #define EAPPLI_PROGRAM_CHECK_MAGIC_GBA 'AAFJ'
+
+#define GBA_MAX_CHAN 4
 
 #define GBA2_GBA_STATE_ERROR -1
 #define GBA2_GBA_STATE_ALREADY_EXIST 0

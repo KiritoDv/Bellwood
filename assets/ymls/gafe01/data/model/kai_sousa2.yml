@@ -1,0 +1,15 @@
+:config:
+  strict_declarations: true
+
+testbutton:
+  type: TEXTURE
+  offset: 0x81420AA0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kai_sousa2_v:
+  type: VTX
+  offset: 0x81420B20
+  count: 160

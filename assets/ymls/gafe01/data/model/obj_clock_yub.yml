@@ -1,0 +1,72 @@
+:config:
+  strict_declarations: true
+
+obj_clock_yub_pal:
+  type: TEXTURE
+  offset: 0x8194B7D8
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+obj_clock_yub_t3_txt:
+  type: TEXTURE
+  offset: 0x8194B7F8
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: n64
+  tlut: 0x8194B7D8
+
+obj_clock_yub_t1_txt:
+  type: TEXTURE
+  offset: 0x8194B8F8
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: n64
+  tlut: 0x8194B7D8
+
+obj_clock_yub_t2_txt:
+  type: TEXTURE
+  offset: 0x8194BAF8
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: n64
+  tlut: 0x8194B7D8
+
+obj_clock_yub_v:
+  type: VTX
+  offset: 0x8194BCF8
+  count: 26
+
+obj_clock_yub_side_model:
+  type: GFX
+  offset: 0x8194BE98
+  size: 0xE8
+
+obj_clock_yub_front_model:
+  type: GFX
+  offset: 0x8194BF80
+  size: 0xC0
+
+obj_clock_yub_long_model:
+  type: GFX
+  offset: 0x8194C040
+  size: 0xB8
+
+obj_clock_yub_short_model:
+  type: GFX
+  offset: 0x8194C0F8
+  size: 0xB8
+
+cKF_ba_r_obj_clock_yub:
+  type: AC:CKF_ANIMATION
+  offset: 0x8194C1E4
+  joints: 6
+  counts: { flags: 6, data: 0, keys: 0, fixed: 21 }
+
+cKF_bs_r_obj_clock_yub:
+  type: AC:CKF_SKELETON
+  offset: 0x8194C240
+  counts: { joints: 6 }

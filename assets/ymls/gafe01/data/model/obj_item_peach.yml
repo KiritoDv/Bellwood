@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_peach_pal:
+  type: TEXTURE
+  offset: 0x818945C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_peach_tex:
+  type: TEXTURE
+  offset: 0x818945E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818945C0
+
+obj_item_peach_v:
+  type: VTX
+  offset: 0x818947E0
+  count: 4
+
+peach_DL_mode:
+  type: GFX
+  offset: 0x81894820
+  size: 0x48
+
+peach_DL_vtx:
+  type: GFX
+  offset: 0x81894868
+  size: 0x18

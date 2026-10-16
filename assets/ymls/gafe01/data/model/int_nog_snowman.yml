@@ -1,0 +1,37 @@
+:config:
+  strict_declarations: true
+
+int_nog_snowman_pal:
+  type: TEXTURE
+  offset: 0x819154A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_snowman_body_tex:
+  type: TEXTURE
+  offset: 0x819154C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819154A0
+
+int_nog_snowman_head_tex:
+  type: TEXTURE
+  offset: 0x819156C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819154A0
+
+int_nog_snowman_v:
+  type: VTX
+  offset: 0x819158C0
+  count: 54
+
+int_nog_snowman_model:
+  type: GFX
+  offset: 0x81915C20
+  size: 0xE8

@@ -1,0 +1,92 @@
+:config:
+  strict_declarations: true
+
+int_sum_whi_lanp_pal:
+  type: TEXTURE
+  offset: 0x81A81040
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_whi_lanp_shade_tex:
+  type: TEXTURE
+  offset: 0x81A81060
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A81040
+
+int_sum_whi_lanp_stand_tex:
+  type: TEXTURE
+  offset: 0x81A81160
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A81040
+
+int_sum_whi_lanp_foot_tex:
+  type: TEXTURE
+  offset: 0x81A812E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A81040
+
+int_sum_whi_lanp_down_tex:
+  type: TEXTURE
+  offset: 0x81A813E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A81040
+
+int_sum_whi_lanp_hiki_tex:
+  type: TEXTURE
+  offset: 0x81A81460
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A81040
+
+int_sum_whi_lanp_top_tex:
+  type: TEXTURE
+  offset: 0x81A81560
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A81040
+
+int_sum_whi_lanp_topside_tex:
+  type: TEXTURE
+  offset: 0x81A815E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A81040
+
+int_sum_whi_lanp_v:
+  type: VTX
+  offset: 0x81A81660
+  count: 65
+
+int_sum_whi_lanp_on_model:
+  type: GFX
+  offset: 0x81A81A70
+  size: 0x60
+
+int_sum_whi_lanp_onT_model:
+  type: GFX
+  offset: 0x81A81AD0
+  size: 0xA8
+
+int_sum_whi_lanp_offT_model:
+  type: GFX
+  offset: 0x81A81B78
+  size: 0xB8

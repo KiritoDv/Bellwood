@@ -3756,9 +3756,9 @@ static int bridge_man_start(EVENT_MANAGER_ACTOR* evmgr, aEvMgr_event_ctrl_c* ctr
 
             remain = (spots - 1) - used;
             if (remain == 0) {
-                Save_Get(event_save_common).bridge_flags.raw |= (1 << 7);
+                Save_Get(event_save_common).bridge_flags.used_all_locations = TRUE;
             } else {
-                Save_Get(event_save_common).bridge_flags.raw &= ~(1 << 7);
+                Save_Get(event_save_common).bridge_flags.used_all_locations = FALSE;
             }
 
             wpppp = make_actor_in_select_block(evmgr, ctrl, SP_NPC_EV_SONCHO, 0x51, bridge_blocks[remain * 2 + 0], bridge_blocks[remain * 2 + 1], 2);
@@ -4465,6 +4465,17 @@ typedef union {
     u32 raw;
 } ymdh;
 
+static u32 ymdh_raw(const ymdh* d) {
+    return ((u32)d->year << 24) | ((u32)d->month << 16) | ((u32)d->day << 8) | (u32)d->hour;
+}
+
+static void ymdh_set_raw(ymdh* d, u32 v) {
+    d->year = (u8)(v >> 24);
+    d->month = (u8)(v >> 16);
+    d->day = (u8)(v >> 8);
+    d->hour = (u8)v;
+}
+
 static int mail_event_check(void) {
     lbRTC_time_c* now = Common_GetPointer(time.rtc_time);
     Private_c* priv = Save_Get(private_data);
@@ -4479,11 +4490,11 @@ static int mail_event_check(void) {
     date.day = now->day;
     date.hour = now->hour;
 
-    last_time.raw = Save_Get(event_save_common).last_date;
+    ymdh_set_raw(&last_time, Save_Get(event_save_common).last_date);
     if (Save_Get(cheated_flag) == FALSE &&
         // check dates between Jan 1st and Dec 31st
-        (last_time.raw & 0x00FFFFFF) >= 0x00010100 && 
-        (last_time.raw & 0x00FFFFFF) <= 0x000C1F17) {
+        (ymdh_raw(&last_time) & 0x00FFFFFF) >= 0x00010100 && 
+        (ymdh_raw(&last_time) & 0x00FFFFFF) <= 0x000C1F17) {
         
         target_date.hour = 0;
         for (i = 0; i < PLAYER_NUM; i++) {
@@ -4494,7 +4505,7 @@ static int mail_event_check(void) {
                     target_date.day = priv[i].birthday.day;
                     target_date.year = (last_time.month > date.month && last_time.month <= target_date.month) ? last_time.year : date.year;
 
-                    if (check_past_day(last_time.raw, target_date.raw, date.raw) != FALSE) {
+                    if (check_past_day(ymdh_raw(&last_time), ymdh_raw(&target_date), ymdh_raw(&date)) != FALSE) {
                         mNpc_SendEventBirthdayCard2(&priv[i].player_ID, i);
                         n++;
                     }
@@ -4504,7 +4515,7 @@ static int mail_event_check(void) {
                 target_date.month = lbRTC_DECEMBER;
                 target_date.day = 25;
                 target_date.year = (last_time.month > date.month && last_time.month <= target_date.month) ? last_time.year : date.year;
-                if (check_past_day(last_time.raw, target_date.raw, date.raw) != FALSE && date.year == last_time.year && date.day <= (target_date.day + lbRTC_WEEK)) {
+                if (check_past_day(ymdh_raw(&last_time), ymdh_raw(&target_date), ymdh_raw(&date)) != FALSE && date.year == last_time.year && date.day <= (target_date.day + lbRTC_WEEK)) {
                     mNpc_SendEventXmasCard(&priv[i].player_ID, i);
                     n++;
                 }
@@ -4519,15 +4530,15 @@ static int mail_event_check(void) {
 
         // check Valentine's day is between the last event mail save date and the current date
         // also check that the current date is within a week of Valentine's day
-        if (check_past_day(last_time.raw, target_date.raw, date.raw) != FALSE && date.year == last_time.year && date.day <= (target_date.day + lbRTC_WEEK)) {
+        if (check_past_day(ymdh_raw(&last_time), ymdh_raw(&target_date), ymdh_raw(&date)) != FALSE && date.year == last_time.year && date.day <= (target_date.day + lbRTC_WEEK)) {
             // schedule Valentine's day mail for 10 am on February 14th
             target_date.hour = 10; // 10am on Valentine's day
-            Save_Get(event_save_common).valentines_day_date = target_date.raw;
+            Save_Get(event_save_common).valentines_day_date = ymdh_raw(&target_date);
             n++;
         }
     }
 
-    Save_Get(event_save_common).last_date = date.raw;
+    Save_Get(event_save_common).last_date = ymdh_raw(&date);
 
     if (Save_Get(npc_force_go_home) == TRUE) {
         mGH_animal_return_init();
@@ -4550,14 +4561,14 @@ static int vt_wt_mail_check(void) {
     date.hour = now->hour;
     
     if (Save_Get(event_save_common).valentines_day_date != 0) {
-        vt_date.raw = Save_Get(event_save_common).valentines_day_date;
+        ymdh_set_raw(&vt_date, Save_Get(event_save_common).valentines_day_date);
         vt_date.hour = 0;
 
-        if (Save_Get(event_save_common).valentines_day_date <= date.raw) {
+        if (Save_Get(event_save_common).valentines_day_date <= ymdh_raw(&date)) {
             mNpc_SendVtdayMail();
             Save_Get(event_save_common).valentines_day_date = 0;
             ret = TRUE;
-        } else if (date.raw < vt_date.raw) {
+        } else if (ymdh_raw(&date) < ymdh_raw(&vt_date)) {
             Save_Get(event_save_common).valentines_day_date = 0;
         }
     }

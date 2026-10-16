@@ -1,5 +1,4 @@
-extern Gfx int_ike_prores_ling02_on_model[];
-extern Gfx int_ike_prores_ling02_onT_model[];
+#include "assets/data/model/int_ike_prores_ling02.h"
 
 aFTR_PROFILE iam_ike_prores_ling02 = {
 	int_ike_prores_ling02_on_model,

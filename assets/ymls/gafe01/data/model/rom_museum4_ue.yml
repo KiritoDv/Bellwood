@@ -1,0 +1,133 @@
+:config:
+  strict_declarations: true
+
+rom_museum4_step_pal:
+  type: TEXTURE
+  offset: 0x813749E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_stone_pal:
+  type: TEXTURE
+  offset: 0x81374A00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_01_zassou_pal:
+  type: TEXTURE
+  offset: 0x81374A20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_c_01_flower_pal:
+  type: TEXTURE
+  offset: 0x81374A40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_b_01_flower_pal:
+  type: TEXTURE
+  offset: 0x81374A60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_a_01_flower_pal:
+  type: TEXTURE
+  offset: 0x81374A80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_tree_pal:
+  type: TEXTURE
+  offset: 0x81374AA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_tree_leaf_tex:
+  type: TEXTURE
+  offset: 0x81374AC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81374AA0
+
+obj_s_tree_trunk_tex:
+  type: TEXTURE
+  offset: 0x813752C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81374AA0
+
+obj_c_01_flower_tex:
+  type: TEXTURE
+  offset: 0x81375AC0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81374A40
+
+obj_b_01_flower_tex:
+  type: TEXTURE
+  offset: 0x813762C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81374A60
+
+obj_a_01_flower_tex:
+  type: TEXTURE
+  offset: 0x81376AC0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81374A80
+
+obj_zassou_01_tex:
+  type: TEXTURE
+  offset: 0x813772C0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81374A20
+
+obj_s_stone_tex:
+  type: TEXTURE
+  offset: 0x813776C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81374A00
+
+rom_museum4_plate_tex:
+  type: TEXTURE
+  offset: 0x813778C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813749E0
+
+rom_museum4_ue_v:
+  type: VTX
+  offset: 0x81377AC0
+  count: 357
+
+rom_museum4_ue_model:
+  type: GFX
+  offset: 0x81379110
+  size: 0x3B8

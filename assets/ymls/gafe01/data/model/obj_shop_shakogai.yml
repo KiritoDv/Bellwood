@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_shakogai_pal:
+  type: TEXTURE
+  offset: 0x81398C00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_shakogai_tex:
+  type: TEXTURE
+  offset: 0x81398C20
+  format: CI4
+  width: 16
+  height: 24
+  source_encoding: gx
+  tlut: 0x81398C00
+
+obj_shop_shakogai_v:
+  type: VTX
+  offset: 0x81398CE0
+  count: 12
+
+obj_shakogaiT_mat_model:
+  type: GFX
+  offset: 0x81398DA0
+  size: 0x48
+
+obj_shakogaiT_gfx_model:
+  type: GFX
+  offset: 0x81398DE8
+  size: 0x28

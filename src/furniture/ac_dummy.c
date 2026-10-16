@@ -1,4 +1,4 @@
-extern Gfx int_dummy_model[];
+#include "assets/data/model/int_dummy.h"
 
 aFTR_PROFILE iam_dummy = {
 	NULL,

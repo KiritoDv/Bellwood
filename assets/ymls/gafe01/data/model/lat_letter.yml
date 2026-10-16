@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+lat_letter_mode:
+  type: GFX
+  offset: 0x813C0870
+  size: 0x38
+
+lat_letter_sen_mode:
+  type: GFX
+  offset: 0x813C08A8
+  size: 0x28

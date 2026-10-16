@@ -1,4 +1,4 @@
-extern Gfx int_nog_collegenote_model[];
+#include "assets/data/model/int_nog_collegenote.h"
 
 aFTR_PROFILE iam_nog_collegenote = {
 	NULL,

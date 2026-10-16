@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_din_trikera_pal:
+  type: TEXTURE
+  offset: 0x81640840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_din_trikera_dummy_tex:
+  type: TEXTURE
+  offset: 0x81640860
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81640840
+
+int_din_trikera_dummy_v:
+  type: VTX
+  offset: 0x81640A60
+  count: 8
+
+int_din_trikera_dummy_model:
+  type: GFX
+  offset: 0x81640AE0
+  size: 0x68

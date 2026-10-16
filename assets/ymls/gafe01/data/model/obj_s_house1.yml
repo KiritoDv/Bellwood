@@ -1,0 +1,1020 @@
+:config:
+  strict_declarations: true
+
+obj_s_house1_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81545680
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house1_window_txt:
+  type: TEXTURE
+  offset: 0x81545E80
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_house1_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81545F00
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house1_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x81546700
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house1_t4_tex_txt:
+  type: TEXTURE
+  offset: 0x81546F00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_s_house1_v:
+  type: VTX
+  offset: 0x81547100
+  count: 115
+
+obj_s_house1_windowL_model:
+  type: GFX
+  offset: 0x81547830
+  size: 0x40
+
+obj_s_house1_windowR_model:
+  type: GFX
+  offset: 0x81547870
+  size: 0x40
+
+obj_s_house1_light_model:
+  type: GFX
+  offset: 0x815478B0
+  size: 0x60
+
+obj_s_house1_t4_model:
+  type: GFX
+  offset: 0x81547910
+  size: 0x58
+
+obj_s_house1_t3_model:
+  type: GFX
+  offset: 0x81547968
+  size: 0x60
+
+obj_s_house1_t2_model:
+  type: GFX
+  offset: 0x815479C8
+  size: 0x88
+
+obj_s_house1_t1_model:
+  type: GFX
+  offset: 0x81547A50
+  size: 0x88
+
+obj_s_house1_door_model:
+  type: GFX
+  offset: 0x81547AD8
+  size: 0x58
+
+cKF_bs_r_obj_s_house1:
+  type: AC:CKF_SKELETON
+  offset: 0x81547B90
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_s_house1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81547C1C
+  joints: 8
+  counts: { flags: 8, data: 33, keys: 1, fixed: 26 }
+
+cKF_ba_r_obj_s_house1_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x81547CC0
+  joints: 8
+  counts: { flags: 8, data: 39, keys: 1, fixed: 26 }
+
+obj_s_house2_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81547CE0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house2_window_tex_txt:
+  type: TEXTURE
+  offset: 0x815484E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_house2_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x81548560
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house2_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81548D60
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house2_name_tex_txt:
+  type: TEXTURE
+  offset: 0x81549560
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_s_house2_v:
+  type: VTX
+  offset: 0x81549760
+  count: 109
+
+obj_s_house2_window_model:
+  type: GFX
+  offset: 0x81549E30
+  size: 0x50
+
+obj_s_house2_light_model:
+  type: GFX
+  offset: 0x81549E80
+  size: 0x58
+
+obj_s_house2_t3_model:
+  type: GFX
+  offset: 0x81549ED8
+  size: 0x90
+
+obj_s_house2_t2_model:
+  type: GFX
+  offset: 0x81549F68
+  size: 0x78
+
+obj_s_house2_t1_model:
+  type: GFX
+  offset: 0x81549FE0
+  size: 0x70
+
+obj_s_house2_name_model:
+  type: GFX
+  offset: 0x8154A050
+  size: 0x58
+
+obj_s_house2_door_model:
+  type: GFX
+  offset: 0x8154A0A8
+  size: 0x58
+
+cKF_bs_r_obj_s_house2:
+  type: AC:CKF_SKELETON
+  offset: 0x8154A160
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_s_house2:
+  type: AC:CKF_ANIMATION
+  offset: 0x8154A1EC
+  joints: 8
+  counts: { flags: 8, data: 33, keys: 1, fixed: 26 }
+
+cKF_ba_r_obj_s_house2_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x8154A290
+  joints: 8
+  counts: { flags: 8, data: 39, keys: 1, fixed: 26 }
+
+obj_s_house3_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x8154A2C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house3_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x8154AAC0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house3_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8154B2C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house3_window_tex_txt:
+  type: TEXTURE
+  offset: 0x8154BAC0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_house3_name_tex_txt:
+  type: TEXTURE
+  offset: 0x8154BB40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_s_house3_v:
+  type: VTX
+  offset: 0x8154BD40
+  count: 100
+
+obj_s_house3_windowL_model:
+  type: GFX
+  offset: 0x8154C380
+  size: 0x48
+
+obj_s_house3_windowR_model:
+  type: GFX
+  offset: 0x8154C3C8
+  size: 0x48
+
+obj_s_house3_light_model:
+  type: GFX
+  offset: 0x8154C410
+  size: 0x58
+
+obj_s_house3_t3_model:
+  type: GFX
+  offset: 0x8154C468
+  size: 0x98
+
+obj_s_house3_t2_model:
+  type: GFX
+  offset: 0x8154C500
+  size: 0x78
+
+obj_s_house3_t1_model:
+  type: GFX
+  offset: 0x8154C578
+  size: 0x68
+
+obj_s_house3_name_model:
+  type: GFX
+  offset: 0x8154C5E0
+  size: 0x58
+
+obj_s_house3_door_model:
+  type: GFX
+  offset: 0x8154C638
+  size: 0x58
+
+cKF_bs_r_obj_s_house3:
+  type: AC:CKF_SKELETON
+  offset: 0x8154C6F0
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_s_house3:
+  type: AC:CKF_ANIMATION
+  offset: 0x8154C77C
+  joints: 8
+  counts: { flags: 8, data: 33, keys: 1, fixed: 26 }
+
+cKF_ba_r_obj_s_house3_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x8154C820
+  joints: 8
+  counts: { flags: 8, data: 39, keys: 1, fixed: 26 }
+
+obj_s_house4_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x8154C840
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house4_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x8154D040
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house4_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8154D840
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house4_window_tex_txt:
+  type: TEXTURE
+  offset: 0x8154E040
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_house4_name_tex_txt:
+  type: TEXTURE
+  offset: 0x8154E0C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_s_house4_v:
+  type: VTX
+  offset: 0x8154E2C0
+  count: 89
+
+obj_s_house4_windowL_model:
+  type: GFX
+  offset: 0x8154E850
+  size: 0x48
+
+obj_s_house4_windowR_model:
+  type: GFX
+  offset: 0x8154E898
+  size: 0x48
+
+obj_s_house4_light_model:
+  type: GFX
+  offset: 0x8154E8E0
+  size: 0x60
+
+obj_s_house4_t3_model:
+  type: GFX
+  offset: 0x8154E940
+  size: 0x90
+
+obj_s_house4_t2_model:
+  type: GFX
+  offset: 0x8154E9D0
+  size: 0x78
+
+obj_s_house4_t1_model:
+  type: GFX
+  offset: 0x8154EA48
+  size: 0x68
+
+obj_s_house4_name_model:
+  type: GFX
+  offset: 0x8154EAB0
+  size: 0x58
+
+obj_s_house4_door_model:
+  type: GFX
+  offset: 0x8154EB08
+  size: 0x58
+
+cKF_bs_r_obj_s_house4:
+  type: AC:CKF_SKELETON
+  offset: 0x8154EBC0
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_s_house4:
+  type: AC:CKF_ANIMATION
+  offset: 0x8154EC4C
+  joints: 8
+  counts: { flags: 8, data: 33, keys: 1, fixed: 26 }
+
+cKF_ba_r_obj_s_house4_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x8154ECF0
+  joints: 8
+  counts: { flags: 8, data: 39, keys: 1, fixed: 26 }
+
+obj_s_house5_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x8154ED20
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house5_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x8154F520
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house5_window_tex_txt:
+  type: TEXTURE
+  offset: 0x8154FD20
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_house5_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8154FDA0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_house5_name_tex_txt:
+  type: TEXTURE
+  offset: 0x815505A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_s_house5_v:
+  type: VTX
+  offset: 0x815507A0
+  count: 131
+
+obj_s_house5_windowL_model:
+  type: GFX
+  offset: 0x81550FD0
+  size: 0x48
+
+obj_s_house5_windowR_model:
+  type: GFX
+  offset: 0x81551018
+  size: 0x48
+
+obj_s_house5_light_model:
+  type: GFX
+  offset: 0x81551060
+  size: 0x60
+
+obj_s_house5_t3_model:
+  type: GFX
+  offset: 0x815510C0
+  size: 0x80
+
+obj_s_house5_t2_model:
+  type: GFX
+  offset: 0x81551140
+  size: 0xA0
+
+obj_s_house5_t1_model:
+  type: GFX
+  offset: 0x815511E0
+  size: 0x68
+
+obj_s_house5_name_model:
+  type: GFX
+  offset: 0x81551248
+  size: 0x58
+
+obj_s_house5_door_model:
+  type: GFX
+  offset: 0x815512A0
+  size: 0x58
+
+cKF_bs_r_obj_s_house5:
+  type: AC:CKF_SKELETON
+  offset: 0x81551358
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_s_house5:
+  type: AC:CKF_ANIMATION
+  offset: 0x815513E4
+  joints: 8
+  counts: { flags: 8, data: 33, keys: 1, fixed: 26 }
+
+cKF_ba_r_obj_s_house5_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x81551488
+  joints: 8
+  counts: { flags: 8, data: 39, keys: 1, fixed: 26 }
+
+obj_w_house1_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x815514A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house1_window_txt:
+  type: TEXTURE
+  offset: 0x81551CA0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_house1_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81551D20
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house1_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x81552520
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house1_t4_tex_txt:
+  type: TEXTURE
+  offset: 0x81552D20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_w_house1_v:
+  type: VTX
+  offset: 0x81552F20
+  count: 115
+
+obj_w_house1_windowL_model:
+  type: GFX
+  offset: 0x81553650
+  size: 0x40
+
+obj_w_house1_windowR_model:
+  type: GFX
+  offset: 0x81553690
+  size: 0x40
+
+obj_w_house1_light_model:
+  type: GFX
+  offset: 0x815536D0
+  size: 0x60
+
+obj_w_house1_t4_model:
+  type: GFX
+  offset: 0x81553730
+  size: 0x58
+
+obj_w_house1_t3_model:
+  type: GFX
+  offset: 0x81553788
+  size: 0x60
+
+obj_w_house1_t2_model:
+  type: GFX
+  offset: 0x815537E8
+  size: 0x88
+
+obj_w_house1_t1_model:
+  type: GFX
+  offset: 0x81553870
+  size: 0x88
+
+obj_w_house1_door_model:
+  type: GFX
+  offset: 0x815538F8
+  size: 0x58
+
+cKF_bs_r_obj_w_house1:
+  type: AC:CKF_SKELETON
+  offset: 0x815539B0
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_w_house1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81553A3C
+  joints: 8
+  counts: { flags: 8, data: 33, keys: 1, fixed: 26 }
+
+cKF_ba_r_obj_w_house1_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x81553AE0
+  joints: 8
+  counts: { flags: 8, data: 39, keys: 1, fixed: 26 }
+
+obj_w_house2_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81553B00
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house2_window_tex_txt:
+  type: TEXTURE
+  offset: 0x81554300
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_house2_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x81554380
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house2_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81554B80
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house2_name_tex_txt:
+  type: TEXTURE
+  offset: 0x81555380
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_w_house2_v:
+  type: VTX
+  offset: 0x81555580
+  count: 109
+
+obj_w_house2_window_model:
+  type: GFX
+  offset: 0x81555C50
+  size: 0x58
+
+obj_w_house2_light_model:
+  type: GFX
+  offset: 0x81555CA8
+  size: 0x58
+
+obj_w_house2_t3_model:
+  type: GFX
+  offset: 0x81555D00
+  size: 0x90
+
+obj_w_house2_t2_model:
+  type: GFX
+  offset: 0x81555D90
+  size: 0x78
+
+obj_w_house2_t1_model:
+  type: GFX
+  offset: 0x81555E08
+  size: 0x70
+
+obj_w_house2_name_model:
+  type: GFX
+  offset: 0x81555E78
+  size: 0x58
+
+obj_w_house2_door_model:
+  type: GFX
+  offset: 0x81555ED0
+  size: 0x58
+
+cKF_bs_r_obj_w_house2:
+  type: AC:CKF_SKELETON
+  offset: 0x81555F88
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_w_house2:
+  type: AC:CKF_ANIMATION
+  offset: 0x81556014
+  joints: 8
+  counts: { flags: 8, data: 33, keys: 1, fixed: 26 }
+
+cKF_ba_r_obj_w_house2_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x815560B8
+  joints: 8
+  counts: { flags: 8, data: 39, keys: 1, fixed: 26 }
+
+obj_w_house3_a_pal:
+  type: TEXTURE
+  offset: 0x815560E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_house3_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81556100
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house3_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81556900
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house3_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x81557100
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house3_window_tex_txt:
+  type: TEXTURE
+  offset: 0x81557900
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_house3_name_tex_txt:
+  type: TEXTURE
+  offset: 0x81557980
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815560E0
+
+obj_w_house3_v:
+  type: VTX
+  offset: 0x81557B80
+  count: 100
+
+obj_w_house3_windowL_model:
+  type: GFX
+  offset: 0x815581C0
+  size: 0x48
+
+obj_w_house3_windowR_model:
+  type: GFX
+  offset: 0x81558208
+  size: 0x48
+
+obj_w_house3_light_model:
+  type: GFX
+  offset: 0x81558250
+  size: 0x58
+
+obj_w_house3_t3_model:
+  type: GFX
+  offset: 0x815582A8
+  size: 0x98
+
+obj_w_house3_t2_model:
+  type: GFX
+  offset: 0x81558340
+  size: 0x78
+
+obj_w_house3_t1_model:
+  type: GFX
+  offset: 0x815583B8
+  size: 0x68
+
+obj_w_house3_name_model:
+  type: GFX
+  offset: 0x81558420
+  size: 0x58
+
+obj_w_house3_door_model:
+  type: GFX
+  offset: 0x81558478
+  size: 0x58
+
+cKF_bs_r_obj_w_house3:
+  type: AC:CKF_SKELETON
+  offset: 0x81558530
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_w_house3:
+  type: AC:CKF_ANIMATION
+  offset: 0x815585BC
+  joints: 8
+  counts: { flags: 8, data: 33, keys: 1, fixed: 26 }
+
+cKF_ba_r_obj_w_house3_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x81558660
+  joints: 8
+  counts: { flags: 8, data: 39, keys: 1, fixed: 26 }
+
+obj_w_house4_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x81558680
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house4_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81558E80
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house4_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x81559680
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house4_window_tex_txt:
+  type: TEXTURE
+  offset: 0x81559E80
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_house4_name_tex_txt:
+  type: TEXTURE
+  offset: 0x81559F00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_w_house4_v:
+  type: VTX
+  offset: 0x8155A100
+  count: 93
+
+obj_w_house4_windowL_model:
+  type: GFX
+  offset: 0x8155A6D0
+  size: 0x48
+
+obj_w_house4_windowR_model:
+  type: GFX
+  offset: 0x8155A718
+  size: 0x48
+
+obj_w_house4_light_model:
+  type: GFX
+  offset: 0x8155A760
+  size: 0x48
+
+obj_w_house4_t3_model:
+  type: GFX
+  offset: 0x8155A7A8
+  size: 0x90
+
+obj_w_house4_t2_model:
+  type: GFX
+  offset: 0x8155A838
+  size: 0x78
+
+obj_w_house4_t1_model:
+  type: GFX
+  offset: 0x8155A8B0
+  size: 0x68
+
+obj_w_house4_name_model:
+  type: GFX
+  offset: 0x8155A918
+  size: 0x58
+
+obj_w_house4_door_model:
+  type: GFX
+  offset: 0x8155A970
+  size: 0x58
+
+cKF_bs_r_obj_w_house4:
+  type: AC:CKF_SKELETON
+  offset: 0x8155AA28
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_w_house4:
+  type: AC:CKF_ANIMATION
+  offset: 0x8155AAB4
+  joints: 8
+  counts: { flags: 8, data: 33, keys: 1, fixed: 26 }
+
+cKF_ba_r_obj_w_house4_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x8155AB58
+  joints: 8
+  counts: { flags: 8, data: 39, keys: 1, fixed: 26 }
+
+obj_w_house5_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x8155AB80
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house5_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x8155B380
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house5_window_tex_txt:
+  type: TEXTURE
+  offset: 0x8155BB80
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_house5_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8155BC00
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_house5_name_tex_txt:
+  type: TEXTURE
+  offset: 0x8155C400
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_w_house5_v:
+  type: VTX
+  offset: 0x8155C600
+  count: 131
+
+obj_w_house5_windowL_model:
+  type: GFX
+  offset: 0x8155CE30
+  size: 0x48
+
+obj_w_house5_windowR_model:
+  type: GFX
+  offset: 0x8155CE78
+  size: 0x48
+
+obj_w_house5_light_model:
+  type: GFX
+  offset: 0x8155CEC0
+  size: 0x60
+
+obj_w_house5_t3_model:
+  type: GFX
+  offset: 0x8155CF20
+  size: 0x80
+
+obj_w_house5_t2_model:
+  type: GFX
+  offset: 0x8155CFA0
+  size: 0xA0
+
+obj_w_house5_t1_model:
+  type: GFX
+  offset: 0x8155D040
+  size: 0x68
+
+obj_w_house5_name_model:
+  type: GFX
+  offset: 0x8155D0A8
+  size: 0x58
+
+obj_w_house5_door_model:
+  type: GFX
+  offset: 0x8155D100
+  size: 0x58
+
+cKF_bs_r_obj_w_house5:
+  type: AC:CKF_SKELETON
+  offset: 0x8155D1B8
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_w_house5:
+  type: AC:CKF_ANIMATION
+  offset: 0x8155D244
+  joints: 8
+  counts: { flags: 8, data: 33, keys: 1, fixed: 26 }
+
+cKF_ba_r_obj_w_house5_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x8155D2E8
+  joints: 8
+  counts: { flags: 8, data: 39, keys: 1, fixed: 26 }

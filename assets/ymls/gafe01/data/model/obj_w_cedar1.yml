@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+obj_w_cedar_baby_tex:
+  type: TEXTURE
+  offset: 0x81112360
+  format: CI4
+  width: 32
+  height: 24
+  source_encoding: gx
+
+obj_w_cedar1_v:
+  type: VTX
+  offset: 0x811124E0
+  count: 4
+
+obj_w_cedar1T_mat_model:
+  type: GFX
+  offset: 0x81112520
+  size: 0x20
+
+obj_w_cedar1T_gfx_model:
+  type: GFX
+  offset: 0x81112540
+  size: 0x18

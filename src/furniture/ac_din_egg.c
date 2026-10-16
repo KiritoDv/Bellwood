@@ -1,5 +1,4 @@
-extern Gfx int_din_egg_on_model[];
-extern Gfx int_din_egg_onT_model[];
+#include "assets/data/model/int_din_egg.h"
 
 aFTR_PROFILE iam_din_egg = {
 	int_din_egg_on_model,

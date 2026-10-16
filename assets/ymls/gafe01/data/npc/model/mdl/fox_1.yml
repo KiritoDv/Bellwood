@@ -1,0 +1,82 @@
+:config:
+  strict_declarations: true
+
+fox_1_v:
+  type: VTX
+  offset: 0x81188AE8
+  count: 368
+
+head_fox_model:
+  type: GFX
+  offset: 0x8118A1E8
+  size: 0x130
+
+mouth_fox_model:
+  type: GFX
+  offset: 0x8118A318
+  size: 0x88
+
+Rarm2_fox_model:
+  type: GFX
+  offset: 0x8118A3A0
+  size: 0x88
+
+Rarm1_fox_model:
+  type: GFX
+  offset: 0x8118A428
+  size: 0x78
+
+Larm2_fox_model:
+  type: GFX
+  offset: 0x8118A4A0
+  size: 0x88
+
+Larm1_fox_model:
+  type: GFX
+  offset: 0x8118A528
+  size: 0x78
+
+chest_fox_model:
+  type: GFX
+  offset: 0x8118A5A0
+  size: 0x108
+
+tail1_fox_model:
+  type: GFX
+  offset: 0x8118A6A8
+  size: 0x78
+
+tail2_fox_model:
+  type: GFX
+  offset: 0x8118A720
+  size: 0xB8
+
+Rfoot2_fox_model:
+  type: GFX
+  offset: 0x8118A7D8
+  size: 0x80
+
+Rfoot1_fox_model:
+  type: GFX
+  offset: 0x8118A858
+  size: 0x58
+
+Lfoot2_fox_model:
+  type: GFX
+  offset: 0x8118A8B0
+  size: 0x80
+
+Lfoot1_fox_model:
+  type: GFX
+  offset: 0x8118A930
+  size: 0x58
+
+base_fox_model:
+  type: GFX
+  offset: 0x8118A988
+  size: 0xD0
+
+cKF_bs_r_fox_1:
+  type: AC:CKF_SKELETON
+  offset: 0x8118AB90
+  counts: { joints: 26 }

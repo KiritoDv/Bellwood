@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_s_tunnel_tex:
+  type: TEXTURE
+  offset: 0x81ABF900
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+mFM_grd_s_tunnel_2_tex:
+  type: TEXTURE
+  offset: 0x81AC0100
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+mFM_grd_s_tunnel_3_tex:
+  type: TEXTURE
+  offset: 0x81AC0900
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx

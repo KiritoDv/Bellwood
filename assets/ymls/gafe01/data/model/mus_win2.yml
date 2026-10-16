@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+mus_win_tagu_tex:
+  type: TEXTURE
+  offset: 0x814BE760
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+mus_win2_v:
+  type: VTX
+  offset: 0x814BEB60
+  count: 4
+
+mus_tag_nes_model:
+  type: GFX
+  offset: 0x814BEBA0
+  size: 0x50

@@ -1,0 +1,62 @@
+:config:
+  strict_declarations: true
+
+int_kob_locker_pal:
+  type: TEXTURE
+  offset: 0x8189B6E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kob_locker_door_tex_txt:
+  type: TEXTURE
+  offset: 0x8189B700
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x8189B6E0
+
+int_kob_locker_side_tex_txt:
+  type: TEXTURE
+  offset: 0x8189BA00
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x8189B6E0
+
+int_kob_locker_front_tex_txt:
+  type: TEXTURE
+  offset: 0x8189BB80
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x8189B6E0
+
+int_kob_locker1_v:
+  type: VTX
+  offset: 0x8189BD00
+  count: 50
+
+int_kob_locker1_door_model:
+  type: GFX
+  offset: 0x8189C020
+  size: 0x78
+
+int_kob_locker1_base_model:
+  type: GFX
+  offset: 0x8189C098
+  size: 0xA8
+
+cKF_ba_r_int_kob_locker1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8189C1B8
+  joints: 3
+  counts: { flags: 3, data: 45, keys: 6, fixed: 6 }
+
+cKF_bs_r_int_kob_locker1:
+  type: AC:CKF_SKELETON
+  offset: 0x8189C1F0
+  counts: { joints: 3 }

@@ -1,5 +1,4 @@
-extern Gfx int_kob_pipeisu_on_model[];
-extern Gfx int_kob_pipeisu_onT_model[];
+#include "assets/data/model/int_kob_pipeisu.h"
 
 aFTR_PROFILE iam_kob_pipeisu = {
 	int_kob_pipeisu_on_model,

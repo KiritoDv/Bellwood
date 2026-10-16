@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+obj_f_tree_leaf_tex_txt:
+  type: TEXTURE
+  offset: 0x81647C60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_f_tree_cutS_tex_txt:
+  type: TEXTURE
+  offset: 0x81648460
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_f_tree_cutL_tex_txt:
+  type: TEXTURE
+  offset: 0x81648660
+  format: CI4
+  width: 64
+  height: 48
+  source_encoding: gx

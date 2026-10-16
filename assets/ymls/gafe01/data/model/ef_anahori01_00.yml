@@ -1,0 +1,195 @@
+:config:
+  strict_declarations: true
+
+ef_anahori01_00_tex:
+  type: TEXTURE
+  offset: 0x81663D80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_anahori01_00_v:
+  type: VTX
+  offset: 0x81663E00
+  count: 12
+
+ef_anahori01_00_model:
+  type: GFX
+  offset: 0x81663EC0
+  size: 0x70
+
+ef_anahori01_01_tex:
+  type: TEXTURE
+  offset: 0x81663F40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_anahori01_01_v:
+  type: VTX
+  offset: 0x81663FC0
+  count: 12
+
+ef_anahori01_01_model:
+  type: GFX
+  offset: 0x81664080
+  size: 0x70
+
+ef_anahori01_02_v:
+  type: VTX
+  offset: 0x816640F0
+  count: 12
+
+ef_anahori01_02_model:
+  type: GFX
+  offset: 0x816641B0
+  size: 0x70
+
+obj_hole_pal:
+  type: TEXTURE
+  offset: 0x81664220
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+ef_anahori02_01_tex:
+  type: TEXTURE
+  offset: 0x81664240
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_anahori02_02_tex:
+  type: TEXTURE
+  offset: 0x816642C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_anahori02_03_tex:
+  type: TEXTURE
+  offset: 0x81664340
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_anahori02_04_tex:
+  type: TEXTURE
+  offset: 0x816643C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_anahori02_00_v:
+  type: VTX
+  offset: 0x81664440
+  count: 4
+
+ef_anahori02_00_modelT:
+  type: GFX
+  offset: 0x81664480
+  size: 0x58
+
+ef_anahori03_pal:
+  type: TEXTURE
+  offset: 0x816644E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+ef_anahori03_03_tex:
+  type: TEXTURE
+  offset: 0x81664500
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_anahori03_01_tex:
+  type: TEXTURE
+  offset: 0x81664580
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_anahori03_02_tex:
+  type: TEXTURE
+  offset: 0x81664600
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_anahori03_04_tex:
+  type: TEXTURE
+  offset: 0x81664680
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_anahori03_00_v:
+  type: VTX
+  offset: 0x81664700
+  count: 4
+
+ef_anahori03_00_modelT:
+  type: GFX
+  offset: 0x81664740
+  size: 0x58
+
+ef_mogura01_pal:
+  type: TEXTURE
+  offset: 0x816647A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+ef_mogura01_03_tex:
+  type: TEXTURE
+  offset: 0x816647C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_mogura01_01_tex:
+  type: TEXTURE
+  offset: 0x81664840
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_mogura01_02_tex:
+  type: TEXTURE
+  offset: 0x816648C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_mogura01_04_tex:
+  type: TEXTURE
+  offset: 0x81664940
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_mogura01_00_v:
+  type: VTX
+  offset: 0x816649C0
+  count: 4
+
+ef_mogura01_00_modelT:
+  type: GFX
+  offset: 0x81664A00
+  size: 0x58

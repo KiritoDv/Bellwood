@@ -1,0 +1,275 @@
+:config:
+  strict_declarations: true
+
+clk_win_suuji1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81880640
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81880A40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81880E40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81881240
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji5_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81881640
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji6_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81881A40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji7_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81881E40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji8_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81882240
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji9_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81882640
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji10_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81882A40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji11_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81882E40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji12_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81883240
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji13_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81883640
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji14_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81883A40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji15_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81883E40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji16_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81884240
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji17_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81884640
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji18_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81884A40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji19_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81884E40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji20_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81885240
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji21_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81885640
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji22_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81885A40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji23_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81885E40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji24_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81886240
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji25_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81886640
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji26_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81886A40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji27_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81886E40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji28_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81887240
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji29_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81887640
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji30_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81887A40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_suuji31_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81887E40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_hiniti_v:
+  type: VTX
+  offset: 0x81888240
+  count: 16
+
+clk_win_hiniti3_bottom_model:
+  type: GFX
+  offset: 0x81888340
+  size: 0x30
+
+clk_win_hiniti1_top_model:
+  type: GFX
+  offset: 0x81888370
+  size: 0x30
+
+clk_win_hiniti2_middle_model:
+  type: GFX
+  offset: 0x818883A0
+  size: 0x48
+
+cKF_bs_r_clk_hiniti:
+  type: AC:CKF_SKELETON
+  offset: 0x81888418
+  counts: { joints: 4 }

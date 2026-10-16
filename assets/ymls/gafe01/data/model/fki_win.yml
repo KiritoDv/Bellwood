@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+fki_win_w2_tex:
+  type: TEXTURE
+  offset: 0x81897340
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+fki_win_de3_tex:
+  type: TEXTURE
+  offset: 0x81897740
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+fki_win_de4_tex:
+  type: TEXTURE
+  offset: 0x818977C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+fki_win_wa_tex:
+  type: TEXTURE
+  offset: 0x81897840
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+fki_win_v:
+  type: VTX
+  offset: 0x81897A40
+  count: 16
+
+fki_win_w4_model:
+  type: GFX
+  offset: 0x81897B40
+  size: 0x30
+
+fki_win_w3T_model:
+  type: GFX
+  offset: 0x81897B70
+  size: 0x38
+
+fki_win_w1T_model:
+  type: GFX
+  offset: 0x81897BA8
+  size: 0x38
+
+fki_win_w2T_model:
+  type: GFX
+  offset: 0x81897BE0
+  size: 0x38
+
+fki_win_mode:
+  type: GFX
+  offset: 0x81897C18
+  size: 0x20

@@ -4,6 +4,7 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_bodyprint01_00.h"
 
 static void eFootPrint_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eFootPrint_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -97,8 +98,6 @@ static void eFootPrint_mv(eEC_Effect_c* effect, GAME* game) {
                                       2, 0);
     }
 }
-
-extern Gfx ef_footprint01_00_modelT[];
 
 static void eFootPrint_dw(eEC_Effect_c* effect, GAME* game) {
     u8 alpha = (int)(*eEC_CLIP->calc_adjust_proc)(160 - effect->timer, 118, 159, 150.0f, 0.0f);

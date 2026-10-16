@@ -1,0 +1,191 @@
+:config:
+  strict_declarations: true
+
+onp_win_q_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x8149F8C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_a_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x8149F940
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_b_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x8149F9C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_c_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x8149FA40
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_d_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x8149FAC0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_e_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x8149FB40
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_f_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x8149FBC0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_g_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x8149FC40
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_bou1_tex:
+  type: TEXTURE
+  offset: 0x8149FCC0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_shimari_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8149FD40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+onp_win_test10_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A0140
+  format: IA8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+onp_win_test11_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A0940
+  format: IA8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+onp_win_test1_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A1140
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+onp_win_test2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A1540
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+onp_win_test5_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A1940
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+onp_win_test3_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A1D40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+onp_win_onpu8_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x814A2140
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_z_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x814A21C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_hyouji_v:
+  type: VTX
+  offset: 0x814A2240
+  count: 24
+
+onp_hyouji_waku1T_model:
+  type: GFX
+  offset: 0x814A23C0
+  size: 0x28
+
+onp_hyouji_waku2T_model:
+  type: GFX
+  offset: 0x814A23E8
+  size: 0x28
+
+onp_hyouji_waku3T_model:
+  type: GFX
+  offset: 0x814A2410
+  size: 0x28
+
+onp_hyouji_waku4T_model:
+  type: GFX
+  offset: 0x814A2438
+  size: 0x28
+
+onp_hyouji_bouT_model:
+  type: GFX
+  offset: 0x814A2460
+  size: 0x28
+
+onp_hyouji_moji1T_model:
+  type: GFX
+  offset: 0x814A2488
+  size: 0x28
+
+onp_hyouji_waku_mode:
+  type: GFX
+  offset: 0x814A24B0
+  size: 0x28
+
+onp_hyouji_moji_mode:
+  type: GFX
+  offset: 0x814A24D8
+  size: 0x20

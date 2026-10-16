@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_sightmap_pal:
+  type: TEXTURE
+  offset: 0x8110D500
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_sightmap_tex:
+  type: TEXTURE
+  offset: 0x8110D520
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8110D500
+
+obj_s_sightmap_v:
+  type: VTX
+  offset: 0x8110DD20
+  count: 8
+
+obj_s_sightmapT_mat_model:
+  type: GFX
+  offset: 0x8110DDA0
+  size: 0x28
+
+obj_s_sightmapT_gfx_model:
+  type: GFX
+  offset: 0x8110DDC8
+  size: 0x20

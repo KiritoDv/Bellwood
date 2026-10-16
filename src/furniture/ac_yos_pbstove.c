@@ -1,4 +1,4 @@
-extern Gfx int_yos_pbstove_body_model[];
+#include "assets/data/model/int_yos_pbstove.h"
 
 aFTR_PROFILE iam_yos_pbstove = {
 	int_yos_pbstove_body_model,

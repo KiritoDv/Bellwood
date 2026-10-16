@@ -1,98 +1,98 @@
 #include "ac_museum_fish_priv.h"
+#include "assets/data/model/act_mus_angel_a1.h"
+#include "assets/data/model/act_mus_aroana_a1.h"
+#include "assets/data/model/act_mus_ayu_a1.h"
+#include "assets/data/model/act_mus_bass_a1.h"
+#include "assets/data/model/act_mus_bassl_a1.h"
+#include "assets/data/model/act_mus_bassm_a1.h"
+#include "assets/data/model/act_mus_demekin_a1.h"
+#include "assets/data/model/act_mus_dojyo_a1.h"
+#include "assets/data/model/act_mus_donko_a1.h"
+#include "assets/data/model/act_mus_funa_a1.h"
+#include "assets/data/model/act_mus_gill_a1.h"
+#include "assets/data/model/act_mus_gupi_a1.h"
+#include "assets/data/model/act_mus_hera_a1.h"
+#include "assets/data/model/act_mus_isidai_a1.h"
+#include "assets/data/model/act_mus_ito_a1.h"
+#include "assets/data/model/act_mus_iwana_a1.h"
+#include "assets/data/model/act_mus_kaeru_a1.h"
+#include "assets/data/model/act_mus_kaseki_a1.h"
+#include "assets/data/model/act_mus_kingyo_a1.h"
+#include "assets/data/model/act_mus_koi_a1.h"
+#include "assets/data/model/act_mus_medaka_a1.h"
+#include "assets/data/model/act_mus_namazu_a1.h"
+#include "assets/data/model/act_mus_nigoi_a1.h"
+#include "assets/data/model/act_mus_niji_a1.h"
+#include "assets/data/model/act_mus_nisiki_a1.h"
+#include "assets/data/model/act_mus_oikawa_a1.h"
+#include "assets/data/model/act_mus_onamazu_a1.h"
+#include "assets/data/model/act_mus_pira_a1.h"
+#include "assets/data/model/act_mus_pirania_a1.h"
+#include "assets/data/model/act_mus_raigyo_a1.h"
+#include "assets/data/model/act_mus_sake_a1.h"
+#include "assets/data/model/act_mus_suzuki_a1.h"
+#include "assets/data/model/act_mus_tai_a1.h"
+#include "assets/data/model/act_mus_tanago_a1.h"
+#include "assets/data/model/act_mus_ugui_a1.h"
+#include "assets/data/model/act_mus_unagi_a1.h"
+#include "assets/data/model/act_mus_wakasa_a1.h"
+#include "assets/data/model/act_mus_yamame_a1.h"
+#include "assets/data/model/act_mus_zari.h"
+#include "assets/data/model/cKF_ba_r_act_mus_angel_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_aroana_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_ayu_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_bass_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_bassl_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_bassm_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_demekin_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_dojyo_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_donko_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_funa_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_gill_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_gupi_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_hera_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_isidai_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_ito_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_iwana_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_kaeru_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_kaseki_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_kingyo_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_koi_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_medaka_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_namazu_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_nigoi_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_niji_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_nisiki_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_oikawa_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_onamazu_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_pira_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_pirania_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_raigyo_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_sake_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_suzuki_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_tai_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_tanago_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_ugui_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_unagi_a2.h"
+#include "assets/data/model/cKF_ba_r_act_mus_wakasa_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_yamame_a1.h"
+#include "assets/data/model/cKF_ba_r_act_mus_zari.h"
+#include "assets/data/model/cKF_ba_r_obj_museum5_kusa1.h"
+#include "assets/data/model/cKF_ba_r_obj_museum5_kusa2.h"
+#include "assets/data/model/cKF_ba_r_obj_museum5_kusa3.h"
+#include "assets/data/model/obj_museum5.h"
+#include "assets/data/model/obj_museum5_evw_anime.h"
+#include "assets/data/model/obj_museum5_kusa1.h"
+#include "assets/data/model/obj_museum5_kusa2.h"
+#include "assets/data/model/obj_museum5_kusa3.h"
+#include "assets/data/model/obj_suisou1.h"
+#include "assets/data/model/obj_suisou1_evw_anime.h"
 
 // extern data
 // clang-format off
-extern cKF_Skeleton_R_c
-    cKF_bs_r_act_mus_funa_a1,
-    cKF_bs_r_act_mus_hera_a1,
-    cKF_bs_r_act_mus_koi_a1,
-    cKF_bs_r_act_mus_nisiki_a1,
-    cKF_bs_r_act_mus_namazu_a1,
-    cKF_bs_r_act_mus_bass_a1,
-    cKF_bs_r_act_mus_bassm_a1,
-    cKF_bs_r_act_mus_bassl_a1,
-    cKF_bs_r_act_mus_gill_a1,
-    cKF_bs_r_act_mus_onamazu_a1,
-    cKF_bs_r_act_mus_raigyo_a1,
-    cKF_bs_r_act_mus_nigoi_a1,
-    cKF_bs_r_act_mus_ugui_a1,
-    cKF_bs_r_act_mus_oikawa_a1,
-    cKF_bs_r_act_mus_tanago_a1,
-    cKF_bs_r_act_mus_dojyo_a1,
-    cKF_bs_r_act_mus_wakasa_a1,
-    cKF_bs_r_act_mus_ayu_a1,
-    cKF_bs_r_act_mus_yamame_a1,
-    cKF_bs_r_act_mus_iwana_a1,
-    cKF_bs_r_act_mus_niji_a1,
-    cKF_bs_r_act_mus_ito_a1,
-    cKF_bs_r_act_mus_sake_a1,
-    cKF_bs_r_act_mus_kingyo_a1,
-    cKF_bs_r_act_mus_pirania_a1,
-    cKF_bs_r_act_mus_aroana_a1,
-    cKF_bs_r_act_mus_unagi_a1,
-    cKF_bs_r_act_mus_donko_a1,
-    cKF_bs_r_act_mus_angel_a1,
-    cKF_bs_r_act_mus_gupi_a1,
-    cKF_bs_r_act_mus_demekin_a1,
-    cKF_bs_r_act_mus_kaseki_a1,
-    cKF_bs_r_act_mus_zari,
-    cKF_bs_r_act_mus_kaeru_a1,
-    cKF_bs_r_act_mus_medaka_a1,
-    cKF_bs_r_act_mus_suzuki_a1,
-    cKF_bs_r_act_mus_tai_a1,
-    cKF_bs_r_act_mus_isidai_a1,
-    cKF_bs_r_act_mus_pira_a1;
 
-extern cKF_Animation_R_c
-    cKF_ba_r_act_mus_funa_a1,
-    cKF_ba_r_act_mus_hera_a1,
-    cKF_ba_r_act_mus_koi_a1,
-    cKF_ba_r_act_mus_nisiki_a1,
-    cKF_ba_r_act_mus_namazu_a1,
-    cKF_ba_r_act_mus_bass_a1,
-    cKF_ba_r_act_mus_bassm_a1,
-    cKF_ba_r_act_mus_bassl_a1,
-    cKF_ba_r_act_mus_gill_a1,
-    cKF_ba_r_act_mus_onamazu_a1,
-    cKF_ba_r_act_mus_raigyo_a1,
-    cKF_ba_r_act_mus_nigoi_a1,
-    cKF_ba_r_act_mus_ugui_a1,
-    cKF_ba_r_act_mus_oikawa_a1,
-    cKF_ba_r_act_mus_tanago_a1,
-    cKF_ba_r_act_mus_dojyo_a1,
-    cKF_ba_r_act_mus_wakasa_a1,
-    cKF_ba_r_act_mus_ayu_a1,
-    cKF_ba_r_act_mus_yamame_a1,
-    cKF_ba_r_act_mus_iwana_a1,
-    cKF_ba_r_act_mus_niji_a1,
-    cKF_ba_r_act_mus_ito_a1,
-    cKF_ba_r_act_mus_sake_a1,
-    cKF_ba_r_act_mus_kingyo_a1,
-    cKF_ba_r_act_mus_pirania_a1,
-    cKF_ba_r_act_mus_aroana_a1,
-    cKF_ba_r_act_mus_unagi_a2,
-    cKF_ba_r_act_mus_donko_a1,
-    cKF_ba_r_act_mus_angel_a1,
-    cKF_ba_r_act_mus_gupi_a1,
-    cKF_ba_r_act_mus_demekin_a1,
-    cKF_ba_r_act_mus_kaseki_a1,
-    cKF_ba_r_act_mus_zari,
-    cKF_ba_r_act_mus_kaeru_a1,
-    cKF_ba_r_act_mus_medaka_a1,
-    cKF_ba_r_act_mus_suzuki_a1,
-    cKF_ba_r_act_mus_tai_a1,
-    cKF_ba_r_act_mus_isidai_a1,
-    cKF_ba_r_act_mus_pira_a1;
     
-extern cKF_Skeleton_R_c
-    cKF_bs_r_obj_museum5_kusa1,
-    cKF_bs_r_obj_museum5_kusa2,
-    cKF_bs_r_obj_museum5_kusa3;
 
-extern cKF_Animation_R_c
-    cKF_ba_r_obj_museum5_kusa1,
-    cKF_ba_r_obj_museum5_kusa2,
-    cKF_ba_r_obj_museum5_kusa3;
 
 // data
 MUSEUM_FISH_ACTOR* MF_Control_Actor;
@@ -112,7 +112,7 @@ ACTOR_PROFILE Museum_Fish_Profile = {
     NULL
 };
 
-static xyz_t suisou_pos[5] = { 
+xyz_t suisou_pos[5] = { 
     { 220.0f, 40.0f, 220.0f }, 
     { 420.0f, 40.0f, 220.0f }, 
     { 220.0f, 40.0f, 460.0f }, 
@@ -856,11 +856,6 @@ void Museum_Fish_Actor_move(ACTOR* actorx, GAME* game) {
     }
 }
 
-extern Gfx obj_suisou1_model[];
-extern Gfx obj_suisou1_modelT[];
-
-extern Gfx obj_museum5_model[];
-extern Gfx obj_museum5_modelT[];
 
 void Museum_Fish_Suisou_draw(ACTOR* actorx, GAME* game, int r5) {
     MUSEUM_FISH_ACTOR* actor = (MUSEUM_FISH_ACTOR*)actorx;
@@ -902,8 +897,8 @@ void Museum_Fish_Suisou_draw(ACTOR* actorx, GAME* game, int r5) {
 
         Setpos_HiliteReflect_xlu_init(&suisou_pos[r5], play);
 
-        gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_DOLPHIN);
-        gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_DOLPHIN);
+        gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_HALFTEXEL);
+        gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_HALFTEXEL);
         gSPDisplayList(NEXT_POLY_OPA_DISP, obj_museum5_model);
         gSPDisplayList(NEXT_POLY_XLU_DISP, obj_museum5_modelT);
         gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_N64);
@@ -945,9 +940,6 @@ void Museum_Fish_Kusa_Draw(ACTOR* actorx, GAME* game, int r5) {
         cKF_Si3_draw_R_SV(game, &actor->prvKusa[r5].keyframe, mtx, kusa_before_disp, NULL, &actor->prvKusa[r5]);
     }
 }
-
-extern EVW_ANIME_DATA obj_suisou1_evw_anime, obj_museum5_evw_anime;
-extern Gfx act_mus_fish_set_mode;
 
 void Museum_Fish_Actor_draw(ACTOR* actorx, GAME* game) {
     MUSEUM_FISH_ACTOR* actor = (MUSEUM_FISH_ACTOR*)actorx;

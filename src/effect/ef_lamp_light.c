@@ -49,7 +49,7 @@ static int eLL_get_light_sw_other_room() {
     return ret;
 }
 
-static int eLL_get_light_sw_player_room() {
+static int eLL_get_light_sw_player_room(void) {
     // 6 p.m to 11 p.m
     if ((Common_Get(time.now_sec) >= 64800) && (Common_Get(time.now_sec) < 82800)) {
         return 1;
@@ -79,7 +79,7 @@ static void eLL_ctrl_light_sw(LAMPLIGHT_ACTOR* lamp) {
                 case mFI_FIELD_PLAYER1_ROOM:
                 case mFI_FIELD_PLAYER2_ROOM:
                 case mFI_FIELD_PLAYER3_ROOM:
-                    ret = eLL_get_light_sw_player_room(lamp);
+                    ret = eLL_get_light_sw_player_room();
                     break;
 
                 case mFI_FIELD_DEMO_STARTDEMO:
@@ -94,7 +94,7 @@ static void eLL_ctrl_light_sw(LAMPLIGHT_ACTOR* lamp) {
             break;
 
         case 1:
-            ret = eLL_get_light_sw_player_room(lamp);
+            ret = eLL_get_light_sw_player_room();
             break;
     }
 

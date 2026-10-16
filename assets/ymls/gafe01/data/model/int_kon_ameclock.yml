@@ -1,0 +1,108 @@
+:config:
+  strict_declarations: true
+
+int_kon_ameclock_pal:
+  type: TEXTURE
+  offset: 0x8189FF20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_ameclock_e_tex_txt:
+  type: TEXTURE
+  offset: 0x8189FF40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189FF20
+
+int_kon_ameclock_a_tex_txt:
+  type: TEXTURE
+  offset: 0x8189FFC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8189FF20
+
+int_kon_ameclock_c_tex_txt:
+  type: TEXTURE
+  offset: 0x818A01C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189FF20
+
+int_kon_ameclock_b_tex_txt:
+  type: TEXTURE
+  offset: 0x818A0240
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8189FF20
+
+int_kon_ameclock_d_tex_txt:
+  type: TEXTURE
+  offset: 0x818A0340
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189FF20
+
+int_kon_ameclock_f_tex_txt:
+  type: TEXTURE
+  offset: 0x818A03C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8189FF20
+
+int_kon_ameclock_g_tex_txt:
+  type: TEXTURE
+  offset: 0x818A04C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8189FF20
+
+int_kon_ameclock_v:
+  type: VTX
+  offset: 0x818A05C0
+  count: 58
+
+int_kon_ameclock_long_model:
+  type: GFX
+  offset: 0x818A0960
+  size: 0x58
+
+int_kon_ameclock_off_model:
+  type: GFX
+  offset: 0x818A09B8
+  size: 0x68
+
+int_kon_ameclock_short_model:
+  type: GFX
+  offset: 0x818A0A20
+  size: 0x58
+
+base_model:
+  type: GFX
+  offset: 0x818A0A78
+  size: 0x120
+
+cKF_ba_r_int_kon_ameclock:
+  type: AC:CKF_ANIMATION
+  offset: 0x818A0BCC
+  joints: 6
+  counts: { flags: 6, data: 0, keys: 0, fixed: 21 }
+
+cKF_bs_r_int_kon_ameclock:
+  type: AC:CKF_SKELETON
+  offset: 0x818A0C28
+  counts: { joints: 6 }

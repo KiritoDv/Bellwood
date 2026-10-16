@@ -1,0 +1,9 @@
+:config:
+  strict_declarations: true
+
+mFM_obj_a_01_flower_pal:
+  type: TEXTURE
+  offset: 0x810FE340
+  format: TLUT
+  colors: 432
+  source_encoding: gx

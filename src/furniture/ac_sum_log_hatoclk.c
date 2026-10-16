@@ -1,11 +1,9 @@
+#include "assets/data/model/int_sum_log_hatoclk.h"
 static void aSumLogHatoclk_StopAnimeInitNormal(cKF_SkeletonInfo_R_c* keyframe, cKF_Animation_R_c* anime, f32 speed) {
     cKF_SkeletonInfo_R_init_standard_stop(keyframe, anime, NULL);
     keyframe->frame_control.speed = speed;
     cKF_SkeletonInfo_R_play(keyframe);
 }
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_sum_log_hatoclk;
-extern cKF_Animation_R_c cKF_ba_r_int_sum_log_hatoclk;
 
 static void aSumLogHatoclk_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyframe = &ftr_actor->keyframe;
@@ -15,9 +13,6 @@ static void aSumLogHatoclk_ct(FTR_ACTOR* ftr_actor, u8* data) {
     aSumLogHatoclk_StopAnimeInitNormal(keyframe, &cKF_ba_r_int_sum_log_hatoclk, 1.0f);
     ftr_actor->dynamic_work_s[0] = 0;
 }
-
-extern Gfx int_sum_log_hatoclk_short_model[];
-extern Gfx int_sum_log_hatoclk_long_model[];
 
 static int aSumLogHatoclk_DwAfter(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
                                   u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {

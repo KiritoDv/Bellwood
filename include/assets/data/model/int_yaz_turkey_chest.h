@@ -1,0 +1,40 @@
+#ifndef ASSETS_DATA_MODEL_INT_YAZ_TURKEY_CHEST_H
+#define ASSETS_DATA_MODEL_INT_YAZ_TURKEY_CHEST_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const char int_yaz_turkey_chest_pal[];
+extern const char int_yaz_turkey_chest_drwr_tex_txt[];
+extern const char int_yaz_turkey_chest_drwr_frnt_tex_txt[];
+extern const char int_yaz_turkey_chest_knob_tex_txt[];
+extern const char int_yaz_turkey_chest_asi_tex_txt[];
+extern const char int_yaz_turkey_chest_back_tex_txt[];
+extern const char int_yaz_turkey_chest_side_tex_txt[];
+extern const char int_yaz_turkey_chest_frnt_tex_txt[];
+extern const char int_yaz_turkey_chest_v[];
+extern const char int_yaz_turkey_chest_door_model[];
+extern const char int_yaz_turkey_chest_body_model[];
+extern const char cKF_ba_r_int_yaz_turkey_chest[];
+extern const char cKF_bs_r_int_yaz_turkey_chest[];
+
+#define int_yaz_turkey_chest_pal_PATH "__OTR__data/model/int_yaz_turkey_chest/int_yaz_turkey_chest_pal"
+#define int_yaz_turkey_chest_drwr_tex_txt_PATH "__OTR__data/model/int_yaz_turkey_chest/int_yaz_turkey_chest_drwr_tex_txt"
+#define int_yaz_turkey_chest_drwr_frnt_tex_txt_PATH "__OTR__data/model/int_yaz_turkey_chest/int_yaz_turkey_chest_drwr_frnt_tex_txt"
+#define int_yaz_turkey_chest_knob_tex_txt_PATH "__OTR__data/model/int_yaz_turkey_chest/int_yaz_turkey_chest_knob_tex_txt"
+#define int_yaz_turkey_chest_asi_tex_txt_PATH "__OTR__data/model/int_yaz_turkey_chest/int_yaz_turkey_chest_asi_tex_txt"
+#define int_yaz_turkey_chest_back_tex_txt_PATH "__OTR__data/model/int_yaz_turkey_chest/int_yaz_turkey_chest_back_tex_txt"
+#define int_yaz_turkey_chest_side_tex_txt_PATH "__OTR__data/model/int_yaz_turkey_chest/int_yaz_turkey_chest_side_tex_txt"
+#define int_yaz_turkey_chest_frnt_tex_txt_PATH "__OTR__data/model/int_yaz_turkey_chest/int_yaz_turkey_chest_frnt_tex_txt"
+#define int_yaz_turkey_chest_v_PATH "__OTR__data/model/int_yaz_turkey_chest/int_yaz_turkey_chest_v"
+#define int_yaz_turkey_chest_door_model_PATH "__OTR__data/model/int_yaz_turkey_chest/int_yaz_turkey_chest_door_model"
+#define int_yaz_turkey_chest_body_model_PATH "__OTR__data/model/int_yaz_turkey_chest/int_yaz_turkey_chest_body_model"
+#define cKF_ba_r_int_yaz_turkey_chest_PATH "__OTR__data/model/int_yaz_turkey_chest/cKF_ba_r_int_yaz_turkey_chest"
+#define cKF_bs_r_int_yaz_turkey_chest_PATH "__OTR__data/model/int_yaz_turkey_chest/cKF_bs_r_int_yaz_turkey_chest"
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

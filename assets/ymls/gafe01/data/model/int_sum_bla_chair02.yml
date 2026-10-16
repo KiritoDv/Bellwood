@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_sum_bla_chair02_pal:
+  type: TEXTURE
+  offset: 0x819A0F60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bla_chair02_seat_tex:
+  type: TEXTURE
+  offset: 0x819A0F80
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x819A0F60
+
+int_sum_bla_chair02_foot_tex:
+  type: TEXTURE
+  offset: 0x819A1280
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x819A0F60
+
+int_sum_bla_chair02_seatside_tex:
+  type: TEXTURE
+  offset: 0x819A1580
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819A0F60
+
+int_sum_bla_chair02_v:
+  type: VTX
+  offset: 0x819A1780
+  count: 45
+
+int_sum_bra_chair02_on_model:
+  type: GFX
+  offset: 0x819A1A50
+  size: 0x80
+
+int_sum_bra_chair02_onT_model:
+  type: GFX
+  offset: 0x819A1AD0
+  size: 0x80

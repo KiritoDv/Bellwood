@@ -1,0 +1,42 @@
+:config:
+  strict_declarations: true
+
+tol_umb_21_pal:
+  type: TEXTURE
+  offset: 0x815D6720
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_umb_21_kasa_tex_txt:
+  type: TEXTURE
+  offset: 0x815D6740
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x815D6720
+
+tol_umb_21_tuka_tex_txt:
+  type: TEXTURE
+  offset: 0x815D6B40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815D6720
+
+tol_umb_21_v:
+  type: VTX
+  offset: 0x815D6D40
+  count: 56
+
+kasa_umb21_model:
+  type: GFX
+  offset: 0x815D70C0
+  size: 0x90
+
+e_umb21_model:
+  type: GFX
+  offset: 0x815D7150
+  size: 0x70

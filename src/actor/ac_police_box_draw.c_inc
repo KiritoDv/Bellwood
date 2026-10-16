@@ -1,7 +1,4 @@
-extern Gfx obj_s_kouban_model[];
-extern Gfx obj_w_kouban_model[];
-extern Gfx obj_s_kouban_window_model[];
-extern Gfx obj_w_kouban_window_model[];
+#include "assets/data/model/obj_s_kouban.h"
 
 static void aPBOX_actor_draw(ACTOR* actor, GAME* game) {
     static Gfx* displayList[] = { obj_s_kouban_model, obj_w_kouban_model };

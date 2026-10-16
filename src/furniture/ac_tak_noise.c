@@ -1,5 +1,4 @@
-extern Gfx int_tak_noise_on_model[];
-extern Gfx int_tak_noise_onT_model[];
+#include "assets/data/model/int_tak_noise.h"
 
 static void fTNM_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     if (aFTR_CAN_PLAY_SE(ftr_actor)) {

@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_nog_harddiary_pal:
+  type: TEXTURE
+  offset: 0x818FADE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_harddiary_tex:
+  type: TEXTURE
+  offset: 0x818FAE00
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x818FADE0
+
+int_nog_harddiary_v:
+  type: VTX
+  offset: 0x818FB200
+  count: 36
+
+int_nog_harddiaryT_model:
+  type: GFX
+  offset: 0x818FB440
+  size: 0x90

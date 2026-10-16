@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_sum_poptable03_pal:
+  type: TEXTURE
+  offset: 0x81A4B6E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_poptable03_top_tex:
+  type: TEXTURE
+  offset: 0x81A4B700
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A4B6E0
+
+int_sum_poptable03_topback_tex:
+  type: TEXTURE
+  offset: 0x81A4B900
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A4B6E0
+
+int_sum_poptable03_stand_tex:
+  type: TEXTURE
+  offset: 0x81A4BB00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A4B6E0
+
+int_sum_poptable03_standtop_tex:
+  type: TEXTURE
+  offset: 0x81A4BC00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A4B6E0
+
+int_sum_poptable03_standsita_tex:
+  type: TEXTURE
+  offset: 0x81A4BC80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A4B6E0
+
+int_sum_poptable03_v:
+  type: VTX
+  offset: 0x81A4BD80
+  count: 26
+
+int_sum_poptable03_on_model:
+  type: GFX
+  offset: 0x81A4BF20
+  size: 0x60
+
+int_sum_poptable03_onT_model:
+  type: GFX
+  offset: 0x81A4BF80
+  size: 0xA8

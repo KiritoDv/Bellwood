@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_s_myhome1.h"
 static void aMHS_set_door_SE_sub(STRUCTURE_ACTOR* my_house, u16 se_idx) {
     sAdo_OngenTrgStart(se_idx, &my_house->actor_class.world.position);
 }
@@ -67,30 +68,14 @@ static void aMHS_goto_next_pl_scene(GAME_PLAY* play, STRUCTURE_ACTOR* my_house) 
 }
 
 // In
-extern cKF_Animation_R_c cKF_ba_r_obj_s_myhome1;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_myhome1;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_myhome2;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_myhome2;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_myhome3;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_myhome3;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_myhome4;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_myhome4;
 
 // Out
-extern cKF_Animation_R_c cKF_ba_r_obj_s_myhome1_out;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_myhome1_out;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_myhome2_out;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_myhome2_out;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_myhome3_out;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_myhome3_out;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_myhome4_out;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_myhome4_out;
 
 static void aMHS_setup_animation(STRUCTURE_ACTOR* my_house, f32 speed) {
     static cKF_Animation_R_c* ani[2][mHm_HOMESIZE_NUM - 1][2] = {

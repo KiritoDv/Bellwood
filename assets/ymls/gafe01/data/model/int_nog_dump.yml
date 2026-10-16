@@ -1,0 +1,58 @@
+:config:
+  strict_declarations: true
+
+int_nog_dump_pal:
+  type: TEXTURE
+  offset: 0x818F6D20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_trash_pal:
+  type: TEXTURE
+  offset: 0x818F6D40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_dump_body_tex:
+  type: TEXTURE
+  offset: 0x818F6D60
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x818F6D20
+
+int_nog_dump_grass_tex:
+  type: TEXTURE
+  offset: 0x818F6F60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818F6D20
+
+int_nog_dump_wire_tex:
+  type: TEXTURE
+  offset: 0x818F7160
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818F6D40
+
+int_nog_dump_v:
+  type: VTX
+  offset: 0x818F7260
+  count: 220
+
+int_nog_dump_model:
+  type: GFX
+  offset: 0x818F8020
+  size: 0x58
+
+int_nog_dumpT_model:
+  type: GFX
+  offset: 0x818F8078
+  size: 0x220

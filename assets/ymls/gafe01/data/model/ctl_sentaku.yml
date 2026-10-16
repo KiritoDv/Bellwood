@@ -1,0 +1,23 @@
+:config:
+  strict_declarations: true
+
+ctl_win_tagu3_tex:
+  type: TEXTURE
+  offset: 0x813C0A20
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+ctl_sentaku_v:
+  type: VTX
+  offset: 0x813C0C20
+  count: 4
+
+ctl_sentaku_taguT_model:
+  type: GFX
+  offset: 0x813C0C60
+  size: 0x48
+  hints:
+    dl_index:
+      - { segment: 0x08, targets: [0x813C98F0, 0x813C98A8, 0x813C9860, 0x813C9818, 0x813C97D0, 0x813C9788, 0x813C9740, 0x813C96F8] }

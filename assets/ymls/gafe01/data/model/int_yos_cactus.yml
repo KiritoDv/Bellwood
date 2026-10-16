@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_yos_cactus_pal:
+  type: TEXTURE
+  offset: 0x81AD4BA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yos_cactus_bou_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD4BC0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AD4BA0
+
+int_yos_cactus_v:
+  type: VTX
+  offset: 0x81AD4FC0
+  count: 56
+
+int_yos_cactus_obj_model:
+  type: GFX
+  offset: 0x81AD5340
+  size: 0xB0

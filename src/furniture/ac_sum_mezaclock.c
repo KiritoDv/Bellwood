@@ -1,9 +1,6 @@
+#include "assets/data/model/int_sum_mezaclock.h"
 extern aFTR_rig_c aSumMezaClock_sklkey;
-extern Gfx int_sum_mezaclock_short_model[];
-extern Gfx int_sum_mezaclock_long_model[];
 
-extern cKF_Skeleton_R_c cKF_bs_r_int_sum_mezaclock;
-extern cKF_Animation_R_c cKF_ba_r_int_sum_mezaclock;
 
 aFTR_rig_c aSumMezaClock_sklkey= {
     &cKF_bs_r_int_sum_mezaclock,

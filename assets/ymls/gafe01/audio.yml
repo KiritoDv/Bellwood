@@ -1,0 +1,21 @@
+:config:
+  strict_declarations: false
+
+audio_setup:
+  type: NAUDIO:V1:AUDIO_SETUP
+  driver: NEOS
+  frequency: 32000
+  audio_data: 0x800CE450
+  audiorom: 0x83000000
+
+audio_sample_bank_table:
+  { type: NAUDIO:V1:AUDIO_TABLE, format: SAMPLE, offset: 0x800CE3E0, symbol: audio_sample_bank_table }
+
+audio_seq_table:
+  { type: NAUDIO:V1:AUDIO_TABLE, format: SEQUENCE, offset: 0x800CCA40, symbol: audio_seq_table }
+
+audio_soundfont_table:
+  { type: NAUDIO:V1:AUDIO_TABLE, format: SOUNDFONT, offset: 0x800CD9E0, symbol: audio_soundfont_table }
+
+audio_seq_font_table:
+  { type: ARRAY, count: 0x3F0, array_type: u8, offset: 0x800CE490, symbol: audio_seq_font_table }

@@ -1,0 +1,78 @@
+:config:
+  strict_declarations: true
+
+int_sum_hal_sofa01_pal:
+  type: TEXTURE
+  offset: 0x81A02180
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_hal_sofa01_seat_tex:
+  type: TEXTURE
+  offset: 0x81A021A0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A02180
+
+int_sum_hal_sofa01_arm_tex:
+  type: TEXTURE
+  offset: 0x81A024A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A02180
+
+int_sum_hal_sofa01_side_tex:
+  type: TEXTURE
+  offset: 0x81A025A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A02180
+
+int_sum_hal_sofa01_head_tex:
+  type: TEXTURE
+  offset: 0x81A026A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A02180
+
+int_sum_hal_sofa01_top_tex:
+  type: TEXTURE
+  offset: 0x81A028A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A02180
+
+int_sum_hal_sofa01_kuki_tex:
+  type: TEXTURE
+  offset: 0x81A02920
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A02180
+
+int_sum_hal_sofa01_v:
+  type: VTX
+  offset: 0x81A029A0
+  count: 65
+
+int_sum_hal_sofa01_on_model:
+  type: GFX
+  offset: 0x81A02DB0
+  size: 0xC0
+
+int_sum_hal_sofa01_onT_model:
+  type: GFX
+  offset: 0x81A02E70
+  size: 0xA0

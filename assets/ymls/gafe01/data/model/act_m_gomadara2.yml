@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+act_m_gomadara_v:
+  type: VTX
+  offset: 0x8186DFD8
+  count: 12
+
+act_m_gomadara_pal:
+  type: TEXTURE
+  offset: 0x8186E098
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_gomadara:
+  type: TEXTURE
+  offset: 0x8186E0B8
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: n64
+  tlut: 0x8186E098
+
+act_m_mu_gomadara1T_model:
+  type: GFX
+  offset: 0x8186E2B8
+  size: 0xC8

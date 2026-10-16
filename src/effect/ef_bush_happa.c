@@ -3,6 +3,7 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_s_yabu01_00.h"
 
 static void eBushHappa_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eBushHappa_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -20,12 +21,6 @@ eEC_PROFILE_c iam_ef_bush_happa = {
     eEC_DEFAULT_DEATH_DIST,
     // clang-format on
 };
-
-extern Gfx ef_f_tree01_00_modelT[];
-extern Gfx ef_s_cedar_modelT[];
-extern Gfx ef_s_palm_modelT[];
-extern Gfx ef_s_tree01_00_modelT[];
-extern Gfx ef_s_yabu01_00_modelT[];
 
 static void eBushHappa_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1) {
     s16 x = ABS(arg0);

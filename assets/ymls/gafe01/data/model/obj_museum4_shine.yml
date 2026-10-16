@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_museum4_shine_1:
+  type: TEXTURE
+  offset: 0x81374140
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_museum4_shine_2:
+  type: TEXTURE
+  offset: 0x813741C0
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+obj_museum4_shine_v:
+  type: VTX
+  offset: 0x813745C0
+  count: 47
+
+obj_museum4_shine_2T_model:
+  type: GFX
+  offset: 0x813748B0
+  size: 0xC0
+
+obj_museum4_shine_1T_model:
+  type: GFX
+  offset: 0x81374970
+  size: 0x58

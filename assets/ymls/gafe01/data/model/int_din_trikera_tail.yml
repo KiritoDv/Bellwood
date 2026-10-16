@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_din_trikera_pal:
+  type: TEXTURE
+  offset: 0x81641780
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_din_trikera_baceC_tex:
+  type: TEXTURE
+  offset: 0x816417A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81641780
+
+int_din_trikera_poleC_tex:
+  type: TEXTURE
+  offset: 0x816419A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81641780
+
+int_din_trikera_tail_tex:
+  type: TEXTURE
+  offset: 0x81641A20
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81641780
+
+int_din_trikera_tail_v:
+  type: VTX
+  offset: 0x81641E20
+  count: 42
+
+int_din_trikera_tail_model:
+  type: GFX
+  offset: 0x816420C0
+  size: 0x68
+
+int_din_trikera_tailT_model:
+  type: GFX
+  offset: 0x81642128
+  size: 0x98

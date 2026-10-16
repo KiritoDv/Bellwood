@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+obj_mural_v:
+  type: VTX
+  offset: 0x812B7100
+  count: 4
+
+obj_mural_model:
+  type: GFX
+  offset: 0x812B7140
+  size: 0xB8

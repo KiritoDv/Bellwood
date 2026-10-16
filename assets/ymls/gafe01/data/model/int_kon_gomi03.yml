@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_kon_gomi03_gururi_pal:
+  type: TEXTURE
+  offset: 0x818A3460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_gomi03_gururi_tex:
+  type: TEXTURE
+  offset: 0x818A3480
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A3460
+
+int_kon_gomi03_mawari_tex:
+  type: TEXTURE
+  offset: 0x818A3580
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A3460
+
+int_kon_gomi03_totte_tex:
+  type: TEXTURE
+  offset: 0x818A3600
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A3460
+
+int_kon_gomi03_ue_tex:
+  type: TEXTURE
+  offset: 0x818A3680
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A3460
+
+int_kon_gomi03_v:
+  type: VTX
+  offset: 0x818A3880
+  count: 47
+
+int_kon_gomi03_on_model:
+  type: GFX
+  offset: 0x818A3B70
+  size: 0xC8
+
+int_kon_gomi03_onT_model:
+  type: GFX
+  offset: 0x818A3C38
+  size: 0x68

@@ -1,4 +1,4 @@
-extern Gfx int_tak_isu03_onT_model[];
+#include "assets/data/model/int_tak_isu03.h"
 
 aFTR_PROFILE iam_tak_isu03 = {
 	int_tak_isu03_onT_model,

@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+dlt_win_yajirushi_tex:
+  type: TEXTURE
+  offset: 0x813E5E60
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+clg_shirushi_v:
+  type: VTX
+  offset: 0x813E5EE0
+  count: 4
+
+clg_win_shirushi1T_model:
+  type: GFX
+  offset: 0x813E5F20
+  size: 0x40

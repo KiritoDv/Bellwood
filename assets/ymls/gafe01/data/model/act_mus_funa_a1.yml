@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_funa_pal:
+  type: TEXTURE
+  offset: 0x8167DC00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_funa_body_txt:
+  type: TEXTURE
+  offset: 0x8167DC20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8167DC00
+
+act_mus_funa_a1_v:
+  type: VTX
+  offset: 0x8167DE20
+  count: 56
+
+act_mus_funa_sakana_body_model:
+  type: GFX
+  offset: 0x8167E1A0
+  size: 0x88
+
+act_mus_funa_sakana_head_model:
+  type: GFX
+  offset: 0x8167E228
+  size: 0x48
+
+cKF_bs_r_act_mus_funa_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x8167E294
+  counts: { joints: 3 }

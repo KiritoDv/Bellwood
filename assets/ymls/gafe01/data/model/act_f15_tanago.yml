@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f15_tanago_pal:
+  type: TEXTURE
+  offset: 0x81245580
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f15_tanago_tex:
+  type: TEXTURE
+  offset: 0x812455A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81245580
+
+act_f15_tanago_a_v:
+  type: VTX
+  offset: 0x812457A0
+  count: 9
+
+act_f15_tanago_aT_model:
+  type: GFX
+  offset: 0x81245830
+  size: 0x68
+
+act_f15_tanago_b_v:
+  type: VTX
+  offset: 0x81245898
+  count: 9
+
+act_f15_tanago_bT_model:
+  type: GFX
+  offset: 0x81245928
+  size: 0x68
+
+act_f15_tanago_c_v:
+  type: VTX
+  offset: 0x81245990
+  count: 9
+
+act_f15_tanago_cT_model:
+  type: GFX
+  offset: 0x81245A20
+  size: 0x68

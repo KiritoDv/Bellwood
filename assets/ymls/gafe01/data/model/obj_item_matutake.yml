@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+obj_item_matutake_pal:
+  type: TEXTURE
+  offset: 0x81395720
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_matutake_tex:
+  type: TEXTURE
+  offset: 0x81395740
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81395720
+
+obj_item_matutake_v:
+  type: VTX
+  offset: 0x81395940
+  count: 4
+
+item_matutake_modelT:
+  type: GFX
+  offset: 0x81395980
+  size: 0x58

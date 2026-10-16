@@ -1,0 +1,142 @@
+:config:
+  strict_declarations: true
+
+int_tak_ice_pal:
+  type: TEXTURE
+  offset: 0x81A955E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_ice_bou2_tex_txt:
+  type: TEXTURE
+  offset: 0x81A95600
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A955E0
+
+int_tak_ice_wa1_tex_txt:
+  type: TEXTURE
+  offset: 0x81A95640
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A955E0
+
+int_tak_ice_bou_tex_txt:
+  type: TEXTURE
+  offset: 0x81A956C0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A955E0
+
+int_tak_ice_block_tex_txt:
+  type: TEXTURE
+  offset: 0x81A956E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_tak_ice_top_tex_txt:
+  type: TEXTURE
+  offset: 0x81A95760
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A955E0
+
+int_tak_ice_body_tex_txt:
+  type: TEXTURE
+  offset: 0x81A957A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A955E0
+
+int_tak_ice_dai_tex_txt:
+  type: TEXTURE
+  offset: 0x81A959A0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A955E0
+
+int_tak_ice_sara_tex_txt:
+  type: TEXTURE
+  offset: 0x81A959C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A955E0
+
+int_tak_ice_cup_tex_txt:
+  type: TEXTURE
+  offset: 0x81A95A40
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A955E0
+
+int_tak_ice_wa2_tex_txt:
+  type: TEXTURE
+  offset: 0x81A95A60
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A955E0
+
+int_tak_ice_yuki_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x81A95AA0
+  format: I4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+int_tak_ice_v:
+  type: VTX
+  offset: 0x81A95BA0
+  count: 128
+
+int_tak_ice_rot_model:
+  type: GFX
+  offset: 0x81A963A0
+  size: 0x98
+
+int_tak_ice_yuki_model:
+  type: GFX
+  offset: 0x81A96438
+  size: 0x68
+
+int_tak_ice_base_model:
+  type: GFX
+  offset: 0x81A964A0
+  size: 0x188
+
+int_tak_ice_block_model:
+  type: GFX
+  offset: 0x81A96628
+  size: 0x80
+
+cKF_ba_r_int_tak_ice:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A966F4
+  joints: 6
+  counts: { flags: 6, data: 12, keys: 2, fixed: 19 }
+
+cKF_bs_r_int_tak_ice:
+  type: AC:CKF_SKELETON
+  offset: 0x81A96750
+  counts: { joints: 6 }

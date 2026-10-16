@@ -1,4 +1,4 @@
-extern Gfx sugi_chesstable_model[];
+#include "assets/data/model/int_sugi_chesstable.h"
 
 aFTR_PROFILE iam_sugi_chesstable = {
 	sugi_chesstable_model,

@@ -1,0 +1,62 @@
+:config:
+  strict_declarations: true
+
+int_nog_pawnB_pal:
+  type: TEXTURE
+  offset: 0x8190E260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_pawnB_top_tex_txt:
+  type: TEXTURE
+  offset: 0x8190E280
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8190E260
+
+int_nog_pawnB_circle_tex_txt:
+  type: TEXTURE
+  offset: 0x8190E380
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8190E260
+
+int_nog_pawnB_base_tex_txt:
+  type: TEXTURE
+  offset: 0x8190E400
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x8190E260
+
+int_nog_pawnB_v:
+  type: VTX
+  offset: 0x8190E600
+  count: 33
+
+int_nog_pawnB_base_model:
+  type: GFX
+  offset: 0x8190E810
+  size: 0x90
+
+int_nog_pawnB_top_model:
+  type: GFX
+  offset: 0x8190E8A0
+  size: 0x60
+
+cKF_ba_r_int_nog_pawnB:
+  type: AC:CKF_ANIMATION
+  offset: 0x8190E91C
+  joints: 3
+  counts: { flags: 3, data: 0, keys: 0, fixed: 12 }
+
+cKF_bs_r_int_nog_pawnB:
+  type: AC:CKF_SKELETON
+  offset: 0x8190E954
+  counts: { joints: 3 }

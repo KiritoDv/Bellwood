@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_iku_jack_pal:
+  type: TEXTURE
+  offset: 0x8185B460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_jack_a_tex_txt:
+  type: TEXTURE
+  offset: 0x8185B480
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8185B460
+
+int_iku_jack_b_tex_txt:
+  type: TEXTURE
+  offset: 0x8185B500
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8185B460
+
+int_iku_jack_d_tex_txt:
+  type: TEXTURE
+  offset: 0x8185B900
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8185B460
+
+int_iku_jack_c_tex_txt:
+  type: TEXTURE
+  offset: 0x8185BA00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8185B460
+
+int_iku_jack_e_tex_txt:
+  type: TEXTURE
+  offset: 0x8185BA80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8185B460
+
+int_iku_jack_v:
+  type: VTX
+  offset: 0x8185BC80
+  count: 60
+
+int_iku_jack_model_model:
+  type: GFX
+  offset: 0x8185C040
+  size: 0x130

@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+ef_w_cedar4_shake_v:
+  type: VTX
+  offset: 0x816556A0
+  count: 47
+
+ef_w_cedar4_shake_model:
+  type: GFX
+  offset: 0x81655990
+  size: 0x50
+
+cKF_bs_r_ef_w_cedar4_shake:
+  type: AC:CKF_SKELETON
+  offset: 0x816559F8
+  counts: { joints: 2 }

@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_kon_xtree02_tex_pal:
+  type: TEXTURE
+  offset: 0x818B9FC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_xtree02_side01_tex:
+  type: TEXTURE
+  offset: 0x818B9FE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818B9FC0
+
+int_kon_xtree02_star_tex:
+  type: TEXTURE
+  offset: 0x818BA1E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818B9FC0
+
+int_kon_xtree02_side02_tex:
+  type: TEXTURE
+  offset: 0x818BA2E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818B9FC0
+
+int_kon_xtree02_prant_tex:
+  type: TEXTURE
+  offset: 0x818BA4E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818B9FC0
+
+int_kon_xtree02_present_tex:
+  type: TEXTURE
+  offset: 0x818BA5E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818B9FC0
+
+int_kon_xtree02_v:
+  type: VTX
+  offset: 0x818BA7E0
+  count: 108
+
+int_kon_xtree02_on_model:
+  type: GFX
+  offset: 0x818BAEA0
+  size: 0x68
+
+int_kon_xtree02_onT_model:
+  type: GFX
+  offset: 0x818BAF08
+  size: 0x118

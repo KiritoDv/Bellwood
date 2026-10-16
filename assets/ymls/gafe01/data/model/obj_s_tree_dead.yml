@@ -1,0 +1,30 @@
+:config:
+  strict_declarations: true
+
+obj_s_tree_dead_tex:
+  type: TEXTURE
+  offset: 0x8110FA40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_tree1_dead_v:
+  type: VTX
+  offset: 0x8110FB40
+  count: 4
+
+obj_s_tree1_deadT_mat_model:
+  type: GFX
+  offset: 0x8110FB80
+  size: 0x20
+
+obj_s_gold_tree1_deadT_mat_model:
+  type: GFX
+  offset: 0x8110FBA0
+  size: 0x20
+
+obj_s_tree1_deadT_gfx_model:
+  type: GFX
+  offset: 0x8110FBC0
+  size: 0x18

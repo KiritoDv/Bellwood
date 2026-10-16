@@ -1,0 +1,75 @@
+:config:
+  strict_declarations: true
+
+int_nog_balloon2_pal:
+  type: TEXTURE
+  offset: 0x818E77A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_balloon1_wire_tex_txt:
+  type: TEXTURE
+  offset: 0x818E77C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_balloon2_weight_tex_txt:
+  type: TEXTURE
+  offset: 0x818E7840
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818E77A0
+
+int_nog_balloon2_head_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x818E7940
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_nog_balloon2_v:
+  type: VTX
+  offset: 0x818E7D40
+  count: 98
+
+int_nog_balloon2_weight_model:
+  type: GFX
+  offset: 0x818E8360
+  size: 0x80
+
+int_nog_balloon2_a_model:
+  type: GFX
+  offset: 0x818E83E0
+  size: 0x58
+
+int_nog_balloon2_b_model:
+  type: GFX
+  offset: 0x818E8438
+  size: 0x98
+
+int_nog_balloon2_c_model:
+  type: GFX
+  offset: 0x818E84D0
+  size: 0x98
+
+int_nog_balloon2_head_model:
+  type: GFX
+  offset: 0x818E8568
+  size: 0xA0
+
+cKF_ba_r_int_nog_balloon2:
+  type: AC:CKF_ANIMATION
+  offset: 0x818E8728
+  joints: 6
+  counts: { flags: 6, data: 117, keys: 8, fixed: 13 }
+
+cKF_bs_r_int_nog_balloon2:
+  type: AC:CKF_SKELETON
+  offset: 0x818E8784
+  counts: { joints: 6 }

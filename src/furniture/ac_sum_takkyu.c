@@ -1,5 +1,4 @@
-extern Gfx int_sum_takkyu_on_model[];
-extern Gfx int_sum_takkyu_onT_model[];
+#include "assets/data/model/int_sum_takkyu.h"
 
 aFTR_PROFILE iam_sum_takkyu = {
 	int_sum_takkyu_on_model,

@@ -1,0 +1,44 @@
+:config:
+  strict_declarations: true
+
+act_gyoei02_0_int_i4:
+  type: TEXTURE
+  offset: 0x8123DCA0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+act_gyoei02_1_int_i4:
+  type: TEXTURE
+  offset: 0x8123DDA0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+act_gyoei02_2_int_i4:
+  type: TEXTURE
+  offset: 0x8123DEA0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+act_gyoei02_3_int_i4:
+  type: TEXTURE
+  offset: 0x8123DFA0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+act_gyoei02_00_v:
+  type: VTX
+  offset: 0x8123E0A0
+  count: 4
+
+act_gyoei02_00_modelT:
+  type: GFX
+  offset: 0x8123E0E0
+  size: 0x58

@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_ike_art_ang_pal:
+  type: TEXTURE
+  offset: 0x8181BE00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_art_ang_front_tex:
+  type: TEXTURE
+  offset: 0x8181BE20
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x8181BE00
+
+int_ike_art_ang_stand_tex:
+  type: TEXTURE
+  offset: 0x8181C020
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x8181BE00
+
+int_ike_art_ang_tex:
+  type: TEXTURE
+  offset: 0x8181C220
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x8181BE00
+
+int_ike_art_ang_gaku_tex:
+  type: TEXTURE
+  offset: 0x8181C520
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8181BE00
+
+int_ike_art_ang_v:
+  type: VTX
+  offset: 0x8181C620
+  count: 52
+
+int_ike_art_ang_on_model:
+  type: GFX
+  offset: 0x8181C960
+  size: 0x88
+
+int_ike_art_ang_onT_model:
+  type: GFX
+  offset: 0x8181C9E8
+  size: 0xA0

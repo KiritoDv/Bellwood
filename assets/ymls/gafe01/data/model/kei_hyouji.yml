@@ -1,0 +1,213 @@
+:config:
+  strict_declarations: true
+
+kei_win_latest_tex:
+  type: TEXTURE
+  offset: 0x814C3A20
+  format: IA8
+  width: 80
+  height: 16
+  source_encoding: gx
+
+kei_win_entry_tex:
+  type: TEXTURE
+  offset: 0x814C3F20
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+kei_win_quit_tex:
+  type: TEXTURE
+  offset: 0x814C4320
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kei_win_writen_tex:
+  type: TEXTURE
+  offset: 0x814C4520
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+kei_win_yaji2_tex:
+  type: TEXTURE
+  offset: 0x814C4920
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+std_tex:
+  type: TEXTURE
+  offset: 0x814C4D20
+  format: IA8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+yaji:
+  type: TEXTURE
+  offset: 0x814C5520
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ct_tex:
+  type: TEXTURE
+  offset: 0x814C55A0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kei_win_st1_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814C59A0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kei_win_st2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814C69A0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kei_win_st3_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814C79A0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kei_win_st4_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814C89A0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kei_win_st5_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814C99A0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+kei_win_st6_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814CA9A0
+  format: IA8
+  width: 64
+  height: 64
+  source_encoding: gx
+
+lat_tegami_b2_tex:
+  type: TEXTURE
+  offset: 0x814CB9A0
+  format: RGBA16
+  width: 32
+  height: 32
+  source_encoding: gx
+
+lat_tegami_b3_tex:
+  type: TEXTURE
+  offset: 0x814CC1A0
+  format: RGBA16
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kei_win_2b1_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x814CC9A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kei_hyouji_v:
+  type: VTX
+  offset: 0x814CCBA0
+  count: 52
+
+kei_win_bt_model:
+  type: GFX
+  offset: 0x814CCEE0
+  size: 0x38
+
+kei_win_b2_model:
+  type: GFX
+  offset: 0x814CCF18
+  size: 0x38
+
+kei_win_cbt_model:
+  type: GFX
+  offset: 0x814CCF50
+  size: 0x38
+
+kei_win_3DT_model:
+  type: GFX
+  offset: 0x814CCF88
+  size: 0x38
+
+kei_win_cmojiT_model:
+  type: GFX
+  offset: 0x814CCFC0
+  size: 0x50
+
+kei_win_bmojiT_model:
+  type: GFX
+  offset: 0x814CD010
+  size: 0x38
+
+kei_win_amojiT_model:
+  type: GFX
+  offset: 0x814CD048
+  size: 0x38
+
+kei_win_stT_model:
+  type: GFX
+  offset: 0x814CD080
+  size: 0x40
+
+kei_win_cbT_model:
+  type: GFX
+  offset: 0x814CD0C0
+  size: 0x38
+
+kei_win_yaji1T_mode:
+  type: GFX
+  offset: 0x814CD0F8
+  size: 0x30
+
+kei_win_yaji1T_model:
+  type: GFX
+  offset: 0x814CD128
+  size: 0x10
+
+kei_win_yaji2T_model:
+  type: GFX
+  offset: 0x814CD138
+  size: 0x10
+
+kei_hyouji_mode:
+  type: GFX
+  offset: 0x814CD148
+  size: 0x28
+
+kei_hyouji_model:
+  type: GFX
+  offset: 0x814CD170
+  size: 0x70

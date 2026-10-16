@@ -4,10 +4,7 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "m_debug.h"
-
-extern Gfx ef_daruma01_00_model[];
-extern Gfx ef_daruma01_01_model[];
-extern Gfx ef_daruma01_02_model[];
+#include "assets/data/model/ef_daruma01_00.h"
 
 static Gfx* ef_yukidaruma_model_tbl[] = { ef_daruma01_00_model, ef_daruma01_01_model, ef_daruma01_02_model };
 

@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+ef_wape_tex:
+  type: TEXTURE
+  offset: 0x8188C260
+  format: I4
+  width: 16
+  height: 8
+  source_encoding: gx
+
+ef_wipe1_v:
+  type: VTX
+  offset: 0x8188C2A0
+  count: 68
+
+ef_wipe1_modelT:
+  type: GFX
+  offset: 0x8188C6E0
+  size: 0xF0

@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_tak_nikki01_name_pal:
+  type: TEXTURE
+  offset: 0x81AA18A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_nikki01_base_tex:
+  type: TEXTURE
+  offset: 0x81AA18C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA18A0
+
+int_tak_nikki01_himo_tex:
+  type: TEXTURE
+  offset: 0x81AA1AC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA18A0
+
+int_tak_nikki01_name_tex:
+  type: TEXTURE
+  offset: 0x81AA1BC0
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA18A0
+
+int_tak_nikki01_pen_tex:
+  type: TEXTURE
+  offset: 0x81AA1C00
+  format: CI4
+  width: 8
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA18A0
+
+int_tak_nikki01_maki_tex:
+  type: TEXTURE
+  offset: 0x81AA1C80
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81AA18A0
+
+int_tak_nikki01_v:
+  type: VTX
+  offset: 0x81AA1CA0
+  count: 66
+
+int_tak_nikki01_on_model:
+  type: GFX
+  offset: 0x81AA20C0
+  size: 0x118
+
+int_tak_nikki01_onT_model:
+  type: GFX
+  offset: 0x81AA21D8
+  size: 0x58

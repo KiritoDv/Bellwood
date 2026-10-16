@@ -1,0 +1,84 @@
+:config:
+  strict_declarations: true
+
+ef_axe_pal:
+  type: TEXTURE
+  offset: 0x81660860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+ef_axe_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x81660880
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81660860
+
+ef_axe_edge1_tex_txt:
+  type: TEXTURE
+  offset: 0x81660A80
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81660860
+
+ef_axe1_v:
+  type: VTX
+  offset: 0x81660C80
+  count: 29
+
+ef_axe1_model:
+  type: GFX
+  offset: 0x81660E50
+  size: 0x98
+
+ef_axe_tuka2_tex_txt:
+  type: TEXTURE
+  offset: 0x81660F00
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81660860
+
+ef_axe_edge2_tex_txt:
+  type: TEXTURE
+  offset: 0x81661100
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81660860
+
+ef_axe2_v:
+  type: VTX
+  offset: 0x81661300
+  count: 27
+
+ef_axe2_model:
+  type: GFX
+  offset: 0x816614B0
+  size: 0x98
+
+ef_axe_edge3_tex_txt:
+  type: TEXTURE
+  offset: 0x81661560
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81660860
+
+ef_axe3_v:
+  type: VTX
+  offset: 0x816615E0
+  count: 11
+
+ef_axe3_model:
+  type: GFX
+  offset: 0x81661690
+  size: 0x58

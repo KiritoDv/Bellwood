@@ -1,3 +1,7 @@
+#include "assets/data/model/obj_shop_axe.h"
+#include "assets/data/model/obj_shop_net.h"
+#include "assets/data/model/obj_shop_rod.h"
+#include "assets/data/model/obj_shop_shovel.h"
 static void fTOOL_ct(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
@@ -10,20 +14,9 @@ static void fTOOL_dt(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
 
-extern Gfx obj_netT_gfx_model[];
-extern Gfx obj_netT_mat_model[];
 
-extern Gfx obj_axeT_gfx_model[];
-extern Gfx obj_axeT_mat_model[];
 
-extern Gfx obj_shovelT_gfx_model[];
-extern Gfx obj_shovelT_mat_model[];
 
-extern Gfx obj_rodT_gfx_model[];
-extern Gfx obj_rodT_mat_model[];
-
-extern Gfx obj_rod_lineT_gfx_model[];
-extern Gfx obj_rod_lineT_mat_model[];
 
 static Gfx* fTOOL_mat_table[] = {
     obj_netT_mat_model,

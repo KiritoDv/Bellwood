@@ -1,0 +1,96 @@
+:config:
+  strict_declarations: true
+
+rom_train_4_pal:
+  type: TEXTURE
+  offset: 0x815FC6E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_train_3_pal:
+  type: TEXTURE
+  offset: 0x815FC700
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_train_bgtree_tex:
+  type: TEXTURE
+  offset: 0x815FC720
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+rom_train_bgsky_tex:
+  type: TEXTURE
+  offset: 0x815FCF20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x815FC6E0
+
+rom_train_tunnel_tex:
+  type: TEXTURE
+  offset: 0x815FCFA0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x815FC700
+
+rom_train_bgcloud_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x815FD3A0
+  format: I4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+rom_train_glass_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x815FDBA0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+rom_train_shine_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x815FDC20
+  format: I4
+  width: 64
+  height: 8
+  source_encoding: gx
+
+rom_train_out_v:
+  type: VTX
+  offset: 0x815FDD20
+  count: 48
+
+rom_train_out_bgcloud_modelT:
+  type: GFX
+  offset: 0x815FE020
+  size: 0x60
+
+rom_train_out_bgtree_modelT:
+  type: GFX
+  offset: 0x815FE080
+  size: 0x68
+
+rom_train_out_shineglass_modelT:
+  type: GFX
+  offset: 0x815FE0E8
+  size: 0x68
+
+rom_train_out_tunnel_model:
+  type: GFX
+  offset: 0x815FE150
+  size: 0x68
+
+rom_train_out_bgsky_model:
+  type: GFX
+  offset: 0x815FE1B8
+  size: 0x58

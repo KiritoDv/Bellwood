@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_yaz_wagon_pal:
+  type: TEXTURE
+  offset: 0x81AD2EA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yaz_wagon_wood_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD2EC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AD2EA0
+
+int_yaz_wagon_jiku_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD30C0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81AD2EA0
+
+int_yaz_wagon_horo2_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD30E0
+  format: CI4
+  width: 24
+  height: 24
+  source_encoding: gx
+  tlut: 0x81AD2EA0
+
+int_yaz_wagon_horo_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD3200
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AD2EA0
+
+int_yaz_wagon_wheel_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD3500
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AD2EA0
+
+int_yaz_wagon_v:
+  type: VTX
+  offset: 0x81AD3700
+  count: 93
+
+int_wagon_body_model:
+  type: GFX
+  offset: 0x81AD3CD0
+  size: 0x140

@@ -1,5 +1,4 @@
-extern Gfx int_tak_rocket1_on_model[];
-extern Gfx int_tak_rocket1_onT_model[];
+#include "assets/data/model/int_tak_rocket1.h"
 
 aFTR_PROFILE iam_tak_rocket1 = {
 	int_tak_rocket1_on_model,

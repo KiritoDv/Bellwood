@@ -1,0 +1,47 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_utiwa_pal:
+  type: TEXTURE
+  offset: 0x81458C00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_kazaguruma_pal:
+  type: TEXTURE
+  offset: 0x81458C20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_fuusen_pal:
+  type: TEXTURE
+  offset: 0x81458C40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_utiwa_tex:
+  type: TEXTURE
+  offset: 0x81458C60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_kazaguruma_tex:
+  type: TEXTURE
+  offset: 0x81458E60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_fuusen_tex:
+  type: TEXTURE
+  offset: 0x81459060
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

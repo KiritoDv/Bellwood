@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_act_m_okuwa_b:
+  type: AC:CKF_ANIMATION
+  offset: 0x818769CC
+  joints: 5
+  counts: { flags: 5, data: 60, keys: 2, fixed: 16 }

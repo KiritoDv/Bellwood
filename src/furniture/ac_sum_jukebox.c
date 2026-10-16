@@ -1,6 +1,4 @@
-extern Gfx int_sum_jukebox_on_model[];
-extern Gfx int_sum_jukebox_onT_model[];
-extern Gfx int_sum_jukebox_evw_model[];
+#include "assets/data/model/int_sum_jukebox.h"
 static void aSumJukebox_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aSumJukebox_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aSumJukebox_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);

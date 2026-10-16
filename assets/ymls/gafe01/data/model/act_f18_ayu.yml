@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f18_ayu_pal:
+  type: TEXTURE
+  offset: 0x81238D40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f18_ayu_tex:
+  type: TEXTURE
+  offset: 0x81238D60
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81238D40
+
+act_f18_ayu_a_v:
+  type: VTX
+  offset: 0x81239060
+  count: 9
+
+act_f18_ayu_aT_model:
+  type: GFX
+  offset: 0x812390F0
+  size: 0x68
+
+act_f18_ayu_b_v:
+  type: VTX
+  offset: 0x81239158
+  count: 9
+
+act_f18_ayu_bT_model:
+  type: GFX
+  offset: 0x812391E8
+  size: 0x68
+
+act_f18_ayu_c_v:
+  type: VTX
+  offset: 0x81239250
+  count: 9
+
+act_f18_ayu_cT_model:
+  type: GFX
+  offset: 0x812392E0
+  size: 0x68

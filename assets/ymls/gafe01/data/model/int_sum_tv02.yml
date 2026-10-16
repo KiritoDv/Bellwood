@@ -1,0 +1,111 @@
+:config:
+  strict_declarations: true
+
+int_sum_tv02_pal:
+  type: TEXTURE
+  offset: 0x81A75720
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_tv02_front1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81A75740
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_sum_tv02_front2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81A757C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_sum_tv02_front3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81A75840
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_sum_tv02_koro_tex_txt:
+  type: TEXTURE
+  offset: 0x81A758C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A75720
+
+int_sum_tv02_shelfback_tex_txt:
+  type: TEXTURE
+  offset: 0x81A759C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A75720
+
+int_sum_tv02_shelffront_tex_txt:
+  type: TEXTURE
+  offset: 0x81A75A40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A75720
+
+int_sum_tv02_back_tex_txt:
+  type: TEXTURE
+  offset: 0x81A75B40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A75720
+
+int_sum_tv02_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81A75BC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A75720
+
+int_sum_tv02_front_tex_txt:
+  type: TEXTURE
+  offset: 0x81A75DC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A75720
+
+int_sum_tv02_video_tex_txt:
+  type: TEXTURE
+  offset: 0x81A75FC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A75720
+
+int_sum_tv02_v:
+  type: VTX
+  offset: 0x81A76040
+  count: 78
+
+int_sum_tv02_on_model:
+  type: GFX
+  offset: 0x81A76520
+  size: 0x1B8
+
+int_sum_tv02_off_model:
+  type: GFX
+  offset: 0x81A766D8
+  size: 0x60

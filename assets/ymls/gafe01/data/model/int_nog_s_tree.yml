@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_nog_s_tree_pal:
+  type: TEXTURE
+  offset: 0x81912000
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_s_tree_grass_tex:
+  type: TEXTURE
+  offset: 0x81912020
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81912000
+
+int_nog_s_tree_leaf_tex:
+  type: TEXTURE
+  offset: 0x819120A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81912000
+
+int_nog_s_tree_trunk_tex:
+  type: TEXTURE
+  offset: 0x819122A0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81912000
+
+int_nog_s_tree_v:
+  type: VTX
+  offset: 0x819126A0
+  count: 82
+
+int_nog_s_tree_model:
+  type: GFX
+  offset: 0x81912BC0
+  size: 0x58
+
+int_nog_s_treeT_model:
+  type: GFX
+  offset: 0x81912C18
+  size: 0x110

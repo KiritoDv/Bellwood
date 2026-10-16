@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_kaze01.h"
 
 static void eKZH_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eKZH_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -92,8 +93,6 @@ static void eKZH_mv(eEC_Effect_c* effect, GAME* game) {
     xyz_t_add(&effect->velocity, &effect->acceleration, &effect->velocity);
     xyz_t_add(&effect->offset, &effect->velocity, &effect->offset);
 }
-
-extern Gfx ef_kaze01_happa_modelT[];
 
 static void eKZH_dw(eEC_Effect_c* effect, GAME* game) {
     s16 counter = 60 - effect->timer;

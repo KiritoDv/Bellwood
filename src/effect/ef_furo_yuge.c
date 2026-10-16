@@ -1,6 +1,7 @@
 #include "ef_effect_control.h"
 #include "m_common_data.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_dust01_00.h"
 
 // Furo Yuge == Bath Steam
 
@@ -14,8 +15,6 @@ static void eFuro_Yuge_mv(eEC_Effect_c* effect, GAME* game);
 static void eFuro_Yuge_dw(eEC_Effect_c* effect, GAME* game);
 
 // clang-format off
-
-extern Gfx ef_dust01_0[], ef_dust01_1[], ef_dust01_2[], ef_dust01_3[], ef_dust01_modelT[];
 
 Gfx* eFuro_Yuge_texture_table[] = { 
     ef_dust01_0, 

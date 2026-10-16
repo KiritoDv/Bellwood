@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_kingyo_pal:
+  type: TEXTURE
+  offset: 0x81683FC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_kingyo_body_txt:
+  type: TEXTURE
+  offset: 0x81683FE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81683FC0
+
+act_mus_kingyo_a1_v:
+  type: VTX
+  offset: 0x816841E0
+  count: 97
+
+act_mus_kingyo_sakana_body_model:
+  type: GFX
+  offset: 0x816847F0
+  size: 0xC8
+
+act_mus_kingyo_sakana_head_model:
+  type: GFX
+  offset: 0x816848B8
+  size: 0xA8
+
+cKF_bs_r_act_mus_kingyo_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x81684984
+  counts: { joints: 3 }

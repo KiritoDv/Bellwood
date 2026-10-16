@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+int_iid_surf_pal:
+  type: TEXTURE
+  offset: 0x81819B00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iid_surf_mae_tex:
+  type: TEXTURE
+  offset: 0x81819B20
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81819B00
+
+int_iid_surf_ushiro_tex:
+  type: TEXTURE
+  offset: 0x81819D20
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81819B00
+
+int_iid_surf_fin_tex:
+  type: TEXTURE
+  offset: 0x81819E20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81819B00
+
+int_iid_surf_tate_tex:
+  type: TEXTURE
+  offset: 0x81819EA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81819B00
+
+int_iid_surf_v:
+  type: VTX
+  offset: 0x81819F20
+  count: 237
+
+int_iid_surf_model:
+  type: GFX
+  offset: 0x8181ADF0
+  size: 0x328

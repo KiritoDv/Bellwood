@@ -1,5 +1,4 @@
-extern Gfx int_yos_turkey_mirror_obj_model[];
-extern Gfx int_yos_turkey_mirror_env_model[];
+#include "assets/data/model/int_yos_turkey_mirror.h"
 
 aFTR_PROFILE iam_yos_turkey_mirror = {
 	int_yos_turkey_mirror_obj_model,

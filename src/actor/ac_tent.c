@@ -7,6 +7,8 @@
 #include "m_common_data.h"
 #include "m_bgm.h"
 #include "m_rcp.h"
+#include "assets/data/model/obj_s_tent.h"
+#include "assets/data/model/obj_s_tent_shadow.h"
 
 static void aTnt_actor_ct(ACTOR* actor, GAME* game);
 static void aTnt_actor_dt(ACTOR* actor, GAME* game);
@@ -17,9 +19,6 @@ ACTOR_PROFILE Tent_Profile = {
     mAc_PROFILE_TENT, ACTOR_PART_ITEM, ACTOR_STATE_TA_SET, TENT, ACTOR_OBJ_BANK_KEEP, sizeof(TENT_ACTOR), aTnt_actor_ct,
     aTnt_actor_dt,    aTnt_actor_init, aTnt_actor_draw,    NULL,
 };
-
-extern Vtx obj_s_tent_shadow_v[];
-extern Gfx obj_s_tent_shadow_modelT[];
 
 u8 aTnt_shadow_vtx_fix_flg_table[] = {
     FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE,  TRUE, FALSE, TRUE,  TRUE,  FALSE, FALSE, TRUE,
@@ -189,7 +188,7 @@ static void aTnt_SetupAction(ACTOR* actor, int type) {
     tent->structure_class.action = type;
 }
 
-static int aTnt_ControlLight(ACTOR*) {
+static int aTnt_ControlLight(ACTOR* arg0) {
     if (Common_Get(time.now_sec) >= 18000 && Common_Get(time.now_sec) < 64800) {
         return 0;
     }
@@ -245,8 +244,6 @@ static Gfx* aTnt_MakeWindowPrimDisplayList(ACTOR* actor, GAME* game) {
 
     return gfx;
 }
-
-extern Gfx obj_s_tent_model[];
 
 static void aTnt_actor_draw(ACTOR* actor, GAME* game) {
     Mtx* m = _Matrix_to_Mtx_new(game->graph);

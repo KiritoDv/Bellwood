@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+ef_namida01_0:
+  type: TEXTURE
+  offset: 0x8166BF80
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_namida01_v:
+  type: VTX
+  offset: 0x8166C080
+  count: 4
+
+ef_namida01_modelT:
+  type: GFX
+  offset: 0x8166C0C0
+  size: 0x58

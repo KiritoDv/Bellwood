@@ -1,0 +1,54 @@
+:config:
+  strict_declarations: true
+
+con_kaiwa2_w1_tex:
+  type: TEXTURE
+  offset: 0x81009E60
+  format: I4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+con_kaiwa2_w2_tex:
+  type: TEXTURE
+  offset: 0x8100A660
+  format: I4
+  width: 128
+  height: 64
+  source_encoding: gx
+
+con_kaiwa2_w3_tex:
+  type: TEXTURE
+  offset: 0x8100B660
+  format: I4
+  width: 128
+  height: 64
+  source_encoding: gx
+
+con_kaiwa2_v:
+  type: VTX
+  offset: 0x8100C660
+  count: 24
+
+con_kaiwa2_modelT:
+  type: GFX
+  offset: 0x8100C7E0
+  size: 0x78
+
+con_namefuti_TXT:
+  type: TEXTURE
+  offset: 0x8100C860
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+con_kaiwaname_v:
+  type: VTX
+  offset: 0x8100CC60
+  count: 4
+
+con_kaiwaname_modelT:
+  type: GFX
+  offset: 0x8100CCA0
+  size: 0x30

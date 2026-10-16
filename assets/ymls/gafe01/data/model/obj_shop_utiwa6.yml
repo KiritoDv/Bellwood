@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+tol_fan6_pal:
+  type: TEXTURE
+  offset: 0x8139D3C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_fan6_tex_txt:
+  type: TEXTURE
+  offset: 0x8139D3E0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8139D3C0
+
+obj_shop_utiwa6_v:
+  type: VTX
+  offset: 0x8139D7E0
+  count: 8
+
+obj_shop_utiwa6_mat_model:
+  type: GFX
+  offset: 0x8139D860
+  size: 0x48
+
+obj_shop_utiwa6_gfx_model:
+  type: GFX
+  offset: 0x8139D8A8
+  size: 0x20

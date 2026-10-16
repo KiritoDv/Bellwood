@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_s_house1.h"
 static void aHUS_set_door_SE_sub(ACTOR* actorx, u16 se_no) {
     sAdo_OngenTrgStart(se_no, &actorx->world.position);
 }
@@ -125,35 +126,14 @@ static int aHUS_odekake_check(HOUSE_ACTOR* house, GAME_PLAY* play) {
     return ret;
 }
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_house1;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_house1;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_house2;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_house2;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_house3;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_house3;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_house4;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_house4;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_house5;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_house5;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_house1_out;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_house1_out;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_house2_out;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_house2_out;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_house3_out;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_house3_out;
 
-extern cKF_Animation_R_c cKF_ba_r_obj_s_house4_out;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_house4_out;
-
-extern cKF_Animation_R_c cKF_ba_r_obj_s_house5_out;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_house5_out;
 
 static void aHUS_setup_animation(HOUSE_ACTOR* house, f32 speed) {
     static cKF_Animation_R_c* animation[][5][2] = {

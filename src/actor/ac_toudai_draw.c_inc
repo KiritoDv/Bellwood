@@ -1,4 +1,5 @@
-static int aTOU_actor_draw_before(GAME*,cKF_SkeletonInfo_R_c*, int idx, Gfx** gfxp,u8* dispbuf, void* actor, s_xyz* rotation, xyz_t* translation){
+#include "assets/data/model/obj_s_toudai.h"
+static int aTOU_actor_draw_before(GAME* arg0,cKF_SkeletonInfo_R_c* arg1, int idx, Gfx** gfxp,u8* dispbuf, void* actor, s_xyz* rotation, xyz_t* translation){
 
     if(idx == 4){
         *gfxp = NULL;
@@ -6,9 +7,6 @@ static int aTOU_actor_draw_before(GAME*,cKF_SkeletonInfo_R_c*, int idx, Gfx** gf
 
     return 1;
 }
-
-extern Gfx obj_s_toudai_light_model[];
-extern Gfx obj_w_toudai_light_model[];
 
 static int aTOU_actor_draw_after(GAME* game,cKF_SkeletonInfo_R_c* info, int idx, Gfx** gfxp,
 u8* dispbuf, void* actor, s_xyz* rotation, xyz_t* translation){

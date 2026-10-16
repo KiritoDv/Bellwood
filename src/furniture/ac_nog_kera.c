@@ -1,7 +1,5 @@
+#include "assets/data/model/int_nog_kera.h"
 extern aFTR_rig_c aNogKera_key_anime_data;
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_kera;
-extern cKF_Animation_R_c cKF_ba_r_int_nog_kera;
 
 aFTR_rig_c aNogKera_key_anime_data= {
     &cKF_bs_r_int_nog_kera,
@@ -11,7 +9,7 @@ aFTR_rig_c aNogKera_key_anime_data= {
 
 static void fNgKr_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     if (aFTR_CAN_PLAY_SE(ftr_actor)) {
-        sAdo_RoomIncectPos((u32)ftr_actor, 0x42, &ftr_actor->position);
+        sAdo_RoomIncectPos((uintptr_t)ftr_actor, 0x42, &ftr_actor->position);
     }
 }
 

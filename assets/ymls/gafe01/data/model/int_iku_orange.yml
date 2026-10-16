@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_iku_orange_pal:
+  type: TEXTURE
+  offset: 0x818607A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_orange_b_tex_txt:
+  type: TEXTURE
+  offset: 0x818607C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818607A0
+
+int_iku_orange_a_tex_txt:
+  type: TEXTURE
+  offset: 0x818609C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818607A0
+
+int_iku_orange_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81860BC0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x818607A0
+
+int_iku_orange_v:
+  type: VTX
+  offset: 0x81860FC0
+  count: 36
+
+int_iku_orange_model_b_model:
+  type: GFX
+  offset: 0x81861200
+  size: 0x98
+
+int_iku_orange_model_a_model:
+  type: GFX
+  offset: 0x81861298
+  size: 0x68

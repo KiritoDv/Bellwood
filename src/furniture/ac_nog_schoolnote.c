@@ -1,4 +1,4 @@
-extern Gfx int_nog_schoolnote_model[];
+#include "assets/data/model/int_nog_schoolnote.h"
 
 aFTR_PROFILE iam_nog_schoolnote = {
 	NULL,

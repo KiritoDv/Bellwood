@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_garagara.h"
 static void aGRBL_make(const xyz_t* src_pos, aGRGR_ball_c* ball, const xyz_t* pos, int ball_type) {
     bzero(ball, sizeof(aGRGR_ball_c));
     ball->pos = *pos;
@@ -119,19 +120,12 @@ static void aGRBL_move(aGRGR_ball_c* ball, GAME* game) {
     ball->old_pos = ball->pos;
 }
 
-extern u8 act_fukutama1_tex[];
-extern u8 act_fukutama2_tex[];
-extern u8 act_fukutama3_tex[];
-extern u8 act_fukutama4_tex[];
-
 static u8* aGRBL_texture_table[] = {
     act_fukutama1_tex,
     act_fukutama2_tex,
     act_fukutama3_tex,
     act_fukutama4_tex,
 };
-
-extern Gfx act_fukutama_modelT[];
 
 static void aGRBL_draw(aGRGR_ball_c* ball, GAME* game) {
     if (ball->status != aGRBL_STATUS_NONE) {

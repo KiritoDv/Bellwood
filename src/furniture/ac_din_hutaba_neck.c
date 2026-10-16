@@ -1,5 +1,4 @@
-extern Gfx int_din_hutaba_neckT_model[];
-extern Gfx int_din_hutaba_neck_model[];
+#include "assets/data/model/int_din_hutaba_neck.h"
 
 aFTR_PROFILE iam_din_hutaba_neck = {
 	int_din_hutaba_neckT_model,

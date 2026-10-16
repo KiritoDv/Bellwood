@@ -1,0 +1,243 @@
+:config:
+  strict_declarations: true
+
+rom_shop3_ent_pal:
+  type: TEXTURE
+  offset: 0x81969D60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop_kouhaku_pal:
+  type: TEXTURE
+  offset: 0x81969D80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop3_tana_pal:
+  type: TEXTURE
+  offset: 0x81969DA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop3_leji_pal:
+  type: TEXTURE
+  offset: 0x81969DC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop3_desk_pal:
+  type: TEXTURE
+  offset: 0x81969DE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop3_bini_pal:
+  type: TEXTURE
+  offset: 0x81969E00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop3_mat_pal:
+  type: TEXTURE
+  offset: 0x81969E20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop3_wallC_pal:
+  type: TEXTURE
+  offset: 0x81969E40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_shop3_ent:
+  type: TEXTURE
+  offset: 0x81969E60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81969D60
+
+rom_shop_kouhaku_tex:
+  type: TEXTURE
+  offset: 0x8196A060
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81969D80
+
+rom_shop3_tana2:
+  type: TEXTURE
+  offset: 0x8196A860
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81969DA0
+
+rom_shop3_kago_b:
+  type: TEXTURE
+  offset: 0x8196A960
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81969DA0
+
+rom_shop3_leji_f:
+  type: TEXTURE
+  offset: 0x8196AA60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81969DC0
+
+rom_shop3_leji_k:
+  type: TEXTURE
+  offset: 0x8196AAE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81969DC0
+
+rom_shop3_leji_b:
+  type: TEXTURE
+  offset: 0x8196AB60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81969DC0
+
+rom_shop3_desk_a:
+  type: TEXTURE
+  offset: 0x8196ABE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81969DE0
+
+rom_shop3_desk_b:
+  type: TEXTURE
+  offset: 0x8196ADE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81969DE0
+
+rom_shop3_desk_c:
+  type: TEXTURE
+  offset: 0x8196AE60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81969DE0
+
+rom_shop3_tana_t:
+  type: TEXTURE
+  offset: 0x8196B060
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81969DA0
+
+rom_shop3_bini:
+  type: TEXTURE
+  offset: 0x8196B0E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81969E00
+
+rom_shop3_bini_b:
+  type: TEXTURE
+  offset: 0x8196B160
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81969E00
+
+rom_shop3_car:
+  type: TEXTURE
+  offset: 0x8196B1E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81969E20
+
+rom_shop3_bini_a:
+  type: TEXTURE
+  offset: 0x8196B2E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81969E00
+
+rom_shop3_wallC:
+  type: TEXTURE
+  offset: 0x8196B360
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81969E40
+
+rom_shop3_wallD:
+  type: TEXTURE
+  offset: 0x8196BB60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81969E40
+
+rom_shop3_floorE:
+  type: TEXTURE
+  offset: 0x8196C360
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81969D60
+
+rom_shop3_kage1:
+  type: TEXTURE
+  offset: 0x8196C560
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+rom_shop3_fuku_v:
+  type: VTX
+  offset: 0x8196C5E0
+  count: 515
+
+rom_shop3_fuku_modelT:
+  type: GFX
+  offset: 0x8196E610
+  size: 0x8
+
+rom_shop3_fuku_model:
+  type: GFX
+  offset: 0x8196E618
+  size: 0x758

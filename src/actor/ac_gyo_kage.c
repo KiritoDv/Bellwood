@@ -5,6 +5,7 @@
 #include "m_common_data.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/act_gyoei02.h"
 
 static void aGYO_KAGE_actor_ct(ACTOR* actorx, GAME* game);
 static void aGYO_KAGE_actor_dt(ACTOR* actorx, GAME* game);
@@ -199,8 +200,6 @@ static void aGYO_KAGE_actor_move(ACTOR* actorx, GAME* game) {
 
     aGYO_KAGE_Cullcheck(actorx, game);
 }
-
-extern Gfx act_gyoei02_00_modelT[];
 
 static void aGYO_KAGE_actor_draw(ACTOR* actorx, GAME* game) {
     GYO_KAGE_ACTOR* gyo_kage = (GYO_KAGE_ACTOR*)actorx;

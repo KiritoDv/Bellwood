@@ -1,5 +1,4 @@
-extern Gfx int_ike_pst_tesyu01_on_model[];
-extern Gfx int_ike_pst_tesyu01_offT_model[];
+#include "assets/data/model/int_ike_pst_tesyu01.h"
 
 aFTR_PROFILE iam_ike_pst_tesyu01 = {
 	int_ike_pst_tesyu01_on_model,

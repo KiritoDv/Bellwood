@@ -3,6 +3,7 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_goki01_01.h"
 
 static void eGoki_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eGoki_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -13,9 +14,6 @@ static void eGoki_dw(eEC_Effect_c* effect, GAME* game);
 
 #define CALC_EASE(x) (1.0f - sqrtf(1.0f - (x)))
 #define CALC_EASE2(x) CALC_EASE(CALC_EASE(x))
-
-extern EVW_ANIME_DATA ef_goki01_01_evw_anime[];
-extern Gfx ef_goki01_01_modelT[];
 
 eEC_PROFILE_c iam_ef_goki = {
     // clang-format off

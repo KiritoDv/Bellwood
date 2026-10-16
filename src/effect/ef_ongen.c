@@ -3,9 +3,7 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
-
-extern Gfx ef_ongen_mouth_model[];
-extern Gfx ef_ongen_mic_model[];
+#include "assets/data/model/ef_ongen.h"
 
 static void eOngen_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eOngen_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);

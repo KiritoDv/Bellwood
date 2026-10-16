@@ -1,0 +1,74 @@
+:config:
+  strict_declarations: true
+
+int_tak_tailor_pal:
+  type: TEXTURE
+  offset: 0x81AA9060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_tailor_body_tex:
+  type: TEXTURE
+  offset: 0x81AA9080
+  format: CI4
+  width: 16
+  height: 128
+  source_encoding: gx
+  tlut: 0x81AA9060
+
+int_tak_tailor_grass_tex:
+  type: TEXTURE
+  offset: 0x81AA9480
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA9060
+
+int_tak_tailor_roof_tex:
+  type: TEXTURE
+  offset: 0x81AA9500
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA9060
+
+int_tak_tailor_sign_tex:
+  type: TEXTURE
+  offset: 0x81AA9580
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA9060
+
+int_tak_tailor_tent_tex:
+  type: TEXTURE
+  offset: 0x81AA9680
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81AA9060
+
+int_tak_tailor_v:
+  type: VTX
+  offset: 0x81AA96A0
+  count: 112
+
+int_tak_tailor_on_model:
+  type: GFX
+  offset: 0x81AA9DA0
+  size: 0x78
+
+int_tak_tailor_onT_model:
+  type: GFX
+  offset: 0x81AA9E18
+  size: 0xF8
+
+int_tak_tailor_offT_model:
+  type: GFX
+  offset: 0x81AA9F10
+  size: 0x60

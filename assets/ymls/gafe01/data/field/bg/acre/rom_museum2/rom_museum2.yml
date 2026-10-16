@@ -1,0 +1,83 @@
+:config:
+  strict_declarations: true
+
+rom_museum2_wall_pal:
+  type: TEXTURE
+  offset: 0x818D00C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_museum2_floor_pal:
+  type: TEXTURE
+  offset: 0x818D00E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_museum2_step1_pal:
+  type: TEXTURE
+  offset: 0x818D0100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_museum2_wallA_tex:
+  type: TEXTURE
+  offset: 0x818D0120
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818D00C0
+
+rom_museum2_wallB_tex:
+  type: TEXTURE
+  offset: 0x818D0920
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818D00C0
+
+rom_museum2_floorA_tex:
+  type: TEXTURE
+  offset: 0x818D1120
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818D00E0
+
+rom_museum2_step1_tex:
+  type: TEXTURE
+  offset: 0x818D1920
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818D0100
+
+rom_museum2_plate_tex:
+  type: TEXTURE
+  offset: 0x818D2120
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818D0100
+
+rom_museum2_v:
+  type: VTX
+  offset: 0x818D2220
+  count: 272
+
+rom_museum2_modelT:
+  type: GFX
+  offset: 0x818D3320
+  size: 0x8
+
+rom_museum2_model:
+  type: GFX
+  offset: 0x818D3328
+  size: 0x330

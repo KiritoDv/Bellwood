@@ -1,0 +1,49 @@
+:config:
+  strict_declarations: true
+
+int_nog_tri_clock01_pal:
+  type: TEXTURE
+  offset: 0x81922940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_nog_tri_clock01_tex_txt:
+  type: TEXTURE
+  offset: 0x81922960
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81922940
+
+int_nog_tri_clock01_v:
+  type: VTX
+  offset: 0x81923160
+  count: 82
+
+int_nog_tri_clock01_long_model:
+  type: GFX
+  offset: 0x81923680
+  size: 0x58
+
+int_nog_tri_clock01_base_model:
+  type: GFX
+  offset: 0x819236D8
+  size: 0xB8
+
+int_nog_tri_clock01_short_model:
+  type: GFX
+  offset: 0x81923790
+  size: 0x58
+
+cKF_ba_r_int_nog_tri_clock01:
+  type: AC:CKF_ANIMATION
+  offset: 0x81923814
+  joints: 5
+  counts: { flags: 5, data: 0, keys: 0, fixed: 18 }
+
+cKF_bs_r_int_nog_tri_clock01:
+  type: AC:CKF_SKELETON
+  offset: 0x81923864
+  counts: { joints: 5 }

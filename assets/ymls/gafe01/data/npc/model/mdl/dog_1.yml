@@ -1,0 +1,77 @@
+:config:
+  strict_declarations: true
+
+dog_1_v:
+  type: VTX
+  offset: 0x811D9560
+  count: 363
+
+head_dog_model:
+  type: GFX
+  offset: 0x811DAC10
+  size: 0x1E8
+
+Rarm2_dog_model:
+  type: GFX
+  offset: 0x811DADF8
+  size: 0x80
+
+Rarm_dog_model:
+  type: GFX
+  offset: 0x811DAE78
+  size: 0x78
+
+Larm2_dog_model:
+  type: GFX
+  offset: 0x811DAEF0
+  size: 0x80
+
+Larm1_dog_model:
+  type: GFX
+  offset: 0x811DAF70
+  size: 0x78
+
+chest_dog_model:
+  type: GFX
+  offset: 0x811DAFE8
+  size: 0xA8
+
+tail1_dog_model:
+  type: GFX
+  offset: 0x811DB090
+  size: 0x58
+
+tail2_dog_model:
+  type: GFX
+  offset: 0x811DB0E8
+  size: 0x90
+
+Rfoot2_dog_model:
+  type: GFX
+  offset: 0x811DB178
+  size: 0x88
+
+Rfoot1_dog_model:
+  type: GFX
+  offset: 0x811DB200
+  size: 0x80
+
+Lfoot2_dog_model:
+  type: GFX
+  offset: 0x811DB280
+  size: 0x88
+
+Lfoot1_dog_model:
+  type: GFX
+  offset: 0x811DB308
+  size: 0x80
+
+base_dog_model:
+  type: GFX
+  offset: 0x811DB388
+  size: 0x78
+
+cKF_bs_r_dog_1:
+  type: AC:CKF_SKELETON
+  offset: 0x811DB538
+  counts: { joints: 26 }

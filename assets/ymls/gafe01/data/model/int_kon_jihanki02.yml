@@ -1,0 +1,106 @@
+:config:
+  strict_declarations: true
+
+int_kon_jihanki02_pal:
+  type: TEXTURE
+  offset: 0x818A93C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_jihanki02_front_tex:
+  type: TEXTURE
+  offset: 0x818A93E0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x818A93C0
+
+int_kon_jihanki02_yoko_tex:
+  type: TEXTURE
+  offset: 0x818A9560
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A93C0
+
+int_kon_jihanki02_back_tex:
+  type: TEXTURE
+  offset: 0x818A9660
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A93C0
+
+int_kon_jihanki02_can_tex:
+  type: TEXTURE
+  offset: 0x818A96E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A93C0
+
+int_kon_jihanki02_canback_tex:
+  type: TEXTURE
+  offset: 0x818A97E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A93C0
+
+int_kon_jihanki02_naka_tex:
+  type: TEXTURE
+  offset: 0x818A98E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A93C0
+
+int_kon_jihanki02_botan_tex:
+  type: TEXTURE
+  offset: 0x818A9960
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A93C0
+
+int_kon_jihanki02_sign_tex:
+  type: TEXTURE
+  offset: 0x818A9B60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A93C0
+
+int_kon_jihanki02_v:
+  type: VTX
+  offset: 0x818A9BE0
+  count: 60
+
+int_kon_jihanki02_on_model:
+  type: GFX
+  offset: 0x818A9FA0
+  size: 0x80
+
+int_kon_jihanki02_off_model:
+  type: GFX
+  offset: 0x818AA020
+  size: 0x80
+
+int_kon_jihanki02_onT_model:
+  type: GFX
+  offset: 0x818AA0A0
+  size: 0x70
+
+int_kon_jihanki02_offT_model:
+  type: GFX
+  offset: 0x818AA110
+  size: 0x80

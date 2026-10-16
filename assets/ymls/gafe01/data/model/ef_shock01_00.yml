@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+ef_shock01_0:
+  type: TEXTURE
+  offset: 0x8166FD60
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+ef_shock01_00_v:
+  type: VTX
+  offset: 0x81670160
+  count: 4
+
+ef_shock01_00_modelT:
+  type: GFX
+  offset: 0x816701A0
+  size: 0x48

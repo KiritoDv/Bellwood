@@ -1,0 +1,44 @@
+:config:
+  strict_declarations: true
+
+ef_koke_yuki01_0_inta_ia8:
+  type: TEXTURE
+  offset: 0x81677CC0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_koke_yuki01_1_inta_ia8:
+  type: TEXTURE
+  offset: 0x81677DC0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_koke_yuki01_2_inta_ia8:
+  type: TEXTURE
+  offset: 0x81677EC0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_koke_yuki01_3_inta_ia8:
+  type: TEXTURE
+  offset: 0x81677FC0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_koke_yuki01_00_v:
+  type: VTX
+  offset: 0x816780C0
+  count: 4
+
+ef_koke_yuki01_00_modelT:
+  type: GFX
+  offset: 0x81678100
+  size: 0x58

@@ -1,0 +1,47 @@
+:config:
+  strict_declarations: true
+
+hem_1_v:
+  type: VTX
+  offset: 0x8124E580
+  count: 333
+
+head_hem_model:
+  type: GFX
+  offset: 0x8124FA50
+  size: 0x1A0
+
+feel_hem_model:
+  type: GFX
+  offset: 0x8124FBF0
+  size: 0x80
+
+mouth_hem_model:
+  type: GFX
+  offset: 0x8124FC70
+  size: 0x90
+
+Rarm2_hem_model:
+  type: GFX
+  offset: 0x8124FD00
+  size: 0x88
+
+Rarm1_hem_model:
+  type: GFX
+  offset: 0x8124FD88
+  size: 0x58
+
+chest_hem_model:
+  type: GFX
+  offset: 0x8124FDE0
+  size: 0xD0
+
+base_hem_model:
+  type: GFX
+  offset: 0x8124FEB0
+  size: 0x1F0
+
+cKF_bs_r_hem_1:
+  type: AC:CKF_SKELETON
+  offset: 0x812501D8
+  counts: { joints: 26 }

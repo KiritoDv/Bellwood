@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_nog_queenW_pal:
+  type: TEXTURE
+  offset: 0x81910740
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_queenW_base_tex:
+  type: TEXTURE
+  offset: 0x81910760
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81910740
+
+int_nog_queenW_circle_tex:
+  type: TEXTURE
+  offset: 0x81910960
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81910740
+
+int_nog_queenW_crown_tex:
+  type: TEXTURE
+  offset: 0x819109E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81910740
+
+int_nog_queenW_v:
+  type: VTX
+  offset: 0x81910AE0
+  count: 46
+
+int_nog_queenW_model:
+  type: GFX
+  offset: 0x81910DC0
+  size: 0x78
+
+int_nog_queenWT_model:
+  type: GFX
+  offset: 0x81910E38
+  size: 0x90

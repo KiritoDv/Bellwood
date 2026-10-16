@@ -1,0 +1,30 @@
+:config:
+  strict_declarations: true
+
+kai_sousa_button3_tex:
+  type: TEXTURE
+  offset: 0x814D4180
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+pas_start_v:
+  type: VTX
+  offset: 0x814D4280
+  count: 11
+
+pas_start_yaji_model:
+  type: GFX
+  offset: 0x814D4330
+  size: 0x28
+
+pas_start_buttonT_model:
+  type: GFX
+  offset: 0x814D4358
+  size: 0x40
+
+pas_start_model:
+  type: GFX
+  offset: 0x814D4398
+  size: 0x18

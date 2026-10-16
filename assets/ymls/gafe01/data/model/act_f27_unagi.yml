@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f27_unagi_pal:
+  type: TEXTURE
+  offset: 0x812460C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f27_unagi_tex:
+  type: TEXTURE
+  offset: 0x812460E0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x812460C0
+
+act_f27_unagi_a_v:
+  type: VTX
+  offset: 0x812462E0
+  count: 9
+
+act_f27_unagi_aT_model:
+  type: GFX
+  offset: 0x81246370
+  size: 0x68
+
+act_f27_unagi_b_v:
+  type: VTX
+  offset: 0x812463D8
+  count: 9
+
+act_f27_unagi_bT_model:
+  type: GFX
+  offset: 0x81246468
+  size: 0x68
+
+act_f27_unagi_c_v:
+  type: VTX
+  offset: 0x812464D0
+  count: 9
+
+act_f27_unagi_cT_model:
+  type: GFX
+  offset: 0x81246560
+  size: 0x68

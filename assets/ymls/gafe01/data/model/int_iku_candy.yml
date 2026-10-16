@@ -1,0 +1,42 @@
+:config:
+  strict_declarations: true
+
+int_iku_candy_pal:
+  type: TEXTURE
+  offset: 0x81850380
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_candy_bb_tex_txt:
+  type: TEXTURE
+  offset: 0x818503A0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81850380
+
+int_iku_candy_ab_tex_txt:
+  type: TEXTURE
+  offset: 0x818507A0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81850380
+
+int_iku_candy_v:
+  type: VTX
+  offset: 0x81850BA0
+  count: 52
+
+int_iku_candy_on_model:
+  type: GFX
+  offset: 0x81850EE0
+  size: 0xB0
+
+int_iku_candy_off_model:
+  type: GFX
+  offset: 0x81850F90
+  size: 0x68

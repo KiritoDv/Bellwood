@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+rom_shop1f_v:
+  type: VTX
+  offset: 0x81971A98
+  count: 91
+
+rom_shop1f_modelT:
+  type: GFX
+  offset: 0x81972048
+  size: 0x8
+
+rom_shop1f_model:
+  type: GFX
+  offset: 0x81972050
+  size: 0x130

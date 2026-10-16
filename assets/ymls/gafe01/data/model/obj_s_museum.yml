@@ -1,0 +1,146 @@
+:config:
+  strict_declarations: true
+
+obj_summer_museum_pal:
+  type: TEXTURE
+  offset: 0x8153E9E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_museum_t2_tex:
+  type: TEXTURE
+  offset: 0x8153EA00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8153E9E0
+
+obj_s_museum_t3_tex:
+  type: TEXTURE
+  offset: 0x8153F200
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8153E9E0
+
+obj_museum_window_tex:
+  type: TEXTURE
+  offset: 0x8153FA00
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_museum_t1_tex:
+  type: TEXTURE
+  offset: 0x8153FA80
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8153E9E0
+
+obj_s_museum_v:
+  type: VTX
+  offset: 0x81540280
+  count: 141
+
+obj_s_museum_t2_model:
+  type: GFX
+  offset: 0x81540B50
+  size: 0x78
+
+obj_s_museum_t1_model:
+  type: GFX
+  offset: 0x81540BC8
+  size: 0xC0
+
+obj_s_museum_lightT_model:
+  type: GFX
+  offset: 0x81540C88
+  size: 0x38
+
+obj_s_museum_t3T_model:
+  type: GFX
+  offset: 0x81540CC0
+  size: 0x88
+
+obj_s_museum_windowT_model:
+  type: GFX
+  offset: 0x81540D48
+  size: 0x48
+
+obj_winter_museum_pal:
+  type: TEXTURE
+  offset: 0x81540DA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_museum_t2_tex:
+  type: TEXTURE
+  offset: 0x81540DC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81540DA0
+
+obj_w_museum_t3_tex:
+  type: TEXTURE
+  offset: 0x815415C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81540DA0
+
+obj_w_museum_window_tex:
+  type: TEXTURE
+  offset: 0x81541DC0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_museum_t1_tex:
+  type: TEXTURE
+  offset: 0x81541E40
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81540DA0
+
+obj_w_museum_v:
+  type: VTX
+  offset: 0x81542640
+  count: 141
+
+obj_w_museum_t2_model:
+  type: GFX
+  offset: 0x81542F10
+  size: 0x78
+
+obj_w_museum_t1_model:
+  type: GFX
+  offset: 0x81542F88
+  size: 0xC0
+
+obj_w_museum_lightT_model:
+  type: GFX
+  offset: 0x81543048
+  size: 0x38
+
+obj_w_museum_t3T_model:
+  type: GFX
+  offset: 0x81543080
+  size: 0x88
+
+obj_w_museum_windowT_model:
+  type: GFX
+  offset: 0x81543108
+  size: 0x48

@@ -1,0 +1,117 @@
+:config:
+  strict_declarations: true
+
+int_ike_k_turis01_pal:
+  type: TEXTURE
+  offset: 0x8183B500
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_k_turisb6_tex_txt:
+  type: TEXTURE
+  offset: 0x8183B520
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8183B500
+
+int_ike_k_turisb7_tex_txt:
+  type: TEXTURE
+  offset: 0x8183B620
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8183B500
+
+int_ike_k_turisb1_tex_txt:
+  type: TEXTURE
+  offset: 0x8183B6A0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8183B500
+
+int_ike_k_turisb3_tex_txt:
+  type: TEXTURE
+  offset: 0x8183BAA0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8183B500
+
+int_ike_k_turisb2_tex_txt:
+  type: TEXTURE
+  offset: 0x8183BEA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8183B500
+
+int_ike_k_turisb5_tex_txt:
+  type: TEXTURE
+  offset: 0x8183BF20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8183B500
+
+int_ike_k_turisb8_tex_txt:
+  type: TEXTURE
+  offset: 0x8183BFA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8183B500
+
+int_ike_k_turisb4_tex_txt:
+  type: TEXTURE
+  offset: 0x8183C020
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8183B500
+
+int_ike_k_turibass3_tex_txt:
+  type: TEXTURE
+  offset: 0x8183C0A0
+  format: RGBA16
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_ike_k_turibass2_tex_txt:
+  type: TEXTURE
+  offset: 0x8183C2A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8183B500
+
+int_ike_k_turibass1_tex_txt:
+  type: TEXTURE
+  offset: 0x8183C320
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x8183B500
+
+int_ike_k_turis01_v:
+  type: VTX
+  offset: 0x8183C620
+  count: 117
+
+int_ike_k_turis01_body_model:
+  type: GFX
+  offset: 0x8183CD70
+  size: 0x248

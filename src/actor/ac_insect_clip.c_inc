@@ -289,6 +289,7 @@ static ACTOR* aINS_make_insect(aINS_Init_c* init, int make_type) {
         aINS_INSECT_ACTOR* insect = &aINS_ctrlActor->insect_actor[free_idx];
 
         bzero(insect, sizeof(aINS_INSECT_ACTOR));
+        FrameInterpolation_ResetObject(insect);
         aINS_setupActor((ACTOR*)insect, init);
         return (ACTOR*)insect;
     }

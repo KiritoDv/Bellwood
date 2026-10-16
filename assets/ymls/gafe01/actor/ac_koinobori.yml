@@ -1,0 +1,16 @@
+:config:
+  strict_declarations: true
+
+aKOI_obj_e_koinobori_a_pal:
+  type: TEXTURE
+  offset: 0x81078400
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_koinobori_b_pal:
+  type: TEXTURE
+  offset: 0x81078420
+  format: TLUT
+  colors: 16
+  source_encoding: gx

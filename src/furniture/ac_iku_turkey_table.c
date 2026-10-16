@@ -1,5 +1,4 @@
-extern Gfx int_iku_turkey_table_model_b_model[];
-extern Gfx int_iku_turkey_table_model_a_model[];
+#include "assets/data/model/int_iku_turkey_table.h"
 
 aFTR_PROFILE iam_iku_turkey_table = {
 	int_iku_turkey_table_model_b_model,

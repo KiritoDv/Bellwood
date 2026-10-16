@@ -1,0 +1,43 @@
+:config:
+  strict_declarations: true
+
+obj_museum5_hasu_pal:
+  type: TEXTURE
+  offset: 0x81694AA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_museum5_hasu1_tex_txt:
+  type: TEXTURE
+  offset: 0x81694AC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81694AA0
+
+obj_museum5_hasu_v:
+  type: VTX
+  offset: 0x81694CC0
+  count: 23
+
+obj_museum5_hasu1_model:
+  type: GFX
+  offset: 0x81694E30
+  size: 0x60
+
+obj_museum5_hasu3_model:
+  type: GFX
+  offset: 0x81694E90
+  size: 0x60
+
+obj_museum5_hasu2_model:
+  type: GFX
+  offset: 0x81694EF0
+  size: 0x60
+
+cKF_bs_r_obj_museum5_hasu:
+  type: AC:CKF_SKELETON
+  offset: 0x81694FC8
+  counts: { joints: 10 }

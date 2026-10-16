@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_lib.h"
 #include "m_rcp.h"
+#include "assets/data/model/crw_zinnia1.h"
 
 static void aTZN1_actor_ct(ACTOR* actor, GAME* game);
 static void aTZN1_actor_draw(ACTOR* actor, GAME* game);
@@ -23,8 +24,6 @@ ACTOR_PROFILE T_Zinnia1_Profile = {
     &aTZN1_actor_draw,
     NULL
 };
-
-extern Gfx crw_zinnia1_body_model[];
 
 static void aTZN1_actor_ct(ACTOR* actor, GAME* game){
     aTZN1_setupAction(actor, 4);

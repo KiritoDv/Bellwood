@@ -1,4 +1,4 @@
-extern Gfx int_iku_cement_model_model[];
+#include "assets/data/model/int_iku_cement.h"
 
 aFTR_PROFILE iam_iku_cement = {
 	int_iku_cement_model_model,

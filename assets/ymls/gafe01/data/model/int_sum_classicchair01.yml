@@ -1,0 +1,96 @@
+:config:
+  strict_declarations: true
+
+int_sum_classicchair01_pal01_pal:
+  type: TEXTURE
+  offset: 0x819BCE40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_classicchair01_seat:
+  type: TEXTURE
+  offset: 0x819BCE60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819BCE40
+
+int_sum_classicchair01_back:
+  type: TEXTURE
+  offset: 0x819BCF60
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819BCE40
+
+int_sum_classicchair01_side:
+  type: TEXTURE
+  offset: 0x819BD160
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x819BCE40
+
+int_sum_classicchair01_foot:
+  type: TEXTURE
+  offset: 0x819BD1E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819BCE40
+
+int_sum_classicchair01_frontseat:
+  type: TEXTURE
+  offset: 0x819BD2E0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x819BCE40
+
+int_sum_classicchair01_backfoot:
+  type: TEXTURE
+  offset: 0x819BD320
+  format: CI4
+  width: 64
+  height: 8
+  source_encoding: gx
+  tlut: 0x819BCE40
+
+int_sum_classicchairspindle:
+  type: TEXTURE
+  offset: 0x819BD420
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x819BCE40
+
+int_sum_classicchair01_backseat:
+  type: TEXTURE
+  offset: 0x819BD460
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x819BCE40
+
+int_sum_classicchair01_v:
+  type: VTX
+  offset: 0x819BD4A0
+  count: 67
+
+int_sum_classicchair01_on_model:
+  type: GFX
+  offset: 0x819BD8D0
+  size: 0xE8
+
+int_sum_classicchair01_onT_model:
+  type: GFX
+  offset: 0x819BD9B8
+  size: 0xA8

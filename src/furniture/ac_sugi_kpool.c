@@ -1,3 +1,5 @@
+#include "assets/data/model/int_sugi_kpool.h"
+#include "assets/data/model/int_sugi_kpool_evw_anime.h"
 static void fSKP_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     // nothing
 }
@@ -5,11 +7,6 @@ static void fSKP_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* 
 static Gfx* fSKP_GetTwoTileGfx(int x0, int y0, int x1, int y1, GAME* game) {
     return two_tex_scroll_dolphin(game->graph, 0, x0, y0, 16, 16, 1, x1, y1, 16, 16);
 }
-
-extern Gfx sugi_kpool_model[];
-extern Gfx sugi_kpool_t_model[];
-extern Gfx sugi_kpool_w_model[];
-extern EVW_ANIME_DATA int_sugi_kpool_evw_anime;
 
 static void fSKP_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     GAME_PLAY* play = (GAME_PLAY*)game;

@@ -3,11 +3,7 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
-
-extern u8 ef_dust01_0[];
-extern u8 ef_dust01_1[];
-extern u8 ef_dust01_2[];
-extern u8 ef_dust01_3[];
+#include "assets/data/model/ef_dust01_00.h"
 
 // @ 8057cb90
 static u8* Steam_tex_tbl[4] = {
@@ -85,8 +81,6 @@ static void eSteam_mv(eEC_Effect_c* effect, GAME* game) {
     effect->velocity.y *= sqrtf(0.8f);
     effect->velocity.z *= sqrtf(0.8f);
 }
-
-extern Gfx ef_dust01_modelT[];
 
 static void eSteam_dw(eEC_Effect_c* effect, GAME* game) {
     s16 counter = 30 - effect->timer;

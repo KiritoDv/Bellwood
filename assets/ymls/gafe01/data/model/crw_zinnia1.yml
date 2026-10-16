@@ -1,0 +1,37 @@
+:config:
+  strict_declarations: true
+
+crw_zinnia1_pal:
+  type: TEXTURE
+  offset: 0x815DE280
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+crw_zinnia1_tex_txt:
+  type: TEXTURE
+  offset: 0x815DE2A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815DE280
+
+crw_zinnia2_tex_txt:
+  type: TEXTURE
+  offset: 0x815DE4A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x815DE280
+
+crw_zinnia1_v:
+  type: VTX
+  offset: 0x815DE520
+  count: 68
+
+crw_zinnia1_body_model:
+  type: GFX
+  offset: 0x815DE960
+  size: 0x160

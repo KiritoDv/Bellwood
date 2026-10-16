@@ -1,10 +1,8 @@
+#include "assets/data/model/int_kon_snowtansu.h"
 static void aKonSnowtansu_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aKonSnowtansu_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aKonSnowtansu_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aKonSnowtansu_dt(FTR_ACTOR* ftr_actor, u8* data);
-
-extern cKF_Animation_R_c cKF_ba_r_int_kon_snowtansu;
-extern cKF_Skeleton_R_c cKF_bs_r_int_kon_snowtansu;
 
 static void aKonSnowtansu_ct(FTR_ACTOR* ftr_actor, u8* data){
     cKF_SkeletonInfo_R_c* keyf;

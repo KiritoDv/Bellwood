@@ -1,0 +1,85 @@
+:config:
+  strict_declarations: true
+
+obj_kanban_pal:
+  type: TEXTURE
+  offset: 0x813B1FA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+hakushi_pal:
+  type: TEXTURE
+  offset: 0x813B1FC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+hakushi_tex:
+  type: TEXTURE
+  offset: 0x813B1FE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_s_kanban_base_tex:
+  type: TEXTURE
+  offset: 0x813B21E0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x813B1FA0
+
+obj_s_kanban_v:
+  type: VTX
+  offset: 0x813B24E0
+  count: 8
+
+obj_w_kanban_base_tex:
+  type: TEXTURE
+  offset: 0x813B2560
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x813B1FA0
+
+obj_w_kanban_v:
+  type: VTX
+  offset: 0x813B2860
+  count: 8
+
+write_model:
+  type: GFX
+  offset: 0x813B28E0
+  size: 0x58
+
+obj_sign_s_model:
+  type: GFX
+  offset: 0x813B2938
+  size: 0x58
+
+obj_sign_w_model:
+  type: GFX
+  offset: 0x813B2990
+  size: 0x58
+
+obj_kanban_shadow_tex:
+  type: TEXTURE
+  offset: 0x813B29E8
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: n64
+
+obj_kanban_shadow_v:
+  type: VTX
+  offset: 0x813B2BE8
+  count: 4
+
+obj_kanban_shadowT_model:
+  type: GFX
+  offset: 0x813B2C28
+  size: 0x88

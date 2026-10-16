@@ -1,0 +1,81 @@
+:config:
+  strict_declarations: true
+
+int_tak_lion_pal:
+  type: TEXTURE
+  offset: 0x81A96EA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_lion_water_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A96EC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_lion_back_tex:
+  type: TEXTURE
+  offset: 0x81A96EE0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A96EA0
+
+int_tak_lion_body_tex:
+  type: TEXTURE
+  offset: 0x81A970E0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A96EA0
+
+int_tak_lion_face_tex:
+  type: TEXTURE
+  offset: 0x81A97100
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A96EA0
+
+int_tak_lion_tail2_tex:
+  type: TEXTURE
+  offset: 0x81A97500
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A96EA0
+
+int_tak_lion_water_tex:
+  type: TEXTURE
+  offset: 0x81A97680
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A96EC0
+
+int_tak_lion_v:
+  type: VTX
+  offset: 0x81A976A0
+  count: 82
+
+int_tak_lion_on_model:
+  type: GFX
+  offset: 0x81A97BC0
+  size: 0x90
+
+int_tak_lion_onT_model:
+  type: GFX
+  offset: 0x81A97C50
+  size: 0x140
+
+int_tak_lion_alphaT_model:
+  type: GFX
+  offset: 0x81A97D90
+  size: 0x80

@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_sum_liccachair_pal:
+  type: TEXTURE
+  offset: 0x81A15FA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_liccachair_seat_tex:
+  type: TEXTURE
+  offset: 0x81A15FC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A15FA0
+
+int_sum_liccachair_splat_tex:
+  type: TEXTURE
+  offset: 0x81A160C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A15FA0
+
+int_sum_liccachair_leg_tex:
+  type: TEXTURE
+  offset: 0x81A162C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A15FA0
+
+int_sum_liccachair_seatside_tex:
+  type: TEXTURE
+  offset: 0x81A164C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A15FA0
+
+int_sum_liccachair_v:
+  type: VTX
+  offset: 0x81A165C0
+  count: 59
+
+int_sum_liccachair_on_model:
+  type: GFX
+  offset: 0x81A16970
+  size: 0x88
+
+int_sum_liccachair_onT_model:
+  type: GFX
+  offset: 0x81A169F8
+  size: 0xB8

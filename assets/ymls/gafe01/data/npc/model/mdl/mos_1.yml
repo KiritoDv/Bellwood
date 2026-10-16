@@ -1,0 +1,57 @@
+:config:
+  strict_declarations: true
+
+mos_1_v:
+  type: VTX
+  offset: 0x8129D9A0
+  count: 322
+
+head_mos_model:
+  type: GFX
+  offset: 0x8129EDC0
+  size: 0x1D0
+
+mouth_mos_model:
+  type: GFX
+  offset: 0x8129EF90
+  size: 0xE0
+
+hand_mos_model:
+  type: GFX
+  offset: 0x8129F070
+  size: 0xB8
+
+Rarm2_mos_model:
+  type: GFX
+  offset: 0x8129F128
+  size: 0x88
+
+Rarm1_mos_model:
+  type: GFX
+  offset: 0x8129F1B0
+  size: 0x78
+
+Larm2_mos_model:
+  type: GFX
+  offset: 0x8129F228
+  size: 0x88
+
+Larm1_mos_model:
+  type: GFX
+  offset: 0x8129F2B0
+  size: 0x78
+
+chest_mos_model:
+  type: GFX
+  offset: 0x8129F328
+  size: 0xD8
+
+base_mos_model:
+  type: GFX
+  offset: 0x8129F400
+  size: 0x88
+
+cKF_bs_r_mos_1:
+  type: AC:CKF_SKELETON
+  offset: 0x8129F5C0
+  counts: { joints: 26 }

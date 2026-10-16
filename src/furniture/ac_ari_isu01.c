@@ -1,4 +1,4 @@
-extern Gfx int_ari_isu01_00T_model[];
+#include "assets/data/model/int_ari_isu01.h"
 
 aFTR_PROFILE iam_ari_isu01 = {
 	int_ari_isu01_00T_model,

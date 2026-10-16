@@ -1,6 +1,4 @@
-extern Gfx int_ike_k_iveboy01_on_model[];
-extern Gfx int_ike_k_iveboy01_onT_model[];
-extern Gfx int_ike_k_iveboy01_off_model[];
+#include "assets/data/model/int_ike_k_iveboy01.h"
 
 aFTR_PROFILE iam_ike_k_iveboy01 = {
 	int_ike_k_iveboy01_on_model,

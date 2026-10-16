@@ -1,0 +1,131 @@
+:config:
+  strict_declarations: true
+
+kal_1_pal:
+  type: TEXTURE
+  offset: 0x8128ACE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+kal_1_eye1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128AD00
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_eye2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128AE00
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_eye3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128AF00
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_eye4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128B000
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_eye5_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128B100
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_eye6_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128B200
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_eye7_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128B300
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_eye8_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128B400
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_mouth1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128B500
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_mouth2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128B600
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_mouth3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128B700
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_mouth4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128B800
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_mouth5_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128B900
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_mouth6_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8128BA00
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+kal_1_tmem_txt:
+  type: AC:TEX_ATLAS
+  offset: 0x8128BB00
+  size: 0x480
+  regions:
+    - { offset: 0x0, format: CI4, width: 32, height: 8 }
+    - { offset: 0x80, format: CI4, width: 32, height: 40 }
+    - { offset: 0x300, format: CI4, width: 32, height: 16 }
+    - { offset: 0x400, format: CI4, width: 16, height: 16 }

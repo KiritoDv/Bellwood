@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_audio_pal:
+  type: TEXTURE
+  offset: 0x814BAC40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_audio_tex:
+  type: TEXTURE
+  offset: 0x814BAC60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x814BAC40
+
+mus_icon_v:
+  type: VTX
+  offset: 0x814BAE60
+  count: 4
+
+mus_icon_model_before:
+  type: GFX
+  offset: 0x814BAEA0
+  size: 0x40
+
+mus_icon_model:
+  type: GFX
+  offset: 0x814BAEE0
+  size: 0x18

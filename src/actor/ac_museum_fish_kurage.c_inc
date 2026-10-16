@@ -1,4 +1,5 @@
 #include "ac_museum_fish_priv.h"
+#include "assets/data/model/act_mus_kurage_a1.h"
 
 void mfish_kurage_ct(MUSEUM_FISH_PRIVATE_DATA* actor, GAME* gamex) {
     s16 s = qrand();
@@ -187,9 +188,6 @@ void mfish_kurage_mv(MUSEUM_FISH_PRIVATE_DATA* actor, GAME* gamex) {
     }
     actor->activityFrameCount--;
 }
-
-extern Gfx act_mus_kurage_sakana_body_model[];
-extern Gfx act_mus_kurage_sakana_foot_model[];
 
 void mfish_kurage_dw(MUSEUM_FISH_PRIVATE_DATA* actor, GAME* gamex) {
     f32 a = (actor->_5E8 - 0.1f) * (-0.3f + GETREG(TAKREG, 0x1b) * 0.01f);

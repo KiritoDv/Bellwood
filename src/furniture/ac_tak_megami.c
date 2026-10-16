@@ -1,6 +1,4 @@
-extern Gfx int_tak_megami_on_model[];
-extern Gfx int_tak_megami_onT_model[];
-extern Gfx int_tak_megami_offT_model[];
+#include "assets/data/model/int_tak_megami.h"
 
 static void fTM_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     GAME_PLAY* play = (GAME_PLAY*)game;

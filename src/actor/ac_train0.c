@@ -7,6 +7,7 @@
 #include "sys_matrix.h"
 #include "m_play.h"
 #include "m_rcp.h"
+#include "assets/data/model/obj_train1_1.h"
 
 static void aTR0_actor_ct(ACTOR* actor, GAME* game);
 static void aTR0_actor_dt(ACTOR* actor, GAME* game);
@@ -27,10 +28,6 @@ ACTOR_PROFILE Train0_Profile = {
     NULL,
 };
 
-extern cKF_Skeleton_R_c cKF_bs_r_obj_train1_1;
-extern cKF_Animation_R_c cKF_ba_r_obj_train1_1;
-
-extern Gfx obj_train1_2_model[];
 
 static void aTR0_actor_ct(ACTOR* actor, GAME* GAME) {
     TRAIN0_ACTOR* train0 = (TRAIN0_ACTOR*)actor;
@@ -55,7 +52,7 @@ static void aTR0_actor_dt(ACTOR* actor, GAME* game) {
     engineer_p = (ACTOR*)train0->arg3;
     if (engineer_p != NULL) {
         Actor_delete(engineer_p);
-        train0->arg3 = (int)NULL;
+        train0->arg3 = (intptr_t)NULL;
     }
 
     cKF_SkeletonInfo_R_dt(&train0->keyframe);

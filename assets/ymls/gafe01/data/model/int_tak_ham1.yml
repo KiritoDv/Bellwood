@@ -1,0 +1,109 @@
+:config:
+  strict_declarations: true
+
+int_tak_ham1_pal:
+  type: TEXTURE
+  offset: 0x81A945C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_ham1_a1_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A945E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_ham1_maru_tex_txt:
+  type: TEXTURE
+  offset: 0x81A94600
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A945C0
+
+int_tak_ham1_wa_tex_txt:
+  type: TEXTURE
+  offset: 0x81A94680
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A945C0
+
+int_tak_ham1_kuzu_tex_txt:
+  type: TEXTURE
+  offset: 0x81A946A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A945C0
+
+int_tak_ham1_cage_tex_txt:
+  type: TEXTURE
+  offset: 0x81A94720
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A945C0
+
+int_tak_ham1_a1_tex_txt:
+  type: TEXTURE
+  offset: 0x81A94820
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_tak_ham1_a2_tex_pic_ci4:
+  type: TEXTURE
+  offset: 0x81A948A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_tak_ham1_v:
+  type: VTX
+  offset: 0x81A94920
+  count: 100
+
+int_tak_ham1_wa_model:
+  type: GFX
+  offset: 0x81A94F60
+  size: 0x78
+
+int_tak_ham1_maru_model:
+  type: GFX
+  offset: 0x81A94FD8
+  size: 0x58
+
+int_tak_ham1_kuzu_model:
+  type: GFX
+  offset: 0x81A95030
+  size: 0x58
+
+int_tak_ham1_cage_model:
+  type: GFX
+  offset: 0x81A95088
+  size: 0xF8
+
+int_tak_ham1_a1_model:
+  type: GFX
+  offset: 0x81A95180
+  size: 0x58
+
+cKF_ba_r_int_tak_ham1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A95278
+  joints: 7
+  counts: { flags: 7, data: 51, keys: 2, fixed: 22 }
+
+cKF_bs_r_int_tak_ham1:
+  type: AC:CKF_SKELETON
+  offset: 0x81A952E0
+  counts: { joints: 7 }

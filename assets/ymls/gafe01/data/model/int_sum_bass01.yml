@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_bass01_pal:
+  type: TEXTURE
+  offset: 0x8199B120
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bass01_front_tex:
+  type: TEXTURE
+  offset: 0x8199B140
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x8199B120
+
+int_sum_bass01_back_tex:
+  type: TEXTURE
+  offset: 0x8199B440
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x8199B120
+
+int_sum_bass01_side_tex:
+  type: TEXTURE
+  offset: 0x8199B5C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8199B120
+
+int_sum_bass01_neck_tex:
+  type: TEXTURE
+  offset: 0x8199B640
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8199B120
+
+int_sum_bass01_neckback_tex:
+  type: TEXTURE
+  offset: 0x8199B740
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8199B120
+
+int_sum_bass01_hand_tex:
+  type: TEXTURE
+  offset: 0x8199B7C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8199B120
+
+int_sum_bass01_stand_tex:
+  type: TEXTURE
+  offset: 0x8199B840
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8199B120
+
+int_sum_bass01_v:
+  type: VTX
+  offset: 0x8199B940
+  count: 57
+
+int_sum_bass01_on_model:
+  type: GFX
+  offset: 0x8199BCD0
+  size: 0x88
+
+int_sum_bass01_onT_model:
+  type: GFX
+  offset: 0x8199BD58
+  size: 0xF8

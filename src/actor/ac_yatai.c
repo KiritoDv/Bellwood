@@ -7,6 +7,7 @@
 #include "m_common_data.h"
 #include "m_player_lib.h"
 #include "m_handbill.h"
+#include "assets/data/model/obj_e_yatai_shadow_l.h"
 
 static void aYAT_actor_ct(ACTOR* actor, GAME* game);
 static void aYAT_actor_init(ACTOR* actor, GAME* game);
@@ -28,13 +29,9 @@ ACTOR_PROFILE Yatai_Profile = {
 
 static u8 aYAT_shadow_vtx_fix_flg_table[] = { TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, TRUE, FALSE };
 
-extern Vtx obj_e_yatai_shadow_l_v[];
-extern Gfx obj_e_yatai_shadow_l_modelT[];
 static bIT_ShadowData_c aYAT_shadow_data_l = { 7, aYAT_shadow_vtx_fix_flg_table, 60.0f, obj_e_yatai_shadow_l_v,
                                                obj_e_yatai_shadow_l_modelT };
 
-extern Vtx obj_e_yatai_shadow_r_v[];
-extern Gfx obj_e_yatai_shadow_r_modelT[];
 static bIT_ShadowData_c aYAT_shadow_data_r = { 10, aYAT_shadow_vtx_fix_flg_table, 60.0f, obj_e_yatai_shadow_r_v,
                                                obj_e_yatai_shadow_r_modelT };
 

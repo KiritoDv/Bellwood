@@ -6,6 +6,7 @@
 #include "m_player_lib.h"
 #include "m_rcp.h"
 #include "m_debug.h"
+#include "assets/data/model/obj_s_bridgeA.h"
 
 static void aBridgeA_actor_ct(ACTOR* actorx, GAME* game);
 static void aBridgeA_actor_dt(ACTOR* actorx, GAME* game);
@@ -75,11 +76,6 @@ static void aBridgeA_set_BgOffset(ACTOR* actorx) {
     }
 }
 
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_bridgeA;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_bridgeA;
-
-extern cKF_Animation_R_c cKF_ba_r_obj_s_bridgeA;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_bridgeA;
 
 static void aBridgeA_actor_ct(ACTOR* actorx, GAME* game) {
     static cKF_Skeleton_R_c* skl[] = { &cKF_bs_r_obj_s_bridgeA, &cKF_bs_r_obj_w_bridgeA };
@@ -141,12 +137,13 @@ static f32 aBridge_player_check(STRUCTURE_ACTOR* bridge, GAME_PLAY* play) {
         } else if (bridge_run_speed > 0.1f) {
             add_calc(&bridge->arg0_f, bridge_run_speed, 0.1f + (f32)GETREG(TAKREG, 22) * 0.01f, 0.1f, 0.01f);
             add_calc(&bridge->arg1_f, 1.0f, 0.1f + (f32)GETREG(TAKREG, 24) * 0.01f, 0.1f, 0.01f);
-            return;
+            return 0.0f;
         }
     }
 
     add_calc(&bridge->arg1_f, 0.0f, (0.08f + (f32)GETREG(TAKREG, 21) * 0.01f) * (0.4f + bridge->arg0_f * 0.1f), 0.1f,
              0.01f);
+    return 0.0f;
 }
 
 static void aBridgeA_actor_move(ACTOR* actorx, GAME* game) {

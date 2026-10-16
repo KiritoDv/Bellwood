@@ -1,5 +1,4 @@
-extern Gfx int_sum_pl_pothos_on_model[];
-extern Gfx int_sum_pl_pothos_onT_model[];
+#include "assets/data/model/int_sum_pl_pothos.h"
 
 aFTR_PROFILE iam_sum_pl_pothos = {
 	int_sum_pl_pothos_on_model,

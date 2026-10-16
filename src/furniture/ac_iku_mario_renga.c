@@ -1,4 +1,4 @@
-extern Gfx int_iku_mario_renga_on_model[];
+#include "assets/data/model/int_iku_mario_renga.h"
 
 aFTR_PROFILE iam_iku_mario_renga = {
 	int_iku_mario_renga_on_model,

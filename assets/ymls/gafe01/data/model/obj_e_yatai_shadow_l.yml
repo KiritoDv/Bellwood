@@ -1,0 +1,30 @@
+:config:
+  strict_declarations: true
+
+obj_e_yatai_shadow_tex:
+  type: TEXTURE
+  offset: 0x8150C560
+  format: I4
+  width: 8
+  height: 16
+  source_encoding: gx
+
+obj_e_yatai_shadow_l_v:
+  type: VTX
+  offset: 0x8150C5A0
+  count: 7
+
+obj_e_yatai_shadow_l_modelT:
+  type: GFX
+  offset: 0x8150C610
+  size: 0x50
+
+obj_e_yatai_shadow_r_v:
+  type: VTX
+  offset: 0x8150C660
+  count: 7
+
+obj_e_yatai_shadow_r_modelT:
+  type: GFX
+  offset: 0x8150C6D0
+  size: 0x50

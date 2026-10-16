@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+int_nog_myhome4_body_tex:
+  type: TEXTURE
+  offset: 0x8190BE40
+  format: CI4
+  width: 32
+  height: 96
+  source_encoding: gx
+
+int_nog_myhome4_chimney_tex:
+  type: TEXTURE
+  offset: 0x8190C440
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_myhome4_grass_tex:
+  type: TEXTURE
+  offset: 0x8190C4C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_myhome4_v:
+  type: VTX
+  offset: 0x8190C540
+  count: 99
+
+int_nog_myhome4_on_model:
+  type: GFX
+  offset: 0x8190CB70
+  size: 0xB0
+
+int_nog_myhome4_off_model:
+  type: GFX
+  offset: 0x8190CC20
+  size: 0x60
+
+int_nog_myhome4_onT_model:
+  type: GFX
+  offset: 0x8190CC80
+  size: 0xA0

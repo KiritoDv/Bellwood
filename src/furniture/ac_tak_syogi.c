@@ -1,4 +1,4 @@
-extern Gfx int_tak_syogi01_on_model[];
+#include "assets/data/model/int_tak_syogi.h"
 
 aFTR_PROFILE iam_tak_syogi = {
 	int_tak_syogi01_on_model,

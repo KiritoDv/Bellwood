@@ -1,0 +1,105 @@
+:config:
+  strict_declarations: true
+
+int_sum_desk01_pal:
+  type: TEXTURE
+  offset: 0x819D2A20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_desk01_side:
+  type: TEXTURE
+  offset: 0x819D2A40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D2A20
+
+int_sum_desk01_top:
+  type: TEXTURE
+  offset: 0x819D2B40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D2A20
+
+int_sum_desk01_topside:
+  type: TEXTURE
+  offset: 0x819D2C40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D2A20
+
+int_sum_desk01_drawer:
+  type: TEXTURE
+  offset: 0x819D2D40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D2A20
+
+int_sum_desk01_back:
+  type: TEXTURE
+  offset: 0x819D2E40
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819D2A20
+
+int_sum_desk01_front:
+  type: TEXTURE
+  offset: 0x819D3040
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D2A20
+
+int_sum_desk01_light:
+  type: TEXTURE
+  offset: 0x819D3140
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D2A20
+
+int_sum_desk01_mini:
+  type: TEXTURE
+  offset: 0x819D31C0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x819D2A20
+
+int_sum_desk01_book:
+  type: TEXTURE
+  offset: 0x819D3200
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x819D2A20
+
+int_sum_desk01_v:
+  type: VTX
+  offset: 0x819D3240
+  count: 74
+
+int_sum_desk01_on_model:
+  type: GFX
+  offset: 0x819D36E0
+  size: 0xE0
+
+int_sum_desk01_onT_model:
+  type: GFX
+  offset: 0x819D37C0
+  size: 0xF0

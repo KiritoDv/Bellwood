@@ -1,4 +1,4 @@
-extern Gfx int_sum_shoukaki_model[];
+#include "assets/data/model/int_sum_shoukaki.h"
 
 aFTR_PROFILE iam_sum_shoukaki = {
 	int_sum_shoukaki_model,

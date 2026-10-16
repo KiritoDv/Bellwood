@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_lib.h"
 #include "m_rcp.h"
+#include "assets/data/model/crw_hasu1.h"
 
 
 static void aTHS1_actor_ct(ACTOR* actor, GAME*);
@@ -25,9 +26,7 @@ ACTOR_PROFILE T_Hasu1_Profile = {
     NULL
 };
 
-extern Gfx crw_hasu1_body_model[];
-
-static void aTHS1_actor_ct(ACTOR* actor, GAME*){
+static void aTHS1_actor_ct(ACTOR* actor, GAME* arg1){
 
     aTHS1_setupAction(actor,4);
 }
@@ -50,7 +49,7 @@ static void aTHS1_setupAction(ACTOR*actor, int action){
 
 }
 
-static void aTHS1_actor_move(ACTOR* actor, GAME*){
+static void aTHS1_actor_move(ACTOR* actor, GAME* arg1){
     HASU1_ACTOR* hasu = (HASU1_ACTOR*)actor;
 
     if(hasu->tools_class.work0 != hasu->current_id){

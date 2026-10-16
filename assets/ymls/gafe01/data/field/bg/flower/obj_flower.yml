@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+obj_flower_tex:
+  type: TEXTURE
+  offset: 0x81102980
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_flower_a_v:
+  type: VTX
+  offset: 0x81103180
+  count: 8
+
+obj_flower_b_v:
+  type: VTX
+  offset: 0x81103200
+  count: 8
+
+obj_flower_c_v:
+  type: VTX
+  offset: 0x81103280
+  count: 8
+
+obj_flower_aT_mat_model:
+  type: GFX
+  offset: 0x81103300
+  size: 0x20
+
+obj_flower_bT_mat_model:
+  type: GFX
+  offset: 0x81103320
+  size: 0x20
+
+obj_flower_cT_mat_model:
+  type: GFX
+  offset: 0x81103340
+  size: 0x20
+
+obj_flower_aT_gfx_model:
+  type: GFX
+  offset: 0x81103360
+  size: 0x20
+
+obj_flower_bT_gfx_model:
+  type: GFX
+  offset: 0x81103380
+  size: 0x20
+
+obj_flower_cT_gfx_model:
+  type: GFX
+  offset: 0x811033A0
+  size: 0x20

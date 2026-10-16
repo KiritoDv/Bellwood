@@ -1,5 +1,4 @@
-extern Gfx int_nog_f_tree_model[];
-extern Gfx int_nog_f_treeT_model[];
+#include "assets/data/model/int_nog_f_tree.h"
 
 aFTR_PROFILE iam_nog_f_tree = {
 	int_nog_f_tree_model,

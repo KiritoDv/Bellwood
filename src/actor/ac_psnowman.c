@@ -12,6 +12,8 @@
 #include "m_quest.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/act_darumaA.h"
+#include "assets/data/model/act_darumaB.h"
 
 static void aPSM_actor_ct(ACTOR* actor, GAME* game);
 static void aPSM_actor_dt(ACTOR* actor, GAME* game);
@@ -31,9 +33,6 @@ ACTOR_PROFILE Psnowman_Profile = {
     aPSM_actor_draw,
     NULL,
 };
-
-extern Gfx act_darumaB_model[];
-extern Gfx act_darumaA_model[];
 
 static void aPSM_actor_ct(ACTOR* actor, GAME* game) {
     int id;
@@ -149,6 +148,6 @@ static void aPSM_actor_draw(ACTOR* actor, GAME* game) {
     gSPMatrix(gfx++, _Matrix_to_Mtx_new(graph), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gfx++, act_darumaA_model);
 
-    NOW_POLY_OPA_DISP = gfx;
+    SET_POLY_OPA_DISP(gfx);
     CLOSE_DISP(graph);
 }

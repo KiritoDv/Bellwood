@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+obj_tree5_shadow_v:
+  type: VTX
+  offset: 0x81111DB0
+  count: 4
+
+obj_tree5_shadowT_mat_model:
+  type: GFX
+  offset: 0x81111DF0
+  size: 0x20
+
+obj_tree5_shadowT_gfx_model:
+  type: GFX
+  offset: 0x81111E10
+  size: 0x10

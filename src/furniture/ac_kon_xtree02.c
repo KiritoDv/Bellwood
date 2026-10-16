@@ -1,5 +1,4 @@
-extern Gfx int_kon_xtree02_on_model[];
-extern Gfx int_kon_xtree02_onT_model[];
+#include "assets/data/model/int_kon_xtree02.h"
 
 aFTR_PROFILE iam_kon_xtree02 = {
 	int_kon_xtree02_on_model,

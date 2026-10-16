@@ -1,0 +1,90 @@
+:config:
+  strict_declarations: true
+
+int_sum_bookcht01_pal:
+  type: TEXTURE
+  offset: 0x819B76E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bookcht01_mirror_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x819B7700
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bookcht01_front_tex:
+  type: TEXTURE
+  offset: 0x819B7720
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819B76E0
+
+int_sum_bookcht01_side_tex:
+  type: TEXTURE
+  offset: 0x819B78A0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819B76E0
+
+int_sum_bookcht01_back_tex:
+  type: TEXTURE
+  offset: 0x819B7A20
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819B76E0
+
+int_sum_bookcht01_top_tex:
+  type: TEXTURE
+  offset: 0x819B7BA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B76E0
+
+int_sum_bookcht01_book_tex:
+  type: TEXTURE
+  offset: 0x819B7C20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B76E0
+
+int_sum_bookcht01_mirror_tex:
+  type: TEXTURE
+  offset: 0x819B7E20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B7700
+
+int_sum_bookcht01_v:
+  type: VTX
+  offset: 0x819B7EA0
+  count: 36
+
+int_sum_bookcht01_on_model:
+  type: GFX
+  offset: 0x819B80E0
+  size: 0x88
+
+int_sum_bookcht01_onT_model:
+  type: GFX
+  offset: 0x819B8168
+  size: 0x98
+
+int_sum_bookcht01_envT_model:
+  type: GFX
+  offset: 0x819B8200
+  size: 0x60

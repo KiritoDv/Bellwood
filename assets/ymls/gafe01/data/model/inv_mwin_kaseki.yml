@@ -1,0 +1,32 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_kaseki2_pal:
+  type: TEXTURE
+  offset: 0x81454280
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_kaseki_pal:
+  type: TEXTURE
+  offset: 0x814542A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_kaseki2_tex:
+  type: TEXTURE
+  offset: 0x814542C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_kaseki_tex:
+  type: TEXTURE
+  offset: 0x814544C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

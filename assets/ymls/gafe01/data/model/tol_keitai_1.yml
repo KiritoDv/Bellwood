@@ -1,0 +1,65 @@
+:config:
+  strict_declarations: true
+
+tol_keitai_1_pal:
+  type: TEXTURE
+  offset: 0x815C5FC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_keitai_1_ueura1_tex_txt:
+  type: TEXTURE
+  offset: 0x815C5FE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x815C5FC0
+
+tol_keitai_1_ueomote1_tex_txt:
+  type: TEXTURE
+  offset: 0x815C60E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x815C5FC0
+
+tol_keitai_1_shitaura1_tex_txt:
+  type: TEXTURE
+  offset: 0x815C61E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x815C5FC0
+
+tol_keitai_1_shitaomote1_tex_txt:
+  type: TEXTURE
+  offset: 0x815C62E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x815C5FC0
+
+tol_keitai_1_v:
+  type: VTX
+  offset: 0x815C63E0
+  count: 29
+
+main1_keitai1_model:
+  type: GFX
+  offset: 0x815C65B0
+  size: 0x88
+
+main2_keitai1_model:
+  type: GFX
+  offset: 0x815C6638
+  size: 0x88
+
+cKF_bs_r_tol_keitai_1:
+  type: AC:CKF_SKELETON
+  offset: 0x815C66E4
+  counts: { joints: 3 }

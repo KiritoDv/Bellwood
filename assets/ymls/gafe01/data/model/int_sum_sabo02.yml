@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_sum_sabo02_pal:
+  type: TEXTURE
+  offset: 0x81A58300
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_sabo02_main_tex:
+  type: TEXTURE
+  offset: 0x81A58320
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A58300
+
+int_sum_sabo02_hachi_tex:
+  type: TEXTURE
+  offset: 0x81A58520
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A58300
+
+int_sum_sabo02_tuchi_tex:
+  type: TEXTURE
+  offset: 0x81A58620
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A58300
+
+int_sum_sabo02_hana_tex:
+  type: TEXTURE
+  offset: 0x81A58720
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A58300
+
+int_sum_sabo02_v:
+  type: VTX
+  offset: 0x81A587A0
+  count: 37
+
+int_sum_sabo02_on_model:
+  type: GFX
+  offset: 0x81A589F0
+  size: 0x60
+
+int_sum_sabo02_onT_model:
+  type: GFX
+  offset: 0x81A58A50
+  size: 0xA8

@@ -1,0 +1,101 @@
+:config:
+  strict_declarations: true
+
+int_sum_slot_pal:
+  type: TEXTURE
+  offset: 0x81A5BA40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_slot_reel1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5BA60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+int_sum_slot_reel2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5BB60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+int_sum_slot_leverbase_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5BC60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A5BA40
+
+int_sum_slot_lever_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5BD60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A5BA40
+
+int_sum_slot_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5BE60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A5BA40
+
+int_sum_slot_front_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5BF60
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A5BA40
+
+int_sum_slot_foot_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5C260
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A5BA40
+
+int_sum_slot_v:
+  type: VTX
+  offset: 0x81A5C360
+  count: 71
+
+int_sum_slot_reel_model:
+  type: GFX
+  offset: 0x81A5C7D0
+  size: 0x78
+
+int_sum_slot_base_model:
+  type: GFX
+  offset: 0x81A5C848
+  size: 0x150
+
+int_sum_slot_lever_model:
+  type: GFX
+  offset: 0x81A5C998
+  size: 0x58
+
+cKF_ba_r_int_sum_slot:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A5CA84
+  joints: 5
+  counts: { flags: 5, data: 51, keys: 2, fixed: 16 }
+
+cKF_bs_r_int_sum_slot:
+  type: AC:CKF_SKELETON
+  offset: 0x81A5CAD4
+  counts: { joints: 5 }

@@ -1,0 +1,107 @@
+:config:
+  strict_declarations: true
+
+int_sum_akiakane_pal:
+  type: TEXTURE
+  offset: 0x819855E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_akiakane_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81985600
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_akiakane_base_txt:
+  type: TEXTURE
+  offset: 0x81985620
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819855E0
+
+int_sum_akiakane_top_txt:
+  type: TEXTURE
+  offset: 0x819856A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819855E0
+
+int_sum_akiakane_body_txt:
+  type: TEXTURE
+  offset: 0x819858A0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819855E0
+
+int_sum_akiakane_side_txt:
+  type: TEXTURE
+  offset: 0x81985A20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819855E0
+
+int_sum_akiakane_hand_txt:
+  type: TEXTURE
+  offset: 0x81985C20
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81985600
+
+int_sum_akiakane_v:
+  type: VTX
+  offset: 0x81985D20
+  count: 69
+
+int_sum_akiakane_side_model:
+  type: GFX
+  offset: 0x81986170
+  size: 0x68
+
+int_sum_akiakane_komado_model:
+  type: GFX
+  offset: 0x819861D8
+  size: 0x58
+
+int_sum_akiakane_glass_model:
+  type: GFX
+  offset: 0x81986230
+  size: 0x68
+
+int_sum_akiakane_base_model:
+  type: GFX
+  offset: 0x81986298
+  size: 0xC8
+
+int_sum_akiakane_body_R_model:
+  type: GFX
+  offset: 0x81986360
+  size: 0x58
+
+int_sum_akiakane_body_L_model:
+  type: GFX
+  offset: 0x819863B8
+  size: 0x58
+
+cKF_ba_r_int_sum_akiakane:
+  type: AC:CKF_ANIMATION
+  offset: 0x819864D4
+  joints: 8
+  counts: { flags: 8, data: 66, keys: 9, fixed: 18 }
+
+cKF_bs_r_int_sum_akiakane:
+  type: AC:CKF_SKELETON
+  offset: 0x81986548
+  counts: { joints: 8 }

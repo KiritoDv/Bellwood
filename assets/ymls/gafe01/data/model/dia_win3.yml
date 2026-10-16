@@ -1,0 +1,41 @@
+:config:
+  strict_declarations: true
+
+lat_letter01_pal:
+  type: TEXTURE
+  offset: 0x8140AE20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+lat_letter01_04_tex:
+  type: TEXTURE
+  offset: 0x8140AE40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8140AE20
+
+lat_tegami_fusen_tex:
+  type: TEXTURE
+  offset: 0x8140AEC0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+dia_win3_v:
+  type: VTX
+  offset: 0x8140AF40
+  count: 19
+
+dia_win3_wT_model:
+  type: GFX
+  offset: 0x8140B070
+  size: 0x50
+
+dia_win3_fusenT_model:
+  type: GFX
+  offset: 0x8140B0C0
+  size: 0x38

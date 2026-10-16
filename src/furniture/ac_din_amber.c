@@ -1,6 +1,4 @@
-extern Gfx int_din_amber_on1_model[];
-extern Gfx int_din_amber_on1T_model[];
-extern Gfx int_din_amber_env_model[];
+#include "assets/data/model/int_din_amber.h"
 
 aFTR_PROFILE iam_din_amber = {
 	int_din_amber_on1_model,

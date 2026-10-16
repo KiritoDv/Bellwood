@@ -1,0 +1,108 @@
+:config:
+  strict_declarations: true
+
+obj_e_count02_0_tex:
+  type: TEXTURE
+  offset: 0x81519EC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_count02_1_tex:
+  type: TEXTURE
+  offset: 0x8151A0C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_count02_2_tex:
+  type: TEXTURE
+  offset: 0x8151A2C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_count02_3_tex:
+  type: TEXTURE
+  offset: 0x8151A4C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_count02_4_tex:
+  type: TEXTURE
+  offset: 0x8151A6C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_count02_5_tex:
+  type: TEXTURE
+  offset: 0x8151A8C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_count02_6_tex:
+  type: TEXTURE
+  offset: 0x8151AAC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_count02_7_tex:
+  type: TEXTURE
+  offset: 0x8151ACC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_count02_8_tex:
+  type: TEXTURE
+  offset: 0x8151AEC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_count02_9_tex:
+  type: TEXTURE
+  offset: 0x8151B0C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_count02_cl_v:
+  type: VTX
+  offset: 0x8151B2C0
+  count: 16
+
+obj_e_c2_ani_cl01_sita_model:
+  type: GFX
+  offset: 0x8151B3C0
+  size: 0x68
+
+obj_e_c2_ani_ci01_mae_model:
+  type: GFX
+  offset: 0x8151B428
+  size: 0x68
+
+cKF_bs_r_obj_e_count02_cl:
+  type: AC:CKF_SKELETON
+  offset: 0x8151B4B4
+  counts: { joints: 3 }
+
+cKF_ba_r_obj_e_count02_cl:
+  type: AC:CKF_ANIMATION
+  offset: 0x8151B4FC
+  joints: 3
+  counts: { flags: 3, data: 15, keys: 1, fixed: 11 }

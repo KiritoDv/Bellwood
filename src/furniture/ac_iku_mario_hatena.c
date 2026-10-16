@@ -1,6 +1,4 @@
-extern u16 int_iku_mario_hatena_a_pal[];
-extern u16 int_iku_mario_hatena_b_pal[];
-extern u16 int_iku_mario_hatena_c_pal[];
+#include "assets/data/model/int_iku_mario_hatena.h"
 
 static u16* fIMH_palette_table[] = {
     // clang-format off
@@ -13,9 +11,6 @@ static u16* fIMH_palette_table[] = {
 	int_iku_mario_hatena_b_pal,
     // clang-format on
 };
-
-extern Gfx int_iku_mario_hatena_model_a_model[];
-extern Gfx int_iku_mario_hatena_model_b_model[];
 
 static void fIMH_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     GAME_PLAY* play = (GAME_PLAY*)game;

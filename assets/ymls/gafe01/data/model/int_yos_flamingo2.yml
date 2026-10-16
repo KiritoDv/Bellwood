@@ -1,0 +1,37 @@
+:config:
+  strict_declarations: true
+
+int_yos_flamingo2_pal:
+  type: TEXTURE
+  offset: 0x81AD6180
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yos_flamingo2_kao_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD61A0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AD6180
+
+int_yos_flamingo2_dou_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD65A0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AD6180
+
+int_yos_flamingo2_v:
+  type: VTX
+  offset: 0x81AD69A0
+  count: 69
+
+int_yos_flamingo2_body_model:
+  type: GFX
+  offset: 0x81AD6DF0
+  size: 0x110

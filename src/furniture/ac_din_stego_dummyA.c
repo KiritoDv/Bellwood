@@ -1,4 +1,4 @@
-extern Gfx int_din_stego_dummyA_model[];
+#include "assets/data/model/int_din_stego_dummyA.h"
 
 aFTR_PROFILE iam_din_stego_dummyA = {
 	int_din_stego_dummyA_model,

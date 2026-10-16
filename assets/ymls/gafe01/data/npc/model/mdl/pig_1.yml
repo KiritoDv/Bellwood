@@ -1,0 +1,72 @@
+:config:
+  strict_declarations: true
+
+pig_1_v:
+  type: VTX
+  offset: 0x8133C940
+  count: 319
+
+head_pig_model:
+  type: GFX
+  offset: 0x8133DD30
+  size: 0x138
+
+Rarm2_pig_model:
+  type: GFX
+  offset: 0x8133DE68
+  size: 0x88
+
+Rarm1_pig_model:
+  type: GFX
+  offset: 0x8133DEF0
+  size: 0x78
+
+Larm2_pig_model:
+  type: GFX
+  offset: 0x8133DF68
+  size: 0x88
+
+Larm1_pig_model:
+  type: GFX
+  offset: 0x8133DFF0
+  size: 0x78
+
+chest_pig_model:
+  type: GFX
+  offset: 0x8133E068
+  size: 0xA8
+
+tail1_pig_model:
+  type: GFX
+  offset: 0x8133E110
+  size: 0x80
+
+Rfoot2_pig_model:
+  type: GFX
+  offset: 0x8133E190
+  size: 0x80
+
+Rfoot1_pig_model:
+  type: GFX
+  offset: 0x8133E210
+  size: 0xC0
+
+Lfoot2_pig_model:
+  type: GFX
+  offset: 0x8133E2D0
+  size: 0x80
+
+Lfoot1_pig_model:
+  type: GFX
+  offset: 0x8133E350
+  size: 0xC0
+
+base_pig_model:
+  type: GFX
+  offset: 0x8133E410
+  size: 0x70
+
+cKF_bs_r_pig_1:
+  type: AC:CKF_SKELETON
+  offset: 0x8133E5B8
+  counts: { joints: 26 }

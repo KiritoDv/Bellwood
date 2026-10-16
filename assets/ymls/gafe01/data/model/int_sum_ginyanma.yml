@@ -1,0 +1,107 @@
+:config:
+  strict_declarations: true
+
+int_sum_ginyanma_pal:
+  type: TEXTURE
+  offset: 0x819E7E20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_ginyanma_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x819E7E40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_ginyanma_body_txt:
+  type: TEXTURE
+  offset: 0x819E7E60
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819E7E20
+
+int_sum_ginyanma_base_txt:
+  type: TEXTURE
+  offset: 0x819E7FE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E7E20
+
+int_sum_ginyanma_top_txt:
+  type: TEXTURE
+  offset: 0x819E8060
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E7E20
+
+int_sum_ginyanma_side_txt:
+  type: TEXTURE
+  offset: 0x819E8260
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E7E20
+
+int_sum_ginyanma_hand_txt:
+  type: TEXTURE
+  offset: 0x819E8460
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E7E40
+
+int_sum_ginyanma_v:
+  type: VTX
+  offset: 0x819E8560
+  count: 69
+
+int_sum_ginyanma_side_model:
+  type: GFX
+  offset: 0x819E89B0
+  size: 0x68
+
+int_sum_ginyanma_komado_model:
+  type: GFX
+  offset: 0x819E8A18
+  size: 0x58
+
+int_sum_ginyanma_glass_model:
+  type: GFX
+  offset: 0x819E8A70
+  size: 0x68
+
+int_sum_ginyanma_base_model:
+  type: GFX
+  offset: 0x819E8AD8
+  size: 0xC8
+
+int_sum_ginyanma_body_R_model:
+  type: GFX
+  offset: 0x819E8BA0
+  size: 0x58
+
+int_sum_ginyanma_body_L_model:
+  type: GFX
+  offset: 0x819E8BF8
+  size: 0x58
+
+cKF_ba_r_int_sum_ginyanma:
+  type: AC:CKF_ANIMATION
+  offset: 0x819E8D08
+  joints: 8
+  counts: { flags: 8, data: 60, keys: 9, fixed: 18 }
+
+cKF_bs_r_int_sum_ginyanma:
+  type: AC:CKF_SKELETON
+  offset: 0x819E8D7C
+  counts: { joints: 8 }

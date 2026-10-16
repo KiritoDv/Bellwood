@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+act_m_oniyanma_pal:
+  type: TEXTURE
+  offset: 0x812698A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_oniyanma:
+  type: TEXTURE
+  offset: 0x812698C0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x812698A0
+
+act_m_oniyanma_v:
+  type: VTX
+  offset: 0x81269A40
+  count: 18
+
+act_m_oniyanma1_1T_model:
+  type: GFX
+  offset: 0x81269B60
+  size: 0x60
+
+act_m_oniyanma1_2T_model:
+  type: GFX
+  offset: 0x81269BC0
+  size: 0x60
+
+act_m_oniyanma2_2T_model:
+  type: GFX
+  offset: 0x81269C20
+  size: 0x60

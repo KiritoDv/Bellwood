@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_s_stoneA_pal:
+  type: TEXTURE
+  offset: 0x8110E080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_stoneA_tex:
+  type: TEXTURE
+  offset: 0x8110E0A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8110E080
+
+obj_s_stoneA_v:
+  type: VTX
+  offset: 0x8110E2A0
+  count: 10
+
+obj_s_stoneA_mat_model:
+  type: GFX
+  offset: 0x8110E340
+  size: 0x28
+
+obj_s_stoneA_gfx_model:
+  type: GFX
+  offset: 0x8110E368
+  size: 0x28

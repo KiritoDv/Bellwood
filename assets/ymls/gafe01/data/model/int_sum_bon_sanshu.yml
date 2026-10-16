@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_bon_sanshu_pal:
+  type: TEXTURE
+  offset: 0x819B3E80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bon_sanshu_tree_tex:
+  type: TEXTURE
+  offset: 0x819B3EA0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B3E80
+
+int_sum_bon_sanshu_treetop_tex:
+  type: TEXTURE
+  offset: 0x819B40A0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819B3E80
+
+int_sum_bon_sanshu_eda_tex:
+  type: TEXTURE
+  offset: 0x819B4220
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B3E80
+
+int_sum_bon_sanshu_eda2_tex:
+  type: TEXTURE
+  offset: 0x819B4320
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B3E80
+
+int_sum_bon_sanshu_stand_tex:
+  type: TEXTURE
+  offset: 0x819B4420
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B3E80
+
+int_sum_bon_sanshu_earth_tex:
+  type: TEXTURE
+  offset: 0x819B4520
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B3E80
+
+int_sum_bon_sanshu_hachi_tex:
+  type: TEXTURE
+  offset: 0x819B45A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B3E80
+
+int_sum_bon_sanshu_v:
+  type: VTX
+  offset: 0x819B46A0
+  count: 93
+
+int_sum_bon_sanshu_on_model:
+  type: GFX
+  offset: 0x819B4C70
+  size: 0x60
+
+int_sum_bon_sanshu_onT_model:
+  type: GFX
+  offset: 0x819B4CD0
+  size: 0x120

@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+ef_w_tree_leaf_modeset:
+  type: GFX
+  offset: 0x8165D8A0
+  size: 0x38
+
+ef_w_tree_trunk_modeset:
+  type: GFX
+  offset: 0x8165D8D8
+  size: 0x28
+
+ef_w_tree_light_modeset:
+  type: GFX
+  offset: 0x8165D900
+  size: 0x38

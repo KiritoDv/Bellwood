@@ -1,10 +1,13 @@
 #include "ac_rope.h"
+#include "ac_asset.h"
 
 #include "m_rcp.h"
 #include "m_name_table.h"
 #include "m_field_info.h"
 #include "m_event.h"
 #include "sys_matrix.h"
+#include "assets/data/model/tol_rope_1.h"
+#include "assets/data/model/tol_rope_1_shadow.h"
 
 static void aRP_actor_ct(ACTOR* actor, GAME* game);
 static void aRP_actor_dt(ACTOR* actor, GAME* game);
@@ -23,10 +26,6 @@ ACTOR_PROFILE Rope_Profile = {
     aRP_actor_draw,
     NULL,
 };
-
-extern Vtx tol_rope_1_v[0x3C];
-extern Gfx tol_rope_1T_model[];
-extern Gfx tol_rope_1_shadowT_model[];
 
 static void aRP_actor_ct(ACTOR* actor, GAME* game) {
 
@@ -73,9 +72,9 @@ static void aRP_make_vtx(Vtx* vtx) {
 
     flag = flg;
     fact = (*(f32*)mEv_get_save_area(0xE, 9) * 100.0f);
-    make = tol_rope_1_v;
+    make = (Vtx*)LOAD_ASSET(tol_rope_1_v);
 
-    for (i = 0; i < ARRAY_SIZE(tol_rope_1_v, Vtx); i++) {
+    for (i = 0; i < (ASSET_SIZE(tol_rope_1_v) / sizeof(Vtx)); i++) {
         vtx[0] = make[0];
 
         if (flag[0] == 1) {
@@ -99,7 +98,7 @@ static void aRP_actor_draw(ACTOR* actor, GAME* game) {
 
     _texture_z_light_fog_prim_npc(graph);
 
-    vtx = GRAPH_ALLOC_TYPE(graph, Vtx, ARRAY_SIZE(tol_rope_1_v, Vtx));
+    vtx = GRAPH_ALLOC_TYPE(graph, Vtx, (ASSET_SIZE(tol_rope_1_v) / sizeof(Vtx)));
 
     work = vtx;
 

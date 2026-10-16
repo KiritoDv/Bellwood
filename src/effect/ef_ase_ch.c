@@ -1,5 +1,6 @@
 #include "ef_effect_control.h"
 #include "m_common_data.h"
+#include "assets/data/model/ef_ase01_00.h"
 
 static void eASC_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eASC_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -17,7 +18,6 @@ eEC_PROFILE_c iam_ef_ase_ch = {
     eEC_DEFAULT_DEATH_DIST,
     // clang-format on
 };
-extern Gfx ef_ase01_00_modelT[];
 
 static f32 eASC_scale_table[] = {
     0.00027000002f, 0.00027000002f, 0.00027000002f, 0.00054000004f, 0.0010800001f,0.0016200001f,

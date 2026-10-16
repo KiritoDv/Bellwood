@@ -1,0 +1,125 @@
+:config:
+  strict_declarations: true
+
+grl_1_skin_tex_txt:
+  type: TEXTURE
+  offset: 0x81221C20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+grl_1_hair_tex_txt:
+  type: TEXTURE
+  offset: 0x81221CA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+grl_1_shoe_tex_txt:
+  type: TEXTURE
+  offset: 0x81221D20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+grl_1_bottom_tex_txt:
+  type: TEXTURE
+  offset: 0x81221DA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+grl_1_foot_tex_txt:
+  type: TEXTURE
+  offset: 0x81221E20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+grl_1_hole_tex_txt:
+  type: TEXTURE
+  offset: 0x81221EA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+grl_1_v:
+  type: VTX
+  offset: 0x81221F20
+  count: 396
+
+head_grl_model:
+  type: GFX
+  offset: 0x812237E0
+  size: 0x1B0
+
+Rarm2_grl_model:
+  type: GFX
+  offset: 0x81223990
+  size: 0xA8
+
+Rarm1_grl_model:
+  type: GFX
+  offset: 0x81223A38
+  size: 0xD8
+
+Larm2_grl_model:
+  type: GFX
+  offset: 0x81223B10
+  size: 0xA8
+
+Larm1_grl_model:
+  type: GFX
+  offset: 0x81223BB8
+  size: 0xD8
+
+chest_grl_model:
+  type: GFX
+  offset: 0x81223C90
+  size: 0x98
+
+Rfoot3_grl_model:
+  type: GFX
+  offset: 0x81223D28
+  size: 0xA8
+
+Rffot2_grl_model:
+  type: GFX
+  offset: 0x81223DD0
+  size: 0x80
+
+Rfoot1_grl_model:
+  type: GFX
+  offset: 0x81223E50
+  size: 0x60
+
+Lfoot3_grl_model:
+  type: GFX
+  offset: 0x81223EB0
+  size: 0xA8
+
+Lfoot2_grl_model:
+  type: GFX
+  offset: 0x81223F58
+  size: 0x80
+
+Lfoot1_grl_model:
+  type: GFX
+  offset: 0x81223FD8
+  size: 0x60
+
+bace_grl_model:
+  type: GFX
+  offset: 0x81224038
+  size: 0xB8
+
+cKF_bs_r_grl_1:
+  type: AC:CKF_SKELETON
+  offset: 0x81224228
+  counts: { joints: 26 }

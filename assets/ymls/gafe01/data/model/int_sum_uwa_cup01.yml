@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_uwa_cup01_pal:
+  type: TEXTURE
+  offset: 0x81A78140
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_uwa_cup01_side:
+  type: TEXTURE
+  offset: 0x81A78160
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A78140
+
+int_sum_uwa_cup01_tote:
+  type: TEXTURE
+  offset: 0x81A78260
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A78140
+
+int_sum_uwa_cup01_kuchi:
+  type: TEXTURE
+  offset: 0x81A78360
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A78140
+
+int_sum_uwa_cup01_cup:
+  type: TEXTURE
+  offset: 0x81A783E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A78140
+
+int_sum_uwa_cup01_top:
+  type: TEXTURE
+  offset: 0x81A78460
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A78140
+
+int_sum_uwa_cup01_cuptote:
+  type: TEXTURE
+  offset: 0x81A784E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A78140
+
+int_sum_uwa_cup01_base:
+  type: TEXTURE
+  offset: 0x81A78560
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A78140
+
+int_sum_uwa_cup01_v:
+  type: VTX
+  offset: 0x81A78660
+  count: 69
+
+int_sum_uwa_cup01_on_model:
+  type: GFX
+  offset: 0x81A78AB0
+  size: 0x98
+
+int_sum_uwa_cup01_onT_model:
+  type: GFX
+  offset: 0x81A78B48
+  size: 0x100

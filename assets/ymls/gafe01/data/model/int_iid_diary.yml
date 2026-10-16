@@ -1,0 +1,73 @@
+:config:
+  strict_declarations: true
+
+int_iid_diary:
+  type: TEXTURE
+  offset: 0x81814060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iid_diary_mae_tex:
+  type: TEXTURE
+  offset: 0x81814080
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81814060
+
+int_iid_diary_hyoushi_tex:
+  type: TEXTURE
+  offset: 0x818140A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81814060
+
+int_iid_diary_soko_tex:
+  type: TEXTURE
+  offset: 0x818142A0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81814060
+
+int_iid_diary_ue_tex:
+  type: TEXTURE
+  offset: 0x818142C0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81814060
+
+int_iid_diary_esaki_tex:
+  type: TEXTURE
+  offset: 0x818142E0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81814060
+
+int_iid_diary_ebody_tex:
+  type: TEXTURE
+  offset: 0x81814300
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81814060
+
+int_iid_diary_v:
+  type: VTX
+  offset: 0x81814320
+  count: 56
+
+int_iid_diary_model:
+  type: GFX
+  offset: 0x818146A0
+  size: 0x118

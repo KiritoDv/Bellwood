@@ -3,11 +3,7 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
-
-extern u8 ef_dust01_0[];
-extern u8 ef_dust01_1[];
-extern u8 ef_dust01_2[];
-extern u8 ef_dust01_3[];
+#include "assets/data/model/ef_dust01_00.h"
 
 static u8* eTDT_texture_table[4] = {
     ef_dust01_0, ef_dust01_1, ef_dust01_2, ef_dust01_3
@@ -140,8 +136,6 @@ static u8 eTDT_prim_f[15] = {
     0xFF, 0xFF, 0x55, 0xAA, 0xFF, 0xFF, 0x55, 0xAA,
     0xFF, 0xFF, 0x55, 0xAA, 0xFF, 0xFF, 0xFF
 };
-
-extern Gfx ef_dust01_modelT[];
 
 static void eTumbleDust_dw(eEC_Effect_c* effect, GAME* game) {
     s16 counter = 30 - effect->timer;

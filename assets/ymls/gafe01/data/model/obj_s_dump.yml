@@ -1,0 +1,74 @@
+:config:
+  strict_declarations: true
+
+obj_s_dump_t1_tex:
+  type: TEXTURE
+  offset: 0x815208A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_dump_t2_tex:
+  type: TEXTURE
+  offset: 0x815210A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_dump_v:
+  type: VTX
+  offset: 0x815218A0
+  count: 68
+
+obj_s_dump_t1T_model:
+  type: GFX
+  offset: 0x81521CE0
+  size: 0x90
+
+obj_s_dump_t2T_model:
+  type: GFX
+  offset: 0x81521D70
+  size: 0x70
+
+dump_s_DL_model:
+  type: GFX
+  offset: 0x81521DE0
+  size: 0x18
+
+obj_w_dump_t1_tex:
+  type: TEXTURE
+  offset: 0x81521E00
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_dump_t2_tex:
+  type: TEXTURE
+  offset: 0x81522600
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_dump_v:
+  type: VTX
+  offset: 0x81522E00
+  count: 68
+
+obj_w_dump_t1T_model:
+  type: GFX
+  offset: 0x81523240
+  size: 0x90
+
+obj_w_dump_t2T_model:
+  type: GFX
+  offset: 0x815232D0
+  size: 0x70
+
+dump_w_DL_model:
+  type: GFX
+  offset: 0x81523340
+  size: 0x18

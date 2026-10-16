@@ -1,0 +1,107 @@
+:config:
+  strict_declarations: true
+
+int_sum_danna_pal:
+  type: TEXTURE
+  offset: 0x819D0D80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_danna_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x819D0DA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_danna_base_txt:
+  type: TEXTURE
+  offset: 0x819D0DC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D0D80
+
+int_sum_danna_top_txt:
+  type: TEXTURE
+  offset: 0x819D0E40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D0D80
+
+int_sum_danna_side_txt:
+  type: TEXTURE
+  offset: 0x819D1040
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D0D80
+
+int_sum_danna_body_txt:
+  type: TEXTURE
+  offset: 0x819D1240
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x819D0D80
+
+int_sum_danna_hand_txt:
+  type: TEXTURE
+  offset: 0x819D1540
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D0DA0
+
+int_sum_danna_v:
+  type: VTX
+  offset: 0x819D15C0
+  count: 66
+
+int_sum_danna_side_model:
+  type: GFX
+  offset: 0x819D19E0
+  size: 0x68
+
+int_sum_danna_komado_model:
+  type: GFX
+  offset: 0x819D1A48
+  size: 0x58
+
+int_sum_danna_glass_model:
+  type: GFX
+  offset: 0x819D1AA0
+  size: 0x68
+
+int_sum_danna_base_model:
+  type: GFX
+  offset: 0x819D1B08
+  size: 0x98
+
+int_sum_danna_body_model:
+  type: GFX
+  offset: 0x819D1BA0
+  size: 0x68
+
+int_sum_danna_feeler_model:
+  type: GFX
+  offset: 0x819D1C08
+  size: 0x58
+
+cKF_ba_r_int_sum_danna:
+  type: AC:CKF_ANIMATION
+  offset: 0x819D1DB4
+  joints: 8
+  counts: { flags: 8, data: 138, keys: 7, fixed: 20 }
+
+cKF_bs_r_int_sum_danna:
+  type: AC:CKF_SKELETON
+  offset: 0x819D1E28
+  counts: { joints: 8 }

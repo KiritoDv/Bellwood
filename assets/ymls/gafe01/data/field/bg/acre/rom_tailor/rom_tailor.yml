@@ -1,0 +1,499 @@
+:config:
+  strict_declarations: true
+
+rom_tailor_wall_pal:
+  type: TEXTURE
+  offset: 0x818DBD60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_tailor_floor_pal:
+  type: TEXTURE
+  offset: 0x818DBD80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_tailor_mado_pal:
+  type: TEXTURE
+  offset: 0x818DBDA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_tailor_reji_pal:
+  type: TEXTURE
+  offset: 0x818DBDC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_tailor_dogu_pal:
+  type: TEXTURE
+  offset: 0x818DBDE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_tailor_misin_pal:
+  type: TEXTURE
+  offset: 0x818DBE00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_tailor_table_pal:
+  type: TEXTURE
+  offset: 0x818DBE20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_tailor_box_pal:
+  type: TEXTURE
+  offset: 0x818DBE40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_tailor_quilt_pal:
+  type: TEXTURE
+  offset: 0x818DBE60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_tailor_ent_pal:
+  type: TEXTURE
+  offset: 0x818DBE80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_tailor_wallA_tex:
+  type: TEXTURE
+  offset: 0x818DBEA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818DBD60
+
+rom_tailor_wallB_tex:
+  type: TEXTURE
+  offset: 0x818DC6A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818DBD60
+
+rom_tailor_floorA_tex:
+  type: TEXTURE
+  offset: 0x818DCEA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818DBD80
+
+rom_tailor_floorB_tex:
+  type: TEXTURE
+  offset: 0x818DD6A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818DBD80
+
+rom_tailor_floorC_tex:
+  type: TEXTURE
+  offset: 0x818DDEA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818DBD80
+
+rom_tailor_floorD_tex:
+  type: TEXTURE
+  offset: 0x818DE6A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818DBD80
+
+rom_tailor_kage1_tex:
+  type: TEXTURE
+  offset: 0x818DEEA0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+rom_tailor_mado_tex:
+  type: TEXTURE
+  offset: 0x818DEFA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBDA0
+
+rom_tailor_pic1_tex:
+  type: TEXTURE
+  offset: 0x818DF1A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBDA0
+
+rom_tailor_pic2_tex:
+  type: TEXTURE
+  offset: 0x818DF3A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBDA0
+
+rom_tailor_pic3_tex:
+  type: TEXTURE
+  offset: 0x818DF5A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBDA0
+
+rom_tailor_pic4_tex:
+  type: TEXTURE
+  offset: 0x818DF7A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBDA0
+
+rom_tailor_pic5_tex:
+  type: TEXTURE
+  offset: 0x818DF9A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBDA0
+
+rom_tailor_pic6_tex:
+  type: TEXTURE
+  offset: 0x818DFBA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBDA0
+
+rom_tailor_pic7_tex:
+  type: TEXTURE
+  offset: 0x818DFDA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBDA0
+
+rom_tailor_pic8_tex:
+  type: TEXTURE
+  offset: 0x818DFFA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBDA0
+
+rom_tailor_tyoki_tex:
+  type: TEXTURE
+  offset: 0x818E01A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBDC0
+
+rom_tailor_cloth1_tex:
+  type: TEXTURE
+  offset: 0x818E02A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBDE0
+
+rom_tailor_misin2_tex:
+  type: TEXTURE
+  offset: 0x818E0320
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE00
+
+rom_tailor_table_mae_tex:
+  type: TEXTURE
+  offset: 0x818E0520
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE20
+
+rom_tailor_table_yoko_tex:
+  type: TEXTURE
+  offset: 0x818E0620
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE20
+
+rom_tailor_table_ue_tex:
+  type: TEXTURE
+  offset: 0x818E06A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE20
+
+rom_tailor_ito_tex:
+  type: TEXTURE
+  offset: 0x818E07A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBDE0
+
+rom_tailor_table_reji_tex:
+  type: TEXTURE
+  offset: 0x818E09A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE20
+
+rom_tailor_misin1_tex:
+  type: TEXTURE
+  offset: 0x818E0A20
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE00
+
+rom_tailor_misindai_tex:
+  type: TEXTURE
+  offset: 0x818E0C20
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE00
+
+rom_tailor_table_misin1_tex:
+  type: TEXTURE
+  offset: 0x818E0E20
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE20
+
+rom_tailor_reji_tex:
+  type: TEXTURE
+  offset: 0x818E0F20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBDC0
+
+rom_tailor_table_misin2_tex:
+  type: TEXTURE
+  offset: 0x818E1120
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE20
+
+rom_tailor_box_tex:
+  type: TEXTURE
+  offset: 0x818E11A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBE40
+
+rom_tailor_box1_tex:
+  type: TEXTURE
+  offset: 0x818E12A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE40
+
+rom_tailor_box2_tex:
+  type: TEXTURE
+  offset: 0x818E1320
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE40
+
+rom_tailor_box3_tex:
+  type: TEXTURE
+  offset: 0x818E13A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE40
+
+rom_tailor_box4_tex:
+  type: TEXTURE
+  offset: 0x818E1420
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE40
+
+rom_tailor_box5_tex:
+  type: TEXTURE
+  offset: 0x818E14A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE40
+
+rom_tailor_box6_tex:
+  type: TEXTURE
+  offset: 0x818E1520
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE40
+
+rom_tailor_box7_tex:
+  type: TEXTURE
+  offset: 0x818E15A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE40
+
+rom_tailor_box8_tex:
+  type: TEXTURE
+  offset: 0x818E1620
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE40
+
+rom_tailor_kage2_tex:
+  type: TEXTURE
+  offset: 0x818E16A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+rom_tailor_quilt_tex:
+  type: TEXTURE
+  offset: 0x818E1720
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818DBE60
+
+rom_tailor_ent_tex:
+  type: TEXTURE
+  offset: 0x818E1F20
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE80
+
+rom_tailor_misinbari1_tex:
+  type: TEXTURE
+  offset: 0x818E2020
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE00
+
+rom_tailor_misinbari2_tex:
+  type: TEXTURE
+  offset: 0x818E20A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBE00
+
+rom_tailor_tape_tex:
+  type: TEXTURE
+  offset: 0x818E2120
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DBDE0
+
+rom_tailor_dogu1_tex:
+  type: TEXTURE
+  offset: 0x818E2320
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBDE0
+
+rom_tailor_dogu2_tex:
+  type: TEXTURE
+  offset: 0x818E23A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818DBDE0
+
+rom_tailor_v:
+  type: VTX
+  offset: 0x818E2420
+  count: 478
+
+rom_tailor_modelT:
+  type: GFX
+  offset: 0x818E4200
+  size: 0x98
+
+rom_tailor_model:
+  type: GFX
+  offset: 0x818E4298
+  size: 0x818

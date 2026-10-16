@@ -1,0 +1,219 @@
+:config:
+  strict_declarations: true
+
+des_win_sen_tex:
+  type: TEXTURE
+  offset: 0x81401D80
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_kirikae_tex:
+  type: TEXTURE
+  offset: 0x81401E00
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_win_cwaku_tex:
+  type: TEXTURE
+  offset: 0x81402200
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_aw1_tex:
+  type: TEXTURE
+  offset: 0x81402280
+  format: IA8
+  width: 64
+  height: 32
+  source_encoding: gx
+
+des_win_aw2_tex:
+  type: TEXTURE
+  offset: 0x81402A80
+  format: IA8
+  width: 64
+  height: 32
+  source_encoding: gx
+
+des_win_aw3_tex:
+  type: TEXTURE
+  offset: 0x81403280
+  format: IA8
+  width: 16
+  height: 32
+  source_encoding: gx
+
+des_win_aw4_tex:
+  type: TEXTURE
+  offset: 0x81403480
+  format: IA8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+des_win_aw5_tex:
+  type: TEXTURE
+  offset: 0x81403C80
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+des_win_aw6_tex:
+  type: TEXTURE
+  offset: 0x81403E80
+  format: IA8
+  width: 16
+  height: 32
+  source_encoding: gx
+
+des_win_aw7_tex:
+  type: TEXTURE
+  offset: 0x81404080
+  format: IA8
+  width: 16
+  height: 32
+  source_encoding: gx
+
+des_win_aw8_tex:
+  type: TEXTURE
+  offset: 0x81404280
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_color_tex:
+  type: TEXTURE
+  offset: 0x81404380
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_start_tex:
+  type: TEXTURE
+  offset: 0x81404400
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kei_win_quit_tex:
+  type: TEXTURE
+  offset: 0x81404500
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+des_win_v:
+  type: VTX
+  offset: 0x81404700
+  count: 216
+
+des_win_before:
+  type: GFX
+  offset: 0x81405480
+  size: 0x20
+
+des_win_area1_model:
+  type: GFX
+  offset: 0x814054A0
+  size: 0x28
+
+des_win_area2_model:
+  type: GFX
+  offset: 0x814054C8
+  size: 0x18
+
+des_win_area3_model:
+  type: GFX
+  offset: 0x814054E0
+  size: 0x18
+
+des_win_area4_model:
+  type: GFX
+  offset: 0x814054F8
+  size: 0x18
+
+des_win_waku_model:
+  type: GFX
+  offset: 0x81405510
+  size: 0x40
+
+des_win_toubai_model:
+  type: GFX
+  offset: 0x81405550
+  size: 0x38
+
+des_win_main_model:
+  type: GFX
+  offset: 0x81405588
+  size: 0x38
+
+des_win_grid_model:
+  type: GFX
+  offset: 0x814055C0
+  size: 0x48
+
+des_win_color_before_model:
+  type: GFX
+  offset: 0x81405608
+  size: 0x28
+
+des_win_color_model:
+  type: GFX
+  offset: 0x81405630
+  size: 0x18
+
+des_win_waku2_model:
+  type: GFX
+  offset: 0x81405648
+  size: 0x48
+
+des_win_shikiri_model:
+  type: GFX
+  offset: 0x81405690
+  size: 0x30
+
+des_win_grid2_model:
+  type: GFX
+  offset: 0x814056C0
+  size: 0x48
+
+des_win_shitaT_model:
+  type: GFX
+  offset: 0x81405708
+  size: 0x160
+
+des_win_kirikaeT_model:
+  type: GFX
+  offset: 0x81405868
+  size: 0x50
+
+des_win_startT_model:
+  type: GFX
+  offset: 0x814058B8
+  size: 0x50
+
+des_win_owariT_model:
+  type: GFX
+  offset: 0x81405908
+  size: 0x50
+
+des_win_before_model:
+  type: GFX
+  offset: 0x81405958
+  size: 0x18
+
+des_win_before_model_2:
+  type: GFX
+  offset: 0x81405970
+  size: 0x20

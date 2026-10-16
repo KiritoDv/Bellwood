@@ -1,4 +1,4 @@
-extern Gfx int_iid_funediary_model[];
+#include "assets/data/model/int_iid_funediary.h"
 
 aFTR_PROFILE iam_iid_funediary = {
 	int_iid_funediary_model,

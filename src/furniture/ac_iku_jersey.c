@@ -1,4 +1,4 @@
-extern Gfx int_iku_jersey_model_model[];
+#include "assets/data/model/int_iku_jersey.h"
 
 aFTR_PROFILE iam_iku_jersey = {
 	int_iku_jersey_model_model,

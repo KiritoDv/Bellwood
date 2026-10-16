@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_ayu_pal:
+  type: TEXTURE
+  offset: 0x8167A040
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_ayu_body_txt:
+  type: TEXTURE
+  offset: 0x8167A060
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x8167A040
+
+act_mus_ayu_a1_v:
+  type: VTX
+  offset: 0x8167A360
+  count: 66
+
+act_mus_ayu_sakana_body_model:
+  type: GFX
+  offset: 0x8167A780
+  size: 0x88
+
+act_mus_ayu_sakana_head_model:
+  type: GFX
+  offset: 0x8167A808
+  size: 0x58
+
+cKF_bs_r_act_mus_ayu_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x8167A884
+  counts: { joints: 3 }

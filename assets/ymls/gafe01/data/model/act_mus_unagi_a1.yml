@@ -1,0 +1,53 @@
+:config:
+  strict_declarations: true
+
+int_sum_unagi_pal:
+  type: TEXTURE
+  offset: 0x8168E100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_unagi_body_txt:
+  type: TEXTURE
+  offset: 0x8168E120
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x8168E100
+
+act_mus_unagi_a1_v:
+  type: VTX
+  offset: 0x8168E320
+  count: 144
+
+act_mus_unagi_sakana_tail_model:
+  type: GFX
+  offset: 0x8168EC20
+  size: 0x60
+
+act_mus_unagi_sakana_leg2_model:
+  type: GFX
+  offset: 0x8168EC80
+  size: 0x88
+
+act_mus_unagi_sakana_leg_model:
+  type: GFX
+  offset: 0x8168ED08
+  size: 0x78
+
+act_mus_unagi_sakana_body_model:
+  type: GFX
+  offset: 0x8168ED80
+  size: 0x70
+
+act_mus_unagi_sakana_head_model:
+  type: GFX
+  offset: 0x8168EDF0
+  size: 0x40
+
+cKF_bs_r_act_mus_unagi_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x8168EE78
+  counts: { joints: 6 }

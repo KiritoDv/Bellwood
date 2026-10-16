@@ -1,0 +1,97 @@
+:config:
+  strict_declarations: true
+
+int_sum_dojyo_pal:
+  type: TEXTURE
+  offset: 0x819D38C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_dojyo_glass_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x819D38E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_dojyo_body_txt:
+  type: TEXTURE
+  offset: 0x819D3900
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D38C0
+
+int_sum_dojyo_side_txt:
+  type: TEXTURE
+  offset: 0x819D3A00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D38C0
+
+int_sum_dojyo_base_txt:
+  type: TEXTURE
+  offset: 0x819D3C00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D38C0
+
+int_sum_dojyo_top_txt:
+  type: TEXTURE
+  offset: 0x819D3C80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D38C0
+
+int_sum_dojyo_glass_txt:
+  type: TEXTURE
+  offset: 0x819D3D80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D38E0
+
+int_sum_dojyo_v:
+  type: VTX
+  offset: 0x819D3E80
+  count: 45
+
+int_sum_dojyo_sakana_model:
+  type: GFX
+  offset: 0x819D4150
+  size: 0x70
+
+int_sum_dojyo_top_model:
+  type: GFX
+  offset: 0x819D41C0
+  size: 0x58
+
+int_sum_dojyo_evw_model:
+  type: GFX
+  offset: 0x819D4218
+  size: 0x68
+
+int_sum_dojyo_base_model:
+  type: GFX
+  offset: 0x819D4280
+  size: 0x90
+
+cKF_ba_r_int_sum_dojyo:
+  type: AC:CKF_ANIMATION
+  offset: 0x819D43E4
+  joints: 5
+  counts: { flags: 5, data: 81, keys: 9, fixed: 9 }
+
+cKF_bs_r_int_sum_dojyo:
+  type: AC:CKF_SKELETON
+  offset: 0x819D4434
+  counts: { joints: 5 }

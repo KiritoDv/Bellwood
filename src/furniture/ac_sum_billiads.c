@@ -1,5 +1,4 @@
-extern Gfx int_sum_billiads_on_model[];
-extern Gfx int_sum_billiads_onT_model[];
+#include "assets/data/model/int_sum_billiads.h"
 
 aFTR_PROFILE iam_sum_billiads = {
 	int_sum_billiads_on_model,

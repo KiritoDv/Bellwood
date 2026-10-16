@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+ef_hanabi_y_0_int_i4:
+  type: TEXTURE
+  offset: 0x816674A0
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+ef_hanabi_y_1_int_i4:
+  type: TEXTURE
+  offset: 0x816678A0
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+ef_hanabi_y_00_v:
+  type: VTX
+  offset: 0x81667CA0
+  count: 4
+
+ef_hanabi_y_00_modelT:
+  type: GFX
+  offset: 0x81667CE0
+  size: 0x58

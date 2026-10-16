@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+crw_bag1_pal:
+  type: TEXTURE
+  offset: 0x815BFBE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+crw_bag1_tex_txt:
+  type: TEXTURE
+  offset: 0x815BFC00
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x815BFBE0
+
+crw_bagpikke1_tex_txt:
+  type: TEXTURE
+  offset: 0x815C0000
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x815BFBE0
+
+crw_bagpikke2_tex_txt:
+  type: TEXTURE
+  offset: 0x815C0040
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x815BFBE0
+
+crw_bag1_v:
+  type: VTX
+  offset: 0x815C0080
+  count: 49
+
+crw_bag1_body_model:
+  type: GFX
+  offset: 0x815C0390
+  size: 0xC8

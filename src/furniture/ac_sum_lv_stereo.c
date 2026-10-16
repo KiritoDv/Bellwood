@@ -1,5 +1,4 @@
-extern Gfx int_sum_lv_stereo_on_model[];
-extern Gfx int_sum_lv_stereo_onT_model[];
+#include "assets/data/model/int_sum_lv_stereo.h"
 static void aSumLv_Stereo_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aSumLv_Stereo_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aSumLv_Stereo_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);

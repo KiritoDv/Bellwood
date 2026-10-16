@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_monshiro_pal:
+  type: TEXTURE
+  offset: 0x812687C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_monshiro:
+  type: TEXTURE
+  offset: 0x812687E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x812687C0
+
+act_m_monshiro_v:
+  type: VTX
+  offset: 0x81268860
+  count: 12
+
+act_m_monshiro1T_model:
+  type: GFX
+  offset: 0x81268920
+  size: 0x60
+
+act_m_monshiro2T_model:
+  type: GFX
+  offset: 0x81268980
+  size: 0x60

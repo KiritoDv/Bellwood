@@ -1,0 +1,101 @@
+:config:
+  strict_declarations: true
+
+int_sum_gre_lanp01_pal:
+  type: TEXTURE
+  offset: 0x819F3C60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_gre_lanp01_kasa_tex:
+  type: TEXTURE
+  offset: 0x819F3C80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F3C60
+
+int_sum_gre_lanp01_stand_tex:
+  type: TEXTURE
+  offset: 0x819F3D80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F3C60
+
+int_sum_gre_lanp01_topshade_tex:
+  type: TEXTURE
+  offset: 0x819F3E80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819F3C60
+
+int_sum_gre_lanp01_front_tex:
+  type: TEXTURE
+  offset: 0x819F3F00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F3C60
+
+int_sum_gre_lanp01_side_tex:
+  type: TEXTURE
+  offset: 0x819F4100
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F3C60
+
+int_sum_gre_lanp01_top_tex:
+  type: TEXTURE
+  offset: 0x819F4200
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819F3C60
+
+int_sum_gre_lanp01_swich_tex:
+  type: TEXTURE
+  offset: 0x819F4280
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819F3C60
+
+int_sum_gre_lanp01_back_tex:
+  type: TEXTURE
+  offset: 0x819F4300
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F3C60
+
+int_sum_gre_lanp01_v:
+  type: VTX
+  offset: 0x819F4400
+  count: 50
+
+int_sum_gre_lanp01_on_model:
+  type: GFX
+  offset: 0x819F4720
+  size: 0x58
+
+int_sum_gre_lanp01_onT_model:
+  type: GFX
+  offset: 0x819F4778
+  size: 0x90
+
+int_sum_gre_lanp01_offT_model:
+  type: GFX
+  offset: 0x819F4808
+  size: 0xC0

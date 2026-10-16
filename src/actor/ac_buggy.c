@@ -11,6 +11,8 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "libforest/gbi_extensions.h"
+#include "assets/data/model/obj_s_uranai.h"
+#include "assets/data/model/obj_uranai_shadow.h"
 
 // clang-format off
 enum {
@@ -53,9 +55,6 @@ static u8 aBGY_shadow_vtx_fix_flg_table[] = {
 };
 // clang-format on
 
-extern Vtx obj_uranai_shadow_v[];
-extern Gfx obj_uranai_shadowT_model[];
-
 // clang-format off
 static bIT_ShadowData_c aBGY_shadow_data = {
     14,
@@ -65,9 +64,6 @@ static bIT_ShadowData_c aBGY_shadow_data = {
     obj_uranai_shadowT_model
 };
 // clang-format on
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_uranai;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_uranai;
 
 static void change_FGUnit(STRUCTURE_ACTOR* buggy, int type);
 static void aBGY_set_bgOffset(STRUCTURE_ACTOR* buggy, int offs);

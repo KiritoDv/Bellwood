@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_tak_yaji_pal:
+  type: TEXTURE
+  offset: 0x81AAEA00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_yaji_top_tex:
+  type: TEXTURE
+  offset: 0x81AAEA20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AAEA00
+
+int_tak_yaji_front_tex:
+  type: TEXTURE
+  offset: 0x81AAEAA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AAEA00
+
+int_tak_yaji_side_tex:
+  type: TEXTURE
+  offset: 0x81AAEBA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AAEA00
+
+int_tak_yaji_back_tex:
+  type: TEXTURE
+  offset: 0x81AAECA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AAEA00
+
+int_tak_yaji_v:
+  type: VTX
+  offset: 0x81AAED20
+  count: 24
+
+int_tak_yaji_on_model:
+  type: GFX
+  offset: 0x81AAEEA0
+  size: 0x98
+
+int_tak_yaji_onT_model:
+  type: GFX
+  offset: 0x81AAEF38
+  size: 0x58

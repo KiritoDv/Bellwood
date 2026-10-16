@@ -1,0 +1,56 @@
+:config:
+  strict_declarations: true
+
+int_nog_yubin_pal:
+  type: TEXTURE
+  offset: 0x8192A640
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_yubin_body_tex:
+  type: TEXTURE
+  offset: 0x8192A660
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8192A640
+
+int_nog_yubin_roof_tex:
+  type: TEXTURE
+  offset: 0x8192AA60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8192A640
+
+int_nog_yubin_grass_tex:
+  type: TEXTURE
+  offset: 0x8192AC60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8192A640
+
+int_nog_yubin_v:
+  type: VTX
+  offset: 0x8192ACE0
+  count: 49
+
+int_nog_yubin_on_model:
+  type: GFX
+  offset: 0x8192AFF0
+  size: 0x58
+
+int_nog_yubin_onT_model:
+  type: GFX
+  offset: 0x8192B048
+  size: 0x88
+
+int_nog_yubin_offT_model:
+  type: GFX
+  offset: 0x8192B0D0
+  size: 0x70

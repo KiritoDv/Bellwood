@@ -1,0 +1,107 @@
+:config:
+  strict_declarations: true
+
+int_sum_tukutuku_pal:
+  type: TEXTURE
+  offset: 0x81A73860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_tukutuku_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A73880
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_tukutuku_side_txt:
+  type: TEXTURE
+  offset: 0x81A738A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A73860
+
+int_sum_tukutuku_base_txt:
+  type: TEXTURE
+  offset: 0x81A73AA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A73860
+
+int_sum_tukutuku_top_txt:
+  type: TEXTURE
+  offset: 0x81A73B20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A73860
+
+int_sum_tukutuku_body_txt:
+  type: TEXTURE
+  offset: 0x81A73D20
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A73860
+
+int_sum_tukutuku_hand_txt:
+  type: TEXTURE
+  offset: 0x81A73F20
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A73880
+
+int_sum_tukutuku_v:
+  type: VTX
+  offset: 0x81A74020
+  count: 71
+
+int_sum_tukutuku_side_model:
+  type: GFX
+  offset: 0x81A74490
+  size: 0x68
+
+int_sum_tukutuku_komado_model:
+  type: GFX
+  offset: 0x81A744F8
+  size: 0x58
+
+int_sum_tukutuku_glass_model:
+  type: GFX
+  offset: 0x81A74550
+  size: 0x68
+
+int_sum_tukutuku_base_model:
+  type: GFX
+  offset: 0x81A745B8
+  size: 0xD0
+
+int_sum_tukutuku_body_R_model:
+  type: GFX
+  offset: 0x81A74688
+  size: 0x58
+
+int_sum_tukutuku_body_L_model:
+  type: GFX
+  offset: 0x81A746E0
+  size: 0x58
+
+cKF_ba_r_int_sum_tukutuku:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A74A48
+  joints: 8
+  counts: { flags: 8, data: 360, keys: 9, fixed: 18 }
+
+cKF_bs_r_int_sum_tukutuku:
+  type: AC:CKF_SKELETON
+  offset: 0x81A74ABC
+  counts: { joints: 8 }

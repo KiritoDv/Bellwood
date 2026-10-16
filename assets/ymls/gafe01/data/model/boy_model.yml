@@ -1,0 +1,133 @@
+:config:
+  strict_declarations: true
+
+boy_1_horn_tex_txt:
+  type: TEXTURE
+  offset: 0x81131EC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+boy_1_skin_tex_txt:
+  type: TEXTURE
+  offset: 0x81131F40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+boy_1_hole_tex_txt:
+  type: TEXTURE
+  offset: 0x81131FC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+boy_1_shoe_tex_txt:
+  type: TEXTURE
+  offset: 0x81132040
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+boy_1_bottom_tex_txt:
+  type: TEXTURE
+  offset: 0x811320C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+boy_1_foot_tex_txt:
+  type: TEXTURE
+  offset: 0x81132140
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+boy_1_pants_tex_txt:
+  type: TEXTURE
+  offset: 0x811321C0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+
+boy_1_v:
+  type: VTX
+  offset: 0x81132240
+  count: 408
+
+head_boy_model:
+  type: GFX
+  offset: 0x81133BC0
+  size: 0x218
+
+Rarm2_boy_model:
+  type: GFX
+  offset: 0x81133DD8
+  size: 0xA8
+
+Rarm1_boy_model:
+  type: GFX
+  offset: 0x81133E80
+  size: 0xE0
+
+Larm2_boy_model:
+  type: GFX
+  offset: 0x81133F60
+  size: 0xA8
+
+Larm1_boy_model:
+  type: GFX
+  offset: 0x81134008
+  size: 0xE0
+
+chest_boy_model:
+  type: GFX
+  offset: 0x811340E8
+  size: 0x98
+
+Rfoot3_boy_model:
+  type: GFX
+  offset: 0x81134180
+  size: 0xA8
+
+Rffot2_boy_model:
+  type: GFX
+  offset: 0x81134228
+  size: 0x80
+
+Rfoot1_boy_model:
+  type: GFX
+  offset: 0x811342A8
+  size: 0x60
+
+Lfoot3_boy_model:
+  type: GFX
+  offset: 0x81134308
+  size: 0xA8
+
+Lfoot2_boy_model:
+  type: GFX
+  offset: 0x811343B0
+  size: 0x80
+
+Lfoot1_boy_model:
+  type: GFX
+  offset: 0x81134430
+  size: 0x60
+
+base_boy_model:
+  type: GFX
+  offset: 0x81134490
+  size: 0x128
+
+cKF_bs_r_boy_1:
+  type: AC:CKF_SKELETON
+  offset: 0x811346F0
+  counts: { joints: 26 }

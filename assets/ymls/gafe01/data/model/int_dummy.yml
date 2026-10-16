@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_dummy_pal:
+  type: TEXTURE
+  offset: 0x816990E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_dummy_tex:
+  type: TEXTURE
+  offset: 0x81699100
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x816990E0
+
+int_dummy_v:
+  type: VTX
+  offset: 0x81699180
+  count: 3
+
+int_dummy_model:
+  type: GFX
+  offset: 0x816991B0
+  size: 0x58

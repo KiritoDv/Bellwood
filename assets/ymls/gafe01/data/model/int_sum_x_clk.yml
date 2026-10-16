@@ -1,0 +1,120 @@
+:config:
+  strict_declarations: true
+
+int_sum_x_clk_pal:
+  type: TEXTURE
+  offset: 0x81A87FC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_x_clk_glass_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A87FE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_x_clk_hari_txt:
+  type: TEXTURE
+  offset: 0x81A88000
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A87FC0
+
+int_sum_x_clk_into_txt:
+  type: TEXTURE
+  offset: 0x81A88100
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A87FC0
+
+int_sum_x_clk_front_txt:
+  type: TEXTURE
+  offset: 0x81A88180
+  format: CI4
+  width: 16
+  height: 80
+  source_encoding: gx
+  tlut: 0x81A87FC0
+
+int_sum_x_clk_head_txt:
+  type: TEXTURE
+  offset: 0x81A88400
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A87FC0
+
+int_sum_x_clk_side_txt:
+  type: TEXTURE
+  offset: 0x81A88480
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A87FC0
+
+int_sum_x_clk_huriko_txt:
+  type: TEXTURE
+  offset: 0x81A88680
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A87FC0
+
+int_sum_x_clk_glass_txt:
+  type: TEXTURE
+  offset: 0x81A88700
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A87FE0
+
+int_sum_x_clk_v:
+  type: VTX
+  offset: 0x81A88780
+  count: 66
+
+int_sum_x_clk_long_model:
+  type: GFX
+  offset: 0x81A88BA0
+  size: 0x58
+
+int_sum_x_clk_evw_model:
+  type: GFX
+  offset: 0x81A88BF8
+  size: 0x58
+
+int_sum_x_clk_base_model:
+  type: GFX
+  offset: 0x81A88C50
+  size: 0xE0
+
+int_sum_x_clk_huriko_model:
+  type: GFX
+  offset: 0x81A88D30
+  size: 0x58
+
+int_sum_x_clk_short_model:
+  type: GFX
+  offset: 0x81A88D88
+  size: 0x58
+
+cKF_ba_r_int_sum_x_clk:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A88E40
+  joints: 8
+  counts: { flags: 8, data: 15, keys: 1, fixed: 26 }
+
+cKF_bs_r_int_sum_x_clk:
+  type: AC:CKF_SKELETON
+  offset: 0x81A88EB4
+  counts: { joints: 8 }

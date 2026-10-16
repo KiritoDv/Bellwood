@@ -1,5 +1,4 @@
-extern Gfx int_sum_liccachair_on_model[];
-extern Gfx int_sum_liccachair_onT_model[];
+#include "assets/data/model/int_sum_liccachair.h"
 
 aFTR_PROFILE iam_sum_liccachair = {
 	int_sum_liccachair_on_model,

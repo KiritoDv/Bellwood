@@ -1,5 +1,4 @@
-extern Gfx int_nog_dump_model[];
-extern Gfx int_nog_dumpT_model[];
+#include "assets/data/model/int_nog_dump.h"
 
 aFTR_PROFILE iam_nog_dump = {
 	int_nog_dump_model,

@@ -1,3 +1,4 @@
+#include "assets/data/model/int_nog_lawnmower.h"
 static void fNLM_ct(FTR_ACTOR* ftr_actor, u8* data) {
     ftr_actor->dynamic_work_f[0] = 0.0f;
 }
@@ -24,9 +25,6 @@ static void fNLM_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* 
         add_calc(&ftr_actor->dynamic_work_f[0], grass_alpha, 0.04f, 0.1f, 0.001f);
     }
 }
-
-extern Gfx int_nog_lawnmower_bodyT_model[];
-extern Gfx int_nog_lawnmower_grass_model[];
 
 static void fNLM_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     GAME_PLAY* play = (GAME_PLAY*)game;

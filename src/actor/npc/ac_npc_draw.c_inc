@@ -257,13 +257,13 @@ static void aNPC_actor_draw_sub(ACTOR* actorx, GAME* game) {
         }
 
         gDPSetTexEdgeAlpha(gfx++, 127);
-        gDPSetTextureAdjustMode(gfx++, G_TA_DOLPHIN);
+        gDPSetTextureAdjustMode(gfx++, G_TA_HALFTEXEL);
 
         if (aNPC_check_mask_cat_type(actorx) == aNPC_MASK_CAT_TYPE_MASKCAT) {
             MaskCat_c* mask_cat = Save_GetPointer(mask_cat);
 
             gSPSegment(gfx++, ANIME_1_TXT_SEG, mask_cat->design.design.data);
-            gDPLoadTLUT_Dolphin(gfx++, 13, 16, 1, mNW_PaletteIdx2Palette(mask_cat->palette_no));
+            gDPLoadTLUT_pal16(gfx++, 13, mNW_PaletteIdx2Palette(mask_cat->palette_no));
         } else {
             if (eye_tex_p != NULL) {
                 gSPSegment(gfx++, ANIME_1_TXT_SEG, eye_tex_p);
@@ -274,8 +274,8 @@ static void aNPC_actor_draw_sub(ACTOR* actorx, GAME* game) {
             }
         }
 
-        gSPSegment(gfx++, ANIME_4_TXT_SEG, draw_tex_p->texture);
-        gDPLoadTLUT_Dolphin(gfx++, 15, 16, 1, draw_tex_p->palette);
+        gSPSegmentLoadRes(gfx++, ANIME_4_TXT_SEG, draw_tex_p->texture);
+        gDPLoadTLUT_pal16(gfx++, 15, draw_tex_p->palette);
 
         if ((int)nactorx->draw.cloth_idx != aNPC_CLOTH_IDX_NONE) {
             u8* tex_p;
@@ -301,7 +301,7 @@ static void aNPC_actor_draw_sub(ACTOR* actorx, GAME* game) {
             }
 
             gSPSegment(gfx++, ANIME_3_TXT_SEG, tex_p);
-            gDPLoadTLUT_Dolphin(gfx++, 14, 16, 1, pal_p);
+            gDPLoadTLUT_pal16(gfx++, 14, pal_p);
         }
 
         if (xlu == TRUE) {

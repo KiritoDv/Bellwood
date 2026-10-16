@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_dango_v:
+  type: VTX
+  offset: 0x8186CB20
+  count: 11
+
+act_m_dango_pal:
+  type: TEXTURE
+  offset: 0x8186CBD0
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_dango_tex:
+  type: TEXTURE
+  offset: 0x8186CBF0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: n64
+  tlut: 0x8186CBD0
+
+act_m_mu_dango1T_model:
+  type: GFX
+  offset: 0x8186CD70
+  size: 0xC8
+
+act_m_mu_dango2T_model:
+  type: GFX
+  offset: 0x8186CE38
+  size: 0xC8

@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_sum_liccasofa_pal:
+  type: TEXTURE
+  offset: 0x81A1C0C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_liccasofa_front_txt:
+  type: TEXTURE
+  offset: 0x81A1C0E0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A1C0C0
+
+int_sum_liccasofa_back_txt:
+  type: TEXTURE
+  offset: 0x81A1C4E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A1C0C0
+
+int_sum_liccasofa_side_txt:
+  type: TEXTURE
+  offset: 0x81A1C5E0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A1C0C0
+
+int_sum_liccasofa_frontside_txt:
+  type: TEXTURE
+  offset: 0x81A1C760
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A1C0C0
+
+int_sum_liccasofa_backside_txt:
+  type: TEXTURE
+  offset: 0x81A1C860
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A1C0C0
+
+int_sum_liccasofa_v:
+  type: VTX
+  offset: 0x81A1C8E0
+  count: 58
+
+int_sum_liccasofa_on_model:
+  type: GFX
+  offset: 0x81A1CC80
+  size: 0x108

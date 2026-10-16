@@ -1,0 +1,65 @@
+:config:
+  strict_declarations: true
+
+obj_clock_museum1_hari_tex_txt:
+  type: TEXTURE
+  offset: 0x81945830
+  format: RGBA16
+  width: 32
+  height: 16
+  source_encoding: n64
+
+obj_clock_museum1_dai_tex_txt:
+  type: TEXTURE
+  offset: 0x81945C30
+  format: RGBA16
+  width: 16
+  height: 16
+  source_encoding: n64
+
+obj_clock_museum1_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81945E30
+  format: RGBA16
+  width: 32
+  height: 32
+  source_encoding: n64
+
+obj_clock_museum1_front_tex_txt:
+  type: TEXTURE
+  offset: 0x81946630
+  format: RGBA16
+  width: 32
+  height: 48
+  source_encoding: n64
+
+obj_clock_museum1_v:
+  type: VTX
+  offset: 0x81947230
+  count: 43
+
+obj_clock_museum1_body_model:
+  type: GFX
+  offset: 0x819474E0
+  size: 0x180
+
+obj_clock_museum1_long_model:
+  type: GFX
+  offset: 0x81947660
+  size: 0x90
+
+obj_clock_museum1_short_model:
+  type: GFX
+  offset: 0x819476F0
+  size: 0x88
+
+cKF_ba_r_obj_clock_museum1:
+  type: AC:CKF_ANIMATION
+  offset: 0x819477A4
+  joints: 5
+  counts: { flags: 5, data: 0, keys: 0, fixed: 18 }
+
+cKF_bs_r_obj_clock_museum1:
+  type: AC:CKF_SKELETON
+  offset: 0x819477F4
+  counts: { joints: 5 }

@@ -1,5 +1,4 @@
-extern Gfx int_ike_pst_pig01_on_model[];
-extern Gfx int_ike_pst_pig01_onT_model[];
+#include "assets/data/model/int_ike_pst_pig01.h"
 static void fIPP_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 
 

@@ -1,0 +1,73 @@
+:config:
+  strict_declarations: true
+
+int_yaz_b_feeder_pal:
+  type: TEXTURE
+  offset: 0x81AD3E20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yaz_b_feeder_pole_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD3E40
+  format: CI4
+  width: 16
+  height: 56
+  source_encoding: gx
+  tlut: 0x81AD3E20
+
+int_yaz_b_feeder_ana_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD4000
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81AD3E20
+
+int_yaz_b_feeder_ura_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD4180
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81AD3E20
+
+int_yaz_b_feeder_wood_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD4300
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD3E20
+
+int_yaz_b_feeder_yane_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD4380
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD3E20
+
+int_yaz_b_feeder_wa_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD4400
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AD3E20
+
+int_yos_b_feeder_v:
+  type: VTX
+  offset: 0x81AD4600
+  count: 65
+
+int_yaz_b_feeder_body_model:
+  type: GFX
+  offset: 0x81AD4A10
+  size: 0x178

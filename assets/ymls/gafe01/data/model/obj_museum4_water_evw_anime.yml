@@ -1,0 +1,6 @@
+:config:
+  strict_declarations: true
+
+obj_museum4_water_evw_anime:
+  type: AC:EVW_ANIME
+  offset: 0x8187A0C0

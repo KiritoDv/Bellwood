@@ -1,0 +1,114 @@
+:config:
+  strict_declarations: true
+
+int_kob_getabako1_pal:
+  type: TEXTURE
+  offset: 0x81897C40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kob_getabako1_naka1_tex:
+  type: TEXTURE
+  offset: 0x81897C60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81897C40
+
+int_kob_getabako1_naka2_tex:
+  type: TEXTURE
+  offset: 0x81897CE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81897C40
+
+int_kob_getabako1_side_tex:
+  type: TEXTURE
+  offset: 0x81897D60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81897C40
+
+int_kob_getabako1_top_tex:
+  type: TEXTURE
+  offset: 0x81897E60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81897C40
+
+int_kob_getabako1_ura_tex:
+  type: TEXTURE
+  offset: 0x81897F60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81897C40
+
+int_kob_getabako1_atumi_tex:
+  type: TEXTURE
+  offset: 0x81898160
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81897C40
+
+int_kob_getabako1_wear_tex:
+  type: TEXTURE
+  offset: 0x81898360
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81897C40
+
+int_kob_getabako1_book2_tex:
+  type: TEXTURE
+  offset: 0x818983E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81897C40
+
+int_kob_getabako1_book1_tex:
+  type: TEXTURE
+  offset: 0x81898460
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81897C40
+
+int_kob_getabako1_book3_tex:
+  type: TEXTURE
+  offset: 0x818984E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81897C40
+
+int_kob_getabako1_v:
+  type: VTX
+  offset: 0x81898560
+  count: 92
+
+int_kob_getabako1_on_model:
+  type: GFX
+  offset: 0x81898B20
+  size: 0x118
+
+int_kob_getabako1_onT_model:
+  type: GFX
+  offset: 0x81898C38
+  size: 0xC8

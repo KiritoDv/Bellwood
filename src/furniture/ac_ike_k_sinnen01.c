@@ -1,4 +1,4 @@
-extern Gfx int_ike_k_sinnen01_on_model[];
+#include "assets/data/model/int_ike_k_sinnen01.h"
 
 aFTR_PROFILE iam_ike_k_sinnen01 = {
     int_ike_k_sinnen01_on_model,

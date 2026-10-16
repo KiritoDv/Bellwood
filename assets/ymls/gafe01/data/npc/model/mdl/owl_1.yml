@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+owl_1_v:
+  type: VTX
+  offset: 0x811CFE80
+  count: 425
+
+head_owl_model:
+  type: GFX
+  offset: 0x811D1910
+  size: 0x240
+
+mouth_owl_model:
+  type: GFX
+  offset: 0x811D1B50
+  size: 0x98
+
+Rarm2_owl_model:
+  type: GFX
+  offset: 0x811D1BE8
+  size: 0xD0
+
+Rarm1_owl_model:
+  type: GFX
+  offset: 0x811D1CB8
+  size: 0x78
+
+Larm2_owl_model:
+  type: GFX
+  offset: 0x811D1D30
+  size: 0xD0
+
+Larm1_owl_model:
+  type: GFX
+  offset: 0x811D1E00
+  size: 0x78
+
+chest_owl_model:
+  type: GFX
+  offset: 0x811D1E78
+  size: 0xD0
+
+tail1_owl_model:
+  type: GFX
+  offset: 0x811D1F48
+  size: 0xA8
+
+Rfoot3_owl_model:
+  type: GFX
+  offset: 0x811D1FF0
+  size: 0xA8
+
+Rfoot2_owl_model:
+  type: GFX
+  offset: 0x811D2098
+  size: 0x80
+
+Rfoot1_owl_model:
+  type: GFX
+  offset: 0x811D2118
+  size: 0x58
+
+Lfoot3_owl_model:
+  type: GFX
+  offset: 0x811D2170
+  size: 0xA8
+
+Lfoot2_owl_model:
+  type: GFX
+  offset: 0x811D2218
+  size: 0x80
+
+Lfoot1_owl_model:
+  type: GFX
+  offset: 0x811D2298
+  size: 0x58
+
+base_owl_model:
+  type: GFX
+  offset: 0x811D22F0
+  size: 0x78
+
+cKF_bs_r_owl_1:
+  type: AC:CKF_SKELETON
+  offset: 0x811D24A0
+  counts: { joints: 26 }

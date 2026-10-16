@@ -1,4 +1,4 @@
-extern Gfx int_iku_ukai_mode_a_model[];
+#include "assets/data/model/int_iku_ukai.h"
 
 aFTR_PROFILE iam_iku_ukai = {
 	int_iku_ukai_mode_a_model,

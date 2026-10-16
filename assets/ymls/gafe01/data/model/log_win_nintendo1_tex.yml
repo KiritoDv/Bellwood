@@ -1,0 +1,10 @@
+:config:
+  strict_declarations: true
+
+log_win_nintendo1_tex:
+  type: TEXTURE
+  offset: 0x815E5820
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: n64

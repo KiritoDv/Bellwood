@@ -1,4 +1,4 @@
-extern Gfx int_ike_k_count01_body_model[];
+#include "assets/data/model/int_ike_k_count01.h"
 
 #define fIKC_MIN_TIME (f32)(20 + GETREG(TAKREG, 72))
 #define fIKC_MAX_TIME (f32)(40 + GETREG(TAKREG, 73))

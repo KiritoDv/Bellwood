@@ -3,10 +3,7 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
-
-extern u8 ef_mitiyuge01_0_int_i4[];
-extern u8 ef_motiyuge01_1_int_i4[];
-extern u8 ef_motiyuge01_2_int_i4[];
+#include "assets/data/model/ef_motiyuge01_00.h"
 
 static u8* eMotiyuge_yuge_texture_table[] = {
     ef_mitiyuge01_0_int_i4, ef_motiyuge01_1_int_i4, ef_motiyuge01_2_int_i4,
@@ -61,8 +58,6 @@ static void eMotiyuge_mv(eEC_Effect_c* effect, GAME* game) {
         }
     }
 }
-
-extern Gfx ef_motiyuge01_00_modelT[];
 
 static void eMotiyuge_dw(eEC_Effect_c* effect, GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;

@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_sum_asi_screen01_pal:
+  type: TEXTURE
+  offset: 0x819969C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_asi_screen01_front_tex:
+  type: TEXTURE
+  offset: 0x819969E0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x819969C0
+
+int_sum_asi_screen01_v:
+  type: VTX
+  offset: 0x81996DE0
+  count: 12
+
+int_sum_asi_screen01_onT_model:
+  type: GFX
+  offset: 0x81996EA0
+  size: 0x60

@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_kon_tubo3_pal:
+  type: TEXTURE
+  offset: 0x818B7B80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_tubo3_yoko_tex:
+  type: TEXTURE
+  offset: 0x818B7BA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818B7B80
+
+int_kon_tubo3_huti_tex:
+  type: TEXTURE
+  offset: 0x818B7DA0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x818B7B80
+
+int_kon_tubo3_yoko2_tex:
+  type: TEXTURE
+  offset: 0x818B7DE0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x818B7B80
+
+int_kon_tubo3_naka_tex:
+  type: TEXTURE
+  offset: 0x818B81E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B7B80
+
+int_kon_tubo3_v:
+  type: VTX
+  offset: 0x818B8260
+  count: 66
+
+int_kon_tubo3_on_model:
+  type: GFX
+  offset: 0x818B8680
+  size: 0xD0
+
+int_kon_tubo3_onT_model:
+  type: GFX
+  offset: 0x818B8750
+  size: 0x60

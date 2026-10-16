@@ -1,5 +1,4 @@
-extern Gfx int_kon_tubo3_on_model[];
-extern Gfx int_kon_tubo3_onT_model[];
+#include "assets/data/model/int_kon_tubo3.h"
 
 aFTR_PROFILE iam_kon_tubo3 = {
 	int_kon_tubo3_on_model,

@@ -1,4 +1,4 @@
-extern Gfx int_ike_jny_makada01_on_model[];
+#include "assets/data/model/int_ike_jny_makada01.h"
 
 aFTR_PROFILE iam_ike_jny_makada01 = {
 	int_ike_jny_makada01_on_model,

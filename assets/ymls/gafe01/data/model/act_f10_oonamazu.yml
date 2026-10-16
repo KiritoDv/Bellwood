@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f10_oonamazu_pal:
+  type: TEXTURE
+  offset: 0x812424A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f10_oonamazu_tex:
+  type: TEXTURE
+  offset: 0x812424C0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x812424A0
+
+act_f10_oonamazu_a_v:
+  type: VTX
+  offset: 0x812428C0
+  count: 9
+
+act_f10_oonamazu_aT_model:
+  type: GFX
+  offset: 0x81242950
+  size: 0x68
+
+act_f10_oonamazu_b_v:
+  type: VTX
+  offset: 0x812429B8
+  count: 9
+
+act_f10_oonamazu_bT_model:
+  type: GFX
+  offset: 0x81242A48
+  size: 0x68
+
+act_f10_oonamazu_c_v:
+  type: VTX
+  offset: 0x81242AB0
+  count: 9
+
+act_f10_oonamazu_cT_model:
+  type: GFX
+  offset: 0x81242B40
+  size: 0x68

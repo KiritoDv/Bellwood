@@ -1,4 +1,4 @@
-extern Gfx int_nog_tudurinoteT_model[];
+#include "assets/data/model/int_nog_tudurinote.h"
 
 aFTR_PROFILE iam_nog_tudurinote = {
 	NULL,

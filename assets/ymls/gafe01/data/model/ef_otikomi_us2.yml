@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+ef_otikomi_us1_int_i4:
+  type: TEXTURE
+  offset: 0x8166DD60
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+ef_otikomi_us2_int_i4:
+  type: TEXTURE
+  offset: 0x8166E160
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_otikomi_us2_v:
+  type: VTX
+  offset: 0x8166E1E0
+  count: 4
+
+ef_otikomi_us2_model:
+  type: GFX
+  offset: 0x8166E220
+  size: 0x60

@@ -1,5 +1,4 @@
-extern Gfx int_ike_art_sya01_on_model[];
-extern Gfx int_ike_art_sya01_onT_model[];
+#include "assets/data/model/int_ike_art_sya.h"
 
 aFTR_PROFILE iam_ike_art_sya = {
 	int_ike_art_sya01_on_model,

@@ -1,4 +1,4 @@
-extern Gfx int_ike_k_turis01_body_model[];
+#include "assets/data/model/int_ike_k_turis01.h"
 
 aFTR_PROFILE iam_ike_k_turis01 = {
     int_ike_k_turis01_body_model,

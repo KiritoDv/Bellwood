@@ -174,7 +174,7 @@ static void aNPC_Animation_init(ACTOR* actorx, int seqNo, int talk_flag) {
         }
     }
 
-    main_anim = info_main->anim_p;
+    main_anim = (aNPC_Animation_c*)LOAD_ASSET(info_main->anim_p);
     kf_main = &nactorx->draw.main_animation.keyframe;
 
     cKF_SkeletonInfo_R_init(
@@ -211,13 +211,13 @@ static void aNPC_Animation_init(ACTOR* actorx, int seqNo, int talk_flag) {
         nactorx->draw.feel_effect = NULL;
     }
 
-    anim_sub0 = info_sub0->anim_p;
+    anim_sub0 = (aNPC_Animation_c*)LOAD_ASSET(info_sub0->anim_p);
     kf_sub0 = &nactorx->draw.sub_animation0.keyframe;
     cKF_SkeletonInfo_R_init(kf_sub0, kf_sub0->skeleton, &anim_sub0->anim, anim_sub0->start_frame, anim_sub0->end_frame,
                             anim_sub0->start_frame, nactorx->draw.frame_speed, anim_sub0->morph_counter,
                             anim_sub0->mode, NULL);
 
-    anim_sub1 = info_sub1->anim_p;
+    anim_sub1 = (aNPC_Animation_c*)LOAD_ASSET(info_sub1->anim_p);
     kf_sub1 = &nactorx->draw.sub_animation1.keyframe;
     cKF_SkeletonInfo_R_init(kf_sub1, kf_sub1->skeleton, &anim_sub1->anim, anim_sub1->start_frame, anim_sub1->end_frame,
                             anim_sub1->start_frame, nactorx->draw.frame_speed, anim_sub1->morph_counter,

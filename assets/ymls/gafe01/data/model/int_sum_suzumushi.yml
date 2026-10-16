@@ -1,0 +1,112 @@
+:config:
+  strict_declarations: true
+
+int_sum_suzumushi_pal:
+  type: TEXTURE
+  offset: 0x81A628C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_suzumushi_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A628E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_suzumushi_base_txt:
+  type: TEXTURE
+  offset: 0x81A62900
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A628C0
+
+int_sum_suzumushi_top_txt:
+  type: TEXTURE
+  offset: 0x81A62980
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A628C0
+
+int_sum_suzumushi_side_txt:
+  type: TEXTURE
+  offset: 0x81A62B80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A628C0
+
+int_sum_suzumushi_body_txt:
+  type: TEXTURE
+  offset: 0x81A62D80
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A628C0
+
+int_sum_suzumushi_hand_txt:
+  type: TEXTURE
+  offset: 0x81A62F80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A628E0
+
+int_sum_suzumushi_v:
+  type: VTX
+  offset: 0x81A63080
+  count: 68
+
+int_sum_suzumushi_side_model:
+  type: GFX
+  offset: 0x81A634C0
+  size: 0x68
+
+int_sum_suzumushi_komado_model:
+  type: GFX
+  offset: 0x81A63528
+  size: 0x58
+
+int_sum_suzumushi_glass_model:
+  type: GFX
+  offset: 0x81A63580
+  size: 0x68
+
+int_sum_suzumushi_base_model:
+  type: GFX
+  offset: 0x81A635E8
+  size: 0x98
+
+int_sum_suzumushi_body_model:
+  type: GFX
+  offset: 0x81A63680
+  size: 0x68
+
+int_sum_suzumushi_body_R_model:
+  type: GFX
+  offset: 0x81A636E8
+  size: 0x58
+
+int_sum_suzumushi_body_L_model:
+  type: GFX
+  offset: 0x81A63740
+  size: 0x58
+
+cKF_ba_r_int_sum_suzumushi:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A638F0
+  joints: 10
+  counts: { flags: 10, data: 132, keys: 12, fixed: 21 }
+
+cKF_bs_r_int_sum_suzumushi:
+  type: AC:CKF_SKELETON
+  offset: 0x81A6397C
+  counts: { joints: 10 }

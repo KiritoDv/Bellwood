@@ -1,0 +1,90 @@
+:config:
+  strict_declarations: true
+
+obj_s_buildsite_tex:
+  type: TEXTURE
+  offset: 0x8157A520
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+obj_s_buildsite_v:
+  type: VTX
+  offset: 0x8157A920
+  count: 12
+
+reserve_DL_model:
+  type: GFX
+  offset: 0x8157A9E0
+  size: 0x48
+
+obj_s_attention_pal:
+  type: TEXTURE
+  offset: 0x8157AA40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_attention_tex:
+  type: TEXTURE
+  offset: 0x8157AA60
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8157AA40
+
+obj_s_attention_v:
+  type: VTX
+  offset: 0x8157AE60
+  count: 8
+
+obj_s_attentionT_model:
+  type: GFX
+  offset: 0x8157AEE0
+  size: 0x60
+
+obj_w_buildsite_tex:
+  type: TEXTURE
+  offset: 0x8157AF40
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+obj_w_buildsite_v:
+  type: VTX
+  offset: 0x8157B340
+  count: 12
+
+reserve_winter_DL_model:
+  type: GFX
+  offset: 0x8157B400
+  size: 0x48
+
+obj_w_attention_pal:
+  type: TEXTURE
+  offset: 0x8157B460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_attention_tex:
+  type: TEXTURE
+  offset: 0x8157B480
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8157B460
+
+obj_w_attention_v:
+  type: VTX
+  offset: 0x8157B880
+  count: 8
+
+obj_w_attentionT_model:
+  type: GFX
+  offset: 0x8157B900
+  size: 0x60

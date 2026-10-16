@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+obj_s_cedar_stump_tex:
+  type: TEXTURE
+  offset: 0x811019E0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+obj_s_cstump4_v:
+  type: VTX
+  offset: 0x81101DE0
+  count: 7
+
+obj_s_cstump4T_mat_model:
+  type: GFX
+  offset: 0x81101E50
+  size: 0x20
+
+obj_s_cstump4T_gfx_model:
+  type: GFX
+  offset: 0x81101E70
+  size: 0x20

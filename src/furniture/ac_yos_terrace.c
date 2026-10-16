@@ -1,4 +1,4 @@
-extern Gfx int_yos_terrace_obj_model[];
+#include "assets/data/model/int_yos_terrace.h"
 
 aFTR_PROFILE iam_yos_terrace = {
 	int_yos_terrace_obj_model,

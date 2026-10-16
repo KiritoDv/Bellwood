@@ -6,6 +6,8 @@
 #include "m_rcp.h"
 #include "m_debug.h"
 #include "m_player_lib.h"
+#include "assets/data/model/obj_toudai_pole.h"
+#include "assets/data/model/obj_toudai_switch.h"
 
 static void Lighthouse_Switch_Actor_ct(ACTOR* actorx, GAME* game);
 static void Lighthouse_Switch_Actor_dt(ACTOR* actorx, GAME* game);
@@ -82,10 +84,6 @@ static void aLS_RequestPoleToMove(ACTOR* actorx, GAME* game) {
     kf_p->frame_control.end_frame = 100.0f;
 }
 
-extern cKF_Skeleton_R_c cKF_bs_r_obj_toudai_switch;
-extern cKF_Animation_R_c cKF_ba_r_obj_toudai_switch;
-extern cKF_Animation_R_c cKF_ba_r_obj_toudai_switch_off;
-
 static void aLS_RequestSwitchON(ACTOR* actorx, GAME* game) {
     LIGHTHOUSE_SWITCH_ACTOR* actor = (LIGHTHOUSE_SWITCH_ACTOR*)actorx;
     aLS_switch_c* sw = &actor->ls_switch;
@@ -107,9 +105,6 @@ static void aLS_RequestSwitchOFF(ACTOR* actorx, GAME* game) {
     kf_p->frame_control.speed = 0.5f;
     cKF_SkeletonInfo_R_play(kf_p);
 }
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_toudai_pole;
-extern cKF_Animation_R_c cKF_ba_r_obj_toudai_pole;
 
 static void aLS_PoleCt(aLS_pole_c* pole, GAME* game, int on) {
     static xyz_t pos = { 0.0f, 0.0f, 0.0f };
@@ -190,8 +185,6 @@ static int aLS_PoleDrawBefore(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int jo
     }
     return TRUE;
 }
-
-extern Gfx obj_toudai_pole_kage_model[];
 
 static int aLS_PoleDrawAfter(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
                               u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {

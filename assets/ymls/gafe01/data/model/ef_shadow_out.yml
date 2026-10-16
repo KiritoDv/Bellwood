@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+ef_shadow_out_0_int_i4:
+  type: TEXTURE
+  offset: 0x8188D440
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: n64
+
+ef_shadow_out_1_int_i4:
+  type: TEXTURE
+  offset: 0x8188D540
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: n64
+
+ef_shadow_out_v:
+  type: VTX
+  offset: 0x8188D640
+  count: 4
+
+ef_shadow_out_modelT:
+  type: GFX
+  offset: 0x8188D680
+  size: 0xB8

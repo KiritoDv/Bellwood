@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_piano01_pal:
+  type: TEXTURE
+  offset: 0x81A3B940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_piano01_top_tex:
+  type: TEXTURE
+  offset: 0x81A3B960
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A3B940
+
+int_sum_piano01_key_tex:
+  type: TEXTURE
+  offset: 0x81A3BC60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A3B940
+
+int_sum_piano01_side_tex:
+  type: TEXTURE
+  offset: 0x81A3BD60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A3B940
+
+int_sum_piano01_lid_tex:
+  type: TEXTURE
+  offset: 0x81A3BE60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A3B940
+
+int_sum_piano01_stand_tex:
+  type: TEXTURE
+  offset: 0x81A3C060
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A3B940
+
+int_sum_piano01_pedal_tex:
+  type: TEXTURE
+  offset: 0x81A3C0E0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A3B940
+
+int_sum_piano01_pin_tex:
+  type: TEXTURE
+  offset: 0x81A3C120
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A3B940
+
+int_sum_piano01_v:
+  type: VTX
+  offset: 0x81A3C160
+  count: 73
+
+int_sum_piano01_on_model:
+  type: GFX
+  offset: 0x81A3C5F0
+  size: 0x60
+
+int_sum_piano01_onT_model:
+  type: GFX
+  offset: 0x81A3C650
+  size: 0x120

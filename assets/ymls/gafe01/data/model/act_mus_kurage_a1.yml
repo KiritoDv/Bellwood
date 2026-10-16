@@ -1,0 +1,42 @@
+:config:
+  strict_declarations: true
+
+act_f37_kurage_pal:
+  type: TEXTURE
+  offset: 0x81685260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_kurage_head_tex:
+  type: TEXTURE
+  offset: 0x81685280
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81685260
+
+act_mus_kurage_foot_tex:
+  type: TEXTURE
+  offset: 0x81685380
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81685260
+
+act_mus_kurage_a1_v:
+  type: VTX
+  offset: 0x81685480
+  count: 50
+
+act_mus_kurage_sakana_foot_model:
+  type: GFX
+  offset: 0x816857A0
+  size: 0x88
+
+act_mus_kurage_sakana_body_model:
+  type: GFX
+  offset: 0x81685828
+  size: 0x98

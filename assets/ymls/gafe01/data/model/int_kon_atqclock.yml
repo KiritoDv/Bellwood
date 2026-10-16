@@ -1,0 +1,138 @@
+:config:
+  strict_declarations: true
+
+int_kon_atqclock_pal:
+  type: TEXTURE
+  offset: 0x818A0C40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_atqclock_grass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x818A0C60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_atqclock_f_tex_txt:
+  type: TEXTURE
+  offset: 0x818A0C80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A0C40
+
+int_kon_atqclock_c_tex_txt:
+  type: TEXTURE
+  offset: 0x818A0D80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A0C40
+
+int_kon_atqclock_a_tex_txt:
+  type: TEXTURE
+  offset: 0x818A0E00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A0C40
+
+int_kon_atqclock_e_tex_txt:
+  type: TEXTURE
+  offset: 0x818A0F00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A0C40
+
+int_kon_atqclock_d_tex_txt:
+  type: TEXTURE
+  offset: 0x818A0F80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A0C40
+
+int_kon_atqclock_b_tex_txt:
+  type: TEXTURE
+  offset: 0x818A1000
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x818A0C40
+
+int_kon_atqclock_h_tex_txt:
+  type: TEXTURE
+  offset: 0x818A1200
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A0C40
+
+int_kon_atqclock_g_tex_txt:
+  type: TEXTURE
+  offset: 0x818A1280
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A0C40
+
+int_kon_atqclock_grass_tex_txt:
+  type: TEXTURE
+  offset: 0x818A1380
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A0C60
+
+int_kon_atqclock_v:
+  type: VTX
+  offset: 0x818A1400
+  count: 67
+
+int_kon_atqclock_long_model:
+  type: GFX
+  offset: 0x818A1830
+  size: 0x58
+
+int_kon_atqclock_evw_model:
+  type: GFX
+  offset: 0x818A1888
+  size: 0x68
+
+int_kon_atqclock_base_model:
+  type: GFX
+  offset: 0x818A18F0
+  size: 0x150
+
+int_kon_atqclock_short_model:
+  type: GFX
+  offset: 0x818A1A40
+  size: 0x58
+
+int_kon_atqclock_huriko_model:
+  type: GFX
+  offset: 0x818A1A98
+  size: 0x58
+
+cKF_ba_r_int_kon_atqclock:
+  type: AC:CKF_ANIMATION
+  offset: 0x818A1B54
+  joints: 8
+  counts: { flags: 8, data: 18, keys: 1, fixed: 26 }
+
+cKF_bs_r_int_kon_atqclock:
+  type: AC:CKF_SKELETON
+  offset: 0x818A1BC8
+  counts: { joints: 8 }

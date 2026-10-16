@@ -1,0 +1,105 @@
+:config:
+  strict_declarations: true
+
+int_ike_prores_ling03_pal:
+  type: TEXTURE
+  offset: 0x81843C80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_prores_ling03_lope2_tex:
+  type: TEXTURE
+  offset: 0x81843CA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81843C80
+
+int_ike_prores_ling03_lope_tex:
+  type: TEXTURE
+  offset: 0x81843D20
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81843C80
+
+int_ike_prores_ling03_mat2_tex:
+  type: TEXTURE
+  offset: 0x81843DA0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81843C80
+
+int_ike_prores_ling03_pole_tex:
+  type: TEXTURE
+  offset: 0x81843E20
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81843C80
+
+int_ike_prores_ling03_floor_tex:
+  type: TEXTURE
+  offset: 0x81843EA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81843C80
+
+int_ike_prores_ling03_floorside_tex:
+  type: TEXTURE
+  offset: 0x818440A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81843C80
+
+int_ike_prores_ling03_pole2_tex:
+  type: TEXTURE
+  offset: 0x81844120
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81843C80
+
+int_ike_prores_ling03_base_tex:
+  type: TEXTURE
+  offset: 0x818441A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81843C80
+
+int_ike_prores_ling03_pole3_tex:
+  type: TEXTURE
+  offset: 0x81844220
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81843C80
+
+int_ike_prores_ling03_v:
+  type: VTX
+  offset: 0x818442A0
+  count: 76
+
+int_ike_prores_ling03_on_model:
+  type: GFX
+  offset: 0x81844760
+  size: 0x120
+
+int_ike_prores_ling03_onT_model:
+  type: GFX
+  offset: 0x81844880
+  size: 0xA8

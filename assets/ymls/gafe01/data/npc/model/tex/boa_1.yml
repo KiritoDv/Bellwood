@@ -1,0 +1,91 @@
+:config:
+  strict_declarations: true
+
+boa_1_pal:
+  type: TEXTURE
+  offset: 0x8127DA60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+boa_1_eye1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8127DA80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+boa_1_eye2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8127DB80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+boa_1_eye3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8127DC80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+boa_1_eye4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8127DD80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+boa_1_eye5_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8127DE80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+boa_1_eye6_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8127DF80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+boa_1_eye7_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8127E080
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+boa_1_eye8_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8127E180
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+boa_1_tmem_txt:
+  type: AC:TEX_ATLAS
+  offset: 0x8127E280
+  size: 0x5C0
+  regions:
+    - { offset: 0x0, format: CI4, width: 16, height: 24 }
+    - { offset: 0xC0, format: CI4, width: 16, height: 16 }
+    - { offset: 0x140, format: CI4, width: 16, height: 8 }
+    - { offset: 0x180, format: CI4, width: 16, height: 8 }
+    - { offset: 0x1C0, format: CI4, width: 16, height: 24 }
+    - { offset: 0x280, format: CI4, width: 16, height: 8 }
+    - { offset: 0x2C0, format: CI4, width: 16, height: 8 }
+    - { offset: 0x300, format: CI4, width: 16, height: 16 }
+    - { offset: 0x380, format: CI4, width: 16, height: 24 }
+    - { offset: 0x440, format: CI4, width: 16, height: 8 }
+    - { offset: 0x480, format: CI4, width: 16, height: 24 }
+    - { offset: 0x540, format: CI4, width: 16, height: 16 }

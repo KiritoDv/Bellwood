@@ -1,0 +1,68 @@
+:config:
+  strict_declarations: true
+
+int_ike_jny_rosia01_pal:
+  type: TEXTURE
+  offset: 0x8182C680
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_jny_rosiabase1_tex_txt:
+  type: TEXTURE
+  offset: 0x8182C6A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8182C680
+
+int_ike_jny_rosia01_tex_txt:
+  type: TEXTURE
+  offset: 0x8182C7A0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x8182C680
+
+int_ike_jny_rosia01_v:
+  type: VTX
+  offset: 0x8182CAA0
+  count: 87
+
+int_ike_jny_rosia01_lb_model:
+  type: GFX
+  offset: 0x8182D010
+  size: 0x98
+
+int_ike_jny_rosia01_l_model:
+  type: GFX
+  offset: 0x8182D0A8
+  size: 0x70
+
+int_ike_jny_rosia01_2mb_model:
+  type: GFX
+  offset: 0x8182D118
+  size: 0x70
+
+int_ike_jny_rosia01_2sb_model:
+  type: GFX
+  offset: 0x8182D188
+  size: 0x88
+
+int_ike_jny_rosia01_m_model:
+  type: GFX
+  offset: 0x8182D210
+  size: 0x70
+
+cKF_ba_r_int_ike_jny_rosia01:
+  type: AC:CKF_ANIMATION
+  offset: 0x8182D478
+  joints: 11
+  counts: { flags: 11, data: 210, keys: 18, fixed: 18 }
+
+cKF_bs_r_int_ike_jny_rosia01:
+  type: AC:CKF_SKELETON
+  offset: 0x8182D510
+  counts: { joints: 11 }

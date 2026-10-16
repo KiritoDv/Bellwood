@@ -1,0 +1,122 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_39ishidai_pal:
+  type: TEXTURE
+  offset: 0x8145B520
+  format: TLUT
+  colors: 32
+  source_encoding: gx
+
+inv_mwin_33zarigani_pal:
+  type: TEXTURE
+  offset: 0x8145B560
+  format: TLUT
+  colors: 32
+  source_encoding: gx
+
+inv_mwin_34kaeru_pal:
+  type: TEXTURE
+  offset: 0x8145B5A0
+  format: TLUT
+  colors: 32
+  source_encoding: gx
+
+inv_mwin_35medaka_pal:
+  type: TEXTURE
+  offset: 0x8145B5E0
+  format: TLUT
+  colors: 32
+  source_encoding: gx
+
+inv_mwin_36kurage_pal:
+  type: TEXTURE
+  offset: 0x8145B620
+  format: TLUT
+  colors: 32
+  source_encoding: gx
+
+inv_mwin_37suzuki_pal:
+  type: TEXTURE
+  offset: 0x8145B660
+  format: TLUT
+  colors: 32
+  source_encoding: gx
+
+inv_mwin_38tai_pal:
+  type: TEXTURE
+  offset: 0x8145B6A0
+  format: TLUT
+  colors: 32
+  source_encoding: gx
+
+inv_mwin_40piraruku_pal:
+  type: TEXTURE
+  offset: 0x8145B6E0
+  format: TLUT
+  colors: 32
+  source_encoding: gx
+
+inv_mwin_39ishidai_tex:
+  type: TEXTURE
+  offset: 0x8145B720
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_33zarigani_tex:
+  type: TEXTURE
+  offset: 0x8145B920
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_34kaeru_tex:
+  type: TEXTURE
+  offset: 0x8145BB20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_35medaka_tex:
+  type: TEXTURE
+  offset: 0x8145BD20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_36kurage_tex:
+  type: TEXTURE
+  offset: 0x8145BF20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_37suzuki_tex:
+  type: TEXTURE
+  offset: 0x8145C120
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_38tai_tex:
+  type: TEXTURE
+  offset: 0x8145C320
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_40piraruku_tex:
+  type: TEXTURE
+  offset: 0x8145C520
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

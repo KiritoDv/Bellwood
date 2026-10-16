@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_sum_asi_taiko_pal:
+  type: TEXTURE
+  offset: 0x819982C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_asi_taiko_side_tex:
+  type: TEXTURE
+  offset: 0x819982E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819982C0
+
+int_sum_asi_taiko_top_tex:
+  type: TEXTURE
+  offset: 0x819983E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819982C0
+
+int_sum_asi_taiko_bese_tex:
+  type: TEXTURE
+  offset: 0x819984E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819982C0
+
+int_sum_asi_taiko_v:
+  type: VTX
+  offset: 0x819985E0
+  count: 47
+
+int_sum_asi_taiko_on_model:
+  type: GFX
+  offset: 0x819988D0
+  size: 0x60
+
+int_sum_asi_taiko_onT_model:
+  type: GFX
+  offset: 0x81998930
+  size: 0xB0

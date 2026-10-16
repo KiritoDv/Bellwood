@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_logo_us_cros:
+  type: AC:CKF_ANIMATION
+  offset: 0x815EEB1C
+  joints: 14
+  counts: { flags: 14, data: 792, keys: 27, fixed: 18 }

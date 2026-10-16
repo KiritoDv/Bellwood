@@ -1,5 +1,4 @@
-extern Gfx int_kob_rika_desk_on_model[];
-extern Gfx int_kob_rika_desk_onT_model[];
+#include "assets/data/model/int_kob_rika_desk.h"
 
 aFTR_PROFILE iam_kob_rika_desk = {
 	int_kob_rika_desk_on_model,

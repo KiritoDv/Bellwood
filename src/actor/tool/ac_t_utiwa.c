@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_lib.h"
 #include "m_rcp.h"
+#include "assets/data/model/tol_utiwa_1.h"
 
 static void aTUT_actor_ct(ACTOR* actor, GAME* game);
 static void aTUT_actor_move(ACTOR* actor, GAME* game);
@@ -22,8 +23,6 @@ ACTOR_PROFILE T_Utiwa_Profile = {
     &aTUT_actor_draw,
     NULL
 };
-
-extern Gfx main_utiwa1_model[];
 
 static void aTUT_setupAction(ACTOR* actor, int idx);
 

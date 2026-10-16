@@ -1,0 +1,101 @@
+:config:
+  strict_declarations: true
+
+int_iku_turkey_TV_pal:
+  type: TEXTURE
+  offset: 0x81869640
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_turkey_TV_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81869660
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81869640
+
+int_iku_turkey_TV_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81869860
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81869640
+
+int_iku_turkey_TV_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81869960
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81869640
+
+int_iku_turkey_TV_d_tex_txt:
+  type: TEXTURE
+  offset: 0x81869A60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81869640
+
+int_iku_turkey_TV_e_tex_txt:
+  type: TEXTURE
+  offset: 0x81869B60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81869640
+
+int_iku_turkey_TV_f_tex_txt:
+  type: TEXTURE
+  offset: 0x81869D60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_iku_turkey_TV_g_tex_txt:
+  type: TEXTURE
+  offset: 0x81869DE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_iku_turkey_TV_h_tex_txt:
+  type: TEXTURE
+  offset: 0x81869E60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_iku_turkey_TV_i_tex_txt:
+  type: TEXTURE
+  offset: 0x81869EE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_iku_turkey_TV_v:
+  type: VTX
+  offset: 0x81869F60
+  count: 68
+
+int_iku_turkey_TV_model_b_model:
+  type: GFX
+  offset: 0x8186A3A0
+  size: 0x60
+
+int_iku_turkey_TV_model_a_model:
+  type: GFX
+  offset: 0x8186A400
+  size: 0x110

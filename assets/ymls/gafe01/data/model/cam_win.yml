@@ -1,0 +1,111 @@
+:config:
+  strict_declarations: true
+
+ct_tex:
+  type: TEXTURE
+  offset: 0x8187EA40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+cam_win_camera_tex:
+  type: TEXTURE
+  offset: 0x8187EE40
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+ban_win_waku3_tex:
+  type: TEXTURE
+  offset: 0x8187F240
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ban_win_waku4_tex:
+  type: TEXTURE
+  offset: 0x8187F440
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+yaji:
+  type: TEXTURE
+  offset: 0x8187F640
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+elc_win_moji_tex:
+  type: TEXTURE
+  offset: 0x8187F6C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+elc_win_z_tex:
+  type: TEXTURE
+  offset: 0x8187F740
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+elc_win_light_tex:
+  type: TEXTURE
+  offset: 0x8187FB40
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+cam_win_v:
+  type: VTX
+  offset: 0x8187FF40
+  count: 64
+
+cam_win_yajirushi_model:
+  type: GFX
+  offset: 0x81880340
+  size: 0x58
+
+elc_win_moji_model:
+  type: GFX
+  offset: 0x81880398
+  size: 0x48
+
+cam_win_winT_model:
+  type: GFX
+  offset: 0x818803E0
+  size: 0x70
+
+cam_win_cT_model:
+  type: GFX
+  offset: 0x81880450
+  size: 0x40
+
+cam_win_mojiT_model:
+  type: GFX
+  offset: 0x81880490
+  size: 0x48
+
+elc_win_winT_model:
+  type: GFX
+  offset: 0x818804D8
+  size: 0x68
+
+elc_win_zT_model:
+  type: GFX
+  offset: 0x81880540
+  size: 0x50
+
+elc_win_moji2T_model:
+  type: GFX
+  offset: 0x81880590
+  size: 0x48

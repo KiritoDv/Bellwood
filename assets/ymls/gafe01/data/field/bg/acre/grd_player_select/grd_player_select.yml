@@ -1,0 +1,57 @@
+:config:
+  strict_declarations: true
+
+rom_open_pal:
+  type: TEXTURE
+  offset: 0x81938240
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_open_floor_tex:
+  type: TEXTURE
+  offset: 0x81938260
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81938240
+
+rom_open_shade_tex:
+  type: TEXTURE
+  offset: 0x81938A60
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+rom_open_spot2_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81938E60
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+rom_open_spot_tex:
+  type: TEXTURE
+  offset: 0x81939060
+  format: I8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+grd_player_select_v:
+  type: VTX
+  offset: 0x81939860
+  count: 20
+
+grd_player_select_modelT:
+  type: GFX
+  offset: 0x819399A0
+  size: 0xA0
+
+grd_player_select_model:
+  type: GFX
+  offset: 0x81939A40
+  size: 0x60

@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_cracker_fire1:
+  type: AC:NPC_ANIM
+  offset: 0x812D3A78
+  joints: 26
+  counts: { flags: 26, data: 684, keys: 51, fixed: 30, eye_seq: 31, mouth_seq: 31 }

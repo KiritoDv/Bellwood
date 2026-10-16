@@ -1,0 +1,72 @@
+:config:
+  strict_declarations: true
+
+boa_1_v:
+  type: VTX
+  offset: 0x8127B3A8
+  count: 453
+
+head_boa_model:
+  type: GFX
+  offset: 0x8127CFF8
+  size: 0x1D8
+
+mouth_boa_model:
+  type: GFX
+  offset: 0x8127D1D0
+  size: 0x88
+
+Rarm2_boa_model:
+  type: GFX
+  offset: 0x8127D258
+  size: 0x88
+
+Rarm1_boa_model:
+  type: GFX
+  offset: 0x8127D2E0
+  size: 0x78
+
+Larm2_boa_model:
+  type: GFX
+  offset: 0x8127D358
+  size: 0x88
+
+Larm1_boa_model:
+  type: GFX
+  offset: 0x8127D3E0
+  size: 0x78
+
+chest_boa_model:
+  type: GFX
+  offset: 0x8127D458
+  size: 0x1F8
+
+Rfoot2_boa_model:
+  type: GFX
+  offset: 0x8127D650
+  size: 0xA8
+
+Rfoot1_boa_model:
+  type: GFX
+  offset: 0x8127D6F8
+  size: 0x80
+
+Lfoot2_boa_model:
+  type: GFX
+  offset: 0x8127D778
+  size: 0x98
+
+Lfoot1_boa_model:
+  type: GFX
+  offset: 0x8127D810
+  size: 0x80
+
+base_boa_model:
+  type: GFX
+  offset: 0x8127D890
+  size: 0x78
+
+cKF_bs_r_boa_1:
+  type: AC:CKF_SKELETON
+  offset: 0x8127DA40
+  counts: { joints: 26 }

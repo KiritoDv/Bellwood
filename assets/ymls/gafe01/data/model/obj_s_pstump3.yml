@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+obj_s_palm_young_tex:
+  type: TEXTURE
+  offset: 0x8110C2C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_s_pstump3_v:
+  type: VTX
+  offset: 0x8110CAC0
+  count: 7
+
+obj_s_pstump3T_mat_model:
+  type: GFX
+  offset: 0x8110CB30
+  size: 0x20
+
+obj_s_pstump3T_gfx_model:
+  type: GFX
+  offset: 0x8110CB50
+  size: 0x20

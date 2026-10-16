@@ -1,4 +1,4 @@
-extern Gfx int_yos_kflag_obj_model[];
+#include "assets/data/model/int_yos_kflag.h"
 
 aFTR_PROFILE iam_yos_kflag = {
 	int_yos_kflag_obj_model,

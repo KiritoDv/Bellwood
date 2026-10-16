@@ -1,3 +1,4 @@
+#include "assets/data/model/int_nog_myhome2.h"
 static int fNM2_GetPalletIndex(FTR_ACTOR* ftr_actor) {
     if (ftr_actor->ctr_type == aFTR_CTR_TYPE_GAME_PLAY) {
         mActor_name_t field_id = mFI_GetFieldId();
@@ -44,10 +45,6 @@ static void fNM2_dt(FTR_ACTOR* ftr_actor, u8* data) {
         zelda_free(ftr_actor->pal_p);
     }
 }
-
-extern Gfx int_nog_myhome2_on_model[];
-extern Gfx int_nog_myhome2_onT_model[];
-extern Gfx int_nog_myhome2_off_model[];
 
 static void fNM2_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     u16* pal_p = ftr_actor->pal_p;

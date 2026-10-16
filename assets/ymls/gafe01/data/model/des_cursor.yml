@@ -1,0 +1,142 @@
+:config:
+  strict_declarations: true
+
+des_cursor_undo_tex:
+  type: TEXTURE
+  offset: 0x813F7360
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_cursor_sp_tex:
+  type: TEXTURE
+  offset: 0x813F7560
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_cursor_sen_tex:
+  type: TEXTURE
+  offset: 0x813F7960
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_cursor_pen_tex:
+  type: TEXTURE
+  offset: 0x813F7D60
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_cursor_nuri_tex:
+  type: TEXTURE
+  offset: 0x813F8160
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_cursor_mark1_tex:
+  type: TEXTURE
+  offset: 0x813F8560
+  format: I4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+des_cursor_mark2_tex:
+  type: TEXTURE
+  offset: 0x813F8660
+  format: I4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+des_cursor_mark3_tex:
+  type: TEXTURE
+  offset: 0x813F8760
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_cursor_mark4_tex:
+  type: TEXTURE
+  offset: 0x813F87E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_cursor_waku_tex:
+  type: TEXTURE
+  offset: 0x813F8860
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_cursor_v:
+  type: VTX
+  offset: 0x813F8C60
+  count: 44
+
+des_cursor_mark1_model:
+  type: GFX
+  offset: 0x813F8F20
+  size: 0x48
+
+des_cursor_mark2_model:
+  type: GFX
+  offset: 0x813F8F68
+  size: 0x48
+
+des_cursor_mark3_model:
+  type: GFX
+  offset: 0x813F8FB0
+  size: 0x48
+
+des_cursor_mark4_model:
+  type: GFX
+  offset: 0x813F8FF8
+  size: 0x48
+
+des_cursor_undo_model:
+  type: GFX
+  offset: 0x813F9040
+  size: 0x48
+
+des_cursor_penT_model:
+  type: GFX
+  offset: 0x813F9088
+  size: 0x50
+
+des_cursor_nuriT_model:
+  type: GFX
+  offset: 0x813F90D8
+  size: 0x50
+
+des_cursor_waku1T_model:
+  type: GFX
+  offset: 0x813F9128
+  size: 0x50
+
+des_cursor_waku2T_model:
+  type: GFX
+  offset: 0x813F9178
+  size: 0x50
+
+des_cursor_spT_model:
+  type: GFX
+  offset: 0x813F91C8
+  size: 0x50
+
+des_cursor_wakuT_model:
+  type: GFX
+  offset: 0x813F9218
+  size: 0x50

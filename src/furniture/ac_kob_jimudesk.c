@@ -1,5 +1,4 @@
-extern Gfx int_kob_jimudesk_on_model[];
-extern Gfx int_kob_jimudesk_onT_model[];
+#include "assets/data/model/int_kob_jimudesk.h"
 
 aFTR_PROFILE iam_kob_jimudesk = {
 	int_kob_jimudesk_on_model,

@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+obj_item_kabu_pal:
+  type: TEXTURE
+  offset: 0x8138F660
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_kabu_tex:
+  type: TEXTURE
+  offset: 0x8138F680
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8138F660
+
+obj_item_kabu_v:
+  type: VTX
+  offset: 0x8138F880
+  count: 4
+
+item_kabu_modelT:
+  type: GFX
+  offset: 0x8138F8C0
+  size: 0x58

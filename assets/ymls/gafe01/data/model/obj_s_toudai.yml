@@ -1,0 +1,254 @@
+:config:
+  strict_declarations: true
+
+obj_s_toudai_glass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x815AA4E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_toudai_light_tex_txt:
+  type: TEXTURE
+  offset: 0x815AA500
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_toudai_arm_tex_txt:
+  type: TEXTURE
+  offset: 0x815AA600
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_toudai_dai_tex_txt:
+  type: TEXTURE
+  offset: 0x815AA680
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_s_toudai_dou_tex_txt:
+  type: TEXTURE
+  offset: 0x815AA880
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+obj_s_toudai_plate_tex_txt:
+  type: TEXTURE
+  offset: 0x815AAC80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_toudai_side_tex_txt:
+  type: TEXTURE
+  offset: 0x815AAD00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_toudai_tesuri_tex_txt:
+  type: TEXTURE
+  offset: 0x815AAD80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_toudai_yane_tex_txt:
+  type: TEXTURE
+  offset: 0x815AAE00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_toudai_glass_tex_pic_ci4:
+  type: TEXTURE
+  offset: 0x815AAE80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x815AA4E0
+
+obj_s_toudai_v:
+  type: VTX
+  offset: 0x815AAF00
+  count: 153
+
+obj_s_toudai_mirror_model:
+  type: GFX
+  offset: 0x815AB890
+  size: 0x60
+
+obj_s_toudai_glass_model:
+  type: GFX
+  offset: 0x815AB8F0
+  size: 0x68
+
+obj_s_toudai_body_model:
+  type: GFX
+  offset: 0x815AB958
+  size: 0x158
+
+obj_s_toudai_light_model:
+  type: GFX
+  offset: 0x815ABAB0
+  size: 0x78
+
+obj_s_toudai_lenz_model:
+  type: GFX
+  offset: 0x815ABB28
+  size: 0x68
+
+obj_s_toudai_arm_model:
+  type: GFX
+  offset: 0x815ABB90
+  size: 0x38
+
+cKF_bs_r_obj_s_toudai:
+  type: AC:CKF_SKELETON
+  offset: 0x815ABC1C
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_s_toudai:
+  type: AC:CKF_ANIMATION
+  offset: 0x815ABC6C
+  joints: 7
+  counts: { flags: 7, data: 6, keys: 1, fixed: 23 }
+
+obj_w_toudai_glass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x815ABC80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_toudai_light_tex_txt:
+  type: TEXTURE
+  offset: 0x815ABCA0
+  format: I8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_toudai_arm_tex_txt:
+  type: TEXTURE
+  offset: 0x815ABDA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_toudai_dai_tex_txt:
+  type: TEXTURE
+  offset: 0x815ABE20
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+obj_w_toudai_dou_tex_txt:
+  type: TEXTURE
+  offset: 0x815AC020
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+obj_w_toudai_plate_tex_txt:
+  type: TEXTURE
+  offset: 0x815AC420
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_toudai_side_tex_txt:
+  type: TEXTURE
+  offset: 0x815AC4A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_toudai_tesuri_tex_txt:
+  type: TEXTURE
+  offset: 0x815AC520
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_toudai_yane_tex_txt:
+  type: TEXTURE
+  offset: 0x815AC5A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_toudai_glass_tex_pic_ci4:
+  type: TEXTURE
+  offset: 0x815AC620
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x815ABC80
+
+obj_w_toudai_v:
+  type: VTX
+  offset: 0x815AC6A0
+  count: 149
+
+obj_w_toudai_mirror_model:
+  type: GFX
+  offset: 0x815ACFF0
+  size: 0x60
+
+obj_w_toudai_glass_model:
+  type: GFX
+  offset: 0x815AD050
+  size: 0x68
+
+obj_w_toudai_body_model:
+  type: GFX
+  offset: 0x815AD0B8
+  size: 0x158
+
+obj_w_toudai_light_model:
+  type: GFX
+  offset: 0x815AD210
+  size: 0x78
+
+obj_w_toudai_lenz_model:
+  type: GFX
+  offset: 0x815AD288
+  size: 0x68
+
+obj_w_toudai_arm_model:
+  type: GFX
+  offset: 0x815AD2F0
+  size: 0x38
+
+cKF_bs_r_obj_w_toudai:
+  type: AC:CKF_SKELETON
+  offset: 0x815AD37C
+  counts: { joints: 7 }
+
+cKF_ba_r_obj_w_toudai:
+  type: AC:CKF_ANIMATION
+  offset: 0x815AD3CC
+  joints: 7
+  counts: { flags: 7, data: 6, keys: 1, fixed: 23 }

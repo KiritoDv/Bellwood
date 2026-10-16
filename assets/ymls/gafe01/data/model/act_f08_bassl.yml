@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f08_bassl_pal:
+  type: TEXTURE
+  offset: 0x81239360
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f08_bassl_tex:
+  type: TEXTURE
+  offset: 0x81239380
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81239360
+
+act_f08_bassl_a_v:
+  type: VTX
+  offset: 0x81239680
+  count: 9
+
+act_f08_bassl_aT_model:
+  type: GFX
+  offset: 0x81239710
+  size: 0x68
+
+act_f08_bassl_b_v:
+  type: VTX
+  offset: 0x81239778
+  count: 9
+
+act_f08_bassl_bT_model:
+  type: GFX
+  offset: 0x81239808
+  size: 0x68
+
+act_f08_bassl_c_v:
+  type: VTX
+  offset: 0x81239870
+  count: 9
+
+act_f08_bassl_cT_model:
+  type: GFX
+  offset: 0x81239900
+  size: 0x68

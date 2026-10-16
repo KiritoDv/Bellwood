@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_kiageha_pal:
+  type: TEXTURE
+  offset: 0x81265FE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_kiageha:
+  type: TEXTURE
+  offset: 0x81266000
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81265FE0
+
+act_m_kiageha_v:
+  type: VTX
+  offset: 0x81266200
+  count: 12
+
+act_m_kiageha1T_model:
+  type: GFX
+  offset: 0x812662C0
+  size: 0x60
+
+act_m_kiageha2T_model:
+  type: GFX
+  offset: 0x81266320
+  size: 0x60

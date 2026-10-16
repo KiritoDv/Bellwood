@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_act_mus_kaeru_a1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81681874
+  joints: 5
+  counts: { flags: 5, data: 9, keys: 1, fixed: 17 }

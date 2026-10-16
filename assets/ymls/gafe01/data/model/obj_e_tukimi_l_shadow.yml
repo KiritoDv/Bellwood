@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+obj_e_tukimi_shadow_tex_txt:
+  type: TEXTURE
+  offset: 0x8150BA20
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_tukimi_l_shadow_v:
+  type: VTX
+  offset: 0x8150BC20
+  count: 8
+
+obj_e_tukimi_l_shadow_model:
+  type: GFX
+  offset: 0x8150BCA0
+  size: 0x50
+
+obj_e_tukimi_r_shadow_tex_txt:
+  type: TEXTURE
+  offset: 0x8150BD00
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_tukimi_r_shadow_v:
+  type: VTX
+  offset: 0x8150BF00
+  count: 8
+
+obj_e_tukimi_r_shadow_model:
+  type: GFX
+  offset: 0x8150BF80
+  size: 0x50

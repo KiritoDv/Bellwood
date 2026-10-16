@@ -1,4 +1,4 @@
-extern Gfx int_sum_golfbag01_on_model[];
+#include "assets/data/model/int_sum_golfbag01.h"
 
 aFTR_PROFILE iam_sum_golfbag01 = {
 	int_sum_golfbag01_on_model,

@@ -1,5 +1,11 @@
+#include "ac_asset.h"
+
+
 static void bIT_copy_vtx(Vtx* dst, Vtx* src, u32 count, u8* fix_table, int fix_adjust_pos) {
     int i;
+
+    src = (Vtx*)LOAD_ASSET(src);
+    fix_table = (u8*)LOAD_ASSET(fix_table);
 
     for (i = 0; i != count; i++, src++, dst++, fix_table++) {
         *dst = *src;

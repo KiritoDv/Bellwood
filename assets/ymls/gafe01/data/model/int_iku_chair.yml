@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_iku_chair_pal:
+  type: TEXTURE
+  offset: 0x81851EE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_chair_d_tex_txt:
+  type: TEXTURE
+  offset: 0x81851F00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81851EE0
+
+int_iku_chair_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81852000
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81851EE0
+
+int_iku_chair_e_tex_txt:
+  type: TEXTURE
+  offset: 0x81852200
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81851EE0
+
+int_iku_chair_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81852400
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81851EE0
+
+int_iku_chair_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81852600
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81851EE0
+
+int_iku_chair_v:
+  type: VTX
+  offset: 0x81852700
+  count: 111
+
+int_iku_chair_model_model:
+  type: GFX
+  offset: 0x81852DF0
+  size: 0x148

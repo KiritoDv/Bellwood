@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_ohmurasaki_v:
+  type: VTX
+  offset: 0x81876110
+  count: 12
+
+act_m_ohmurasaki_pal:
+  type: TEXTURE
+  offset: 0x818761D0
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_ohmurasaki:
+  type: TEXTURE
+  offset: 0x818761F0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: n64
+  tlut: 0x818761D0
+
+act_m_mu_ohmurasaki1T_model:
+  type: GFX
+  offset: 0x818763F0
+  size: 0xC8
+
+act_m_mu_ohmurasaki2T_model:
+  type: GFX
+  offset: 0x818764B8
+  size: 0xC8

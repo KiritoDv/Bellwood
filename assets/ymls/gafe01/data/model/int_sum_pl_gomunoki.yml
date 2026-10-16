@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_sum_pl_gomunoki_pal:
+  type: TEXTURE
+  offset: 0x81A42BE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_pl_gomunoki_earth_tex:
+  type: TEXTURE
+  offset: 0x81A42C00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A42BE0
+
+int_sum_pl_gomunoki_hachi_tex:
+  type: TEXTURE
+  offset: 0x81A42C80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A42BE0
+
+int_sum_pl_gomunoki_leaf_tex:
+  type: TEXTURE
+  offset: 0x81A42D80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A42BE0
+
+int_sum_pl_gomunoki_kuki_tex:
+  type: TEXTURE
+  offset: 0x81A42F80
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A42BE0
+
+int_sum_pl_gomunoki_leaf2_tex:
+  type: TEXTURE
+  offset: 0x81A43100
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A42BE0
+
+int_sum_pl_gomunoki_v:
+  type: VTX
+  offset: 0x81A43300
+  count: 78
+
+int_sum_pl_gomunoki_on_model:
+  type: GFX
+  offset: 0x81A437E0
+  size: 0x58
+
+int_sum_pl_gomunoki_onT_model:
+  type: GFX
+  offset: 0x81A43838
+  size: 0xE8

@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+obj_museum_shadow_tex:
+  type: TEXTURE
+  offset: 0x81504980
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_museum_shadow_v:
+  type: VTX
+  offset: 0x81504B80
+  count: 8
+
+obj_museum_shadowT_model:
+  type: GFX
+  offset: 0x81504C00
+  size: 0x48

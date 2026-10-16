@@ -1,6 +1,4 @@
-extern Gfx int_nog_ari_on_model[];
-extern Gfx int_nog_ari_onT_model[];
-extern Gfx int_nog_ari_env_model[];
+#include "assets/data/model/int_nog_ari.h"
 
 aFTR_PROFILE iam_nog_ari = {
 	int_nog_ari_on_model,

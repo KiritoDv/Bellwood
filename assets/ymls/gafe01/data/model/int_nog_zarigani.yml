@@ -1,0 +1,106 @@
+:config:
+  strict_declarations: true
+
+int_nog_zarigani_pal:
+  type: TEXTURE
+  offset: 0x8192B140
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_zarigani_glass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x8192B160
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_zarigani_body_tex_txt:
+  type: TEXTURE
+  offset: 0x8192B180
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8192B140
+
+int_nog_zarigani_top_tex_txt:
+  type: TEXTURE
+  offset: 0x8192B280
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8192B140
+
+int_nog_zarigani_side_tex_txt:
+  type: TEXTURE
+  offset: 0x8192B380
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8192B140
+
+int_nog_zarigani_base_tex_txt:
+  type: TEXTURE
+  offset: 0x8192B580
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8192B140
+
+int_nog_zarigani_etc_tex_txt:
+  type: TEXTURE
+  offset: 0x8192B600
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8192B140
+
+int_nog_zarigani_glass_tex_txt:
+  type: TEXTURE
+  offset: 0x8192B680
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8192B160
+
+int_nog_zarigani_v:
+  type: VTX
+  offset: 0x8192B780
+  count: 54
+
+int_nog_zarigani_sakana_model:
+  type: GFX
+  offset: 0x8192BAE0
+  size: 0x68
+
+int_sum_zarigani_top_model:
+  type: GFX
+  offset: 0x8192BB48
+  size: 0x58
+
+int_sum_zarigani_evw_model:
+  type: GFX
+  offset: 0x8192BBA0
+  size: 0x68
+
+int_sum_zarigani_base_model:
+  type: GFX
+  offset: 0x8192BC08
+  size: 0xB8
+
+cKF_ba_r_int_nog_zarigani:
+  type: AC:CKF_ANIMATION
+  offset: 0x8192BD38
+  joints: 5
+  counts: { flags: 5, data: 36, keys: 3, fixed: 15 }
+
+cKF_bs_r_int_nog_zarigani:
+  type: AC:CKF_SKELETON
+  offset: 0x8192BD88
+  counts: { joints: 5 }

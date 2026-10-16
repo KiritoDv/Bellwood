@@ -1,0 +1,228 @@
+:config:
+  strict_declarations: true
+
+rom_yami_wall_pal:
+  type: TEXTURE
+  offset: 0x8160CD40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_yami_floor_pal:
+  type: TEXTURE
+  offset: 0x8160CD60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_yami_box_pal:
+  type: TEXTURE
+  offset: 0x8160CD80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_yami_mono01_pal:
+  type: TEXTURE
+  offset: 0x8160CDA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_yami_mono02_pal:
+  type: TEXTURE
+  offset: 0x8160CDC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_yami_mono03_pal:
+  type: TEXTURE
+  offset: 0x8160CDE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_yami_qup_pal:
+  type: TEXTURE
+  offset: 0x8160CE00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_yami_hyou_pal:
+  type: TEXTURE
+  offset: 0x8160CE20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_yami_step_tex_pal:
+  type: TEXTURE
+  offset: 0x8160CE40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_yami_hugu_pal:
+  type: TEXTURE
+  offset: 0x8160CE60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_yami_tama_pal:
+  type: TEXTURE
+  offset: 0x8160CE80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_yami_wall_tex:
+  type: TEXTURE
+  offset: 0x8160CEA0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x8160CD40
+
+rom_yami_floor_tex:
+  type: TEXTURE
+  offset: 0x8160D1A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8160CD60
+
+rom_yami_poll_tex:
+  type: TEXTURE
+  offset: 0x8160D9A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8160CD40
+
+rom_yami_box01_tex:
+  type: TEXTURE
+  offset: 0x8160DA20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8160CD80
+
+rom_yami_box02_tex:
+  type: TEXTURE
+  offset: 0x8160DB20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8160CD80
+
+rom_yami_mono01_tex:
+  type: TEXTURE
+  offset: 0x8160DBA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8160CDA0
+
+rom_yami_mono02_tex:
+  type: TEXTURE
+  offset: 0x8160DDA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8160CDC0
+
+rom_yami_mono03_tex:
+  type: TEXTURE
+  offset: 0x8160DFA0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x8160CDE0
+
+rom_yami_qup_tex:
+  type: TEXTURE
+  offset: 0x8160E1A0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x8160CE00
+
+rom_yami_hyou_tex:
+  type: TEXTURE
+  offset: 0x8160E4A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8160CE20
+
+rom_yami_hyou02_tex:
+  type: TEXTURE
+  offset: 0x8160E5A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8160CE20
+
+rom_yami_step_tex:
+  type: TEXTURE
+  offset: 0x8160E6A0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8160CE40
+
+rom_yami_hugu_tex:
+  type: TEXTURE
+  offset: 0x8160EAA0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x8160CE60
+
+rom_yami_tama_tex:
+  type: TEXTURE
+  offset: 0x8160EDA0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x8160CE80
+
+rom_yami_shadow01_tex:
+  type: TEXTURE
+  offset: 0x8160F0A0
+  format: I4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+grd_yamishop_v:
+  type: VTX
+  offset: 0x8160F1A0
+  count: 269
+
+grd_yamishop_modelT:
+  type: GFX
+  offset: 0x81610270
+  size: 0x8
+
+grd_yamishop_model:
+  type: GFX
+  offset: 0x81610278
+  size: 0x418

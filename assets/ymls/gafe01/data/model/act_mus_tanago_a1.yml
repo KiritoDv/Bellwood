@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_tanago_pal:
+  type: TEXTURE
+  offset: 0x8168D2C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_tanago_body_txt:
+  type: TEXTURE
+  offset: 0x8168D2E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8168D2C0
+
+act_mus_tanago_a1_v:
+  type: VTX
+  offset: 0x8168D4E0
+  count: 53
+
+act_mus_tanago_sakana_body_model:
+  type: GFX
+  offset: 0x8168D830
+  size: 0x80
+
+act_mus_tanago_sakana_head_model:
+  type: GFX
+  offset: 0x8168D8B0
+  size: 0x40
+
+cKF_bs_r_act_mus_tanago_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x8168D914
+  counts: { joints: 3 }

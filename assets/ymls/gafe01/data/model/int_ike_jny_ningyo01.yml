@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_ike_jny_ningyo01_pal:
+  type: TEXTURE
+  offset: 0x8182A560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_jny_ningyobody2_tex_txt:
+  type: TEXTURE
+  offset: 0x8182A580
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182A560
+
+int_ike_jny_ningyoface_tex_txt:
+  type: TEXTURE
+  offset: 0x8182A780
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182A560
+
+int_ike_jny_ningyobody_tex_txt:
+  type: TEXTURE
+  offset: 0x8182A980
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182A560
+
+int_ike_jny_ningyoleg1_tex_txt:
+  type: TEXTURE
+  offset: 0x8182AB80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182A560
+
+int_ike_jny_ningyohand_tex_txt:
+  type: TEXTURE
+  offset: 0x8182AD80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182A560
+
+int_ike_jny_ningyo01_v:
+  type: VTX
+  offset: 0x8182AE80
+  count: 91
+
+int_ike_jny_ningyo01_body_model:
+  type: GFX
+  offset: 0x8182B430
+  size: 0x188

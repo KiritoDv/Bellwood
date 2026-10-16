@@ -4,25 +4,7 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "m_name_table.h"
-
-static Vtx mbg_v[] = {
-#include "assets/mbg_v.inc"
-};
-
-static Gfx mbg_model[] = {
-    gsDPPipeSync(),
-    gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
-    gsDPSetCombineLERP(PRIMITIVE, 0, SHADE, 0, 0, 0, 0, 1, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
-    gsDPSetPrimColor(0, 128, 255, 255, 0, 255),
-    gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_FOG | G_LIGHTING | G_SHADING_SMOOTH),
-    gsSPVertex(&mbg_v[0], 8, 0),
-    gsSP2Triangles(5, 6, 7, 0, 4, 5, 7, 0),
-    gsSP2Triangles(7, 6, 2, 0, 7, 2, 3, 0),
-    gsSP2Triangles(5, 1, 6, 0, 6, 1, 2, 0),
-    gsSP2Triangles(4, 0, 5, 0, 5, 0, 1, 0),
-    gsSP2Triangles(4, 7, 0, 0, 0, 7, 3, 0),
-    gsSPEndDisplayList(),
-};
+#include "assets/actor/ac_mbg.h"
 
 static void Mbg_Actor_ct(ACTOR* actorx, GAME* game);
 static void Mbg_Actor_dt(ACTOR* actorx, GAME* game);

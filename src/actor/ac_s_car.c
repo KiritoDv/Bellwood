@@ -7,6 +7,7 @@
 #include "m_common_data.h"
 #include "m_player_lib.h"
 #include "m_event.h"
+#include "assets/data/model/obj_car_shadow.h"
 
 static void aSCR_actor_ct(ACTOR* actor, GAME* game);
 static void aSCR_actor_dt(ACTOR* actor, GAME* game);
@@ -32,8 +33,6 @@ u8 aSCR_shadow_vtx_fix_flg_table0[24] = {
     TRUE,  TRUE,  TRUE,  TRUE,  FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,
 };
 
-extern Vtx obj_car_shadow_v[];
-extern Gfx obj_car_shadowT_model[];
 bIT_ShadowData_c aSCR_shadow_data = {
     23, aSCR_shadow_vtx_fix_flg_table0, 60.0f, obj_car_shadow_v, obj_car_shadowT_model,
 };

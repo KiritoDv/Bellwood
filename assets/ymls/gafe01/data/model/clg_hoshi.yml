@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+clg_win_star_tex:
+  type: TEXTURE
+  offset: 0x813E4D40
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+clg_hoshi_v:
+  type: VTX
+  offset: 0x813E4DC0
+  count: 4
+
+clg_win_hoshiT_model:
+  type: GFX
+  offset: 0x813E4E00
+  size: 0x48

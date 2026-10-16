@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+ef_w_palm5_shake_v:
+  type: VTX
+  offset: 0x8165B178
+  count: 48
+
+ef_w_palm5_shake_model:
+  type: GFX
+  offset: 0x8165B478
+  size: 0x60
+
+cKF_bs_r_ef_w_palm5_shake:
+  type: AC:CKF_SKELETON
+  offset: 0x8165B4F0
+  counts: { joints: 2 }

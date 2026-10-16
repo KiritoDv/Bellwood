@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+ef_peke01_00:
+  type: TEXTURE
+  offset: 0x81661700
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_peke01_00_v:
+  type: VTX
+  offset: 0x81661800
+  count: 4
+
+ef_peke01_00_modelT:
+  type: GFX
+  offset: 0x81661840
+  size: 0x58

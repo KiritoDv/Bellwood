@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_sum_ratan_chest03_pal:
+  type: TEXTURE
+  offset: 0x81A50780
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_ratan_chest03_front_tax:
+  type: TEXTURE
+  offset: 0x81A507A0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A50780
+
+int_sum_ratan_chest03_side_tax:
+  type: TEXTURE
+  offset: 0x81A50BA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A50780
+
+int_sum_ratan_chest03_top_tax:
+  type: TEXTURE
+  offset: 0x81A50CA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A50780
+
+int_sum_ratan_chest03_book_tax:
+  type: TEXTURE
+  offset: 0x81A50DA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A50780
+
+int_sum_ratan_chest03_book2_tax:
+  type: TEXTURE
+  offset: 0x81A50EA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A50780
+
+int_sum_ratan_chest03_v:
+  type: VTX
+  offset: 0x81A50F20
+  count: 62
+
+int_sum_ratan_chest03_on_model:
+  type: GFX
+  offset: 0x81A51300
+  size: 0xA0
+
+int_sum_ratan_chest03_onT_model:
+  type: GFX
+  offset: 0x81A513A0
+  size: 0xB8

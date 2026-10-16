@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_sum_x_bed01_pal:
+  type: TEXTURE
+  offset: 0x81A83740
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_x_bed01_mat:
+  type: TEXTURE
+  offset: 0x81A83760
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A83740
+
+int_sum_x_bed01_head:
+  type: TEXTURE
+  offset: 0x81A83A60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A83740
+
+int_sum_x_bed01_front:
+  type: TEXTURE
+  offset: 0x81A83AE0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A83740
+
+int_sum_x_bed01_top:
+  type: TEXTURE
+  offset: 0x81A83DE0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A83740
+
+int_sum_x_bed01_sox:
+  type: TEXTURE
+  offset: 0x81A83EE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A83740
+
+int_sum_x_bed01_v:
+  type: VTX
+  offset: 0x81A83F60
+  count: 69
+
+int_sum_x_bed_on_model:
+  type: GFX
+  offset: 0x81A843B0
+  size: 0x68
+
+int_sum_x_bed_onT_model:
+  type: GFX
+  offset: 0x81A84418
+  size: 0xE8

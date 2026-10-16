@@ -1,0 +1,104 @@
+:config:
+  strict_declarations: true
+
+int_nog_fan_pal:
+  type: TEXTURE
+  offset: 0x818F92A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_fan_net_tex_txt:
+  type: TEXTURE
+  offset: 0x818F92C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818F92A0
+
+int_nog_fan_motor_tex_txt:
+  type: TEXTURE
+  offset: 0x818F94C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818F92A0
+
+int_nog_fan_hole_tex_txt:
+  type: TEXTURE
+  offset: 0x818F95C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818F92A0
+
+int_nog_fan_fan1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818F9640
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+int_nog_fan_fan2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818F9740
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+int_nog_fan_fan3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818F9840
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+int_nog_fan_bace_tex_txt:
+  type: TEXTURE
+  offset: 0x818F9940
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818F92A0
+
+int_nog_fan_pole_tex_txt:
+  type: TEXTURE
+  offset: 0x818F9B40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818F92A0
+
+int_nog_fan_v:
+  type: VTX
+  offset: 0x818F9BC0
+  count: 46
+
+head_int_nog_fan_model:
+  type: GFX
+  offset: 0x818F9EA0
+  size: 0xF8
+
+bece_int_nog_fan_model:
+  type: GFX
+  offset: 0x818F9F98
+  size: 0x80
+
+cKF_ba_r_int_nog_fan:
+  type: AC:CKF_ANIMATION
+  offset: 0x818FA064
+  joints: 3
+  counts: { flags: 3, data: 21, keys: 3, fixed: 9 }
+
+cKF_bs_r_int_nog_fan:
+  type: AC:CKF_SKELETON
+  offset: 0x818FA09C
+  counts: { joints: 3 }

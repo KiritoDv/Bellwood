@@ -1,0 +1,114 @@
+:config:
+  strict_declarations: true
+
+int_tak_apollo1_pal:
+  type: TEXTURE
+  offset: 0x81A8D300
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_apollo1_antena1_tex:
+  type: TEXTURE
+  offset: 0x81A8D320
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8D300
+
+int_tak_apollo1_antena2_tex:
+  type: TEXTURE
+  offset: 0x81A8D3A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8D300
+
+int_tak_apollo1_asi2_tex:
+  type: TEXTURE
+  offset: 0x81A8D420
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8D300
+
+int_tak_apollo1_asi3_tex:
+  type: TEXTURE
+  offset: 0x81A8D4A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8D300
+
+int_tak_apollo1_asi_tex:
+  type: TEXTURE
+  offset: 0x81A8D520
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8D300
+
+int_tak_apollo1_atama_tex:
+  type: TEXTURE
+  offset: 0x81A8D5A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8D300
+
+int_tak_apollo1_body_tex:
+  type: TEXTURE
+  offset: 0x81A8D620
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A8D300
+
+int_tak_apollo1_kosi_tex:
+  type: TEXTURE
+  offset: 0x81A8D720
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8D300
+
+int_tak_apollo1_kutu_tex:
+  type: TEXTURE
+  offset: 0x81A8D7A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8D300
+
+int_tak_apollo1_kao_tex:
+  type: TEXTURE
+  offset: 0x81A8D820
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A8D300
+
+int_tak_apollo1_v:
+  type: VTX
+  offset: 0x81A8D920
+  count: 96
+
+int_tak_apollo1_on_model:
+  type: GFX
+  offset: 0x81A8DF20
+  size: 0xB0
+
+int_tak_apollo1_onT_model:
+  type: GFX
+  offset: 0x81A8DFD0
+  size: 0x138

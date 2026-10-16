@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+obj_e_mikuji_shadow_tex:
+  type: TEXTURE
+  offset: 0x815046A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_mikuji_shadow_v:
+  type: VTX
+  offset: 0x815048A0
+  count: 8
+
+obj_e_mikuji_shadow_model:
+  type: GFX
+  offset: 0x81504920
+  size: 0x50

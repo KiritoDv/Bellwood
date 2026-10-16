@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+int_iku_mario_hatena_a_pal:
+  type: TEXTURE
+  offset: 0x8185D6A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_mario_hatena_b_pal:
+  type: TEXTURE
+  offset: 0x8185D6C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_mario_hatena_c_pal:
+  type: TEXTURE
+  offset: 0x8185D6E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_mario_hatena_a_tex_txt:
+  type: TEXTURE
+  offset: 0x8185D700
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+int_iku_mario_hatena_v:
+  type: VTX
+  offset: 0x8185DB00
+  count: 92
+
+int_iku_mario_hatena_model_b_model:
+  type: GFX
+  offset: 0x8185E0C0
+  size: 0x68
+
+int_iku_mario_hatena_model_a_model:
+  type: GFX
+  offset: 0x8185E128
+  size: 0xB8

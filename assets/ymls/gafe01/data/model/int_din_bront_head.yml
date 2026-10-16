@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_din_bront_pal:
+  type: TEXTURE
+  offset: 0x81631520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_din_bront_h_tex:
+  type: TEXTURE
+  offset: 0x81631540
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81631520
+
+int_din_bront_kb2_tex:
+  type: TEXTURE
+  offset: 0x81631940
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81631520
+
+int_din_bront_baceA_tex:
+  type: TEXTURE
+  offset: 0x816319C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81631520
+
+int_din_bront_poleA_tex:
+  type: TEXTURE
+  offset: 0x81631BC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81631520
+
+int_din_bront_kubi_tex:
+  type: TEXTURE
+  offset: 0x81631C40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81631520
+
+int_din_bront_head_v:
+  type: VTX
+  offset: 0x81631D40
+  count: 42
+
+int_din_bront_head_model:
+  type: GFX
+  offset: 0x81631FE0
+  size: 0x68
+
+int_din_bront_headT_model:
+  type: GFX
+  offset: 0x81632048
+  size: 0xD8

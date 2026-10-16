@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_sum_x_table01_pal:
+  type: TEXTURE
+  offset: 0x81A8B940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_x_table01_top:
+  type: TEXTURE
+  offset: 0x81A8B960
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A8B940
+
+int_sum_x_table01_stand:
+  type: TEXTURE
+  offset: 0x81A8BD60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8B940
+
+int_sum_x_table01_leg:
+  type: TEXTURE
+  offset: 0x81A8BDE0
+  format: CI4
+  width: 96
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A8B940
+
+int_sum_x_table01_v:
+  type: VTX
+  offset: 0x81A8C0E0
+  count: 56
+
+int_sum_x_table01_on_model:
+  type: GFX
+  offset: 0x81A8C460
+  size: 0x60
+
+int_sum_x_table01_onT_model:
+  type: GFX
+  offset: 0x81A8C4C0
+  size: 0xB8

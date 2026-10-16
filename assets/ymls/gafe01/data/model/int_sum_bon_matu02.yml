@@ -1,0 +1,78 @@
+:config:
+  strict_declarations: true
+
+int_sum_bon_matu02_pal:
+  type: TEXTURE
+  offset: 0x819B0340
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bon_matu02_hachi_tex:
+  type: TEXTURE
+  offset: 0x819B0360
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B0340
+
+int_sum_bon_matu02_stand_tex:
+  type: TEXTURE
+  offset: 0x819B0460
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819B0340
+
+int_sum_bon_matu02_lowstand_tex:
+  type: TEXTURE
+  offset: 0x819B0660
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819B0340
+
+int_sum_bon_matu02_leaf_tex:
+  type: TEXTURE
+  offset: 0x819B0760
+  format: CI4
+  width: 48
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B0340
+
+int_sum_bon_matu02_leaf2_tex:
+  type: TEXTURE
+  offset: 0x819B08E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B0340
+
+int_sum_bon_matu02_earth_tex:
+  type: TEXTURE
+  offset: 0x819B09E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819B0340
+
+int_sum_bon_matu02_v:
+  type: VTX
+  offset: 0x819B0AE0
+  count: 90
+
+int_sum_bon_matu02_on_model:
+  type: GFX
+  offset: 0x819B1080
+  size: 0x60
+
+int_sum_bon_matu02_onT_model:
+  type: GFX
+  offset: 0x819B10E0
+  size: 0x108

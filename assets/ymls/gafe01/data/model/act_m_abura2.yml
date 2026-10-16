@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_abura_v:
+  type: VTX
+  offset: 0x8186BAA0
+  count: 22
+
+act_m_abura_pal:
+  type: TEXTURE
+  offset: 0x8186BC00
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_abura:
+  type: TEXTURE
+  offset: 0x8186BC20
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: n64
+  tlut: 0x8186BC00
+
+act_m_mu_abura1_1T_model:
+  type: GFX
+  offset: 0x8186BE20
+  size: 0xC8
+
+act_m_mu_abura1_2T_model:
+  type: GFX
+  offset: 0x8186BEE8
+  size: 0xC8

@@ -8,6 +8,7 @@
 #include "m_field_info.h"
 #include "m_demo.h"
 #include "m_common_data.h"
+#include "assets/data/model/obj_e_radio_shadow.h"
 
 static void aRAD_actor_ct(ACTOR*, GAME*);
 static void aRAD_actor_init(ACTOR*, GAME*);
@@ -27,9 +28,6 @@ ACTOR_PROFILE Radio_Profile = {
     NULL,
 };
 
-extern Vtx obj_e_radio_shadow_v[];
-extern Gfx obj_e_radio_shadowT_model[];
-
 u8 aRAD_shadow_vtx_fix_flg_table[] = {1,0,0,1,0,1,1,0};
 bIT_ShadowData_c aRAD_shadow_data = {
     8,
@@ -38,8 +36,6 @@ bIT_ShadowData_c aRAD_shadow_data = {
     obj_e_radio_shadow_v,
     obj_e_radio_shadowT_model,
 };
-
-extern Gfx radio_DL_model[];
 
 static void aRAD_setup_action(RADIO_ACTOR*, int);
 static void aRAD_set_bgOffset(RADIO_ACTOR*, int);

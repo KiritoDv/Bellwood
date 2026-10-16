@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_soldout_pal:
+  type: TEXTURE
+  offset: 0x81399260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_soldout_tex:
+  type: TEXTURE
+  offset: 0x81399280
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81399260
+
+obj_shop_soldout_v:
+  type: VTX
+  offset: 0x81399480
+  count: 12
+
+obj_soldoutT_mat_model:
+  type: GFX
+  offset: 0x81399540
+  size: 0x48
+
+obj_soldoutT_gfx_model:
+  type: GFX
+  offset: 0x81399588
+  size: 0x20

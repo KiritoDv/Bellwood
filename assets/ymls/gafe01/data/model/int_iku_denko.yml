@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_iku_denko_pal:
+  type: TEXTURE
+  offset: 0x81854860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_denko_all_tex_txt:
+  type: TEXTURE
+  offset: 0x81854880
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81854860
+
+int_iku_denko_v:
+  type: VTX
+  offset: 0x81854C80
+  count: 94
+
+int_iku_denko_model_model:
+  type: GFX
+  offset: 0x81855260
+  size: 0xC0

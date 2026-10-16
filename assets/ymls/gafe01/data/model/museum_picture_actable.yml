@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+museum_picture_actable:
+  type: AC:STRUCT_ARRAY
+  offset: 0x818DA918
+  size: 0x30
+  fields: [u16, pad*2, s32*2, u8*2, s8, pad, s16, pad*2, u32]

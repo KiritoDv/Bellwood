@@ -1,0 +1,81 @@
+:config:
+  strict_declarations: true
+
+int_kon_pound_pal:
+  type: TEXTURE
+  offset: 0x818AC9E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_pound_suimen_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x818ACA00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_pound_rock_tex:
+  type: TEXTURE
+  offset: 0x818ACA20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818AC9E0
+
+int_kon_pound_gl_tex:
+  type: TEXTURE
+  offset: 0x818ACC20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818AC9E0
+
+int_kon_pound_soko_tex:
+  type: TEXTURE
+  offset: 0x818ACE20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AC9E0
+
+int_kon_pound_flo_tex:
+  type: TEXTURE
+  offset: 0x818ACEA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818AC9E0
+
+int_kon_pound_suimen_tex:
+  type: TEXTURE
+  offset: 0x818AD0A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818ACA00
+
+int_kon_pound_v:
+  type: VTX
+  offset: 0x818AD120
+  count: 66
+
+int_kon_pound_on_model:
+  type: GFX
+  offset: 0x818AD540
+  size: 0x58
+
+int_kon_pound_onT_model:
+  type: GFX
+  offset: 0x818AD598
+  size: 0xE8
+
+int_kon_pound_alphaT_model:
+  type: GFX
+  offset: 0x818AD680
+  size: 0x60

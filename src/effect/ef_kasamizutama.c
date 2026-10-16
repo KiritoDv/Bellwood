@@ -3,14 +3,12 @@
 #include "m_common_data.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/ef_koke_suiteki01_00.h"
 
 
 static f32 eKasamizutama_scale_table[] = {
     0.0f, 0.1f, 0.3f, 0.5f, 0.7f, 0.9f, 1.0f, 0.9f, 0.7f, 0.5f
 };
-
-extern Gfx ef_koke_suiteki01_0_int_i4[];
-extern Gfx ef_koke_suiteki01_00_modelT[];
 
 static void eKasamizutama_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eKasamizutama_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);

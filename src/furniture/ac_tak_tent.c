@@ -1,10 +1,5 @@
-u16 int_tak_tent_on_pal[] ATTRIBUTE_ALIGN(32) = {
-    #include "assets/int_tak_tent_on_pal.inc"
-};
-
-u16 int_tak_tent_off_pal[] ATTRIBUTE_ALIGN(32) = {
-    #include "assets/int_tak_tent_off_pal.inc"
-};
+#include "assets/data/model/int_tak_tent.h"
+#include "assets/f_furniture.h"
 
 
 static void fTTnt_ct(FTR_ACTOR* ftr_actor, u8* data) {
@@ -21,11 +16,6 @@ static void fTTnt_dt(FTR_ACTOR* ftr_actor, u8* data) {
         zelda_free(ftr_actor->pal_p);
     }
 }
-
-extern Gfx int_tak_tent_green_on_model[];
-extern Gfx int_tak_tent_body_onT_model[];
-extern Gfx int_tak_tent_etc_onT_model[];
-extern Gfx int_tak_tent_light_offT_model[];
 
 static void fTTnt_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     u16* pal_p = ftr_actor->pal_p;

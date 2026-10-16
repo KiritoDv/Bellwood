@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_act_m_miyama_b:
+  type: AC:CKF_ANIMATION
+  offset: 0x81873B40
+  joints: 5
+  counts: { flags: 5, data: 54, keys: 2, fixed: 16 }

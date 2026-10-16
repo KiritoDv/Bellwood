@@ -1,5 +1,4 @@
-extern cKF_Skeleton_R_c cKF_bs_r_int_ike_tent_fire01;
-extern cKF_Animation_R_c cKF_ba_r_int_ike_tent_fire01;
+#include "assets/data/model/int_ike_tent_fire01.h"
 
 static void fITF_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyframe = &ftr_actor->keyframe;
@@ -17,11 +16,9 @@ static void fITF_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* 
     keyframe->frame_control.speed = 0.5f;
 
     if (aFTR_CAN_PLAY_SE(ftr_actor)) {
-        sAdo_OngenPos((u32)ftr_actor, 0x5D, &ftr_actor->position);
+        sAdo_OngenPos((uintptr_t)ftr_actor, 0x5D, &ftr_actor->position);
     }
 }
-
-extern Gfx int_ike_fire_model[];
 
 static int fITF_DwAfter(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape, u8* joint_flags,
                         void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {

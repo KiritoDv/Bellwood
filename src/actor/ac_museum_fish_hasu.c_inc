@@ -1,7 +1,7 @@
 #include "ac_museum_fish_priv.h"
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_museum5_hasu;
-extern cKF_Animation_R_c cKF_ba_r_obj_museum5_hasu;
+#include "assets/data/model/cKF_ba_r_act_mus_kaeru_a1_big.h"
+#include "assets/data/model/cKF_ba_r_obj_museum5_hasu.h"
+#include "assets/data/model/obj_museum5_hasu.h"
 
 void mfish_hasu_ct(mfish_hasu_c* actor, GAME* gamex) {
     cKF_SkeletonInfo_R_ct(&actor->keyframe, &cKF_bs_r_obj_museum5_hasu, &cKF_ba_r_obj_museum5_hasu, actor->work,
@@ -30,7 +30,6 @@ void mfish_hasu_dw(mfish_hasu_c* actor, GAME* gamex) {
     CLOSE_DISP(gamex->graph);
 }
 
-extern cKF_Animation_R_c cKF_ba_r_act_mus_kaeru_a1_big;
 void mfish_kaeru_ct(MUSEUM_FISH_PRIVATE_DATA* actor, GAME* gamex) {
     mfish_keyframe_c* skele = &actor->kf;
     mfish_hasu_c* keyframe = actor->hasu_p;

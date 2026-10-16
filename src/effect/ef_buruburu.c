@@ -1,10 +1,7 @@
 #include "ef_effect_control.h"
 #include "m_common_data.h"
+#include "assets/data/model/ef_buruburu01_00.h"
 
-extern u8 ef_buruburu01_0_int_i4[];
-extern u8 ef_buruburu01_1_int_i4[];
-
-extern Gfx ef_buruburu01_00_modelT[];
 
 static void eBR_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eBR_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -50,7 +47,7 @@ static void eBR_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg) {
 
 static void eBR_mv(eEC_Effect_c* effect, GAME* game) {
     eEC_CLIP->set_continious_env_proc(effect,8,8);
-    sAdo_OngenPos((u32) effect, 0x2D, &effect->position);
+    sAdo_OngenPos((uintptr_t) effect, 0x2D, &effect->position);
 }
 
 static void eBR_dw(eEC_Effect_c* effect, GAME* game) {

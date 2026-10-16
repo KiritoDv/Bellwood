@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+tol_kamicup_pal:
+  type: TEXTURE
+  offset: 0x815C5880
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_kamicup_tex:
+  type: TEXTURE
+  offset: 0x815C58A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815C5880
+
+tol_kamicup_1_v:
+  type: VTX
+  offset: 0x815C5AA0
+  count: 51
+
+tol_kamicup_1T_model:
+  type: GFX
+  offset: 0x815C5DD0
+  size: 0xB0

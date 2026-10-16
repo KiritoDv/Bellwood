@@ -1,0 +1,71 @@
+:config:
+  strict_declarations: true
+
+obj_station1_shadow_tex:
+  type: TEXTURE
+  offset: 0x8150A260
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_station1_shadow_v:
+  type: VTX
+  offset: 0x8150A460
+  count: 31
+
+obj_station1_shadow_hiT_model:
+  type: GFX
+  offset: 0x8150A650
+  size: 0x58
+
+obj_station1_shadow_lowT_model:
+  type: GFX
+  offset: 0x8150A6A8
+  size: 0x58
+
+obj_station2_shadow_tex_txt:
+  type: TEXTURE
+  offset: 0x8150A700
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_station2_shadow_v:
+  type: VTX
+  offset: 0x8150A900
+  count: 64
+
+obj_station2_shadow_low_model:
+  type: GFX
+  offset: 0x8150AD00
+  size: 0x58
+
+obj_station2_shadow_hi_model:
+  type: GFX
+  offset: 0x8150AD58
+  size: 0x78
+
+obj_station3_shadow_tex_txt:
+  type: TEXTURE
+  offset: 0x8150ADE0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_station3_shadow_v:
+  type: VTX
+  offset: 0x8150AFE0
+  count: 62
+
+obj_station3_shadow_low_model:
+  type: GFX
+  offset: 0x8150B3C0
+  size: 0x58
+
+obj_station3_shadow_hi_model:
+  type: GFX
+  offset: 0x8150B418
+  size: 0x70

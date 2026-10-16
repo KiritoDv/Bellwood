@@ -3,6 +3,7 @@
 #include "m_msg.h"
 #include "m_play.h"
 #include "sys_matrix.h"
+#include "assets/data/model/obj_shrine_shadow.h"
 
 static void aSHR_actor_ct(ACTOR* actorx, GAME* game);
 static void aSHR_actor_dt(ACTOR* actorx, GAME* game);
@@ -51,9 +52,6 @@ static u8 aSHR_shadow_vtx_fix_flg_table[16] = {
   TRUE, TRUE, FALSE, FALSE,
   TRUE, TRUE, FALSE, FALSE
 };
-
-extern Vtx obj_shrine_shadow_v[];
-extern Gfx obj_shrine_shadow_model[];
 
 static bIT_ShadowData_c aSHR_shadow_data = {
   16,

@@ -7,10 +7,8 @@
 #include "m_malloc.h"
 #include "m_player_lib.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_yuki01_00.h"
 
-extern Gfx ef_yuki01_setmode[];
-
-extern Gfx ef_yuki01_00_model[];
 
 static void aWeatherSnow_make(ACTOR*, GAME*);
 static void aWeatherSnow_ct(aWeather_Priv*, GAME*);
@@ -68,7 +66,7 @@ static void aWeatherSnow_make(ACTOR* actor, GAME* game) {
     }
 }
 
-static void aWeatherSnow_ct(aWeather_Priv*, GAME*) {
+static void aWeatherSnow_ct(aWeather_Priv* arg0, GAME* arg1) {
 }
 
 static int aWeatherSnow_CheckSnowBorder(aWeather_Priv* priv, GAME_PLAY* play) {
@@ -104,6 +102,7 @@ static void aWeatherSnow_CheckSnowScroll(aWeather_Priv* priv, GAME_PLAY* play) {
     PLAYER_ACTOR* player = get_player_actor_withoutCheck(play);
 
     if (border != 0) {
+        FrameInterpolation_ResetObject(priv);
         if ((border >> 1) & 1) {
             priv->pos.x += 200.0f;
         }
@@ -125,6 +124,7 @@ static void aWeatherSnow_CheckSnowScroll(aWeather_Priv* priv, GAME_PLAY* play) {
         if (weather != NULL) {
             y = 230.0f + weather->pos.y;
             if (priv->pos.y < (40.0f + player->actor_class.world.position.y)) {
+                FrameInterpolation_ResetObject(priv);
                 priv->pos.y = (y + (priv->pos.y - priv->currentY));
                 priv->currentY = y;
             }

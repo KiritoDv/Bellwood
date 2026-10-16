@@ -1,0 +1,80 @@
+:config:
+  strict_declarations: true
+
+int_tak_ufo_pal:
+  type: TEXTURE
+  offset: 0x81AADF40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_ufo_yane_tex_txt:
+  type: TEXTURE
+  offset: 0x81AADF60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AADF40
+
+int_tak_ufo_body_tex_txt:
+  type: TEXTURE
+  offset: 0x81AADFE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AADF40
+
+int_tak_ufo_mado_tex_txt:
+  type: TEXTURE
+  offset: 0x81AAE0E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AADF40
+
+int_tak_ufo_asi_tex_txt:
+  type: TEXTURE
+  offset: 0x81AAE160
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AADF40
+
+int_tak_ufo_hikari_tex_txt:
+  type: TEXTURE
+  offset: 0x81AAE1E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AADF40
+
+int_tak_ufo_v:
+  type: VTX
+  offset: 0x81AAE260
+  count: 91
+
+int_tak_ufo_on_model:
+  type: GFX
+  offset: 0x81AAE810
+  size: 0xC0
+
+int_tak_ufo_off_model:
+  type: GFX
+  offset: 0x81AAE8D0
+  size: 0x98
+
+cKF_ba_r_int_tak_ufo:
+  type: AC:CKF_ANIMATION
+  offset: 0x81AAE998
+  joints: 4
+  counts: { flags: 4, data: 6, keys: 1, fixed: 14 }
+
+cKF_bs_r_int_tak_ufo:
+  type: AC:CKF_SKELETON
+  offset: 0x81AAE9DC
+  counts: { joints: 4 }

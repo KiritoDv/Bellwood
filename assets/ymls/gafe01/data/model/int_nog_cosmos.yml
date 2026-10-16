@@ -1,0 +1,41 @@
+:config:
+  strict_declarations: true
+
+int_nog_cosmos_grass_tex:
+  type: TEXTURE
+  offset: 0x818F5980
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_cosmos_flower_tex:
+  type: TEXTURE
+  offset: 0x818F5A00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+int_nog_cosmos_leaf_tex:
+  type: TEXTURE
+  offset: 0x818F5B00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_cosmos_v:
+  type: VTX
+  offset: 0x818F5B80
+  count: 52
+
+int_nog_cosmos_model:
+  type: GFX
+  offset: 0x818F5EC0
+  size: 0x58
+
+int_nog_cosmosT_model:
+  type: GFX
+  offset: 0x818F5F18
+  size: 0xB0

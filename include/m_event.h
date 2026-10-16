@@ -96,6 +96,35 @@ typedef union {
     u32 raw;
 } mEv_schedule_date_u;
 
+static inline u16 mEv_md_raw(const mEv_MonthDay_u* u) {
+    return (u16)((u->month << 8) | u->day);
+}
+
+static inline void mEv_md_set_raw(mEv_MonthDay_u* u, u32 v) {
+    u->month = (u8)(v >> 8);
+    u->day = (u8)v;
+}
+
+static inline u32 mEv_sd_raw(const mEv_schedule_date_u* u) {
+    return ((u32)u->d.month << 24) | ((u32)u->d.day << 16) | ((u32)u->d._2 << 8) | (u32)u->d.hour;
+}
+
+static inline void mEv_sd_set_raw(mEv_schedule_date_u* u, u32 v) {
+    u->d.month = (u8)(v >> 24);
+    u->d.day = (u8)(v >> 16);
+    u->d._2 = (u8)(v >> 8);
+    u->d.hour = (u8)v;
+}
+
+static inline u16 mEv_sd_md(const mEv_schedule_date_u* u) {
+    return (u16)((u->d.month << 8) | u->d.day);
+}
+
+static inline void mEv_sd_set_md(mEv_schedule_date_u* u, u32 v) {
+    u->d.month = (u8)(v >> 8);
+    u->d.day = (u8)v;
+}
+
 typedef struct event_schedule_s {
     mEv_schedule_date_u date[2]; /* 0 = begin, 1 = end */
     s16 _8;

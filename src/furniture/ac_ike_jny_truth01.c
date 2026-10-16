@@ -1,12 +1,9 @@
+#include "assets/data/model/int_ike_jny_truth01.h"
 static void fIJT_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void fIJT_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void fIJT_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void fIJT_dt(FTR_ACTOR* ftr_actor, u8* data);
 
-extern u8 int_ike_jny_truthface1_TA_tex_txt[];
-extern u8 int_ike_jny_truthface2_TA_tex_txt[];
-
-extern Gfx int_ike_jny_truth01_body_model[];
 
 static void fIJT_ct(FTR_ACTOR* ftr_actor, u8* data){
     ftr_actor->dynamic_work_s[0] = 0;

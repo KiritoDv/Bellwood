@@ -1,4 +1,4 @@
-extern Gfx int_nog_burner_model[];
+#include "assets/data/model/int_nog_burner.h"
 
 aFTR_PROFILE iam_nog_burner = {
 	int_nog_burner_model,

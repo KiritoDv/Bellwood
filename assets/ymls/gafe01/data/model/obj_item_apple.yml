@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+obj_item_apple_pal:
+  type: TEXTURE
+  offset: 0x8138D7E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_apple_tex:
+  type: TEXTURE
+  offset: 0x8138D800
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8138D7E0
+
+obj_item_apple_v:
+  type: VTX
+  offset: 0x8138DA00
+  count: 4
+
+obj_apple2_modelT:
+  type: GFX
+  offset: 0x8138DA40
+  size: 0x58

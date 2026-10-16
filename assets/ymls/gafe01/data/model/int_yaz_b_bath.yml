@@ -1,0 +1,68 @@
+:config:
+  strict_declarations: true
+
+int_yaz_b_bath_pal:
+  type: TEXTURE
+  offset: 0x81AC9900
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yaz_b_bath_kobu_tex_txt:
+  type: TEXTURE
+  offset: 0x81AC9920
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AC9900
+
+int_yaz_b_bath_base_tex_txt:
+  type: TEXTURE
+  offset: 0x81AC9A20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AC9900
+
+int_yaz_b_bath_sara2_tex_txt:
+  type: TEXTURE
+  offset: 0x81AC9C20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AC9900
+
+int_yaz_b_bath_pole_tex_txt:
+  type: TEXTURE
+  offset: 0x81AC9E20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AC9900
+
+int_yaz_b_bath_water5_tex_4i4_pic_i4:
+  type: TEXTURE
+  offset: 0x81AC9F20
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_yaz_b_bath_v:
+  type: VTX
+  offset: 0x81AC9FA0
+  count: 64
+
+int_yaz_b_bath_water_model:
+  type: GFX
+  offset: 0x81ACA3A0
+  size: 0x60
+
+int_yaz_b_bath_body_model:
+  type: GFX
+  offset: 0x81ACA400
+  size: 0x110

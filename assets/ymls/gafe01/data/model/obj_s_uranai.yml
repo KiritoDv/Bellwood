@@ -1,0 +1,142 @@
+:config:
+  strict_declarations: true
+
+obj_s_uranai_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x81514F80
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_uranai_window_tex_txt:
+  type: TEXTURE
+  offset: 0x81515780
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_uranai_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81515800
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_s_uranai_v:
+  type: VTX
+  offset: 0x81516000
+  count: 55
+
+obj_s_uranai_window_model:
+  type: GFX
+  offset: 0x81516370
+  size: 0x48
+
+obj_s_uranai_t2_model:
+  type: GFX
+  offset: 0x815163B8
+  size: 0x58
+
+obj_s_uranai_t1_model:
+  type: GFX
+  offset: 0x81516410
+  size: 0x80
+
+obj_s_uranai_light_model:
+  type: GFX
+  offset: 0x81516490
+  size: 0x50
+
+obj_s_uranai_doorA_model:
+  type: GFX
+  offset: 0x815164E0
+  size: 0x58
+
+obj_s_uranai_doorB_model:
+  type: GFX
+  offset: 0x81516538
+  size: 0x58
+
+cKF_bs_r_obj_s_uranai:
+  type: AC:CKF_SKELETON
+  offset: 0x815165F0
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_s_uranai:
+  type: AC:CKF_ANIMATION
+  offset: 0x815166C8
+  joints: 8
+  counts: { flags: 8, data: 72, keys: 12, fixed: 15 }
+
+obj_w_uranai_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x815166E0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_uranai_window_tex_txt:
+  type: TEXTURE
+  offset: 0x81516EE0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_uranai_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81516F60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_w_uranai_v:
+  type: VTX
+  offset: 0x81517760
+  count: 55
+
+obj_w_uranai_window_model:
+  type: GFX
+  offset: 0x81517AD0
+  size: 0x48
+
+obj_w_uranai_t2_model:
+  type: GFX
+  offset: 0x81517B18
+  size: 0x58
+
+obj_w_uranai_t1_model:
+  type: GFX
+  offset: 0x81517B70
+  size: 0x80
+
+obj_w_uranai_light_model:
+  type: GFX
+  offset: 0x81517BF0
+  size: 0x50
+
+obj_w_uranai_doorA_model:
+  type: GFX
+  offset: 0x81517C40
+  size: 0x58
+
+obj_w_uranai_doorB_model:
+  type: GFX
+  offset: 0x81517C98
+  size: 0x58
+
+cKF_bs_r_obj_w_uranai:
+  type: AC:CKF_SKELETON
+  offset: 0x81517D50
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_w_uranai:
+  type: AC:CKF_ANIMATION
+  offset: 0x81517E28
+  joints: 8
+  counts: { flags: 8, data: 72, keys: 12, fixed: 15 }

@@ -3,10 +3,7 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
-
-extern Gfx ef_onpu01_00_modelT[];
-extern Gfx ef_onpu01_01_modelT[];
-extern Gfx ef_onpu01_02_modelT[];
+#include "assets/data/model/ef_onpu01_00.h"
 
 static Gfx* eKONP_model_table[] = {
     ef_onpu01_00_modelT,

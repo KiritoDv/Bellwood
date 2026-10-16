@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+mus_win_mark_tex:
+  type: TEXTURE
+  offset: 0x814BAA60
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: n64
+
+mus_mark_v:
+  type: VTX
+  offset: 0x814BAB60
+  count: 4
+
+mus_mark_before:
+  type: GFX
+  offset: 0x814BABA0
+  size: 0x70
+
+mus_mark_model:
+  type: GFX
+  offset: 0x814BAC10
+  size: 0x18

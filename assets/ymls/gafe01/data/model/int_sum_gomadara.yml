@@ -1,0 +1,102 @@
+:config:
+  strict_declarations: true
+
+int_sum_gomadara_pal:
+  type: TEXTURE
+  offset: 0x819EC7E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_gomadara_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x819EC800
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_gomadara_body_txt:
+  type: TEXTURE
+  offset: 0x819EC820
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819EC7E0
+
+int_sum_gomadara_base_txt:
+  type: TEXTURE
+  offset: 0x819ECA20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819EC7E0
+
+int_sum_gomadara_top_txt:
+  type: TEXTURE
+  offset: 0x819ECAA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819EC7E0
+
+int_sum_gomadara_side_txt:
+  type: TEXTURE
+  offset: 0x819ECCA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819EC7E0
+
+int_sum_gomadara_hand_txt:
+  type: TEXTURE
+  offset: 0x819ECEA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819EC800
+
+int_sum_gomadara_v:
+  type: VTX
+  offset: 0x819ECFA0
+  count: 67
+
+int_sum_gomadara_side_model:
+  type: GFX
+  offset: 0x819ED3D0
+  size: 0x68
+
+int_sum_gomadara_komado_model:
+  type: GFX
+  offset: 0x819ED438
+  size: 0x58
+
+int_sum_gomadara_glass_model:
+  type: GFX
+  offset: 0x819ED490
+  size: 0x68
+
+int_sum_gomadara_base_model:
+  type: GFX
+  offset: 0x819ED4F8
+  size: 0x98
+
+int_sum_gomadara_body_model:
+  type: GFX
+  offset: 0x819ED590
+  size: 0x88
+
+cKF_ba_r_int_sum_gomadara:
+  type: AC:CKF_ANIMATION
+  offset: 0x819ED6CC
+  joints: 6
+  counts: { flags: 6, data: 63, keys: 4, fixed: 17 }
+
+cKF_bs_r_int_sum_gomadara:
+  type: AC:CKF_SKELETON
+  offset: 0x819ED728
+  counts: { joints: 6 }

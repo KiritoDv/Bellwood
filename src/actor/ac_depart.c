@@ -11,6 +11,8 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "libforest/gbi_extensions.h"
+#include "assets/data/model/obj_s_shop1.h"
+#include "assets/data/model/obj_shop1_shadow.h"
 
 // clang-format off
 enum {
@@ -53,9 +55,6 @@ static u8 aDPT_shadow_vtx_fix_flg_table[] = {
 };
 // clang-format on
 
-extern Vtx obj_shop4_shadow_v[];
-extern Gfx obj_shop4_shadowT_model[];
-
 // clang-format off
 static bIT_ShadowData_c aDPT_shadow_data = {
     ARRAY_COUNT(aDPT_shadow_vtx_fix_flg_table),
@@ -65,9 +64,6 @@ static bIT_ShadowData_c aDPT_shadow_data = {
     obj_shop4_shadowT_model
 };
 // clang-format on
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_shop4;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_shop4;
 
 static void aDPT_set_bgOffset(DEPART_ACTOR* depart, int offs);
 static void aDPT_setup_action(DEPART_ACTOR* depart, int action);

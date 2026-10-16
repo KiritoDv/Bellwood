@@ -1,0 +1,74 @@
+:config:
+  strict_declarations: true
+
+obj_shop1_shadow:
+  type: TEXTURE
+  offset: 0x81509300
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_shop1_shadow_v:
+  type: VTX
+  offset: 0x81509500
+  count: 8
+
+obj_shop1_shadowT_model:
+  type: GFX
+  offset: 0x81509580
+  size: 0x58
+
+obj_shop2_shadow:
+  type: TEXTURE
+  offset: 0x815095E0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_shop2_shadow_v:
+  type: VTX
+  offset: 0x815097E0
+  count: 12
+
+obj_shop2_shadowT_model:
+  type: GFX
+  offset: 0x815098A0
+  size: 0x58
+
+obj_shop3_shadow:
+  type: TEXTURE
+  offset: 0x81509900
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_shop3_shadow_v:
+  type: VTX
+  offset: 0x81509B00
+  count: 8
+
+obj_shop3_shadowT_model:
+  type: GFX
+  offset: 0x81509B80
+  size: 0x58
+
+obj_shop4_shadow_txt:
+  type: TEXTURE
+  offset: 0x81509BE0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_shop4_shadow_v:
+  type: VTX
+  offset: 0x81509DE0
+  count: 12
+
+obj_shop4_shadowT_model:
+  type: GFX
+  offset: 0x81509EA0
+  size: 0x58

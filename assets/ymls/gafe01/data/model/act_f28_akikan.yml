@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+act_f28_akikan_pal:
+  type: TEXTURE
+  offset: 0x81237F20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f28_akikan_tex:
+  type: TEXTURE
+  offset: 0x81237F40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81237F20
+
+act_f28_akikan_v:
+  type: VTX
+  offset: 0x81238040
+  count: 6
+
+act_f28_akikanT_model:
+  type: GFX
+  offset: 0x812380A0
+  size: 0x60

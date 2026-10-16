@@ -1,0 +1,49 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_hitodama_pal:
+  type: TEXTURE
+  offset: 0x81446180
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_hitodama1_tex:
+  type: TEXTURE
+  offset: 0x814461A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_hitodama2_tex:
+  type: TEXTURE
+  offset: 0x814463A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_hitodama3_tex:
+  type: TEXTURE
+  offset: 0x814465A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_hitodama4_tex:
+  type: TEXTURE
+  offset: 0x814467A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_hitodama5_tex:
+  type: TEXTURE
+  offset: 0x814469A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

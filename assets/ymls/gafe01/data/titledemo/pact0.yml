@@ -1,0 +1,14 @@
+:config:
+  strict_declarations: true
+
+pact0_head_table:
+  type: ARRAY
+  offset: 0x815F3CD8
+  count: 6
+  array_type: u16
+
+pact0_key_data:
+  type: ARRAY
+  offset: 0x815F3CE4
+  count: 1831
+  array_type: u16

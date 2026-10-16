@@ -1,0 +1,82 @@
+:config:
+  strict_declarations: true
+
+int_ike_jny_sirser01_pal:
+  type: TEXTURE
+  offset: 0x8182D520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_jny_sirserface_tex_txt:
+  type: TEXTURE
+  offset: 0x8182D540
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182D520
+
+int_ike_jny_sirserear_tex_txt:
+  type: TEXTURE
+  offset: 0x8182D740
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8182D520
+
+int_ike_jny_sirserhead_tex_txt:
+  type: TEXTURE
+  offset: 0x8182D7C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182D520
+
+int_ike_jny_sirserhair_tex_txt:
+  type: TEXTURE
+  offset: 0x8182D8C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8182D520
+
+int_ike_jny_sirserfoot_tex_txt:
+  type: TEXTURE
+  offset: 0x8182D9C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8182D520
+
+int_ike_jny_sirsertail_tex_txt:
+  type: TEXTURE
+  offset: 0x8182DA40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182D520
+
+int_ike_jny_sirserfoot2_tex_txt:
+  type: TEXTURE
+  offset: 0x8182DB40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8182D520
+
+int_ike_jny_sirser01_v:
+  type: VTX
+  offset: 0x8182DBC0
+  count: 87
+
+int_ike_jny_sirser01_body_model:
+  type: GFX
+  offset: 0x8182E130
+  size: 0x1B0

@@ -1,4 +1,4 @@
-extern Gfx s_car_DL_model[];
+#include "assets/data/model/obj_s_car.h"
 
 static void aSCR_set_prim_col(rgb_t* color) {
     mEv_dsg_common_c* designer_common;

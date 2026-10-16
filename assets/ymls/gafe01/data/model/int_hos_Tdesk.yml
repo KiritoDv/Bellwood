@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+int_hos_Tdesk_pal:
+  type: TEXTURE
+  offset: 0x8180CAA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_hos_T_desk_body_tex_txt:
+  type: TEXTURE
+  offset: 0x8180CAC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8180CAA0
+
+int_hos_T_desk_hiki_tex_txt:
+  type: TEXTURE
+  offset: 0x8180CCC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8180CAA0
+
+int_hos_T_desk_top_tex_txt:
+  type: TEXTURE
+  offset: 0x8180CEC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8180CAA0
+
+int_hos_T_desk_side_tex_txt:
+  type: TEXTURE
+  offset: 0x8180D0C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8180CAA0
+
+int_hos_Tdesk_v:
+  type: VTX
+  offset: 0x8180D1C0
+  count: 32
+
+int_hos_Tdesk_base_model:
+  type: GFX
+  offset: 0x8180D3C0
+  size: 0x110

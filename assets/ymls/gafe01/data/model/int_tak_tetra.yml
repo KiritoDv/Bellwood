@@ -1,0 +1,37 @@
+:config:
+  strict_declarations: true
+
+int_tak_tetra_pal:
+  type: TEXTURE
+  offset: 0x81AAC820
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_tetra_side_tex:
+  type: TEXTURE
+  offset: 0x81AAC840
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AAC820
+
+int_tak_tetra_top_tex:
+  type: TEXTURE
+  offset: 0x81AACA40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AAC820
+
+int_tak_tetra_v:
+  type: VTX
+  offset: 0x81AACAC0
+  count: 81
+
+int_tak_tetra_on_model:
+  type: GFX
+  offset: 0x81AACFD0
+  size: 0x100

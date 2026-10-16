@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_liccapiano_pal:
+  type: TEXTURE
+  offset: 0x81A1B280
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_liccapiano_top_txt:
+  type: TEXTURE
+  offset: 0x81A1B2A0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A1B280
+
+int_sum_liccapiano_side_txt:
+  type: TEXTURE
+  offset: 0x81A1B5A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A1B280
+
+int_sum_liccapiano_lid_txt:
+  type: TEXTURE
+  offset: 0x81A1B6A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A1B280
+
+int_sum_liccapiano_stand_txt:
+  type: TEXTURE
+  offset: 0x81A1B8A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A1B280
+
+int_sum_liccapiano_pedal_txt:
+  type: TEXTURE
+  offset: 0x81A1B920
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A1B280
+
+int_sum_liccapiano_pin_txt:
+  type: TEXTURE
+  offset: 0x81A1B960
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A1B280
+
+int_sum_liccapiano_key_txt:
+  type: TEXTURE
+  offset: 0x81A1B9A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A1B280
+
+int_sum_liccapiano_v:
+  type: VTX
+  offset: 0x81A1BAA0
+  count: 73
+
+int_sum_liccapiano_on_model:
+  type: GFX
+  offset: 0x81A1BF30
+  size: 0x60
+
+int_sum_liccapiano_onT_model:
+  type: GFX
+  offset: 0x81A1BF90
+  size: 0x120

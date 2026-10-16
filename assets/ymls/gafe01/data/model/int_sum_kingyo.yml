@@ -1,0 +1,104 @@
+:config:
+  strict_declarations: true
+
+int_sum_kingyo_pal:
+  type: TEXTURE
+  offset: 0x81A0E540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_kingyo_top_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A0E560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_kingyo_front_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A0E580
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_kingyo_body_txt:
+  type: TEXTURE
+  offset: 0x81A0E5A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A0E540
+
+int_sum_kingyo_kuchi_txt:
+  type: TEXTURE
+  offset: 0x81A0E7A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A0E540
+
+int_sum_kingyo_etc_txt:
+  type: TEXTURE
+  offset: 0x81A0E820
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A0E540
+
+int_sum_kingyo_top_txt:
+  type: TEXTURE
+  offset: 0x81A0E8A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A0E560
+
+int_sum_kingyo_front_txt:
+  type: TEXTURE
+  offset: 0x81A0E920
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A0E580
+
+int_sum_kingyo_v:
+  type: VTX
+  offset: 0x81A0EB20
+  count: 50
+
+int_sum_kingyo_sakana_model:
+  type: GFX
+  offset: 0x81A0EE40
+  size: 0x70
+
+int_sum_kingyo_glass_model:
+  type: GFX
+  offset: 0x81A0EEB0
+  size: 0x68
+
+int_sum_kingyo_body_model:
+  type: GFX
+  offset: 0x81A0EF18
+  size: 0x68
+
+int_sum_kingyo_base_model:
+  type: GFX
+  offset: 0x81A0EF80
+  size: 0x78
+
+cKF_ba_r_int_sum_kingyo:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A0F0DC
+  joints: 5
+  counts: { flags: 5, data: 90, keys: 9, fixed: 9 }
+
+cKF_bs_r_int_sum_kingyo:
+  type: AC:CKF_SKELETON
+  offset: 0x81A0F12C
+  counts: { joints: 5 }

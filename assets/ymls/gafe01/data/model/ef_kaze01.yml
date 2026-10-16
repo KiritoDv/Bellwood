@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+ef_kaze01_evw_anime:
+  type: AC:EVW_ANIME
+  offset: 0x81669388
+
+ef_kaze01_0_int_i4:
+  type: TEXTURE
+  offset: 0x816693A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_kaze01_1_int_i4:
+  type: TEXTURE
+  offset: 0x81669420
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_kaze01_v:
+  type: VTX
+  offset: 0x816694A0
+  count: 5
+
+ef_kaze01_v2:
+  type: VTX
+  offset: 0x816694F0
+  count: 5
+
+ef_kaze01_modelT:
+  type: GFX
+  offset: 0x81669540
+  size: 0x70
+
+ef_kaze01_modelT2:
+  type: GFX
+  offset: 0x816695B0
+  size: 0x70
+
+ef_kaze01_2:
+  type: TEXTURE
+  offset: 0x81669620
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_kaze01_happa_v:
+  type: VTX
+  offset: 0x81669720
+  count: 4
+
+ef_kaze01_happa_modelT:
+  type: GFX
+  offset: 0x81669760
+  size: 0x58

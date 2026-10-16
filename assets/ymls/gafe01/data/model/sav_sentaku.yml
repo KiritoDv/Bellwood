@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+ctl_win_tagu3_tex:
+  type: TEXTURE
+  offset: 0x813EFC20
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+sav_sentaku_v:
+  type: VTX
+  offset: 0x813EFE20
+  count: 4
+
+sav_sentaku_taguT_model:
+  type: GFX
+  offset: 0x813EFE60
+  size: 0x38

@@ -1,0 +1,64 @@
+:config:
+  strict_declarations: true
+
+int_yos_terrace_pal:
+  type: TEXTURE
+  offset: 0x81ADC040
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yos_terrace_yuka_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADC060
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ADC040
+
+int_yos_terrace_yane_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADC260
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ADC040
+
+int_yos_terrace_yuka_yoko_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADC460
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81ADC040
+
+int_yos_terrace_kabe_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADC4A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ADC040
+
+int_yos_terrace_enshita_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADC6A0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81ADC040
+
+int_yos_terrace_v:
+  type: VTX
+  offset: 0x81ADC6E0
+  count: 112
+
+int_yos_terrace_obj_model:
+  type: GFX
+  offset: 0x81ADCDE0
+  size: 0x198

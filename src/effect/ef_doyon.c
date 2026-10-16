@@ -3,6 +3,7 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_doyon01_00.h"
 
 static void eDoyon_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eDoyon_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -69,8 +70,6 @@ static void eDoyon_mv(eEC_Effect_c* effect, GAME* game) {
     effect->offset.x = progress * cos_s(effect->effect_specific[1]);
     effect->offset.y = progress * sin_s(effect->effect_specific[1]);
 }
-
-extern Gfx ef_doyon01_00_modelT[];
 
 static void eDoyon_dw(eEC_Effect_c* effect, GAME* game) {
     u8 a = (int)eEC_CLIP->calc_adjust_proc(effect->timer, 0, 8, 0.0f, 220.0f);

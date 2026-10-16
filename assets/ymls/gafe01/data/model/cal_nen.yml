@@ -1,0 +1,112 @@
+:config:
+  strict_declarations: true
+
+cal_win_nen0_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813D1780
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_nen1_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813D1800
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_nen2_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813D1880
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_nen3_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813D1900
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_nen4_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813D1980
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_nen5_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813D1A00
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_nen6_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813D1A80
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_nen7_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813D1B00
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_nen8_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813D1B80
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_nen9_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813D1C00
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_nen_v:
+  type: VTX
+  offset: 0x813D1C80
+  count: 16
+
+cal_win_nen_before:
+  type: BLOB
+  offset: 0x813D1D80
+  size: 0x28
+
+cal_win_nen1_model:
+  type: GFX
+  offset: 0x813D1DA8
+  size: 0x18
+
+cal_win_nen2_model:
+  type: GFX
+  offset: 0x813D1DC0
+  size: 0x18
+
+cal_win_nen3_model:
+  type: GFX
+  offset: 0x813D1DD8
+  size: 0x18
+
+cal_win_nen4_model:
+  type: GFX
+  offset: 0x813D1DF0
+  size: 0x18

@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_nog_tudurinote_pal:
+  type: TEXTURE
+  offset: 0x81925D40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_tudurinote_tex:
+  type: TEXTURE
+  offset: 0x81925D60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81925D40
+
+int_nog_tudurinote_v:
+  type: VTX
+  offset: 0x81926560
+  count: 70
+
+int_nog_tudurinoteT_model:
+  type: GFX
+  offset: 0x819269C0
+  size: 0xD8

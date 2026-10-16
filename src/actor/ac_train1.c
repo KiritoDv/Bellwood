@@ -10,6 +10,7 @@
 #include "m_common_data.h"
 #include "m_field_info.h"
 #include "m_event.h"
+#include "assets/data/model/obj_train_3.h"
 
 static void aTR1_actor_ct(ACTOR* actor, GAME* game);
 static void aTR1_actor_dt(ACTOR* actor, GAME* game);
@@ -29,10 +30,6 @@ ACTOR_PROFILE Train1_Profile = {
     &aTR1_actor_draw,
     NULL,
 };
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_train1_3;
-extern cKF_Animation_R_c cKF_ba_r_obj_train1_3_open;
-extern cKF_Animation_R_c cKF_ba_r_obj_train1_3_close;
 
 static void aTR1_setupAction(TRAIN1_ACTOR*, int);
 

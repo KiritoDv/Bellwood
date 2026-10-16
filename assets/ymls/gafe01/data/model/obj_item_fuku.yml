@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_fuku_pal:
+  type: TEXTURE
+  offset: 0x8188DF80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_fuku_tex:
+  type: TEXTURE
+  offset: 0x8188DFA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8188DF80
+
+obj_item_fuku_v:
+  type: VTX
+  offset: 0x8188E1A0
+  count: 4
+
+obj_item_fukuT_mat_model:
+  type: GFX
+  offset: 0x8188E1E0
+  size: 0x48
+
+obj_item_fukuT_gfx_model:
+  type: GFX
+  offset: 0x8188E228
+  size: 0x18

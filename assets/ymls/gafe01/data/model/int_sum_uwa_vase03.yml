@@ -1,0 +1,78 @@
+:config:
+  strict_declarations: true
+
+int_sum_uwa_vase03_pal:
+  type: TEXTURE
+  offset: 0x81A7A860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_uwa_vase03_side:
+  type: TEXTURE
+  offset: 0x81A7A880
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A7A860
+
+int_sum_uwa_vase03_kuki:
+  type: TEXTURE
+  offset: 0x81A7A980
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A7A860
+
+int_sum_uwa_vase03_leaf:
+  type: TEXTURE
+  offset: 0x81A7AA80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A7A860
+
+int_sum_uwa_vase03_flawer:
+  type: TEXTURE
+  offset: 0x81A7AB80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A7A860
+
+int_sum_uwa_vase03_naka:
+  type: TEXTURE
+  offset: 0x81A7AC80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A7A860
+
+int_sum_uwa_vase03_base:
+  type: TEXTURE
+  offset: 0x81A7AD00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A7A860
+
+int_sum_uwa_vase03_v:
+  type: VTX
+  offset: 0x81A7AD80
+  count: 51
+
+int_sum_uwa_vase03_on_model:
+  type: GFX
+  offset: 0x81A7B0B0
+  size: 0x58
+
+int_sum_uwa_vase03_onT_model:
+  type: GFX
+  offset: 0x81A7B108
+  size: 0x108

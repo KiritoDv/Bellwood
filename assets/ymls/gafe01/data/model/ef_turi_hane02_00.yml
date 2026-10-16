@@ -1,0 +1,44 @@
+:config:
+  strict_declarations: true
+
+ef_turi_hane02_0_int_i4:
+  type: TEXTURE
+  offset: 0x81674E60
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_turi_hane02_1_int_i4:
+  type: TEXTURE
+  offset: 0x81675060
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_turi_hane02_2_int_i4:
+  type: TEXTURE
+  offset: 0x81675260
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_turi_hane02_3_int_i4:
+  type: TEXTURE
+  offset: 0x81675460
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_turi_hane02_00_v:
+  type: VTX
+  offset: 0x81675660
+  count: 4
+
+ef_turi_hane02_00_modelT:
+  type: GFX
+  offset: 0x816756A0
+  size: 0x58

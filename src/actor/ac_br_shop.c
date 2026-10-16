@@ -5,6 +5,8 @@
 #include "sys_matrix.h"
 #include "m_bgm.h"
 #include "m_rcp.h"
+#include "assets/data/model/obj_s_yamishop.h"
+#include "assets/data/model/obj_yamishop_shadow.h"
 
 static void aBRS_actor_ct(ACTOR*, GAME*);
 static void aBRS_actor_dt(ACTOR*, GAME*);
@@ -27,20 +29,10 @@ ACTOR_PROFILE BrShop_Profile = {
 
 u8 aBRS_shadow_vtx_fix_flg_table[] = { TRUE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE };
 
-extern Vtx obj_yamishop_shadow_v[];
-extern Gfx obj_yamishop_shadowT_model[];
-
 bIT_ShadowData_c aBRS_shadow_data = {
     8, aBRS_shadow_vtx_fix_flg_table, 60.0f, obj_yamishop_shadow_v, obj_yamishop_shadowT_model,
 };
 
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_yamishop;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_yamishop;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_yamishop;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_yamishop;
-
-extern Gfx obj_s_yamishop_window_model[];
-extern Gfx obj_w_yamishop_window_model[];
 
 static void aBRS_set_bgOffset(STRUCTURE_ACTOR*, int);
 static void aBRS_setup_action(STRUCTURE_ACTOR* actor, int type);

@@ -1,0 +1,80 @@
+:config:
+  strict_declarations: true
+
+int_sum_blue_lowchest01_pal:
+  type: TEXTURE
+  offset: 0x819AD2C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_blue_lowchest01_hikiin_tex_txt:
+  type: TEXTURE
+  offset: 0x819AD2E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819AD2C0
+
+int_sum_blue_lowchest01_hiki_tex_txt:
+  type: TEXTURE
+  offset: 0x819AD360
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819AD2C0
+
+int_sum_blue_lowchest01_front_tex_txt:
+  type: TEXTURE
+  offset: 0x819AD460
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x819AD2C0
+
+int_sum_blue_lowchest01_top_tex_txt:
+  type: TEXTURE
+  offset: 0x819AD860
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819AD2C0
+
+int_sum_blue_lowchest01_sibe_tex_txt:
+  type: TEXTURE
+  offset: 0x819AD8E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819AD2C0
+
+int_sum_blue_lowchest01_v:
+  type: VTX
+  offset: 0x819AD9E0
+  count: 52
+
+sum_blue_lowchest01_base_model:
+  type: GFX
+  offset: 0x819ADD20
+  size: 0xA8
+
+int_sum_blue_lowchest01_door_1_model:
+  type: GFX
+  offset: 0x819ADDC8
+  size: 0x90
+
+cKF_ba_r_int_sum_blue_lowchest01:
+  type: AC:CKF_ANIMATION
+  offset: 0x819ADEE4
+  joints: 3
+  counts: { flags: 3, data: 54, keys: 9, fixed: 3 }
+
+cKF_bs_r_int_sum_blue_lowchest01:
+  type: AC:CKF_SKELETON
+  offset: 0x819ADF1C
+  counts: { joints: 3 }

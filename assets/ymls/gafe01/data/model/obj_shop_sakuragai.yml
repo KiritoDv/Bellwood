@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_sakuragai_pal:
+  type: TEXTURE
+  offset: 0x81398900
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_sakuragai_tex:
+  type: TEXTURE
+  offset: 0x81398920
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81398900
+
+obj_shop_sakuragai_v:
+  type: VTX
+  offset: 0x81398B20
+  count: 6
+
+obj_sakuragaiT_mat_model:
+  type: GFX
+  offset: 0x81398B80
+  size: 0x48
+
+obj_sakuragaiT_gfx_model:
+  type: GFX
+  offset: 0x81398BC8
+  size: 0x20

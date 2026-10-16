@@ -1,8 +1,5 @@
-extern u16 int_yaz_fish_trophy2_pal[] ATTRIBUTE_ALIGN(32) = {
-    #include "assets/int_yaz_fish_trophy2_pal.inc"
-};
-extern Gfx int_yaz_fish_trophy_cup_model[];
-extern Gfx int_yaz_fish_trophy_base_model[];
+#include "assets/data/model/int_yaz_fish_trophy.h"
+#include "assets/f_furniture.h"
 
 static void fIFT2_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     OPEN_DISP(game->graph);

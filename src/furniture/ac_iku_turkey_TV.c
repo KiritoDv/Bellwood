@@ -1,3 +1,4 @@
+#include "assets/data/model/int_iku_turkey_TV.h"
 static void fITT_ct(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
@@ -5,7 +6,7 @@ static void fITT_ct(FTR_ACTOR* ftr_actor, u8* data) {
 static void fITT_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     if (ftr_actor->switch_bit) {
         if (aFTR_CAN_PLAY_SE(ftr_actor)) {
-            sAdo_OngenPos((u32)ftr_actor, 0x5E, &ftr_actor->position);
+            sAdo_OngenPos((uintptr_t)ftr_actor, 0x5E, &ftr_actor->position);
         }
     }
 
@@ -18,13 +19,6 @@ static void fITT_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* 
     }
 }
 
-extern u8 int_iku_turkey_TV_f_tex_txt[];
-extern u8 int_iku_turkey_TV_g_tex_txt[];
-extern u8 int_iku_turkey_TV_h_tex_txt[];
-extern u8 int_iku_turkey_TV_i_tex_txt[];
-
-extern Gfx int_iku_turkey_TV_model_a_model[];
-extern Gfx int_iku_turkey_TV_model_b_model[];
 
 static u8* fITT_switch_on_texture_table[] = {
     int_iku_turkey_TV_g_tex_txt,

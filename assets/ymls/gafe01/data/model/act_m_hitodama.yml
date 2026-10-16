@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_hitodama_h2_txt:
+  type: TEXTURE
+  offset: 0x81264940
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+act_m_hitodama_h1_txt:
+  type: TEXTURE
+  offset: 0x81264B40
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+act_m_hitodama_v:
+  type: VTX
+  offset: 0x81264D40
+  count: 8
+
+act_m_hitodama_b_model:
+  type: GFX
+  offset: 0x81264DC0
+  size: 0x50
+
+act_m_hitodama_a_model:
+  type: GFX
+  offset: 0x81264E10
+  size: 0x50

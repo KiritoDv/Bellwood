@@ -1,0 +1,97 @@
+:config:
+  strict_declarations: true
+
+int_nog_piraluku_pal:
+  type: TEXTURE
+  offset: 0x8190F060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_piraluku_glass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x8190F080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_pireluku_body_tex_txt:
+  type: TEXTURE
+  offset: 0x8190F0A0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8190F060
+
+int_nog_pireluku_side_tex_txt:
+  type: TEXTURE
+  offset: 0x8190F4A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8190F060
+
+int_nog_pireluku_base_tex_txt:
+  type: TEXTURE
+  offset: 0x8190F6A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8190F060
+
+int_nog_pireluku_top_tex_txt:
+  type: TEXTURE
+  offset: 0x8190F720
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8190F060
+
+int_nog_pireluku_glass_tex_txt:
+  type: TEXTURE
+  offset: 0x8190F7A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8190F080
+
+int_nog_piraluku_v:
+  type: VTX
+  offset: 0x8190F8A0
+  count: 63
+
+int_nog_piraluku_sakana_model:
+  type: GFX
+  offset: 0x8190FC90
+  size: 0xA8
+
+int_sum_piraluku_top_model:
+  type: GFX
+  offset: 0x8190FD38
+  size: 0x58
+
+int_sum_piraluku_evw_model:
+  type: GFX
+  offset: 0x8190FD90
+  size: 0x68
+
+int_sum_piraluku_base_model:
+  type: GFX
+  offset: 0x8190FDF8
+  size: 0x90
+
+cKF_ba_r_int_nog_piraluku:
+  type: AC:CKF_ANIMATION
+  offset: 0x8190FF44
+  joints: 5
+  counts: { flags: 5, data: 69, keys: 9, fixed: 9 }
+
+cKF_bs_r_int_nog_piraluku:
+  type: AC:CKF_SKELETON
+  offset: 0x8190FF94
+  counts: { joints: 5 }

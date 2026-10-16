@@ -1,0 +1,58 @@
+:config:
+  strict_declarations: true
+
+obj_clock_koban_pal:
+  type: TEXTURE
+  offset: 0x81944F60
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+obj_clock_koban_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81944F80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+  tlut: 0x81944F60
+
+obj_clock_koban_moji_tex_txt:
+  type: TEXTURE
+  offset: 0x81945000
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: n64
+  tlut: 0x81944F60
+
+obj_clock_koban_v:
+  type: VTX
+  offset: 0x81945200
+  count: 41
+
+obj_clock_koban_body_model:
+  type: GFX
+  offset: 0x81945490
+  size: 0x1A8
+
+obj_clock_koban_long_model:
+  type: GFX
+  offset: 0x81945638
+  size: 0xB8
+
+obj_clock_koban_short_model:
+  type: GFX
+  offset: 0x819456F0
+  size: 0xB8
+
+cKF_ba_r_obj_clock_koban:
+  type: AC:CKF_ANIMATION
+  offset: 0x819457D4
+  joints: 5
+  counts: { flags: 5, data: 0, keys: 0, fixed: 18 }
+
+cKF_bs_r_obj_clock_koban:
+  type: AC:CKF_SKELETON
+  offset: 0x81945824
+  counts: { joints: 5 }

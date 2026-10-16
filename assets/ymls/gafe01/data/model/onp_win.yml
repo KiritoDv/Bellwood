@@ -1,0 +1,275 @@
+:config:
+  strict_declarations: true
+
+onp_win_shiro_tex:
+  type: TEXTURE
+  offset: 0x814A4180
+  format: IA8
+  width: 64
+  height: 32
+  source_encoding: gx
+
+onp_win_ok_tex:
+  type: TEXTURE
+  offset: 0x814A4980
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+onp_win_ga_tex:
+  type: TEXTURE
+  offset: 0x814A4A80
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_ga4_tex:
+  type: TEXTURE
+  offset: 0x814A4B80
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_ga3_tex:
+  type: TEXTURE
+  offset: 0x814A4C80
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_ga2_tex:
+  type: TEXTURE
+  offset: 0x814A4D80
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_ottpo_tex:
+  type: TEXTURE
+  offset: 0x814A4E80
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+onp_win_tama1_tex:
+  type: TEXTURE
+  offset: 0x814A5080
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+onp_win_tama2_tex:
+  type: TEXTURE
+  offset: 0x814A5180
+  format: I4
+  width: 128
+  height: 16
+  source_encoding: gx
+
+onp_win_tama5_tex:
+  type: TEXTURE
+  offset: 0x814A5580
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+onp_win_w1_tex:
+  type: TEXTURE
+  offset: 0x814A5680
+  format: IA8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+onp_win_me_tex:
+  type: TEXTURE
+  offset: 0x814A5E80
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_ohana_tex:
+  type: TEXTURE
+  offset: 0x814A5F80
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+onp_win_w2_tex:
+  type: TEXTURE
+  offset: 0x814A6080
+  format: IA8
+  width: 64
+  height: 32
+  source_encoding: gx
+
+onp_win_w3_tex:
+  type: TEXTURE
+  offset: 0x814A6880
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+onp_win_ha_tex:
+  type: TEXTURE
+  offset: 0x814A6C80
+  format: IA8
+  width: 64
+  height: 32
+  source_encoding: gx
+
+onp_win_ha2_tex:
+  type: TEXTURE
+  offset: 0x814A7480
+  format: IA8
+  width: 64
+  height: 32
+  source_encoding: gx
+
+onp_win_carde_tex:
+  type: TEXTURE
+  offset: 0x814A7C80
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+rmoji:
+  type: TEXTURE
+  offset: 0x814A8080
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+onp_win_rbutton2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A8100
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+onp_win_rbutton_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A8300
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+onp_win_v:
+  type: VTX
+  offset: 0x814A8500
+  count: 158
+
+onp_carde_v:
+  type: VTX
+  offset: 0x814A8EE0
+  count: 16
+
+onp_win_ga3_model:
+  type: GFX
+  offset: 0x814A8FE0
+  size: 0x20
+
+onp_win_wakuT_model:
+  type: GFX
+  offset: 0x814A9000
+  size: 0x98
+
+onp_win_meT_model:
+  type: GFX
+  offset: 0x814A9098
+  size: 0x40
+
+onp_win_ga1T_model:
+  type: GFX
+  offset: 0x814A90D8
+  size: 0x70
+
+onp_win_ga2T_model:
+  type: GFX
+  offset: 0x814A9148
+  size: 0x80
+
+onp_win_hanaT_model:
+  type: GFX
+  offset: 0x814A91C8
+  size: 0x30
+
+onp_win_senT_model:
+  type: GFX
+  offset: 0x814A91F8
+  size: 0x78
+
+onp_win_waku2T_model:
+  type: GFX
+  offset: 0x814A9270
+  size: 0x30
+
+onp_win_waku3T_model:
+  type: GFX
+  offset: 0x814A92A0
+  size: 0x38
+
+onp_win_shiroT_model:
+  type: GFX
+  offset: 0x814A92D8
+  size: 0x38
+
+onp_win_owariT_model:
+  type: GFX
+  offset: 0x814A9310
+  size: 0x28
+
+onp_win_waku5T_model:
+  type: GFX
+  offset: 0x814A9338
+  size: 0x38
+
+onp_win_waku6T_model:
+  type: GFX
+  offset: 0x814A9370
+  size: 0x38
+
+onp_win_rmoji_model:
+  type: GFX
+  offset: 0x814A93A8
+  size: 0x38
+
+onp_win_rbuttonT_model:
+  type: GFX
+  offset: 0x814A93E0
+  size: 0x38
+
+onp_win_leafT_model:
+  type: GFX
+  offset: 0x814A9418
+  size: 0x38
+
+onp_win_cardeT_model:
+  type: GFX
+  offset: 0x814A9450
+  size: 0x38
+
+onp_win_mode:
+  type: GFX
+  offset: 0x814A9488
+  size: 0x30
+
+onp_win_model:
+  type: GFX
+  offset: 0x814A94B8
+  size: 0xC0

@@ -1,3 +1,7 @@
+#include "assets/data/model/int_nog_cosmos.h"
+#include "assets/data/model/int_nog_pansy.h"
+#include "assets/data/model/int_nog_turip.h"
+#include "assets/f_furniture.h"
 static void fNFL_ct(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
@@ -9,23 +13,6 @@ static void fNFL_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* 
 static void fNFL_dt(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
-
-extern Gfx int_nog_pansy_model[];
-extern Gfx int_nog_pansyT_model[];
-extern Gfx int_nog_cosmos_model[];
-extern Gfx int_nog_cosmosT_model[];
-extern Gfx int_nog_turip_model[];
-extern Gfx int_nog_turipT_model[];
-
-u16 int_nog_flower_a_pal[] ATTRIBUTE_ALIGN(32) = {
-    #include "assets/int_nog_flower_a_pal.inc"
-};
-u16 int_nog_flower_b_pal[] ATTRIBUTE_ALIGN(32) = {
-    #include "assets/int_nog_flower_b_pal.inc"
-};
-u16 int_nog_flower_c_pal[] ATTRIBUTE_ALIGN(32) = {
-    #include "assets/int_nog_flower_c_pal.inc"
-};
 
 typedef struct {
     Gfx* model0;

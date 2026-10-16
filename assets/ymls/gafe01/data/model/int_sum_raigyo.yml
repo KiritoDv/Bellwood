@@ -1,0 +1,97 @@
+:config:
+  strict_declarations: true
+
+int_sum_raigyo_pal:
+  type: TEXTURE
+  offset: 0x81A4D4E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_raigyo_glass_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A4D500
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_raigyo_body_txt:
+  type: TEXTURE
+  offset: 0x81A4D520
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A4D4E0
+
+int_sum_raigyo_side_txt:
+  type: TEXTURE
+  offset: 0x81A4D920
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A4D4E0
+
+int_sum_raigyo_base_txt:
+  type: TEXTURE
+  offset: 0x81A4DB20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A4D4E0
+
+int_sum_raigyo_top_txt:
+  type: TEXTURE
+  offset: 0x81A4DBA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A4D4E0
+
+int_sum_raigyo_glass_txt:
+  type: TEXTURE
+  offset: 0x81A4DCA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A4D500
+
+int_sum_raigyo_v:
+  type: VTX
+  offset: 0x81A4DD20
+  count: 55
+
+int_sum_raigyo_sakana_model:
+  type: GFX
+  offset: 0x81A4E090
+  size: 0x90
+
+int_sum_raigyo_top_model:
+  type: GFX
+  offset: 0x81A4E120
+  size: 0x58
+
+int_sum_raigyo_evw_model:
+  type: GFX
+  offset: 0x81A4E178
+  size: 0x68
+
+int_sum_raigyo_base_model:
+  type: GFX
+  offset: 0x81A4E1E0
+  size: 0x90
+
+cKF_ba_r_int_sum_raigyo:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A4E324
+  joints: 5
+  counts: { flags: 5, data: 66, keys: 9, fixed: 9 }
+
+cKF_bs_r_int_sum_raigyo:
+  type: AC:CKF_SKELETON
+  offset: 0x81A4E374
+  counts: { joints: 5 }

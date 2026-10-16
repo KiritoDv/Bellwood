@@ -1,0 +1,92 @@
+:config:
+  strict_declarations: true
+
+obj_house1_shadow:
+  type: TEXTURE
+  offset: 0x81504EA0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_house1_shadow_v:
+  type: VTX
+  offset: 0x815050A0
+  count: 20
+
+obj_house1_shadow_model:
+  type: GFX
+  offset: 0x815051E0
+  size: 0x68
+
+obj_s_house2_shadow_tex_txt:
+  type: TEXTURE
+  offset: 0x81505260
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_s_house2_shadow_v:
+  type: VTX
+  offset: 0x81505460
+  count: 28
+
+obj_s_house2_shadow_model:
+  type: GFX
+  offset: 0x81505620
+  size: 0x78
+
+obj_s_house3_shadow_tex_txt:
+  type: TEXTURE
+  offset: 0x815056A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_s_house3_shadow_v:
+  type: VTX
+  offset: 0x815058A0
+  count: 24
+
+obj_s_house3_shadow_model:
+  type: GFX
+  offset: 0x81505A20
+  size: 0x70
+
+obj_s_house4_shadow_tex_txt:
+  type: TEXTURE
+  offset: 0x81505AA0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_s_house4_shadow_v:
+  type: VTX
+  offset: 0x81505CA0
+  count: 28
+
+obj_s_house4_shadow_model:
+  type: GFX
+  offset: 0x81505E60
+  size: 0x78
+
+obj_s_house5_shadow_tex_txt:
+  type: TEXTURE
+  offset: 0x81505EE0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_s_house5_shadow_v:
+  type: VTX
+  offset: 0x815060E0
+  count: 28
+
+obj_s_house5_shadow_model:
+  type: GFX
+  offset: 0x815062A0
+  size: 0x78

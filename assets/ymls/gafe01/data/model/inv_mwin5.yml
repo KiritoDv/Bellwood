@@ -1,0 +1,84 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_2fukubiki_pal:
+  type: TEXTURE
+  offset: 0x814504E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_3fukubiki_pal:
+  type: TEXTURE
+  offset: 0x81450500
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_4fukubiki_pal:
+  type: TEXTURE
+  offset: 0x81450520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_5fukubiki_pal:
+  type: TEXTURE
+  offset: 0x81450540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_6fukubiki_pal:
+  type: TEXTURE
+  offset: 0x81450560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_1fukubiki_pal:
+  type: TEXTURE
+  offset: 0x81450580
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_1biki3_tex:
+  type: TEXTURE
+  offset: 0x814505A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_1biki5_tex:
+  type: TEXTURE
+  offset: 0x814507A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_1biki4_tex:
+  type: TEXTURE
+  offset: 0x814509A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_1biki2_tex:
+  type: TEXTURE
+  offset: 0x81450BA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_1biki1_tex:
+  type: TEXTURE
+  offset: 0x81450DA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

@@ -1,5 +1,4 @@
-extern Gfx obj_e_turi_l_modelT[];
-extern Gfx obj_e_turi_r_modelT[];
+#include "assets/data/model/obj_e_turi_l.h"
 
 static void aTUR_actor_draw(ACTOR* actorx, GAME* game) {
     static Gfx* model[] = { obj_e_turi_l_modelT, obj_e_turi_r_modelT };

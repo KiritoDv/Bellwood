@@ -2,7 +2,7 @@
 #define SYS_VIMGR_H
 
 #include "types.h"
-#include "dolphin/vi.h"
+#include "gc_compat.h"
 
 extern void viBlack(int black);
 

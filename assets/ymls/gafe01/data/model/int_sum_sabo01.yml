@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_sum_sabo01_pal:
+  type: TEXTURE
+  offset: 0x81A579E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_sabo01_main_tex:
+  type: TEXTURE
+  offset: 0x81A57A00
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A579E0
+
+int_sum_sabo01_hachi_tex:
+  type: TEXTURE
+  offset: 0x81A57E00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A579E0
+
+int_sum_sabo01_tuchi_tex:
+  type: TEXTURE
+  offset: 0x81A57F00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A579E0
+
+int_sum_sabo01_v:
+  type: VTX
+  offset: 0x81A58000
+  count: 34
+
+int_sum_sabo01_on_model:
+  type: GFX
+  offset: 0x81A58220
+  size: 0x60
+
+int_sum_sabo01_onT_model:
+  type: GFX
+  offset: 0x81A58280
+  size: 0x80

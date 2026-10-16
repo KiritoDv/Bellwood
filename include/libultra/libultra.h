@@ -2,8 +2,12 @@
 #define LIBULTRA_H
 
 #include "types.h"
-#include "dolphin/os/OSTime.h"
-#include "dolphin/os/OSCache.h"
+#include <string.h>
+#if !defined(_WIN32)
+#include <strings.h>
+#endif
+#include <libultraship/libultra/os.h>
+#include <libultraship/libultra/convert.h>
 #include "libultra/gu.h"
 #include "libultra/osMesg.h"
 #include "libultra/shutdown.h"
@@ -22,13 +26,14 @@ extern "C" {
 
 typedef u64 Z_OSTime;
 
-int bcmp(void* v1, void* v2, u32 size);
-void bcopy(void* src, void* dst, size_t n);
-void bzero(void* ptr, size_t size);
+#undef bcmp
+#undef bcopy
+#undef bzero
+#define bcmp(v1, v2, size) memcmp((v1), (v2), (size))
+#define bcopy(src, dst, n) memmove((dst), (src), (n))
+#define bzero(ptr, size) memset((ptr), 0, (size))
+
 void osSyncPrintf(const char* fmt, ...);
-void osWritebackDCache(void* vaddr, u32 nbytes);
-u32 osGetCount(void);
-OSTime osGetTime(void);
 
 extern s32 osAppNMIBuffer[16];
 extern int osShutdown;

@@ -1,0 +1,106 @@
+:config:
+  strict_declarations: true
+
+int_sum_niji_pal:
+  type: TEXTURE
+  offset: 0x81A30EC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_niji_glass_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A30EE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_niji_body_txt:
+  type: TEXTURE
+  offset: 0x81A30F00
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A30EC0
+
+int_sum_niji_side_txt:
+  type: TEXTURE
+  offset: 0x81A31200
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A30EC0
+
+int_sum_niji_base_txt:
+  type: TEXTURE
+  offset: 0x81A31400
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A30EC0
+
+int_sum_niji_etc_txt:
+  type: TEXTURE
+  offset: 0x81A31480
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A30EC0
+
+int_sum_niji_top_txt:
+  type: TEXTURE
+  offset: 0x81A31500
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A30EC0
+
+int_sum_niji_glass_txt:
+  type: TEXTURE
+  offset: 0x81A31600
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A30EE0
+
+int_sum_niji_v:
+  type: VTX
+  offset: 0x81A31700
+  count: 55
+
+int_sum_niji_sakana_model:
+  type: GFX
+  offset: 0x81A31A70
+  size: 0x70
+
+int_sum_niji_top_model:
+  type: GFX
+  offset: 0x81A31AE0
+  size: 0x58
+
+int_sum_niji_evw_model:
+  type: GFX
+  offset: 0x81A31B38
+  size: 0x68
+
+int_sum_niji_base_model:
+  type: GFX
+  offset: 0x81A31BA0
+  size: 0xB8
+
+cKF_ba_r_int_sum_niji:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A31D24
+  joints: 5
+  counts: { flags: 5, data: 78, keys: 9, fixed: 9 }
+
+cKF_bs_r_int_sum_niji:
+  type: AC:CKF_SKELETON
+  offset: 0x81A31D74
+  counts: { joints: 5 }

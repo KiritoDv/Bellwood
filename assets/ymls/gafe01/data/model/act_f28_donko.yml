@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f28_donko_pal:
+  type: TEXTURE
+  offset: 0x8123B320
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f28_donko_tex:
+  type: TEXTURE
+  offset: 0x8123B340
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8123B320
+
+act_f28_donko_a_v:
+  type: VTX
+  offset: 0x8123B540
+  count: 9
+
+act_f28_donko_aT_model:
+  type: GFX
+  offset: 0x8123B5D0
+  size: 0x68
+
+act_f28_donko_b_v:
+  type: VTX
+  offset: 0x8123B638
+  count: 9
+
+act_f28_donko_bT_model:
+  type: GFX
+  offset: 0x8123B6C8
+  size: 0x68
+
+act_f28_donko_c_v:
+  type: VTX
+  offset: 0x8123B730
+  count: 9
+
+act_f28_donko_cT_model:
+  type: GFX
+  offset: 0x8123B7C0
+  size: 0x68

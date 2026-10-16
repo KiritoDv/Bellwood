@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_kaze01.h"
 
 static void eKZ_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eKZ_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -67,10 +68,6 @@ static void eKZ_mv(eEC_Effect_c* effect, GAME* game) {
         eEC_CLIP->effect_make_proc(eEC_EFFECT_KAZE_HAPPA, pos, effect->prio, effect->effect_specific[1], game, effect->item_name, 0, 0);
     }
 }
-
-extern EVW_ANIME_DATA ef_kaze01_evw_anime;
-extern Gfx ef_kaze01_modelT[];
-extern Gfx ef_kaze01_modelT2[];
 
 static void eKZ_dw(eEC_Effect_c* effect, GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;

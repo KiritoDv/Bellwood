@@ -5,19 +5,13 @@
 #include "m_debug.h"
 #include "m_collision_bg.h"
 #include "sys_matrix.h"
+#include "assets/data/model/room_lightR.h"
 
-void Ef_Room_Sunshine_actor_ct(ACTOR* actor, GAME* play);
-void Ef_Room_SunshineL_actor_move(ACTOR* actor, GAME* play);
-void Ef_Room_SunshineL_actor_draw(ACTOR* actor, GAME* play);
-void Ef_Room_SunshineR_actor_move(ACTOR* actor, GAME* play);
-void Ef_Room_SunshineR_actor_draw(ACTOR* actor, GAME* play);
-
-extern Gfx light_floor01_mode[];
-extern Vtx light_floorL01_vtx[];
-extern Vtx light_floorR01_vtx[];
-extern Gfx light_shine01_mode[];
-extern Vtx light_shineL01_vtx[];
-extern Vtx light_shineR01_vtx[];
+static void Ef_Room_Sunshine_actor_ct(ACTOR* actor, GAME* play);
+static void Ef_Room_SunshineL_actor_move(ACTOR* actor, GAME* play);
+static void Ef_Room_SunshineL_actor_draw(ACTOR* actor, GAME* play);
+static void Ef_Room_SunshineR_actor_move(ACTOR* actor, GAME* play);
+static void Ef_Room_SunshineR_actor_draw(ACTOR* actor, GAME* play);
 
 ACTOR_PROFILE Room_Sunshine_Profile = {
     mAc_PROFILE_ROOM_SUNSHINE,

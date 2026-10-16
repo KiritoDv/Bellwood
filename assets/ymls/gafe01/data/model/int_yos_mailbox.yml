@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+int_yos_mailbox_pal:
+  type: TEXTURE
+  offset: 0x81AD9480
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yos_mailbox_mae_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD94A0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81AD9480
+
+int_yos_mailbox_ana_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD97A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD9480
+
+int_yos_mailbox_sokumen_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD98A0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81AD9480
+
+int_yos_mailbox_rabel_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD9BA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD9480
+
+int_yos_mailbox_v:
+  type: VTX
+  offset: 0x81AD9CA0
+  count: 52
+
+int_yos_mailbox_body_model:
+  type: GFX
+  offset: 0x81AD9FE0
+  size: 0xF8

@@ -1,0 +1,80 @@
+:config:
+  strict_declarations: true
+
+int_sum_ratan_chest01_pal:
+  type: TEXTURE
+  offset: 0x81A4EF00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_ratan_chest01_door_tax_txt:
+  type: TEXTURE
+  offset: 0x81A4EF20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A4EF00
+
+int_sum_ratan_chest01_top_tax_txt:
+  type: TEXTURE
+  offset: 0x81A4EFA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A4EF00
+
+int_sum_ratan_chest01_front_tax_txt:
+  type: TEXTURE
+  offset: 0x81A4F0A0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A4EF00
+
+int_sum_ratan_chest01_back_tax_txt:
+  type: TEXTURE
+  offset: 0x81A4F220
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A4EF00
+
+int_sum_ratan_chest01_side_tax_txt:
+  type: TEXTURE
+  offset: 0x81A4F3A0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A4EF00
+
+int_sum_ratan_chest01_v:
+  type: VTX
+  offset: 0x81A4F520
+  count: 52
+
+int_sum_ratan_chest01_door_model:
+  type: GFX
+  offset: 0x81A4F860
+  size: 0x90
+
+int_sum_ratan_chest01_base_model:
+  type: GFX
+  offset: 0x81A4F8F0
+  size: 0xB0
+
+cKF_ba_r_int_sum_ratan_chest01:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A4FA2C
+  joints: 3
+  counts: { flags: 3, data: 54, keys: 9, fixed: 3 }
+
+cKF_bs_r_int_sum_ratan_chest01:
+  type: AC:CKF_SKELETON
+  offset: 0x81A4FA64
+  counts: { joints: 3 }

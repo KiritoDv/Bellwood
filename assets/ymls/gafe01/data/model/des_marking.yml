@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+des_win_marking3_tex:
+  type: TEXTURE
+  offset: 0x813FA540
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_marking_tex:
+  type: TEXTURE
+  offset: 0x813FA640
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_marking_v:
+  type: VTX
+  offset: 0x813FA6C0
+  count: 8
+
+des_win_marking_model:
+  type: GFX
+  offset: 0x813FA740
+  size: 0x38
+
+des_win_marking2T_model:
+  type: GFX
+  offset: 0x813FA778
+  size: 0x38

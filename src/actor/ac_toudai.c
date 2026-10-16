@@ -8,6 +8,8 @@
 #include "m_common_data.h"
 #include "m_bgm.h"
 #include "m_soncho.h"
+#include "assets/data/model/obj_s_toudai.h"
+#include "assets/data/model/obj_s_toudai_shadow.h"
 
 static void aTOU_actor_ct(ACTOR*, GAME*);
 static void aTOU_actor_dt(ACTOR*, GAME*);
@@ -27,9 +29,6 @@ ACTOR_PROFILE Toudai_Profile = {
     aTOU_actor_draw,
     NULL,
 };
-
-extern Vtx obj_s_toudai_shadow_v[];
-extern Gfx obj_s_toudai_shadow_1_model[];
 
 u8 aTOU_shadow_vtx_fix_flg_table[] = {
     1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0,
@@ -89,9 +88,6 @@ static void aTOU_fgunit_off(ACTOR* actor) {
         pos.x += 40.0f;
     }
 }
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_toudai;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_toudai;
 
 static void aTOU_actor_ct(ACTOR* actor, GAME* game) {
     static cKF_Skeleton_R_c* skl[] = { &cKF_bs_r_obj_s_toudai, &cKF_bs_r_obj_w_toudai };

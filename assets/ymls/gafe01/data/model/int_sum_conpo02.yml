@@ -1,0 +1,81 @@
+:config:
+  strict_declarations: true
+
+int_sum_conpo02_pal:
+  type: TEXTURE
+  offset: 0x819C74C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_conpo02_glass_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x819C74E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_conpo02_front_tex:
+  type: TEXTURE
+  offset: 0x819C7500
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x819C74C0
+
+int_sum_conpo02_p_top_tex:
+  type: TEXTURE
+  offset: 0x819C7900
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C74C0
+
+int_sum_conpo02_spika_tex:
+  type: TEXTURE
+  offset: 0x819C7980
+  format: CI4
+  width: 48
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C74C0
+
+int_sum_conpo02_s_side_tex:
+  type: TEXTURE
+  offset: 0x819C7B00
+  format: CI4
+  width: 48
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C74C0
+
+int_sum_conpo02_glass_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x819C7C80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C74E0
+
+int_sum_conpo02_v:
+  type: VTX
+  offset: 0x819C7D00
+  count: 79
+
+int_sum_conpo02_on_model:
+  type: GFX
+  offset: 0x819C81F0
+  size: 0xC8
+
+int_sum_conpo02_evwT_model:
+  type: GFX
+  offset: 0x819C82B8
+  size: 0x60
+
+int_sum_conpo02_p_topT_model:
+  type: GFX
+  offset: 0x819C8318
+  size: 0x60

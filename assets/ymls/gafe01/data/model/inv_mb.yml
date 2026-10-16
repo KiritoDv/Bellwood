@@ -1,0 +1,22 @@
+:config:
+  strict_declarations: true
+
+inv_mb_v:
+  type: VTX
+  offset: 0x813EF880
+  count: 8
+
+inv_md_base_model_before:
+  type: GFX
+  offset: 0x813EF900
+  size: 0x40
+
+inv_md_base_model_a:
+  type: GFX
+  offset: 0x813EF940
+  size: 0x18
+
+inv_md_base_model_b:
+  type: GFX
+  offset: 0x813EF958
+  size: 0x18

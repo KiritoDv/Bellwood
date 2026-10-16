@@ -1,0 +1,1643 @@
+:config:
+  strict_declarations: true
+
+tol_axe_1_pal:
+  type: TEXTURE
+  offset: 0x81171E00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_axe_1_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x81171E20
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81171E00
+
+tol_axe_1_edge2_tex_txt:
+  type: TEXTURE
+  offset: 0x81172020
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81171E00
+
+tol_axe_1_edge1_tex_txt:
+  type: TEXTURE
+  offset: 0x81172120
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81171E00
+
+tol_axe_1_v:
+  type: VTX
+  offset: 0x81172220
+  count: 34
+
+tol_axe_1_model:
+  type: GFX
+  offset: 0x81172440
+  size: 0xD8
+
+tol_axe_1_b_pal:
+  type: TEXTURE
+  offset: 0x81172520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_axe_1_b_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x81172540
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81172520
+
+tol_axe_1_b_edge2_tex_txt:
+  type: TEXTURE
+  offset: 0x81172740
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81172520
+
+tol_axe_1_b_edge1_tex_txt:
+  type: TEXTURE
+  offset: 0x81172840
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81172520
+
+tol_axe_1_b_v:
+  type: VTX
+  offset: 0x81172940
+  count: 34
+
+tol_axe_1_b_model:
+  type: GFX
+  offset: 0x81172B60
+  size: 0xD8
+
+tol_axe_1_c_pal:
+  type: TEXTURE
+  offset: 0x81172C40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_axe_1_c_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x81172C60
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81172C40
+
+tol_axe_1_c_edge2_tex_txt:
+  type: TEXTURE
+  offset: 0x81172E60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81172C40
+
+tol_axe_1_c_edge1_tex_txt:
+  type: TEXTURE
+  offset: 0x81172F60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81172C40
+
+tol_axe_1_c_v:
+  type: VTX
+  offset: 0x81173160
+  count: 34
+
+tol_axe_1_c_model:
+  type: GFX
+  offset: 0x81173380
+  size: 0xD0
+
+tol_axe_2_pal:
+  type: TEXTURE
+  offset: 0x81173460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_axe_2_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x81173480
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81173460
+
+tol_axe_2_edge2_tex_txt:
+  type: TEXTURE
+  offset: 0x81173680
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81173460
+
+tol_axe_2_edge1_tex_txt:
+  type: TEXTURE
+  offset: 0x81173780
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81173460
+
+tol_axe_2_v:
+  type: VTX
+  offset: 0x81173880
+  count: 34
+
+tol_axe_2_model:
+  type: GFX
+  offset: 0x81173AA0
+  size: 0xD8
+
+act_m_net1_pal:
+  type: TEXTURE
+  offset: 0x81173B80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_net_1_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x81173BA0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81173B80
+
+tol_net_1_main1_tex_txt:
+  type: TEXTURE
+  offset: 0x81173DA0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81173B80
+
+tol_net_1_hole1_tex_txt:
+  type: TEXTURE
+  offset: 0x811740A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81173B80
+
+tol_net_1_v:
+  type: VTX
+  offset: 0x811741A0
+  count: 79
+
+main_net_model:
+  type: GFX
+  offset: 0x81174690
+  size: 0xA0
+
+main2_net_model:
+  type: GFX
+  offset: 0x81174730
+  size: 0x98
+
+e_net_model:
+  type: GFX
+  offset: 0x811747C8
+  size: 0xC8
+
+cKF_bs_r_tol_net_1:
+  type: AC:CKF_SKELETON
+  offset: 0x811748D8
+  counts: { joints: 6 }
+
+tol_net_2_pal:
+  type: TEXTURE
+  offset: 0x811748E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_net_2_main1_tex_txt:
+  type: TEXTURE
+  offset: 0x81174900
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x811748E0
+
+tol_net_2_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x81174C00
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x811748E0
+
+tol_net_2_hole1_tex_txt:
+  type: TEXTURE
+  offset: 0x81174E00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x811748E0
+
+tol_net_2_v:
+  type: VTX
+  offset: 0x81174F00
+  count: 80
+
+main_netB_model:
+  type: GFX
+  offset: 0x81175400
+  size: 0xA0
+
+main2_netB_model:
+  type: GFX
+  offset: 0x811754A0
+  size: 0x98
+
+e_netB_model:
+  type: GFX
+  offset: 0x81175538
+  size: 0xC8
+
+cKF_bs_r_tol_net_2:
+  type: AC:CKF_SKELETON
+  offset: 0x81175648
+  counts: { joints: 6 }
+
+cKF_ba_r_tol_net_1_get_m1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81175780
+  joints: 6
+  counts: { flags: 6, data: 126, keys: 9, fixed: 12 }
+
+cKF_ba_r_tol_net_1_net_swing1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8117584C
+  joints: 6
+  counts: { flags: 6, data: 66, keys: 9, fixed: 12 }
+
+cKF_ba_r_tol_net_1_kamae_main_m1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8117593C
+  joints: 6
+  counts: { flags: 6, data: 84, keys: 9, fixed: 12 }
+
+cKF_ba_r_tol_net_1_kokeru_getup_n1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81175A94
+  joints: 6
+  counts: { flags: 6, data: 135, keys: 5, fixed: 16 }
+
+cKF_ba_r_tol_net_1_kokeru_n1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81175BA8
+  joints: 6
+  counts: { flags: 6, data: 102, keys: 9, fixed: 12 }
+
+cKF_ba_r_tol_net_1_swing_wait1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81175C88
+  joints: 6
+  counts: { flags: 6, data: 75, keys: 9, fixed: 12 }
+
+cKF_ba_r_tol_net_1_yatta_m1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81175E08
+  joints: 6
+  counts: { flags: 6, data: 156, keys: 9, fixed: 12 }
+
+tol_sao_1_pal:
+  type: TEXTURE
+  offset: 0x81175E20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_sao_1_main1_tex_txt:
+  type: TEXTURE
+  offset: 0x81175E40
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81175E20
+
+tol_sao_1_v:
+  type: VTX
+  offset: 0x81176040
+  count: 58
+
+main1_sao_model:
+  type: GFX
+  offset: 0x811763E0
+  size: 0x60
+
+main2_sao_model:
+  type: GFX
+  offset: 0x81176440
+  size: 0x90
+
+main3_sao_model:
+  type: GFX
+  offset: 0x811764D0
+  size: 0x90
+
+main4_sao_model:
+  type: GFX
+  offset: 0x81176560
+  size: 0x88
+
+cKF_bs_r_tol_sao_1:
+  type: AC:CKF_SKELETON
+  offset: 0x81176624
+  counts: { joints: 5 }
+
+tol_sao_2_pal:
+  type: TEXTURE
+  offset: 0x81176640
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_sao_2_main1_tex_txt:
+  type: TEXTURE
+  offset: 0x81176660
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81176640
+
+tol_sao_2_v:
+  type: VTX
+  offset: 0x81176860
+  count: 58
+
+main1_saoB_model:
+  type: GFX
+  offset: 0x81176C00
+  size: 0x60
+
+main2_saoB_model:
+  type: GFX
+  offset: 0x81176C60
+  size: 0x90
+
+main3_saoB_model:
+  type: GFX
+  offset: 0x81176CF0
+  size: 0x90
+
+main4_saoB_model:
+  type: GFX
+  offset: 0x81176D80
+  size: 0x88
+
+cKF_bs_r_tol_sao_2:
+  type: AC:CKF_SKELETON
+  offset: 0x81176E44
+  counts: { joints: 5 }
+
+cKF_ba_r_tol_sao_1_sao_get_t1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81176F2C
+  joints: 5
+  counts: { flags: 5, data: 87, keys: 3, fixed: 15 }
+
+cKF_ba_r_tol_sao_1_sao_move1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81177054
+  joints: 5
+  counts: { flags: 5, data: 114, keys: 13, fixed: 5 }
+
+cKF_ba_r_tol_sao_1_sao_sinari1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811770BC
+  joints: 5
+  counts: { flags: 5, data: 18, keys: 3, fixed: 15 }
+
+cKF_ba_r_tol_sao_1_sao_swing1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8117722C
+  joints: 5
+  counts: { flags: 5, data: 150, keys: 3, fixed: 15 }
+
+cKF_ba_r_tol_sao_1_sao_wait1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81177380
+  joints: 5
+  counts: { flags: 5, data: 135, keys: 15, fixed: 3 }
+
+cKF_ba_r_tol_sao_1_not_sao_swing1:
+  type: AC:CKF_ANIMATION
+  offset: 0x811774E4
+  joints: 5
+  counts: { flags: 5, data: 144, keys: 3, fixed: 15 }
+
+act_m_scoop_1_pal:
+  type: TEXTURE
+  offset: 0x81177500
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_scoop_1_main1_tex_txt:
+  type: TEXTURE
+  offset: 0x81177520
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81177500
+
+tol_scoop_1_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x81177620
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81177500
+
+tol_scoop_1_tuka2_tex_txt:
+  type: TEXTURE
+  offset: 0x81177820
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81177500
+
+tol_scoop_1_tuka3_tex_txt:
+  type: TEXTURE
+  offset: 0x811778A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81177500
+
+tol_scoop_1_main2_tex_txt:
+  type: TEXTURE
+  offset: 0x81177920
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81177500
+
+tol_scoop_1_v:
+  type: VTX
+  offset: 0x81177A20
+  count: 51
+
+tol_scoop_1_model:
+  type: GFX
+  offset: 0x81177D50
+  size: 0x158
+
+tol_scoop_2_pal:
+  type: TEXTURE
+  offset: 0x81177EC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_scoop_2_main1_tex_txt:
+  type: TEXTURE
+  offset: 0x81177EE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81177EC0
+
+tol_scoop_2_tuka1_tex_txt:
+  type: TEXTURE
+  offset: 0x81177FE0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81177EC0
+
+tol_scoop_2_tuka2_tex_txt:
+  type: TEXTURE
+  offset: 0x811781E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81177EC0
+
+tol_scoop_2_tuka3_tex_txt:
+  type: TEXTURE
+  offset: 0x81178260
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81177EC0
+
+tol_scoop_2_main2_tex_txt:
+  type: TEXTURE
+  offset: 0x811782E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81177EC0
+
+tol_scoop_2_v:
+  type: VTX
+  offset: 0x811783E0
+  count: 51
+
+tol_scoop_2_model:
+  type: GFX
+  offset: 0x81178710
+  size: 0x158
+
+tol_balloon1_wire_tex_txt:
+  type: TEXTURE
+  offset: 0x81178880
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+tol_balloonA_head_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81178900
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_balloon1_v:
+  type: VTX
+  offset: 0x81178D00
+  count: 70
+
+tol_balloonA_a_model:
+  type: GFX
+  offset: 0x81179160
+  size: 0x58
+
+tol_balloonA_b_model:
+  type: GFX
+  offset: 0x811791B8
+  size: 0x98
+
+tol_balloonA_c_model:
+  type: GFX
+  offset: 0x81179250
+  size: 0x98
+
+tol_balloonA_head_model:
+  type: GFX
+  offset: 0x811792E8
+  size: 0xA0
+
+cKF_bs_r_tol_balloon1:
+  type: AC:CKF_SKELETON
+  offset: 0x811793DC
+  counts: { joints: 7 }
+
+tol_balloonB_wire_tex_txt:
+  type: TEXTURE
+  offset: 0x81179400
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+tol_balloonB_head_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81179480
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_balloon2_v:
+  type: VTX
+  offset: 0x81179880
+  count: 70
+
+tol_balloonB_a_model:
+  type: GFX
+  offset: 0x81179CE0
+  size: 0x58
+
+tol_balloonB_b_model:
+  type: GFX
+  offset: 0x81179D38
+  size: 0x98
+
+tol_balloonB_c_model:
+  type: GFX
+  offset: 0x81179DD0
+  size: 0x98
+
+tol_balloonB_head_model:
+  type: GFX
+  offset: 0x81179E68
+  size: 0xA0
+
+cKF_bs_r_tol_balloon2:
+  type: AC:CKF_SKELETON
+  offset: 0x81179F5C
+  counts: { joints: 7 }
+
+tol_balloonC_wire_tex_txt:
+  type: TEXTURE
+  offset: 0x81179F80
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+tol_balloonC_head_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8117A000
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_balloon3_v:
+  type: VTX
+  offset: 0x8117A400
+  count: 70
+
+tol_balloonC_a_model:
+  type: GFX
+  offset: 0x8117A860
+  size: 0x58
+
+tol_balloonC_b_model:
+  type: GFX
+  offset: 0x8117A8B8
+  size: 0x98
+
+tol_balloonC_c_model:
+  type: GFX
+  offset: 0x8117A950
+  size: 0x98
+
+tol_balloonC_head_model:
+  type: GFX
+  offset: 0x8117A9E8
+  size: 0xA0
+
+cKF_bs_r_tol_balloon3:
+  type: AC:CKF_SKELETON
+  offset: 0x8117AADC
+  counts: { joints: 7 }
+
+tol_balloonD_wire_tex_txt:
+  type: TEXTURE
+  offset: 0x8117AB00
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+tol_balloonD_head_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8117AB80
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_balloon4_v:
+  type: VTX
+  offset: 0x8117AF80
+  count: 70
+
+tol_balloonD_a_model:
+  type: GFX
+  offset: 0x8117B3E0
+  size: 0x58
+
+tol_balloonD_b_model:
+  type: GFX
+  offset: 0x8117B438
+  size: 0x98
+
+tol_balloonD_c_model:
+  type: GFX
+  offset: 0x8117B4D0
+  size: 0x98
+
+tol_balloonD_head_model:
+  type: GFX
+  offset: 0x8117B568
+  size: 0xA0
+
+cKF_bs_r_tol_balloon4:
+  type: AC:CKF_SKELETON
+  offset: 0x8117B65C
+  counts: { joints: 7 }
+
+tol_balloonE_wire_tex_txt:
+  type: TEXTURE
+  offset: 0x8117B680
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+tol_balloonE_head_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8117B700
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_balloon5_v:
+  type: VTX
+  offset: 0x8117BB00
+  count: 70
+
+tol_balloonE_a_model:
+  type: GFX
+  offset: 0x8117BF60
+  size: 0x58
+
+tol_balloonE_b_model:
+  type: GFX
+  offset: 0x8117BFB8
+  size: 0x98
+
+tol_balloonE_c_model:
+  type: GFX
+  offset: 0x8117C050
+  size: 0x98
+
+tol_balloonE_head_model:
+  type: GFX
+  offset: 0x8117C0E8
+  size: 0xA0
+
+cKF_bs_r_tol_balloon5:
+  type: AC:CKF_SKELETON
+  offset: 0x8117C1DC
+  counts: { joints: 7 }
+
+tol_balloonF_wire_tex_txt:
+  type: TEXTURE
+  offset: 0x8117C200
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+tol_balloonF5_head_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8117C280
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_balloon6_v:
+  type: VTX
+  offset: 0x8117C680
+  count: 198
+
+tol_balloonF_a_model:
+  type: GFX
+  offset: 0x8117D2E0
+  size: 0x58
+
+tol_balloonF_b_model:
+  type: GFX
+  offset: 0x8117D338
+  size: 0x98
+
+tol_balloonF_c_model:
+  type: GFX
+  offset: 0x8117D3D0
+  size: 0x98
+
+tol_balloonF_head_model:
+  type: GFX
+  offset: 0x8117D468
+  size: 0x168
+
+cKF_bs_r_tol_balloon6:
+  type: AC:CKF_SKELETON
+  offset: 0x8117D624
+  counts: { joints: 7 }
+
+tol_balloonG_wire_tex_txt:
+  type: TEXTURE
+  offset: 0x8117D640
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+tol_balloonG5_head_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8117D6C0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_balloon7_v:
+  type: VTX
+  offset: 0x8117DAC0
+  count: 198
+
+tol_balloonG_a_model:
+  type: GFX
+  offset: 0x8117E720
+  size: 0x58
+
+tol_balloonG_b_model:
+  type: GFX
+  offset: 0x8117E778
+  size: 0x98
+
+tol_balloonG_c_model:
+  type: GFX
+  offset: 0x8117E810
+  size: 0x98
+
+tol_balloonG_head_model:
+  type: GFX
+  offset: 0x8117E8A8
+  size: 0x168
+
+cKF_bs_r_tol_balloon7:
+  type: AC:CKF_SKELETON
+  offset: 0x8117EA64
+  counts: { joints: 7 }
+
+tol_balloonH_wire_tex_txt:
+  type: TEXTURE
+  offset: 0x8117EA80
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+tol_balloonH5_head_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8117EB00
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+tol_balloon8_v:
+  type: VTX
+  offset: 0x8117EF00
+  count: 198
+
+tol_balloonH_a_model:
+  type: GFX
+  offset: 0x8117FB60
+  size: 0x58
+
+tol_balloonH_b_model:
+  type: GFX
+  offset: 0x8117FBB8
+  size: 0x98
+
+tol_balloonH_c_model:
+  type: GFX
+  offset: 0x8117FC50
+  size: 0x98
+
+tol_balloonH_head_model:
+  type: GFX
+  offset: 0x8117FCE8
+  size: 0x168
+
+cKF_bs_r_tol_balloon8:
+  type: AC:CKF_SKELETON
+  offset: 0x8117FEA4
+  counts: { joints: 7 }
+
+cKF_ba_r_tol_balloon1_wait:
+  type: AC:CKF_ANIMATION
+  offset: 0x8117FFC0
+  joints: 7
+  counts: { flags: 7, data: 108, keys: 11, fixed: 13 }
+
+cKF_ba_r_tol_balloon1_gyaza1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81180554
+  joints: 7
+  counts: { flags: 7, data: 675, keys: 12, fixed: 12 }
+
+tol_kaza_1_pal:
+  type: TEXTURE
+  offset: 0x81180580
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_kaza_1_a_tex_txt:
+  type: TEXTURE
+  offset: 0x811805A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81180580
+
+tol_kaza_1_c_tex_txt:
+  type: TEXTURE
+  offset: 0x811807A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81180580
+
+tol_kaza_1_b_tex_txt:
+  type: TEXTURE
+  offset: 0x811809A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81180580
+
+tol_kaza1_v:
+  type: VTX
+  offset: 0x81180AA0
+  count: 48
+
+tol_kaza1_base_model:
+  type: GFX
+  offset: 0x81180DA0
+  size: 0x60
+
+tol_kaza1_fan_model:
+  type: GFX
+  offset: 0x81180E00
+  size: 0xB0
+
+cKF_bs_r_tol_kaza1:
+  type: AC:CKF_SKELETON
+  offset: 0x81180ED4
+  counts: { joints: 3 }
+
+tol_kaza_2_pal:
+  type: TEXTURE
+  offset: 0x81180EE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_kaza_2_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81180F00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81180EE0
+
+tol_kaza_2_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81181100
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81180EE0
+
+tol_kaza_2_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81181300
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81180EE0
+
+tol_kaza2_v:
+  type: VTX
+  offset: 0x81181400
+  count: 48
+
+tol_kaza2_base_model:
+  type: GFX
+  offset: 0x81181700
+  size: 0x60
+
+tol_kaza2_fan_model:
+  type: GFX
+  offset: 0x81181760
+  size: 0xB0
+
+cKF_bs_r_tol_kaza2:
+  type: AC:CKF_SKELETON
+  offset: 0x81181834
+  counts: { joints: 3 }
+
+tol_kaza_3_pal:
+  type: TEXTURE
+  offset: 0x81181840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_kaza_3_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81181860
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81181840
+
+tol_kaza_3_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81181A60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81181840
+
+tol_kaza_3_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81181C60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81181840
+
+tol_kaza3_v:
+  type: VTX
+  offset: 0x81181D60
+  count: 48
+
+tol_kaza3_base_model:
+  type: GFX
+  offset: 0x81182060
+  size: 0x60
+
+tol_kaza3_fan_model:
+  type: GFX
+  offset: 0x811820C0
+  size: 0xB0
+
+cKF_bs_r_tol_kaza3:
+  type: AC:CKF_SKELETON
+  offset: 0x81182194
+  counts: { joints: 3 }
+
+tol_kaza_4_pal:
+  type: TEXTURE
+  offset: 0x811821A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_kaza_4_a_tex_txt:
+  type: TEXTURE
+  offset: 0x811821C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x811821A0
+
+tol_kaza_4_c_tex_txt:
+  type: TEXTURE
+  offset: 0x811823C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x811821A0
+
+tol_kaza_4_b_tex_txt:
+  type: TEXTURE
+  offset: 0x811825C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x811821A0
+
+tol_kaza4_v:
+  type: VTX
+  offset: 0x811826C0
+  count: 48
+
+tol_kaza4_base_model:
+  type: GFX
+  offset: 0x811829C0
+  size: 0x60
+
+tol_kaza4_fan_model:
+  type: GFX
+  offset: 0x81182A20
+  size: 0xB0
+
+cKF_bs_r_tol_kaza4:
+  type: AC:CKF_SKELETON
+  offset: 0x81182AF4
+  counts: { joints: 3 }
+
+tol_kaza_5_pal:
+  type: TEXTURE
+  offset: 0x81182B00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_kaza_5_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81182B20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81182B00
+
+tol_kaza_5_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81182D20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81182B00
+
+tol_kaza_5_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81182F20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81182B00
+
+tol_kaza5_v:
+  type: VTX
+  offset: 0x81183020
+  count: 48
+
+tol_kaza5_base_model:
+  type: GFX
+  offset: 0x81183320
+  size: 0x60
+
+tol_kaza5_fan_model:
+  type: GFX
+  offset: 0x81183380
+  size: 0xB0
+
+cKF_bs_r_tol_kaza5:
+  type: AC:CKF_SKELETON
+  offset: 0x81183454
+  counts: { joints: 3 }
+
+tol_kaza_6_pal:
+  type: TEXTURE
+  offset: 0x81183460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_kaza_6_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81183480
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81183460
+
+tol_kaza_6_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81183680
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81183460
+
+tol_kaza_6_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81183880
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81183460
+
+tol_kaza6_v:
+  type: VTX
+  offset: 0x81183980
+  count: 48
+
+tol_kaza6_base_model:
+  type: GFX
+  offset: 0x81183C80
+  size: 0x60
+
+tol_kaza6_fan_model:
+  type: GFX
+  offset: 0x81183CE0
+  size: 0xB0
+
+cKF_bs_r_tol_kaza6:
+  type: AC:CKF_SKELETON
+  offset: 0x81183DB4
+  counts: { joints: 3 }
+
+tol_kaza_7_pal:
+  type: TEXTURE
+  offset: 0x81183DC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_kaza_7_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81183DE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81183DC0
+
+tol_kaza_7_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81183FE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81183DC0
+
+tol_kaza_7_d_tex_txt:
+  type: TEXTURE
+  offset: 0x811841E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81183DC0
+
+tol_kaza_7_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81184260
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81183DC0
+
+tol_kaza7_v:
+  type: VTX
+  offset: 0x81184360
+  count: 152
+
+tol_kaza7_base_model:
+  type: GFX
+  offset: 0x81184CE0
+  size: 0x60
+
+tol_kaza7_fan_model:
+  type: GFX
+  offset: 0x81184D40
+  size: 0x1F0
+
+cKF_bs_r_tol_kaza7:
+  type: AC:CKF_SKELETON
+  offset: 0x81184F54
+  counts: { joints: 3 }
+
+tol_kaza_8_pal:
+  type: TEXTURE
+  offset: 0x81184F60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_kaza_8_d_tex_txt:
+  type: TEXTURE
+  offset: 0x81184F80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81184F60
+
+tol_kaza_8_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81185000
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81184F60
+
+tol_kaza_8_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81185200
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81184F60
+
+tol_kaza_8_e_tex_txt:
+  type: TEXTURE
+  offset: 0x81185400
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81184F60
+
+tol_kaza_8_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81185480
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81184F60
+
+tol_kaza8_v:
+  type: VTX
+  offset: 0x81185580
+  count: 120
+
+tol_kaza8_base_model:
+  type: GFX
+  offset: 0x81185D00
+  size: 0x60
+
+tol_kaza8_fan_model:
+  type: GFX
+  offset: 0x81185D60
+  size: 0x1D8
+
+cKF_bs_r_tol_kaza8:
+  type: AC:CKF_SKELETON
+  offset: 0x81185F5C
+  counts: { joints: 3 }
+
+cKF_ba_r_tol_kaza1_wait:
+  type: AC:CKF_ANIMATION
+  offset: 0x81185FF0
+  joints: 3
+  counts: { flags: 3, data: 54, keys: 9, fixed: 3 }
+
+tol_fan1_pal:
+  type: TEXTURE
+  offset: 0x81186020
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_fan1_tex_txt:
+  type: TEXTURE
+  offset: 0x81186040
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81186020
+
+tol_fan1_v:
+  type: VTX
+  offset: 0x81186440
+  count: 8
+
+tol_fan1_model:
+  type: GFX
+  offset: 0x811864C0
+  size: 0x60
+
+tol_fan2_pal:
+  type: TEXTURE
+  offset: 0x81186520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_fan2_tex_txt:
+  type: TEXTURE
+  offset: 0x81186540
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81186520
+
+tol_fan2_v:
+  type: VTX
+  offset: 0x81186940
+  count: 8
+
+tol_fan2_model:
+  type: GFX
+  offset: 0x811869C0
+  size: 0x60
+
+tol_fan3_pal:
+  type: TEXTURE
+  offset: 0x81186A20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_fan3_tex_txt:
+  type: TEXTURE
+  offset: 0x81186A40
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81186A20
+
+tol_fan3_v:
+  type: VTX
+  offset: 0x81186E40
+  count: 8
+
+tol_fan3_model:
+  type: GFX
+  offset: 0x81186EC0
+  size: 0x60
+
+tol_fan4_pal:
+  type: TEXTURE
+  offset: 0x81186F20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_fan4_tex_txt:
+  type: TEXTURE
+  offset: 0x81186F40
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81186F20
+
+tol_fan4_v:
+  type: VTX
+  offset: 0x81187340
+  count: 8
+
+tol_fan4_model:
+  type: GFX
+  offset: 0x811873C0
+  size: 0x60
+
+tol_fan5_pal:
+  type: TEXTURE
+  offset: 0x81187420
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_fan5_tex_txt:
+  type: TEXTURE
+  offset: 0x81187440
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81187420
+
+tol_fan5_v:
+  type: VTX
+  offset: 0x81187840
+  count: 8
+
+tol_fan5_model:
+  type: GFX
+  offset: 0x811878C0
+  size: 0x60
+
+tol_fan6_pal:
+  type: TEXTURE
+  offset: 0x81187920
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_fan6_tex_txt:
+  type: TEXTURE
+  offset: 0x81187940
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81187920
+
+tol_fan6_v:
+  type: VTX
+  offset: 0x81187D40
+  count: 40
+
+tol_fan6_model:
+  type: GFX
+  offset: 0x81187FC0
+  size: 0x88
+
+tol_fan7_pal:
+  type: TEXTURE
+  offset: 0x81188060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_fan7_tex_txt:
+  type: TEXTURE
+  offset: 0x81188080
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81188060
+
+tol_fan7_v:
+  type: VTX
+  offset: 0x81188480
+  count: 8
+
+tol_fan7_model:
+  type: GFX
+  offset: 0x81188500
+  size: 0x60
+
+tol_fan8_pal:
+  type: TEXTURE
+  offset: 0x81188560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_fan8_tex_txt:
+  type: TEXTURE
+  offset: 0x81188580
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81188560
+
+tol_fan8_v:
+  type: VTX
+  offset: 0x81188980
+  count: 8
+
+tol_fan8_model:
+  type: GFX
+  offset: 0x81188A00
+  size: 0x60

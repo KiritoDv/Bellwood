@@ -1,0 +1,65 @@
+:config:
+  strict_declarations: true
+
+aLOT_obj_01_lotus_pal:
+  type: TEXTURE
+  offset: 0x810784E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_02_lotus_pal:
+  type: TEXTURE
+  offset: 0x81078500
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_03_lotus_pal:
+  type: TEXTURE
+  offset: 0x81078520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_04_lotus_pal:
+  type: TEXTURE
+  offset: 0x81078540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_05_lotus_pal:
+  type: TEXTURE
+  offset: 0x81078560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_06_lotus_pal:
+  type: TEXTURE
+  offset: 0x81078580
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_07_lotus_pal:
+  type: TEXTURE
+  offset: 0x810785A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_08_lotus_pal:
+  type: TEXTURE
+  offset: 0x810785C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_09_lotus_pal:
+  type: TEXTURE
+  offset: 0x810785E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx

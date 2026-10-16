@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_iku_flagman_pal:
+  type: TEXTURE
+  offset: 0x81855320
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_flagman_all_tex_txt:
+  type: TEXTURE
+  offset: 0x81855340
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81855320
+
+int_iku_flagman_v:
+  type: VTX
+  offset: 0x81855740
+  count: 94
+
+int_iku_flagman_model_model:
+  type: GFX
+  offset: 0x81855D20
+  size: 0xC0

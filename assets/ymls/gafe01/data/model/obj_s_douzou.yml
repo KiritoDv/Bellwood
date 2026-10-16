@@ -1,0 +1,466 @@
+:config:
+  strict_declarations: true
+
+obj_s_douzou_dai_tex_txt:
+  type: TEXTURE
+  offset: 0x8151B520
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+obj_s_douzou_name_tex_txt:
+  type: TEXTURE
+  offset: 0x8151B620
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_b1_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151B6A0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_b2_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151B7A0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_b3_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151B8A0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_b4_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151B9A0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_b5_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151BAA0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_b6_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151BBA0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_b7_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151BCA0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_b8_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151BDA0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_bm1_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151BEA0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_bm2_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151BF20
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_g1_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151BFA0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_g2_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151C0A0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_g3_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151C1A0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_g4_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151C2A0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_g5_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151C3A0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_g6_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151C4A0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_g8_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151C5A0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_gm1_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151C6A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_gm2_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151C720
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_douzou_metal_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151C7A0
+  format: I4
+  width: 16
+  height: 8
+  source_encoding: gx
+
+obj_s_douzou_v:
+  type: VTX
+  offset: 0x8151C7E0
+  count: 283
+
+obj_s_douzou_name_model:
+  type: GFX
+  offset: 0x8151D990
+  size: 0x48
+
+obj_s_douzou_dai_model:
+  type: GFX
+  offset: 0x8151D9D8
+  size: 0x68
+
+obj_s_douzou_girl_mouth_model:
+  type: GFX
+  offset: 0x8151DA40
+  size: 0x50
+
+obj_s_douzou_girl_face_model:
+  type: GFX
+  offset: 0x8151DA90
+  size: 0x50
+
+obj_s_douzou_girl_model:
+  type: GFX
+  offset: 0x8151DAE0
+  size: 0x138
+
+obj_s_douzou_boy_mouth_model:
+  type: GFX
+  offset: 0x8151DC18
+  size: 0x48
+
+obj_s_douzou_boy_face_model:
+  type: GFX
+  offset: 0x8151DC60
+  size: 0x50
+
+obj_s_douzou_boy_model:
+  type: GFX
+  offset: 0x8151DCB0
+  size: 0x150
+
+cKF_ba_r_obj_s_douzou:
+  type: AC:CKF_ANIMATION
+  offset: 0x8151DE48
+  joints: 9
+  counts: { flags: 9, data: 0, keys: 0, fixed: 30 }
+
+cKF_bs_r_obj_s_douzou:
+  type: AC:CKF_SKELETON
+  offset: 0x8151DEC8
+  counts: { joints: 9 }
+
+obj_w_douzou_dai_tex_txt:
+  type: TEXTURE
+  offset: 0x8151DEE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+obj_w_douzou_name_tex_txt:
+  type: TEXTURE
+  offset: 0x8151DFE0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_b1_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151E060
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_b2_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151E160
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_b3_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151E260
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_b4_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151E360
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_b5_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151E460
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_b6_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151E560
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_b7_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151E660
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_b8_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151E760
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_bm1_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151E860
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_bm2_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151E8E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_g1_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151E960
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_g2_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151EA60
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_g3_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151EB60
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_g4_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151EC60
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_g5_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151ED60
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_g6_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151EE60
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_g8_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151EF60
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_gm1_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151F060
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_gm2_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151F0E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_douzou_metal_tex_pic_i4:
+  type: TEXTURE
+  offset: 0x8151F160
+  format: I4
+  width: 16
+  height: 8
+  source_encoding: gx
+
+obj_w_douzou_v:
+  type: VTX
+  offset: 0x8151F1A0
+  count: 283
+
+obj_w_douzou_name_model:
+  type: GFX
+  offset: 0x81520350
+  size: 0x48
+
+obj_w_douzou_dai_model:
+  type: GFX
+  offset: 0x81520398
+  size: 0x68
+
+obj_w_douzou_girl_mouth_model:
+  type: GFX
+  offset: 0x81520400
+  size: 0x58
+
+obj_w_douzou_girl_face_model:
+  type: GFX
+  offset: 0x81520458
+  size: 0x50
+
+obj_w_douzou_girl_model:
+  type: GFX
+  offset: 0x815204A8
+  size: 0x138
+
+obj_w_douzou_boy_mouth_model:
+  type: GFX
+  offset: 0x815205E0
+  size: 0x48
+
+obj_w_douzou_boy_face_model:
+  type: GFX
+  offset: 0x81520628
+  size: 0x50
+
+obj_w_douzou_boy_model:
+  type: GFX
+  offset: 0x81520678
+  size: 0x150
+
+cKF_ba_r_obj_w_douzou:
+  type: AC:CKF_ANIMATION
+  offset: 0x81520810
+  joints: 9
+  counts: { flags: 9, data: 0, keys: 0, fixed: 30 }
+
+cKF_bs_r_obj_w_douzou:
+  type: AC:CKF_SKELETON
+  offset: 0x81520890
+  counts: { joints: 9 }

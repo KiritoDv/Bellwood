@@ -1,0 +1,61 @@
+:config:
+  strict_declarations: true
+
+room:
+  type: TEXTURE
+  offset: 0x81AB7AE0
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+room_floor:
+  type: TEXTURE
+  offset: 0x81AB7B00
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: n64
+  tlut: 0x81AB7AE0
+
+room_wall:
+  type: TEXTURE
+  offset: 0x81AB7F00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: n64
+  tlut: 0x81AB7AE0
+
+room_window:
+  type: TEXTURE
+  offset: 0x81AB8700
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: n64
+  tlut: 0x81AB7AE0
+
+room01_v:
+  type: VTX
+  offset: 0x81AB8F00
+  count: 88
+
+room01_grp_room01__edge:
+  type: GFX
+  offset: 0x81AB9480
+  size: 0x98
+
+room01_grp_room_out01:
+  type: GFX
+  offset: 0x81AB9518
+  size: 0x30
+
+room01_grp_room01:
+  type: GFX
+  offset: 0x81AB9548
+  size: 0x1D0
+
+room01_model:
+  type: GFX
+  offset: 0x81AB9718
+  size: 0x50

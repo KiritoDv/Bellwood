@@ -1,0 +1,43 @@
+:config:
+  strict_declarations: true
+
+lat_sousa_mode:
+  type: GFX
+  offset: 0x81421520
+  size: 0x30
+
+lat_sousa_sp_tex:
+  type: TEXTURE
+  offset: 0x81421550
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: n64
+
+lat_sp_v:
+  type: VTX
+  offset: 0x814215D0
+  count: 4
+
+lat_sousa_spT_model:
+  type: GFX
+  offset: 0x81421610
+  size: 0x78
+
+lat_tegami_end_tex:
+  type: TEXTURE
+  offset: 0x81421688
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: n64
+
+lat_end_v:
+  type: VTX
+  offset: 0x81421A88
+  count: 4
+
+lat_end_cordT_model:
+  type: GFX
+  offset: 0x81421AC8
+  size: 0x88

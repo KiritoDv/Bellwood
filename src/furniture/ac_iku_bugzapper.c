@@ -1,5 +1,4 @@
-extern Gfx int_iku_bugzapper_on_model[];
-extern Gfx int_iku_bugzapper_off_model[];
+#include "assets/data/model/int_iku_bugzapper.h"
 
 aFTR_PROFILE iam_iku_bugzapper = {
 	int_iku_bugzapper_on_model,

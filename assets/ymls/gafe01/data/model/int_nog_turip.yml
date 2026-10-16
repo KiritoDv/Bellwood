@@ -1,0 +1,41 @@
+:config:
+  strict_declarations: true
+
+int_nog_turip_grass_tex:
+  type: TEXTURE
+  offset: 0x81926AA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_turip_leaf_tex:
+  type: TEXTURE
+  offset: 0x81926B20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_turip_flower_tex:
+  type: TEXTURE
+  offset: 0x81926BA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+int_nog_turip_v:
+  type: VTX
+  offset: 0x81926CA0
+  count: 81
+
+int_nog_turip_model:
+  type: GFX
+  offset: 0x819271B0
+  size: 0x58
+
+int_nog_turipT_model:
+  type: GFX
+  offset: 0x81927208
+  size: 0xD8

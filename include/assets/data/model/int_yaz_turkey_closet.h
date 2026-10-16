@@ -1,0 +1,40 @@
+#ifndef ASSETS_DATA_MODEL_INT_YAZ_TURKEY_CLOSET_H
+#define ASSETS_DATA_MODEL_INT_YAZ_TURKEY_CLOSET_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const char int_yaz_turkey_closet_pal[];
+extern const char int_yaz_turkey_closet_door_tex_txt[];
+extern const char int_yaz_turkey_closet_knob_tex_txt[];
+extern const char int_yaz_turkey_closet_back_tex_txt[];
+extern const char int_yaz_turkey_closet_side2_tex_txt[];
+extern const char int_yaz_turkey_closet_asi_tex_txt[];
+extern const char int_yaz_turkey_closet_frnt_tex_txt[];
+extern const char int_yaz_turkey_closet_v[];
+extern const char int_yaz_turkey_closet_doorL_model[];
+extern const char int_yaz_turkey_closet_body_model[];
+extern const char int_yaz_turkey_closet_doorR_model[];
+extern const char cKF_ba_r_int_yaz_turkey_closet[];
+extern const char cKF_bs_r_int_yaz_turkey_closet[];
+
+#define int_yaz_turkey_closet_pal_PATH "__OTR__data/model/int_yaz_turkey_closet/int_yaz_turkey_closet_pal"
+#define int_yaz_turkey_closet_door_tex_txt_PATH "__OTR__data/model/int_yaz_turkey_closet/int_yaz_turkey_closet_door_tex_txt"
+#define int_yaz_turkey_closet_knob_tex_txt_PATH "__OTR__data/model/int_yaz_turkey_closet/int_yaz_turkey_closet_knob_tex_txt"
+#define int_yaz_turkey_closet_back_tex_txt_PATH "__OTR__data/model/int_yaz_turkey_closet/int_yaz_turkey_closet_back_tex_txt"
+#define int_yaz_turkey_closet_side2_tex_txt_PATH "__OTR__data/model/int_yaz_turkey_closet/int_yaz_turkey_closet_side2_tex_txt"
+#define int_yaz_turkey_closet_asi_tex_txt_PATH "__OTR__data/model/int_yaz_turkey_closet/int_yaz_turkey_closet_asi_tex_txt"
+#define int_yaz_turkey_closet_frnt_tex_txt_PATH "__OTR__data/model/int_yaz_turkey_closet/int_yaz_turkey_closet_frnt_tex_txt"
+#define int_yaz_turkey_closet_v_PATH "__OTR__data/model/int_yaz_turkey_closet/int_yaz_turkey_closet_v"
+#define int_yaz_turkey_closet_doorL_model_PATH "__OTR__data/model/int_yaz_turkey_closet/int_yaz_turkey_closet_doorL_model"
+#define int_yaz_turkey_closet_body_model_PATH "__OTR__data/model/int_yaz_turkey_closet/int_yaz_turkey_closet_body_model"
+#define int_yaz_turkey_closet_doorR_model_PATH "__OTR__data/model/int_yaz_turkey_closet/int_yaz_turkey_closet_doorR_model"
+#define cKF_ba_r_int_yaz_turkey_closet_PATH "__OTR__data/model/int_yaz_turkey_closet/cKF_ba_r_int_yaz_turkey_closet"
+#define cKF_bs_r_int_yaz_turkey_closet_PATH "__OTR__data/model/int_yaz_turkey_closet/cKF_bs_r_int_yaz_turkey_closet"
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

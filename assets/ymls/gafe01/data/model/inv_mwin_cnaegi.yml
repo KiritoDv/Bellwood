@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_cnaegi_pal:
+  type: TEXTURE
+  offset: 0x81445080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_cnaegi_tex:
+  type: TEXTURE
+  offset: 0x814450A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

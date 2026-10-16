@@ -1,5 +1,4 @@
-extern Gfx int_ari_kitchen01_01_model[];
-extern Gfx int_ari_kitchen01_01T_model[];
+#include "assets/data/model/int_ari_kitchen01.h"
 
 aFTR_PROFILE iam_ari_kitchen01 = {
 	int_ari_kitchen01_01_model,

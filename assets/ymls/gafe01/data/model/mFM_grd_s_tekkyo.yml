@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_s_tekkyo_tex:
+  type: TEXTURE
+  offset: 0x81AB02A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+mFM_grd_s_tekkyo_2_tex:
+  type: TEXTURE
+  offset: 0x81AB0AA0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+mFM_grd_s_tekkyo_3_tex:
+  type: TEXTURE
+  offset: 0x81AB12A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx

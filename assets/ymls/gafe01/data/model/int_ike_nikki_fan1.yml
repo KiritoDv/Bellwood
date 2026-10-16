@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+int_ike_nikki_fan1_pal:
+  type: TEXTURE
+  offset: 0x8183E980
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_nikki_fan1face_tex:
+  type: TEXTURE
+  offset: 0x8183E9A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8183E980
+
+int_ike_nikki_fan1side_tex:
+  type: TEXTURE
+  offset: 0x8183EBA0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x8183E980
+
+int_ike_nikki_fan1pen_tex:
+  type: TEXTURE
+  offset: 0x8183EBE0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x8183E980
+
+int_ike_nikki_fan1_v:
+  type: VTX
+  offset: 0x8183EC20
+  count: 33
+
+int_ike_nikki_fan1_on_model:
+  type: GFX
+  offset: 0x8183EE30
+  size: 0xC8

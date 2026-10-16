@@ -1,0 +1,131 @@
+:config:
+  strict_declarations: true
+
+cat_10_pal:
+  type: TEXTURE
+  offset: 0x811A7480
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+cat_10_eye1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A74A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_eye2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A75A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_eye3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A76A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_eye4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A77A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_eye5_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A78A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_eye6_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A79A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_eye7_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A7AA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_eye8_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A7BA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_mouth1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A7CA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_mouth2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A7DA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_mouth3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A7EA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_mouth4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A7FA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_mouth5_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A80A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_mouth6_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x811A81A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+cat_10_tmem_txt:
+  type: AC:TEX_ATLAS
+  offset: 0x811A82A0
+  size: 0x400
+  regions:
+    - { offset: 0x0, format: CI4, width: 32, height: 32 }
+    - { offset: 0x200, format: CI4, width: 16, height: 16 }
+    - { offset: 0x280, format: CI4, width: 16, height: 16 }
+    - { offset: 0x300, format: CI4, width: 16, height: 32 }

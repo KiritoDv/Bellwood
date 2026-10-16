@@ -1,5 +1,4 @@
-extern Gfx int_tak_mooncar_on_model[];
-extern Gfx int_tak_mooncar_onT_model[];
+#include "assets/data/model/int_tak_mooncar.h"
 
 aFTR_PROFILE iam_tak_mooncar = {
 	int_tak_mooncar_on_model,

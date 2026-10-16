@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_ike_prores_fense01_pal:
+  type: TEXTURE
+  offset: 0x81841BE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_prores_fense01_fense_tex:
+  type: TEXTURE
+  offset: 0x81841C00
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81841BE0
+
+int_ike_prores_fense01_leg_tex:
+  type: TEXTURE
+  offset: 0x81841F00
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81841BE0
+
+int_ike_prores_fense01_top_tex:
+  type: TEXTURE
+  offset: 0x81841F40
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81841BE0
+
+int_ike_prores_fense01_side_tex:
+  type: TEXTURE
+  offset: 0x81841F80
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81841BE0
+
+int_ike_prores_fense01_v:
+  type: VTX
+  offset: 0x81841FC0
+  count: 44
+
+int_ike_prores_fense01_on_model:
+  type: GFX
+  offset: 0x81842280
+  size: 0x80
+
+int_ike_prores_fense01_onT_model:
+  type: GFX
+  offset: 0x81842300
+  size: 0x90

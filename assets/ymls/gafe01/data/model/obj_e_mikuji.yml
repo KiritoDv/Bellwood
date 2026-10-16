@@ -1,0 +1,44 @@
+:config:
+  strict_declarations: true
+
+obj_e_mikuji_2_pal:
+  type: TEXTURE
+  offset: 0x8153DBA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_mikuji_1_pal:
+  type: TEXTURE
+  offset: 0x8153DBC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_mikuji_2:
+  type: TEXTURE
+  offset: 0x8153DBE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8153DBA0
+
+obj_e_mikuji_1:
+  type: TEXTURE
+  offset: 0x8153DDE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8153DBC0
+
+obj_e_mikuji_v:
+  type: VTX
+  offset: 0x8153E5E0
+  count: 51
+
+obj_e_mikuji_model:
+  type: GFX
+  offset: 0x8153E910
+  size: 0xB8

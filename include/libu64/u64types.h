@@ -39,12 +39,23 @@ typedef union {
   rgba8888_t c;
 } rgba8888;
 
+static inline u32 rgba8888_get(const rgba8888* color) {
+  return ((u32)color->c.r << 24) | ((u32)color->c.g << 16) | ((u32)color->c.b << 8) | (u32)color->c.a;
+}
+
 typedef union {
     struct {
         u8 r, g, b, a;
     };
     u32 rgba;
 } Color_RGBA8_u32;
+
+static inline void Color_RGBA8_u32_set(Color_RGBA8_u32* color, u32 rgba) {
+    color->r = (u8)(rgba >> 24);
+    color->g = (u8)(rgba >> 16);
+    color->b = (u8)(rgba >> 8);
+    color->a = (u8)rgba;
+}
 
 #ifdef __cplusplus
 }

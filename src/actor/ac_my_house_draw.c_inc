@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_s_myhome1.h"
 static int aMHS_actor_draw_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
                                   u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {
     static s16 angle_table[2] = { DEG2SHORT_ANGLE(0.0f), DEG2SHORT_ANGLE(90.0f) };
@@ -79,17 +80,8 @@ static int aMHS_actor_draw_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, in
     return TRUE;
 }
 
-extern Gfx obj_s_myhome1_window_model[];
-extern Gfx obj_w_myhome1_window_model[];
 
-extern Gfx obj_s_myhome2_window_model[];
-extern Gfx obj_w_myhome2_window_model[];
 
-extern Gfx obj_s_myhome3_window_model[];
-extern Gfx obj_w_myhome3_window_model[];
-
-extern Gfx obj_s_myhome4_window_model[];
-extern Gfx obj_w_myhome4_window_model[];
 
 static int aMHS_actor_draw_after(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
                                  u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {
@@ -164,8 +156,8 @@ static void aMHS_actor_draw_ta_set(STRUCTURE_ACTOR* my_house, GAME* game) {
 
     OPEN_DISP(graph);
 
-    gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_DOLPHIN);
-    gDPSetTextureAdjustMode(NEXT_SHADOW_DISP, G_TA_DOLPHIN);
+    gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_HALFTEXEL);
+    gDPSetTextureAdjustMode(NEXT_SHADOW_DISP, G_TA_HALFTEXEL);
     gDPSetTexEdgeAlpha(NEXT_POLY_OPA_DISP, edge_alpha[my_house->arg0]);
     gDPSetTexEdgeAlpha(NEXT_SHADOW_DISP, edge_alpha[my_house->arg0]);
 
@@ -185,9 +177,6 @@ static void aMHS_actor_draw_ta_clr(STRUCTURE_ACTOR* my_house, GAME* game) {
     CLOSE_DISP(graph);
 }
 
-extern u8 obj_myhome_mark_tex_txt[];
-extern u16 obj_myhome_mark_pal[];
-
 static int aMHS_actor_draw_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
                                   u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos);
 static int aMHS_actor_draw_after(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
@@ -195,9 +184,6 @@ static int aMHS_actor_draw_after(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int
 
 static void aMHS_actor_draw_ta_set(STRUCTURE_ACTOR* my_house, GAME* game);
 static void aMHS_actor_draw_ta_clr(STRUCTURE_ACTOR* my_house, GAME* game);
-
-extern u8 obj_myhome_mark_tex_txt[];
-extern u16 obj_myhome_mark_pal[];
 
 static void aMHS_actor_draw(ACTOR* actorx, GAME* game) {
     static bIT_ShadowData_c** shadow_data[mHm_HOMESIZE_NUM - 1] = {

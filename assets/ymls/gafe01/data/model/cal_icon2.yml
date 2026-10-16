@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+cal_win_mark_tex:
+  type: TEXTURE
+  offset: 0x813D14C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_icon2_v:
+  type: VTX
+  offset: 0x813D1540
+  count: 4
+
+cal_icon_mark_model:
+  type: GFX
+  offset: 0x813D1580
+  size: 0x40

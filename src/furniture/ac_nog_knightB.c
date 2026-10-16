@@ -1,4 +1,4 @@
-extern Gfx int_nog_knightBT_model[];
+#include "assets/data/model/int_nog_knightB.h"
 
 aFTR_PROFILE iam_nog_knightB = {
 	int_nog_knightBT_model,

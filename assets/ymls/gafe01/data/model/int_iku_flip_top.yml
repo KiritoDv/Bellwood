@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_iku_flip_top_pal:
+  type: TEXTURE
+  offset: 0x81855DE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_flip_top_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81855E00
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81855DE0
+
+int_iku_flip_top_d_tex_txt:
+  type: TEXTURE
+  offset: 0x81856200
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81855DE0
+
+int_iku_flip_top_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81856300
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81855DE0
+
+int_iku_flip_top_bd_tex_txt:
+  type: TEXTURE
+  offset: 0x81856400
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81855DE0
+
+int_iku_flip_top_v:
+  type: VTX
+  offset: 0x81856600
+  count: 98
+
+int_iku_flip_model_b_model:
+  type: GFX
+  offset: 0x81856C20
+  size: 0x58
+
+int_iku_flip_model_a_model:
+  type: GFX
+  offset: 0x81856C78
+  size: 0x138

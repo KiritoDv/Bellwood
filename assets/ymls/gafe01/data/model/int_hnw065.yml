@@ -1,0 +1,108 @@
+:config:
+  strict_declarations: true
+
+int_hnw065_pal:
+  type: TEXTURE
+  offset: 0x817CAF00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_hnw065_arm_tex_txt:
+  type: TEXTURE
+  offset: 0x817CAF20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x817CAF00
+
+int_hnw065_armtop_tex_txt:
+  type: TEXTURE
+  offset: 0x817CB020
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x817CAF00
+
+int_hnw065_c_front_tex_txt:
+  type: TEXTURE
+  offset: 0x817CB0A0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x817CAF00
+
+int_hnw065_c_back_tex_txt:
+  type: TEXTURE
+  offset: 0x817CB3A0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x817CAF00
+
+int_hnw065_antena_tex_txt:
+  type: TEXTURE
+  offset: 0x817CB520
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x817CAF00
+
+int_hnw065_b_back_tex_txt:
+  type: TEXTURE
+  offset: 0x817CB5A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x817CAF00
+
+int_hnw065_b_front_tex_txt:
+  type: TEXTURE
+  offset: 0x817CB620
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x817CAF00
+
+int_hnw065_v:
+  type: VTX
+  offset: 0x817CB720
+  count: 74
+
+int_hnw065_chest_model:
+  type: GFX
+  offset: 0x817CBBC0
+  size: 0xF8
+
+int_hnw065_armR_model:
+  type: GFX
+  offset: 0x817CBCB8
+  size: 0x80
+
+int_hnw065_armL_model:
+  type: GFX
+  offset: 0x817CBD38
+  size: 0x80
+
+int_hnw065_base_model:
+  type: GFX
+  offset: 0x817CBDB8
+  size: 0x78
+
+cKF_ba_r_int_hnw065:
+  type: AC:CKF_ANIMATION
+  offset: 0x817CBF5C
+  joints: 7
+  counts: { flags: 7, data: 120, keys: 15, fixed: 9 }
+
+cKF_bs_r_int_hnw065:
+  type: AC:CKF_SKELETON
+  offset: 0x817CBFC4
+  counts: { joints: 7 }

@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_act_mus_onamazu_a1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81688D08
+  joints: 3
+  counts: { flags: 3, data: 84, keys: 7, fixed: 5 }

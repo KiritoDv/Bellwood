@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_ike_prores_mat01_pal:
+  type: TEXTURE
+  offset: 0x81844940
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_prores_mat01_handle_tex:
+  type: TEXTURE
+  offset: 0x81844960
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81844940
+
+int_ike_prores_mat01_top_tex:
+  type: TEXTURE
+  offset: 0x818449A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81844940
+
+int_ike_prores_mat01_side_tex:
+  type: TEXTURE
+  offset: 0x81844AA0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81844940
+
+int_ike_prores_mat01_v:
+  type: VTX
+  offset: 0x81844AE0
+  count: 36
+
+int_ike_prores_mat1_on_model:
+  type: GFX
+  offset: 0x81844D20
+  size: 0x88
+
+int_ike_prores_mat1_onT_model:
+  type: GFX
+  offset: 0x81844DA8
+  size: 0x68

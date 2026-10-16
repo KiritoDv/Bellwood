@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_sum_pl_hirasabo_pal:
+  type: TEXTURE
+  offset: 0x81A43920
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_pl_hirasabo_earth_tex:
+  type: TEXTURE
+  offset: 0x81A43940
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A43920
+
+int_sum_pl_hirasabo_hachi_tex:
+  type: TEXTURE
+  offset: 0x81A439C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A43920
+
+int_sum_pl_hirasabo_sabo1_tex:
+  type: TEXTURE
+  offset: 0x81A43AC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A43920
+
+int_sum_pl_hirasabo_sabo2_tex:
+  type: TEXTURE
+  offset: 0x81A43CC0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A43920
+
+int_sum_pl_hirasabo_sabo3_tex:
+  type: TEXTURE
+  offset: 0x81A43FC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A43920
+
+int_sum_pl_hirasabo_v:
+  type: VTX
+  offset: 0x81A440C0
+  count: 47
+
+int_sum_pl_hirasabo_on_model:
+  type: GFX
+  offset: 0x81A443B0
+  size: 0x60
+
+int_sum_pl_hirasabo_onT_model:
+  type: GFX
+  offset: 0x81A44410
+  size: 0xF0

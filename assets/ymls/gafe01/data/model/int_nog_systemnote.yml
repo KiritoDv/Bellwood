@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_nog_systemnote_pal:
+  type: TEXTURE
+  offset: 0x8191C660
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_systemnote_tex:
+  type: TEXTURE
+  offset: 0x8191C680
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8191C660
+
+int_nog_systemnote_v:
+  type: VTX
+  offset: 0x8191CA80
+  count: 50
+
+int_nog_systemnote_model:
+  type: GFX
+  offset: 0x8191CDA0
+  size: 0xB8

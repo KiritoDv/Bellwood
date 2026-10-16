@@ -1,0 +1,99 @@
+:config:
+  strict_declarations: true
+
+int_sum_hal_box01_pal:
+  type: TEXTURE
+  offset: 0x819FA5C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_hal_box01_pkin_tex_txt:
+  type: TEXTURE
+  offset: 0x819FA5E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819FA5C0
+
+int_sum_hal_box01_kuki_tex_txt:
+  type: TEXTURE
+  offset: 0x819FA7E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819FA5C0
+
+int_sum_hal_box01_bane_tex_txt:
+  type: TEXTURE
+  offset: 0x819FA860
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819FA5C0
+
+int_sum_hal_box01_in_tex_txt:
+  type: TEXTURE
+  offset: 0x819FA960
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819FA5C0
+
+int_sum_hal_box01_boxside_tex_txt:
+  type: TEXTURE
+  offset: 0x819FA9E0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x819FA5C0
+
+int_sum_hal_box01_boxtop_tex_txt:
+  type: TEXTURE
+  offset: 0x819FABE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819FA5C0
+
+int_sum_hal_box01_v:
+  type: VTX
+  offset: 0x819FAC60
+  count: 73
+
+int_sum_hal_box01_bane_on_model:
+  type: GFX
+  offset: 0x819FB0F0
+  size: 0x130
+
+int_sum_hal_box01_bane_off_model:
+  type: GFX
+  offset: 0x819FB220
+  size: 0x58
+
+int_sum_hal_box01_base_model:
+  type: GFX
+  offset: 0x819FB278
+  size: 0x90
+
+int_sum_hal_box01_top_model:
+  type: GFX
+  offset: 0x819FB308
+  size: 0x68
+
+cKF_ba_r_int_sum_hal_box01:
+  type: AC:CKF_ANIMATION
+  offset: 0x819FB40C
+  joints: 6
+  counts: { flags: 6, data: 51, keys: 2, fixed: 19 }
+
+cKF_bs_r_int_sum_hal_box01:
+  type: AC:CKF_SKELETON
+  offset: 0x819FB468
+  counts: { joints: 6 }

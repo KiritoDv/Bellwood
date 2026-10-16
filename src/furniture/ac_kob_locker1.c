@@ -1,10 +1,8 @@
+#include "assets/data/model/int_kob_locker1.h"
 static void aKobLocker1_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aKobLocker1_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aKobLocker1_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aKobLocker1_dt(FTR_ACTOR* ftr_actor, u8* data);
-
-extern cKF_Animation_R_c cKF_ba_r_int_kob_locker1;
-extern cKF_Skeleton_R_c cKF_bs_r_int_kob_locker1;
 
 static void aKobLocker1_ct(FTR_ACTOR* ftr_actor, u8* data){
     cKF_SkeletonInfo_R_c* keyf;

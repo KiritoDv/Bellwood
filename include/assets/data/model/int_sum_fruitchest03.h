@@ -1,0 +1,40 @@
+#ifndef ASSETS_DATA_MODEL_INT_SUM_FRUITCHEST03_H
+#define ASSETS_DATA_MODEL_INT_SUM_FRUITCHEST03_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const char int_sum_fruitchest03_pal[];
+extern const char int_sum_fruitchest03_door_tex_txt[];
+extern const char int_sum_fruitchest03_d_side_tex_txt[];
+extern const char int_sum_fruitchest03_side_tex_txt[];
+extern const char int_sum_fruitchest03_front_tex_txt[];
+extern const char int_sum_fruitchest03_kuki_tex_txt[];
+extern const char int_sum_fruitchest03_into_tex_txt[];
+extern const char int_sum_fruitchest03_v[];
+extern const char int_sum_fruitchest03_doorL_model[];
+extern const char int_sum_fruitchest03_base_model[];
+extern const char int_sum_fruitchest03_doorR_model[];
+extern const char cKF_ba_r_int_sum_fruitchest03[];
+extern const char cKF_bs_r_int_sum_fruitchest03[];
+
+#define int_sum_fruitchest03_pal_PATH "__OTR__data/model/int_sum_fruitchest03/int_sum_fruitchest03_pal"
+#define int_sum_fruitchest03_door_tex_txt_PATH "__OTR__data/model/int_sum_fruitchest03/int_sum_fruitchest03_door_tex_txt"
+#define int_sum_fruitchest03_d_side_tex_txt_PATH "__OTR__data/model/int_sum_fruitchest03/int_sum_fruitchest03_d_side_tex_txt"
+#define int_sum_fruitchest03_side_tex_txt_PATH "__OTR__data/model/int_sum_fruitchest03/int_sum_fruitchest03_side_tex_txt"
+#define int_sum_fruitchest03_front_tex_txt_PATH "__OTR__data/model/int_sum_fruitchest03/int_sum_fruitchest03_front_tex_txt"
+#define int_sum_fruitchest03_kuki_tex_txt_PATH "__OTR__data/model/int_sum_fruitchest03/int_sum_fruitchest03_kuki_tex_txt"
+#define int_sum_fruitchest03_into_tex_txt_PATH "__OTR__data/model/int_sum_fruitchest03/int_sum_fruitchest03_into_tex_txt"
+#define int_sum_fruitchest03_v_PATH "__OTR__data/model/int_sum_fruitchest03/int_sum_fruitchest03_v"
+#define int_sum_fruitchest03_doorL_model_PATH "__OTR__data/model/int_sum_fruitchest03/int_sum_fruitchest03_doorL_model"
+#define int_sum_fruitchest03_base_model_PATH "__OTR__data/model/int_sum_fruitchest03/int_sum_fruitchest03_base_model"
+#define int_sum_fruitchest03_doorR_model_PATH "__OTR__data/model/int_sum_fruitchest03/int_sum_fruitchest03_doorR_model"
+#define cKF_ba_r_int_sum_fruitchest03_PATH "__OTR__data/model/int_sum_fruitchest03/cKF_ba_r_int_sum_fruitchest03"
+#define cKF_bs_r_int_sum_fruitchest03_PATH "__OTR__data/model/int_sum_fruitchest03/cKF_bs_r_int_sum_fruitchest03"
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

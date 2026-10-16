@@ -1,0 +1,65 @@
+:config:
+  strict_declarations: true
+
+int_nog_kouban_pal:
+  type: TEXTURE
+  offset: 0x819032E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_koban_body_tex:
+  type: TEXTURE
+  offset: 0x81903300
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x819032E0
+
+int_nog_koban_grass_tex:
+  type: TEXTURE
+  offset: 0x81903700
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819032E0
+
+int_nog_koban_roof2_tex:
+  type: TEXTURE
+  offset: 0x81903780
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819032E0
+
+int_nog_koban_roof_tex:
+  type: TEXTURE
+  offset: 0x81903900
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819032E0
+
+int_nog_koban_v:
+  type: VTX
+  offset: 0x81903B00
+  count: 51
+
+int_nog_koban_on_model:
+  type: GFX
+  offset: 0x81903E30
+  size: 0x58
+
+int_nog_koban_onT_model:
+  type: GFX
+  offset: 0x81903E88
+  size: 0xC8
+
+int_nog_koban_offT_model:
+  type: GFX
+  offset: 0x81903F50
+  size: 0x68

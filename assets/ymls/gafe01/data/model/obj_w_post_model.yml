@@ -1,0 +1,109 @@
+:config:
+  strict_declarations: true
+
+obj_w_post_pal:
+  type: TEXTURE
+  offset: 0x8129CC20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_w_post_flag1_tex_txt:
+  type: TEXTURE
+  offset: 0x8129CC40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8129CC20
+
+obj_w_post_flag2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8129CD40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+obj_w_post_flag3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8129CE40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+obj_w_post_front1_tex_txt:
+  type: TEXTURE
+  offset: 0x8129CF40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8129CC20
+
+obj_w_post_front2_tex_txt:
+  type: TEXTURE
+  offset: 0x8129D040
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8129CC20
+
+obj_w_post_side1_tex_txt:
+  type: TEXTURE
+  offset: 0x8129D140
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8129CC20
+
+obj_w_post_leg1_tex_txt:
+  type: TEXTURE
+  offset: 0x8129D340
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8129CC20
+
+obj_w_post_inside1_tex_txt:
+  type: TEXTURE
+  offset: 0x8129D3C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8129CC20
+
+obj_w_post_v:
+  type: VTX
+  offset: 0x8129D440
+  count: 53
+
+obj_w_post_main_model:
+  type: GFX
+  offset: 0x8129D790
+  size: 0xC8
+
+obj_w_post_front_model:
+  type: GFX
+  offset: 0x8129D858
+  size: 0x80
+
+obj_w_post_flag_saki_model:
+  type: GFX
+  offset: 0x8129D8D8
+  size: 0x18
+
+obj_w_post_flag_ne_model:
+  type: GFX
+  offset: 0x8129D8F0
+  size: 0x60
+
+cKF_bs_r_obj_w_post:
+  type: AC:CKF_SKELETON
+  offset: 0x8129D998
+  counts: { joints: 6 }

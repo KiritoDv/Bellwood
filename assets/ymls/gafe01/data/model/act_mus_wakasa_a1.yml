@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_wakasagi_pal:
+  type: TEXTURE
+  offset: 0x8168F000
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_wakasagi_body_txt:
+  type: TEXTURE
+  offset: 0x8168F020
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8168F000
+
+act_mus_wakasa_a1_v:
+  type: VTX
+  offset: 0x8168F120
+  count: 62
+
+act_mus_wakasa_sakana_body_model:
+  type: GFX
+  offset: 0x8168F500
+  size: 0x70
+
+act_mus_wakasa_sakana_head_model:
+  type: GFX
+  offset: 0x8168F570
+  size: 0x68
+
+cKF_bs_r_act_mus_wakasa_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x8168F5FC
+  counts: { joints: 3 }

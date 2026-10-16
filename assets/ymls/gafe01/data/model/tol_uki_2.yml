@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+tol_uki_2_v:
+  type: VTX
+  offset: 0x81444490
+  count: 24
+
+tol_sao_2_pal:
+  type: TEXTURE
+  offset: 0x81444610
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+tol_sao_2_uki1_tex_txt:
+  type: TEXTURE
+  offset: 0x81444630
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: n64
+  tlut: 0x81444610
+
+inv_uki2_model:
+  type: GFX
+  offset: 0x81444730
+  size: 0x120

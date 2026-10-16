@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_kon_isi04_pal:
+  type: TEXTURE
+  offset: 0x818A7100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_isi04_yoko_tex:
+  type: TEXTURE
+  offset: 0x818A7120
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A7100
+
+int_kon_isi04_ue_tex:
+  type: TEXTURE
+  offset: 0x818A7220
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x818A7100
+
+int_kon_isi04_mae_tex:
+  type: TEXTURE
+  offset: 0x818A73A0
+  format: CI4
+  width: 48
+  height: 48
+  source_encoding: gx
+  tlut: 0x818A7100
+
+int_kon_isi04_koke_tex:
+  type: TEXTURE
+  offset: 0x818A7820
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A7100
+
+int_kon_isi04_v:
+  type: VTX
+  offset: 0x818A78A0
+  count: 53
+
+int_kon_isi04_on_model:
+  type: GFX
+  offset: 0x818A7BF0
+  size: 0x88
+
+int_kon_isi04_onT_model:
+  type: GFX
+  offset: 0x818A7C78
+  size: 0xA0

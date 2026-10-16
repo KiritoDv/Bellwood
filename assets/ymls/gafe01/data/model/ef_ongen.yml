@@ -1,0 +1,49 @@
+:config:
+  strict_declarations: true
+
+ut_mike:
+  type: TEXTURE
+  offset: 0x8166B3E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8166B460
+
+utPal_mike:
+  type: TEXTURE
+  offset: 0x8166B460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+ut_mouth:
+  type: TEXTURE
+  offset: 0x8166B480
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8166B500
+
+utPal_mouth:
+  type: TEXTURE
+  offset: 0x8166B500
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+ef_ongen_v:
+  type: VTX
+  offset: 0x8166B520
+  count: 4
+
+ef_ongen_mic_model:
+  type: GFX
+  offset: 0x8166B560
+  size: 0x58
+
+ef_ongen_mouth_model:
+  type: GFX
+  offset: 0x8166B5B8
+  size: 0x58

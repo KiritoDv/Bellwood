@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+ef_think_l:
+  type: TEXTURE
+  offset: 0x816685A0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_think_l_v:
+  type: VTX
+  offset: 0x816689A0
+  count: 4
+
+ef_think_l_modelT:
+  type: GFX
+  offset: 0x816689E0
+  size: 0x50

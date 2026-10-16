@@ -1,4 +1,4 @@
-extern Gfx int_sum_sofe01_on_model[];
+#include "assets/data/model/int_sum_sofe01.h"
 
 aFTR_PROFILE iam_sum_sofe01 = {
 	int_sum_sofe01_on_model,

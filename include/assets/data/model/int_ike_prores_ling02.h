@@ -1,0 +1,40 @@
+#ifndef ASSETS_DATA_MODEL_INT_IKE_PRORES_LING02_H
+#define ASSETS_DATA_MODEL_INT_IKE_PRORES_LING02_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const char int_ike_prores_ling02__int_ike_prores_ling01_pal[];
+extern const char int_ike_prores_ling02__int_ike_prores_ling01_lope2_tex[];
+extern const char int_ike_prores_ling02__int_ike_prores_ling01_lope_tex[];
+extern const char int_ike_prores_ling01_mat2_tex[];
+extern const char int_ike_prores_ling02__int_ike_prores_ling01_pole_tex[];
+extern const char int_ike_prores_ling02__int_ike_prores_ling01_floor_tex[];
+extern const char int_ike_prores_ling02__int_ike_prores_ling01_floorside_tex[];
+extern const char int_ike_prores_ling02__int_ike_prores_ling01_pole2_tex[];
+extern const char int_ike_prores_ling02__int_ike_prores_ling01_base_tex[];
+extern const char int_ike_prores_ling01_pole3_tex[];
+extern const char int_ike_prores_ling02_v[];
+extern const char int_ike_prores_ling02_on_model[];
+extern const char int_ike_prores_ling02_onT_model[];
+
+#define int_ike_prores_ling02__int_ike_prores_ling01_pal_PATH "__OTR__data/model/int_ike_prores_ling02/int_ike_prores_ling01_pal"
+#define int_ike_prores_ling02__int_ike_prores_ling01_lope2_tex_PATH "__OTR__data/model/int_ike_prores_ling02/int_ike_prores_ling01_lope2_tex"
+#define int_ike_prores_ling02__int_ike_prores_ling01_lope_tex_PATH "__OTR__data/model/int_ike_prores_ling02/int_ike_prores_ling01_lope_tex"
+#define int_ike_prores_ling01_mat2_tex_PATH "__OTR__data/model/int_ike_prores_ling02/int_ike_prores_ling01_mat2_tex"
+#define int_ike_prores_ling02__int_ike_prores_ling01_pole_tex_PATH "__OTR__data/model/int_ike_prores_ling02/int_ike_prores_ling01_pole_tex"
+#define int_ike_prores_ling02__int_ike_prores_ling01_floor_tex_PATH "__OTR__data/model/int_ike_prores_ling02/int_ike_prores_ling01_floor_tex"
+#define int_ike_prores_ling02__int_ike_prores_ling01_floorside_tex_PATH "__OTR__data/model/int_ike_prores_ling02/int_ike_prores_ling01_floorside_tex"
+#define int_ike_prores_ling02__int_ike_prores_ling01_pole2_tex_PATH "__OTR__data/model/int_ike_prores_ling02/int_ike_prores_ling01_pole2_tex"
+#define int_ike_prores_ling02__int_ike_prores_ling01_base_tex_PATH "__OTR__data/model/int_ike_prores_ling02/int_ike_prores_ling01_base_tex"
+#define int_ike_prores_ling01_pole3_tex_PATH "__OTR__data/model/int_ike_prores_ling02/int_ike_prores_ling01_pole3_tex"
+#define int_ike_prores_ling02_v_PATH "__OTR__data/model/int_ike_prores_ling02/int_ike_prores_ling02_v"
+#define int_ike_prores_ling02_on_model_PATH "__OTR__data/model/int_ike_prores_ling02/int_ike_prores_ling02_on_model"
+#define int_ike_prores_ling02_onT_model_PATH "__OTR__data/model/int_ike_prores_ling02/int_ike_prores_ling02_onT_model"
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

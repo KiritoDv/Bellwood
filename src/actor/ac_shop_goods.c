@@ -56,8 +56,8 @@ static void Shop_Goods_Actor_single_set_angle_y(int ut_z, int ut_x, int layer, s
 static void Shop_Goods_draw_ta_set(GAME* game) {
     OPEN_DISP(game->graph);
 
-    gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_DOLPHIN);
-    gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_DOLPHIN);
+    gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_HALFTEXEL);
+    gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_HALFTEXEL);
 
     CLOSE_DISP(game->graph);
 }
@@ -135,6 +135,7 @@ static int Shop_Goods_Actor_drop_entry(SHOP_GOODS_ACTOR* shop_goods, mActor_name
 
     for (i = 0; i < aSG_SINGLE_DRAW_NUM; i++) {
         if (single_draw_p->counter == 0) {
+            FrameInterpolation_ResetObject(single_draw_p);
             xyz_t_move(&single_draw_p->start_pos, now_pos);
             xyz_t_move(&single_draw_p->current_pos, now_pos);
             xyz_t_move(&single_draw_p->target_pos, target_pos);
@@ -348,8 +349,10 @@ static void Shop_Goods_Actor_drop_draw(ACTOR* actorx, GAME* game) {
                 angle_y = 0;
             }
 
+            FrameInterpolation_RecordOpenChild(single_draw_p, FrameInterpolation_GetObjectEpoch(single_draw_p));
             Shop_Goods_Actor_single_draw(game, single_draw_p->item, &single_draw_p->current_pos,
                                          single_draw_p->scale * 0.01f, angle_y, single_draw_p->layer);
+            FrameInterpolation_RecordCloseChild();
         }
 
         single_draw_p++;
@@ -491,7 +494,9 @@ static void aSG_DrawGoodsPicture(ACTOR* actorx, GAME* game) {
                 if (*fg_p != RSV_NO) {
                     for (i = 0; i < picture_count; i++) {
                         if (*fg_p >= data_p[i].item_start && *fg_p <= data_p[i].item_end) {
+                            FrameInterpolation_RecordOpenChild(fg_p, 0);
                             aSG_DrawGoods(game->graph, glight, shop_goods, bx, bz, ux, uz, &data_p[i], mCoBG_LAYER0);
+                            FrameInterpolation_RecordCloseChild();
                             break;
                         }
                     }
@@ -508,7 +513,9 @@ static void aSG_DrawGoodsPicture(ACTOR* actorx, GAME* game) {
                 if (*fg2_p != RSV_NO) {
                     for (i = 0; i < picture_count; i++) {
                         if (*fg2_p >= data_p[i].item_start && *fg2_p <= data_p[i].item_end) {
+                            FrameInterpolation_RecordOpenChild(fg2_p, 0);
                             aSG_DrawGoods(game->graph, glight, shop_goods, bx, bz, ux, uz, &data_p[i], mCoBG_LAYER1);
+                            FrameInterpolation_RecordCloseChild();
                             break;
                         }
                     }

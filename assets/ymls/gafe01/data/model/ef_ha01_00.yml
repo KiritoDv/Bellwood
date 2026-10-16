@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+ef_ha01_0:
+  type: TEXTURE
+  offset: 0x816659C0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_ha01_00_v:
+  type: VTX
+  offset: 0x81665DC0
+  count: 4
+
+ef_ha01_00_modelT:
+  type: GFX
+  offset: 0x81665E00
+  size: 0x50

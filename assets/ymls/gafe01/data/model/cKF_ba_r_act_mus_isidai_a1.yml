@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_act_mus_isidai_a1:
+  type: AC:CKF_ANIMATION
+  offset: 0x8167FBAC
+  joints: 3
+  counts: { flags: 3, data: 78, keys: 7, fixed: 5 }

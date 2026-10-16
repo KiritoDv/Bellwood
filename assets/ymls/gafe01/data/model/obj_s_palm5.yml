@@ -1,0 +1,43 @@
+:config:
+  strict_declarations: true
+
+obj_s_palm_leaf_tex:
+  type: TEXTURE
+  offset: 0x8110A520
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_palm_trunk_tex:
+  type: TEXTURE
+  offset: 0x8110AD20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_s_palm5_v:
+  type: VTX
+  offset: 0x8110B520
+  count: 55
+
+obj_s_palm5_trunkT_mat_model:
+  type: GFX
+  offset: 0x8110B890
+  size: 0x20
+
+obj_s_palm5_trunkT_gfx_model:
+  type: GFX
+  offset: 0x8110B8B0
+  size: 0x20
+
+obj_s_palm5_leafT_mat_model:
+  type: GFX
+  offset: 0x8110B8D0
+  size: 0x20
+
+obj_s_palm5_leafT_gfx_model:
+  type: GFX
+  offset: 0x8110B8F0
+  size: 0x58

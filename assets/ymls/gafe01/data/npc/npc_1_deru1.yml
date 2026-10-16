@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_deru1:
+  type: AC:NPC_ANIM
+  offset: 0x81303B08
+  joints: 26
+  counts: { flags: 26, data: 711, keys: 54, fixed: 27, eye_seq: 57, mouth_seq: 57 }

@@ -1,5 +1,4 @@
-extern Gfx int_sum_col_chair02_on_model[];
-extern Gfx int_sum_col_chair02_onT_model[];
+#include "assets/data/model/int_sum_col_chair02.h"
 
 aFTR_PROFILE iam_sum_col_chair02 = {
 	int_sum_col_chair02_on_model,

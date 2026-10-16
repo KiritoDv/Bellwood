@@ -1,0 +1,65 @@
+:config:
+  strict_declarations: true
+
+int_nog_station2_bese_tex_txt:
+  type: TEXTURE
+  offset: 0x819185E0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+
+int_nog_station2_grass_tex_txt:
+  type: TEXTURE
+  offset: 0x819187E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_nog_station2_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81918860
+  format: CI4
+  width: 16
+  height: 96
+  source_encoding: gx
+
+int_nog_station2_front_tex_txt:
+  type: TEXTURE
+  offset: 0x81918B60
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+int_nog_station2_v:
+  type: VTX
+  offset: 0x81918F60
+  count: 265
+
+int_nog_station2_long_model:
+  type: GFX
+  offset: 0x81919FF0
+  size: 0x58
+
+int_nog_station2_body_model:
+  type: GFX
+  offset: 0x8191A048
+  size: 0x248
+
+int_nog_station2_short_model:
+  type: GFX
+  offset: 0x8191A290
+  size: 0x58
+
+cKF_ba_r_int_nog_station2:
+  type: AC:CKF_ANIMATION
+  offset: 0x8191A314
+  joints: 5
+  counts: { flags: 5, data: 0, keys: 0, fixed: 18 }
+
+cKF_bs_r_int_nog_station2:
+  type: AC:CKF_SKELETON
+  offset: 0x8191A364
+  counts: { joints: 5 }

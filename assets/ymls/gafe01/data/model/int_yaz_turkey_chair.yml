@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+int_yaz_turkey_chair_pal:
+  type: TEXTURE
+  offset: 0x81ACFFA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yaz_turkey_chair_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81ACFFC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ACFFA0
+
+int_yaz_turkey_chair_seet_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD01C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ACFFA0
+
+int_yaz_turkey_chair_hane_asi_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD03C0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ACFFA0
+
+int_yaz_turkey_chair_v:
+  type: VTX
+  offset: 0x81AD07C0
+  count: 90
+
+int_yaz_turkey_chair_body_model:
+  type: GFX
+  offset: 0x81AD0D60
+  size: 0x100

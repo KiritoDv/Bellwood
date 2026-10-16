@@ -1,5 +1,4 @@
-extern Gfx int_din_trilobite_on_model[];
-extern Gfx int_din_trilobite_onT_model[];
+#include "assets/data/model/int_din_trilobite.h"
 
 aFTR_PROFILE iam_din_trilobite = {
 	int_din_trilobite_on_model,

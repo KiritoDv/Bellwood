@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+act_m_kera_pal:
+  type: TEXTURE
+  offset: 0x81265E00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_kera_tex:
+  type: TEXTURE
+  offset: 0x81265E20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81265E00
+
+act_m_kera_v:
+  type: VTX
+  offset: 0x81265F20
+  count: 6
+
+act_m_keraT_model:
+  type: GFX
+  offset: 0x81265F80
+  size: 0x60

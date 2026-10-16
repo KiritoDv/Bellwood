@@ -1,4 +1,4 @@
-extern Gfx int_iku_busstop_model_model[];
+#include "assets/data/model/int_iku_busstop.h"
 
 aFTR_PROFILE iam_iku_busstop = {
 	int_iku_busstop_model_model,

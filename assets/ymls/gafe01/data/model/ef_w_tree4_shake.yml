@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+ef_w_tree4_shake_v:
+  type: VTX
+  offset: 0x8165D7A8
+  count: 10
+
+ef_w_tree4_shake_leaf_model:
+  type: GFX
+  offset: 0x8165D848
+  size: 0x38
+
+cKF_bs_r_ef_w_tree4_shake:
+  type: AC:CKF_SKELETON
+  offset: 0x8165D898
+  counts: { joints: 2 }

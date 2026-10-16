@@ -3,7 +3,7 @@
 #include "ac_npc.h"
 #include "ac_quest_manager.h"
 #include "audio.h"
-#include "dolphin/os/OSRtc.h"
+#include "gc_compat.h"
 #include "game.h"
 #include "libc64/qrand.h"
 #include "libultra/libultra.h"

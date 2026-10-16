@@ -11,6 +11,8 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "libforest/gbi_extensions.h"
+#include "assets/data/model/obj_museum_shadow.h"
+#include "assets/data/model/obj_s_museum.h"
 
 static void aMsm_actor_ct(ACTOR* actor, GAME* game);
 static void aMsm_actor_init(ACTOR* actor, GAME* game);
@@ -39,9 +41,6 @@ static u8 aMsm_shadow_vtx_fix_flg_table[] = {
 };
 // clang-format on
 
-extern Vtx obj_museum_shadow_v[];
-extern Gfx obj_museum_shadowT_model[];
-
 // clang-format off
 static bIT_ShadowData_c aMsm_shadow_data = {
     8,
@@ -65,17 +64,6 @@ static Door_data_c aMsm_museum_enter_data = {
 };
 // clang-format on
 
-extern Gfx obj_s_museum_lightT_model[];
-extern Gfx obj_s_museum_t1_model[];
-extern Gfx obj_s_museum_t2_model[];
-extern Gfx obj_s_museum_t3T_model[];
-extern Gfx obj_s_museum_windowT_model[];
-
-extern Gfx obj_w_museum_lightT_model[];
-extern Gfx obj_w_museum_t1_model[];
-extern Gfx obj_w_museum_t2_model[];
-extern Gfx obj_w_museum_t3T_model[];
-extern Gfx obj_w_museum_windowT_model[];
 
 static void aMsm_set_bgOffset(STRUCTURE_ACTOR* kamakura);
 static int aMsm_ctrl_light();

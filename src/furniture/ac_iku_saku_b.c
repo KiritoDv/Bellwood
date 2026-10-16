@@ -1,4 +1,4 @@
-extern Gfx int_iku_saku_b_model_model[];
+#include "assets/data/model/int_iku_saku_b.h"
 
 aFTR_PROFILE iam_iku_saku_b = {
 	int_iku_saku_b_model_model,

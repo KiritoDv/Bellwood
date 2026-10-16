@@ -1,0 +1,73 @@
+:config:
+  strict_declarations: true
+
+obj_train1_t6_tex_txt:
+  type: TEXTURE
+  offset: 0x815B0400
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_train1_t5_tex_txt:
+  type: TEXTURE
+  offset: 0x815B0C00
+  format: CI4
+  width: 256
+  height: 16
+  source_encoding: gx
+
+obj_train1_t4_tex_txt:
+  type: TEXTURE
+  offset: 0x815B1400
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_train_3_v:
+  type: VTX
+  offset: 0x815B1C00
+  count: 101
+
+obj_train1_3_t6_model:
+  type: GFX
+  offset: 0x815B2250
+  size: 0x70
+
+obj_train1_3_t5_model:
+  type: GFX
+  offset: 0x815B22C0
+  size: 0xB8
+
+obj_train1_3_t4_model:
+  type: GFX
+  offset: 0x815B2378
+  size: 0x78
+
+obj_train1_3_door1_model:
+  type: GFX
+  offset: 0x815B23F0
+  size: 0x58
+
+obj_train1_3_door2_model:
+  type: GFX
+  offset: 0x815B2448
+  size: 0x58
+
+cKF_bs_r_obj_train1_3:
+  type: AC:CKF_SKELETON
+  offset: 0x815B24E8
+  counts: { joints: 6 }
+
+cKF_ba_r_obj_train1_3_close:
+  type: AC:CKF_ANIMATION
+  offset: 0x815B25F8
+  joints: 9
+  counts: { flags: 9, data: 96, keys: 12, fixed: 18 }
+
+cKF_ba_r_obj_train1_3_open:
+  type: AC:CKF_ANIMATION
+  offset: 0x815B2714
+  joints: 9
+  counts: { flags: 9, data: 96, keys: 12, fixed: 18 }

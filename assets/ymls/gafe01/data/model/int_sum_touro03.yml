@@ -1,0 +1,114 @@
+:config:
+  strict_declarations: true
+
+int_sum_touro03_pal:
+  type: TEXTURE
+  offset: 0x81A719C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_touro03_madoside_tex:
+  type: TEXTURE
+  offset: 0x81A719E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A719C0
+
+int_sum_touro03_mado_tex:
+  type: TEXTURE
+  offset: 0x81A71A60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A719C0
+
+int_sum_touro03_yanetop_tex:
+  type: TEXTURE
+  offset: 0x81A71B60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A719C0
+
+int_sum_touro03_standup_tex:
+  type: TEXTURE
+  offset: 0x81A71BE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A719C0
+
+int_sum_touro03_kazari_tex:
+  type: TEXTURE
+  offset: 0x81A71C60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A719C0
+
+int_sum_touro03_yane_tex:
+  type: TEXTURE
+  offset: 0x81A71CE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A719C0
+
+int_sum_touro03_foot_tex:
+  type: TEXTURE
+  offset: 0x81A71DE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A719C0
+
+int_sum_touro03_footop_tex:
+  type: TEXTURE
+  offset: 0x81A71FE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A719C0
+
+int_sum_touro03_kazaritop_tex:
+  type: TEXTURE
+  offset: 0x81A720E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A719C0
+
+int_sum_touro03_madotop_tex:
+  type: TEXTURE
+  offset: 0x81A72160
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A719C0
+
+int_sum_touro03_v:
+  type: VTX
+  offset: 0x81A721E0
+  count: 87
+
+int_sum_touro03_on_model:
+  type: GFX
+  offset: 0x81A72750
+  size: 0xA8
+
+int_sum_touro03_onT_model:
+  type: GFX
+  offset: 0x81A727F8
+  size: 0x118

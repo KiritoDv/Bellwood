@@ -1,0 +1,145 @@
+:config:
+  strict_declarations: true
+
+obj_e_hfes01_t1_pal:
+  type: TEXTURE
+  offset: 0x8152D240
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_hfes01_t4_pal:
+  type: TEXTURE
+  offset: 0x8152D260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_hfes01_t2_pal:
+  type: TEXTURE
+  offset: 0x8152D280
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_hfes01_t3_pal:
+  type: TEXTURE
+  offset: 0x8152D2A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_hfes01_t1:
+  type: TEXTURE
+  offset: 0x8152D2C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8152D240
+
+obj_e_hfes01_t6:
+  type: TEXTURE
+  offset: 0x8152DAC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8152D260
+
+obj_e_hfes01_t2:
+  type: TEXTURE
+  offset: 0x8152DB40
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8152D280
+
+obj_e_hfes01_t7:
+  type: TEXTURE
+  offset: 0x8152DF40
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x8152D260
+
+obj_e_hfes01_t3:
+  type: TEXTURE
+  offset: 0x8152DF60
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8152D2A0
+
+obj_e_hfes01_t4:
+  type: TEXTURE
+  offset: 0x8152E360
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x8152D260
+
+obj_e_hfes_a_v:
+  type: VTX
+  offset: 0x8152E3A0
+  count: 180
+
+obj_e_hfes_a_modelT:
+  type: GFX
+  offset: 0x8152EEE0
+  size: 0x8
+
+obj_e_hfes_a_model:
+  type: GFX
+  offset: 0x8152EEE8
+  size: 0x220
+
+obj_e_hfes_b_v:
+  type: VTX
+  offset: 0x8152F108
+  count: 170
+
+obj_e_hfes_b_modelT:
+  type: GFX
+  offset: 0x8152FBA8
+  size: 0x8
+
+obj_e_hfes_b_model:
+  type: GFX
+  offset: 0x8152FBB0
+  size: 0x218
+
+obj_e_hfes01_t5_pal:
+  type: TEXTURE
+  offset: 0x8152FDE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_hfes01_t5:
+  type: TEXTURE
+  offset: 0x8152FE00
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8152FDE0
+
+obj_e_hfes_c_v:
+  type: VTX
+  offset: 0x81530200
+  count: 324
+
+obj_e_hfes_c_modelT:
+  type: GFX
+  offset: 0x81531640
+  size: 0x8
+
+obj_e_hfes_c_model:
+  type: GFX
+  offset: 0x81531648
+  size: 0x328

@@ -1,0 +1,47 @@
+:config:
+  strict_declarations: true
+
+int_nog_kamakura_pal:
+  type: TEXTURE
+  offset: 0x818FF4E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_kamakura_body_tex:
+  type: TEXTURE
+  offset: 0x818FF500
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x818FF4E0
+
+int_nog_kamakura_grass_tex:
+  type: TEXTURE
+  offset: 0x818FF900
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818FF4E0
+
+int_nog_kamakura_v:
+  type: VTX
+  offset: 0x818FFB00
+  count: 35
+
+int_nog_kamakura_on_model:
+  type: GFX
+  offset: 0x818FFD30
+  size: 0x58
+
+int_nog_kamakura_offT_model:
+  type: GFX
+  offset: 0x818FFD88
+  size: 0x58
+
+int_nog_kamakura_onT_model:
+  type: GFX
+  offset: 0x818FFDE0
+  size: 0x90

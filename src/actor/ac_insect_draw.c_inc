@@ -114,6 +114,7 @@ static void aINS_actor_draw(ACTOR* actorx, GAME* game) {
             (insect->tools_actor.actor_class.state_bitfield &
              (ACTOR_STATE_NO_CULL | ACTOR_STATE_NO_DRAW_WHILE_CULLED)) ==
                 (ACTOR_STATE_NO_CULL | ACTOR_STATE_NO_DRAW_WHILE_CULLED)) {
+            FrameInterpolation_RecordOpenChild(insect, FrameInterpolation_GetObjectEpoch(insect));
             if (insect->tools_actor.init_matrix == TRUE && insect->type != aINS_INSECT_TYPE_SPIRIT) {
                 draw_type = 0;
             }
@@ -128,11 +129,11 @@ static void aINS_actor_draw(ACTOR* actorx, GAME* game) {
                     }
                     break;
                 default: {
-                    u32 label;
+                    uintptr_t label;
 
                     alpha = insect->alpha0;
                     label = mPlib_Get_item_net_catch_label();
-                    if (label != (u32)insect && Camera2_CheckCullingMode() &&
+                    if (label != (uintptr_t)insect && Camera2_CheckCullingMode() &&
                         Camera2_CheckEnterCullingArea(insect->tools_actor.actor_class.world.position.x,
                                                       insect->tools_actor.actor_class.world.position.z, 60.0f)) {
                         alpha = 0;
@@ -164,6 +165,7 @@ static void aINS_actor_draw(ACTOR* actorx, GAME* game) {
 
             mAc_NormalActorShadow((ACTOR*)insect, (GAME_PLAY*)game, 1.0f);
             insect->tools_actor.init_matrix = FALSE;
+            FrameInterpolation_RecordCloseChild();
         }
 
         insect++;

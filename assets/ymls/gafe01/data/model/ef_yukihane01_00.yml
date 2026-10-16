@@ -1,0 +1,44 @@
+:config:
+  strict_declarations: true
+
+ef_yukihane01_0_inta_ia8:
+  type: TEXTURE
+  offset: 0x81678160
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_yukihane01_1_inta_ia8:
+  type: TEXTURE
+  offset: 0x81678260
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_yukihane01_2_inta_ia8:
+  type: TEXTURE
+  offset: 0x81678360
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_yukihane01_3_inta_ia8:
+  type: TEXTURE
+  offset: 0x81678460
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_yukihane01_00_v:
+  type: VTX
+  offset: 0x81678560
+  count: 4
+
+ef_yukihane01_00_modelT:
+  type: GFX
+  offset: 0x816785A0
+  size: 0x48

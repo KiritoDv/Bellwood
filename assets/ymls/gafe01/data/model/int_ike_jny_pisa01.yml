@@ -1,0 +1,91 @@
+:config:
+  strict_declarations: true
+
+int_ike_jny_pisa01_pal:
+  type: TEXTURE
+  offset: 0x8182B5C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_jny_pisatop2_tex_txt:
+  type: TEXTURE
+  offset: 0x8182B5E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8182B5C0
+
+int_ike_jny_pisa2_tex_txt:
+  type: TEXTURE
+  offset: 0x8182B660
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182B5C0
+
+int_ike_jny_pisabase1_tex_txt:
+  type: TEXTURE
+  offset: 0x8182B760
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182B5C0
+
+int_ike_jny_pisabase2_tex_txt:
+  type: TEXTURE
+  offset: 0x8182B960
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8182B5C0
+
+int_ike_jny_pisabase3_tex_txt:
+  type: TEXTURE
+  offset: 0x8182B9E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8182B5C0
+
+int_ike_jny_pisa3_tex_txt:
+  type: TEXTURE
+  offset: 0x8182BAE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182B5C0
+
+int_ike_jny_pisa1_tex_txt:
+  type: TEXTURE
+  offset: 0x8182BBE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8182B5C0
+
+int_ike_jny_pisatop1_tex_txt:
+  type: TEXTURE
+  offset: 0x8182BCE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8182B5C0
+
+int_ike_jny_pisa01_v:
+  type: VTX
+  offset: 0x8182BD60
+  count: 112
+
+int_ike_jny_pisa01_body_model:
+  type: GFX
+  offset: 0x8182C460
+  size: 0x218

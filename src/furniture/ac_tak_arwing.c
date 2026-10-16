@@ -1,5 +1,4 @@
-extern Gfx int_tak_arwing_on_model[];
-extern Gfx int_tak_arwing_onT_model[];
+#include "assets/data/model/int_tak_arwing.h"
 
 aFTR_PROFILE iam_tak_arwing = {
 	int_tak_arwing_on_model,

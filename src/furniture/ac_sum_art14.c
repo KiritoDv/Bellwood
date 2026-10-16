@@ -1,5 +1,4 @@
-extern Gfx int_sum_art14_on_model[];
-extern Gfx int_sum_art14_onT_model[];
+#include "assets/data/model/int_sum_art14.h"
 
 aFTR_PROFILE iam_sum_art14 = {
 	int_sum_art14_on_model,

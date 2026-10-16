@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_s_cliff_tex:
+  type: TEXTURE
+  offset: 0x8162B620
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+mFM_grd_s_cliff_2_tex:
+  type: TEXTURE
+  offset: 0x8162BE20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+mFM_grd_s_cliff_3_tex:
+  type: TEXTURE
+  offset: 0x8162C620
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx

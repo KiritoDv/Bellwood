@@ -6,6 +6,174 @@
 #include "m_debug.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree3_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree3_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree3_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree3_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree3_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree4_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree4_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree4_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree4_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree4_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree5_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree5_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree5_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree5_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_f_tree5_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar3_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar3_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar3_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar3_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar3_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar4_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar4_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar4_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar4_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar4_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar5_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar5_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar5_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar5_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_cedar5_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm3_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm3_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm3_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm3_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm3_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm4_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm4_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm4_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm4_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm4_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm5_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm5_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm5_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm5_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_palm5_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree3_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree3_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree3_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree3_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree3_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree4_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree4_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree4_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree4_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree4_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree5_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree5_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree5_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree5_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_s_tree5_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_w_cedar3_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_cedar3_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_w_cedar3_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_w_cedar3_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_cedar3_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_w_cedar4_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_cedar4_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_w_cedar4_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_w_cedar4_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_cedar4_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm3_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm3_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm3_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm3_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm3_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm4_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm4_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm4_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm4_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm4_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm5_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm5_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm5_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm5_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_palm5_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_w_tree3_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_tree3_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_w_tree3_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_w_tree3_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_tree3_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_w_tree4_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_tree4_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_w_tree4_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_w_tree4_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_w_tree4_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_x_cedar5_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_x_cedar5_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_x_cedar5_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_x_cedar5_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_x_cedar5_shakeS.h"
+#include "assets/data/model/cKF_ba_r_ef_x_tree5_cutL.h"
+#include "assets/data/model/cKF_ba_r_ef_x_tree5_cutR.h"
+#include "assets/data/model/cKF_ba_r_ef_x_tree5_shake.h"
+#include "assets/data/model/cKF_ba_r_ef_x_tree5_shakeL.h"
+#include "assets/data/model/cKF_ba_r_ef_x_tree5_shakeS.h"
+#include "assets/data/model/ef_f_tree3_cutL.h"
+#include "assets/data/model/ef_f_tree3_cutR.h"
+#include "assets/data/model/ef_f_tree3_shake.h"
+#include "assets/data/model/ef_f_tree4_cutL.h"
+#include "assets/data/model/ef_f_tree4_cutR.h"
+#include "assets/data/model/ef_f_tree4_shake.h"
+#include "assets/data/model/ef_f_tree5_cutL.h"
+#include "assets/data/model/ef_f_tree5_cutR.h"
+#include "assets/data/model/ef_f_tree5_shake.h"
+#include "assets/data/model/ef_s_cedar3_cutL.h"
+#include "assets/data/model/ef_s_cedar3_cutR.h"
+#include "assets/data/model/ef_s_cedar3_shake.h"
+#include "assets/data/model/ef_s_cedar4_cutL.h"
+#include "assets/data/model/ef_s_cedar4_cutR.h"
+#include "assets/data/model/ef_s_cedar4_shake.h"
+#include "assets/data/model/ef_s_cedar5_cutL.h"
+#include "assets/data/model/ef_s_cedar5_cutR.h"
+#include "assets/data/model/ef_s_cedar5_shake.h"
+#include "assets/data/model/ef_s_palm3_cutL.h"
+#include "assets/data/model/ef_s_palm3_cutR.h"
+#include "assets/data/model/ef_s_palm3_shake.h"
+#include "assets/data/model/ef_s_palm4_cutL.h"
+#include "assets/data/model/ef_s_palm4_cutR.h"
+#include "assets/data/model/ef_s_palm4_shake.h"
+#include "assets/data/model/ef_s_palm5_cutL.h"
+#include "assets/data/model/ef_s_palm5_cutR.h"
+#include "assets/data/model/ef_s_palm5_shake.h"
+#include "assets/data/model/ef_s_tree3_cutL.h"
+#include "assets/data/model/ef_s_tree3_cutR.h"
+#include "assets/data/model/ef_s_tree3_shake.h"
+#include "assets/data/model/ef_s_tree4_cutL.h"
+#include "assets/data/model/ef_s_tree4_cutR.h"
+#include "assets/data/model/ef_s_tree4_shake.h"
+#include "assets/data/model/ef_s_tree5_cutL.h"
+#include "assets/data/model/ef_s_tree5_cutR.h"
+#include "assets/data/model/ef_s_tree5_shake.h"
+#include "assets/data/model/ef_w_cedar3_cutL.h"
+#include "assets/data/model/ef_w_cedar3_cutR.h"
+#include "assets/data/model/ef_w_cedar3_shake.h"
+#include "assets/data/model/ef_w_cedar4_cutL.h"
+#include "assets/data/model/ef_w_cedar4_cutR.h"
+#include "assets/data/model/ef_w_cedar4_shake.h"
+#include "assets/data/model/ef_w_palm3_cutL.h"
+#include "assets/data/model/ef_w_palm3_cutR.h"
+#include "assets/data/model/ef_w_palm3_shake.h"
+#include "assets/data/model/ef_w_palm4_cutL.h"
+#include "assets/data/model/ef_w_palm4_cutR.h"
+#include "assets/data/model/ef_w_palm4_shake.h"
+#include "assets/data/model/ef_w_palm5_cutL.h"
+#include "assets/data/model/ef_w_palm5_cutR.h"
+#include "assets/data/model/ef_w_palm5_shake.h"
+#include "assets/data/model/ef_w_tree3_cutL.h"
+#include "assets/data/model/ef_w_tree3_cutR.h"
+#include "assets/data/model/ef_w_tree3_shake.h"
+#include "assets/data/model/ef_w_tree4_cutL.h"
+#include "assets/data/model/ef_w_tree4_cutR.h"
+#include "assets/data/model/ef_w_tree4_shake.h"
+#include "assets/data/model/ef_x_cedar5_cutL.h"
+#include "assets/data/model/ef_x_cedar5_cutR.h"
+#include "assets/data/model/ef_x_cedar5_shake.h"
+#include "assets/data/model/ef_x_tree5_cutL.h"
+#include "assets/data/model/ef_x_tree5_cutR.h"
+#include "assets/data/model/ef_x_tree5_shake.h"
 
 #define EffectBg_STATUS_ACTIVE (1 << 0)
 #define EffectBg_STATUS_1 (1 << 1)
@@ -20,200 +188,32 @@
     ((t) == EffectBG_EFFECT_SHAKE || (t) == EffectBG_EFFECT_SHAKE_SMALL || (t) == EffectBG_EFFECT_SHAKE_LARGE)
 
 // tree, cherry
-extern cKF_Skeleton_R_c cKF_bs_r_ef_f_tree3_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_f_tree3_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_f_tree3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree3_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree3_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree3_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree3_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_f_tree4_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_f_tree4_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_f_tree4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree4_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree4_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree4_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree4_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_f_tree5_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_f_tree5_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_f_tree5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree5_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree5_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree5_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_f_tree5_shakeL;
 
 // tree, summer
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_tree3_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_tree3_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_tree3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree3_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree3_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree3_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree3_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_tree4_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_tree4_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_tree4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree4_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree4_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree4_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree4_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_tree5_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_tree5_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_tree5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree5_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree5_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree5_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_tree5_shakeL;
 
 // tree, winter
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_tree3_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_tree3_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_tree3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_tree3_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_tree3_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_tree3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_tree3_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_tree3_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_tree4_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_tree4_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_tree4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_tree4_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_tree4_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_tree4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_tree4_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_tree4_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_x_tree5_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_x_tree5_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_x_tree5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_x_tree5_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_x_tree5_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_x_tree5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_x_tree5_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_x_tree5_shakeL;
 
 // palm, summer
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_palm3_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_palm3_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_palm3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm3_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm3_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm3_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm3_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_palm4_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_palm4_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_palm4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm4_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm4_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm4_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm4_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_palm5_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_palm5_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_palm5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm5_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm5_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm5_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_palm5_shakeL;
 
 // palm, winter
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_palm3_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_palm3_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_palm3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm3_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm3_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm3_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm3_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_palm4_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_palm4_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_palm4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm4_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm4_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm4_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm4_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_palm5_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_palm5_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_palm5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm5_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm5_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm5_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_palm5_shakeL;
 
 // cedar, summer
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_cedar3_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_cedar3_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_cedar3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar3_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar3_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar3_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar3_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_cedar4_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_cedar4_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_cedar4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar4_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar4_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar4_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar4_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_cedar5_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_cedar5_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_s_cedar5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar5_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar5_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar5_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_s_cedar5_shakeL;
 
 // cedar, winter
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_cedar3_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_cedar3_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_cedar3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_cedar3_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_cedar3_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_cedar3_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_cedar3_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_cedar3_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_cedar4_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_cedar4_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_w_cedar4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_cedar4_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_cedar4_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_cedar4_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_cedar4_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_w_cedar4_shakeL;
 
-extern cKF_Skeleton_R_c cKF_bs_r_ef_x_cedar5_shake;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_x_cedar5_cutR;
-extern cKF_Skeleton_R_c cKF_bs_r_ef_x_cedar5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_x_cedar5_shake;
-extern cKF_Animation_R_c cKF_ba_r_ef_x_cedar5_cutR;
-extern cKF_Animation_R_c cKF_ba_r_ef_x_cedar5_cutL;
-extern cKF_Animation_R_c cKF_ba_r_ef_x_cedar5_shakeS;
-extern cKF_Animation_R_c cKF_ba_r_ef_x_cedar5_shakeL;
 
 static cKF_Skeleton_R_c* cherry_tree_model_tbl[][EffectBG_EFFECT_NUM] = {
     {
@@ -772,6 +772,7 @@ static void EffectBG_object_ct(EffectBg_c* efbg, GAME* game, s16 type, s16 varia
     cKF_SkeletonInfo_R_play(&efbg->keyframe);
     efbg->keyframe.frame_control.speed = 0.5f;
 
+    FrameInterpolation_ResetObject(efbg);
     efbg->status |= EffectBg_STATUS_ACTIVE;
     efbg->type = type;
     efbg->variant = variant;
@@ -1069,8 +1070,8 @@ static void Effectbg_actor_draw(ACTOR* actorx, GAME* game) {
 
     efbg = efbg_start_p;
 
-    gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_DOLPHIN);
-    gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_DOLPHIN);
+    gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_HALFTEXEL);
+    gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_HALFTEXEL);
     for (i = 0; i < EffectBg_ENTRY_NUM; i++, efbg++) {
         if ((efbg->status & EffectBg_STATUS_ACTIVE) != 0) {
             if ((efbg->status & EffectBg_STATUS_PALM) != 0) {
@@ -1089,7 +1090,9 @@ static void Effectbg_actor_draw(ACTOR* actorx, GAME* game) {
                 gSPSegment(NEXT_POLY_XLU_DISP, ANIME_1_TXT_SEG, effectbg_actor->tree_pal);
             }
 
+            FrameInterpolation_RecordOpenChild(efbg, FrameInterpolation_GetObjectEpoch(efbg));
             EffectBG_object_draw(efbg, game);
+            FrameInterpolation_RecordCloseChild();
         }
     }
 

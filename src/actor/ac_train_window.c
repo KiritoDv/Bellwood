@@ -6,6 +6,7 @@
 #include "m_rcp.h"
 #include "m_play.h"
 #include "sys_matrix.h"
+#include "assets/data/model/rom_train_out.h"
 
 // clang-format off
 static u16 aTrainWindow_tree_pal_table[15][16] ATTRIBUTE_ALIGN(32) = {
@@ -188,12 +189,6 @@ ACTOR_PROFILE Train_Window_Profile = {
 static int aTrainWindow_NoDraw(ACTOR*, GAME*);
 static int aTrainWindow_DrawGoneOutTunnel(ACTOR*, GAME*);
 static int aTrainWindow_DrawInTunnel(ACTOR*, GAME*);
-
-extern Gfx rom_train_out_tunnel_model[];
-extern Gfx rom_train_out_bgsky_model[];
-extern Gfx rom_train_out_bgcloud_modelT[];
-extern Gfx rom_train_out_bgtree_modelT[];
-extern Gfx rom_train_out_shineglass_modelT[];
 
 static int aTrainWindow_GetTreePalletIdx() {
     static u8 till_data[15][2] = {

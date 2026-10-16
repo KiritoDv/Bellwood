@@ -1,5 +1,4 @@
-extern Gfx int_sum_cont_sofa02_on_model[];
-extern Gfx int_sum_cont_sofa02_onT_model[];
+#include "assets/data/model/int_sum_cont_sofa02.h"
 
 aFTR_PROFILE iam_sum_cont_sofa02 = {
 	int_sum_cont_sofa02_on_model,

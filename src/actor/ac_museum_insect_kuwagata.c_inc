@@ -1,13 +1,15 @@
 #include "ac_museum_insect_priv.h"
-
-extern cKF_Skeleton_R_c cKF_bs_r_act_m_hirata_b, cKF_bs_r_act_m_nokogiri_b, cKF_bs_r_act_m_miyama_b,
-    cKF_bs_r_act_m_okuwa_b;
+#include "assets/data/model/act_m_hirata_b.h"
+#include "assets/data/model/act_m_miyama_b.h"
+#include "assets/data/model/act_m_nokogiri_b.h"
+#include "assets/data/model/act_m_okuwa_b.h"
+#include "assets/data/model/cKF_ba_r_act_m_hirata_b.h"
+#include "assets/data/model/cKF_ba_r_act_m_miyama_b.h"
+#include "assets/data/model/cKF_ba_r_act_m_nokogiri_b.h"
+#include "assets/data/model/cKF_ba_r_act_m_okuwa_b.h"
 
 cKF_Skeleton_R_c* kuwagata_model_tbl[] = { &cKF_bs_r_act_m_hirata_b, &cKF_bs_r_act_m_nokogiri_b,
                                            &cKF_bs_r_act_m_miyama_b, &cKF_bs_r_act_m_okuwa_b };
-
-extern cKF_Animation_R_c cKF_ba_r_act_m_hirata_b, cKF_ba_r_act_m_nokogiri_b, cKF_ba_r_act_m_miyama_b,
-    cKF_ba_r_act_m_okuwa_b;
 
 cKF_Animation_R_c* kuwagata_anim_tbl[] = { &cKF_ba_r_act_m_hirata_b, &cKF_ba_r_act_m_nokogiri_b,
                                            &cKF_ba_r_act_m_miyama_b, &cKF_ba_r_act_m_okuwa_b };

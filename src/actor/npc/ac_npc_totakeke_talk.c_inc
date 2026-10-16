@@ -23,6 +23,7 @@ static int aNTT_enso_init(NPC_TOTAKEKE_ACTOR* totakeke) {
     totakeke->npc_class.request.act_priority = 4;
     totakeke->npc_class.request.act_idx = aNPC_ACT_ENSOU;
     totakeke->npc_class.request.act_type = aNPC_ACT_TYPE_DEFAULT;
+    return 0;
 }
 
 static void aTTN_give_merody(NPC_TOTAKEKE_ACTOR* totakeke) {

@@ -1,0 +1,9 @@
+:config:
+  strict_declarations: true
+
+mFM_bush_pal:
+  type: TEXTURE
+  offset: 0x8162B180
+  format: TLUT
+  colors: 192
+  source_encoding: gx

@@ -1,6 +1,4 @@
-extern Gfx int_kon_tukue_onT_model[];
-extern Gfx int_kon_tukue_evwT_model[];
-extern Gfx obj_kon_tukue_alphaT_model[];
+#include "assets/data/model/int_kon_tukue.h"
 
 aFTR_PROFILE iam_kon_tukue = {
 	int_kon_tukue_onT_model,

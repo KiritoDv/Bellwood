@@ -1,0 +1,101 @@
+:config:
+  strict_declarations: true
+
+int_sum_doll01_pal:
+  type: TEXTURE
+  offset: 0x819D4440
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_doll01_byubu_txt:
+  type: TEXTURE
+  offset: 0x819D4460
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D4440
+
+int_sum_doll01_hinadan_txt:
+  type: TEXTURE
+  offset: 0x819D44E0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819D4440
+
+int_sum_doll01_hina_txt:
+  type: TEXTURE
+  offset: 0x819D4660
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D4440
+
+int_sum_doll01_dairi_txt:
+  type: TEXTURE
+  offset: 0x819D4760
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D4440
+
+int_sum_doll01_kanjyo_txt:
+  type: TEXTURE
+  offset: 0x819D4860
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D4440
+
+int_sum_doll01_gonin_txt:
+  type: TEXTURE
+  offset: 0x819D4960
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D4440
+
+int_sum_doll01_bonbori_txt:
+  type: TEXTURE
+  offset: 0x819D4A60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819D4440
+
+int_sum_doll01_side_txt:
+  type: TEXTURE
+  offset: 0x819D4B60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D4440
+
+int_sum_doll01_v:
+  type: VTX
+  offset: 0x819D4C60
+  count: 88
+
+int_sum_doll01_on_model:
+  type: GFX
+  offset: 0x819D51E0
+  size: 0x68
+
+int_sum_doll01_onT_model:
+  type: GFX
+  offset: 0x819D5248
+  size: 0x118
+
+int_sum_doll01_offT_model:
+  type: GFX
+  offset: 0x819D5360
+  size: 0x60

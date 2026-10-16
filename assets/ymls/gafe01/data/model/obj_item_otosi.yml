@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_otosi_pal:
+  type: TEXTURE
+  offset: 0x81894040
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_otosi_tex:
+  type: TEXTURE
+  offset: 0x81894060
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81894040
+
+obj_item_otosi_v:
+  type: VTX
+  offset: 0x81894260
+  count: 4
+
+obj_otosiT_mat_model:
+  type: GFX
+  offset: 0x818942A0
+  size: 0x48
+
+obj_otosiT_gfx_model:
+  type: GFX
+  offset: 0x818942E8
+  size: 0x18

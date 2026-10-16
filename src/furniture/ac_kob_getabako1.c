@@ -1,5 +1,4 @@
-extern Gfx int_kob_getabako1_on_model[];
-extern Gfx int_kob_getabako1_onT_model[];
+#include "assets/data/model/int_kob_getabako1.h"
 
 aFTR_PROFILE iam_kob_getabako1 = {
 	int_kob_getabako1_on_model,

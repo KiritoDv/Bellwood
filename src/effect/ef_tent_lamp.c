@@ -3,6 +3,7 @@
 #include "m_common_data.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/obj_tent_lamp.h"
 
 static void eTL_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eTL_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -64,8 +65,6 @@ static void eTL_mv(eEC_Effect_c* effect, GAME* game) {
 
     add_calc(&effect->offset.x, target, 0.015f, 0.1f, 0.001f);
 }
-
-extern Gfx obj_tent_lamp_model[];
 
 static void eTL_dw(eEC_Effect_c* effect, GAME* game) {
     int l = (int)(255.0f + effect->offset.x * -255.0f);

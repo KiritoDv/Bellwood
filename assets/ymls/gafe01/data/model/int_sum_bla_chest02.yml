@@ -1,0 +1,90 @@
+:config:
+  strict_declarations: true
+
+int_sum_bla_chest02_pal:
+  type: TEXTURE
+  offset: 0x819A2660
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bla_chest02_glass_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x819A2680
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_bla_chest02_front_tex:
+  type: TEXTURE
+  offset: 0x819A26A0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x819A2660
+
+int_sum_bla_chest02_side_tex:
+  type: TEXTURE
+  offset: 0x819A2AA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819A2660
+
+int_sum_bla_chest02_top_tex:
+  type: TEXTURE
+  offset: 0x819A2BA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819A2660
+
+int_sum_bla_chest02_foot_tex:
+  type: TEXTURE
+  offset: 0x819A2C20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819A2660
+
+int_sum_bla_chest02_book_tex:
+  type: TEXTURE
+  offset: 0x819A2CA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819A2660
+
+int_sum_bla_chest02_glass_tex:
+  type: TEXTURE
+  offset: 0x819A2D20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819A2680
+
+int_sum_bla_chest02_v:
+  type: VTX
+  offset: 0x819A2DA0
+  count: 68
+
+int_sum_bla_chest02_on_model:
+  type: GFX
+  offset: 0x819A31E0
+  size: 0xA8
+
+int_sum_bla_chest02_onT_model:
+  type: GFX
+  offset: 0x819A3288
+  size: 0xA8
+
+int_sum_bla_chest02_evwT_model:
+  type: GFX
+  offset: 0x819A3330
+  size: 0x60

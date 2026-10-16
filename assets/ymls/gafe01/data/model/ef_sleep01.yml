@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+ef_sleep_z:
+  type: TEXTURE
+  offset: 0x81671F40
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_sleep01_v:
+  type: VTX
+  offset: 0x81672340
+  count: 4
+
+ef_sleep01_modelT:
+  type: GFX
+  offset: 0x81672380
+  size: 0x50

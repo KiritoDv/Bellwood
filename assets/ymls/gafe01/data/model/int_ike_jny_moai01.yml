@@ -1,0 +1,63 @@
+:config:
+  strict_declarations: true
+
+int_ike_jny_moai01_pal:
+  type: TEXTURE
+  offset: 0x81829760
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_jny_moai2_tex_txt:
+  type: TEXTURE
+  offset: 0x81829780
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81829760
+
+int_ike_jny_moai5_tex_txt:
+  type: TEXTURE
+  offset: 0x81829880
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81829760
+
+int_ike_jny_moai4_tex_txt:
+  type: TEXTURE
+  offset: 0x81829900
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81829760
+
+int_ike_jny_moai1_tex_txt:
+  type: TEXTURE
+  offset: 0x81829A00
+  format: IA16
+  width: 32
+  height: 16
+  source_encoding: gx
+
+int_ike_jny_moai3_tex_txt:
+  type: TEXTURE
+  offset: 0x81829E00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81829760
+
+int_ike_jny_moai01_v:
+  type: VTX
+  offset: 0x81829F00
+  count: 77
+
+int_ike_jny_moai01_body_model:
+  type: GFX
+  offset: 0x8182A3D0
+  size: 0x188

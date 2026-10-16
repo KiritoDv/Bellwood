@@ -1,0 +1,78 @@
+:config:
+  strict_declarations: true
+
+int_sum_gre_counter01_pal:
+  type: TEXTURE
+  offset: 0x819F24A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_gre_counter01_front_tex:
+  type: TEXTURE
+  offset: 0x819F24C0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x819F24A0
+
+int_sum_gre_counter01_side_tex:
+  type: TEXTURE
+  offset: 0x819F28C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F24A0
+
+int_sum_gre_counter01_top_tex:
+  type: TEXTURE
+  offset: 0x819F29C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819F24A0
+
+int_sum_gre_counter01_can_tex:
+  type: TEXTURE
+  offset: 0x819F2AC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819F24A0
+
+int_sum_gre_counter01_wine_tex:
+  type: TEXTURE
+  offset: 0x819F2B40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F24A0
+
+int_sum_gre_counter01_shadow_tex:
+  type: TEXTURE
+  offset: 0x819F2C40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819F24A0
+
+int_sum_gre_counter01_v:
+  type: VTX
+  offset: 0x819F2CC0
+  count: 72
+
+int_sum_counter01_on_model:
+  type: GFX
+  offset: 0x819F3140
+  size: 0x88
+
+int_sum_counter01_onT_model:
+  type: GFX
+  offset: 0x819F31C8
+  size: 0xF0

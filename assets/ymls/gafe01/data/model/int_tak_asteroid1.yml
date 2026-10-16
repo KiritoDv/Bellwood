@@ -1,0 +1,39 @@
+:config:
+  strict_declarations: true
+
+int_tak_asteroid1_pal:
+  type: TEXTURE
+  offset: 0x81A8F220
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_asteroid1_body_tex_txt:
+  type: TEXTURE
+  offset: 0x81A8F240
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A8F220
+
+int_tak_asteroid1_v:
+  type: VTX
+  offset: 0x81A8FA40
+  count: 103
+
+int_tak_asteroid1_on_model:
+  type: GFX
+  offset: 0x81A900B0
+  size: 0xC8
+
+cKF_ba_r_int_tak_asteroid1:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A90228
+  joints: 4
+  counts: { flags: 4, data: 69, keys: 4, fixed: 11 }
+
+cKF_bs_r_int_tak_asteroid1:
+  type: AC:CKF_SKELETON
+  offset: 0x81A9026C
+  counts: { joints: 4 }

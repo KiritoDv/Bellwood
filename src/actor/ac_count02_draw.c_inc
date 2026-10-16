@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_e_count02_cl.h"
 static int aCOU_actor_draw_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
                                   u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {
     STRUCTURE_ACTOR* actor = (STRUCTURE_ACTOR*)arg;
@@ -8,17 +9,6 @@ static int aCOU_actor_draw_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, in
 
     return TRUE;
 }
-
-extern u8 obj_e_count02_0_tex[];
-extern u8 obj_e_count02_1_tex[];
-extern u8 obj_e_count02_2_tex[];
-extern u8 obj_e_count02_3_tex[];
-extern u8 obj_e_count02_4_tex[];
-extern u8 obj_e_count02_5_tex[];
-extern u8 obj_e_count02_6_tex[];
-extern u8 obj_e_count02_7_tex[];
-extern u8 obj_e_count02_8_tex[];
-extern u8 obj_e_count02_9_tex[];
 
 static void aCOU_actor_draw(ACTOR* actorx, GAME* game) {
     static u8* textbl[10] = {

@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_hatafuri1:
+  type: AC:NPC_ANIM
+  offset: 0x8131B9B8
+  joints: 26
+  counts: { flags: 26, data: 978, keys: 54, fixed: 27, mouth_seq: 57 }

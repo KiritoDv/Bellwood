@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f32_kaseki_pal:
+  type: TEXTURE
+  offset: 0x8123E140
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f32_kaseki_tex:
+  type: TEXTURE
+  offset: 0x8123E160
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8123E140
+
+act_f32_kaseki_a_v:
+  type: VTX
+  offset: 0x8123E560
+  count: 10
+
+act_f32_kaseki_aT_model:
+  type: GFX
+  offset: 0x8123E600
+  size: 0x68
+
+act_f32_kaseki_b_v:
+  type: VTX
+  offset: 0x8123E668
+  count: 10
+
+act_f32_kasekiT_model:
+  type: GFX
+  offset: 0x8123E708
+  size: 0x68
+
+act_f32_kaseki_c_v:
+  type: VTX
+  offset: 0x8123E770
+  count: 10
+
+act_f32_kaseki_cT_model:
+  type: GFX
+  offset: 0x8123E810
+  size: 0x68

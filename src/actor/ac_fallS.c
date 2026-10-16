@@ -8,10 +8,6 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 
-extern Gfx obj_fallS_model[];
-extern Gfx obj_fallS_rainbowT_model[];
-extern EVW_ANIME_DATA obj_fallS_evw_anime;
-
 static void aFLS_actor_move(ACTOR* actor, GAME* game);
 static void aFLS_actor_draw(ACTOR* actor, GAME* game);
 

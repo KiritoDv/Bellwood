@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_sugi_alchair_pal:
+  type: TEXTURE
+  offset: 0x8197E260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sugi_alchair_all_tex_txt:
+  type: TEXTURE
+  offset: 0x8197E280
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8197E260
+
+int_sugi_alchair_v:
+  type: VTX
+  offset: 0x8197EA80
+  count: 52
+
+sugi_aluminum_c_model:
+  type: GFX
+  offset: 0x8197EDC0
+  size: 0xD8

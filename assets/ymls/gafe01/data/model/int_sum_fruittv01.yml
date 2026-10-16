@@ -1,0 +1,101 @@
+:config:
+  strict_declarations: true
+
+int_sum_fruittv01_pal:
+  type: TEXTURE
+  offset: 0x819E4480
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_fruittv01_antena_tex_txt:
+  type: TEXTURE
+  offset: 0x819E44A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E4480
+
+int_sum_fruittv01_ha_tex_txt:
+  type: TEXTURE
+  offset: 0x819E45A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E4480
+
+int_sum_fruittv01_foot_tex_txt:
+  type: TEXTURE
+  offset: 0x819E4620
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E4480
+
+int_sum_fruittv01_front_tex_txt:
+  type: TEXTURE
+  offset: 0x819E46A0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E4480
+
+int_sum_fruittv01_body_tex_txt:
+  type: TEXTURE
+  offset: 0x819E49A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E4480
+
+int_sum_fruittv01_front1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x819E4BA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+int_sum_fruittv01_front2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x819E4CA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+int_sum_fruittv01_front3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x819E4DA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+int_sum_fruittv01_front4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x819E4EA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+int_sum_fruittv01_v:
+  type: VTX
+  offset: 0x819E4FA0
+  count: 52
+
+int_sum_fruittv01_on_model:
+  type: GFX
+  offset: 0x819E52E0
+  size: 0x110
+
+int_sum_fruittv01_off_model:
+  type: GFX
+  offset: 0x819E53F0
+  size: 0x58

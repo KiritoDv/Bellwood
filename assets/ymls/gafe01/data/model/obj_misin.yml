@@ -1,0 +1,149 @@
+:config:
+  strict_declarations: true
+
+obj_misin_pal:
+  type: TEXTURE
+  offset: 0x812A8C00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_misin_belt_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x812A8C20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_misin_ito1_tex_txt:
+  type: TEXTURE
+  offset: 0x812A8C40
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x812A8C00
+
+obj_misin_ito2_tex_txt:
+  type: TEXTURE
+  offset: 0x812A8C60
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x812A8C00
+
+obj_misin_maru_tex_txt:
+  type: TEXTURE
+  offset: 0x812A8CA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x812A8C00
+
+obj_misin_jiku_tex_txt:
+  type: TEXTURE
+  offset: 0x812A8D20
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x812A8C00
+
+obj_misin_ana_tex_txt:
+  type: TEXTURE
+  offset: 0x812A8D40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x812A8C00
+
+obj_misin_hari_tex_txt:
+  type: TEXTURE
+  offset: 0x812A8DC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x812A8C00
+
+obj_misin_ito3_tex_txt:
+  type: TEXTURE
+  offset: 0x812A8E40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x812A8C00
+
+obj_misin_belt_tex_txt:
+  type: TEXTURE
+  offset: 0x812A8F40
+  format: CI4
+  width: 8
+  height: 32
+  source_encoding: gx
+  tlut: 0x812A8C20
+
+obj_misin_v:
+  type: VTX
+  offset: 0x812A8FC0
+  count: 76
+
+obj_misin_belt_model:
+  type: GFX
+  offset: 0x812A9480
+  size: 0x78
+
+obj_misin_ana_model:
+  type: GFX
+  offset: 0x812A94F8
+  size: 0x58
+
+obj_misin_ito2_model:
+  type: GFX
+  offset: 0x812A9550
+  size: 0x70
+
+obj_misin_ito1_model:
+  type: GFX
+  offset: 0x812A95C0
+  size: 0x60
+
+obj_misin_maru_model:
+  type: GFX
+  offset: 0x812A9620
+  size: 0x60
+
+obj_misin_jiku_model:
+  type: GFX
+  offset: 0x812A9680
+  size: 0x70
+
+obj_misin_ito4_model:
+  type: GFX
+  offset: 0x812A96F0
+  size: 0x58
+
+obj_misin_ito3_model:
+  type: GFX
+  offset: 0x812A9748
+  size: 0x80
+
+obj_misin_hari_model:
+  type: GFX
+  offset: 0x812A97C8
+  size: 0x58
+
+cKF_ba_r_obj_misin:
+  type: AC:CKF_ANIMATION
+  offset: 0x812A98F0
+  joints: 13
+  counts: { flags: 13, data: 51, keys: 3, fixed: 39 }
+
+cKF_bs_r_obj_misin:
+  type: AC:CKF_SKELETON
+  offset: 0x812A99A0
+  counts: { joints: 13 }

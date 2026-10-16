@@ -1,0 +1,35 @@
+:config:
+  strict_declarations: true
+
+act_m_genji_h1_txt:
+  type: TEXTURE
+  offset: 0x81263520
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+act_m_genji2_v:
+  type: VTX
+  offset: 0x81263720
+  count: 16
+
+act_m_genji2_d_model:
+  type: GFX
+  offset: 0x81263820
+  size: 0x58
+
+act_m_genji2_c_model:
+  type: GFX
+  offset: 0x81263878
+  size: 0x58
+
+act_m_genji2_b_model:
+  type: GFX
+  offset: 0x812638D0
+  size: 0x58
+
+act_m_genji2_a_model:
+  type: GFX
+  offset: 0x81263928
+  size: 0x58

@@ -1,0 +1,327 @@
+:config:
+  strict_declarations: true
+
+yubin_k_pal:
+  type: TEXTURE
+  offset: 0x816106A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+yubin_k2_pal:
+  type: TEXTURE
+  offset: 0x816106C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+yubin_floor_pal:
+  type: TEXTURE
+  offset: 0x816106E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+yubin_hakari_pal:
+  type: TEXTURE
+  offset: 0x81610700
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+yubin_wall_pal:
+  type: TEXTURE
+  offset: 0x81610720
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+yubin_letter_pal:
+  type: TEXTURE
+  offset: 0x81610740
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+yubin_us_bag_pal:
+  type: TEXTURE
+  offset: 0x81610760
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+zzzyubin_tree_pal:
+  type: TEXTURE
+  offset: 0x81610780
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+yubin_t_pal:
+  type: TEXTURE
+  offset: 0x816107A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+yubin_us_card_pal:
+  type: TEXTURE
+  offset: 0x816107C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+yuibn_kaunta01_tex:
+  type: TEXTURE
+  offset: 0x816107E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x816106A0
+
+yuibn_kaunta02_tex:
+  type: TEXTURE
+  offset: 0x816109E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x816106A0
+
+yuibn_desk01_tex:
+  type: TEXTURE
+  offset: 0x81610BE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x816106A0
+
+yubin_ark01_tex:
+  type: TEXTURE
+  offset: 0x81610DE0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x816106C0
+
+yuibn_kaunta03_tex:
+  type: TEXTURE
+  offset: 0x816111E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x816106A0
+
+yuibn_kaunta04_tex:
+  type: TEXTURE
+  offset: 0x816112E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x816106A0
+
+yubin_floor01_tex:
+  type: TEXTURE
+  offset: 0x816114E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x816106E0
+
+yubin_floor02_tex:
+  type: TEXTURE
+  offset: 0x81611CE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x816106E0
+
+yubin_floor03_tex:
+  type: TEXTURE
+  offset: 0x816124E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x816106E0
+
+yubin_hakari01_tex:
+  type: TEXTURE
+  offset: 0x816125E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81610700
+
+yubin_hakari02_tex:
+  type: TEXTURE
+  offset: 0x816126E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81610700
+
+yubin_hakari03_tex:
+  type: TEXTURE
+  offset: 0x81612760
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81610700
+
+yubin_wall04_tex:
+  type: TEXTURE
+  offset: 0x81612860
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81610720
+
+yubin_letter01_tex:
+  type: TEXTURE
+  offset: 0x81612B60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81610740
+
+yubin_window_tex:
+  type: TEXTURE
+  offset: 0x81612C60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81610720
+
+yubin_us_bag_tex:
+  type: TEXTURE
+  offset: 0x81612CE0
+  format: CI4
+  width: 48
+  height: 48
+  source_encoding: gx
+  tlut: 0x81610760
+
+yubin_tree2_tex:
+  type: TEXTURE
+  offset: 0x81613160
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81610780
+
+yubin_tree_tex:
+  type: TEXTURE
+  offset: 0x81613460
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81610780
+
+yubin_tree3_tex:
+  type: TEXTURE
+  offset: 0x81613560
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81610780
+
+yubin_tree4_tex:
+  type: TEXTURE
+  offset: 0x816135E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81610780
+
+yubin_step_tex:
+  type: TEXTURE
+  offset: 0x81613660
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x816107A0
+
+rom_yubinkyoku_akril_tex:
+  type: TEXTURE
+  offset: 0x81613760
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+rom_yubinkyoku_shede_tex:
+  type: TEXTURE
+  offset: 0x816137E0
+  format: I4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+yubin_us_card_tex:
+  type: TEXTURE
+  offset: 0x816138E0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x816107C0
+
+yubin_us_mat_tex:
+  type: TEXTURE
+  offset: 0x81613CE0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x816106E0
+
+rom_yubinkyoku_shadow_tex:
+  type: TEXTURE
+  offset: 0x81613FE0
+  format: I4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+yubin_us_card2_tex:
+  type: TEXTURE
+  offset: 0x816140E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x816107C0
+
+grd_post_office_v:
+  type: VTX
+  offset: 0x816141E0
+  count: 368
+
+grd_post_office_modelT:
+  type: GFX
+  offset: 0x816158E0
+  size: 0x50
+
+grd_post_office_model:
+  type: GFX
+  offset: 0x81615930
+  size: 0x5D8

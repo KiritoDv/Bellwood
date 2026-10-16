@@ -4,7 +4,7 @@
 #include "ac_npc_h.h"
 #include "ac_quest_manager.h"
 #include "ac_quest_manager_clip.h"
-#include "dolphin/os/OSRtc.h"
+#include "gc_compat.h"
 #include "libc64/qrand.h"
 #include "libultra/libultra.h"
 #include "m_actor_type.h"

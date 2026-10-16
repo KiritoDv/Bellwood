@@ -1,9 +1,12 @@
 #include "ac_t_flag.h"
+#include "ac_asset.h"
 
 #include "m_rcp.h"
 #include "evw_anime.h"
 #include "sys_matrix.h"
 #include "m_name_table.h"
+#include "assets/data/model/tol_hata_01.h"
+#include "assets/data/model/tol_hata_01_evw_anime.h"
 
 static void aTFL_actor_draw(ACTOR*, GAME*);
 
@@ -20,11 +23,6 @@ ACTOR_PROFILE T_Flag_Profile = {
     aTFL_actor_draw,
     NULL,
 };
-
-extern Vtx tol_hata_01_v[15];
-extern Gfx tol_hata_e_model[];
-extern Gfx tol_hata_hataT_model[];
-extern EVW_ANIME_DATA tol_hata_01_evw_anime[];
 
 static void aTFL_calc_angl(s16* dst, s16 fact, s16* addend, s16 addval){
 
@@ -74,7 +72,7 @@ static void aTFL_make_vtx(Vtx* v, ACTOR* actor){
         }
     }
 
-    mem_copy((u8*)v, (u8*)tol_hata_01_v, sizeof(tol_hata_01_v));
+    mem_copy((u8*)v, (u8*)LOAD_ASSET(tol_hata_01_v), ASSET_SIZE(tol_hata_01_v));
     aTFL_calc_angl(&flag->angle, fact, &flag->addendedang, 0x9C4);
     obx = (v[9].v.ob[0] * cos_s(flag->angle));
     sins = sin_s(flag->angle);

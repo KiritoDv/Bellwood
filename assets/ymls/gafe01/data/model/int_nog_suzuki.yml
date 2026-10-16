@@ -1,0 +1,97 @@
+:config:
+  strict_declarations: true
+
+int_nog_suzuki_pal:
+  type: TEXTURE
+  offset: 0x8191B7E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_suzuki_glass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x8191B800
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_suzuki_body_tex_txt:
+  type: TEXTURE
+  offset: 0x8191B820
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x8191B7E0
+
+int_nog_suzuki_top_tex_txt:
+  type: TEXTURE
+  offset: 0x8191BB20
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8191B7E0
+
+int_nog_suzuki_side_tex_txt:
+  type: TEXTURE
+  offset: 0x8191BC20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8191B7E0
+
+int_nog_suzuki_base_tex_txt:
+  type: TEXTURE
+  offset: 0x8191BE20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8191B7E0
+
+int_nog_suzuki_glass_tex_txt:
+  type: TEXTURE
+  offset: 0x8191BEA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8191B800
+
+int_nog_suzuki_v:
+  type: VTX
+  offset: 0x8191BFA0
+  count: 63
+
+int_nog_suzuki_sakana_model:
+  type: GFX
+  offset: 0x8191C390
+  size: 0xA8
+
+int_sum_suzuki_top_model:
+  type: GFX
+  offset: 0x8191C438
+  size: 0x58
+
+int_sum_suzuki_evw_model:
+  type: GFX
+  offset: 0x8191C490
+  size: 0x68
+
+int_sum_suzuki_base_model:
+  type: GFX
+  offset: 0x8191C4F8
+  size: 0x90
+
+cKF_ba_r_int_nog_suzuki:
+  type: AC:CKF_ANIMATION
+  offset: 0x8191C600
+  joints: 5
+  counts: { flags: 5, data: 36, keys: 3, fixed: 15 }
+
+cKF_bs_r_int_nog_suzuki:
+  type: AC:CKF_SKELETON
+  offset: 0x8191C650
+  counts: { joints: 5 }

@@ -1,0 +1,27 @@
+:config:
+  strict_declarations: true
+
+obj_s_cedar5_v:
+  type: VTX
+  offset: 0x81101308
+  count: 75
+
+obj_s_cedar5_leafT_mat_model:
+  type: GFX
+  offset: 0x811017B8
+  size: 0x20
+
+obj_s_cedar5_leafT_gfx_model:
+  type: GFX
+  offset: 0x811017D8
+  size: 0x68
+
+obj_s_cedar5_trunkT_mat_model:
+  type: GFX
+  offset: 0x81101840
+  size: 0x20
+
+obj_s_cedar5_trunkT_gfx_model:
+  type: GFX
+  offset: 0x81101860
+  size: 0x20

@@ -3,6 +3,7 @@
 #include "m_common_data.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/ef_turi_suiteki01_00.h"
 
 static void eTS_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eTS_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -51,8 +52,6 @@ static void eTS_mv(eEC_Effect_c* effect, GAME* game) {
         }
     }
 }
-
-extern Gfx ef_turi_suiteki01_00_modelT[];
 
 static void eTS_dw(eEC_Effect_c* effect, GAME* game) {
     xyz_t scale = effect->scale;

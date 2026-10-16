@@ -1,0 +1,122 @@
+:config:
+  strict_declarations: true
+
+int_sum_mizunomitori_pal:
+  type: TEXTURE
+  offset: 0x81A2BA80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_mizunomi_body_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A2BAA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_mizunomi_neck_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A2BAC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_mizunomi_face_tex_txt:
+  type: TEXTURE
+  offset: 0x81A2BAE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A2BA80
+
+int_sum_mizunomi_hat_tex_txt:
+  type: TEXTURE
+  offset: 0x81A2BCE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A2BA80
+
+int_sum_mizunomi_foot_tex_txt:
+  type: TEXTURE
+  offset: 0x81A2BD60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A2BA80
+
+int_sum_mizunomi_kuchi_tex_txt:
+  type: TEXTURE
+  offset: 0x81A2BE60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A2BA80
+
+int_sum_mizunomi_hane_tex_txt:
+  type: TEXTURE
+  offset: 0x81A2BEE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A2BA80
+
+int_sum_mizunomi_body_tex_txt:
+  type: TEXTURE
+  offset: 0x81A2BFE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A2BAA0
+
+int_sum_mizunomi_neck_tex_txt:
+  type: TEXTURE
+  offset: 0x81A2C060
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A2BAC0
+
+int_sum_mizunomi_v:
+  type: VTX
+  offset: 0x81A2C160
+  count: 55
+
+int_sum_mizunomi_head_model:
+  type: GFX
+  offset: 0x81A2C4D0
+  size: 0xB8
+
+int_sum_mizunomi_env2_model:
+  type: GFX
+  offset: 0x81A2C588
+  size: 0x58
+
+int_sum_mizunomi_env_model:
+  type: GFX
+  offset: 0x81A2C5E0
+  size: 0x68
+
+int_sum_mizunomi_base_model:
+  type: GFX
+  offset: 0x81A2C648
+  size: 0xA8
+
+cKF_ba_r_int_sum_mizunomi:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A2C734
+  joints: 4
+  counts: { flags: 4, data: 15, keys: 1, fixed: 14 }
+
+cKF_bs_r_int_sum_mizunomi:
+  type: AC:CKF_SKELETON
+  offset: 0x81A2C778
+  counts: { joints: 4 }

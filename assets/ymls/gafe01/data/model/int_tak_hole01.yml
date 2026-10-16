@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_tak_hole01_ue_tex_pal:
+  type: TEXTURE
+  offset: 0x81A95300
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_hole01_ue_tex:
+  type: TEXTURE
+  offset: 0x81A95320
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A95300
+
+int_tak_hole01_v:
+  type: VTX
+  offset: 0x81A95520
+  count: 5
+
+int_tak_hole01_onT_model:
+  type: GFX
+  offset: 0x81A95570
+  size: 0x60

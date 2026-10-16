@@ -1,0 +1,22 @@
+:config:
+  strict_declarations: true
+
+rom_myhome2B_floor_v:
+  type: VTX
+  offset: 0x812BA380
+  count: 91
+
+rom_myhome2B_floor_model:
+  type: GFX
+  offset: 0x812BA930
+  size: 0x130
+
+rom_myhome2B_floor_new_model:
+  type: GFX
+  offset: 0x812BAA60
+  size: 0x148
+
+rom_myhome2B_floor_new2_model:
+  type: GFX
+  offset: 0x812BABA8
+  size: 0x148

@@ -1,4 +1,4 @@
-extern Gfx int_hos_flip_model_model[];
+#include "assets/data/model/int_hos_flip.h"
 
 aFTR_PROFILE iam_hos_flip = {
 	int_hos_flip_model_model,

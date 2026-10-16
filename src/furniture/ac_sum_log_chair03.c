@@ -1,5 +1,4 @@
-extern Gfx int_sum_log_chair03_on_model[];
-extern Gfx int_sum_log_chair03_onT_model[];
+#include "assets/data/model/int_sum_log_chair03.h"
 
 aFTR_PROFILE iam_sum_log_chair03 = {
 	int_sum_log_chair03_on_model,

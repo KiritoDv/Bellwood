@@ -1,5 +1,4 @@
-extern Gfx int_iid_yuki_model[];
-extern Gfx int_iid_yukiT_model[];
+#include "assets/data/model/int_iid_yuki.h"
 
 aFTR_PROFILE iam_iid_yuki = {
 	int_iid_yuki_model,

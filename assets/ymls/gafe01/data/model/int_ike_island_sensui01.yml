@@ -1,0 +1,67 @@
+:config:
+  strict_declarations: true
+
+int_ike_island_sensui01_pal:
+  type: TEXTURE
+  offset: 0x81820340
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_island_senhead1_tex_txt:
+  type: TEXTURE
+  offset: 0x81820360
+  format: RGBA16
+  width: 16
+  height: 32
+  source_encoding: gx
+
+int_ike_island_senbody1_tex_txt:
+  type: TEXTURE
+  offset: 0x81820760
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81820340
+
+int_ike_island_senleg1_tex_txt:
+  type: TEXTURE
+  offset: 0x81820860
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81820340
+
+int_ike_island_senhead2_tex_txt:
+  type: TEXTURE
+  offset: 0x81820960
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81820340
+
+int_ike_island_sensuiface_pic_i4:
+  type: TEXTURE
+  offset: 0x81820A60
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_ike_island_sensui01_v:
+  type: VTX
+  offset: 0x81820C60
+  count: 107
+
+int_ike_island_sensui01_on_model:
+  type: GFX
+  offset: 0x81821310
+  size: 0x1D0
+
+int_ike_island_sensui01_off_model:
+  type: GFX
+  offset: 0x818214E0
+  size: 0x60

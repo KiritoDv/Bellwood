@@ -1,0 +1,5549 @@
+:config:
+  strict_declarations: true
+  directory: room
+
+floor/000/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/000/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/000/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x820
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/000/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1020
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/000/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1820
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/001/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2020
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/001/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2040
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/001/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2840
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/001/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3040
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/001/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3840
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/002/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4040
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/002/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4060
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/002/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4860
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/002/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5060
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/002/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5860
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/003/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/003/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6080
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/003/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6880
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/003/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7080
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/003/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7880
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/004/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x8080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/004/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x80A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/004/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x88A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/004/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x90A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/004/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x98A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/005/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xA0A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/005/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xA0C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/005/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xA8C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/005/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xB0C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/005/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xB8C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/006/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xC0C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/006/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xC0E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/006/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xC8E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/006/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xD0E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/006/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xD8E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/007/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xE0E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/007/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xE100
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/007/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xE900
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/007/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xF100
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/007/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0xF900
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/008/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x10100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/008/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x10120
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/008/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x10920
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/008/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x11120
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/008/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x11920
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/009/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x12120
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/009/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x12140
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/009/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x12940
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/009/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x13140
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/009/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x13940
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/010/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x14140
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/010/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x14160
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/010/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x14960
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/010/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x15160
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/010/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x15960
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/011/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x16160
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/011/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x16180
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/011/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x16980
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/011/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x17180
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/011/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x17980
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/012/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x18180
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/012/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x181A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/012/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x189A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/012/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x191A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/012/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x199A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/013/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1A1A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/013/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1A1C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/013/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1A9C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/013/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1B1C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/013/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1B9C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/014/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1C1C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/014/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1C1E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/014/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1C9E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/014/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1D1E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/014/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1D9E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/015/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1E1E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/015/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1E200
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/015/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1EA00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/015/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1F200
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/015/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x1FA00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/016/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x20200
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/016/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x20220
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/016/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x20A20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/016/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x21220
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/016/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x21A20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/017/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x22220
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/017/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x22240
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/017/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x22A40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/017/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x23240
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/017/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x23A40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/018/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x24240
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/018/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x24260
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/018/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x24A60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/018/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x25260
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/018/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x25A60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/019/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x26260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/019/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x26280
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/019/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x26A80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/019/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x27280
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/019/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x27A80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/020/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x28280
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/020/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x282A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/020/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x28AA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/020/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x292A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/020/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x29AA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/021/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2A2A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/021/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2A2C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/021/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2AAC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/021/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2B2C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/021/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2BAC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/022/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2C2C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/022/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2C2E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/022/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2CAE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/022/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2D2E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/022/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2DAE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/023/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2E2E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/023/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2E300
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/023/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2EB00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/023/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2F300
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/023/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x2FB00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/024/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x30300
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/024/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x30320
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/024/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x30B20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/024/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x31320
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/024/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x31B20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/025/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x32320
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/025/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x32340
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/025/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x32B40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/025/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x33340
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/025/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x33B40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/026/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x34340
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/026/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x34360
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/026/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x34B60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/026/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x35360
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/026/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x35B60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/027/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x36360
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/027/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x36380
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/027/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x36B80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/027/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x37380
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/027/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x37B80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/028/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x38380
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/028/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x383A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/028/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x38BA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/028/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x393A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/028/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x39BA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/029/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3A3A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/029/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3A3C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/029/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3ABC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/029/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3B3C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/029/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3BBC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/030/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3C3C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/030/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3C3E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/030/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3CBE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/030/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3D3E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/030/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3DBE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/031/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3E3E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/031/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3E400
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/031/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3EC00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/031/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3F400
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/031/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x3FC00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/032/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x40400
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/032/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x40420
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/032/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x40C20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/032/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x41420
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/032/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x41C20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/033/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x42420
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/033/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x42440
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/033/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x42C40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/033/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x43440
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/033/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x43C40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/034/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x44440
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/034/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x44460
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/034/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x44C60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/034/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x45460
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/034/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x45C60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/035/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x46460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/035/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x46480
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/035/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x46C80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/035/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x47480
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/035/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x47C80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/036/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x48480
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/036/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x484A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/036/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x48CA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/036/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x494A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/036/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x49CA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/037/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4A4A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/037/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4A4C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/037/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4ACC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/037/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4B4C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/037/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4BCC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/038/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4C4C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/038/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4C4E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/038/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4CCE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/038/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4D4E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/038/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4DCE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/039/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4E4E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/039/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4E500
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/039/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4ED00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/039/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4F500
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/039/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x4FD00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/040/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x50500
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/040/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x50520
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/040/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x50D20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/040/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x51520
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/040/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x51D20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/041/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x52520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/041/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x52540
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/041/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x52D40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/041/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x53540
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/041/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x53D40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/042/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x54540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/042/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x54560
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/042/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x54D60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/042/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x55560
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/042/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x55D60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/043/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x56560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/043/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x56580
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/043/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x56D80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/043/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x57580
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/043/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x57D80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/044/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x58580
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/044/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x585A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/044/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x58DA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/044/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x595A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/044/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x59DA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/045/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5A5A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/045/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5A5C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/045/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5ADC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/045/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5B5C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/045/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5BDC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/046/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5C5C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/046/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5C5E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/046/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5CDE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/046/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5D5E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/046/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5DDE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/047/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5E5E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/047/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5E600
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/047/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5EE00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/047/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5F600
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/047/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x5FE00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/048/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x60600
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/048/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x60620
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/048/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x60E20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/048/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x61620
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/048/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x61E20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/049/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x62620
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/049/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x62640
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/049/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x62E40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/049/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x63640
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/049/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x63E40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/050/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x64640
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/050/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x64660
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/050/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x64E60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/050/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x65660
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/050/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x65E60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/051/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x66660
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/051/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x66680
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/051/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x66E80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/051/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x67680
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/051/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x67E80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/052/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x68680
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/052/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x686A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/052/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x68EA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/052/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x696A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/052/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x69EA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/053/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6A6A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/053/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6A6C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/053/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6AEC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/053/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6B6C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/053/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6BEC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/054/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6C6C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/054/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6C6E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/054/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6CEE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/054/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6D6E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/054/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6DEE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/055/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6E6E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/055/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6E700
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/055/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6EF00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/055/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6F700
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/055/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x6FF00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/056/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x70700
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/056/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x70720
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/056/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x70F20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/056/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x71720
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/056/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x71F20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/057/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x72720
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/057/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x72740
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/057/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x72F40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/057/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x73740
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/057/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x73F40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/058/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x74740
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/058/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x74760
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/058/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x74F60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/058/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x75760
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/058/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x75F60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/059/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x76760
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/059/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x76780
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/059/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x76F80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/059/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x77780
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/059/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x77F80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/060/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x78780
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/060/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x787A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/060/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x78FA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/060/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x797A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/060/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x79FA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/061/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7A7A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/061/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7A7C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/061/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7AFC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/061/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7B7C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/061/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7BFC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/062/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7C7C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/062/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7C7E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/062/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7CFE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/062/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7D7E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/062/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7DFE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/063/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7E7E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/063/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7E800
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/063/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7F000
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/063/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x7F800
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/063/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x80000
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/064/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x80800
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/064/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x80820
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/064/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x81020
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/064/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x81820
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/064/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x82020
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/065/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x82820
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/065/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x82840
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/065/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x83040
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/065/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x83840
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/065/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x84040
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/066/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x84840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/066/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x84860
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/066/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x85060
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/066/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x85860
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/066/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x86060
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/067/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x86860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/067/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x86880
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/067/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x87080
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/067/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x87880
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/067/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x88080
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/068/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x88880
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/068/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x888A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/068/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x890A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/068/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x898A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/068/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x8A0A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/069/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x8A8A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/069/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x8A8C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/069/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x8B0C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/069/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x8B8C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/069/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x8C0C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/070/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x8C8C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+floor/070/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x8C8E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/070/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x8D0E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/070/tex2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x8D8E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor/070/tex3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_floor.bin
+  file_offset: 0x8E0E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/000/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/000/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/000/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x820
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/001/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1020
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/001/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1040
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/001/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1840
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/002/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2040
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/002/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2060
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/002/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2860
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/003/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/003/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3080
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/003/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3880
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/004/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x4080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/004/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x40A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/004/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x48A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/005/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x50A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/005/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x50C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/005/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x58C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/006/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x60C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/006/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x60E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/006/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x68E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/007/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x70E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/007/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x7100
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/007/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x7900
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/008/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x8100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/008/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x8120
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/008/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x8920
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/009/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x9120
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/009/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x9140
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/009/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x9940
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/010/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xA140
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/010/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xA160
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/010/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xA960
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/011/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xB160
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/011/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xB180
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/011/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xB980
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/012/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xC180
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/012/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xC1A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/012/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xC9A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/013/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xD1A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/013/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xD1C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/013/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xD9C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/014/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xE1C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/014/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xE1E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/014/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xE9E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/015/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xF1E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/015/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xF200
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/015/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0xFA00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/016/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x10200
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/016/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x10220
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/016/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x10A20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/017/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x11220
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/017/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x11240
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/017/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x11A40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/018/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x12240
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/018/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x12260
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/018/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x12A60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/019/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x13260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/019/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x13280
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/019/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x13A80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/020/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x14280
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/020/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x142A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/020/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x14AA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/021/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x152A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/021/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x152C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/021/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x15AC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/022/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x162C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/022/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x162E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/022/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x16AE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/023/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x172E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/023/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x17300
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/023/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x17B00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/024/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x18300
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/024/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x18320
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/024/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x18B20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/025/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x19320
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/025/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x19340
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/025/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x19B40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/026/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1A340
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/026/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1A360
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/026/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1AB60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/027/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1B360
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/027/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1B380
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/027/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1BB80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/028/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1C380
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/028/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1C3A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/028/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1CBA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/029/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1D3A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/029/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1D3C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/029/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1DBC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/030/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1E3C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/030/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1E3E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/030/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1EBE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/031/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1F3E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/031/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1F400
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/031/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x1FC00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/032/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x20400
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/032/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x20420
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/032/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x20C20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/033/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x21420
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/033/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x21440
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/033/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x21C40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/034/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x22440
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/034/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x22460
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/034/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x22C60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/035/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x23460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/035/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x23480
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/035/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x23C80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/036/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x24480
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/036/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x244A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/036/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x24CA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/037/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x254A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/037/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x254C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/037/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x25CC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/038/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x264C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/038/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x264E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/038/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x26CE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/039/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x274E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/039/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x27500
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/039/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x27D00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/040/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x28500
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/040/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x28520
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/040/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x28D20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/041/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x29520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/041/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x29540
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/041/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x29D40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/042/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2A540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/042/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2A560
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/042/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2AD60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/043/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2B560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/043/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2B580
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/043/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2BD80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/044/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2C580
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/044/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2C5A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/044/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2CDA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/045/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2D5A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/045/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2D5C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/045/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2DDC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/046/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2E5C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/046/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2E5E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/046/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2EDE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/047/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2F5E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/047/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2F600
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/047/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x2FE00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/048/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x30600
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/048/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x30620
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/048/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x30E20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/049/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x31620
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/049/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x31640
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/049/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x31E40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/050/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x32640
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/050/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x32660
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/050/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x32E60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/051/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x33660
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/051/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x33680
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/051/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x33E80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/052/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x34680
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/052/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x346A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/052/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x34EA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/053/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x356A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/053/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x356C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/053/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x35EC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/054/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x366C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/054/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x366E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/054/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x36EE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/055/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x376E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/055/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x37700
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/055/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x37F00
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/056/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x38700
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/056/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x38720
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/056/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x38F20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/057/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x39720
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/057/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x39740
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/057/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x39F40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/058/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3A740
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/058/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3A760
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/058/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3AF60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/059/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3B760
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/059/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3B780
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/059/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3BF80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/060/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3C780
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/060/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3C7A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/060/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3CFA0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/061/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3D7A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/061/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3D7C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/061/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3DFC0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/062/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3E7C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/062/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3E7E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/062/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3EFE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/063/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3F7E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/063/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x3F800
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/063/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x40000
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/064/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x40800
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/064/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x40820
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/064/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x41020
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/065/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x41820
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/065/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x41840
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/065/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x42040
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/066/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x42840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/066/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x42860
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/066/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x43060
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/067/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x43860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/067/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x43880
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/067/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x44080
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/068/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x44880
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/068/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x448A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/068/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x450A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/069/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x458A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/069/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x458C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/069/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x460C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/070/pal:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x468C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+wall/070/tex0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x468E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+wall/070/tex1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/player_room_wall.bin
+  file_offset: 0x470E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+floor_index:
+  type: AC:ASSET_ARRAY
+  entries:
+    - room/floor/000/pal
+    - room/floor/000/tex0
+    - room/floor/000/tex1
+    - room/floor/000/tex2
+    - room/floor/000/tex3
+    - room/floor/001/pal
+    - room/floor/001/tex0
+    - room/floor/001/tex1
+    - room/floor/001/tex2
+    - room/floor/001/tex3
+    - room/floor/002/pal
+    - room/floor/002/tex0
+    - room/floor/002/tex1
+    - room/floor/002/tex2
+    - room/floor/002/tex3
+    - room/floor/003/pal
+    - room/floor/003/tex0
+    - room/floor/003/tex1
+    - room/floor/003/tex2
+    - room/floor/003/tex3
+    - room/floor/004/pal
+    - room/floor/004/tex0
+    - room/floor/004/tex1
+    - room/floor/004/tex2
+    - room/floor/004/tex3
+    - room/floor/005/pal
+    - room/floor/005/tex0
+    - room/floor/005/tex1
+    - room/floor/005/tex2
+    - room/floor/005/tex3
+    - room/floor/006/pal
+    - room/floor/006/tex0
+    - room/floor/006/tex1
+    - room/floor/006/tex2
+    - room/floor/006/tex3
+    - room/floor/007/pal
+    - room/floor/007/tex0
+    - room/floor/007/tex1
+    - room/floor/007/tex2
+    - room/floor/007/tex3
+    - room/floor/008/pal
+    - room/floor/008/tex0
+    - room/floor/008/tex1
+    - room/floor/008/tex2
+    - room/floor/008/tex3
+    - room/floor/009/pal
+    - room/floor/009/tex0
+    - room/floor/009/tex1
+    - room/floor/009/tex2
+    - room/floor/009/tex3
+    - room/floor/010/pal
+    - room/floor/010/tex0
+    - room/floor/010/tex1
+    - room/floor/010/tex2
+    - room/floor/010/tex3
+    - room/floor/011/pal
+    - room/floor/011/tex0
+    - room/floor/011/tex1
+    - room/floor/011/tex2
+    - room/floor/011/tex3
+    - room/floor/012/pal
+    - room/floor/012/tex0
+    - room/floor/012/tex1
+    - room/floor/012/tex2
+    - room/floor/012/tex3
+    - room/floor/013/pal
+    - room/floor/013/tex0
+    - room/floor/013/tex1
+    - room/floor/013/tex2
+    - room/floor/013/tex3
+    - room/floor/014/pal
+    - room/floor/014/tex0
+    - room/floor/014/tex1
+    - room/floor/014/tex2
+    - room/floor/014/tex3
+    - room/floor/015/pal
+    - room/floor/015/tex0
+    - room/floor/015/tex1
+    - room/floor/015/tex2
+    - room/floor/015/tex3
+    - room/floor/016/pal
+    - room/floor/016/tex0
+    - room/floor/016/tex1
+    - room/floor/016/tex2
+    - room/floor/016/tex3
+    - room/floor/017/pal
+    - room/floor/017/tex0
+    - room/floor/017/tex1
+    - room/floor/017/tex2
+    - room/floor/017/tex3
+    - room/floor/018/pal
+    - room/floor/018/tex0
+    - room/floor/018/tex1
+    - room/floor/018/tex2
+    - room/floor/018/tex3
+    - room/floor/019/pal
+    - room/floor/019/tex0
+    - room/floor/019/tex1
+    - room/floor/019/tex2
+    - room/floor/019/tex3
+    - room/floor/020/pal
+    - room/floor/020/tex0
+    - room/floor/020/tex1
+    - room/floor/020/tex2
+    - room/floor/020/tex3
+    - room/floor/021/pal
+    - room/floor/021/tex0
+    - room/floor/021/tex1
+    - room/floor/021/tex2
+    - room/floor/021/tex3
+    - room/floor/022/pal
+    - room/floor/022/tex0
+    - room/floor/022/tex1
+    - room/floor/022/tex2
+    - room/floor/022/tex3
+    - room/floor/023/pal
+    - room/floor/023/tex0
+    - room/floor/023/tex1
+    - room/floor/023/tex2
+    - room/floor/023/tex3
+    - room/floor/024/pal
+    - room/floor/024/tex0
+    - room/floor/024/tex1
+    - room/floor/024/tex2
+    - room/floor/024/tex3
+    - room/floor/025/pal
+    - room/floor/025/tex0
+    - room/floor/025/tex1
+    - room/floor/025/tex2
+    - room/floor/025/tex3
+    - room/floor/026/pal
+    - room/floor/026/tex0
+    - room/floor/026/tex1
+    - room/floor/026/tex2
+    - room/floor/026/tex3
+    - room/floor/027/pal
+    - room/floor/027/tex0
+    - room/floor/027/tex1
+    - room/floor/027/tex2
+    - room/floor/027/tex3
+    - room/floor/028/pal
+    - room/floor/028/tex0
+    - room/floor/028/tex1
+    - room/floor/028/tex2
+    - room/floor/028/tex3
+    - room/floor/029/pal
+    - room/floor/029/tex0
+    - room/floor/029/tex1
+    - room/floor/029/tex2
+    - room/floor/029/tex3
+    - room/floor/030/pal
+    - room/floor/030/tex0
+    - room/floor/030/tex1
+    - room/floor/030/tex2
+    - room/floor/030/tex3
+    - room/floor/031/pal
+    - room/floor/031/tex0
+    - room/floor/031/tex1
+    - room/floor/031/tex2
+    - room/floor/031/tex3
+    - room/floor/032/pal
+    - room/floor/032/tex0
+    - room/floor/032/tex1
+    - room/floor/032/tex2
+    - room/floor/032/tex3
+    - room/floor/033/pal
+    - room/floor/033/tex0
+    - room/floor/033/tex1
+    - room/floor/033/tex2
+    - room/floor/033/tex3
+    - room/floor/034/pal
+    - room/floor/034/tex0
+    - room/floor/034/tex1
+    - room/floor/034/tex2
+    - room/floor/034/tex3
+    - room/floor/035/pal
+    - room/floor/035/tex0
+    - room/floor/035/tex1
+    - room/floor/035/tex2
+    - room/floor/035/tex3
+    - room/floor/036/pal
+    - room/floor/036/tex0
+    - room/floor/036/tex1
+    - room/floor/036/tex2
+    - room/floor/036/tex3
+    - room/floor/037/pal
+    - room/floor/037/tex0
+    - room/floor/037/tex1
+    - room/floor/037/tex2
+    - room/floor/037/tex3
+    - room/floor/038/pal
+    - room/floor/038/tex0
+    - room/floor/038/tex1
+    - room/floor/038/tex2
+    - room/floor/038/tex3
+    - room/floor/039/pal
+    - room/floor/039/tex0
+    - room/floor/039/tex1
+    - room/floor/039/tex2
+    - room/floor/039/tex3
+    - room/floor/040/pal
+    - room/floor/040/tex0
+    - room/floor/040/tex1
+    - room/floor/040/tex2
+    - room/floor/040/tex3
+    - room/floor/041/pal
+    - room/floor/041/tex0
+    - room/floor/041/tex1
+    - room/floor/041/tex2
+    - room/floor/041/tex3
+    - room/floor/042/pal
+    - room/floor/042/tex0
+    - room/floor/042/tex1
+    - room/floor/042/tex2
+    - room/floor/042/tex3
+    - room/floor/043/pal
+    - room/floor/043/tex0
+    - room/floor/043/tex1
+    - room/floor/043/tex2
+    - room/floor/043/tex3
+    - room/floor/044/pal
+    - room/floor/044/tex0
+    - room/floor/044/tex1
+    - room/floor/044/tex2
+    - room/floor/044/tex3
+    - room/floor/045/pal
+    - room/floor/045/tex0
+    - room/floor/045/tex1
+    - room/floor/045/tex2
+    - room/floor/045/tex3
+    - room/floor/046/pal
+    - room/floor/046/tex0
+    - room/floor/046/tex1
+    - room/floor/046/tex2
+    - room/floor/046/tex3
+    - room/floor/047/pal
+    - room/floor/047/tex0
+    - room/floor/047/tex1
+    - room/floor/047/tex2
+    - room/floor/047/tex3
+    - room/floor/048/pal
+    - room/floor/048/tex0
+    - room/floor/048/tex1
+    - room/floor/048/tex2
+    - room/floor/048/tex3
+    - room/floor/049/pal
+    - room/floor/049/tex0
+    - room/floor/049/tex1
+    - room/floor/049/tex2
+    - room/floor/049/tex3
+    - room/floor/050/pal
+    - room/floor/050/tex0
+    - room/floor/050/tex1
+    - room/floor/050/tex2
+    - room/floor/050/tex3
+    - room/floor/051/pal
+    - room/floor/051/tex0
+    - room/floor/051/tex1
+    - room/floor/051/tex2
+    - room/floor/051/tex3
+    - room/floor/052/pal
+    - room/floor/052/tex0
+    - room/floor/052/tex1
+    - room/floor/052/tex2
+    - room/floor/052/tex3
+    - room/floor/053/pal
+    - room/floor/053/tex0
+    - room/floor/053/tex1
+    - room/floor/053/tex2
+    - room/floor/053/tex3
+    - room/floor/054/pal
+    - room/floor/054/tex0
+    - room/floor/054/tex1
+    - room/floor/054/tex2
+    - room/floor/054/tex3
+    - room/floor/055/pal
+    - room/floor/055/tex0
+    - room/floor/055/tex1
+    - room/floor/055/tex2
+    - room/floor/055/tex3
+    - room/floor/056/pal
+    - room/floor/056/tex0
+    - room/floor/056/tex1
+    - room/floor/056/tex2
+    - room/floor/056/tex3
+    - room/floor/057/pal
+    - room/floor/057/tex0
+    - room/floor/057/tex1
+    - room/floor/057/tex2
+    - room/floor/057/tex3
+    - room/floor/058/pal
+    - room/floor/058/tex0
+    - room/floor/058/tex1
+    - room/floor/058/tex2
+    - room/floor/058/tex3
+    - room/floor/059/pal
+    - room/floor/059/tex0
+    - room/floor/059/tex1
+    - room/floor/059/tex2
+    - room/floor/059/tex3
+    - room/floor/060/pal
+    - room/floor/060/tex0
+    - room/floor/060/tex1
+    - room/floor/060/tex2
+    - room/floor/060/tex3
+    - room/floor/061/pal
+    - room/floor/061/tex0
+    - room/floor/061/tex1
+    - room/floor/061/tex2
+    - room/floor/061/tex3
+    - room/floor/062/pal
+    - room/floor/062/tex0
+    - room/floor/062/tex1
+    - room/floor/062/tex2
+    - room/floor/062/tex3
+    - room/floor/063/pal
+    - room/floor/063/tex0
+    - room/floor/063/tex1
+    - room/floor/063/tex2
+    - room/floor/063/tex3
+    - room/floor/064/pal
+    - room/floor/064/tex0
+    - room/floor/064/tex1
+    - room/floor/064/tex2
+    - room/floor/064/tex3
+    - room/floor/065/pal
+    - room/floor/065/tex0
+    - room/floor/065/tex1
+    - room/floor/065/tex2
+    - room/floor/065/tex3
+    - room/floor/066/pal
+    - room/floor/066/tex0
+    - room/floor/066/tex1
+    - room/floor/066/tex2
+    - room/floor/066/tex3
+    - room/floor/067/pal
+    - room/floor/067/tex0
+    - room/floor/067/tex1
+    - room/floor/067/tex2
+    - room/floor/067/tex3
+    - room/floor/068/pal
+    - room/floor/068/tex0
+    - room/floor/068/tex1
+    - room/floor/068/tex2
+    - room/floor/068/tex3
+    - room/floor/069/pal
+    - room/floor/069/tex0
+    - room/floor/069/tex1
+    - room/floor/069/tex2
+    - room/floor/069/tex3
+    - room/floor/070/pal
+    - room/floor/070/tex0
+    - room/floor/070/tex1
+    - room/floor/070/tex2
+    - room/floor/070/tex3
+
+wall_index:
+  type: AC:ASSET_ARRAY
+  entries:
+    - room/wall/000/pal
+    - room/wall/000/tex0
+    - room/wall/000/tex1
+    - room/wall/001/pal
+    - room/wall/001/tex0
+    - room/wall/001/tex1
+    - room/wall/002/pal
+    - room/wall/002/tex0
+    - room/wall/002/tex1
+    - room/wall/003/pal
+    - room/wall/003/tex0
+    - room/wall/003/tex1
+    - room/wall/004/pal
+    - room/wall/004/tex0
+    - room/wall/004/tex1
+    - room/wall/005/pal
+    - room/wall/005/tex0
+    - room/wall/005/tex1
+    - room/wall/006/pal
+    - room/wall/006/tex0
+    - room/wall/006/tex1
+    - room/wall/007/pal
+    - room/wall/007/tex0
+    - room/wall/007/tex1
+    - room/wall/008/pal
+    - room/wall/008/tex0
+    - room/wall/008/tex1
+    - room/wall/009/pal
+    - room/wall/009/tex0
+    - room/wall/009/tex1
+    - room/wall/010/pal
+    - room/wall/010/tex0
+    - room/wall/010/tex1
+    - room/wall/011/pal
+    - room/wall/011/tex0
+    - room/wall/011/tex1
+    - room/wall/012/pal
+    - room/wall/012/tex0
+    - room/wall/012/tex1
+    - room/wall/013/pal
+    - room/wall/013/tex0
+    - room/wall/013/tex1
+    - room/wall/014/pal
+    - room/wall/014/tex0
+    - room/wall/014/tex1
+    - room/wall/015/pal
+    - room/wall/015/tex0
+    - room/wall/015/tex1
+    - room/wall/016/pal
+    - room/wall/016/tex0
+    - room/wall/016/tex1
+    - room/wall/017/pal
+    - room/wall/017/tex0
+    - room/wall/017/tex1
+    - room/wall/018/pal
+    - room/wall/018/tex0
+    - room/wall/018/tex1
+    - room/wall/019/pal
+    - room/wall/019/tex0
+    - room/wall/019/tex1
+    - room/wall/020/pal
+    - room/wall/020/tex0
+    - room/wall/020/tex1
+    - room/wall/021/pal
+    - room/wall/021/tex0
+    - room/wall/021/tex1
+    - room/wall/022/pal
+    - room/wall/022/tex0
+    - room/wall/022/tex1
+    - room/wall/023/pal
+    - room/wall/023/tex0
+    - room/wall/023/tex1
+    - room/wall/024/pal
+    - room/wall/024/tex0
+    - room/wall/024/tex1
+    - room/wall/025/pal
+    - room/wall/025/tex0
+    - room/wall/025/tex1
+    - room/wall/026/pal
+    - room/wall/026/tex0
+    - room/wall/026/tex1
+    - room/wall/027/pal
+    - room/wall/027/tex0
+    - room/wall/027/tex1
+    - room/wall/028/pal
+    - room/wall/028/tex0
+    - room/wall/028/tex1
+    - room/wall/029/pal
+    - room/wall/029/tex0
+    - room/wall/029/tex1
+    - room/wall/030/pal
+    - room/wall/030/tex0
+    - room/wall/030/tex1
+    - room/wall/031/pal
+    - room/wall/031/tex0
+    - room/wall/031/tex1
+    - room/wall/032/pal
+    - room/wall/032/tex0
+    - room/wall/032/tex1
+    - room/wall/033/pal
+    - room/wall/033/tex0
+    - room/wall/033/tex1
+    - room/wall/034/pal
+    - room/wall/034/tex0
+    - room/wall/034/tex1
+    - room/wall/035/pal
+    - room/wall/035/tex0
+    - room/wall/035/tex1
+    - room/wall/036/pal
+    - room/wall/036/tex0
+    - room/wall/036/tex1
+    - room/wall/037/pal
+    - room/wall/037/tex0
+    - room/wall/037/tex1
+    - room/wall/038/pal
+    - room/wall/038/tex0
+    - room/wall/038/tex1
+    - room/wall/039/pal
+    - room/wall/039/tex0
+    - room/wall/039/tex1
+    - room/wall/040/pal
+    - room/wall/040/tex0
+    - room/wall/040/tex1
+    - room/wall/041/pal
+    - room/wall/041/tex0
+    - room/wall/041/tex1
+    - room/wall/042/pal
+    - room/wall/042/tex0
+    - room/wall/042/tex1
+    - room/wall/043/pal
+    - room/wall/043/tex0
+    - room/wall/043/tex1
+    - room/wall/044/pal
+    - room/wall/044/tex0
+    - room/wall/044/tex1
+    - room/wall/045/pal
+    - room/wall/045/tex0
+    - room/wall/045/tex1
+    - room/wall/046/pal
+    - room/wall/046/tex0
+    - room/wall/046/tex1
+    - room/wall/047/pal
+    - room/wall/047/tex0
+    - room/wall/047/tex1
+    - room/wall/048/pal
+    - room/wall/048/tex0
+    - room/wall/048/tex1
+    - room/wall/049/pal
+    - room/wall/049/tex0
+    - room/wall/049/tex1
+    - room/wall/050/pal
+    - room/wall/050/tex0
+    - room/wall/050/tex1
+    - room/wall/051/pal
+    - room/wall/051/tex0
+    - room/wall/051/tex1
+    - room/wall/052/pal
+    - room/wall/052/tex0
+    - room/wall/052/tex1
+    - room/wall/053/pal
+    - room/wall/053/tex0
+    - room/wall/053/tex1
+    - room/wall/054/pal
+    - room/wall/054/tex0
+    - room/wall/054/tex1
+    - room/wall/055/pal
+    - room/wall/055/tex0
+    - room/wall/055/tex1
+    - room/wall/056/pal
+    - room/wall/056/tex0
+    - room/wall/056/tex1
+    - room/wall/057/pal
+    - room/wall/057/tex0
+    - room/wall/057/tex1
+    - room/wall/058/pal
+    - room/wall/058/tex0
+    - room/wall/058/tex1
+    - room/wall/059/pal
+    - room/wall/059/tex0
+    - room/wall/059/tex1
+    - room/wall/060/pal
+    - room/wall/060/tex0
+    - room/wall/060/tex1
+    - room/wall/061/pal
+    - room/wall/061/tex0
+    - room/wall/061/tex1
+    - room/wall/062/pal
+    - room/wall/062/tex0
+    - room/wall/062/tex1
+    - room/wall/063/pal
+    - room/wall/063/tex0
+    - room/wall/063/tex1
+    - room/wall/064/pal
+    - room/wall/064/tex0
+    - room/wall/064/tex1
+    - room/wall/065/pal
+    - room/wall/065/tex0
+    - room/wall/065/tex1
+    - room/wall/066/pal
+    - room/wall/066/tex0
+    - room/wall/066/tex1
+    - room/wall/067/pal
+    - room/wall/067/tex0
+    - room/wall/067/tex1
+    - room/wall/068/pal
+    - room/wall/068/tex0
+    - room/wall/068/tex1
+    - room/wall/069/pal
+    - room/wall/069/tex0
+    - room/wall/069/tex1
+    - room/wall/070/pal
+    - room/wall/070/tex0
+    - room/wall/070/tex1

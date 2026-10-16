@@ -3,17 +3,12 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_anahikari01_01.h"
 
-
-extern Gfx ef_anahikari01_01_modelT[];
-extern Gfx ef_anahikari01_02_modelT[];
 
 static Gfx* ef_anahikari_model_tbl[] = {
     ef_anahikari01_01_modelT,ef_anahikari01_02_modelT, 
 };
-
-extern EVW_ANIME_DATA ef_anahikari01_01_evw_anime;
-extern EVW_ANIME_DATA ef_anahikari01_02_evw_anime;
 
 static EVW_ANIME_DATA* ef_anahikari_anime_tbl[] = {
     &ef_anahikari01_01_evw_anime,&ef_anahikari01_02_evw_anime,

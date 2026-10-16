@@ -1,5 +1,4 @@
-extern Gfx int_din_stump_on_model[];
-extern Gfx int_din_stump_onT_model[];
+#include "assets/data/model/int_din_stump.h"
 
 aFTR_PROFILE iam_din_stump = {
 	int_din_stump_on_model,

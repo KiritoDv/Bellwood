@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_ef_x_tree5_shakeL:
+  type: AC:CKF_ANIMATION
+  offset: 0x8165E46C
+  joints: 3
+  counts: { flags: 3, data: 57, keys: 5, fixed: 7 }

@@ -1,0 +1,90 @@
+:config:
+  strict_declarations: true
+
+int_ike_jny_tower01:
+  type: TEXTURE
+  offset: 0x818305E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_jny_towerbase_tex_txt:
+  type: TEXTURE
+  offset: 0x81830600
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818305E0
+
+int_ike_jny_towertem1_tex_txt:
+  type: TEXTURE
+  offset: 0x81830680
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x818305E0
+
+int_ike_jny_towertem2_tex_txt:
+  type: TEXTURE
+  offset: 0x818306C0
+  format: RGBA16
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_ike_jny_towertem3_tex_txt:
+  type: TEXTURE
+  offset: 0x818308C0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x818305E0
+
+int_ike_jny_towername_tex_txt:
+  type: TEXTURE
+  offset: 0x81830900
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x818305E0
+
+int_ike_jny_towerbelt_tex_txt:
+  type: TEXTURE
+  offset: 0x81830940
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x818305E0
+
+int_ike_jny_towerbottom_tex_txt:
+  type: TEXTURE
+  offset: 0x81830980
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818305E0
+
+int_ike_jny_towermiddle_tex_txt:
+  type: TEXTURE
+  offset: 0x81830B80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818305E0
+
+int_ike_jny_tower01_v:
+  type: VTX
+  offset: 0x81830C00
+  count: 144
+
+int_ike_jny_tower01_body_model:
+  type: GFX
+  offset: 0x81831500
+  size: 0x1E8

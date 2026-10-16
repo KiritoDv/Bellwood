@@ -1,10 +1,8 @@
+#include "assets/data/model/int_kon_sisiodosi.h"
 extern aFTR_rig_c aKonSisiodosi_sklkey;
 static void aKonSisiodosi_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aKonSisiodosi_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_kon_sisiodosi;
-extern cKF_Animation_R_c cKF_ba_r_int_kon_sisiodosi;
 
 aFTR_rig_c aKonSisiodosi_sklkey= {
     &cKF_bs_r_int_kon_sisiodosi,

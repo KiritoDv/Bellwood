@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_e_count01.h"
 static void aCOU_set_bgOffset(ACTOR* actorx, int idx) {
     // @ 8056df44
     static mCoBG_OffsetTable_c height_table_ct[6] = {

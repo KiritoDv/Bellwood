@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_hnw_move:
+  type: AC:CKF_ANIMATION
+  offset: 0x8124DD48
+  joints: 7
+  counts: { flags: 7, data: 96, keys: 4, fixed: 20 }

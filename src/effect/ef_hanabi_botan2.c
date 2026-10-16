@@ -3,6 +3,7 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_hanabi_b_00.h"
 
 static void eHanabiBotan2_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eHanabiBotan2_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -80,8 +81,6 @@ eEC_morph_data_c eHanabiBotan2_morph_data_in[] = {
     { 44, 54, TRUE, 150.f, 0.f },  { 14, 34, TRUE, 0.f, 255.f },  { 0, 0, FALSE, 255.f, 255.f },
     { 0, 0, FALSE, 0.f, 0.f },     { 14, 34, TRUE, 0.f, 255.f },  { 0, 0, FALSE, 255.f, 255.f },
 };
-
-extern Gfx ef_hanabi_b_00_modelT[];
 
 static void eHanabiBotan2_dw(eEC_Effect_c* effect, GAME* game) {
     u8 res1[9];

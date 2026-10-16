@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_nisiki_pal:
+  type: TEXTURE
+  offset: 0x81687CC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_nisiki_body_txt:
+  type: TEXTURE
+  offset: 0x81687CE0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81687CC0
+
+act_mus_nisiki_a1_v:
+  type: VTX
+  offset: 0x81687FE0
+  count: 60
+
+act_mus_nisiki_sakana_body_model:
+  type: GFX
+  offset: 0x816883A0
+  size: 0x90
+
+act_mus_nisiki_sakana_head_model:
+  type: GFX
+  offset: 0x81688430
+  size: 0x48
+
+cKF_bs_r_act_mus_nisiki_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x8168849C
+  counts: { joints: 3 }

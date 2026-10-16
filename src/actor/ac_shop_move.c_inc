@@ -1,5 +1,4 @@
-extern cKF_Animation_R_c cKF_ba_r_obj_s_shop1;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_shop1;
+#include "assets/data/model/obj_s_shop1.h"
 
 // clang-format off
 static Door_data_c aSHOP_shop_door_data = {

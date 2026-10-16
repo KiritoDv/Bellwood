@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+int_yos_wheel_pal:
+  type: TEXTURE
+  offset: 0x81ADEBC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yos_wheel_nakatyu_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADEBE0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81ADEBC0
+
+int_yos_wheel_tyu_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADECE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81ADEBC0
+
+int_yos_wheel_bo_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADED60
+  format: CI4
+  width: 64
+  height: 8
+  source_encoding: gx
+  tlut: 0x81ADEBC0
+
+int_yos_wheel_sotowa_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADEE60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ADEBC0
+
+int_yos_wheel_v:
+  type: VTX
+  offset: 0x81ADF060
+  count: 56
+
+int_yos_wheel_obj_model:
+  type: GFX
+  offset: 0x81ADF3E0
+  size: 0x118

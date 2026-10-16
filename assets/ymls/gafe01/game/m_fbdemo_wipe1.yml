@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+wipe1_v:
+  type: VTX
+  offset: 0x810055D0
+  count: 25
+
+g_wipe1_txt:
+  type: TEXTURE
+  offset: 0x81005760
+  format: I4
+  width: 64
+  height: 64
+  source_encoding: n64
+
+wipe1_modelT:
+  type: GFX
+  offset: 0x81005F60
+  size: 0xF8

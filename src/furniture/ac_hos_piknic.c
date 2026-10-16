@@ -1,4 +1,4 @@
-extern Gfx int_hos_piknic_all_model[];
+#include "assets/data/model/int_hos_piknic.h"
 
 aFTR_PROFILE iam_hos_piknic = {
 	int_hos_piknic_all_model,

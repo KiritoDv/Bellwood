@@ -1,6 +1,4 @@
-extern Gfx int_sum_cupboard01_on_model[];
-extern Gfx int_sum_cupboard01_onT_model[];
-extern Gfx int_sum_cupboard01_envT_model[];
+#include "assets/data/model/int_sum_cupboard01.h"
 
 aFTR_PROFILE iam_sum_cupboard01 = {
 	int_sum_cupboard01_on_model,

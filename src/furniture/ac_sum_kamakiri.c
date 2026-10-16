@@ -1,7 +1,5 @@
+#include "assets/data/model/int_sum_kamakiri.h"
 extern aFTR_rig_c aSumKamakiri_key_anime_data;
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_sum_kamakiri;
-extern cKF_Animation_R_c cKF_ba_r_int_sum_kamakiri;
 
 aFTR_rig_c aSumKamakiri_key_anime_data= {
     &cKF_bs_r_int_sum_kamakiri,

@@ -5,6 +5,16 @@
 #include "m_rcp.h"
 #include "m_house.h"
 #include "m_player_lib.h"
+#include "assets/data/model/obj_s_post.h"
+#include "assets/data/model/obj_s_post_delivery.h"
+#include "assets/data/model/obj_s_post_flag_model.h"
+#include "assets/data/model/obj_s_post_flag_off.h"
+#include "assets/data/model/obj_s_post_flag_on.h"
+#include "assets/data/model/obj_s_post_flag_on_wait.h"
+#include "assets/data/model/obj_s_post_flag_on_wait_anim.h"
+#include "assets/data/model/obj_s_post_open.h"
+#include "assets/data/model/obj_w_post_flag_on_wait_anim.h"
+#include "assets/data/model/obj_w_post_model.h"
 
 enum {
     aMBX_ACT_WAIT,
@@ -49,15 +59,6 @@ ACTOR_PROFILE MailBox_Profile = {
     NULL,
 };
 // clang-format on
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_post;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_post;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_post_delivery1;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_post_flag_off1;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_post_flag_on1;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_post_flag_on_wait1;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_post_open1;
-extern cKF_Animation_R_c cKF_ba_r_obj_s_post;
 
 typedef struct {
     cKF_Animation_R_c* anim;
@@ -131,7 +132,8 @@ static Gfx post_flag_saki_common_DL[] = {
 static Gfx post_flag_saki_model_type0[] = {
     gsSPDisplayList(post_flag_saki_common_DL),
     gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, PRIMITIVE, 0, COMBINED, 0, 0, 0, 0, COMBINED),
-    gsDPLoadTextureBlock_4b_Dolphin(anime_1_txt, G_IM_FMT_CI, 16, 32, 15, GX_MIRROR, GX_CLAMP, 0, 0),
+    gsDPLoadTextureBlock_4b(anime_1_txt, G_IM_FMT_CI, 16, 32, 15, G_TX_MIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_CLAMP, 4,
+                            G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsDPSetTileSize(0, 0, 0, 124, 124),
     gsSPEndDisplayList(),
 };
@@ -139,7 +141,8 @@ static Gfx post_flag_saki_model_type0[] = {
 static Gfx post_flag_saki_model_type1[] = {
     gsSPDisplayList(post_flag_saki_common_DL),
     gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, TEXEL0, PRIMITIVE, 0, COMBINED, 0, 0, 0, 0, COMBINED),
-    gsDPLoadTextureBlock_4b_Dolphin(anime_2_txt, G_IM_FMT_CI, 16, 32, 15, GX_MIRROR, GX_CLAMP, 0, 0),
+    gsDPLoadTextureBlock_4b(anime_2_txt, G_IM_FMT_CI, 16, 32, 15, G_TX_MIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_CLAMP, 4,
+                            G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSPEndDisplayList(),
 };
 
@@ -162,11 +165,6 @@ static int aMBX_actor_draw_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, in
     return TRUE;
 }
 
-extern u8 obj_s_post_flag2_TA_tex_txt[];
-extern u8 obj_w_post_flag2_TA_tex_txt[];
-
-extern EVW_ANIME_DATA obj_s_post_flag_on_wait1_evw_anime;
-extern EVW_ANIME_DATA obj_w_post_flag_on_wait1_evw_anime;
 
 static void aMBX_actor_draw(ACTOR* actorx, GAME* game) {
     static u8* tex_table[] = { obj_s_post_flag2_TA_tex_txt, obj_w_post_flag2_TA_tex_txt };

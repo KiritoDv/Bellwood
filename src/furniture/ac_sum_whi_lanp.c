@@ -1,8 +1,5 @@
-extern Gfx int_sum_whi_lanp_on_model[];
-extern Gfx int_sum_whi_lanp_onT_model[];
+#include "assets/data/model/int_sum_whi_lanp.h"
 static void aSumWhiLanp_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
-
-extern Gfx int_sum_whi_lanp_offT_model[];
 
 static void aSumWhiLanp_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     OPEN_DISP(game->graph);

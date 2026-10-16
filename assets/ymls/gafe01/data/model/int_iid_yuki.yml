@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_iid_yuki_pal:
+  type: TEXTURE
+  offset: 0x8181B120
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iid_yuki_ha_tex:
+  type: TEXTURE
+  offset: 0x8181B140
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8181B120
+
+int_iid_yuki_body_tex:
+  type: TEXTURE
+  offset: 0x8181B240
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8181B120
+
+int_iid_yuki_eye_tex:
+  type: TEXTURE
+  offset: 0x8181B640
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x8181B120
+
+int_iid_yuki_bonyoko_tex:
+  type: TEXTURE
+  offset: 0x8181B660
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8181B120
+
+int_iid_yuki_bonue_tex:
+  type: TEXTURE
+  offset: 0x8181B6E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8181B120
+
+int_iid_yuki_v:
+  type: VTX
+  offset: 0x8181B760
+  count: 77
+
+int_iid_yuki_model:
+  type: GFX
+  offset: 0x8181BC30
+  size: 0xB8
+
+int_iid_yukiT_model:
+  type: GFX
+  offset: 0x8181BCE8
+  size: 0x108

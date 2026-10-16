@@ -5,6 +5,7 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "m_common_data.h"
+#include "assets/data/model/obj_shop_letter.h"
 
 static void bPTI_actor_ct(ACTOR* actorx, GAME* game);
 static void bPTI_actor_draw(ACTOR* actorx, GAME* game);
@@ -37,9 +38,6 @@ static void bPTI_actor_ct(ACTOR* actorx, GAME* game) {
     Common_Set(post_girl_npc_type, post_girl_type);
     bg_post_item->update_mail_flag = TRUE;
 }
-
-extern Gfx obj_letterT_mat_model[];
-extern Gfx obj_letterT_gfx_model[];
 
 static void bPTI_actor_draw(ACTOR* actorx, GAME* game) {
     static float setX[mPO_MAIL_STORAGE_SIZE] = { 80.0f, 120.0f, 160.0f, 200.0f, 240.0f };

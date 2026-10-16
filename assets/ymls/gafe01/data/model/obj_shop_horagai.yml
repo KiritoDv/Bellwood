@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_horagai_pal:
+  type: TEXTURE
+  offset: 0x813981A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_horagai_tex:
+  type: TEXTURE
+  offset: 0x813981C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x813981A0
+
+obj_shop_horagai_v:
+  type: VTX
+  offset: 0x813982C0
+  count: 10
+
+obj_horagaiT_mat_model:
+  type: GFX
+  offset: 0x81398360
+  size: 0x48
+
+obj_horagaiT_gfx_model:
+  type: GFX
+  offset: 0x813983A8
+  size: 0x30

@@ -1,4 +1,4 @@
-extern Gfx int_iid_surf_model[];
+#include "assets/data/model/int_iid_surf.h"
 
 aFTR_PROFILE iam_iid_surf = {
 	int_iid_surf_model,

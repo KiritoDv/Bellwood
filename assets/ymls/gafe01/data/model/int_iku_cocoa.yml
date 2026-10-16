@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_iku_cocoa_pal:
+  type: TEXTURE
+  offset: 0x81852F40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_cocoa_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81852F60
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81852F40
+
+int_iku_cocoa_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81853360
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81852F40
+
+int_iku_cocoa_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81853560
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81852F40
+
+int_iku_cocoa_v:
+  type: VTX
+  offset: 0x81853760
+  count: 49
+
+int_iku_cocoa_on_model:
+  type: GFX
+  offset: 0x81853A70
+  size: 0xB8
+
+int_iku_cocoa_off_model:
+  type: GFX
+  offset: 0x81853B28
+  size: 0x78

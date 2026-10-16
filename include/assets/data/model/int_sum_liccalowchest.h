@@ -1,0 +1,36 @@
+#ifndef ASSETS_DATA_MODEL_INT_SUM_LICCALOWCHEST_H
+#define ASSETS_DATA_MODEL_INT_SUM_LICCALOWCHEST_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const char int_sum_licca_lowchest_pal[];
+extern const char int_sum_liccalowchest_hiki_tex_txt[];
+extern const char int_sum_liccalowchest_in_tex_txt[];
+extern const char int_sum_liccalowchest_front_tex_txt[];
+extern const char int_sum_liccalowchest_side_tex_txt[];
+extern const char int_sum_liccalowchest_top_tex_txt[];
+extern const char int_sum_liccalowchest_v[];
+extern const char int_sum_liccalowchest_door_model[];
+extern const char int_sum_licca_lowchest_base_model[];
+extern const char cKF_ba_r_int_sum_liccalowchest[];
+extern const char cKF_bs_r_int_sum_liccalowchest[];
+
+#define int_sum_licca_lowchest_pal_PATH "__OTR__data/model/int_sum_liccalowchest/int_sum_licca_lowchest_pal"
+#define int_sum_liccalowchest_hiki_tex_txt_PATH "__OTR__data/model/int_sum_liccalowchest/int_sum_liccalowchest_hiki_tex_txt"
+#define int_sum_liccalowchest_in_tex_txt_PATH "__OTR__data/model/int_sum_liccalowchest/int_sum_liccalowchest_in_tex_txt"
+#define int_sum_liccalowchest_front_tex_txt_PATH "__OTR__data/model/int_sum_liccalowchest/int_sum_liccalowchest_front_tex_txt"
+#define int_sum_liccalowchest_side_tex_txt_PATH "__OTR__data/model/int_sum_liccalowchest/int_sum_liccalowchest_side_tex_txt"
+#define int_sum_liccalowchest_top_tex_txt_PATH "__OTR__data/model/int_sum_liccalowchest/int_sum_liccalowchest_top_tex_txt"
+#define int_sum_liccalowchest_v_PATH "__OTR__data/model/int_sum_liccalowchest/int_sum_liccalowchest_v"
+#define int_sum_liccalowchest_door_model_PATH "__OTR__data/model/int_sum_liccalowchest/int_sum_liccalowchest_door_model"
+#define int_sum_licca_lowchest_base_model_PATH "__OTR__data/model/int_sum_liccalowchest/int_sum_licca_lowchest_base_model"
+#define cKF_ba_r_int_sum_liccalowchest_PATH "__OTR__data/model/int_sum_liccalowchest/cKF_ba_r_int_sum_liccalowchest"
+#define cKF_bs_r_int_sum_liccalowchest_PATH "__OTR__data/model/int_sum_liccalowchest/cKF_bs_r_int_sum_liccalowchest"
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

@@ -1,0 +1,30 @@
+:config:
+  strict_declarations: true
+
+lat_atena_win_tex:
+  type: TEXTURE
+  offset: 0x813B5AC0
+  format: I4
+  width: 64
+  height: 16
+  source_encoding: gx
+
+lat_atena_kageT_model:
+  type: GFX
+  offset: 0x813B5CC0
+  size: 0x30
+
+lat_atena_winT_model:
+  type: GFX
+  offset: 0x813B5CF0
+  size: 0x28
+
+lat_atena_mode:
+  type: GFX
+  offset: 0x813B5D18
+  size: 0x30
+
+lat_atena_model:
+  type: GFX
+  offset: 0x813B5D48
+  size: 0x18

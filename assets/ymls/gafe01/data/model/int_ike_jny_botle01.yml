@@ -1,0 +1,113 @@
+:config:
+  strict_declarations: true
+
+int_ike_jny_botle01_pal:
+  type: TEXTURE
+  offset: 0x81822CC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_jny_botleship1_tex_txt:
+  type: TEXTURE
+  offset: 0x81822CE0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81822CC0
+
+int_ike_jny_botleship3_tex_txt:
+  type: TEXTURE
+  offset: 0x81822D20
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81822CC0
+
+int_ike_jny_botleship2_tex_txt:
+  type: TEXTURE
+  offset: 0x81822D60
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81822CC0
+
+int_ike_jny_botlebase_tex_txt:
+  type: TEXTURE
+  offset: 0x81822DA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81822CC0
+
+int_ike_jny_botlebase2_tex_txt:
+  type: TEXTURE
+  offset: 0x81822E20
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81822CC0
+
+int_ike_jny_botlecap_tex_txt:
+  type: TEXTURE
+  offset: 0x81822E60
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81822CC0
+
+int_ike_jny_botleship5_tex_txt:
+  type: TEXTURE
+  offset: 0x81822EA0
+  format: CI4
+  width: 16
+  height: 24
+  source_encoding: gx
+  tlut: 0x81822CC0
+
+int_ike_jny_botleship4_tex_txt:
+  type: TEXTURE
+  offset: 0x81822F60
+  format: CI4
+  width: 16
+  height: 24
+  source_encoding: gx
+  tlut: 0x81822CC0
+
+int_ike_jny_botleship6_tex_txt:
+  type: TEXTURE
+  offset: 0x81823020
+  format: CI4
+  width: 16
+  height: 24
+  source_encoding: gx
+  tlut: 0x81822CC0
+
+int_ike_jny_botle01_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x818230E0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_ike_jny_botle01_v:
+  type: VTX
+  offset: 0x818234E0
+  count: 140
+
+int_ike_jny_botle01_on_model:
+  type: GFX
+  offset: 0x81823DA0
+  size: 0x278
+
+int_ike_jny_botle01_off_model:
+  type: GFX
+  offset: 0x81824018
+  size: 0xA0

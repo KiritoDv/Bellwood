@@ -1,0 +1,127 @@
+:config:
+  strict_declarations: true
+
+int_yos_luigi_pal:
+  type: TEXTURE
+  offset: 0x81AD8440
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yos_luigi_dai_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD8460
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD8440
+
+int_yos_luigi_zubon_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD84A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AD8440
+
+int_yos_luigi_kao_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD86A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AD8440
+
+int_yos_luigi_hana_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD88A0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81AD8440
+
+int_yos_luigi_mimi_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD88C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD8440
+
+int_yos_luigi_boushimae_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD8940
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD8440
+
+int_yos_luigi_boushiushiro_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD8A40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD8440
+
+int_yos_luigi_tuba_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD8AC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD8440
+
+int_yos_luigi_ude_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD8B40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD8440
+
+int_yos_luigi_te_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD8BC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD8440
+
+int_yos_luigi_kutu_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD8C40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AD8440
+
+int_yos_luigi_fuda_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD8CC0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81AD8440
+
+int_yos_luigi_v:
+  type: VTX
+  offset: 0x81AD8CE0
+  count: 89
+
+int_yos_luigi_body_model:
+  type: GFX
+  offset: 0x81AD9270
+  size: 0x200

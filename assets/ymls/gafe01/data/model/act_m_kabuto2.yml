@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+act_m_kabuto_v:
+  type: VTX
+  offset: 0x81870388
+  count: 14
+
+act_m_kabuto_pal:
+  type: TEXTURE
+  offset: 0x81870468
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_kabuto:
+  type: TEXTURE
+  offset: 0x81870488
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: n64
+  tlut: 0x81870468
+
+act_m_mu_kabuto1T_model:
+  type: GFX
+  offset: 0x81870688
+  size: 0xD0

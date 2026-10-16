@@ -1,0 +1,35 @@
+:config:
+  strict_declarations: true
+
+act_m_miyama_txt:
+  type: TEXTURE
+  offset: 0x81873B58
+  format: RGBA16
+  width: 16
+  height: 64
+  source_encoding: n64
+
+act_m_miyama_b_v:
+  type: VTX
+  offset: 0x81874358
+  count: 18
+
+act_m_miyama_b_left_model:
+  type: GFX
+  offset: 0x81874478
+  size: 0xA8
+
+act_m_miyama_b_right_model:
+  type: GFX
+  offset: 0x81874520
+  size: 0xA8
+
+act_m_miyama_b_base_model:
+  type: GFX
+  offset: 0x818745C8
+  size: 0x98
+
+cKF_bs_r_act_m_miyama_b:
+  type: AC:CKF_SKELETON
+  offset: 0x8187469C
+  counts: { joints: 5 }

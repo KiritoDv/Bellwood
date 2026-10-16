@@ -1,0 +1,41 @@
+:config:
+  strict_declarations: true
+
+act_bee_tex_txt:
+  type: TEXTURE
+  offset: 0x810ADE60
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+act_bee_v:
+  type: VTX
+  offset: 0x810AE060
+  count: 58
+
+act_bee_C_model:
+  type: GFX
+  offset: 0x810AE400
+  size: 0x98
+
+act_bee_B_model:
+  type: GFX
+  offset: 0x810AE498
+  size: 0x88
+
+act_bee_A_model:
+  type: GFX
+  offset: 0x810AE520
+  size: 0x78
+
+cKF_ba_r_act_bee:
+  type: AC:CKF_ANIMATION
+  offset: 0x810AE5D4
+  joints: 4
+  counts: { flags: 4, data: 12, keys: 2, fixed: 13 }
+
+cKF_bs_r_act_bee:
+  type: AC:CKF_SKELETON
+  offset: 0x810AE618
+  counts: { joints: 4 }

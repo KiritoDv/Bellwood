@@ -1,0 +1,270 @@
+:config:
+  strict_declarations: true
+
+obj_hole_tex:
+  type: TEXTURE
+  offset: 0x81104180
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_hole0_v:
+  type: VTX
+  offset: 0x81104380
+  count: 5
+
+obj_hole1_v:
+  type: VTX
+  offset: 0x811043D0
+  count: 5
+
+obj_hole2_v:
+  type: VTX
+  offset: 0x81104420
+  count: 5
+
+obj_hole3_v:
+  type: VTX
+  offset: 0x81104470
+  count: 5
+
+obj_hole4_v:
+  type: VTX
+  offset: 0x811044C0
+  count: 5
+
+obj_hole5_v:
+  type: VTX
+  offset: 0x81104510
+  count: 5
+
+obj_hole6_v:
+  type: VTX
+  offset: 0x81104560
+  count: 5
+
+obj_hole7_v:
+  type: VTX
+  offset: 0x811045B0
+  count: 5
+
+obj_hole8_v:
+  type: VTX
+  offset: 0x81104600
+  count: 5
+
+obj_hole9_v:
+  type: VTX
+  offset: 0x81104650
+  count: 5
+
+obj_hole10_v:
+  type: VTX
+  offset: 0x811046A0
+  count: 5
+
+obj_hole11_v:
+  type: VTX
+  offset: 0x811046F0
+  count: 5
+
+obj_hole12_v:
+  type: VTX
+  offset: 0x81104740
+  count: 5
+
+obj_hole13_v:
+  type: VTX
+  offset: 0x81104790
+  count: 5
+
+obj_hole14_v:
+  type: VTX
+  offset: 0x811047E0
+  count: 5
+
+obj_hole15_v:
+  type: VTX
+  offset: 0x81104830
+  count: 5
+
+obj_hole16_v:
+  type: VTX
+  offset: 0x81104880
+  count: 5
+
+obj_hole17_v:
+  type: VTX
+  offset: 0x811048D0
+  count: 5
+
+obj_hole18_v:
+  type: VTX
+  offset: 0x81104920
+  count: 5
+
+obj_hole19_v:
+  type: VTX
+  offset: 0x81104970
+  count: 5
+
+obj_hole20_v:
+  type: VTX
+  offset: 0x811049C0
+  count: 5
+
+obj_hole21_v:
+  type: VTX
+  offset: 0x81104A10
+  count: 5
+
+obj_hole22_v:
+  type: VTX
+  offset: 0x81104A60
+  count: 5
+
+obj_hole23_v:
+  type: VTX
+  offset: 0x81104AB0
+  count: 5
+
+obj_hole24_v:
+  type: VTX
+  offset: 0x81104B00
+  count: 5
+
+obj_hole0T_g_mat_model:
+  type: GFX
+  offset: 0x81104B50
+  size: 0x20
+
+obj_hole0T_s_mat_model:
+  type: GFX
+  offset: 0x81104B70
+  size: 0x20
+
+obj_hole0T_gfx_model:
+  type: GFX
+  offset: 0x81104B90
+  size: 0x20
+
+obj_hole1T_gfx_model:
+  type: GFX
+  offset: 0x81104BB0
+  size: 0x20
+
+obj_hole2T_gfx_model:
+  type: GFX
+  offset: 0x81104BD0
+  size: 0x20
+
+obj_hole3T_gfx_model:
+  type: GFX
+  offset: 0x81104BF0
+  size: 0x20
+
+obj_hole4T_gfx_model:
+  type: GFX
+  offset: 0x81104C10
+  size: 0x20
+
+obj_hole5T_gfx_model:
+  type: GFX
+  offset: 0x81104C30
+  size: 0x20
+
+obj_hole6T_gfx_model:
+  type: GFX
+  offset: 0x81104C50
+  size: 0x20
+
+obj_hole7T_gfx_model:
+  type: GFX
+  offset: 0x81104C70
+  size: 0x20
+
+obj_hole8T_gfx_model:
+  type: GFX
+  offset: 0x81104C90
+  size: 0x20
+
+obj_hole9T_gfx_model:
+  type: GFX
+  offset: 0x81104CB0
+  size: 0x20
+
+obj_hole10T_gfx_model:
+  type: GFX
+  offset: 0x81104CD0
+  size: 0x20
+
+obj_hole11T_gfx_model:
+  type: GFX
+  offset: 0x81104CF0
+  size: 0x20
+
+obj_hole12T_gfx_model:
+  type: GFX
+  offset: 0x81104D10
+  size: 0x20
+
+obj_hole13T_gfx_model:
+  type: GFX
+  offset: 0x81104D30
+  size: 0x20
+
+obj_hole14T_gfx_model:
+  type: GFX
+  offset: 0x81104D50
+  size: 0x20
+
+obj_hole15T_gfx_model:
+  type: GFX
+  offset: 0x81104D70
+  size: 0x20
+
+obj_hole16T_gfx_model:
+  type: GFX
+  offset: 0x81104D90
+  size: 0x20
+
+obj_hole17T_gfx_model:
+  type: GFX
+  offset: 0x81104DB0
+  size: 0x20
+
+obj_hole18T_gfx_model:
+  type: GFX
+  offset: 0x81104DD0
+  size: 0x20
+
+obj_hole19T_gfx_model:
+  type: GFX
+  offset: 0x81104DF0
+  size: 0x20
+
+obj_hole20T_gfx_model:
+  type: GFX
+  offset: 0x81104E10
+  size: 0x20
+
+obj_hole21T_gfx_model:
+  type: GFX
+  offset: 0x81104E30
+  size: 0x20
+
+obj_hole22T_gfx_model:
+  type: GFX
+  offset: 0x81104E50
+  size: 0x20
+
+obj_hole23T_gfx_model:
+  type: GFX
+  offset: 0x81104E70
+  size: 0x20
+
+obj_hole24T_gfx_model:
+  type: GFX
+  offset: 0x81104E90
+  size: 0x20

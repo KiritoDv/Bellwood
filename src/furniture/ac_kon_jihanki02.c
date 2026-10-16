@@ -1,12 +1,8 @@
+#include "assets/data/model/int_kon_jihanki02.h"
 static void aKonJihanki02_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aKonJihanki02_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aKonJihanki02_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aKonJihanki02_dt(FTR_ACTOR* ftr_actor, u8* data);
-
-extern Gfx int_kon_jihanki02_offT_model[];
-extern Gfx int_kon_jihanki02_off_model[];
-extern Gfx int_kon_jihanki02_onT_model[];
-extern Gfx int_kon_jihanki02_on_model[];
 
 static void aKonJihanki02_ct(FTR_ACTOR* ftr_actor, u8* data){
 

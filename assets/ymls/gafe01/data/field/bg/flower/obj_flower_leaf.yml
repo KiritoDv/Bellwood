@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+obj_flower_tex:
+  type: TEXTURE
+  offset: 0x811033C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_flower_leaf_v:
+  type: VTX
+  offset: 0x81103BC0
+  count: 4
+
+obj_flower_leafT_mat_model:
+  type: GFX
+  offset: 0x81103C00
+  size: 0x20
+
+obj_flower_leafT_gfx_model:
+  type: GFX
+  offset: 0x81103C20
+  size: 0x18

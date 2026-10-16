@@ -1,0 +1,62 @@
+#ifndef ASSETS_DATA_MODEL_INT_IKE_ISLAND_HAKO01_H
+#define ASSETS_DATA_MODEL_INT_IKE_ISLAND_HAKO01_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const char int_ike_island_hako01_pal[];
+extern const char int_ike_island_hakoin2_tex_rgb_ci4_pal[];
+extern const char int_ike_island_hakoin3_tex_rgb_ci4_pal[];
+extern const char int_ike_island_hakoin5_tex_rgb_ci4_pal[];
+extern const char int_ike_island_hakotop3_tex_txt[];
+extern const char int_ike_island_hakotop1_tex_txt[];
+extern const char int_ike_island_hakotop2_tex_txt[];
+extern const char int_ike_island_hakoin4_tex_txt[];
+extern const char int_ike_island_hakokagi2_tex_txt[];
+extern const char int_ike_island_hakokagi1_tex_txt[];
+extern const char int_ike_island_hakoside1_tex_txt[];
+extern const char int_ike_island_hakoin1_tex_txt[];
+extern const char int_ike_island_hakoin2_tex_txt[];
+extern const char int_ike_island_hakoin3_tex_txt[];
+extern const char int_ike_island_hakoin5_tex_txt[];
+extern const char int_ike_island_hako01_v[];
+extern const char int_ike_island_hako01_on_model[];
+extern const char int_ike_island_hako01_in3_off_model[];
+extern const char int_ike_island_hako01_in2_off_model[];
+extern const char int_ike_island_hako01_in1_off_model[];
+extern const char int_ike_island_hako01_top_model[];
+extern const char cKF_ba_r_int_ike_island_hako01[];
+extern const char cKF_ba_r_int_ike_island_hako02[];
+extern const char cKF_bs_r_int_ike_island_hako01[];
+
+#define int_ike_island_hako01_pal_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hako01_pal"
+#define int_ike_island_hakoin2_tex_rgb_ci4_pal_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakoin2_tex_rgb_ci4_pal"
+#define int_ike_island_hakoin3_tex_rgb_ci4_pal_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakoin3_tex_rgb_ci4_pal"
+#define int_ike_island_hakoin5_tex_rgb_ci4_pal_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakoin5_tex_rgb_ci4_pal"
+#define int_ike_island_hakotop3_tex_txt_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakotop3_tex_txt"
+#define int_ike_island_hakotop1_tex_txt_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakotop1_tex_txt"
+#define int_ike_island_hakotop2_tex_txt_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakotop2_tex_txt"
+#define int_ike_island_hakoin4_tex_txt_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakoin4_tex_txt"
+#define int_ike_island_hakokagi2_tex_txt_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakokagi2_tex_txt"
+#define int_ike_island_hakokagi1_tex_txt_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakokagi1_tex_txt"
+#define int_ike_island_hakoside1_tex_txt_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakoside1_tex_txt"
+#define int_ike_island_hakoin1_tex_txt_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakoin1_tex_txt"
+#define int_ike_island_hakoin2_tex_txt_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakoin2_tex_txt"
+#define int_ike_island_hakoin3_tex_txt_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakoin3_tex_txt"
+#define int_ike_island_hakoin5_tex_txt_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hakoin5_tex_txt"
+#define int_ike_island_hako01_v_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hako01_v"
+#define int_ike_island_hako01_on_model_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hako01_on_model"
+#define int_ike_island_hako01_in3_off_model_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hako01_in3_off_model"
+#define int_ike_island_hako01_in2_off_model_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hako01_in2_off_model"
+#define int_ike_island_hako01_in1_off_model_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hako01_in1_off_model"
+#define int_ike_island_hako01_top_model_PATH "__OTR__data/model/int_ike_island_hako01/int_ike_island_hako01_top_model"
+#define cKF_ba_r_int_ike_island_hako01_PATH "__OTR__data/model/int_ike_island_hako01/cKF_ba_r_int_ike_island_hako01"
+#define cKF_ba_r_int_ike_island_hako02_PATH "__OTR__data/model/int_ike_island_hako01/cKF_ba_r_int_ike_island_hako02"
+#define cKF_bs_r_int_ike_island_hako01_PATH "__OTR__data/model/int_ike_island_hako01/cKF_bs_r_int_ike_island_hako01"
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

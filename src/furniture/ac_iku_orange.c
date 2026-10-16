@@ -1,5 +1,4 @@
-extern Gfx int_iku_orange_model_b_model[];
-extern Gfx int_iku_orange_model_a_model[];
+#include "assets/data/model/int_iku_orange.h"
 
 aFTR_PROFILE iam_iku_orange = {
 	int_iku_orange_model_b_model,

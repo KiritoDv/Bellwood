@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_seed_pal:
+  type: TEXTURE
+  offset: 0x81397C00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_seed_tex:
+  type: TEXTURE
+  offset: 0x81397C20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81397C00
+
+obj_shop_seed_v:
+  type: VTX
+  offset: 0x81397E20
+  count: 20
+
+obj_seed_mat_model:
+  type: GFX
+  offset: 0x81397F60
+  size: 0x48
+
+obj_seed_gfx_model:
+  type: GFX
+  offset: 0x81397FA8
+  size: 0x30

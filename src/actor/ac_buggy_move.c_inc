@@ -1,5 +1,4 @@
-extern cKF_Animation_R_c cKF_ba_r_obj_s_uranai;
-extern cKF_Animation_R_c cKF_ba_r_obj_w_uranai;
+#include "assets/data/model/obj_s_uranai.h"
 
 // clang-format off
 static Door_data_c aBGY_buggy_door_data = {

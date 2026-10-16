@@ -3,6 +3,7 @@
 #include "m_common_data.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/ef_moon01_00.h"
 
 static void eNight15Moon_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eNight15Moon_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -106,9 +107,6 @@ static void eNight15Moon_mv(eEC_Effect_c* effect, GAME* game) {
     effect->offset.x = 1.5f * sin;
     effect->offset.z = -1.5f * sin;
 }
-
-extern EVW_ANIME_DATA ef_moon01_00_evw_anime;
-extern Gfx ef_moon01_00_modelT[];
 
 static void eNight15Moon_dw(eEC_Effect_c* effect, GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;

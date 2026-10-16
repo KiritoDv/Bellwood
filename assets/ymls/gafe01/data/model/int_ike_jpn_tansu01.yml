@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_ike_jpn_tansu01_pal:
+  type: TEXTURE
+  offset: 0x81832500
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_jpn_tansu01_ura1_tex:
+  type: TEXTURE
+  offset: 0x81832520
+  format: CI4
+  width: 32
+  height: 24
+  source_encoding: gx
+  tlut: 0x81832500
+
+int_ike_jpn_tansu01_hikido1_tex:
+  type: TEXTURE
+  offset: 0x818326A0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81832500
+
+int_ike_jpn_tansu01_ura2_tex:
+  type: TEXTURE
+  offset: 0x818328A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81832500
+
+int_ike_jpn_tansu01_hikidasi1_tex:
+  type: TEXTURE
+  offset: 0x818329A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81832500
+
+int_ike_jpn_tansu01_tobira1_tex:
+  type: TEXTURE
+  offset: 0x81832A20
+  format: CI4
+  width: 64
+  height: 24
+  source_encoding: gx
+  tlut: 0x81832500
+
+int_ike_jpn_tansu01_v:
+  type: VTX
+  offset: 0x81832D20
+  count: 60
+
+int_ike_jpn_tansu01_on_model:
+  type: GFX
+  offset: 0x818330E0
+  size: 0xE0
+
+int_ike_jpn_tansu01_onT_model:
+  type: GFX
+  offset: 0x818331C0
+  size: 0x68

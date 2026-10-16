@@ -1,0 +1,109 @@
+:config:
+  strict_declarations: true
+
+int_sum_tekin01_pal:
+  type: TEXTURE
+  offset: 0x81A69380
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_tekin01_front_tex:
+  type: TEXTURE
+  offset: 0x81A693A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A69380
+
+int_sum_tekin01_top_tex:
+  type: TEXTURE
+  offset: 0x81A694A0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A69380
+
+int_sum_tekin01_side_tex:
+  type: TEXTURE
+  offset: 0x81A696A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A69380
+
+int_sum_tekin01_tube_tex:
+  type: TEXTURE
+  offset: 0x81A697A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A69380
+
+int_sum_tekin01_stand_tex:
+  type: TEXTURE
+  offset: 0x81A698A0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A69380
+
+int_sum_tekin01_onlytube_tex:
+  type: TEXTURE
+  offset: 0x81A69920
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A69380
+
+int_sum_tekin01_koro_tex:
+  type: TEXTURE
+  offset: 0x81A69960
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A69380
+
+int_sum_tekin01_pedal_tex:
+  type: TEXTURE
+  offset: 0x81A699E0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A69380
+
+int_sum_tekin01_sen_tex:
+  type: TEXTURE
+  offset: 0x81A69A20
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A69380
+
+int_sum_tekin01_beat_tex:
+  type: TEXTURE
+  offset: 0x81A69AA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A69380
+
+int_sum_tekin01_v:
+  type: VTX
+  offset: 0x81A69BA0
+  count: 85
+
+int_sum_tekin01_onT_model:
+  type: GFX
+  offset: 0x81A6A0F0
+  size: 0x1A0

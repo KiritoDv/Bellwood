@@ -1,0 +1,133 @@
+:config:
+  strict_declarations: true
+
+goa_4_pal:
+  type: TEXTURE
+  offset: 0x81229860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+goa_4_eye1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81229880
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_eye2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81229980
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_eye3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81229A80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_eye4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81229B80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_eye5_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81229C80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_eye6_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81229D80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_eye7_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81229E80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_eye8_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81229F80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_mouth1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8122A080
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_mouth2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8122A180
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_mouth3_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8122A280
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_mouth4_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8122A380
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_mouth5_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8122A480
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_mouth6_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x8122A580
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+goa_4_tmem_txt:
+  type: AC:TEX_ATLAS
+  offset: 0x8122A680
+  size: 0x400
+  regions:
+    - { offset: 0x0, format: CI4, width: 16, height: 8 }
+    - { offset: 0x40, format: CI4, width: 32, height: 40 }
+    - { offset: 0x2C0, format: CI4, width: 32, height: 8 }
+    - { offset: 0x340, format: CI4, width: 16, height: 8 }
+    - { offset: 0x380, format: CI4, width: 16, height: 8 }
+    - { offset: 0x3C0, format: CI4, width: 16, height: 8 }

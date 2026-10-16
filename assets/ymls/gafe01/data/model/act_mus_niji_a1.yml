@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_niji_pal:
+  type: TEXTURE
+  offset: 0x816873E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_niji_body_txt:
+  type: TEXTURE
+  offset: 0x81687400
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x816873E0
+
+act_mus_niji_a1_v:
+  type: VTX
+  offset: 0x81687700
+  count: 62
+
+act_mus_niji_sakana_body_model:
+  type: GFX
+  offset: 0x81687AE0
+  size: 0x88
+
+act_mus_niji_sakana_head_model:
+  type: GFX
+  offset: 0x81687B68
+  size: 0x58
+
+cKF_bs_r_act_mus_niji_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x81687BE4
+  counts: { joints: 3 }

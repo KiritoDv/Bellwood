@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_w_rail_tex:
+  type: TEXTURE
+  offset: 0x81940760
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+mFM_grd_w_rail_2_tex:
+  type: TEXTURE
+  offset: 0x81940F60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+mFM_grd_w_rail_3_tex:
+  type: TEXTURE
+  offset: 0x81941760
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx

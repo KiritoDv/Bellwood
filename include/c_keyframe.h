@@ -5,6 +5,7 @@
 #include "PR/mbi.h"
 #include "game.h"
 #include "m_lib.h"
+#include "ac_asset.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -55,6 +56,8 @@ typedef struct animation_s {
     s16 pad;
     s16 frames;
 } cKF_Animation_R_c;
+
+#define cKF_ANIM_FRAMES(anim) (((cKF_Animation_R_c*)LOAD_ASSET(anim))->frames)
 
 enum {
     cKF_FRAMECONTROL_STOP,

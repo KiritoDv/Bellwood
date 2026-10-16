@@ -1,0 +1,123 @@
+:config:
+  strict_declarations: true
+
+int_tak_mooncar_pal:
+  type: TEXTURE
+  offset: 0x81A9B6C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_mooncar_bou1_tex:
+  type: TEXTURE
+  offset: 0x81A9B6E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9B6C0
+
+int_tak_mooncar_base_tex:
+  type: TEXTURE
+  offset: 0x81A9B760
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9B6C0
+
+int_tak_mooncar_body_tex:
+  type: TEXTURE
+  offset: 0x81A9B860
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9B6C0
+
+int_tak_mooncar_kasa_tex:
+  type: TEXTURE
+  offset: 0x81A9B960
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9B6C0
+
+int_tak_mooncar_se_tex:
+  type: TEXTURE
+  offset: 0x81A9B9E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9B6C0
+
+int_tak_mooncar_cover2_tex:
+  type: TEXTURE
+  offset: 0x81A9BA60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9B6C0
+
+int_tak_mooncar_ant_tex:
+  type: TEXTURE
+  offset: 0x81A9BAE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9B6C0
+
+int_tak_mooncar_bodyside_tex:
+  type: TEXTURE
+  offset: 0x81A9BB60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9B6C0
+
+int_tak_mooncar_tire2_tex:
+  type: TEXTURE
+  offset: 0x81A9BBE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9B6C0
+
+int_tak_mooncar_bou2_tex:
+  type: TEXTURE
+  offset: 0x81A9BC60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9B6C0
+
+int_tak_mooncar_kasa2_tex:
+  type: TEXTURE
+  offset: 0x81A9BCE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A9B6C0
+
+int_tak_mooncar_v:
+  type: VTX
+  offset: 0x81A9BD60
+  count: 81
+
+int_tak_mooncar_on_model:
+  type: GFX
+  offset: 0x81A9C270
+  size: 0x80
+
+int_tak_mooncar_onT_model:
+  type: GFX
+  offset: 0x81A9C2F0
+  size: 0x168

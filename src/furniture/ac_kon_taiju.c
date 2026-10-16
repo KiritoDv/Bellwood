@@ -1,5 +1,4 @@
-extern Gfx int_kon_taiju_on_model[];
-extern Gfx int_kon_taiju_onT_model[];
+#include "assets/data/model/int_kon_taiju.h"
 
 aFTR_PROFILE iam_kon_taiju = {
 	int_kon_taiju_on_model,

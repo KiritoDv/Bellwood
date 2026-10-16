@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_kamakiri_pal:
+  type: TEXTURE
+  offset: 0x81265660
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_kamakiri:
+  type: TEXTURE
+  offset: 0x81265680
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81265660
+
+act_m_kamakiri_v:
+  type: VTX
+  offset: 0x81265880
+  count: 18
+
+act_m_kamakiri1T_model:
+  type: GFX
+  offset: 0x812659A0
+  size: 0x68
+
+act_m_kamakiri2_2T_model:
+  type: GFX
+  offset: 0x81265A08
+  size: 0x58

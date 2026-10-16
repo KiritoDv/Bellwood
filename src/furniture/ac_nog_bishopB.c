@@ -1,5 +1,4 @@
-extern Gfx int_nog_bishopB_model[];
-extern Gfx int_nog_bishopBT_model[];
+#include "assets/data/model/int_nog_bishopB.h"
 
 aFTR_PROFILE iam_nog_bishopB = {
 	int_nog_bishopB_model,

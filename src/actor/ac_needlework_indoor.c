@@ -4,6 +4,8 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/obj_shop_manekin.h"
+#include "assets/data/model/obj_shop_umb01.h"
 
 #define aNI_GET_ACTOR() (CLIP(needlework_indoor_clip) != NULL ? CLIP(needlework_indoor_clip)->needlework_indoor_actor_p : NULL)
 
@@ -157,8 +159,6 @@ static void Needlework_Indoor_Actor_dt(ACTOR* actorx, GAME* game) {
     aNI_FreeRam(actorx);
 }
 
-extern Gfx obj_shop_manekin_model[];
-
 static void aNI_DrawManekin(ACTOR* actorx, GAME* game) {
     NEEDLEWORK_INDOOR_ACTOR* actor = (NEEDLEWORK_INDOOR_ACTOR*)actorx;
     int i;
@@ -183,8 +183,6 @@ static void aNI_DrawManekin(ACTOR* actorx, GAME* game) {
         CLOSE_DISP(game->graph);
     }
 }
-
-extern Gfx obj_shop_umbmy_model[];
 
 static void aNI_DrawUmbrella(ACTOR* actorx, GAME* game) {
     NEEDLEWORK_INDOOR_ACTOR* actor = (NEEDLEWORK_INDOOR_ACTOR*)actorx;

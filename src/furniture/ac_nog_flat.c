@@ -1,4 +1,4 @@
-extern Gfx int_nog_flat_model[];
+#include "assets/data/model/int_nog_flat.h"
 
 aFTR_PROFILE iam_nog_flat = {
 	int_nog_flat_model,

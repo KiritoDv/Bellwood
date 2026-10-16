@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_sum_liccalowtable_pal:
+  type: TEXTURE
+  offset: 0x81A19D40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_liccalowtable_top_tex:
+  type: TEXTURE
+  offset: 0x81A19D60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A19D40
+
+int_sum_liccalowtable_side_tex:
+  type: TEXTURE
+  offset: 0x81A19F60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A19D40
+
+int_sum_liccalowtable_leg_tex:
+  type: TEXTURE
+  offset: 0x81A1A060
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A19D40
+
+int_sum_liccalowtable_shelf_tex:
+  type: TEXTURE
+  offset: 0x81A1A160
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A19D40
+
+int_sum_liccalowtable_v:
+  type: VTX
+  offset: 0x81A1A260
+  count: 52
+
+int_sum_liccalowtable_on_model:
+  type: GFX
+  offset: 0x81A1A5A0
+  size: 0x58
+
+int_sum_liccalowtable_onT_model:
+  type: GFX
+  offset: 0x81A1A5F8
+  size: 0xD8

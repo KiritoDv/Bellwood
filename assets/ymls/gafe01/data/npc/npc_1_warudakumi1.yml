@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_warudakumi1:
+  type: AC:NPC_ANIM
+  offset: 0x8131F224
+  joints: 26
+  counts: { flags: 26, data: 369, keys: 50, fixed: 31, eye_seq: 12, mouth_seq: 12 }

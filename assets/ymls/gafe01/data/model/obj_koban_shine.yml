@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+obj_koban_shine_1:
+  type: TEXTURE
+  offset: 0x8137A450
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: n64
+
+obj_koban_shine_2:
+  type: TEXTURE
+  offset: 0x8137A4D0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: n64
+
+obj_koban_shine_v:
+  type: VTX
+  offset: 0x8137A6D0
+  count: 12
+
+obj_koban_shine_modelT:
+  type: GFX
+  offset: 0x8137A790
+  size: 0x100

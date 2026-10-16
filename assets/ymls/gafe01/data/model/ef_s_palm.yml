@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+ef_s_palm_leaf_modeset:
+  type: GFX
+  offset: 0x8164FCD8
+  size: 0x38
+
+ef_s_palm_trunk_modeset:
+  type: GFX
+  offset: 0x8164FD10
+  size: 0x28

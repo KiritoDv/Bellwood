@@ -1,0 +1,116 @@
+:config:
+  strict_declarations: true
+
+int_nog_mino_pal:
+  type: TEXTURE
+  offset: 0x81909300
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_mino_glass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81909320
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_mino_musi_tex_txt:
+  type: TEXTURE
+  offset: 0x81909340
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81909300
+
+int_nog_mino_body_tex_txt:
+  type: TEXTURE
+  offset: 0x819093C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81909300
+
+int_nog_mino_base_tex_txt:
+  type: TEXTURE
+  offset: 0x819094C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81909300
+
+int_nog_mino_top_tex_txt:
+  type: TEXTURE
+  offset: 0x81909540
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81909300
+
+int_nog_mino_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81909740
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81909300
+
+int_nog_mino_glass_tex_txt:
+  type: TEXTURE
+  offset: 0x81909940
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81909320
+
+int_nog_mino_v:
+  type: VTX
+  offset: 0x81909A40
+  count: 68
+
+int_nog_mino_musi_model:
+  type: GFX
+  offset: 0x81909E80
+  size: 0x60
+
+int_nog_mino_side_model:
+  type: GFX
+  offset: 0x81909EE0
+  size: 0x68
+
+int_nog_mino_komado_model:
+  type: GFX
+  offset: 0x81909F48
+  size: 0x58
+
+int_nog_mino_glass_model:
+  type: GFX
+  offset: 0x81909FA0
+  size: 0x68
+
+int_nog_mino_base_model:
+  type: GFX
+  offset: 0x8190A008
+  size: 0xA0
+
+int_nog_mino_body_model:
+  type: GFX
+  offset: 0x8190A0A8
+  size: 0x68
+
+cKF_ba_r_int_nog_mino:
+  type: AC:CKF_ANIMATION
+  offset: 0x8190A170
+  joints: 7
+  counts: { flags: 7, data: 18, keys: 1, fixed: 23 }
+
+cKF_bs_r_int_nog_mino:
+  type: AC:CKF_SKELETON
+  offset: 0x8190A1D8
+  counts: { joints: 7 }

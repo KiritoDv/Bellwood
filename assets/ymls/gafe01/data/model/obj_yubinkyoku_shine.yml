@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+rom_yubinkyoku_mado_tex:
+  type: TEXTURE
+  offset: 0x8137A890
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: n64
+
+rom_yubinkyoku_waku_tex:
+  type: TEXTURE
+  offset: 0x8137A910
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: n64
+
+obj_yubinkyoku_shine_v:
+  type: VTX
+  offset: 0x8137AB10
+  count: 15
+
+obj_yubinkyoku_shine_modelT:
+  type: GFX
+  offset: 0x8137AC00
+  size: 0xF8

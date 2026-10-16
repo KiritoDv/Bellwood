@@ -1,7 +1,4 @@
-extern Gfx obj_e_yatai_l_modelT[];
-extern Gfx obj_e_yatai_r_modelT[];
-extern Gfx obj_e_yatai_l_model[];
-extern Gfx obj_e_yatai_r_model[];
+#include "assets/data/model/obj_e_yatai_l.h"
 
 static void aYAT_actor_draw(ACTOR* actor, GAME* game) {
     static bIT_ShadowData_c* shadow_data[2] = { &aYAT_shadow_data_l, &aYAT_shadow_data_r };

@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+ef_w_cedar_leaf_modeset:
+  type: GFX
+  offset: 0x816575C0
+  size: 0x38
+
+ef_w_cedar_trunk_modeset:
+  type: GFX
+  offset: 0x816575F8
+  size: 0x28
+
+ef_w_cedar_light_modeset:
+  type: GFX
+  offset: 0x81657620
+  size: 0x38

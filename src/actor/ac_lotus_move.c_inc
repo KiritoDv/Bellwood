@@ -1,4 +1,4 @@
-extern cKF_Animation_R_c cKF_ba_r_obj_s_lotus;
+#include "assets/data/model/obj_s_lotus.h"
 
 static int aLOT_getPalNo() {
     static int flower_pal_idx_table[18] = { 8, 8, 8, 0, 1, 1, 1, 2, 2, 3, 4, 5, 6, 7, 8, 8, 8, 8 };

@@ -1,4 +1,4 @@
-extern Gfx int_kon_isi02_on_model[];
+#include "assets/data/model/int_kon_isi02.h"
 
 aFTR_PROFILE iam_kon_isi02 = {
 	int_kon_isi02_on_model,

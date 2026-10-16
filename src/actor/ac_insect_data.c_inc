@@ -1,167 +1,44 @@
-extern Gfx act_m_abura1_1T_model[];
-extern Gfx act_m_abura1_2T_model[];
-extern Gfx act_m_abura1_1T_model[];
-extern Gfx act_m_abura2_2T_model[];
-extern Gfx act_m_akiakane1_1T_model[];
-extern Gfx act_m_akiakane1_2T_model[];
-extern Gfx act_m_akiakane1_1T_model[];
-extern Gfx act_m_akiakane2_2T_model[];
-extern Gfx act_m_danna1T_model[];
-extern Gfx act_m_danna1T_model[];
-extern Gfx act_m_danna2T_model[];
-extern Gfx act_m_danna2T_model[];
-extern Gfx act_m_genji2_a_model[];
-extern Gfx act_m_genji2_b_model[];
-extern Gfx act_m_genji2_c_model[];
-extern Gfx act_m_genji2_d_model[];
-extern Gfx act_m_ginyanma1_1T_model[];
-extern Gfx act_m_ginyanma1_2T_model[];
-extern Gfx act_m_ginyanma1_1T_model[];
-extern Gfx act_m_ginyanma2_2T_model[];
-extern Gfx act_m_higurashi1_1T_model[];
-extern Gfx act_m_higurashi1_2T_model[];
-extern Gfx act_m_higurashi1_1T_model[];
-extern Gfx act_m_higurashi2_2T_model[];
-extern Gfx act_m_hirata1T_model[];
-extern Gfx act_m_hirata1T_model[];
-extern Gfx act_m_hirata2T_model[];
-extern Gfx act_m_hirata2T_model[];
-extern Gfx act_m_kabuto1T_model[];
-extern Gfx act_m_kabuto1T_model[];
-extern Gfx act_m_kabuto2T_model[];
-extern Gfx act_m_kabuto2T_model[];
-extern Gfx act_m_kamakiri1T_model[];
-extern Gfx act_m_kamakiri1T_model[];
-extern Gfx act_m_kamakiri1T_model[];
-extern Gfx act_m_kamakiri2_2T_model[];
-extern Gfx act_m_kanabun1T_model[];
-extern Gfx act_m_kanabun1T_model[];
-extern Gfx act_m_kanabun2T_model[];
-extern Gfx act_m_kanabun2T_model[];
-extern Gfx act_m_kiageha1T_model[];
-extern Gfx act_m_kiageha1T_model[];
-extern Gfx act_m_kiageha2T_model[];
-extern Gfx act_m_kiageha2T_model[];
-extern Gfx act_m_kirigirisu1T_model[];
-extern Gfx act_m_kirigirisu1T_model[];
-extern Gfx act_m_kirigirisu1T_model[];
-extern Gfx act_m_kirigirisu2_2T_model[];
-extern Gfx act_m_koorogi1T_model[];
-extern Gfx act_m_koorogi1T_model[];
-extern Gfx act_m_koorogi1T_model[];
-extern Gfx act_m_koorogi1T_model[];
-extern Gfx act_m_hachi1_1T_model[];
-extern Gfx act_m_hachi1_2T_model[];
-extern Gfx act_m_hachi1_1T_model[];
-extern Gfx act_m_hachi2_2T_model[];
-extern Gfx act_m_matumushi1T_model[];
-extern Gfx act_m_matumushi1T_model[];
-extern Gfx act_m_matumushi1T_model[];
-extern Gfx act_m_matumushi1T_model[];
-extern Gfx act_m_minmin1_1T_model[];
-extern Gfx act_m_minmin1_2T_model[];
-extern Gfx act_m_minmin1_1T_model[];
-extern Gfx act_m_minmin2_2T_model[];
-extern Gfx act_m_monki1T_model[];
-extern Gfx act_m_monki1T_model[];
-extern Gfx act_m_monki2T_model[];
-extern Gfx act_m_monki2T_model[];
-extern Gfx act_m_monshiro1T_model[];
-extern Gfx act_m_monshiro1T_model[];
-extern Gfx act_m_monshiro2T_model[];
-extern Gfx act_m_monshiro2T_model[];
-extern Gfx act_m_nanahoshi1T_model[];
-extern Gfx act_m_nanahoshi1T_model[];
-extern Gfx act_m_nanahoshi2T_model[];
-extern Gfx act_m_nanahoshi2T_model[];
-extern Gfx act_m_ohmurasaki1T_model[];
-extern Gfx act_m_ohmurasaki1T_model[];
-extern Gfx act_m_ohmurasaki2T_model[];
-extern Gfx act_m_ohmurasaki2T_model[];
-extern Gfx act_m_oniyanma1_1T_model[];
-extern Gfx act_m_oniyanma1_2T_model[];
-extern Gfx act_m_oniyanma1_1T_model[];
-extern Gfx act_m_oniyanma2_2T_model[];
-extern Gfx act_m_shiokara1_1T_model[];
-extern Gfx act_m_shiokara1_2T_model[];
-extern Gfx act_m_shiokara1_1T_model[];
-extern Gfx act_m_shiokara2_2T_model[];
-extern Gfx act_m_suzumushi1T_model[];
-extern Gfx act_m_suzumushi1T_model[];
-extern Gfx act_m_suzumushi1T_model[];
-extern Gfx act_m_suzumushi2_2T_model[];
-extern Gfx act_m_syouryou1T_model[];
-extern Gfx act_m_syouryou1T_model[];
-extern Gfx act_m_syouryou1T_model[];
-extern Gfx act_m_syouryou2_2T_model[];
-extern Gfx act_m_tamamushi1T_model[];
-extern Gfx act_m_tamamushi1T_model[];
-extern Gfx act_m_tamamushi2T_model[];
-extern Gfx act_m_tamamushi2T_model[];
-extern Gfx act_m_gomadara1T_model[];
-extern Gfx act_m_gomadara1T_model[];
-extern Gfx act_m_gomadara2T_model[];
-extern Gfx act_m_gomadara2T_model[];
-extern Gfx act_m_tentou1T_model[];
-extern Gfx act_m_tentou1T_model[];
-extern Gfx act_m_tentou2T_model[];
-extern Gfx act_m_tentou2T_model[];
-extern Gfx act_m_tonosama1T_model[];
-extern Gfx act_m_tonosama1T_model[];
-extern Gfx act_m_tonosama1T_model[];
-extern Gfx act_m_tonosama2_2T_model[];
-extern Gfx act_m_tukutuku1_1T_model[];
-extern Gfx act_m_tukutuku1_2T_model[];
-extern Gfx act_m_tukutuku1_1T_model[];
-extern Gfx act_m_tukutuku2_2T_model[];
-extern Gfx act_m_nokogiri1T_model[];
-extern Gfx act_m_nokogiri1T_model[];
-extern Gfx act_m_nokogiri2T_model[];
-extern Gfx act_m_nokogiri2T_model[];
-extern Gfx act_m_miyama1T_model[];
-extern Gfx act_m_miyama1T_model[];
-extern Gfx act_m_miyama2T_model[];
-extern Gfx act_m_miyama2T_model[];
-extern Gfx act_m_okuwa1T_model[];
-extern Gfx act_m_okuwa1T_model[];
-extern Gfx act_m_okuwa2T_model[];
-extern Gfx act_m_okuwa2T_model[];
-extern Gfx act_m_amenbo1T_model[];
-extern Gfx act_m_amenbo1T_model[];
-extern Gfx act_m_amenbo1T_model[];
-extern Gfx act_m_amenbo2T_model[];
-extern Gfx act_m_ariT_model[];
-extern Gfx act_m_ariT_model[];
-extern Gfx act_m_ariT_model[];
-extern Gfx act_m_ariT_model[];
-extern Gfx act_m_dango2T_model[];
-extern Gfx act_m_dango2T_model[];
-extern Gfx act_m_dango1T_model[];
-extern Gfx act_m_dango1T_model[];
-extern Gfx act_m_ka1T_model[];
-extern Gfx act_m_ka2_2T_model[];
-extern Gfx act_m_ka1T_model[];
-extern Gfx act_m_ka2_1T_model[];
-extern Gfx act_m_keraT_model[];
-extern Gfx act_m_keraT_model[];
-extern Gfx act_m_kumo1_2T_model[];
-extern Gfx act_m_kumo1_2T_model[];
-extern Gfx act_m_kumo1_1T_model[];
-extern Gfx act_m_kumo2T_model[];
-extern Gfx act_m_maimaiT_model[];
-extern Gfx act_m_maimaiT_model[];
-extern Gfx act_m_maimaiT_model[];
-extern Gfx act_m_maimaiT_model[];
-extern Gfx act_m_mino1_1T_model[];
-extern Gfx act_m_mino1_1T_model[];
-extern Gfx act_m_mino1_1T_model[];
-extern Gfx act_m_mino2T_model[];
-extern Gfx act_m_mino1_2T_model[];
-extern Gfx act_m_mino1_2T_model[];
-extern Gfx act_m_hitodama_a_model[];
-extern Gfx act_m_hitodama_a_model[];
-extern Gfx act_m_hitodama_b_model[];
-extern Gfx act_m_hitodama_b_model[];
+#include "assets/data/model/act_m_abura.h"
+#include "assets/data/model/act_m_akiakane.h"
+#include "assets/data/model/act_m_amenbo.h"
+#include "assets/data/model/act_m_ari.h"
+#include "assets/data/model/act_m_dango.h"
+#include "assets/data/model/act_m_danna.h"
+#include "assets/data/model/act_m_genji2.h"
+#include "assets/data/model/act_m_ginyanma.h"
+#include "assets/data/model/act_m_gomadara.h"
+#include "assets/data/model/act_m_hachi.h"
+#include "assets/data/model/act_m_higurashi.h"
+#include "assets/data/model/act_m_hirata.h"
+#include "assets/data/model/act_m_hitodama.h"
+#include "assets/data/model/act_m_ka.h"
+#include "assets/data/model/act_m_kabuto.h"
+#include "assets/data/model/act_m_kamakiri.h"
+#include "assets/data/model/act_m_kanabun.h"
+#include "assets/data/model/act_m_kera.h"
+#include "assets/data/model/act_m_kiageha.h"
+#include "assets/data/model/act_m_kirigirisu.h"
+#include "assets/data/model/act_m_koorogi.h"
+#include "assets/data/model/act_m_kumo.h"
+#include "assets/data/model/act_m_maimai.h"
+#include "assets/data/model/act_m_matmushi.h"
+#include "assets/data/model/act_m_minmin.h"
+#include "assets/data/model/act_m_mino.h"
+#include "assets/data/model/act_m_miyama.h"
+#include "assets/data/model/act_m_monki.h"
+#include "assets/data/model/act_m_monshiro.h"
+#include "assets/data/model/act_m_nanahoshi.h"
+#include "assets/data/model/act_m_nokogiri.h"
+#include "assets/data/model/act_m_ohmurasaki.h"
+#include "assets/data/model/act_m_okuwa.h"
+#include "assets/data/model/act_m_oniyanma.h"
+#include "assets/data/model/act_m_shiokara.h"
+#include "assets/data/model/act_m_suzumushi.h"
+#include "assets/data/model/act_m_syouryou.h"
+#include "assets/data/model/act_m_tamamushi.h"
+#include "assets/data/model/act_m_tentou.h"
+#include "assets/data/model/act_m_tonosama.h"
+#include "assets/data/model/act_m_tukutuku.h"
 
 // clang-format off
 

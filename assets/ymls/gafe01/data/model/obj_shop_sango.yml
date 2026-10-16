@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_sango_pal:
+  type: TEXTURE
+  offset: 0x813978E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_sango_tex:
+  type: TEXTURE
+  offset: 0x81397900
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813978E0
+
+obj_shop_sango_v:
+  type: VTX
+  offset: 0x81397B00
+  count: 8
+
+obj_sangoT_mat_model:
+  type: GFX
+  offset: 0x81397B80
+  size: 0x48
+
+obj_sangoT_gfx_model:
+  type: GFX
+  offset: 0x81397BC8
+  size: 0x20

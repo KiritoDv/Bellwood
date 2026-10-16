@@ -1,0 +1,32 @@
+#ifndef ASSETS_DATA_MODEL_INT_SUM_RATAN_TABLE01_H
+#define ASSETS_DATA_MODEL_INT_SUM_RATAN_TABLE01_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const char int_sum_ratan_table01_pal[];
+extern const char int_sum_ratan_table01_grass_tex_rgb_ci4_pal[];
+extern const char int_sum_ratan_table01_front_tex[];
+extern const char int_sum_ratan_table01_side_tex[];
+extern const char int_sum_ratan_table01_top_tex[];
+extern const char int_sum_ratan_table01_grass_tex[];
+extern const char int_sum_ratan_table01_v[];
+extern const char int_sum_ratan_table01_onT_model[];
+extern const char int_sum_ratan_table01_evwT_model[];
+
+#define int_sum_ratan_table01_pal_PATH "__OTR__data/model/int_sum_ratan_table01/int_sum_ratan_table01_pal"
+#define int_sum_ratan_table01_grass_tex_rgb_ci4_pal_PATH "__OTR__data/model/int_sum_ratan_table01/int_sum_ratan_table01_grass_tex_rgb_ci4_pal"
+#define int_sum_ratan_table01_front_tex_PATH "__OTR__data/model/int_sum_ratan_table01/int_sum_ratan_table01_front_tex"
+#define int_sum_ratan_table01_side_tex_PATH "__OTR__data/model/int_sum_ratan_table01/int_sum_ratan_table01_side_tex"
+#define int_sum_ratan_table01_top_tex_PATH "__OTR__data/model/int_sum_ratan_table01/int_sum_ratan_table01_top_tex"
+#define int_sum_ratan_table01_grass_tex_PATH "__OTR__data/model/int_sum_ratan_table01/int_sum_ratan_table01_grass_tex"
+#define int_sum_ratan_table01_v_PATH "__OTR__data/model/int_sum_ratan_table01/int_sum_ratan_table01_v"
+#define int_sum_ratan_table01_onT_model_PATH "__OTR__data/model/int_sum_ratan_table01/int_sum_ratan_table01_onT_model"
+#define int_sum_ratan_table01_evwT_model_PATH "__OTR__data/model/int_sum_ratan_table01/int_sum_ratan_table01_evwT_model"
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

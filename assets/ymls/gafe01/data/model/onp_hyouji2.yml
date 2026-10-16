@@ -1,0 +1,112 @@
+:config:
+  strict_declarations: true
+
+onp_win_play_tex:
+  type: TEXTURE
+  offset: 0x814A2500
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+onp_win_erase_tex:
+  type: TEXTURE
+  offset: 0x814A2900
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+x:
+  type: TEXTURE
+  offset: 0x814A2D00
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+y:
+  type: TEXTURE
+  offset: 0x814A2D80
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+start2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A2E00
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+start_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A3200
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+onp__x2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A3600
+  format: IA8
+  width: 16
+  height: 32
+  source_encoding: gx
+
+onp__x_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A3800
+  format: IA8
+  width: 16
+  height: 32
+  source_encoding: gx
+
+onp__y2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A3A00
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+onp__y_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x814A3C00
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+onp_hyouji_v:
+  type: VTX
+  offset: 0x814A3E00
+  count: 28
+
+onp_win_rmoji_model:
+  type: GFX
+  offset: 0x814A3FC0
+  size: 0x60
+
+onp_win_zT_model:
+  type: GFX
+  offset: 0x814A4020
+  size: 0x50
+
+onp_win_mojiT_model:
+  type: GFX
+  offset: 0x814A4070
+  size: 0x68
+
+onp_win_rT_model:
+  type: GFX
+  offset: 0x814A40D8
+  size: 0x50
+
+onp_win_sT_model:
+  type: GFX
+  offset: 0x814A4128
+  size: 0x50

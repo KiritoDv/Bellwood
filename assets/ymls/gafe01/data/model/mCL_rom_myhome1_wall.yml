@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+mCL_rom_myhome1_wall_v:
+  type: VTX
+  offset: 0x813E6CF0
+  count: 16
+
+mCL_rom_myhome1_wall_model:
+  type: GFX
+  offset: 0x813E6DF0
+  size: 0x80

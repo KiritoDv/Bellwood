@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+lat_fusen_TXT:
+  type: TEXTURE
+  offset: 0x813C0780
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+lat_hani_v:
+  type: VTX
+  offset: 0x813C0800
+  count: 4
+
+lat_hani_senT_model:
+  type: GFX
+  offset: 0x813C0840
+  size: 0x30

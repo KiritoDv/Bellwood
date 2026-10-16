@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_naegi_pal:
+  type: TEXTURE
+  offset: 0x81396080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_naegi_tex:
+  type: TEXTURE
+  offset: 0x813960A0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81396080
+
+obj_shop_naegi_v:
+  type: VTX
+  offset: 0x813962A0
+  count: 27
+
+obj_naegiT_mat_model:
+  type: GFX
+  offset: 0x81396450
+  size: 0x48
+
+obj_naegiT_gfx_model:
+  type: GFX
+  offset: 0x81396498
+  size: 0x40

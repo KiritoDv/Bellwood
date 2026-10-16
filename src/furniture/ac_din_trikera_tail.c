@@ -1,5 +1,4 @@
-extern Gfx int_din_trikera_tailT_model[];
-extern Gfx int_din_trikera_tail_model[];
+#include "assets/data/model/int_din_trikera_tail.h"
 
 aFTR_PROFILE iam_din_trikera_tail = {
 	int_din_trikera_tailT_model,

@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f13_ugui_pal:
+  type: TEXTURE
+  offset: 0x81245AA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f13_ugui_tex:
+  type: TEXTURE
+  offset: 0x81245AC0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81245AA0
+
+act_f13_ugui_a_v:
+  type: VTX
+  offset: 0x81245DC0
+  count: 9
+
+act_f13_ugui_aT_model:
+  type: GFX
+  offset: 0x81245E50
+  size: 0x68
+
+act_f13_ugui_b_v:
+  type: VTX
+  offset: 0x81245EB8
+  count: 9
+
+act_f13_ugui_bT_model:
+  type: GFX
+  offset: 0x81245F48
+  size: 0x68
+
+act_f13_ugui_c_v:
+  type: VTX
+  offset: 0x81245FB0
+  count: 9
+
+act_f13_ugui_cT_model:
+  type: GFX
+  offset: 0x81246040
+  size: 0x68

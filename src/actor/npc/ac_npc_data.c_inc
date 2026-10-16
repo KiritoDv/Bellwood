@@ -1,249 +1,247 @@
-extern aNPC_Animation_c cKF_ba_r_npc_1_run1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_walk1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_walk_ki1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_walk_do1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_walk_ai1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_wait1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_wait_ki1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_wait_do1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_wait_ai1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_wait_nemu1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_aisatu1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_aisatu2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_aisatu3;
-extern aNPC_Animation_c cKF_ba_r_npc_1_aisatu4;
-extern aNPC_Animation_c cKF_ba_r_npc_1_guratuku1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_otiru1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_otiru2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_mogaku1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_deru1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_deru2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_walk1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_wait1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_open1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_go_out1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_umb_open1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_umb_close1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_transfer1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_trans_wait1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_get1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_get_pull1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_get_pull_wait1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_get_putaway1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_get_eat1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_get_change1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_get_return1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_transfer_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_trans_wait_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_get_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_get_pull_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_get_pull_wait_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_get_putaway_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_get_return_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_estimate_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_contract1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_contract2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_contract3;
-extern aNPC_Animation_c cKF_ba_r_npc_1_not_contract1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_fly1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_flyaway1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_delivery1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_kyoro1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_landing1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_landing2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_landing3;
-extern aNPC_Animation_c cKF_ba_r_npc_1_open_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_sitdown_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_sitdown_wait_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_standup_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_open_d2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_to_deck_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_keitai_on1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_keitai_talk1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_keitai_talk2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_keitai_off1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_wait_e1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_ensou_e1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_banzai1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_clap1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_kokkuri_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_kokkuri_d2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_saisen1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_omairi1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_sitdown_wait1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_sitdown_drink1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_sitdown_clap1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_dance1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_kuisinbo1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_sanbasi1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_wait_r1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_appear1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_go_ug1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_intro1_a;
-extern aNPC_Animation_c cKF_ba_r_npc_1_intro1_b;
-extern aNPC_Animation_c cKF_ba_r_npc_1_taisou1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_taisou2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_taisou3_a;
-extern aNPC_Animation_c cKF_ba_r_npc_1_taisou3_b;
-extern aNPC_Animation_c cKF_ba_r_npc_1_taisou4_a;
-extern aNPC_Animation_c cKF_ba_r_npc_1_taisou4_b;
-extern aNPC_Animation_c cKF_ba_r_npc_1_taisou5_a;
-extern aNPC_Animation_c cKF_ba_r_npc_1_taisou5_b;
-extern aNPC_Animation_c cKF_ba_r_npc_1_taisou6_a;
-extern aNPC_Animation_c cKF_ba_r_npc_1_taisou6_b;
-extern aNPC_Animation_c cKF_ba_r_npc_1_taisou7;
-extern aNPC_Animation_c cKF_ba_r_npc_1_kiduku1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_kiduku2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_cracker_wait1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_cracker_fire1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_cracker_run1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_cracker_count1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_warmup1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_ready1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_asihumi1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_kokeru1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_kokeru_getup1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_tired1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_tamakome1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_youi1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_don1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_tunahiki_aiko1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_tunahiki_yuri1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_tunahiki_furi1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hatafuri1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_tamahiroi1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_tamanage1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_getup_seg1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_getup_wait_seg1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_piku_seg1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_4haku_e1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_3haku_e1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_send_mail1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_turi_wait1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_misin1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_wipkogu1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_wipwait1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_wipwait2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_gstwait1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_gyafun1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_gyafun2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_tkykyoro1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_muka1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_muka2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_gaaan1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_gaaan2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_smile1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_smile2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_ha1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_ha2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_punpun1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_punpun2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_a1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_a2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_aseru1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_aseru2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_buruburu1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_buruburu2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_goukyu1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_goukyu2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_happy1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_happy2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hate1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hate2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hirameki1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hirameki2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hyuuu1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hyuuu2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_lovelove1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_lovelove2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_muuuuu1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_muuuuu2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_otikomu1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_otikomu2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_shituren1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_shituren2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_warudakumi1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_warudakumi2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_neboke1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_neboke2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_love1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_love2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_niko1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_musu1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_komari1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hate_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hate_f2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_ha_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_ha_f2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_happy_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_happy_f2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_aseru_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_aseru_f2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_muuuuu_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_muuuuu_f2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_lovelove_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_lovelove_f2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_a_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_a_f2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_smile_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_smile_f2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_komari_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_niko_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_musu_f1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hate_i1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hate_i2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_ha_i1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_ha_i2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_happy_i1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_happy_i2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_aseru_i1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_aseru_i2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_muuuuu_i1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_muuuuu_i2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_love_i1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_love_i2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_shituren_i1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_shituren_i2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_komari_i1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_niko_i1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_musu_i1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_smile_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_smile_d2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_gaaan_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_gaaan_d2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hirameki_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hirameki_d2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_ha_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_ha_d2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_musu_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_niko_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_komari_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hate_d1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hate_d2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_punpun_r1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_punpun_r2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_musu_r1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hyuuu_r1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_hyuuu_r2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_a_r1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_a_r2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_a2_r1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_akireru_r1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_akireru_r2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_matarou_r1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_matarou_r2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_gekido_r1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_gekido_r2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_ha_e1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_ha_e2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_keirei1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_kieeeei1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_kieeeei2;
-extern aNPC_Animation_c cKF_ba_r_npc_1_umbrella1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_utiwa_wait1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_tue1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_kutipaku1;
-extern aNPC_Animation_c cKF_ba_r_npc_1_kutipaku2;
+#include "assets/data/npc/npc_1_3haku_e1.h"
+#include "assets/data/npc/npc_1_4haku_e1.h"
+#include "assets/data/npc/npc_1_a1.h"
+#include "assets/data/npc/npc_1_a2.h"
+#include "assets/data/npc/npc_1_a2_r1.h"
+#include "assets/data/npc/npc_1_a_f1.h"
+#include "assets/data/npc/npc_1_a_f2.h"
+#include "assets/data/npc/npc_1_a_r1.h"
+#include "assets/data/npc/npc_1_a_r2.h"
+#include "assets/data/npc/npc_1_aisatu1.h"
+#include "assets/data/npc/npc_1_aisatu2.h"
+#include "assets/data/npc/npc_1_aisatu3.h"
+#include "assets/data/npc/npc_1_aisatu4.h"
+#include "assets/data/npc/npc_1_akireru_r1.h"
+#include "assets/data/npc/npc_1_akireru_r2.h"
+#include "assets/data/npc/npc_1_appear1.h"
+#include "assets/data/npc/npc_1_aseru1.h"
+#include "assets/data/npc/npc_1_aseru2.h"
+#include "assets/data/npc/npc_1_aseru_f1.h"
+#include "assets/data/npc/npc_1_aseru_f2.h"
+#include "assets/data/npc/npc_1_aseru_i1.h"
+#include "assets/data/npc/npc_1_aseru_i2.h"
+#include "assets/data/npc/npc_1_asihumi1.h"
+#include "assets/data/npc/npc_1_banzai1.h"
+#include "assets/data/npc/npc_1_buruburu1.h"
+#include "assets/data/npc/npc_1_buruburu2.h"
+#include "assets/data/npc/npc_1_clap1.h"
+#include "assets/data/npc/npc_1_contract1.h"
+#include "assets/data/npc/npc_1_contract2.h"
+#include "assets/data/npc/npc_1_contract3.h"
+#include "assets/data/npc/npc_1_cracker_count1.h"
+#include "assets/data/npc/npc_1_cracker_fire1.h"
+#include "assets/data/npc/npc_1_cracker_run1.h"
+#include "assets/data/npc/npc_1_cracker_wait1.h"
+#include "assets/data/npc/npc_1_dance1.h"
+#include "assets/data/npc/npc_1_delivery1.h"
+#include "assets/data/npc/npc_1_deru1.h"
+#include "assets/data/npc/npc_1_deru2.h"
+#include "assets/data/npc/npc_1_don1.h"
+#include "assets/data/npc/npc_1_ensou_e1.h"
+#include "assets/data/npc/npc_1_estimate_f1.h"
+#include "assets/data/npc/npc_1_fly1.h"
+#include "assets/data/npc/npc_1_flyaway1.h"
+#include "assets/data/npc/npc_1_gaaan1.h"
+#include "assets/data/npc/npc_1_gaaan2.h"
+#include "assets/data/npc/npc_1_gaaan_d1.h"
+#include "assets/data/npc/npc_1_gaaan_d2.h"
+#include "assets/data/npc/npc_1_gekido_r1.h"
+#include "assets/data/npc/npc_1_gekido_r2.h"
+#include "assets/data/npc/npc_1_get1.h"
+#include "assets/data/npc/npc_1_get_change1.h"
+#include "assets/data/npc/npc_1_get_eat1.h"
+#include "assets/data/npc/npc_1_get_f1.h"
+#include "assets/data/npc/npc_1_get_pull1.h"
+#include "assets/data/npc/npc_1_get_pull_f1.h"
+#include "assets/data/npc/npc_1_get_pull_wait1.h"
+#include "assets/data/npc/npc_1_get_pull_wait_f1.h"
+#include "assets/data/npc/npc_1_get_putaway1.h"
+#include "assets/data/npc/npc_1_get_putaway_f1.h"
+#include "assets/data/npc/npc_1_get_return1.h"
+#include "assets/data/npc/npc_1_get_return_f1.h"
+#include "assets/data/npc/npc_1_getup_seg1.h"
+#include "assets/data/npc/npc_1_getup_wait_seg1.h"
+#include "assets/data/npc/npc_1_go_out1.h"
+#include "assets/data/npc/npc_1_go_ug1.h"
+#include "assets/data/npc/npc_1_goukyu1.h"
+#include "assets/data/npc/npc_1_goukyu2.h"
+#include "assets/data/npc/npc_1_gstwait1.h"
+#include "assets/data/npc/npc_1_guratuku1.h"
+#include "assets/data/npc/npc_1_gyafun1.h"
+#include "assets/data/npc/npc_1_gyafun2.h"
+#include "assets/data/npc/npc_1_ha1.h"
+#include "assets/data/npc/npc_1_ha2.h"
+#include "assets/data/npc/npc_1_ha_d1.h"
+#include "assets/data/npc/npc_1_ha_d2.h"
+#include "assets/data/npc/npc_1_ha_e1.h"
+#include "assets/data/npc/npc_1_ha_e2.h"
+#include "assets/data/npc/npc_1_ha_f1.h"
+#include "assets/data/npc/npc_1_ha_f2.h"
+#include "assets/data/npc/npc_1_ha_i1.h"
+#include "assets/data/npc/npc_1_ha_i2.h"
+#include "assets/data/npc/npc_1_happy1.h"
+#include "assets/data/npc/npc_1_happy2.h"
+#include "assets/data/npc/npc_1_happy_f1.h"
+#include "assets/data/npc/npc_1_happy_f2.h"
+#include "assets/data/npc/npc_1_happy_i1.h"
+#include "assets/data/npc/npc_1_happy_i2.h"
+#include "assets/data/npc/npc_1_hatafuri1.h"
+#include "assets/data/npc/npc_1_hate1.h"
+#include "assets/data/npc/npc_1_hate2.h"
+#include "assets/data/npc/npc_1_hate_d1.h"
+#include "assets/data/npc/npc_1_hate_d2.h"
+#include "assets/data/npc/npc_1_hate_f1.h"
+#include "assets/data/npc/npc_1_hate_f2.h"
+#include "assets/data/npc/npc_1_hate_i1.h"
+#include "assets/data/npc/npc_1_hate_i2.h"
+#include "assets/data/npc/npc_1_hirameki1.h"
+#include "assets/data/npc/npc_1_hirameki2.h"
+#include "assets/data/npc/npc_1_hirameki_d1.h"
+#include "assets/data/npc/npc_1_hirameki_d2.h"
+#include "assets/data/npc/npc_1_hyuuu1.h"
+#include "assets/data/npc/npc_1_hyuuu2.h"
+#include "assets/data/npc/npc_1_hyuuu_r1.h"
+#include "assets/data/npc/npc_1_hyuuu_r2.h"
+#include "assets/data/npc/npc_1_intro1_a.h"
+#include "assets/data/npc/npc_1_intro1_b.h"
+#include "assets/data/npc/npc_1_keirei1.h"
+#include "assets/data/npc/npc_1_keitai_off1.h"
+#include "assets/data/npc/npc_1_keitai_on1.h"
+#include "assets/data/npc/npc_1_keitai_talk1.h"
+#include "assets/data/npc/npc_1_keitai_talk2.h"
+#include "assets/data/npc/npc_1_kiduku1.h"
+#include "assets/data/npc/npc_1_kiduku2.h"
+#include "assets/data/npc/npc_1_kieeeei1.h"
+#include "assets/data/npc/npc_1_kieeeei2.h"
+#include "assets/data/npc/npc_1_kokeru1.h"
+#include "assets/data/npc/npc_1_kokeru_getup1.h"
+#include "assets/data/npc/npc_1_kokkuri_d1.h"
+#include "assets/data/npc/npc_1_kokkuri_d2.h"
+#include "assets/data/npc/npc_1_komari1.h"
+#include "assets/data/npc/npc_1_komari_d1.h"
+#include "assets/data/npc/npc_1_komari_f1.h"
+#include "assets/data/npc/npc_1_komari_i1.h"
+#include "assets/data/npc/npc_1_kuisinbo1.h"
+#include "assets/data/npc/npc_1_kutipaku1.h"
+#include "assets/data/npc/npc_1_kutipaku2.h"
+#include "assets/data/npc/npc_1_kyoro1.h"
+#include "assets/data/npc/npc_1_landing1.h"
+#include "assets/data/npc/npc_1_landing2.h"
+#include "assets/data/npc/npc_1_landing3.h"
+#include "assets/data/npc/npc_1_love1.h"
+#include "assets/data/npc/npc_1_love2.h"
+#include "assets/data/npc/npc_1_love_i1.h"
+#include "assets/data/npc/npc_1_love_i2.h"
+#include "assets/data/npc/npc_1_lovelove1.h"
+#include "assets/data/npc/npc_1_lovelove2.h"
+#include "assets/data/npc/npc_1_lovelove_f1.h"
+#include "assets/data/npc/npc_1_lovelove_f2.h"
+#include "assets/data/npc/npc_1_matarou_r1.h"
+#include "assets/data/npc/npc_1_matarou_r2.h"
+#include "assets/data/npc/npc_1_misin1.h"
+#include "assets/data/npc/npc_1_mogaku1.h"
+#include "assets/data/npc/npc_1_muka1.h"
+#include "assets/data/npc/npc_1_muka2.h"
+#include "assets/data/npc/npc_1_musu1.h"
+#include "assets/data/npc/npc_1_musu_d1.h"
+#include "assets/data/npc/npc_1_musu_f1.h"
+#include "assets/data/npc/npc_1_musu_i1.h"
+#include "assets/data/npc/npc_1_musu_r1.h"
+#include "assets/data/npc/npc_1_muuuuu1.h"
+#include "assets/data/npc/npc_1_muuuuu2.h"
+#include "assets/data/npc/npc_1_muuuuu_f1.h"
+#include "assets/data/npc/npc_1_muuuuu_f2.h"
+#include "assets/data/npc/npc_1_muuuuu_i1.h"
+#include "assets/data/npc/npc_1_muuuuu_i2.h"
+#include "assets/data/npc/npc_1_neboke1.h"
+#include "assets/data/npc/npc_1_neboke2.h"
+#include "assets/data/npc/npc_1_niko1.h"
+#include "assets/data/npc/npc_1_niko_d1.h"
+#include "assets/data/npc/npc_1_niko_f1.h"
+#include "assets/data/npc/npc_1_niko_i1.h"
+#include "assets/data/npc/npc_1_not_contract1.h"
+#include "assets/data/npc/npc_1_omairi1.h"
+#include "assets/data/npc/npc_1_open1.h"
+#include "assets/data/npc/npc_1_open_d1.h"
+#include "assets/data/npc/npc_1_open_d2.h"
+#include "assets/data/npc/npc_1_otikomu1.h"
+#include "assets/data/npc/npc_1_otikomu2.h"
+#include "assets/data/npc/npc_1_otiru1.h"
+#include "assets/data/npc/npc_1_otiru2.h"
+#include "assets/data/npc/npc_1_piku_seg1.h"
+#include "assets/data/npc/npc_1_punpun1.h"
+#include "assets/data/npc/npc_1_punpun2.h"
+#include "assets/data/npc/npc_1_punpun_r1.h"
+#include "assets/data/npc/npc_1_punpun_r2.h"
+#include "assets/data/npc/npc_1_ready1.h"
+#include "assets/data/npc/npc_1_run1.h"
+#include "assets/data/npc/npc_1_saisen1.h"
+#include "assets/data/npc/npc_1_sanbasi1.h"
+#include "assets/data/npc/npc_1_send_mail1.h"
+#include "assets/data/npc/npc_1_shituren1.h"
+#include "assets/data/npc/npc_1_shituren2.h"
+#include "assets/data/npc/npc_1_shituren_i1.h"
+#include "assets/data/npc/npc_1_shituren_i2.h"
+#include "assets/data/npc/npc_1_sitdown_clap1.h"
+#include "assets/data/npc/npc_1_sitdown_d1.h"
+#include "assets/data/npc/npc_1_sitdown_drink1.h"
+#include "assets/data/npc/npc_1_sitdown_happy1.h"
+#include "assets/data/npc/npc_1_sitdown_wait_d1.h"
+#include "assets/data/npc/npc_1_smile1.h"
+#include "assets/data/npc/npc_1_smile2.h"
+#include "assets/data/npc/npc_1_smile_d1.h"
+#include "assets/data/npc/npc_1_smile_d2.h"
+#include "assets/data/npc/npc_1_smile_f1.h"
+#include "assets/data/npc/npc_1_smile_f2.h"
+#include "assets/data/npc/npc_1_standup_d1.h"
+#include "assets/data/npc/npc_1_taisou1.h"
+#include "assets/data/npc/npc_1_taisou2.h"
+#include "assets/data/npc/npc_1_taisou3_a.h"
+#include "assets/data/npc/npc_1_taisou3_b.h"
+#include "assets/data/npc/npc_1_taisou4_a.h"
+#include "assets/data/npc/npc_1_taisou4_b.h"
+#include "assets/data/npc/npc_1_taisou5_a.h"
+#include "assets/data/npc/npc_1_taisou5_b.h"
+#include "assets/data/npc/npc_1_taisou6_a.h"
+#include "assets/data/npc/npc_1_taisou6_b.h"
+#include "assets/data/npc/npc_1_taisou7.h"
+#include "assets/data/npc/npc_1_tamahiroi1.h"
+#include "assets/data/npc/npc_1_tamakome1.h"
+#include "assets/data/npc/npc_1_tamanage1.h"
+#include "assets/data/npc/npc_1_tired1.h"
+#include "assets/data/npc/npc_1_tkukoro1.h"
+#include "assets/data/npc/npc_1_to_deck_d1.h"
+#include "assets/data/npc/npc_1_trans_wait1.h"
+#include "assets/data/npc/npc_1_trans_wait_f1.h"
+#include "assets/data/npc/npc_1_transfer1.h"
+#include "assets/data/npc/npc_1_transfer_f1.h"
+#include "assets/data/npc/npc_1_tue1.h"
+#include "assets/data/npc/npc_1_tunahiki_aiko1.h"
+#include "assets/data/npc/npc_1_tunahiki_furi1.h"
+#include "assets/data/npc/npc_1_tunahiki_yuri1.h"
+#include "assets/data/npc/npc_1_turi_wait1.h"
+#include "assets/data/npc/npc_1_umb_close1.h"
+#include "assets/data/npc/npc_1_umb_open1.h"
+#include "assets/data/npc/npc_1_umbrella1.h"
+#include "assets/data/npc/npc_1_utiwa_wait1.h"
+#include "assets/data/npc/npc_1_wait1.h"
+#include "assets/data/npc/npc_1_wait_ai1.h"
+#include "assets/data/npc/npc_1_wait_do1.h"
+#include "assets/data/npc/npc_1_wait_e1.h"
+#include "assets/data/npc/npc_1_wait_ki1.h"
+#include "assets/data/npc/npc_1_wait_nemu1.h"
+#include "assets/data/npc/npc_1_wait_r1.h"
+#include "assets/data/npc/npc_1_walk1.h"
+#include "assets/data/npc/npc_1_walk_ai1.h"
+#include "assets/data/npc/npc_1_walk_do1.h"
+#include "assets/data/npc/npc_1_walk_ki1.h"
+#include "assets/data/npc/npc_1_warmup1.h"
+#include "assets/data/npc/npc_1_warudakumi1.h"
+#include "assets/data/npc/npc_1_warudakumi2.h"
+#include "assets/data/npc/npc_1_wipkogu1.h"
+#include "assets/data/npc/npc_1_wipwait1.h"
+#include "assets/data/npc/npc_1_wipwait2.h"
+#include "assets/data/npc/npc_1_youi1.h"
 
 // clang-format off
 static aNPC_anim_info_c aNPC_animeTable[aNPC_ANIM_NUM] = {

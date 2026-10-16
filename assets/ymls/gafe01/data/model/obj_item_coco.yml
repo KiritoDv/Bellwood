@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_coco_pal:
+  type: TEXTURE
+  offset: 0x81891960
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_coco_tex:
+  type: TEXTURE
+  offset: 0x81891980
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81891960
+
+obj_item_coco_v:
+  type: VTX
+  offset: 0x81891B80
+  count: 4
+
+obj_item_cocoT_mat_model:
+  type: GFX
+  offset: 0x81891BC0
+  size: 0x48
+
+obj_item_cocoT_gfx_model:
+  type: GFX
+  offset: 0x81891C08
+  size: 0x18

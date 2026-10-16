@@ -1,0 +1,512 @@
+:config:
+  strict_declarations: true
+
+cal_win_tuki1_pal:
+  type: TEXTURE
+  offset: 0x813D2180
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+cal_win_f1_tex:
+  type: TEXTURE
+  offset: 0x813D21A0
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+cal_win_f2_tex:
+  type: TEXTURE
+  offset: 0x813D25A0
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+cal_win_f3_tex:
+  type: TEXTURE
+  offset: 0x813D29A0
+  format: I4
+  width: 16
+  height: 32
+  source_encoding: gx
+
+cal_win_f4_tex:
+  type: TEXTURE
+  offset: 0x813D2AA0
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+cal_win_event_tex:
+  type: TEXTURE
+  offset: 0x813D2EA0
+  format: IA8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+cal_win_m_tex:
+  type: TEXTURE
+  offset: 0x813D36A0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_f_tex:
+  type: TEXTURE
+  offset: 0x813D37A0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_s_tex:
+  type: TEXTURE
+  offset: 0x813D38A0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_t_tex:
+  type: TEXTURE
+  offset: 0x813D39A0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_w_tex:
+  type: TEXTURE
+  offset: 0x813D3AA0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_tuki1_tex:
+  type: TEXTURE
+  offset: 0x813D3BA0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+cal_win_april_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813D3DA0
+  format: IA8
+  width: 32
+  height: 128
+  source_encoding: gx
+
+cal_win_august_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813D4DA0
+  format: IA8
+  width: 32
+  height: 128
+  source_encoding: gx
+
+cal_win_december_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813D5DA0
+  format: IA8
+  width: 32
+  height: 128
+  source_encoding: gx
+
+cal_win_february_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813D6DA0
+  format: IA8
+  width: 32
+  height: 128
+  source_encoding: gx
+
+cal_win_january_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813D7DA0
+  format: IA8
+  width: 32
+  height: 128
+  source_encoding: gx
+
+cal_win_july_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813D8DA0
+  format: IA8
+  width: 32
+  height: 128
+  source_encoding: gx
+
+cal_win_june_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813D9DA0
+  format: IA8
+  width: 32
+  height: 128
+  source_encoding: gx
+
+cal_win_march_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813DADA0
+  format: IA8
+  width: 32
+  height: 128
+  source_encoding: gx
+
+cal_win_may_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813DBDA0
+  format: IA8
+  width: 32
+  height: 128
+  source_encoding: gx
+
+cal_win_november_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813DCDA0
+  format: IA8
+  width: 32
+  height: 128
+  source_encoding: gx
+
+cal_win_october_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813DDDA0
+  format: IA8
+  width: 32
+  height: 128
+  source_encoding: gx
+
+cal_win_september_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813DEDA0
+  format: IA8
+  width: 32
+  height: 128
+  source_encoding: gx
+
+cal_win_suuji10_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813DFDA0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji11_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813DFE20
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji12_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813DFEA0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji13_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813DFF20
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji14_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813DFFA0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji15_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0020
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji16_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E00A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji17_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0120
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji18_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E01A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji19_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0220
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji1_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E02A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji20_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0320
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji21_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E03A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji22_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0420
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji23_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E04A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji24_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0520
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji25_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E05A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji26_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0620
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji27_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E06A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji28_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0720
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji29_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E07A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji2_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0820
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji30_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E08A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji31_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0920
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji3_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E09A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji4_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0A20
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji5_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0AA0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji6_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0B20
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji7_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0BA0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji8_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0C20
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_suuji9_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813E0CA0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+cal_win_box2_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813E0D20
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+cal_win_box_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x813E1120
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+cal_win_v:
+  type: VTX
+  offset: 0x813E1520
+  count: 164
+
+cal_win_tuki_model:
+  type: GFX
+  offset: 0x813E1F60
+  size: 0xC0
+
+cal_win_shita_model:
+  type: GFX
+  offset: 0x813E2020
+  size: 0x38
+
+cal_win_futi_model:
+  type: GFX
+  offset: 0x813E2058
+  size: 0xD8
+
+cal_win_suuji_model:
+  type: GFX
+  offset: 0x813E2130
+  size: 0x30
+
+cal_win_eventT_model:
+  type: GFX
+  offset: 0x813E2160
+  size: 0x30
+
+cal_win_boxT_model:
+  type: GFX
+  offset: 0x813E2190
+  size: 0x30
+
+cal_win_hijituT_model:
+  type: GFX
+  offset: 0x813E21C0
+  size: 0xA0
+
+cal_win_doyouT_model:
+  type: GFX
+  offset: 0x813E2260
+  size: 0x50
+
+cal_win_nitiyouT_model:
+  type: GFX
+  offset: 0x813E22B0
+  size: 0x50
+
+cal_win_monthT_model:
+  type: GFX
+  offset: 0x813E2300
+  size: 0x40

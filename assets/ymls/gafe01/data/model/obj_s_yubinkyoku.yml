@@ -1,0 +1,180 @@
+:config:
+  strict_declarations: true
+
+obj_s_yubinkyoku_t3_txt:
+  type: TEXTURE
+  offset: 0x81575200
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_yubinkyoku_t1_txt:
+  type: TEXTURE
+  offset: 0x81575A00
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_yubinkyoku_window_tex_txt:
+  type: TEXTURE
+  offset: 0x81576200
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_yubinkyoku_t2_txt:
+  type: TEXTURE
+  offset: 0x81576280
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_s_yubinkyoku_v:
+  type: VTX
+  offset: 0x81576A80
+  count: 49
+
+obj_s_yubinkyoku_window_model:
+  type: GFX
+  offset: 0x81576D90
+  size: 0x50
+
+obj_s_yubinkyoku_light_model:
+  type: GFX
+  offset: 0x81576DE0
+  size: 0x40
+
+obj_s_yubinkyoku_t3_1_model:
+  type: GFX
+  offset: 0x81576E20
+  size: 0x60
+
+obj_s_yubinkyoku_t2_model:
+  type: GFX
+  offset: 0x81576E80
+  size: 0x68
+
+obj_s_yubinkyoku_t1_model:
+  type: GFX
+  offset: 0x81576EE8
+  size: 0x68
+
+obj_s_yubinkyoku_neon_model:
+  type: GFX
+  offset: 0x81576F50
+  size: 0x68
+
+obj_s_yubinkyoku_door_model:
+  type: GFX
+  offset: 0x81576FB8
+  size: 0x58
+
+cKF_bs_r_obj_s_yubinkyoku:
+  type: AC:CKF_SKELETON
+  offset: 0x81577070
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_s_yubinkyoku:
+  type: AC:CKF_ANIMATION
+  offset: 0x815770FC
+  joints: 8
+  counts: { flags: 8, data: 33, keys: 1, fixed: 26 }
+
+cKF_ba_r_obj_s_yubinkyoku_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x815771A0
+  joints: 8
+  counts: { flags: 8, data: 39, keys: 1, fixed: 26 }
+
+obj_w_yubinkyoku_t3_txt:
+  type: TEXTURE
+  offset: 0x815771C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_yubinkyoku_t1_txt:
+  type: TEXTURE
+  offset: 0x815779C0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_yubinkyoku_window_tex_txt:
+  type: TEXTURE
+  offset: 0x815781C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_yubinkyoku_t2_txt:
+  type: TEXTURE
+  offset: 0x81578240
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_yubinkyoku_v:
+  type: VTX
+  offset: 0x81578A40
+  count: 52
+
+obj_w_yubinkyoku_light_model:
+  type: GFX
+  offset: 0x81578D80
+  size: 0x40
+
+obj_w_yubinkyoku_window_model:
+  type: GFX
+  offset: 0x81578DC0
+  size: 0x50
+
+obj_w_yubinkyoku_t3_model:
+  type: GFX
+  offset: 0x81578E10
+  size: 0x60
+
+obj_w_yubinkyoku_t2_model:
+  type: GFX
+  offset: 0x81578E70
+  size: 0x68
+
+obj_w_yubinkyoku_t1_model:
+  type: GFX
+  offset: 0x81578ED8
+  size: 0x68
+
+obj_w_yubinkyoku_neon_model:
+  type: GFX
+  offset: 0x81578F40
+  size: 0x68
+
+obj_w_yubinkyoku_door_model:
+  type: GFX
+  offset: 0x81578FA8
+  size: 0x58
+
+cKF_bs_r_obj_w_yubinkyoku:
+  type: AC:CKF_SKELETON
+  offset: 0x81579060
+  counts: { joints: 8 }
+
+cKF_ba_r_obj_w_yubinkyoku:
+  type: AC:CKF_ANIMATION
+  offset: 0x815790EC
+  joints: 8
+  counts: { flags: 8, data: 33, keys: 1, fixed: 26 }
+
+cKF_ba_r_obj_w_yubinkyoku_out:
+  type: AC:CKF_ANIMATION
+  offset: 0x81579190
+  joints: 8
+  counts: { flags: 8, data: 39, keys: 1, fixed: 26 }

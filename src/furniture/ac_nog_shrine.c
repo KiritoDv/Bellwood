@@ -1,3 +1,4 @@
+#include "assets/data/model/int_nog_shrine.h"
 static void fNSH_ct(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
@@ -13,11 +14,6 @@ static void fNSH_dt(FTR_ACTOR* ftr_actor, u8* data) {
 static Gfx* fNSH_GetTileGfx(int x0, int y0, GAME* game) {
     return two_tex_scroll_dolphin(game->graph, 0, x0, y0, 16, 16, 1, 0, 0, 0, 0);
 }
-
-extern Gfx int_nog_shrine_grass_model[];
-extern Gfx int_nog_shrine_figure_model[];
-extern Gfx int_nog_shrine_baseT_model[];
-extern Gfx int_nog_shrine_waterT_model[];
 
 static void fNSH_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     GAME_PLAY* play = (GAME_PLAY*)game;

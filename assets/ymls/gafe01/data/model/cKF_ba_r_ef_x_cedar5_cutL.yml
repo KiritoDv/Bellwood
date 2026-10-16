@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_ef_x_cedar5_cutL:
+  type: AC:CKF_ANIMATION
+  offset: 0x81655C30
+  joints: 5
+  counts: { flags: 5, data: 258, keys: 8, fixed: 10 }

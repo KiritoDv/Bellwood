@@ -1,0 +1,77 @@
+:config:
+  strict_declarations: true
+
+des_tool_kao1_tex:
+  type: TEXTURE
+  offset: 0x81400680
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_tool_kao2_tex:
+  type: TEXTURE
+  offset: 0x81400A80
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_tool_kao3_tex:
+  type: TEXTURE
+  offset: 0x81400E80
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_tool_kao4_tex:
+  type: TEXTURE
+  offset: 0x81401280
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_tool_kao5_tex:
+  type: TEXTURE
+  offset: 0x81401680
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+des_tool2_v:
+  type: VTX
+  offset: 0x81401A80
+  count: 20
+
+des_tool_kao1T_model:
+  type: GFX
+  offset: 0x81401BC0
+  size: 0x50
+
+des_tool_kao2T_model:
+  type: GFX
+  offset: 0x81401C10
+  size: 0x50
+
+des_tool_kao3T_model:
+  type: GFX
+  offset: 0x81401C60
+  size: 0x50
+
+des_tool_kao4T_model:
+  type: GFX
+  offset: 0x81401CB0
+  size: 0x50
+
+des_tool_kao5T_model:
+  type: GFX
+  offset: 0x81401D00
+  size: 0x50
+
+des_tool_kao_all_model:
+  type: GFX
+  offset: 0x81401D50
+  size: 0x30

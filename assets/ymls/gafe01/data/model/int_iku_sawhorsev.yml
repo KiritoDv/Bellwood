@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+int_iku_sawhorsev_pal:
+  type: TEXTURE
+  offset: 0x81864540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_sawhorsev_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81864560
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81864540
+
+int_iku_sawhorsev_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81864760
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81864540
+
+int_iku_sawhorsev_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81864960
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81864540
+
+int_iku_sawhorsev_d_tex_txt:
+  type: TEXTURE
+  offset: 0x81864A60
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81864540
+
+int_iku_sawhorsev_v:
+  type: VTX
+  offset: 0x81864B60
+  count: 103
+
+int_iku_sawhorsev_model_model:
+  type: GFX
+  offset: 0x818651D0
+  size: 0x138

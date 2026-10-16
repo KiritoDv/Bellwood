@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+ef_f_tree_leaf_modeset:
+  type: GFX
+  offset: 0x81647C00
+  size: 0x38
+
+ef_f_tree_trunk_modeset:
+  type: GFX
+  offset: 0x81647C38
+  size: 0x28

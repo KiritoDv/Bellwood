@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_sugi_radiator_pal:
+  type: TEXTURE
+  offset: 0x81982240
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sugi_radiator_all_tex_txt:
+  type: TEXTURE
+  offset: 0x81982260
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81982240
+
+int_sugi_radiator_v:
+  type: VTX
+  offset: 0x81982A60
+  count: 92
+
+sugi_radiator_model:
+  type: GFX
+  offset: 0x81983020
+  size: 0x110

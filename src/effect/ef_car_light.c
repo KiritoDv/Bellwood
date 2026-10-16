@@ -1,5 +1,6 @@
 #include "ef_effect_control.h"
 #include "m_common_data.h"
+#include "assets/data/model/ef_car01.h"
 
 static void eCar_Light_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eCar_Light_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -17,7 +18,6 @@ eEC_PROFILE_c iam_ef_car_light = {
     eEC_DEFAULT_DEATH_DIST,
     // clang-format on
 };
-extern Gfx ef_carhosi01_00_modelT[];
 
 static void eCar_Light_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1){
     eEC_CLIP->make_effect_proc(eEC_EFFECT_CAR_LIGHT, pos, NULL, game, NULL, item_name, prio, arg0, arg1);

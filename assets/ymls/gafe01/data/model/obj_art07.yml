@@ -1,0 +1,53 @@
+:config:
+  strict_declarations: true
+
+obj_art_fel_etc_pal:
+  type: TEXTURE
+  offset: 0x8192F340
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_art_fel_art_pal:
+  type: TEXTURE
+  offset: 0x8192F360
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_art_fel_gaku_tex:
+  type: TEXTURE
+  offset: 0x8192F380
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8192F340
+
+obj_art_fel_name_tex:
+  type: TEXTURE
+  offset: 0x8192F400
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8192F340
+
+obj_art_fel_art_tex:
+  type: TEXTURE
+  offset: 0x8192F480
+  format: CI4
+  width: 48
+  height: 48
+  source_encoding: gx
+  tlut: 0x8192F360
+
+obj_art07_v:
+  type: VTX
+  offset: 0x8192F900
+  count: 30
+
+obj_art07_model:
+  type: GFX
+  offset: 0x8192FAE0
+  size: 0xA8

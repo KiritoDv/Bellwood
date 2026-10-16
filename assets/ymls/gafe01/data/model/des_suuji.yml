@@ -1,0 +1,112 @@
+:config:
+  strict_declarations: true
+
+des_win_suuji0_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813FA840
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_suuji1_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813FA8C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_suuji2_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813FA940
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_suuji3_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813FA9C0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_suuji4_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813FAA40
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_suuji5_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813FAAC0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_suuji6_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813FAB40
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_suuji7_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813FABC0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_suuji8_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813FAC40
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_win_suuji9_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x813FACC0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+des_suuji_v:
+  type: VTX
+  offset: 0x813FAD40
+  count: 16
+
+des_win_suuji_before:
+  type: BLOB
+  offset: 0x813FAE40
+  size: 0x28
+
+des_win_suuji1_model:
+  type: GFX
+  offset: 0x813FAE68
+  size: 0x28
+
+des_win_suuji2_model:
+  type: GFX
+  offset: 0x813FAE90
+  size: 0x28
+
+des_win_suuji3_model:
+  type: GFX
+  offset: 0x813FAEB8
+  size: 0x28
+
+des_win_suuji4_model:
+  type: GFX
+  offset: 0x813FAEE0
+  size: 0x28

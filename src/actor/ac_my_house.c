@@ -11,6 +11,8 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "libforest/gbi_extensions.h"
+#include "assets/data/model/obj_myhome1_shadowE.h"
+#include "assets/data/model/obj_s_myhome1.h"
 
 enum {
     aMHS_ACTION_WAIT,
@@ -53,15 +55,9 @@ static u8 aMHS_lv1_shadowW_vtx_fix_flg_table[] = {
     TRUE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE,
 };
 
-extern Vtx obj_myhome1_shadowE_v[];
-extern Gfx obj_myhome1_shadowET_model[];
-
 static bIT_ShadowData_c aMHS_lv1_shadowE_data = {
     18, aMHS_lv1_shadowE_vtx_fix_flg_table, 60.0f, obj_myhome1_shadowE_v, obj_myhome1_shadowET_model,
 };
-
-extern Vtx obj_myhome1_shadowW_v[];
-extern Gfx obj_myhome1_shadowWT_model[];
 
 static bIT_ShadowData_c aMHS_lv1_shadowW_data = {
     18, aMHS_lv1_shadowW_vtx_fix_flg_table, 60.0f, obj_myhome1_shadowW_v, obj_myhome1_shadowWT_model,
@@ -69,15 +65,9 @@ static bIT_ShadowData_c aMHS_lv1_shadowW_data = {
 
 static bIT_ShadowData_c* aMHS_lv1_shadow_data[2] = { &aMHS_lv1_shadowW_data, &aMHS_lv1_shadowE_data };
 
-extern Vtx obj_myhome2_shadowE_v[];
-extern Gfx obj_myhome2_shadowET_model[];
-
 static bIT_ShadowData_c aMHS_lv2_shadowE_data = {
     18, aMHS_lv1_shadowE_vtx_fix_flg_table, 60.0f, obj_myhome2_shadowE_v, obj_myhome2_shadowET_model,
 };
-
-extern Vtx obj_myhome2_shadowW_v[];
-extern Gfx obj_myhome2_shadowWT_model[];
 
 static bIT_ShadowData_c aMHS_lv2_shadowW_data = {
     18, aMHS_lv1_shadowW_vtx_fix_flg_table, 60.0f, obj_myhome2_shadowW_v, obj_myhome2_shadowWT_model,
@@ -85,15 +75,9 @@ static bIT_ShadowData_c aMHS_lv2_shadowW_data = {
 
 static bIT_ShadowData_c* aMHS_lv2_shadow_data[2] = { &aMHS_lv2_shadowW_data, &aMHS_lv2_shadowE_data };
 
-extern Vtx obj_myhome3_shadowE_v[];
-extern Gfx obj_myhome3_shadowET_model[];
-
 static bIT_ShadowData_c aMHS_lv3_shadowE_data = {
     18, aMHS_lv1_shadowE_vtx_fix_flg_table, 60.0f, obj_myhome3_shadowE_v, obj_myhome3_shadowET_model,
 };
-
-extern Vtx obj_myhome3_shadowW_v[];
-extern Gfx obj_myhome3_shadowWT_model[];
 
 static bIT_ShadowData_c aMHS_lv3_shadowW_data = {
     18, aMHS_lv1_shadowW_vtx_fix_flg_table, 60.0f, obj_myhome3_shadowW_v, obj_myhome3_shadowWT_model,
@@ -101,15 +85,9 @@ static bIT_ShadowData_c aMHS_lv3_shadowW_data = {
 
 static bIT_ShadowData_c* aMHS_lv3_shadow_data[2] = { &aMHS_lv3_shadowW_data, &aMHS_lv3_shadowE_data };
 
-extern Vtx obj_myhome4_shadowE_v[];
-extern Gfx obj_myhome4_shadowET_model[];
-
 static bIT_ShadowData_c aMHS_lv4_shadowE_data = {
     18, aMHS_lv1_shadowE_vtx_fix_flg_table, 60.0f, obj_myhome4_shadowE_v, obj_myhome4_shadowET_model,
 };
-
-extern Vtx obj_myhome4_shadowW_v[];
-extern Gfx obj_myhome4_shadowWT_model[];
 
 static bIT_ShadowData_c aMHS_lv4_shadowW_data = {
     18, aMHS_lv1_shadowW_vtx_fix_flg_table, 60.0f, obj_myhome4_shadowW_v, obj_myhome4_shadowWT_model,
@@ -121,17 +99,8 @@ static f32 aMHS_posX_table[2] = { 20.0f, -20.0f };
 
 static int aMHS_door_closed_flag[mHm_HOMESIZE_NUM - 1];
 
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_myhome1;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_myhome1;
 
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_myhome2;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_myhome2;
 
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_myhome3;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_myhome3;
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_myhome4;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_myhome4;
 
 static void aMHS_actor_ct(ACTOR* actorx, GAME* game) {
     static cKF_Skeleton_R_c* skl[mHm_HOMESIZE_NUM - 1][2] = {

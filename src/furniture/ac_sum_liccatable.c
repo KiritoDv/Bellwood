@@ -1,5 +1,4 @@
-extern Gfx int_sum_liccatable_on_model[];
-extern Gfx int_sum_liccatable_onT_model[];
+#include "assets/data/model/int_sum_liccatable.h"
 
 aFTR_PROFILE iam_sum_liccatable = {
 	int_sum_liccatable_on_model,

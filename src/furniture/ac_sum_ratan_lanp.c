@@ -1,5 +1,4 @@
-extern Gfx int_sum_ratan_lanp_off_model[];
-extern Gfx int_sum_ratan_lanp_offT_model[];
+#include "assets/data/model/int_sum_ratan_lanp.h"
 
 aFTR_PROFILE iam_sum_ratan_lanp = {
 	int_sum_ratan_lanp_off_model,

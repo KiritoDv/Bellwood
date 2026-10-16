@@ -1,5 +1,4 @@
-extern Gfx int_sum_pl_draca02_on_model[];
-extern Gfx int_sum_pl_draca02_onT_model[];
+#include "assets/data/model/int_sum_pl_draca02.h"
 
 aFTR_PROFILE iam_sum_pl_draca02 = {
 	int_sum_pl_draca02_on_model,

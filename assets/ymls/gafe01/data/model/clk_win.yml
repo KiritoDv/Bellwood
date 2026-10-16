@@ -1,0 +1,112 @@
+:config:
+  strict_declarations: true
+
+maru:
+  type: TEXTURE
+  offset: 0x81889160
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+clk_win_am_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81889260
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_pm_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81889660
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_fri_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81889A60
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_mon_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81889E60
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_sat_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8188A260
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_sun_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8188A660
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_thu_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8188AA60
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_tue_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8188AE60
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_wed_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8188B260
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+clk_win_v:
+  type: VTX
+  offset: 0x8188B660
+  count: 20
+
+clk_win_youbiT_model:
+  type: GFX
+  offset: 0x8188B7A0
+  size: 0x28
+
+clk_win_maru2T_model:
+  type: GFX
+  offset: 0x8188B7C8
+  size: 0x30
+
+clk_win_ampmT_model:
+  type: GFX
+  offset: 0x8188B7F8
+  size: 0x28
+
+clk_win_maruT_model:
+  type: GFX
+  offset: 0x8188B820
+  size: 0x28
+
+clk_win_mode:
+  type: GFX
+  offset: 0x8188B848
+  size: 0x28

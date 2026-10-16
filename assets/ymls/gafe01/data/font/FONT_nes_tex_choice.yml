@@ -1,0 +1,10 @@
+:config:
+  strict_declarations: true
+
+FONT_nes_tex_choice:
+  type: TEXTURE
+  offset: 0x81204600
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx

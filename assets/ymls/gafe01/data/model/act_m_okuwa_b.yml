@@ -1,0 +1,35 @@
+:config:
+  strict_declarations: true
+
+act_m_okuwa_txt:
+  type: TEXTURE
+  offset: 0x818769E0
+  format: RGBA16
+  width: 16
+  height: 64
+  source_encoding: n64
+
+act_m_okuwa_b_v:
+  type: VTX
+  offset: 0x818771E0
+  count: 18
+
+act_m_okuwa_b_left_model:
+  type: GFX
+  offset: 0x81877300
+  size: 0xA8
+
+act_m_okuwa_b_right_model:
+  type: GFX
+  offset: 0x818773A8
+  size: 0xA8
+
+act_m_okuwa_b_base_model:
+  type: GFX
+  offset: 0x81877450
+  size: 0x98
+
+cKF_bs_r_act_m_okuwa_b:
+  type: AC:CKF_SKELETON
+  offset: 0x81877524
+  counts: { joints: 5 }

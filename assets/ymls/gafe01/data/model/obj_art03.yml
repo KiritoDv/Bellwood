@@ -1,0 +1,53 @@
+:config:
+  strict_declarations: true
+
+obj_art_sya_etc_pal:
+  type: TEXTURE
+  offset: 0x8192D5C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_art_sya_art_pal:
+  type: TEXTURE
+  offset: 0x8192D5E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_art_sya_gaku_tex:
+  type: TEXTURE
+  offset: 0x8192D600
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8192D5C0
+
+obj_art_sya_art_tex:
+  type: TEXTURE
+  offset: 0x8192D680
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x8192D5E0
+
+obj_art_sya_name_tex:
+  type: TEXTURE
+  offset: 0x8192D980
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8192D5C0
+
+obj_art03_v:
+  type: VTX
+  offset: 0x8192DA00
+  count: 30
+
+obj_art03_model:
+  type: GFX
+  offset: 0x8192DBE0
+  size: 0xB0

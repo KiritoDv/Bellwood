@@ -1,0 +1,114 @@
+:config:
+  strict_declarations: true
+
+int_ike_prores_punch01_pal:
+  type: TEXTURE
+  offset: 0x81844E20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_prores_punch01_punch1_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81844E40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_prores_punch01_pole3_tex_txt:
+  type: TEXTURE
+  offset: 0x81844E60
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81844E20
+
+int_ike_prores_punch01_base2_tex_txt:
+  type: TEXTURE
+  offset: 0x81844EA0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81844E20
+
+int_ike_prores_punch01_pole2_tex_txt:
+  type: TEXTURE
+  offset: 0x81844FA0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81844E20
+
+int_ike_prores_punch01_pole1_tex_txt:
+  type: TEXTURE
+  offset: 0x81845020
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81844E20
+
+int_ike_prores_punch01_base3_tex_txt:
+  type: TEXTURE
+  offset: 0x818450A0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81844E20
+
+int_ike_prores_punch01_base1_tex_txt:
+  type: TEXTURE
+  offset: 0x81845120
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81844E20
+
+int_ike_prores_punch01_pole4_tex_txt:
+  type: TEXTURE
+  offset: 0x81845320
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81844E20
+
+int_ike_prores_punch01_punch1_tex_txt:
+  type: TEXTURE
+  offset: 0x81845360
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81844E40
+
+int_ike_prores_punch01_v:
+  type: VTX
+  offset: 0x818453E0
+  count: 62
+
+int_ike_prores_punch_ball_model:
+  type: GFX
+  offset: 0x818457C0
+  size: 0x80
+
+int_ike_prores_punch_base_model:
+  type: GFX
+  offset: 0x81845840
+  size: 0x140
+
+cKF_ba_r_int_ike_prores_punch01:
+  type: AC:CKF_ANIMATION
+  offset: 0x81845A28
+  joints: 2
+  counts: { flags: 2, data: 72, keys: 3, fixed: 6 }
+
+cKF_bs_r_int_ike_prores_punch01:
+  type: AC:CKF_SKELETON
+  offset: 0x81845A54
+  counts: { joints: 2 }

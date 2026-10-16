@@ -57,15 +57,10 @@ typedef struct {
     /* 0x24 */ u32 flags;
 } PreRenderBackground2DParams; // size = 0x28
 
-extern void wallpaper_draw1(PreRenderBackground2DParams* bg2D, Gfx** gfxp);
-extern void wallpaper_draw(Gfx** const gfxp, u16* const timg, u16* const tlut, const u16 width, const u16 height,
-                           const u8 fmt, const u8 siz, const u16 tt, const u16 tlutCount, f32 x, const f32 y,
-                           const f32 xScale, const f32 yScale, const u32 flags);
 extern void PreRender_setup_savebuf(PreRender* render, u32 width, u32 height, void* fbuf, void* zbuf, void* cvg);
 extern void PreRender_init(PreRender* render);
 extern void PreRender_setup_renderbuf(PreRender* render, u32 width, u32 height, void* fbuf, void* zbuf);
 extern void PreRender_cleanup(PreRender* render);
-extern void PreRender_CopyRGBC(PreRender* render, Gfx** gfxp, int width, int height);
 
 #ifdef __cplusplus
 }

@@ -1,0 +1,73 @@
+:config:
+  strict_declarations: true
+
+int_ike_island_uku01_pal:
+  type: TEXTURE
+  offset: 0x81821540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_island_ukuneck_tex_txt:
+  type: TEXTURE
+  offset: 0x81821560
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81821540
+
+int_ike_island_ukuneck3_tex_txt:
+  type: TEXTURE
+  offset: 0x818215E0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81821540
+
+int_ike_island_ukuneck2_tex_txt:
+  type: TEXTURE
+  offset: 0x81821620
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81821540
+
+int_ike_island_ukuside1_tex_txt:
+  type: TEXTURE
+  offset: 0x81821660
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81821540
+
+int_ike_island_ukuface1_tex_txt:
+  type: TEXTURE
+  offset: 0x818216E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81821540
+
+int_ike_island_ukuface2_tex_txt:
+  type: TEXTURE
+  offset: 0x818218E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81821540
+
+int_ike_island_uku01_v:
+  type: VTX
+  offset: 0x81821AE0
+  count: 75
+
+int_ike_island_uku01_body_model:
+  type: GFX
+  offset: 0x81821F90
+  size: 0x180

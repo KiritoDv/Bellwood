@@ -1,5 +1,4 @@
-extern Gfx int_sum_hal_pkin_on_model[];
-extern Gfx int_sum_hal_pkin_onT_model[];
+#include "assets/data/model/int_sum_hal_pkin.h"
 
 aFTR_PROFILE iam_sum_hal_pkin = {
 	int_sum_hal_pkin_on_model,

@@ -1,0 +1,152 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_video_pal:
+  type: TEXTURE
+  offset: 0x81452D40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_camera2_pal:
+  type: TEXTURE
+  offset: 0x81452D60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_GB_pal:
+  type: TEXTURE
+  offset: 0x81452D80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_hankati_pal:
+  type: TEXTURE
+  offset: 0x81452DA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_ehon_pal:
+  type: TEXTURE
+  offset: 0x81452DC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_manga_pal:
+  type: TEXTURE
+  offset: 0x81452DE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_glasses_pal:
+  type: TEXTURE
+  offset: 0x81452E00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_pokepi_pal:
+  type: TEXTURE
+  offset: 0x81452E20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_tetyou_pal:
+  type: TEXTURE
+  offset: 0x81452E40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_tokei_pal:
+  type: TEXTURE
+  offset: 0x81452E60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_video_tex:
+  type: TEXTURE
+  offset: 0x81452E80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_camera_tex:
+  type: TEXTURE
+  offset: 0x81453080
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_GB_tex:
+  type: TEXTURE
+  offset: 0x81453280
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_hankati_tex:
+  type: TEXTURE
+  offset: 0x81453480
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_ehon_tex:
+  type: TEXTURE
+  offset: 0x81453680
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_manga_tex:
+  type: TEXTURE
+  offset: 0x81453880
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_glasses_tex:
+  type: TEXTURE
+  offset: 0x81453A80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_pokepi_tex:
+  type: TEXTURE
+  offset: 0x81453C80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_tetyou_tex:
+  type: TEXTURE
+  offset: 0x81453E80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_tokei_tex:
+  type: TEXTURE
+  offset: 0x81454080
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

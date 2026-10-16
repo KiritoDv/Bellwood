@@ -1,4 +1,4 @@
-extern Gfx int_hos_deskR_model_model[];
+#include "assets/data/model/int_hos_deskR.h"
 
 aFTR_PROFILE iam_hos_deskR = {
 	int_hos_deskR_model_model,

@@ -3,6 +3,7 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_bodyprint01_00.h"
 
 static void eTumbleBodyPrint_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eTumbleBodyPrint_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -77,8 +78,6 @@ static void eTumbleBodyPrint_mv(eEC_Effect_c* effect, GAME* game) {
         effect->timer -= 70;
     }
 }
-
-extern Gfx ef_bodyprint01_00_modelT[];
 
 static void eTumbleBodyPrint_dw(eEC_Effect_c* effect, GAME* game) {
     s16 counter = 800 - effect->timer;

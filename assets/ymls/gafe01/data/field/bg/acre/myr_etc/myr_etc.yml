@@ -1,0 +1,52 @@
+:config:
+  strict_declarations: true
+
+myr_kotei_pal:
+  type: TEXTURE
+  offset: 0x81937280
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+myr_enter:
+  type: TEXTURE
+  offset: 0x819372A0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: n64
+  tlut: 0x81937280
+
+myr_window:
+  type: TEXTURE
+  offset: 0x819376A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: n64
+  tlut: 0x81937280
+
+myr_kotei_v:
+  type: VTX
+  offset: 0x81937EA0
+  count: 22
+
+myr_kotei_model:
+  type: GFX
+  offset: 0x81938000
+  size: 0xC8
+
+myr_out_model:
+  type: GFX
+  offset: 0x819380C8
+  size: 0x50
+
+myr_koteiT_model:
+  type: GFX
+  offset: 0x81938118
+  size: 0xC8
+
+myr_etc_model:
+  type: GFX
+  offset: 0x819381E0
+  size: 0x28

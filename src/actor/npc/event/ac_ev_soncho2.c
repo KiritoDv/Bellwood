@@ -110,5 +110,5 @@ static void aES2_actor_draw(ACTOR* actor, GAME* game) {
     CLIP(npc_clip)->draw_proc(actor, game);
 }
 
-#include "src/actor/npc/event/ac_ev_soncho2_talk.c_inc"
-#include "src/actor/npc/event/ac_ev_soncho2_think.c_inc"
+#include "ac_ev_soncho2_talk.c_inc"
+#include "ac_ev_soncho2_think.c_inc"

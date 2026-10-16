@@ -1,0 +1,89 @@
+:config:
+  strict_declarations: true
+
+int_sum_log_chest01_pal:
+  type: TEXTURE
+  offset: 0x81A202A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_log_chest01_draw_tex_txt:
+  type: TEXTURE
+  offset: 0x81A202C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A202A0
+
+int_sum_log_chest01_drawer_tex_txt:
+  type: TEXTURE
+  offset: 0x81A20340
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A202A0
+
+int_sum_log_chest01_drawerin_tex_txt:
+  type: TEXTURE
+  offset: 0x81A203C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A202A0
+
+int_sum_log_chest01_back_tex_txt:
+  type: TEXTURE
+  offset: 0x81A204C0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A202A0
+
+int_sum_log_chest01_front_tex_txt:
+  type: TEXTURE
+  offset: 0x81A20640
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A202A0
+
+int_sum_log_chest01_top_tex_txt:
+  type: TEXTURE
+  offset: 0x81A20940
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A202A0
+
+int_sum_log_chest01_v:
+  type: VTX
+  offset: 0x81A209C0
+  count: 71
+
+int_sum_log_chest01_door_model:
+  type: GFX
+  offset: 0x81A20E30
+  size: 0xD8
+
+int_sum_log_chest01_base_model:
+  type: GFX
+  offset: 0x81A20F08
+  size: 0xC8
+
+cKF_ba_r_int_sum_log_chest01:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A2105C
+  joints: 3
+  counts: { flags: 3, data: 54, keys: 9, fixed: 3 }
+
+cKF_bs_r_int_sum_log_chest01:
+  type: AC:CKF_SKELETON
+  offset: 0x81A21094
+  counts: { joints: 3 }

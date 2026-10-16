@@ -1,4 +1,4 @@
-extern Gfx int_iku_turkey_lamp_model[];
+#include "assets/data/model/int_iku_turkey_lamp.h"
 
 aFTR_PROFILE iam_iku_turkey_lamp = {
 	int_iku_turkey_lamp_model,

@@ -1,0 +1,152 @@
+:config:
+  strict_declarations: true
+
+lat_fusen_TXT:
+  type: TEXTURE
+  offset: 0x81427010
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: n64
+
+hni_den_2dl_tex:
+  type: TEXTURE
+  offset: 0x81427090
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: n64
+
+hni_den_2dml_tex:
+  type: TEXTURE
+  offset: 0x81427290
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: n64
+
+hni_den_2dmr_tex:
+  type: TEXTURE
+  offset: 0x81427690
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: n64
+
+hni_den_2dm_tex:
+  type: TEXTURE
+  offset: 0x81427A90
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: n64
+
+hni_den_2dr_tex:
+  type: TEXTURE
+  offset: 0x81427E90
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: n64
+
+hni_den_2ml_tex:
+  type: TEXTURE
+  offset: 0x81428090
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: n64
+
+hni_den_2mr_tex:
+  type: TEXTURE
+  offset: 0x81428490
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: n64
+
+hni_den_2ul_tex:
+  type: TEXTURE
+  offset: 0x81428890
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: n64
+
+hni_den_2uml_tex:
+  type: TEXTURE
+  offset: 0x81428A90
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: n64
+
+hni_den_2umr_tex:
+  type: TEXTURE
+  offset: 0x81428E90
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: n64
+
+hni_den_2um_tex:
+  type: TEXTURE
+  offset: 0x81429290
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: n64
+
+hni_den_2m_tex:
+  type: TEXTURE
+  offset: 0x81429690
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: n64
+
+inv_mwin_3Dma_tex:
+  type: TEXTURE
+  offset: 0x81429890
+  format: I4
+  width: 64
+  height: 64
+  source_encoding: n64
+
+hni_den_2ur_tex:
+  type: TEXTURE
+  offset: 0x8142A090
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: n64
+
+hni_den_v:
+  type: VTX
+  offset: 0x8142A290
+  count: 64
+
+hni_den_senT_model:
+  type: GFX
+  offset: 0x8142A690
+  size: 0x68
+
+hni_den_win2T_model:
+  type: GFX
+  offset: 0x8142A6F8
+  size: 0x438
+
+hni_den_3DmT_model:
+  type: GFX
+  offset: 0x8142AB30
+  size: 0x68
+
+hni_den_mode:
+  type: GFX
+  offset: 0x8142AB98
+  size: 0x28
+
+hni_den_model:
+  type: GFX
+  offset: 0x8142ABC0
+  size: 0x28

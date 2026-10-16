@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_yamame_pal:
+  type: TEXTURE
+  offset: 0x8168F6E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_yamame_body_txt:
+  type: TEXTURE
+  offset: 0x8168F700
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x8168F6E0
+
+act_mus_yamame_a1_v:
+  type: VTX
+  offset: 0x8168FA00
+  count: 66
+
+act_mus_yamame_sakana_body_model:
+  type: GFX
+  offset: 0x8168FE20
+  size: 0x98
+
+act_mus_yamame_sakana_head_model:
+  type: GFX
+  offset: 0x8168FEB8
+  size: 0x50
+
+cKF_bs_r_act_mus_yamame_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x8168FF2C
+  counts: { joints: 3 }

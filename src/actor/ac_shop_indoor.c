@@ -4,6 +4,18 @@
 #include "m_malloc.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/field/bg/acre/rom_shop4_fuku/rom_shop4_fuku.h"
+#include "assets/data/model/rom_shop1_fuku.h"
+#include "assets/data/model/rom_shop1f.h"
+#include "assets/data/model/rom_shop1w.h"
+#include "assets/data/model/rom_shop2_fuku.h"
+#include "assets/data/model/rom_shop2f.h"
+#include "assets/data/model/rom_shop2w.h"
+#include "assets/data/model/rom_shop3_fuku.h"
+#include "assets/data/model/rom_shop3f.h"
+#include "assets/data/model/rom_shop3w.h"
+#include "assets/data/model/rom_shop4_2f.h"
+#include "assets/data/model/rom_shop4_2w.h"
 
 enum {
     aSI_SHOP_TYPE_ZAKKA,
@@ -33,34 +45,9 @@ typedef struct shop_indoor_disp_s {
     Gfx* fukubiki_xlu_gfx;
 } aSI_disp_data_c;
 
-extern Gfx rom_shop1w_model[];
-extern Gfx rom_shop1w_modelT[];
-extern Gfx rom_shop1f_model[];
-extern Gfx rom_shop1f_modelT[];
-extern Gfx rom_shop1_fuku_model[];
-extern Gfx rom_shop1_fuku_modelT[];
 
-extern Gfx rom_shop2w_model[];
-extern Gfx rom_shop2w_modelT[];
-extern Gfx rom_shop2f_model[];
-extern Gfx rom_shop2f_modelT[];
-extern Gfx rom_shop2_fuku_model[];
-extern Gfx rom_shop2_fuku_modelT[];
 
-extern Gfx rom_shop3w_model[];
-extern Gfx rom_shop3w_modelT[];
-extern Gfx rom_shop3f_model[];
-extern Gfx rom_shop3f_modelT[];
-extern Gfx rom_shop3_fuku_model[];
-extern Gfx rom_shop3_fuku_modelT[];
 
-extern Gfx rom_shop4_fuku_model[];
-extern Gfx rom_shop4_fuku_modelT[];
-
-extern Gfx rom_shop4_2w_model[];
-extern Gfx rom_shop4_2w_modelT[];
-extern Gfx rom_shop4_2f_model[];
-extern Gfx rom_shop4_2f_modelT[];
 
 static aSI_disp_data_c aSI_disp_data_table[] = {
     {
@@ -146,6 +133,7 @@ static int aSI_GetShopIndoorBank(ACTOR* actorx, GAME* game) {
     for (i = 0; i < 2; i++) {
         floor_data_pp[i] = zelda_malloc_align(aMI_FLOOR_BANK_SIZE, 32);
     }
+    return 0;
 }
 
 static void aSI_CopyFloorTexture(ACTOR* actorx, s16 floor_idx, s16 bank_idx) {

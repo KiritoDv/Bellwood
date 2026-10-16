@@ -1,0 +1,299 @@
+:config:
+  strict_declarations: true
+
+brt_win_cake2_pal:
+  type: TEXTURE
+  offset: 0x813BBA40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+brt_win_star_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813BBA60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+brt_win_sw1_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813BBA80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+brt_win_sw2_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813BBAA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+brt_win_sw3_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813BBAC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+brt_win_sw4_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813BBAE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+brt_win_sw5_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813BBB00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+brt_win_sw6_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813BBB20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+brt_win_sw7_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x813BBB40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+brt_win_cake2_tex:
+  type: TEXTURE
+  offset: 0x813BBB60
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x813BBA40
+
+brt_win_ue1_tex:
+  type: TEXTURE
+  offset: 0x813BC360
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+brt_win_ue2_tex:
+  type: TEXTURE
+  offset: 0x813BC760
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+brt_win_ue3_tex:
+  type: TEXTURE
+  offset: 0x813BCB60
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+brt_win_ue4_tex:
+  type: TEXTURE
+  offset: 0x813BCD60
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+brt_win_ue5_tex:
+  type: TEXTURE
+  offset: 0x813BD160
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+mra_win_fuki_tex:
+  type: TEXTURE
+  offset: 0x813BD560
+  format: I4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+brt_win_star_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x813BDD60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x813BBA60
+
+brt_win_sw1_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x813BDF60
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813BBA80
+
+brt_win_sw2_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x813BE360
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813BBAA0
+
+brt_win_sw3_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x813BE760
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813BBAC0
+
+brt_win_sw4_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x813BEB60
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813BBAE0
+
+brt_win_sw5_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x813BEF60
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813BBB00
+
+brt_win_sw6_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x813BF360
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813BBB20
+
+brt_win_sw7_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x813BF760
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x813BBB40
+
+bir_win_v:
+  type: VTX
+  offset: 0x813BFB60
+  count: 112
+
+brt_win_month_model:
+  type: GFX
+  offset: 0x813C0260
+  size: 0x30
+
+brt_win_ueT_model:
+  type: GFX
+  offset: 0x813C0290
+  size: 0xC8
+
+brt_win_fukiT_model:
+  type: GFX
+  offset: 0x813C0358
+  size: 0x38
+
+brt_win_cakeT_model:
+  type: GFX
+  offset: 0x813C0390
+  size: 0x40
+
+brt_win_sw1T_model:
+  type: GFX
+  offset: 0x813C03D0
+  size: 0x30
+
+brt_win_sw2T_model:
+  type: GFX
+  offset: 0x813C0400
+  size: 0x30
+
+brt_win_sw3T_model:
+  type: GFX
+  offset: 0x813C0430
+  size: 0x30
+
+brt_win_sw4T_model:
+  type: GFX
+  offset: 0x813C0460
+  size: 0x30
+
+brt_win_sw5T_model:
+  type: GFX
+  offset: 0x813C0490
+  size: 0x30
+
+brt_win_sw6T_model:
+  type: GFX
+  offset: 0x813C04C0
+  size: 0x30
+
+brt_win_sw7T_model:
+  type: GFX
+  offset: 0x813C04F0
+  size: 0x30
+
+brt_win_sw8T_model:
+  type: GFX
+  offset: 0x813C0520
+  size: 0x30
+
+brt_win_sw9T_model:
+  type: GFX
+  offset: 0x813C0550
+  size: 0x30
+
+brt_win_sw10T_model:
+  type: GFX
+  offset: 0x813C0580
+  size: 0x30
+
+brt_win_sw11T_model:
+  type: GFX
+  offset: 0x813C05B0
+  size: 0x30
+
+brt_win_sw12T_model:
+  type: GFX
+  offset: 0x813C05E0
+  size: 0x30
+
+brt_win_sw13T_model:
+  type: GFX
+  offset: 0x813C0610
+  size: 0x30
+
+brt_win_sw14T_model:
+  type: GFX
+  offset: 0x813C0640
+  size: 0x30
+
+birthday_win_mode:
+  type: GFX
+  offset: 0x813C0670
+  size: 0x40
+
+birthday_win_model:
+  type: GFX
+  offset: 0x813C06B0
+  size: 0xB8

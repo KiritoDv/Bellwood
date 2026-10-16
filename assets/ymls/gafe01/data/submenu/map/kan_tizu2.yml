@@ -1,0 +1,122 @@
+:config:
+  strict_declarations: true
+
+kan_tizu_tst1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C4720
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_tr1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C4920
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_t_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C4B20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_fsh_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C4D20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_fpo_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C4F20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_fpk_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C5120
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_fmh_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C5320
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_fko_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C5520
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_mr1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C5720
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_m_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C5920
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_mr1b_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C5B20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_tr1b_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C5D20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_fta_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C5F20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_mwf_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C6120
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+kan_tizu_fmu_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x818C6320
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

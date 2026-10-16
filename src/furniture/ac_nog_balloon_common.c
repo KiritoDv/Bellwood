@@ -1,20 +1,12 @@
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_balloon1;
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_balloon2;
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_balloon3;
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_balloon4;
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_balloon5;
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_balloon6;
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_balloon7;
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_balloon8;
+#include "assets/data/model/int_nog_balloon1.h"
+#include "assets/data/model/int_nog_balloon2.h"
+#include "assets/data/model/int_nog_balloon3.h"
+#include "assets/data/model/int_nog_balloon4.h"
+#include "assets/data/model/int_nog_balloon5.h"
+#include "assets/data/model/int_nog_balloon6.h"
+#include "assets/data/model/int_nog_balloon7.h"
+#include "assets/data/model/int_nog_balloon8.h"
 
-extern cKF_Animation_R_c cKF_ba_r_int_nog_balloon1;
-extern cKF_Animation_R_c cKF_ba_r_int_nog_balloon2;
-extern cKF_Animation_R_c cKF_ba_r_int_nog_balloon3;
-extern cKF_Animation_R_c cKF_ba_r_int_nog_balloon4;
-extern cKF_Animation_R_c cKF_ba_r_int_nog_balloon5;
-extern cKF_Animation_R_c cKF_ba_r_int_nog_balloon6;
-extern cKF_Animation_R_c cKF_ba_r_int_nog_balloon7;
-extern cKF_Animation_R_c cKF_ba_r_int_nog_balloon8;
 
 static cKF_Skeleton_R_c* fNBC_balloon_skel_table[] = {
     &cKF_bs_r_int_nog_balloon1, &cKF_bs_r_int_nog_balloon2, &cKF_bs_r_int_nog_balloon3, &cKF_bs_r_int_nog_balloon4,

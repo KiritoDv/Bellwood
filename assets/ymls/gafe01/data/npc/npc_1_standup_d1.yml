@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_standup_d1:
+  type: AC:NPC_ANIM
+  offset: 0x812F1D00
+  joints: 26
+  counts: { flags: 26, data: 696, keys: 56, fixed: 25 }

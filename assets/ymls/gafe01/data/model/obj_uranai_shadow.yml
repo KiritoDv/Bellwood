@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+obj_uranai_shadow_tex:
+  type: TEXTURE
+  offset: 0x815021C0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_uranai_shadow_v:
+  type: VTX
+  offset: 0x815023C0
+  count: 14
+
+obj_uranai_shadowT_model:
+  type: GFX
+  offset: 0x815024A0
+  size: 0x58

@@ -1,9 +1,7 @@
-extern Gfx int_sum_gre_lanp01_on_model[];
-extern Gfx int_sum_gre_lanp01_onT_model[];
+#include "assets/data/model/int_sum_gre_lanp01.h"
 static void aSumGreLanp01_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 
 extern Gfx int_sum_gre_lanp01_off_model[];
-extern Gfx int_sum_gre_lanp01_offT_model[];
 
 static void aSumGreLanp01_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     OPEN_DISP(game->graph);

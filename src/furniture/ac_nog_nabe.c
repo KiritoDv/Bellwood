@@ -1,20 +1,14 @@
+#include "assets/data/model/int_nog_nabe.h"
 static void fNNB_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void fNNB_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void fNNB_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void fNNB_dt(FTR_ACTOR* ftr_actor, u8* data);
 
-extern cKF_Animation_R_c cKF_ba_r_int_nog_nabe;
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_nabe;
-
-extern u8 int_nog_nabe_fire1_TA_tex_txt[];
-extern u8 int_nog_nabe_fire2_TA_tex_txt[];
-extern u8 int_nog_nabe_fire3_TA_tex_txt[];
 
 u8* fNNB_texture_table[] = {
     int_nog_nabe_fire2_TA_tex_txt,int_nog_nabe_fire2_TA_tex_txt,int_nog_nabe_fire3_TA_tex_txt,int_nog_nabe_fire3_TA_tex_txt,
 };
 
-extern Gfx int_nog_nabe_fire_model[];
 void fNNB_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyf;
 
@@ -23,10 +17,10 @@ void fNNB_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_init_standard_stop(keyf, &cKF_ba_r_int_nog_nabe, NULL);
     keyf->frame_control.speed = 0.0f;
     keyf->frame_control.start_frame = 1.0f;
-    keyf->frame_control.end_frame = cKF_ba_r_int_nog_nabe.frames;
+    keyf->frame_control.end_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_nog_nabe);
     ftr_actor->dynamic_work_s[0] = ftr_actor->switch_bit != TRUE;
     if (!ftr_actor->dynamic_work_s[0]) {
-        keyf->frame_control.current_frame = cKF_ba_r_int_nog_nabe.frames;
+        keyf->frame_control.current_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_nog_nabe);
     }
     cKF_SkeletonInfo_R_play(keyf);
     ftr_actor->dynamic_work_s[1] = ftr_actor->dynamic_work_s[0];
@@ -38,7 +32,7 @@ void fNNB_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
 
     if (ftr_actor->dynamic_work_s[0] == 1) {
         if (aFTR_CAN_PLAY_SE(ftr_actor)) {
-            sAdo_OngenPos((u32)ftr_actor, 0x50, &ftr_actor->position);
+            sAdo_OngenPos((uintptr_t)ftr_actor, 0x50, &ftr_actor->position);
             if (ftr_actor->dynamic_work_s[2] < 0) {
                 pos = ftr_actor->position;
 
@@ -56,13 +50,13 @@ void fNNB_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
         ftr_actor->dynamic_work_s[0] = (ftr_actor->dynamic_work_s[0] + 1) & 1;
         if (ftr_actor->dynamic_work_s[0] != 0) {
             keyf->frame_control.speed = 0.5f;
-            keyf->frame_control.start_frame = cKF_ba_r_int_nog_nabe.frames;
+            keyf->frame_control.start_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_nog_nabe);
             keyf->frame_control.end_frame = 1.0f;
             sAdo_OngenTrgStart(0x17, &ftr_actor->position);
         } else {
             keyf->frame_control.speed = 0.5f;
             keyf->frame_control.start_frame = 1.0f;
-            keyf->frame_control.end_frame = cKF_ba_r_int_nog_nabe.frames;
+            keyf->frame_control.end_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_nog_nabe);
             sAdo_OngenTrgStart(0x16, &ftr_actor->position);
         }
         ftr_actor->dynamic_work_s[3] = 0x13;
@@ -137,7 +131,7 @@ void fNNB_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
         txt_type = ((ftr_actor->dynamic_work_s[1] == 1) || (ctr != 1)) ? 1 : 0;
         txt = (txt_type != 0) ? fNNB_texture_table[fctr & 3] : int_nog_nabe_fire1_TA_tex_txt;
     }
-    else if (keyf->frame_control.end_frame == cKF_ba_r_int_nog_nabe.frames) {
+    else if (keyf->frame_control.end_frame == cKF_ANIM_FRAMES(cKF_ba_r_int_nog_nabe)) {
         txt_type = ((ftr_actor->dynamic_work_s[1] == 1) || (ctr != 1)) ? 1 : 0;
         txt = (txt_type != 0) ? fNNB_texture_table[fctr & 3] : int_nog_nabe_fire1_TA_tex_txt;  
     }

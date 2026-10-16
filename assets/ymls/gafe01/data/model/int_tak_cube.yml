@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+int_tak_cube_body_tex:
+  type: TEXTURE
+  offset: 0x81A92420
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_tak_cube_glass_tex:
+  type: TEXTURE
+  offset: 0x81A924A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_tak_cube_evw_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81A92520
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_tak_cube_v:
+  type: VTX
+  offset: 0x81A925A0
+  count: 138
+
+int_tak_cube_body_on_model:
+  type: GFX
+  offset: 0x81A92E40
+  size: 0xF0
+
+int_tak_cube_evwT_model:
+  type: GFX
+  offset: 0x81A92F30
+  size: 0x80
+
+int_tak_cube_glass_onT_model:
+  type: GFX
+  offset: 0x81A92FB0
+  size: 0x80

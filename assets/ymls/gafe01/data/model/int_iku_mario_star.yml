@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+int_iku_mario_star_c_pal:
+  type: TEXTURE
+  offset: 0x8185F3C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_mario_star_a_pal:
+  type: TEXTURE
+  offset: 0x8185F3E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_mario_star_b_pal:
+  type: TEXTURE
+  offset: 0x8185F400
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_mario_star_d_pal:
+  type: TEXTURE
+  offset: 0x8185F420
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_mario_star_a_tex_txt:
+  type: TEXTURE
+  offset: 0x8185F440
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+int_iku_mario_star_v:
+  type: VTX
+  offset: 0x8185F4C0
+  count: 32
+
+int_iku_mario_star_model:
+  type: GFX
+  offset: 0x8185F6C0
+  size: 0xA8

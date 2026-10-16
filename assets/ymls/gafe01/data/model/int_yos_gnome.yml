@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_yos_gnome_pal:
+  type: TEXTURE
+  offset: 0x81AD6F00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yos_gnome_all_tex_txt:
+  type: TEXTURE
+  offset: 0x81AD6F20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81AD6F00
+
+int_yos_gnome_v:
+  type: VTX
+  offset: 0x81AD7720
+  count: 72
+
+int_yos_gnome_body_model:
+  type: GFX
+  offset: 0x81AD7BA0
+  size: 0x150

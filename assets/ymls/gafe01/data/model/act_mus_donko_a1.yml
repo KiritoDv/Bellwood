@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_donko_pal:
+  type: TEXTURE
+  offset: 0x8167D460
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_donko_body_txt:
+  type: TEXTURE
+  offset: 0x8167D480
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8167D460
+
+act_mus_donko_a1_v:
+  type: VTX
+  offset: 0x8167D680
+  count: 58
+
+act_mus_donko_sakana_body_model:
+  type: GFX
+  offset: 0x8167DA20
+  size: 0x88
+
+act_mus_donko_sakana_head_model:
+  type: GFX
+  offset: 0x8167DAA8
+  size: 0x48
+
+cKF_bs_r_act_mus_donko_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x8167DB14
+  counts: { joints: 3 }

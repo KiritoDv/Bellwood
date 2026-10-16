@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_sum_pl_dracaena_pal:
+  type: TEXTURE
+  offset: 0x81A41FE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_pl_dracaera_earth_tex:
+  type: TEXTURE
+  offset: 0x81A42000
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A41FE0
+
+int_sum_pl_dracaera_hachi_tex:
+  type: TEXTURE
+  offset: 0x81A42080
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A41FE0
+
+int_sum_pl_dracaera_leaf_tex:
+  type: TEXTURE
+  offset: 0x81A42180
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A41FE0
+
+int_sum_pl_dracaera_base_tex:
+  type: TEXTURE
+  offset: 0x81A42580
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A41FE0
+
+int_sum_pl_dracaena_v:
+  type: VTX
+  offset: 0x81A42700
+  count: 56
+
+int_sum_pl_dracaena_on_model:
+  type: GFX
+  offset: 0x81A42A80
+  size: 0x58
+
+int_sum_pl_dracaena_onT_model:
+  type: GFX
+  offset: 0x81A42AD8
+  size: 0xF8

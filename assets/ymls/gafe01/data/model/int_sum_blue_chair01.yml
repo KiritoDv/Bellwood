@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_sum_blue_chair01_pal:
+  type: TEXTURE
+  offset: 0x819AA720
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_blue_chair01_back_tex:
+  type: TEXTURE
+  offset: 0x819AA740
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819AA720
+
+int_sum_blue_chair01_seat_tex:
+  type: TEXTURE
+  offset: 0x819AA840
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819AA720
+
+int_sum_blue_chair01_foot_tex:
+  type: TEXTURE
+  offset: 0x819AA9C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819AA720
+
+int_sum_blue_chair01_v:
+  type: VTX
+  offset: 0x819AAAC0
+  count: 42
+
+int_sum_blue_chair01_on_model:
+  type: GFX
+  offset: 0x819AAD60
+  size: 0x68
+
+int_sum_blue_chair01_onT_model:
+  type: GFX
+  offset: 0x819AADC8
+  size: 0x90

@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_ef_w_cedar4_shakeS:
+  type: AC:CKF_ANIMATION
+  offset: 0x81655618
+  joints: 2
+  counts: { flags: 2, data: 15, keys: 1, fixed: 8 }

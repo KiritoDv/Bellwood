@@ -1,0 +1,52 @@
+:config:
+  strict_declarations: true
+
+int_tak_tent_pal:
+  type: TEXTURE
+  offset: 0x81AAA8E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_tent_1_tex:
+  type: TEXTURE
+  offset: 0x81AAA900
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81AAA8E0
+
+int_tak_tent_2_tex:
+  type: TEXTURE
+  offset: 0x81AAAB00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AAA8E0
+
+int_tak_tent_v:
+  type: VTX
+  offset: 0x81AAAB80
+  count: 151
+
+int_tak_tent_green_on_model:
+  type: GFX
+  offset: 0x81AAB4F0
+  size: 0x58
+
+int_tak_tent_body_onT_model:
+  type: GFX
+  offset: 0x81AAB548
+  size: 0x68
+
+int_tak_tent_etc_onT_model:
+  type: GFX
+  offset: 0x81AAB5B0
+  size: 0x110
+
+int_tak_tent_light_offT_model:
+  type: GFX
+  offset: 0x81AAB6C0
+  size: 0x60

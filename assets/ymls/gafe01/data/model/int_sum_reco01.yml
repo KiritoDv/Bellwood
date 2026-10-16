@@ -1,0 +1,67 @@
+:config:
+  strict_declarations: true
+
+int_sum_reco01_pal:
+  type: TEXTURE
+  offset: 0x81A54D00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_reco01_recotop_tex_txt:
+  type: TEXTURE
+  offset: 0x81A54D20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A54D00
+
+int_sum_reco01_front_tex_txt:
+  type: TEXTURE
+  offset: 0x81A54F20
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A54D00
+
+int_sum_reco01_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81A55320
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A54D00
+
+int_sum_reco01_v:
+  type: VTX
+  offset: 0x81A554A0
+  count: 36
+
+int_sum_reco01_yellow_model:
+  type: GFX
+  offset: 0x81A556E0
+  size: 0x60
+
+int_sum_reco01_base_model:
+  type: GFX
+  offset: 0x81A55740
+  size: 0x88
+
+int_sum_reco01_red_model:
+  type: GFX
+  offset: 0x81A557C8
+  size: 0x60
+
+cKF_ba_r_int_sum_reco01:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A558E4
+  joints: 5
+  counts: { flags: 5, data: 72, keys: 12, fixed: 6 }
+
+cKF_bs_r_int_sum_reco01:
+  type: AC:CKF_SKELETON
+  offset: 0x81A55934
+  counts: { joints: 5 }

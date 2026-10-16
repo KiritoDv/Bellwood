@@ -1,5 +1,4 @@
-extern Gfx obj_s_shop2_window_model[];
-extern Gfx obj_w_shop2_window_model[];
+#include "assets/data/model/obj_s_house1.h"
 
 static int aHUS_actor_draw_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
                                    u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {
@@ -28,33 +27,14 @@ static int aHUS_actor_draw_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, in
     return TRUE;
 }
 
-extern Gfx obj_s_house1_windowL_model[];
-extern Gfx obj_s_house1_windowR_model[];
 
-extern Gfx obj_s_house2_window_model[];
 
-extern Gfx obj_s_house3_windowL_model[];
-extern Gfx obj_s_house3_windowR_model[];
 
-extern Gfx obj_s_house4_windowL_model[];
-extern Gfx obj_s_house4_windowR_model[];
 
-extern Gfx obj_s_house5_windowL_model[];
-extern Gfx obj_s_house5_windowR_model[];
 
-extern Gfx obj_w_house1_windowL_model[];
-extern Gfx obj_w_house1_windowR_model[];
 
-extern Gfx obj_w_house2_window_model[];
 
-extern Gfx obj_w_house3_windowL_model[];
-extern Gfx obj_w_house3_windowR_model[];
 
-extern Gfx obj_w_house4_windowL_model[];
-extern Gfx obj_w_house4_windowR_model[];
-
-extern Gfx obj_w_house5_windowL_model[];
-extern Gfx obj_w_house5_windowR_model[];
 
 static int aHUS_actor_draw_after(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
                                   u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {
@@ -209,11 +189,11 @@ static void aHUS_actor_draw_ta_set(ACTOR* actorx, GAME* game) {
     // clang-format on
     // clang-format off
     static int adjust_mode[][2] = {
-        { G_TA_DOLPHIN, G_TA_DOLPHIN },
+        { G_TA_HALFTEXEL, G_TA_HALFTEXEL },
         { G_TA_N64, G_TA_N64 },
-        { G_TA_DOLPHIN, G_TA_N64 },
-        { G_TA_DOLPHIN, G_TA_DOLPHIN },
-        { G_TA_DOLPHIN, G_TA_DOLPHIN },
+        { G_TA_HALFTEXEL, G_TA_N64 },
+        { G_TA_HALFTEXEL, G_TA_HALFTEXEL },
+        { G_TA_HALFTEXEL, G_TA_HALFTEXEL },
     };
     // clang-format on
 

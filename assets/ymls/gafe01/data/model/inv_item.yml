@@ -1,0 +1,22 @@
+:config:
+  strict_declarations: true
+
+inv_item_v:
+  type: VTX
+  offset: 0x814584D0
+  count: 4
+
+inv_item_mode:
+  type: GFX
+  offset: 0x81458510
+  size: 0x28
+
+inv_item_shadow_mode:
+  type: GFX
+  offset: 0x81458538
+  size: 0x38
+
+inv_item_model:
+  type: GFX
+  offset: 0x81458570
+  size: 0x30

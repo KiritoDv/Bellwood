@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_lib.h"
 #include "m_rcp.h"
+#include "assets/data/model/crw_cobra.h"
 
 
 static void aTCB1_actor_ct(ACTOR* actor, GAME*);
@@ -25,9 +26,7 @@ ACTOR_PROFILE T_Cobra1_Profile = {
     NULL
 };
 
-extern Gfx crw_cobra_model[];
-
-static void aTCB1_actor_ct(ACTOR* actor, GAME*){
+static void aTCB1_actor_ct(ACTOR* actor, GAME* arg1){
 
     aTCB1_setupAction(actor,4);
 }
@@ -50,7 +49,7 @@ static void aTCB1_setupAction(ACTOR*actor, int action){
 
 }
 
-static void aTCB1_actor_move(ACTOR* actor, GAME*){
+static void aTCB1_actor_move(ACTOR* actor, GAME* arg1){
     COBRA1_ACTOR* cobra = (COBRA1_ACTOR*)actor;
 
     if(cobra->tools_class.work0 != cobra->current_id){

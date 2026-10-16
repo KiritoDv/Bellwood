@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_roll_pal:
+  type: TEXTURE
+  offset: 0x81894E00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_roll_tex:
+  type: TEXTURE
+  offset: 0x81894E20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81894E00
+
+obj_item_roll_v:
+  type: VTX
+  offset: 0x81895020
+  count: 4
+
+obj_rollT_mat_model:
+  type: GFX
+  offset: 0x81895060
+  size: 0x48
+
+obj_rollT_gfx_model:
+  type: GFX
+  offset: 0x818950A8
+  size: 0x18

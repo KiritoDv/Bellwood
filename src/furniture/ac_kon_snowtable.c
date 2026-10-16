@@ -1,5 +1,4 @@
-extern Gfx in_kon_snowtable_on_model[];
-extern Gfx in_kon_snowtable_onT_model[];
+#include "assets/data/model/int_kon_snowtable.h"
 
 aFTR_PROFILE iam_kon_snowtable = {
 	in_kon_snowtable_on_model,

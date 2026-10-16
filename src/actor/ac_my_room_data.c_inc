@@ -1,3 +1,9 @@
+#include "assets/data/model/obj_item_bone.h"
+#include "assets/data/model/obj_item_cloth.h"
+#include "assets/data/model/obj_item_diary.h"
+#include "assets/data/model/obj_item_haniwa.h"
+#include "assets/data/model/obj_item_leaf.h"
+#include "assets/data/model/obj_item_umbrella.h"
 static xyz_t norm_table[] = {
     { 0.0f, 0.0f, -1.0f },
     { -1.0f, 0.0f, 0.0f },
@@ -1517,18 +1523,6 @@ typedef struct {
     Gfx* mat_gfx;
     Gfx* vtx_gfx;
 } aMR_icon_display_data_c;
-
-extern Gfx leaf_DL_mode[];
-extern Gfx leaf_DL_vtx[];
-extern Gfx obj_haniwaT_mat_model[];
-extern Gfx obj_haniwaT_gfx_model[];
-extern Gfx obj_item_clothT_mat_model[];
-extern Gfx obj_item_umbrellaT_mat_model[];
-extern Gfx obj_item_umbrellaT_gfx_model[];
-extern Gfx obj_item_boneT_mat_model[];
-extern Gfx obj_item_boneT_gfx_model[];
-extern Gfx obj_item_diaryT_mat_model[];
-extern Gfx obj_item_diaryT_gfx_model[];
 
 static aMR_icon_display_data_c aMR_icon_display_data[] = {
     { leaf_DL_mode, leaf_DL_vtx },

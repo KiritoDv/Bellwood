@@ -4,21 +4,9 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_anahori01_00.h"
 
-extern u8 ef_mogura01_01_tex[];
-extern u8 ef_mogura01_02_tex[];
-extern u8 ef_mogura01_03_tex[];
-extern u8 ef_mogura01_04_tex[];
 
-extern u8 ef_anahori02_01_tex[];
-extern u8 ef_anahori02_02_tex[];
-extern u8 ef_anahori02_03_tex[];
-extern u8 ef_anahori02_04_tex[];
-
-extern u8 ef_anahori03_01_tex[];
-extern u8 ef_anahori03_02_tex[];
-extern u8 ef_anahori03_03_tex[];
-extern u8 ef_anahori03_04_tex[];
 
 static u8* eDig_Mud_tex_tbl[] = {
     ef_anahori02_01_tex,
@@ -131,10 +119,6 @@ static void eDig_Mud_mv(eEC_Effect_c* effect, GAME* game) {
         }
     }
 }
-
-extern Gfx ef_anahori02_00_modelT[];
-extern Gfx ef_anahori03_00_modelT[];
-extern Gfx ef_mogura01_00_modelT[];
 
 static void eDig_Mud_dw(eEC_Effect_c* effect, GAME* game) {
     int tex_idx;

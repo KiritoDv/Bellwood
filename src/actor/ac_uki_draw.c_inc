@@ -1,3 +1,5 @@
+#include "assets/data/model/tol_uki_12.h"
+#include "assets/data/model/tol_uki_22.h"
 static void aUKI_rotate_calc(UKI_ACTOR* uki) {
     f32 angle_x = (uki->position_speed.x * 30.0f) / 6.0f;
     f32 angle_z = (uki->position_speed.z * 30.0f) / 6.0f;
@@ -7,9 +9,6 @@ static void aUKI_rotate_calc(UKI_ACTOR* uki) {
     uki->uki_angle.z = DEG2SHORT_ANGLE2(180.0f + (angle_z * sin));
     uki->uki_rot_speed += DEG2SHORT_ANGLE2(5.625f);
 }
-
-extern Gfx tol_uki1_model[];
-extern Gfx tol_uki2_model[];
 
 static void aUKI_actor_draw(ACTOR* actorx, GAME* game) {
     UKI_ACTOR* uki = (UKI_ACTOR*)actorx;

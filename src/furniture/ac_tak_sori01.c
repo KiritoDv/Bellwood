@@ -1,5 +1,4 @@
-extern Gfx int_tak_sori01_on_model[];
-extern Gfx int_tak_sori01_onT_model[];
+#include "assets/data/model/int_tak_sori01.h"
 
 aFTR_PROFILE iam_tak_sori01 = {
 	int_tak_sori01_on_model,

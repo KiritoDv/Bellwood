@@ -19,6 +19,7 @@ extern void Nas_SzStayDelete(s32 type);
 extern void Nas_SzHeapReset(u32 fix_size);
 
 extern void Nas_SetDelayLineParam(s32 delayIdx, s32 param_type, s32 param_value, s32 init);
+extern void Nas_SetDelayLine(s32 delayIdx, fxconfig* config, s32 init);
 
 extern void Nas_SetBPFilter(s16* filter, s32 lowpass_cutoff, s32 highpass_cutoff);
 

@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+clg_music_pal:
+  type: TEXTURE
+  offset: 0x813E5B50
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+clg_music_tex:
+  type: TEXTURE
+  offset: 0x813E5B70
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: n64
+  tlut: 0x813E5B50
+
+clg_music_v:
+  type: VTX
+  offset: 0x813E5D70
+  count: 4
+
+mCL_music_model:
+  type: GFX
+  offset: 0x813E5DB0
+  size: 0xA0

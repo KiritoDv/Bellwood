@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+ef_awa01_0:
+  type: TEXTURE
+  offset: 0x8166C120
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_neboke_awa01_v:
+  type: VTX
+  offset: 0x8166C220
+  count: 4
+
+ef_neboke_awa01_modelT:
+  type: GFX
+  offset: 0x8166C260
+  size: 0x58

@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+crw_cobra_pal:
+  type: TEXTURE
+  offset: 0x815C2EE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+crw_cobra_tex_txt:
+  type: TEXTURE
+  offset: 0x815C2F00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815C2EE0
+
+crw_cobra_v:
+  type: VTX
+  offset: 0x815C3100
+  count: 48
+
+crw_cobra_model:
+  type: GFX
+  offset: 0x815C3400
+  size: 0xB8

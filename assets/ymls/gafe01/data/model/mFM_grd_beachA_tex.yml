@@ -1,0 +1,10 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_beachA_tex:
+  type: TEXTURE
+  offset: 0x8160C2A8
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx

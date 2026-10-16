@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+int_sum_nigoi_pal:
+  type: TEXTURE
+  offset: 0x81686AC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_mus_nigoi_body_txt:
+  type: TEXTURE
+  offset: 0x81686AE0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81686AC0
+
+act_mus_nigoi_a1_v:
+  type: VTX
+  offset: 0x81686DE0
+  count: 65
+
+act_mus_nigoi_sakana_body_model:
+  type: GFX
+  offset: 0x816871F0
+  size: 0x88
+
+act_mus_nigoi_sakana_head_model:
+  type: GFX
+  offset: 0x81687278
+  size: 0x50
+
+cKF_bs_r_act_mus_nigoi_a1:
+  type: AC:CKF_SKELETON
+  offset: 0x816872EC
+  counts: { joints: 3 }

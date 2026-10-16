@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+obj_e_turi_l_shadow_tex:
+  type: TEXTURE
+  offset: 0x8150BFE0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_turi_l_shadow_v:
+  type: VTX
+  offset: 0x8150C1E0
+  count: 6
+
+obj_e_turi_l_shadow_model:
+  type: GFX
+  offset: 0x8150C240
+  size: 0x50
+
+obj_e_turi_r_shadow_tex:
+  type: TEXTURE
+  offset: 0x8150C2A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_turi_r_shadow_v:
+  type: VTX
+  offset: 0x8150C4A0
+  count: 6
+
+obj_e_turi_r_shadow_model:
+  type: GFX
+  offset: 0x8150C500
+  size: 0x50

@@ -1,5 +1,4 @@
-extern cKF_Skeleton_R_c cKF_bs_r_int_sum_slot;
-extern cKF_Animation_R_c cKF_ba_r_int_sum_slot;
+#include "assets/data/model/int_sum_slot.h"
 
 static void aSumSlot_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyframe = &ftr_actor->keyframe;
@@ -25,7 +24,7 @@ static void aSumSlot_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, 
             }
 
             if (aFTR_CAN_PLAY_SE(ftr_actor)) {
-                sAdo_OngenPos((u32)ftr_actor, 2, &ftr_actor->position);
+                sAdo_OngenPos((uintptr_t)ftr_actor, 2, &ftr_actor->position);
             }
         } else {
             ftr_actor->dynamic_work_s[0] = FALSE;
@@ -37,9 +36,6 @@ static void aSumSlot_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, 
         keyframe->frame_control.speed = 0.5f;
     }
 }
-
-extern u8 int_sum_slot_reel1_TA_tex_txt[];
-extern u8 int_sum_slot_reel2_TA_tex_txt[];
 
 static u8* aSumSlot_anim[] = { int_sum_slot_reel1_TA_tex_txt, int_sum_slot_reel2_TA_tex_txt };
 

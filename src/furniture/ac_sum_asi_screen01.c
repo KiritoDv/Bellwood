@@ -1,4 +1,4 @@
-extern Gfx int_sum_asi_screen01_onT_model[];
+#include "assets/data/model/int_sum_asi_screen01.h"
 
 aFTR_PROFILE iam_sum_asi_screen01 = {
 	int_sum_asi_screen01_onT_model,

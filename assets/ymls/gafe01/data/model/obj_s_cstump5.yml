@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+obj_s_cstump5_v:
+  type: VTX
+  offset: 0x81101E90
+  count: 7
+
+obj_s_cstump5T_mat_model:
+  type: GFX
+  offset: 0x81101F00
+  size: 0x20
+
+obj_s_cstump5T_gfx_model:
+  type: GFX
+  offset: 0x81101F20
+  size: 0x20

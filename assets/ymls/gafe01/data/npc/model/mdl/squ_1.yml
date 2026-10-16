@@ -1,0 +1,77 @@
+:config:
+  strict_declarations: true
+
+squ_1_v:
+  type: VTX
+  offset: 0x814EE840
+  count: 367
+
+head_squ_model:
+  type: GFX
+  offset: 0x814EFF30
+  size: 0x198
+
+Rarm2_squ_model:
+  type: GFX
+  offset: 0x814F00C8
+  size: 0x88
+
+Rarm1_squ_model:
+  type: GFX
+  offset: 0x814F0150
+  size: 0x78
+
+Larm2_squ_model:
+  type: GFX
+  offset: 0x814F01C8
+  size: 0x88
+
+Larm1_squ_model:
+  type: GFX
+  offset: 0x814F0250
+  size: 0x78
+
+chest_squ_model:
+  type: GFX
+  offset: 0x814F02C8
+  size: 0xA8
+
+tail1_squ_model:
+  type: GFX
+  offset: 0x814F0370
+  size: 0x70
+
+tail2_squ_model:
+  type: GFX
+  offset: 0x814F03E0
+  size: 0xD0
+
+Rfoot2_squ_model:
+  type: GFX
+  offset: 0x814F04B0
+  size: 0x80
+
+Rfoot1_squ_model:
+  type: GFX
+  offset: 0x814F0530
+  size: 0xC0
+
+Lfoot2_squ_model:
+  type: GFX
+  offset: 0x814F05F0
+  size: 0x80
+
+Lfoot1_squ_model:
+  type: GFX
+  offset: 0x814F0670
+  size: 0xC0
+
+base_squ_model:
+  type: GFX
+  offset: 0x814F0730
+  size: 0x70
+
+cKF_bs_r_squ_1:
+  type: AC:CKF_SKELETON
+  offset: 0x814F08D8
+  counts: { joints: 26 }

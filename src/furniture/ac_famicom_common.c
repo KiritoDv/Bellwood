@@ -1,27 +1,7 @@
+#include "assets/data/model/int_tak_nes01.h"
 static void fFC_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void fFC_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void fFC_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
-
-extern u8 int_tak_nes_cl_tex[];
-extern u8 int_tak_nes_bf_tex_rgb_ci4[];
-extern u8 int_tak_nes_dk_tex_rgb_ci4[];
-extern u8 int_tak_nes_sa_tex_rgb_ci4[];
-extern u8 int_tak_nes_pb_tex_rgb_ci4[];
-extern u8 int_tak_nes_t_tex_rgb_ci4[];
-extern u8 int_tak_nes_g_tex_rgb_ci4[];
-extern u8 int_tak_nes_po_tex_rgb_ci4[];
-extern u8 int_tak_nes_bb_tex_rgb_ci4[];
-extern u8 int_tak_nes_cl_tex[];
-extern u8 int_tak_nes_d3_tex_rgb_ci4[];
-extern u8 int_tak_nes_d2_tex_rgb_ci4[];
-extern u8 int_tak_nes_so_tex_rgb_ci4[];
-extern u8 int_tak_nes_eb_tex_rgb_ci4[];
-extern u8 int_tak_nes_wm_tex_rgb_ci4[];
-extern u8 int_tak_nes_ic_tex_rgb_ci4[];
-extern u8 int_tak_nes_mb_tex_rgb_ci4[];
-extern u8 int_tak_nes_sm_tex_rgb_ci4[];
-extern u8 int_tak_nes_zl_tex_rgb_ci4[];
-extern u8 int_tak_nes_eb_tex_rgb_ci4[];
 
 static u8* fFC_texture_table[] = {
     int_tak_nes_cl_tex,         int_tak_nes_bf_tex_rgb_ci4, int_tak_nes_dk_tex_rgb_ci4, int_tak_nes_sa_tex_rgb_ci4,
@@ -30,27 +10,6 @@ static u8* fFC_texture_table[] = {
     int_tak_nes_so_tex_rgb_ci4, int_tak_nes_eb_tex_rgb_ci4, int_tak_nes_wm_tex_rgb_ci4, int_tak_nes_ic_tex_rgb_ci4,
     int_tak_nes_mb_tex_rgb_ci4, int_tak_nes_sm_tex_rgb_ci4, int_tak_nes_zl_tex_rgb_ci4, int_tak_nes_eb_tex_rgb_ci4,
 };
-
-extern u16 int_tak_nes_cl_pal[];
-extern u16 int_tak_nes_bf_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_dk_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_sa_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_pb_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_t_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_g_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_po_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_bb_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_cl_pal[];
-extern u16 int_tak_nes_d3_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_d2_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_so_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_eb_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_wm_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_ic_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_mb_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_sm_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_zl_tex_rgb_ci4_pal[];
-extern u16 int_tak_nes_eb_tex_rgb_ci4_pal[];
 
 static u16* fFC_palette_table[] = {
     int_tak_nes_cl_pal,
@@ -88,10 +47,6 @@ static void fFC_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* d
     (*Common_Get(clip).my_room_clip->famicom_emu_common_move_proc)(
         ftr_actor, my_room_actor, game, fFC_game_table[ftr_idx], fFC_agb_game_table[ftr_idx]);
 }
-
-extern Gfx int_tak_nes01_on_model[];
-extern Gfx int_tak_nes01_onT_model[];
-extern Gfx int_tak_nes01_game_on_model[];
 
 /* @unused - this was used in DnM/DnM+ to determine which Famicom model to use */
 static int fFC_reference_model_idx_table[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };

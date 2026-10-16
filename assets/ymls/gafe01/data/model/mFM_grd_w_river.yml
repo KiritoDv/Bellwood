@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_w_river_tex:
+  type: TEXTURE
+  offset: 0x81942B60
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+mFM_grd_w_river_2_tex:
+  type: TEXTURE
+  offset: 0x81942F60
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+mFM_grd_w_river_3_tex:
+  type: TEXTURE
+  offset: 0x81943360
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx

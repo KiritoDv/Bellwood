@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+obj_pstump_shadow_tex:
+  type: TEXTURE
+  offset: 0x81107160
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_pstump5_shadow_v:
+  type: VTX
+  offset: 0x81107360
+  count: 4
+
+obj_pstump5_shadowT_mat_model:
+  type: GFX
+  offset: 0x811073A0
+  size: 0x20
+
+obj_pstump5_shadowT_gfx_model:
+  type: GFX
+  offset: 0x811073C0
+  size: 0x10

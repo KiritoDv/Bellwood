@@ -1,0 +1,155 @@
+:config:
+  strict_declarations: true
+
+lat_letter01_pal:
+  type: TEXTURE
+  offset: 0x814076E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+dia_win_entry_tex:
+  type: TEXTURE
+  offset: 0x81407700
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+lat_letter01_04_tex:
+  type: TEXTURE
+  offset: 0x81407800
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x814076E0
+
+lat_tegami_fusen_tex:
+  type: TEXTURE
+  offset: 0x81407880
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+dia_win_april_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81407900
+  format: IA8
+  width: 16
+  height: 64
+  source_encoding: gx
+
+dia_win_august_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81407D00
+  format: IA8
+  width: 16
+  height: 64
+  source_encoding: gx
+
+dia_win_december_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81408100
+  format: IA8
+  width: 16
+  height: 64
+  source_encoding: gx
+
+dia_win_february_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81408500
+  format: IA8
+  width: 16
+  height: 64
+  source_encoding: gx
+
+dia_win_january_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81408900
+  format: IA8
+  width: 16
+  height: 64
+  source_encoding: gx
+
+dia_win_july_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81408D00
+  format: IA8
+  width: 16
+  height: 64
+  source_encoding: gx
+
+dia_win_june_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81409100
+  format: IA8
+  width: 16
+  height: 64
+  source_encoding: gx
+
+dia_win_march_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81409500
+  format: IA8
+  width: 16
+  height: 64
+  source_encoding: gx
+
+dia_win_may_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81409900
+  format: IA8
+  width: 16
+  height: 64
+  source_encoding: gx
+
+dia_win_november_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x81409D00
+  format: IA8
+  width: 16
+  height: 64
+  source_encoding: gx
+
+dia_win_october_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8140A100
+  format: IA8
+  width: 16
+  height: 64
+  source_encoding: gx
+
+dia_win_september_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x8140A500
+  format: IA8
+  width: 16
+  height: 64
+  source_encoding: gx
+
+dia_win_v:
+  type: VTX
+  offset: 0x8140A900
+  count: 27
+
+dia_win_moji_model:
+  type: GFX
+  offset: 0x8140AAB0
+  size: 0x38
+
+dia_win_wT_model:
+  type: GFX
+  offset: 0x8140AAE8
+  size: 0x50
+
+dia_win_fusenT_model:
+  type: GFX
+  offset: 0x8140AB38
+  size: 0x38
+
+dia_win_tukiT_model:
+  type: GFX
+  offset: 0x8140AB70
+  size: 0x30

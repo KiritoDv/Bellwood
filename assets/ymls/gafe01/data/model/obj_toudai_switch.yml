@@ -1,0 +1,45 @@
+:config:
+  strict_declarations: true
+
+obj_toudai_switch_pal:
+  type: TEXTURE
+  offset: 0x81294260
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_toudai_switch_tex_txt:
+  type: TEXTURE
+  offset: 0x81294280
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81294260
+
+obj_toudai_switch_v:
+  type: VTX
+  offset: 0x81294300
+  count: 11
+
+obj_toudai_switch_model:
+  type: GFX
+  offset: 0x812943B0
+  size: 0x68
+
+cKF_ba_r_obj_toudai_switch:
+  type: AC:CKF_ANIMATION
+  offset: 0x81294474
+  joints: 2
+  counts: { flags: 2, data: 33, keys: 1, fixed: 8 }
+
+cKF_ba_r_obj_toudai_switch_off:
+  type: AC:CKF_ANIMATION
+  offset: 0x812944D8
+  joints: 2
+  counts: { flags: 2, data: 27, keys: 1, fixed: 8 }
+
+cKF_bs_r_obj_toudai_switch:
+  type: AC:CKF_SKELETON
+  offset: 0x81294504
+  counts: { joints: 2 }

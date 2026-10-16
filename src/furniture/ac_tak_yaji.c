@@ -1,5 +1,4 @@
-extern Gfx int_tak_yaji_on_model[];
-extern Gfx int_tak_yaji_onT_model[];
+#include "assets/data/model/int_tak_yaji.h"
 
 aFTR_PROFILE iam_tak_yaji = {
 	int_tak_yaji_on_model,

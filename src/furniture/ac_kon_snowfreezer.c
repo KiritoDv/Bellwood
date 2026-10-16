@@ -1,5 +1,4 @@
-extern Gfx int_kon_snowfreezer01_body_model[];
-extern Gfx int_kon_snowfreezer01_bodyT_model[];
+#include "assets/data/model/int_kon_snowfreezer.h"
 
 aFTR_PROFILE iam_kon_snowfreezer = {
 	int_kon_snowfreezer01_body_model,

@@ -1,4 +1,4 @@
-extern Gfx int_iku_sawhorsev_model_model[];
+#include "assets/data/model/int_iku_sawhorsev.h"
 
 aFTR_PROFILE iam_iku_sawhousev = {
 	int_iku_sawhorsev_model_model,

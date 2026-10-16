@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_iku_bugzapper_pal:
+  type: TEXTURE
+  offset: 0x8184E980
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_bugzapper_d_tex_txt:
+  type: TEXTURE
+  offset: 0x8184E9A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8184E980
+
+int_iku_bugzapper_c_tex_txt:
+  type: TEXTURE
+  offset: 0x8184EAA0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8184E980
+
+int_iku_bugzapper_a_tex_txt:
+  type: TEXTURE
+  offset: 0x8184EEA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8184E980
+
+int_iku_bugzapper_e_tex_txt:
+  type: TEXTURE
+  offset: 0x8184EF20
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8184E980
+
+int_iku_bugzapper_v:
+  type: VTX
+  offset: 0x8184F020
+  count: 64
+
+int_iku_bugzapper_on_model:
+  type: GFX
+  offset: 0x8184F420
+  size: 0x128
+
+int_iku_bugzapper_off_model:
+  type: GFX
+  offset: 0x8184F548
+  size: 0x60

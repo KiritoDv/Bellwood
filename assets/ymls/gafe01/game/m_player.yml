@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+tol_sponge_1_v:
+  type: VTX
+  offset: 0x81051080
+  count: 10
+
+tol_sponge_1_pal:
+  type: TEXTURE
+  offset: 0x81051120
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_sponge_1_main1_tex_txt:
+  type: TEXTURE
+  offset: 0x81051140
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81051120
+
+tol_sponge_1_model:
+  type: GFX
+  offset: 0x82005370
+  size: 0x80

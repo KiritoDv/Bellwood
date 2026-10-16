@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+act_m_ka_v:
+  type: VTX
+  offset: 0x8186FE10
+  count: 24
+
+act_m_ka_pal:
+  type: TEXTURE
+  offset: 0x8186FF90
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_ka_tex:
+  type: TEXTURE
+  offset: 0x8186FFB0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: n64
+  tlut: 0x8186FF90
+
+act_m_mu_ka1T_model:
+  type: GFX
+  offset: 0x81870130
+  size: 0xC8
+
+act_m_mu_ka2_1T_model:
+  type: GFX
+  offset: 0x818701F8
+  size: 0xC8
+
+act_m_mu_ka2_2T_model:
+  type: GFX
+  offset: 0x818702C0
+  size: 0xC8

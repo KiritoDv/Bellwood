@@ -1,0 +1,37 @@
+:config:
+  strict_declarations: true
+
+int_iku_jersey_pal:
+  type: TEXTURE
+  offset: 0x8185C180
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_jersey_mae_tex_txt:
+  type: TEXTURE
+  offset: 0x8185C1A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8185C180
+
+int_iku_jersey_yoko_tex_txt:
+  type: TEXTURE
+  offset: 0x8185C3A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8185C180
+
+int_iku_jersey_v:
+  type: VTX
+  offset: 0x8185C4A0
+  count: 44
+
+int_iku_jersey_model_model:
+  type: GFX
+  offset: 0x8185C760
+  size: 0xB0

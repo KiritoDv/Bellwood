@@ -1,9 +1,7 @@
+#include "assets/data/model/int_ike_jny_syon01.h"
 static void fIJS_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void fIJS_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void fIJS_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
-
-extern Gfx int_ike_jny_syon01_off_model[];
-extern Gfx int_ike_jny_syon01_on_model[];
 
 static void fIJS_ct(FTR_ACTOR* ftr_actor, u8* data){
     f32 alpha;
@@ -31,7 +29,7 @@ static void fIJS_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* 
     }
     if (ftr_actor->dynamic_work_s[0] == TRUE) {
         if (aFTR_CAN_PLAY_SE(ftr_actor)) {
-            sAdo_OngenPos((u32) ftr_actor, 0x4B, &ftr_actor->position);
+            sAdo_OngenPos((uintptr_t) ftr_actor, 0x4B, &ftr_actor->position);
         }
     }
     if (ftr_actor->dynamic_work_f[0]  > alpha) {

@@ -1,0 +1,131 @@
+:config:
+  strict_declarations: true
+  directory: design
+
+my_original/0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/my_original.bin
+  file_offset: 0x0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+my_original/1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/my_original.bin
+  file_offset: 0x200
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+my_original/2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/my_original.bin
+  file_offset: 0x400
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+my_original/3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/my_original.bin
+  file_offset: 0x600
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+needlework/0:
+  type: TEXTURE
+  file: forest_2nd.arc/data/needlework.bin
+  file_offset: 0x0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+needlework/1:
+  type: TEXTURE
+  file: forest_2nd.arc/data/needlework.bin
+  file_offset: 0x200
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+needlework/2:
+  type: TEXTURE
+  file: forest_2nd.arc/data/needlework.bin
+  file_offset: 0x400
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+needlework/3:
+  type: TEXTURE
+  file: forest_2nd.arc/data/needlework.bin
+  file_offset: 0x600
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+needlework/4:
+  type: TEXTURE
+  file: forest_2nd.arc/data/needlework.bin
+  file_offset: 0x800
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+needlework/5:
+  type: TEXTURE
+  file: forest_2nd.arc/data/needlework.bin
+  file_offset: 0xA00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+needlework/6:
+  type: TEXTURE
+  file: forest_2nd.arc/data/needlework.bin
+  file_offset: 0xC00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+needlework/7:
+  type: TEXTURE
+  file: forest_2nd.arc/data/needlework.bin
+  file_offset: 0xE00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+my_original_index:
+  type: AC:ASSET_ARRAY
+  entries:
+    - design/my_original/0
+    - design/my_original/1
+    - design/my_original/2
+    - design/my_original/3
+
+needlework_index:
+  type: AC:ASSET_ARRAY
+  entries:
+    - design/needlework/0
+    - design/needlework/1
+    - design/needlework/2
+    - design/needlework/3
+    - design/needlework/4
+    - design/needlework/5
+    - design/needlework/6
+    - design/needlework/7

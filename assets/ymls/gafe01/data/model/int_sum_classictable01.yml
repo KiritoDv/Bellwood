@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_sum_dolltable01_pal:
+  type: TEXTURE
+  offset: 0x819BF6C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_classictable01_top:
+  type: TEXTURE
+  offset: 0x819BF6E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819BF6C0
+
+int_sum_classictable01_side:
+  type: TEXTURE
+  offset: 0x819BF8E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819BF6C0
+
+int_sum_classictable01_lag:
+  type: TEXTURE
+  offset: 0x819BF960
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819BF6C0
+
+int_sum_classictable01_foot:
+  type: TEXTURE
+  offset: 0x819BFAE0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819BF6C0
+
+int_sum_classictable01_v:
+  type: VTX
+  offset: 0x819BFBE0
+  count: 53
+
+int_sum_classictable01_on_model:
+  type: GFX
+  offset: 0x819BFF30
+  size: 0x88
+
+int_sum_classictable01_onT_model:
+  type: GFX
+  offset: 0x819BFFB8
+  size: 0xA8

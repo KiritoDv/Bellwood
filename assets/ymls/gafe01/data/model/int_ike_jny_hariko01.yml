@@ -1,0 +1,71 @@
+:config:
+  strict_declarations: true
+
+int_ike_jny_hariko01_pal:
+  type: TEXTURE
+  offset: 0x81825E60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_jny_harikoface01_tex_txt:
+  type: TEXTURE
+  offset: 0x81825E80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81825E60
+
+int_ike_jny_harikoear01_tex_txt:
+  type: TEXTURE
+  offset: 0x81825F80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81825E60
+
+int_ike_jny_harikotail01_tex_txt:
+  type: TEXTURE
+  offset: 0x81826080
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81825E60
+
+int_ike_jny_harikobody01_tex_txt:
+  type: TEXTURE
+  offset: 0x81826100
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81825E60
+
+int_ike_jny_hariko01_v:
+  type: VTX
+  offset: 0x81826300
+  count: 154
+
+int_ike_jny_hariko01_head_model:
+  type: GFX
+  offset: 0x81826CA0
+  size: 0xB0
+
+int_ike_jny_hariko01_body_model:
+  type: GFX
+  offset: 0x81826D50
+  size: 0x260
+
+cKF_ba_r_int_ike_jny_hariko01:
+  type: AC:CKF_ANIMATION
+  offset: 0x81827130
+  joints: 2
+  counts: { flags: 2, data: 180, keys: 6, fixed: 3 }
+
+cKF_bs_r_int_ike_jny_hariko01:
+  type: AC:CKF_SKELETON
+  offset: 0x8182715C
+  counts: { joints: 2 }

@@ -1,5 +1,4 @@
-extern Gfx int_kob_jimuisu_on_model[];
-extern Gfx int_kob_jimuisu_onT_model[];
+#include "assets/data/model/int_kob_jimuisu.h"
 
 aFTR_PROFILE iam_kob_jimuisu = {
 	int_kob_jimuisu_on_model,

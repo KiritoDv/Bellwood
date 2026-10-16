@@ -1,7 +1,5 @@
+#include "assets/data/model/int_sum_gill.h"
 extern aFTR_rig_c aSumGill_key_anime_data;
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_sum_gill;
-extern cKF_Animation_R_c cKF_ba_r_int_sum_gill;
 
 aFTR_rig_c aSumGill_key_anime_data= {
     &cKF_bs_r_int_sum_gill,

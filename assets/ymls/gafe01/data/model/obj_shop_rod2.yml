@@ -1,0 +1,43 @@
+:config:
+  strict_declarations: true
+
+obj_shop_rod2_pal:
+  type: TEXTURE
+  offset: 0x8139A020
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_rod2_tex:
+  type: TEXTURE
+  offset: 0x8139A040
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8139A020
+
+obj_shop_rod2_v:
+  type: VTX
+  offset: 0x8139A240
+  count: 25
+
+obj_rod2T_mat_model:
+  type: GFX
+  offset: 0x8139A3D0
+  size: 0x48
+
+obj_rod2T_gfx_model:
+  type: GFX
+  offset: 0x8139A418
+  size: 0x38
+
+obj_rod2_lineT_mat_model:
+  type: GFX
+  offset: 0x8139A450
+  size: 0x48
+
+obj_rod2_lineT_gfx_model:
+  type: GFX
+  offset: 0x8139A498
+  size: 0x18

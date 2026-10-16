@@ -1,8 +1,4 @@
-extern Gfx int_tak_nes_af_tex_rgb_ci4[];
-extern u16 int_tak_nes_af_tex_rgb_ci4_pal[];
-extern Gfx int_tak_nes01_on_model[];
-extern Gfx int_tak_nes01_onT_model[];
-extern Gfx int_tak_nes01_game_on_model[];
+#include "assets/data/model/int_tak_nes01.h"
 
 static void fTakNes_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     OPEN_DISP(game->graph);

@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+clg_floor2_v:
+  type: VTX
+  offset: 0x813E4A00
+  count: 36
+
+mCL_rom_myhome1_floor_model:
+  type: GFX
+  offset: 0x813E4C40
+  size: 0xE8

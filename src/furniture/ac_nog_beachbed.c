@@ -1,4 +1,4 @@
-extern Gfx int_nog_beachbedT_model[];
+#include "assets/data/model/int_nog_beachbed.h"
 
 aFTR_PROFILE iam_nog_beachbed = {
 	int_nog_beachbedT_model,

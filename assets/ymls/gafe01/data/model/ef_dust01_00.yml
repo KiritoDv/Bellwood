@@ -1,0 +1,54 @@
+:config:
+  strict_declarations: true
+
+ef_dust01_0:
+  type: TEXTURE
+  offset: 0x81664F00
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_dust01_1:
+  type: TEXTURE
+  offset: 0x81664F80
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_dust01_2:
+  type: TEXTURE
+  offset: 0x81665000
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_dust01_3:
+  type: TEXTURE
+  offset: 0x81665080
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_dust01_00_v:
+  type: VTX
+  offset: 0x81665100
+  count: 4
+
+ef_dust01_modelT:
+  type: GFX
+  offset: 0x81665140
+  size: 0x58
+
+ef_dust01_stew_modelT:
+  type: GFX
+  offset: 0x81665198
+  size: 0x58
+
+ef_haro01_00_modelT:
+  type: GFX
+  offset: 0x816651F0
+  size: 0x58

@@ -1,0 +1,141 @@
+:config:
+  strict_declarations: true
+
+obj_s_yamishop_pal:
+  type: TEXTURE
+  offset: 0x8150E760
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_yamishop_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8150E780
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8150E760
+
+obj_s_yamishop_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x8150EF80
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x8150E760
+
+obj_s_yamishop_window_tex_txt:
+  type: TEXTURE
+  offset: 0x8150F780
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_s_yamishop_v:
+  type: VTX
+  offset: 0x8150F800
+  count: 66
+
+obj_s_yamishop_window_model:
+  type: GFX
+  offset: 0x8150FC20
+  size: 0x50
+
+obj_s_yamishop_t1_model:
+  type: GFX
+  offset: 0x8150FC70
+  size: 0x88
+
+obj_s_yamishop_light_model:
+  type: GFX
+  offset: 0x8150FCF8
+  size: 0x58
+
+obj_s_yamishop_door1_model:
+  type: GFX
+  offset: 0x8150FD50
+  size: 0x80
+
+obj_s_yamishop_door2_model:
+  type: GFX
+  offset: 0x8150FDD0
+  size: 0x70
+
+cKF_bs_r_obj_s_yamishop:
+  type: AC:CKF_SKELETON
+  offset: 0x8150FE88
+  counts: { joints: 6 }
+
+cKF_ba_r_obj_s_yamishop:
+  type: AC:CKF_ANIMATION
+  offset: 0x8150FEFC
+  joints: 6
+  counts: { flags: 6, data: 27, keys: 2, fixed: 19 }
+
+obj_w_yamishop_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8150FF20
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_yamishop_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x81510720
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_w_yamishop_window_tex_txt:
+  type: TEXTURE
+  offset: 0x81510F20
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_w_yamishop_v:
+  type: VTX
+  offset: 0x81510FA0
+  count: 66
+
+obj_w_yamishop_window_model:
+  type: GFX
+  offset: 0x815113C0
+  size: 0x50
+
+obj_w_yamishop_t1_model:
+  type: GFX
+  offset: 0x81511410
+  size: 0x88
+
+obj_w_yamishop_light_model:
+  type: GFX
+  offset: 0x81511498
+  size: 0x58
+
+obj_w_yamishop_door1_model:
+  type: GFX
+  offset: 0x815114F0
+  size: 0x80
+
+obj_w_yamishop_door2_model:
+  type: GFX
+  offset: 0x81511570
+  size: 0x70
+
+cKF_bs_r_obj_w_yamishop:
+  type: AC:CKF_SKELETON
+  offset: 0x81511628
+  counts: { joints: 6 }
+
+cKF_ba_r_obj_w_yamishop:
+  type: AC:CKF_ANIMATION
+  offset: 0x8151169C
+  joints: 6
+  counts: { flags: 6, data: 27, keys: 2, fixed: 19 }

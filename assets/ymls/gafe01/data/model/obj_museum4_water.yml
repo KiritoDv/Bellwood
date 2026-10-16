@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+obj_museum4_water1_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81879BA8
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: n64
+
+obj_museum4_water2_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81879DA8
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: n64
+
+obj_museum4_water_v:
+  type: VTX
+  offset: 0x81879FA8
+  count: 4
+
+obj_museum4_water_modelT:
+  type: GFX
+  offset: 0x81879FE8
+  size: 0xD0

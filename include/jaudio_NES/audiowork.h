@@ -13,7 +13,7 @@ extern "C" {
 typedef void (*VFRAME_CALLBACK)(void);
 typedef u32 (*GRP_CALLBACK)(s8, group*);
 typedef void* (*SOUND_CALLBACK)(smzwavetable*, s32, s8, s32);
-typedef Acmd* (*DACOUT_CALLBACK)(Acmd*, s32, s32);
+typedef NaAcmd* (*DACOUT_CALLBACK)(NaAcmd*, s32, s32);
 
 extern AudioGlobals AG;
 extern VFRAME_CALLBACK NA_VFRAME_CALLBACK;

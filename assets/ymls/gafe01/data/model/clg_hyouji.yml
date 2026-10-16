@@ -1,0 +1,44 @@
+:config:
+  strict_declarations: true
+
+clg_win_top_tex:
+  type: TEXTURE
+  offset: 0x813E4E60
+  format: IA8
+  width: 32
+  height: 16
+  source_encoding: gx
+
+clg_win_bottom_tex:
+  type: TEXTURE
+  offset: 0x813E5060
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+cat_c_tex:
+  type: TEXTURE
+  offset: 0x813E5460
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+yaji:
+  type: TEXTURE
+  offset: 0x813E5860
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+clg_hyouji_v:
+  type: VTX
+  offset: 0x813E58E0
+  count: 20
+
+clg_win_cbT_model:
+  type: GFX
+  offset: 0x813E5A20
+  size: 0xD0

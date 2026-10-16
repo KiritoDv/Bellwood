@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_warmup1:
+  type: AC:NPC_ANIM
+  offset: 0x81316098
+  joints: 26
+  counts: { flags: 26, data: 1008, keys: 54, fixed: 27 }

@@ -1,0 +1,81 @@
+:config:
+  strict_declarations: true
+
+obj_clock_shop4_2_pal:
+  type: TEXTURE
+  offset: 0x8194A800
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+obj_clock_shop4_2_t4_tex_txt:
+  type: TEXTURE
+  offset: 0x8194A820
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: n64
+  tlut: 0x8194A800
+
+obj_clock_shop4_2_t3_tex_txt:
+  type: TEXTURE
+  offset: 0x8194AA20
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: n64
+  tlut: 0x8194A800
+
+obj_clock_shop4_2_t2_tex_txt:
+  type: TEXTURE
+  offset: 0x8194ABA0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: n64
+  tlut: 0x8194A800
+
+obj_clock_shop4_2_t1_tex_txt:
+  type: TEXTURE
+  offset: 0x8194AEA0
+  format: CI4
+  width: 48
+  height: 48
+  source_encoding: n64
+  tlut: 0x8194A800
+
+obj_clock_shop4_v:
+  type: VTX
+  offset: 0x8194B320
+  count: 16
+
+obj_clock_shop4_front_model:
+  type: GFX
+  offset: 0x8194B420
+  size: 0xB8
+
+obj_clock_shop4_long_model:
+  type: GFX
+  offset: 0x8194B4D8
+  size: 0xB8
+
+obj_clock_shop4_short_model:
+  type: GFX
+  offset: 0x8194B590
+  size: 0xB8
+
+obj_clock_shop4_huriko_model:
+  type: GFX
+  offset: 0x8194B648
+  size: 0xB8
+
+cKF_ba_r_obj_clock_shop4:
+  type: AC:CKF_ANIMATION
+  offset: 0x8194B768
+  joints: 7
+  counts: { flags: 7, data: 21, keys: 1, fixed: 23 }
+
+cKF_bs_r_obj_clock_shop4:
+  type: AC:CKF_SKELETON
+  offset: 0x8194B7D0
+  counts: { joints: 7 }

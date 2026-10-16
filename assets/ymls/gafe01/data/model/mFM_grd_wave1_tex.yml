@@ -1,0 +1,10 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_wave1_tex:
+  type: TEXTURE
+  offset: 0x81AC88F0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx

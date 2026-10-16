@@ -1,0 +1,128 @@
+:config:
+  strict_declarations: true
+
+int_tak_magami_pal:
+  type: TEXTURE
+  offset: 0x81A97E20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_megami_fire_tex:
+  type: TEXTURE
+  offset: 0x81A97E40
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A97E20
+
+int_tak_megami_ita_tex:
+  type: TEXTURE
+  offset: 0x81A97E60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A97E20
+
+int_tak_megami_totte_tex:
+  type: TEXTURE
+  offset: 0x81A97EE0
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A97E20
+
+int_tak_megami_face_tex:
+  type: TEXTURE
+  offset: 0x81A97F20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A97E20
+
+int_tak_megami_body_tex:
+  type: TEXTURE
+  offset: 0x81A97FA0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A97E20
+
+int_tak_megami_suso_tex:
+  type: TEXTURE
+  offset: 0x81A983A0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A97E20
+
+int_tak_megami_hand_tex:
+  type: TEXTURE
+  offset: 0x81A98420
+  format: CI4
+  width: 8
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A97E20
+
+int_tak_megami_sode_tex:
+  type: TEXTURE
+  offset: 0x81A984A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A97E20
+
+int_tak_megami_asi_tex:
+  type: TEXTURE
+  offset: 0x81A98520
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A97E20
+
+int_tak_megami_dai_tex:
+  type: TEXTURE
+  offset: 0x81A985A0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A97E20
+
+int_tak_megami_top_tex:
+  type: TEXTURE
+  offset: 0x81A985E0
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A97E20
+
+int_tak_megami_v:
+  type: VTX
+  offset: 0x81A98600
+  count: 181
+
+int_tak_megami_on_model:
+  type: GFX
+  offset: 0x81A99150
+  size: 0x150
+
+int_tak_megami_offT_model:
+  type: GFX
+  offset: 0x81A992A0
+  size: 0x68
+
+int_tak_megami_onT_model:
+  type: GFX
+  offset: 0x81A99308
+  size: 0x180

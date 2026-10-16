@@ -66,6 +66,7 @@ static void aGYO_setupActor(aGYO_Init_c* init_data, int idx) {
     Object_Exchange_c* exc = &play->object_exchange;
 
     bzero(ctrl, sizeof(aGYO_CTRL_ACTOR));
+    FrameInterpolation_ResetObject(ctrl);
     ctrl->tools_class.actor_class.shape_info.ofs_y = 200.0f;
     ctrl->exist = TRUE;
     ctrl->draw_type = aGYO_DRAW_TYPE_GYOEI;

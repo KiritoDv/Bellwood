@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_kon_snowtable_tex_pal:
+  type: TEXTURE
+  offset: 0x818B3360
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_snowtable01_tex:
+  type: TEXTURE
+  offset: 0x818B3380
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x818B3360
+
+int_kon_snowtable02_tex:
+  type: TEXTURE
+  offset: 0x818B3780
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B3360
+
+int_kon_snowtable03_tex:
+  type: TEXTURE
+  offset: 0x818B3800
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B3360
+
+int_kon_snowtable04_tex:
+  type: TEXTURE
+  offset: 0x818B3880
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B3360
+
+int_kon_snowtable_v:
+  type: VTX
+  offset: 0x818B3900
+  count: 73
+
+in_kon_snowtable_on_model:
+  type: GFX
+  offset: 0x818B3D90
+  size: 0xA8
+
+in_kon_snowtable_onT_model:
+  type: GFX
+  offset: 0x818B3E38
+  size: 0x90

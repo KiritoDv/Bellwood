@@ -1,0 +1,117 @@
+:config:
+  strict_declarations: true
+
+rom_train_1_pal:
+  type: TEXTURE
+  offset: 0x81AB9840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_train_2_pal:
+  type: TEXTURE
+  offset: 0x81AB9860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_train_3_pal:
+  type: TEXTURE
+  offset: 0x81AB9880
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_train_seat1_tex:
+  type: TEXTURE
+  offset: 0x81AB98A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81AB9840
+
+rom_train_seat2_tex:
+  type: TEXTURE
+  offset: 0x81ABA0A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81AB9840
+
+rom_train_floor_tex:
+  type: TEXTURE
+  offset: 0x81ABA8A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81AB9860
+
+rom_train_wall1_tex:
+  type: TEXTURE
+  offset: 0x81ABB0A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81AB9860
+
+rom_train_roof_tex:
+  type: TEXTURE
+  offset: 0x81ABB8A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81AB9860
+
+rom_train_wall2_tex:
+  type: TEXTURE
+  offset: 0x81ABC0A0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81AB9860
+
+rom_train_net_tex:
+  type: TEXTURE
+  offset: 0x81ABC8A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AB9880
+
+rom_train_glass_tex:
+  type: TEXTURE
+  offset: 0x81ABD0A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+rom_train_light_tex:
+  type: TEXTURE
+  offset: 0x81ABD120
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+rom_train_in_v:
+  type: VTX
+  offset: 0x81ABD320
+  count: 527
+
+rom_train_in_modelT:
+  type: GFX
+  offset: 0x81ABF410
+  size: 0xB0
+
+rom_train_in_model:
+  type: GFX
+  offset: 0x81ABF4C0
+  size: 0x440

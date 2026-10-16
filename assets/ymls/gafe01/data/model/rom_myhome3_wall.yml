@@ -1,0 +1,47 @@
+:config:
+  strict_declarations: true
+
+rom_myhome_pal:
+  type: TEXTURE
+  offset: 0x812BCAC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_myhome_window_tex:
+  type: TEXTURE
+  offset: 0x812BCAE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x812BCAC0
+
+rom_myhome_enter2_tex:
+  type: TEXTURE
+  offset: 0x812BCCE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x812BCAC0
+
+rom_myhome3_wall_v:
+  type: VTX
+  offset: 0x812BD4E0
+  count: 79
+
+rom_myhome3_wall_model:
+  type: GFX
+  offset: 0x812BD9D0
+  size: 0x170
+
+rom_myhome3_wall_new_model:
+  type: GFX
+  offset: 0x812BDB40
+  size: 0x170
+
+rom_myhome3_wall_new2_model:
+  type: GFX
+  offset: 0x812BDCB0
+  size: 0x170

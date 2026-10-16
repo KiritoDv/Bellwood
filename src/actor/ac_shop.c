@@ -11,6 +11,8 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "libforest/gbi_extensions.h"
+#include "assets/data/model/obj_s_shop1.h"
+#include "assets/data/model/obj_shop1_shadow.h"
 
 // clang-format off
 enum {
@@ -52,9 +54,6 @@ static u8 aSHOP_shadow_vtx_fix_flg_table[] = {
 };
 // clang-format on
 
-extern Vtx obj_shop1_shadow_v[];
-extern Gfx obj_shop1_shadowT_model[];
-
 // clang-format off
 static bIT_ShadowData_c aSHOP_shadow_data = {
     8,
@@ -64,9 +63,6 @@ static bIT_ShadowData_c aSHOP_shadow_data = {
     obj_shop1_shadowT_model
 };
 // clang-format on
-
-extern cKF_Skeleton_R_c cKF_bs_r_obj_s_shop1;
-extern cKF_Skeleton_R_c cKF_bs_r_obj_w_shop1;
 
 static void aSHOP_set_bgOffset(STRUCTURE_ACTOR* shop, int offs);
 static void aSHOP_setup_action(STRUCTURE_ACTOR* shop, int action);

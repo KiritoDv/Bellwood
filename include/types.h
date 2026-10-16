@@ -1,8 +1,11 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#include "MSL_C/w_math.h"
-#include <dolphin/types.h>
+#include <stdint.h>
+#include <stddef.h>
+#include <math.h>
+#include <limits.h>
+#include <assert.h>
 #include "macros.h"
 
 #define VER_GAFE01_00 0
@@ -22,15 +25,11 @@
 
 typedef signed char s8;
 typedef signed short s16;
-typedef signed long s32;
+typedef int32_t s32;
 typedef signed long long s64;
 typedef unsigned char u8;
 typedef unsigned short u16;
-typedef unsigned long u32;
-#ifndef _SIZE_T_DEF
-#define _SIZE_T_DEF
-typedef unsigned long size_t;
-#endif
+typedef uint32_t u32;
 typedef unsigned long long u64;
 typedef unsigned int uint;
 
@@ -64,7 +63,9 @@ typedef u32 unknown;
 #define NULL 0
 #endif
 #endif
+#ifndef __cplusplus
 #define nullptr 0
+#endif
 
 // #ifdef __MWERKS__
 // #define AT_ADDRESS(x) : (x)
@@ -111,6 +112,8 @@ typedef u32 unknown;
 #define FRAMES_PER_SECOND 60
 #define FRAMES_PER_MINUTE (FRAMES_PER_SECOND * 60)
 
+#define membersize(type, member) (sizeof(((type*)0)->member))
+
 #define ARRAY_SIZE(arr, type) (sizeof(arr) / sizeof(type))
 #define ARRAY_COUNT(arr) (int)(sizeof(arr) / sizeof(arr[0]))
 
@@ -140,35 +143,19 @@ typedef u32 unknown;
 #define GPACK_RGB5A3(r, g, b, a) \
     ARGB8_to_RGB5A3((((a) & 0xFF) << 24) | (((r) & 0xFF) << 16) | (((g) & 0xFF) << 8) | ((b) & 0xFF))
 
-#pragma section RX "forcestrip"
-#ifndef __INTELLISENSE__
-#define FORCESTRIP __declspec(section "forcestrip")
-#else
 #define FORCESTRIP
-#endif
-
-#if defined(MUST_MATCH) && defined(__MWERKS__)
-#define MATCH_FORCESTRIP FORCESTRIP
-#else
 #define MATCH_FORCESTRIP
-#endif
 
-#if !defined(__INTELLISENSE__) && defined(MUST_MATCH)
-#define ORDER_BSS_DATA static asm void order_bss()
-#define ORDER_BSS(s) lis r3, s @ha
-#define BSS_ORDER_GROUP_START FORCESTRIP ORDER_BSS_DATA {
-#define BSS_ORDER_GROUP_END }
-#define BSS_ORDER_ITEM(v) ORDER_BSS(v)
-#else
 #define BSS_ORDER_GROUP_START
 #define BSS_ORDER_GROUP_END
 #define BSS_ORDER_ITEM(v)
-#endif
 
-#ifndef __cplusplus
-// Some definitions rely on wchar_t being defined
-typedef unsigned short wchar_t;
-#endif
+#define PI 3.14159265358979323846
+#define F_PI ((f32)PI)
+
+#define SQRT2 (1.4142135623730950488016887242097)
+#define F_SQRT2 ((f32)SQRT2)
+#define F_SQRT2_DIV2 (0.707106f)
 
 // #if DEBUG
 // #define ASSERTLINE(line, cond) \

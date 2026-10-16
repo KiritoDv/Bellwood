@@ -1,0 +1,71 @@
+:config:
+  strict_declarations: true
+
+int_sum_asi_chest02_pal:
+  type: TEXTURE
+  offset: 0x81994A80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_asi_chest02_draw_tex_txt:
+  type: TEXTURE
+  offset: 0x81994AA0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81994A80
+
+int_sum_asi_chest02_drawin_tex_txt:
+  type: TEXTURE
+  offset: 0x81994B20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81994A80
+
+int_sum_asi_chest02_front_tex_txt:
+  type: TEXTURE
+  offset: 0x81994BA0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81994A80
+
+int_sum_asi_chest02_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81994EA0
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81994A80
+
+int_sum_asi_chest02_v:
+  type: VTX
+  offset: 0x819950A0
+  count: 47
+
+int_sum_asi_chest02_door_model:
+  type: GFX
+  offset: 0x81995390
+  size: 0xB0
+
+int_sum_asi_chest02_base_model:
+  type: GFX
+  offset: 0x81995440
+  size: 0x88
+
+cKF_ba_r_int_sum_asi_chest02:
+  type: AC:CKF_ANIMATION
+  offset: 0x81995554
+  joints: 3
+  counts: { flags: 3, data: 54, keys: 9, fixed: 3 }
+
+cKF_bs_r_int_sum_asi_chest02:
+  type: AC:CKF_SKELETON
+  offset: 0x8199558C
+  counts: { joints: 3 }

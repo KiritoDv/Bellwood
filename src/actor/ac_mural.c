@@ -4,6 +4,7 @@
 #include "m_name_table.h"
 #include "m_player_lib.h"
 #include "sys_matrix.h"
+#include "assets/data/model/mural/obj_mural.h"
 
 static void Mural_Actor_ct(ACTOR* actorx, GAME* game);
 static void Mural_Actor_dt(ACTOR* actorx, GAME* game);
@@ -58,8 +59,6 @@ static void Mural_Actor_move(ACTOR* actorx, GAME* game) {
 
     actorx->world.position.y = 140.0f;
 }
-
-extern Gfx obj_mural_model[];
 
 static void Mural_Actor_draw(ACTOR* actorx, GAME* game) {
     MURAL_ACTOR* mural = (MURAL_ACTOR*)actorx;

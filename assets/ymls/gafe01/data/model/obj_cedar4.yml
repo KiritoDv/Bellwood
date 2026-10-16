@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+obj_cedar4_shadow_v:
+  type: VTX
+  offset: 0x810FE9F0
+  count: 4
+
+obj_cedar4_shadowT_mat_model:
+  type: GFX
+  offset: 0x810FEA30
+  size: 0x20
+
+obj_cedar4_shadowT_gfx_model:
+  type: GFX
+  offset: 0x810FEA50
+  size: 0x10

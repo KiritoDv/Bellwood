@@ -1,0 +1,236 @@
+:config:
+  strict_declarations: true
+
+dna_win_icon_pal:
+  type: TEXTURE
+  offset: 0x8145CB60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+dna_win_nuno_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8145CB80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+dna_win_sw4_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8145CBA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+dna_win_sw1_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8145CBC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+dna_win_sw2_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8145CBE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+dna_win_sw3_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8145CC00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+nam_win_fuki_tex:
+  type: TEXTURE
+  offset: 0x8145CC20
+  format: I4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+dna_win_aw1_tex:
+  type: TEXTURE
+  offset: 0x8145D420
+  format: I4
+  width: 32
+  height: 64
+  source_encoding: gx
+
+dna_win_aw2_tex:
+  type: TEXTURE
+  offset: 0x8145D820
+  format: I4
+  width: 64
+  height: 32
+  source_encoding: gx
+
+dna_win_aw3_tex:
+  type: TEXTURE
+  offset: 0x8145DC20
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+dna_win_icon_tex:
+  type: TEXTURE
+  offset: 0x8145DE20
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8145CB60
+
+dna_win_batu_tex:
+  type: TEXTURE
+  offset: 0x8145E620
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+dna_win_aw4_tex:
+  type: TEXTURE
+  offset: 0x8145E720
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+dna_win_nuno_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x8145E7A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8145CB80
+
+dna_win_sw4_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x8145E9A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8145CBA0
+
+dna_win_sw1_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x8145EBA0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8145CBC0
+
+dna_win_sw2_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x8145EFA0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8145CBE0
+
+dna_win_sw3_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x8145F3A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8145CC00
+
+dna_win_v:
+  type: VTX
+  offset: 0x8145F5A0
+  count: 96
+
+dna_win_w11_model:
+  type: GFX
+  offset: 0x8145FBA0
+  size: 0x30
+
+dna_win_ue_model:
+  type: GFX
+  offset: 0x8145FBD0
+  size: 0xB0
+
+dna_win_w1T_model:
+  type: GFX
+  offset: 0x8145FC80
+  size: 0x30
+
+dna_win_w2T_model:
+  type: GFX
+  offset: 0x8145FCB0
+  size: 0x30
+
+dna_win_w3T_model:
+  type: GFX
+  offset: 0x8145FCE0
+  size: 0x30
+
+dna_win_w4T_model:
+  type: GFX
+  offset: 0x8145FD10
+  size: 0x30
+
+dna_win_w5T_model:
+  type: GFX
+  offset: 0x8145FD40
+  size: 0x30
+
+dna_win_w6T_model:
+  type: GFX
+  offset: 0x8145FD70
+  size: 0x30
+
+dna_win_w7T_model:
+  type: GFX
+  offset: 0x8145FDA0
+  size: 0x30
+
+dna_win_w8T_model:
+  type: GFX
+  offset: 0x8145FDD0
+  size: 0x30
+
+dna_win_w9T_model:
+  type: GFX
+  offset: 0x8145FE00
+  size: 0x30
+
+dna_win_w10T_model:
+  type: GFX
+  offset: 0x8145FE30
+  size: 0x30
+
+dna_win_fukiT_model:
+  type: GFX
+  offset: 0x8145FE60
+  size: 0x38
+
+dna_win_iconT_model:
+  type: GFX
+  offset: 0x8145FE98
+  size: 0x40
+
+dna_win_garaT_model:
+  type: GFX
+  offset: 0x8145FED8
+  size: 0x40
+
+dna_win_mode:
+  type: GFX
+  offset: 0x8145FF18
+  size: 0x20
+
+dna_win_model:
+  type: GFX
+  offset: 0x8145FF38
+  size: 0x98

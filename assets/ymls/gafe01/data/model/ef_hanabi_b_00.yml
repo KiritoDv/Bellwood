@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+ef_hanabi_b_0_inta_ia8:
+  type: TEXTURE
+  offset: 0x81666360
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_hanabi_b_1_inta_ia8:
+  type: TEXTURE
+  offset: 0x81666760
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_hanabi_b_00_v:
+  type: VTX
+  offset: 0x81666B60
+  count: 4
+
+ef_hanabi_b_00_modelT:
+  type: GFX
+  offset: 0x81666BA0
+  size: 0x58

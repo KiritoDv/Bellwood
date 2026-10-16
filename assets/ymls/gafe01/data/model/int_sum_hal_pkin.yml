@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_sum_hal_pkin_pal:
+  type: TEXTURE
+  offset: 0x81A01660
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_hal_pkin_front_tex:
+  type: TEXTURE
+  offset: 0x81A01680
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A01660
+
+int_sum_hal_pkin_back_tex:
+  type: TEXTURE
+  offset: 0x81A01980
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A01660
+
+int_sum_hal_pkin_kuki_tex:
+  type: TEXTURE
+  offset: 0x81A01C80
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A01660
+
+int_sum_hal_pkin_kukitop_tex:
+  type: TEXTURE
+  offset: 0x81A01D00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A01660
+
+int_sum_hal_pkin_v:
+  type: VTX
+  offset: 0x81A01D80
+  count: 45
+
+int_sum_hal_pkin_on_model:
+  type: GFX
+  offset: 0x81A02050
+  size: 0x78
+
+int_sum_hal_pkin_onT_model:
+  type: GFX
+  offset: 0x81A020C8
+  size: 0xA8

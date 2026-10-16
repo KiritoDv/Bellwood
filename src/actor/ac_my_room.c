@@ -9,7 +9,7 @@
 #include "m_malloc.h"
 #include "m_cockroach.h"
 #include "m_msg.h"
-#include "dolphin/card.h"
+#include "gc_compat.h"
 #include "m_string.h"
 #include "m_house.h"
 #include "m_player_lib.h"
@@ -18,6 +18,7 @@
 #include "m_mark_room.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/furniture_stop.h"
 
 enum {
     aMR_ICON_LEAF,
@@ -1248,6 +1249,7 @@ static void aMR_FurnitureCt(FTR_ACTOR* ftr_actor, GAME* game, int ut_x, int ut_z
     ftr_actor->position = pos;
     ftr_actor->last_position = pos;
     ftr_actor->id = ftr_idx;
+    FrameInterpolation_ResetObject(ftr_actor);
     aMR_SetInfoFurnitureTable(ftr_actor->shape_type, ut_x + ut_z * UT_X_NUM, ftr_idx, ftr_actor->layer);
     ftr_actor->collision_direction = 0;
 
@@ -1363,9 +1365,6 @@ static void aMR_InitFurnitureBankTable(void) {
         l_bank_index_table[i] = 255;
     }
 }
-
-extern cKF_Skeleton_R_c cKF_bs_r_furniture_stop;
-extern cKF_Animation_R_c cKF_ba_r_furniture_stop;
 
 static void aMR_InitDummyKeyAnime(GAME_PLAY* play, ACTOR* actorx) {
     MY_ROOM_ACTOR* my_room = (MY_ROOM_ACTOR*)actorx;
@@ -2132,7 +2131,7 @@ static void aMR_CallSitDownOngenPosSE(const xyz_t* pos) {
         /* Check for massage chair */
         switch (ftr_actor->name) {
             case FTR_KON_MASAJI:
-                sAdo_OngenPos((u32)ftr_actor, 39, &ftr_actor->position);
+                sAdo_OngenPos((uintptr_t)ftr_actor, 39, &ftr_actor->position);
                 break;
         }
     }

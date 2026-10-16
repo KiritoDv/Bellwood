@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_sum_pl_pothos_pal:
+  type: TEXTURE
+  offset: 0x81A45FA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_pl_pothos_hachi_tex:
+  type: TEXTURE
+  offset: 0x81A45FC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A45FA0
+
+int_sum_pl_pothos_stand_tex:
+  type: TEXTURE
+  offset: 0x81A460C0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A45FA0
+
+int_sum_pl_pothos_earth_tex:
+  type: TEXTURE
+  offset: 0x81A46240
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A45FA0
+
+int_sum_pl_pothos_leaf1_tex:
+  type: TEXTURE
+  offset: 0x81A462C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A45FA0
+
+int_sum_pl_pothos_leaf2_tex:
+  type: TEXTURE
+  offset: 0x81A463C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A45FA0
+
+int_sum_pl_pothos_v:
+  type: VTX
+  offset: 0x81A465C0
+  count: 46
+
+int_sum_pl_pothos_on_model:
+  type: GFX
+  offset: 0x81A468A0
+  size: 0x60
+
+int_sum_pl_pothos_onT_model:
+  type: GFX
+  offset: 0x81A46900
+  size: 0xD0

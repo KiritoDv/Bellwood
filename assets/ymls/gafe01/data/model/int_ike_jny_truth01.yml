@@ -1,0 +1,71 @@
+:config:
+  strict_declarations: true
+
+int_ike_jny_truth01_pal:
+  type: TEXTURE
+  offset: 0x81831700
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_jny_truthbases_tex_txt:
+  type: TEXTURE
+  offset: 0x81831720
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81831700
+
+int_ike_jny_truthbaset_tex_txt:
+  type: TEXTURE
+  offset: 0x81831820
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81831700
+
+int_ike_jny_truthface3_tex_txt:
+  type: TEXTURE
+  offset: 0x81831860
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81831700
+
+int_ike_jny_truthface2_tex_txt:
+  type: TEXTURE
+  offset: 0x81831A60
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81831700
+
+int_ike_jny_truthface1_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81831AE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_ike_jny_truthface2_TA_tex_txt:
+  type: TEXTURE
+  offset: 0x81831CE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_ike_jny_truth01_v:
+  type: VTX
+  offset: 0x81831EE0
+  count: 74
+
+int_ike_jny_truth01_body_model:
+  type: GFX
+  offset: 0x81832380
+  size: 0x180

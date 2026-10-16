@@ -1,5 +1,4 @@
-extern Gfx int_sum_ratan_isu01_on_model[];
-extern Gfx int_sum_ratan_isu01_onT_model[];
+#include "assets/data/model/int_sum_ratan_isu01.h"
 
 aFTR_PROFILE iam_sum_ratan_isu01 = {
 	int_sum_ratan_isu01_on_model,

@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+obj_w_fence_tex:
+  type: TEXTURE
+  offset: 0x81115260
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81102180
+
+obj_w_fenceL_v:
+  type: VTX
+  offset: 0x81115660
+  count: 4
+
+obj_w_fenceLT_mat_model:
+  type: GFX
+  offset: 0x811156A0
+  size: 0x28
+
+obj_w_fenceLT_gfx_model:
+  type: GFX
+  offset: 0x811156C8
+  size: 0x18

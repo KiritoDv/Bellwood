@@ -11,6 +11,7 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "libforest/gbi_extensions.h"
+#include "assets/data/model/obj_s_kouban_shadow.h"
 
 static void aPBOX_actor_ct(ACTOR* actor, GAME* game);
 static void aPBOX_actor_init(ACTOR* actor, GAME* game);
@@ -41,9 +42,6 @@ static u8 aPBOX_shadow_vtx_fix_flg_table0[] = {
     TRUE, FALSE, FALSE, TRUE
 };
 // clang-format on
-
-extern Vtx obj_s_kouban_shadow_v[];
-extern Gfx obj_s_kouban_shadow_model[];
 
 // clang-format off
 static bIT_ShadowData_c aPBOX_shadow_data = {

@@ -1,5 +1,4 @@
-extern Gfx int_din_hutaba_headT_model[];
-extern Gfx int_din_hutaba_head_model[];
+#include "assets/data/model/int_din_hutaba_head.h"
 
 aFTR_PROFILE iam_din_hutaba_head = {
 	int_din_hutaba_headT_model,

@@ -9,6 +9,8 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "zurumode.h"
+#include "assets/data/model/act_balloon.h"
+#include "assets/data/model/obj_item_present.h"
 
 static void aFSN_actor_ct(ACTOR* actorx, GAME* game);
 static void aFSN_actor_dt(ACTOR* actorx, GAME* game);
@@ -30,9 +32,6 @@ ACTOR_PROFILE Fuusen_Profile = {
 };
 
 static void aFSN_setupAction(FUUSEN_ACTOR* fuusen_actor, GAME* game, int action);
-
-extern cKF_Skeleton_R_c cKF_bs_r_act_balloon;
-extern cKF_Animation_R_c cKF_ba_r_act_balloon;
 
 static void aFSN_actor_ct(ACTOR* actorx, GAME* game) {
   FUUSEN_ACTOR* fuusen = (FUUSEN_ACTOR*)actorx;
@@ -539,9 +538,6 @@ static int aFSN_actor_draw_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, in
 
   return TRUE;
 }
-
-extern Gfx present_DL_mode[];
-extern Gfx present_DL_vtx[];
 
 static void aFSN_actor_draw(ACTOR* actorx, GAME* game) {
   static xyz_t offset0 = { 0.0f, 0.0f, 0.0f };

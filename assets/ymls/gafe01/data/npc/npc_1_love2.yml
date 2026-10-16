@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_love2:
+  type: AC:NPC_ANIM
+  offset: 0x812F3D04
+  joints: 26
+  counts: { flags: 26, data: 414, keys: 54, fixed: 27 }

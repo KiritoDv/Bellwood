@@ -1,0 +1,62 @@
+:config:
+  strict_declarations: true
+
+rom_myhome_ug_pal:
+  type: TEXTURE
+  offset: 0x812C1A40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_myhome_pal:
+  type: TEXTURE
+  offset: 0x812C1A60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_myhome_ugf1_tex:
+  type: TEXTURE
+  offset: 0x812C1A80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x812C1A40
+
+rom_myhome_enter2_tex:
+  type: TEXTURE
+  offset: 0x812C2280
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x812C1A60
+
+rom_myhome_ugw1_tex:
+  type: TEXTURE
+  offset: 0x812C2A80
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x812C1A40
+
+rom_myhome_ugw2_tex:
+  type: TEXTURE
+  offset: 0x812C3280
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x812C1A40
+
+rom_myhome_ug_v:
+  type: VTX
+  offset: 0x812C3A80
+  count: 152
+
+rom_myhome_ug_model:
+  type: GFX
+  offset: 0x812C4400
+  size: 0x1D0

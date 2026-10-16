@@ -1,0 +1,7 @@
+:config:
+  strict_declarations: true
+
+nintendo_hi_0:
+  type: BLOB
+  offset: 0x800C3140
+  size: 0x9900

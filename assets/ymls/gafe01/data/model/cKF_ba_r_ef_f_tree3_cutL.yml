@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_ef_f_tree3_cutL:
+  type: AC:CKF_ANIMATION
+  offset: 0x81645FA8
+  joints: 4
+  counts: { flags: 4, data: 258, keys: 8, fixed: 7 }

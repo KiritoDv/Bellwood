@@ -1,0 +1,90 @@
+:config:
+  strict_declarations: true
+
+int_sum_cupboard01_pal:
+  type: TEXTURE
+  offset: 0x819D0120
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_cupboard01_mirror_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x819D0140
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_cupboard01_front_tex:
+  type: TEXTURE
+  offset: 0x819D0160
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819D0120
+
+int_sum_cupboard01_side_tex:
+  type: TEXTURE
+  offset: 0x819D0360
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x819D0120
+
+int_sum_cupboard01_top_tex:
+  type: TEXTURE
+  offset: 0x819D0560
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D0120
+
+int_sum_cupboard01_cup_tex:
+  type: TEXTURE
+  offset: 0x819D05E0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819D0120
+
+int_sum_cupboard01_grass_tex:
+  type: TEXTURE
+  offset: 0x819D0760
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819D0120
+
+int_sum_cupboard01_mirror_tex:
+  type: TEXTURE
+  offset: 0x819D08E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819D0140
+
+int_sum_cupboard01_v:
+  type: VTX
+  offset: 0x819D0960
+  count: 40
+
+int_sum_cupboard01_on_model:
+  type: GFX
+  offset: 0x819D0BE0
+  size: 0x60
+
+int_sum_cupboard01_onT_model:
+  type: GFX
+  offset: 0x819D0C40
+  size: 0xC8
+
+int_sum_cupboard01_envT_model:
+  type: GFX
+  offset: 0x819D0D08
+  size: 0x60

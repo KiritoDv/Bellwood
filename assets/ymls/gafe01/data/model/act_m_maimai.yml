@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+act_m_maimai_pal:
+  type: TEXTURE
+  offset: 0x812672A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_maimai_tex:
+  type: TEXTURE
+  offset: 0x812672C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x812672A0
+
+act_m_maimai_v:
+  type: VTX
+  offset: 0x812674C0
+  count: 16
+
+act_m_maimaiT_model:
+  type: GFX
+  offset: 0x812675C0
+  size: 0x78

@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+obj_s_cedar_leaf_tex_txt:
+  type: TEXTURE
+  offset: 0x8164C060
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+
+obj_s_cedar_cutS_tex_txt:
+  type: TEXTURE
+  offset: 0x8164C860
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_s_cedar_cutL_tex_txt:
+  type: TEXTURE
+  offset: 0x8164CA60
+  format: CI4
+  width: 64
+  height: 48
+  source_encoding: gx

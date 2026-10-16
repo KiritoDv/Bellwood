@@ -1,0 +1,126 @@
+:config:
+  strict_declarations: true
+
+obj_e_kago_r_t1_tex:
+  type: TEXTURE
+  offset: 0x81531980
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_kago_r_t2_tex:
+  type: TEXTURE
+  offset: 0x81532180
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_kago_r_v:
+  type: VTX
+  offset: 0x81532980
+  count: 41
+
+obj_e_kago_r_t1T_model:
+  type: GFX
+  offset: 0x81532C10
+  size: 0x68
+
+obj_e_kago_r_t2T_model:
+  type: GFX
+  offset: 0x81532C78
+  size: 0x80
+
+kago_r_DL_model:
+  type: GFX
+  offset: 0x81532CF8
+  size: 0x18
+
+zobj_e_kago_r_pal:
+  type: TEXTURE
+  offset: 0x81532D20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_kago_r_ball_t1_tex:
+  type: TEXTURE
+  offset: 0x81532D40
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81532D20
+
+obj_e_kago_r_ball_v:
+  type: VTX
+  offset: 0x81533540
+  count: 39
+
+kago_r_ball_DL_model:
+  type: GFX
+  offset: 0x815337B0
+  size: 0x78
+
+obj_e_kago_w_t1_tex:
+  type: TEXTURE
+  offset: 0x81533840
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_kago_w_t2_tex:
+  type: TEXTURE
+  offset: 0x81534040
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+
+obj_e_kago_w_v:
+  type: VTX
+  offset: 0x81534840
+  count: 41
+
+obj_e_kago_w_t1T_model:
+  type: GFX
+  offset: 0x81534AD0
+  size: 0x68
+
+obj_e_kago_w_t2T_model:
+  type: GFX
+  offset: 0x81534B38
+  size: 0x80
+
+kago_w_DL_model:
+  type: GFX
+  offset: 0x81534BB8
+  size: 0x18
+
+zobj_e_kago_w_pal:
+  type: TEXTURE
+  offset: 0x81534BE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_e_kago_w_ball_t1_tex:
+  type: TEXTURE
+  offset: 0x81534C00
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x81534BE0
+
+obj_e_kago_w_ball_v:
+  type: VTX
+  offset: 0x81535400
+  count: 36
+
+kago_w_ball_DL_model:
+  type: GFX
+  offset: 0x81535640
+  size: 0x78

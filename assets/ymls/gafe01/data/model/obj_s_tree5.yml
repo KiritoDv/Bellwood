@@ -1,0 +1,37 @@
+:config:
+  strict_declarations: true
+
+obj_s_tree5_v:
+  type: VTX
+  offset: 0x81111AA0
+  count: 22
+
+obj_s_tree5_leafT_mat_model:
+  type: GFX
+  offset: 0x81111C00
+  size: 0x20
+
+obj_s_gold_tree5_leafT_mat_model:
+  type: GFX
+  offset: 0x81111C20
+  size: 0x20
+
+obj_s_tree5_leafT_gfx_model:
+  type: GFX
+  offset: 0x81111C40
+  size: 0x30
+
+obj_s_tree5_trunkT_mat_model:
+  type: GFX
+  offset: 0x81111C70
+  size: 0x20
+
+obj_s_gold_tree5_trunkT_mat_model:
+  type: GFX
+  offset: 0x81111C90
+  size: 0x20
+
+obj_s_tree5_trunkT_gfx_model:
+  type: GFX
+  offset: 0x81111CB0
+  size: 0x20

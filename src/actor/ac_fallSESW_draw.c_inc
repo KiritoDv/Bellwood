@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_fallSE.h"
 
 void aFLEW_actor_draw(ACTOR* actor, GAME* game) {
     static const xyz_t base_vec_z = {0.0f, 0.0f, 1.0f};
@@ -33,7 +34,7 @@ void aFLEW_actor_draw(ACTOR* actor, GAME* game) {
         gfx = NOW_POLY_XLU_DISP;
         gSPMatrix(gfx++, _Matrix_to_Mtx_new(graph), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
-        NOW_POLY_XLU_DISP = gfx;
+        SET_POLY_XLU_DISP(gfx);
     }
     Evw_Anime_Set(play, &obj_fallSE_evw_anime);
 
@@ -79,6 +80,6 @@ void aFLEW_actor_draw(ACTOR* actor, GAME* game) {
         }
     }
 
-    NOW_POLY_XLU_DISP = gfx;
+    SET_POLY_XLU_DISP(gfx);
     CLOSE_DISP(graph);
 }

@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_lib.h"
 #include "m_rcp.h"
+#include "assets/data/model/tol_kenjyu_1.h"
 
 static void aTPT_actor_ct(ACTOR* actor, GAME* game);
 static void aTPT_actor_move(ACTOR* actor, GAME* game);
@@ -24,8 +25,6 @@ ACTOR_PROFILE T_Pistol_Profile = {
 };
 
 static void aTPT_setupAction(ACTOR* actor, int idx);
-
-extern Gfx tol_kenjyu_1T_model[];
 
 static void aTPT_actor_ct(ACTOR* actor, GAME* game){
     aTPT_setupAction(actor, 1);

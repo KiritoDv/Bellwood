@@ -1,5 +1,4 @@
-extern Gfx int_ike_prores_fense01_on_model[];
-extern Gfx int_ike_prores_fense01_onT_model[];
+#include "assets/data/model/int_ike_prores_fense01.h"
 
 aFTR_PROFILE iam_ike_prores_fense01 = {
 	int_ike_prores_fense01_on_model,

@@ -1,0 +1,96 @@
+:config:
+  strict_declarations: true
+
+int_ike_pst_pig01_pal:
+  type: TEXTURE
+  offset: 0x81847740
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_pst_pig01_base1_tex:
+  type: TEXTURE
+  offset: 0x81847760
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81847740
+
+int_ike_pst_pig01_nose1_tex:
+  type: TEXTURE
+  offset: 0x818477E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81847740
+
+int_ike_pst_pig01_ear1_tex:
+  type: TEXTURE
+  offset: 0x81847860
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81847740
+
+int_ike_pst_pig01_eye1_tex:
+  type: TEXTURE
+  offset: 0x818478E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81847740
+
+int_ike_pst_pig01_hole1_tex:
+  type: TEXTURE
+  offset: 0x81847960
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81847740
+
+int_ike_pst_pig01_hand1_tex:
+  type: TEXTURE
+  offset: 0x81847A60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81847740
+
+int_ike_pst_pig01_tail1_tex:
+  type: TEXTURE
+  offset: 0x81847AE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81847740
+
+int_ike_pst_pig01_mark1_tex:
+  type: TEXTURE
+  offset: 0x81847B60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81847740
+
+int_ike_pst_pig01_v:
+  type: VTX
+  offset: 0x81847BE0
+  count: 80
+
+int_ike_pst_pig01_on_model:
+  type: GFX
+  offset: 0x818480E0
+  size: 0x120
+
+int_ike_pst_pig01_onT_model:
+  type: GFX
+  offset: 0x81848200
+  size: 0x80

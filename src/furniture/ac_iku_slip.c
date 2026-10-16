@@ -1,4 +1,4 @@
-extern Gfx int_iku_slip_model_model[];
+#include "assets/data/model/int_iku_slip.h"
 
 aFTR_PROFILE iam_iku_slip = {
 	int_iku_slip_model_model,

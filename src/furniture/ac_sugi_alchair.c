@@ -1,4 +1,4 @@
-extern Gfx sugi_aluminum_c_model[];
+#include "assets/data/model/int_sugi_alchair.h"
 
 aFTR_PROFILE iam_sugi_alchair = {
 	sugi_aluminum_c_model,

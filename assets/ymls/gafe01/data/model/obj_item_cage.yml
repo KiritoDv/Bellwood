@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_item_cage_pal:
+  type: TEXTURE
+  offset: 0x81891100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_item_cage_tex:
+  type: TEXTURE
+  offset: 0x81891120
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81891100
+
+obj_item_cage_v:
+  type: VTX
+  offset: 0x81891320
+  count: 4
+
+obj_cageT_mat_model:
+  type: GFX
+  offset: 0x81891360
+  size: 0x48
+
+obj_cageT_gfx_model:
+  type: GFX
+  offset: 0x818913A8
+  size: 0x18

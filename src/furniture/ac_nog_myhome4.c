@@ -1,6 +1,4 @@
-extern Gfx int_nog_myhome4_on_model[];
-extern Gfx int_nog_myhome4_onT_model[];
-extern Gfx int_nog_myhome4_off_model[];
+#include "assets/data/model/int_nog_myhome4.h"
 
 static void fNM4_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     u16* pal_p = ftr_actor->pal_p;

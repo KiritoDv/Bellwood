@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_din_trex_pal:
+  type: TEXTURE
+  offset: 0x8163E520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_din_trex_h_tex:
+  type: TEXTURE
+  offset: 0x8163E540
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8163E520
+
+int_din_trex_baceA_tex:
+  type: TEXTURE
+  offset: 0x8163E940
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8163E520
+
+int_din_trex_poleA_tex:
+  type: TEXTURE
+  offset: 0x8163EB40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8163E520
+
+int_din_trex_kb_tex:
+  type: TEXTURE
+  offset: 0x8163EBC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8163E520
+
+int_din_trex_head_v:
+  type: VTX
+  offset: 0x8163ECC0
+  count: 49
+
+int_din_trex_head_model:
+  type: GFX
+  offset: 0x8163EFD0
+  size: 0x68
+
+int_din_trex_headT_model:
+  type: GFX
+  offset: 0x8163F038
+  size: 0xC0

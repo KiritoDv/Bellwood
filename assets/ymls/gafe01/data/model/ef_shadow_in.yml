@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+ef_shadow_in_v:
+  type: VTX
+  offset: 0x81877A48
+  count: 4
+
+ef_shadow_insect_modelT:
+  type: GFX
+  offset: 0x81877A88
+  size: 0x88

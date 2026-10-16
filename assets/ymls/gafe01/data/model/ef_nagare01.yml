@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+ef_nagare01_inta_ia8:
+  type: TEXTURE
+  offset: 0x81670200
+  format: IA8
+  width: 8
+  height: 256
+  source_encoding: gx
+
+ef_nagare02_int_i4:
+  type: TEXTURE
+  offset: 0x81670A00
+  format: I4
+  width: 8
+  height: 32
+  source_encoding: gx
+
+ef_nagare01_v:
+  type: VTX
+  offset: 0x81670A80
+  count: 4
+
+ef_nagare01_modelT:
+  type: GFX
+  offset: 0x81670AC0
+  size: 0x70

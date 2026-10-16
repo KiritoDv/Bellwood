@@ -1,0 +1,50 @@
+:config:
+  strict_declarations: true
+
+ef_siawase01_00_evw_anime:
+  type: AC:EVW_ANIME
+  offset: 0x81670B48
+
+ef_siawase01_1:
+  type: TEXTURE
+  offset: 0x81670B60
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_siawase01_2_int_i4:
+  type: TEXTURE
+  offset: 0x81670BE0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_siawase01_00_v:
+  type: VTX
+  offset: 0x81670C60
+  count: 17
+
+ef_siawase01_00_modelT:
+  type: GFX
+  offset: 0x81670D70
+  size: 0x78
+
+ef_siawase01_0:
+  type: TEXTURE
+  offset: 0x81670E00
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_siawase01_01_v:
+  type: VTX
+  offset: 0x81670F00
+  count: 4
+
+ef_siawase01_01_modelT:
+  type: GFX
+  offset: 0x81670F40
+  size: 0x48

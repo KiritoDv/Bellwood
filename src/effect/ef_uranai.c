@@ -2,9 +2,7 @@
 
 #include "m_common_data.h"
 #include "m_rcp.h"
-
-extern Gfx ef_uranai01_00_modelT[];
-extern EVW_ANIME_DATA ef_uranai01_00_evw_anime;
+#include "assets/data/model/ef_uranai01_00.h"
 
 static void eUranai_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eUranai_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);

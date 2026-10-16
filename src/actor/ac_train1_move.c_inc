@@ -1,3 +1,4 @@
+#include "assets/data/model/obj_train_3.h"
 static void aTR1_OngenTrgStart(ACTOR* actor, u16 id) {
     TRAIN1_ACTOR* train1 = (TRAIN1_ACTOR*)actor;
 

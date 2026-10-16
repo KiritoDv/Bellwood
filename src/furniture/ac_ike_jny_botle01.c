@@ -1,5 +1,4 @@
-extern Gfx int_ike_jny_botle01_on_model[];
-extern Gfx int_ike_jny_botle01_off_model[];
+#include "assets/data/model/int_ike_jny_botle01.h"
 
 aFTR_PROFILE iam_ike_jny_botle01 = {
 	int_ike_jny_botle01_on_model,

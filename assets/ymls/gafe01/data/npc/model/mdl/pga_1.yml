@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+pga_1_v:
+  type: VTX
+  offset: 0x813517A0
+  count: 418
+
+head_pga_model:
+  type: GFX
+  offset: 0x813531C0
+  size: 0x1A0
+
+mouth_pga_model:
+  type: GFX
+  offset: 0x81353360
+  size: 0xF0
+
+Rarm2_pga_model:
+  type: GFX
+  offset: 0x81353450
+  size: 0xB8
+
+Rarm1_pga_model:
+  type: GFX
+  offset: 0x81353508
+  size: 0xA8
+
+Larm2_pga_model:
+  type: GFX
+  offset: 0x813535B0
+  size: 0xB8
+
+Larm1_pga_model:
+  type: GFX
+  offset: 0x81353668
+  size: 0xA8
+
+chest_pga_model:
+  type: GFX
+  offset: 0x81353710
+  size: 0xA0
+
+tail1_pga_model:
+  type: GFX
+  offset: 0x813537B0
+  size: 0x78
+
+Rfoot3_pga_model:
+  type: GFX
+  offset: 0x81353828
+  size: 0x88
+
+Rfoot2_pga_model:
+  type: GFX
+  offset: 0x813538B0
+  size: 0x80
+
+Rfoot1_pga_model:
+  type: GFX
+  offset: 0x81353930
+  size: 0x58
+
+Lfoot3_pga_model:
+  type: GFX
+  offset: 0x81353988
+  size: 0x88
+
+Lfoot2_pga_model:
+  type: GFX
+  offset: 0x81353A10
+  size: 0x80
+
+Lfoot1_pga_model:
+  type: GFX
+  offset: 0x81353A90
+  size: 0x58
+
+base_pga_model:
+  type: GFX
+  offset: 0x81353AE8
+  size: 0x78
+
+cKF_bs_r_pga_1:
+  type: AC:CKF_SKELETON
+  offset: 0x81353C98
+  counts: { joints: 26 }

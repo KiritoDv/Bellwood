@@ -206,10 +206,10 @@ struct actor_structure_s {
     /* 0x2B4 */ int action;
 
     /* general purpose members with unique usage between structure actors */
-    /* 0x2B8 */ int arg0;
-    /* 0x2BC */ int arg1;
-    /* 0x2C0 */ int arg2;
-    /* 0x2C4 */ int arg3;
+    /* 0x2B8 */ intptr_t arg0;
+    /* 0x2BC */ intptr_t arg1;
+    /* 0x2C0 */ intptr_t arg2;
+    /* 0x2C4 */ intptr_t arg3;
 
     /* general purpose float members with unique usage between structure actors*/
     /* 0x2C8 */ f32 arg0_f;

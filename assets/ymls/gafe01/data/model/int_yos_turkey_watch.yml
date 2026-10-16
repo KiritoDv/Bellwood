@@ -1,0 +1,94 @@
+:config:
+  strict_declarations: true
+
+int_yos_turkey_clk_pal:
+  type: TEXTURE
+  offset: 0x81ADDF60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_yos_turkey_clk_hari_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADDF80
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ADDF60
+
+int_yos_turkey_clk_ashi_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADE080
+  format: CI4
+  width: 8
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ADDF60
+
+int_yos_turkey_clk_yubi_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADE100
+  format: CI4
+  width: 8
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ADDF60
+
+int_yos_turkey_clk_sukart_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADE180
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81ADDF60
+
+int_yos_turkey_clk_mae_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADE280
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81ADDF60
+
+int_yos_turkey_clk_ato_tex_txt:
+  type: TEXTURE
+  offset: 0x81ADE680
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81ADDF60
+
+int_yos_turkey_watch_v:
+  type: VTX
+  offset: 0x81ADE6A0
+  count: 46
+
+int_yos_turkey_clk_long_model:
+  type: GFX
+  offset: 0x81ADE980
+  size: 0x58
+
+int_yos_turkey_clk_obj_model:
+  type: GFX
+  offset: 0x81ADE9D8
+  size: 0x100
+
+int_yos_turkey_clk_short_model:
+  type: GFX
+  offset: 0x81ADEAD8
+  size: 0x58
+
+cKF_ba_r_int_yos_turkey_watch:
+  type: AC:CKF_ANIMATION
+  offset: 0x81ADEB5C
+  joints: 5
+  counts: { flags: 5, data: 0, keys: 0, fixed: 18 }
+
+cKF_bs_r_int_yos_turkey_watch:
+  type: AC:CKF_SKELETON
+  offset: 0x81ADEBAC
+  counts: { joints: 5 }

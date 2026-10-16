@@ -1,0 +1,38 @@
+:config:
+  strict_declarations: true
+
+act_m_akiakane_pal:
+  type: TEXTURE
+  offset: 0x81262560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_m_akiakane:
+  type: TEXTURE
+  offset: 0x81262580
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81262560
+
+act_m_akiakane_v:
+  type: VTX
+  offset: 0x81262700
+  count: 18
+
+act_m_akiakane1_1T_model:
+  type: GFX
+  offset: 0x81262820
+  size: 0x60
+
+act_m_akiakane1_2T_model:
+  type: GFX
+  offset: 0x81262880
+  size: 0x60
+
+act_m_akiakane2_2T_model:
+  type: GFX
+  offset: 0x812628E0
+  size: 0x60

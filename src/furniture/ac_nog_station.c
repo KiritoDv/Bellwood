@@ -1,10 +1,8 @@
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_station1;
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_station2;
-extern cKF_Skeleton_R_c cKF_bs_r_int_nog_station3;
+#include "assets/data/model/int_nog_station1.h"
+#include "assets/data/model/int_nog_station2.h"
+#include "assets/data/model/int_nog_station3.h"
+#include "assets/f_furniture.h"
 
-extern cKF_Animation_R_c cKF_ba_r_int_nog_station1;
-extern cKF_Animation_R_c cKF_ba_r_int_nog_station2;
-extern cKF_Animation_R_c cKF_ba_r_int_nog_station3;
 
 static cKF_Skeleton_R_c* fNSN_station_skel_table[] = {
     &cKF_bs_r_int_nog_station1, &cKF_bs_r_int_nog_station1, &cKF_bs_r_int_nog_station1, &cKF_bs_r_int_nog_station1,
@@ -56,52 +54,6 @@ static int fNSN_DrawAfter(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_
                           void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {
     return TRUE;
 }
-
-u16 int_nog_station1_a_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station1_a_pal.inc"
-};
-u16 int_nog_station1_b_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station1_b_pal.inc"
-};
-u16 int_nog_station1_c_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station1_c_pal.inc"
-};
-u16 int_nog_station1_d_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station1_d_pal.inc"
-};
-u16 int_nog_station1_e_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station1_e_pal.inc"
-};
-u16 int_nog_station2_a_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station2_a_pal.inc"
-};
-u16 int_nog_station2_b_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station2_b_pal.inc"
-};
-u16 int_nog_station2_c_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station2_c_pal.inc"
-};
-u16 int_nog_station2_d_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station2_d_pal.inc"
-};
-u16 int_nog_station2_e_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station2_e_pal.inc"
-};
-u16 int_nog_station3_a_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station3_a_pal.inc"
-};
-u16 int_nog_station3_b_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station3_b_pal.inc"
-};
-u16 int_nog_station3_c_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station3_c_pal.inc"
-};
-u16 int_nog_station3_d_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station3_d_pal.inc"
-};
-u16 int_nog_station3_e_pal[] ATTRIBUTE_ALIGN(32) = {
-#include "assets/int_nog_station3_e_pal.inc"
-};
 
 static u16* fMSM_palette_table[] = {
     int_nog_station1_a_pal, int_nog_station1_b_pal, int_nog_station1_c_pal, int_nog_station1_d_pal,

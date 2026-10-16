@@ -1,5 +1,4 @@
-extern Gfx int_sum_totemp04_on_model[];
-extern Gfx int_sum_totemp04_onT_model[];
+#include "assets/data/model/int_sum_totemp04.h"
 
 aFTR_PROFILE iam_sum_totemp04 = {
 	int_sum_totemp04_on_model,

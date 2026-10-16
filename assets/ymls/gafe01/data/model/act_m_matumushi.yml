@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+act_m_matumushi_v:
+  type: VTX
+  offset: 0x81872880
+  count: 10
+
+act_m_matumushi_pal:
+  type: TEXTURE
+  offset: 0x81872920
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_m_matumushi:
+  type: TEXTURE
+  offset: 0x81872940
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: n64
+  tlut: 0x81872920
+
+act_m_mu_matumushi1T_model:
+  type: GFX
+  offset: 0x81872AC0
+  size: 0xC8
+
+act_m_mu_matumushi2_2T_model:
+  type: GFX
+  offset: 0x81872B88
+  size: 0xC0

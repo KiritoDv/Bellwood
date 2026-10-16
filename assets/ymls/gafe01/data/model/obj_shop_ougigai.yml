@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_ougigai_pal:
+  type: TEXTURE
+  offset: 0x813986E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_ougigai_tex:
+  type: TEXTURE
+  offset: 0x81398700
+  format: CI4
+  width: 24
+  height: 24
+  source_encoding: gx
+  tlut: 0x813986E0
+
+obj_shop_ougigai_v:
+  type: VTX
+  offset: 0x81398820
+  count: 6
+
+obj_ougigaiT_mat_model:
+  type: GFX
+  offset: 0x81398880
+  size: 0x48
+
+obj_ougigaiT_gfx_model:
+  type: GFX
+  offset: 0x813988C8
+  size: 0x20

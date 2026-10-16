@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_sum_lv_stereo_pal:
+  type: TEXTURE
+  offset: 0x81A25560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_lv_stereo_foot_tex:
+  type: TEXTURE
+  offset: 0x81A25580
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A25560
+
+int_sum_lv_stereo_front_tex:
+  type: TEXTURE
+  offset: 0x81A25600
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A25560
+
+int_sum_lv_stereo_side_tex:
+  type: TEXTURE
+  offset: 0x81A25A00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A25560
+
+int_sum_lv_stereo_reco_tex:
+  type: TEXTURE
+  offset: 0x81A25C00
+  format: CI4
+  width: 48
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A25560
+
+int_sum_lv_stereo_v:
+  type: VTX
+  offset: 0x81A25D80
+  count: 68
+
+int_sum_lv_stereo_on_model:
+  type: GFX
+  offset: 0x81A261C0
+  size: 0xB0
+
+int_sum_lv_stereo_onT_model:
+  type: GFX
+  offset: 0x81A26270
+  size: 0x98

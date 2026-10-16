@@ -1,0 +1,7 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_s_beach_tex:
+  type: BLOB
+  offset: 0x8160C928
+  size: 0x400

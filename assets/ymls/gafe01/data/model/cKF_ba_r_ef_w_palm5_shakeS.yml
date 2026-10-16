@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_ef_w_palm5_shakeS:
+  type: AC:CKF_ANIMATION
+  offset: 0x8165B0FC
+  joints: 2
+  counts: { flags: 2, data: 45, keys: 6, fixed: 3 }

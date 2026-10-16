@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+lat_mes_win_tex:
+  type: TEXTURE
+  offset: 0x813B5D60
+  format: IA8
+  width: 64
+  height: 16
+  source_encoding: gx
+
+lat_mes_v:
+  type: VTX
+  offset: 0x813B6160
+  count: 4
+
+lat_mes_winT_model:
+  type: GFX
+  offset: 0x813B61A0
+  size: 0x58

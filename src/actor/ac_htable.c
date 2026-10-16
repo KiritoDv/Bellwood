@@ -6,6 +6,8 @@
 #include "sys_matrix.h"
 #include "m_malloc.h"
 #include "libultra/libultra.h"
+#include "assets/data/model/obj_e_hfes_a.h"
+#include "assets/data/model/obj_e_hfes_shadow_a.h"
 
 // clang-format off
 static u8 aHTBL_shadow_vtx_fix_flg_tableA[] = {
@@ -43,9 +45,6 @@ static u8 aHTBL_shadow_vtx_fix_flg_tableC[] = {
 };
 // clang-format on
 
-extern Vtx obj_e_hfes_shadow_a_v[];
-extern Gfx obj_e_hfes_shadow_a_modelT[];
-
 static bIT_ShadowData_c aHTBL_shadow_dataA = {
     ARRAY_COUNT(aHTBL_shadow_vtx_fix_flg_tableA),
     aHTBL_shadow_vtx_fix_flg_tableA,
@@ -54,9 +53,6 @@ static bIT_ShadowData_c aHTBL_shadow_dataA = {
     obj_e_hfes_shadow_a_modelT,
 };
 
-extern Vtx obj_e_hfes_shadow_b_v[];
-extern Gfx obj_e_hfes_shadow_b_modelT[];
-
 static bIT_ShadowData_c aHTBL_shadow_dataB = {
     ARRAY_COUNT(aHTBL_shadow_vtx_fix_flg_tableB),
     aHTBL_shadow_vtx_fix_flg_tableB,
@@ -64,9 +60,6 @@ static bIT_ShadowData_c aHTBL_shadow_dataB = {
     obj_e_hfes_shadow_b_v,
     obj_e_hfes_shadow_b_modelT,
 };
-
-extern Vtx obj_e_hfes_shadow_c_v[];
-extern Gfx obj_e_hfes_shadow_c_modelT[];
 
 static bIT_ShadowData_c aHTBL_shadow_dataC = {
     ARRAY_COUNT(aHTBL_shadow_vtx_fix_flg_tableC),
@@ -315,13 +308,6 @@ static void aHTBL_actor_init(ACTOR* actorx, GAME* game) {
     actorx->mv_proc = &aHTBL_actor_move;
 }
 
-extern Gfx obj_e_hfes_a_model[];
-extern Gfx obj_e_hfes_b_model[];
-extern Gfx obj_e_hfes_c_model[];
-
-extern Gfx obj_e_hfes_a_modelT[];
-extern Gfx obj_e_hfes_b_modelT[];
-extern Gfx obj_e_hfes_c_modelT[];
 
 static Gfx* aHTBL_displaylist_table_opa[] = {
     obj_e_hfes_a_model,

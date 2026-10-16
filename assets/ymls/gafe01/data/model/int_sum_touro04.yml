@@ -1,0 +1,105 @@
+:config:
+  strict_declarations: true
+
+int_sum_touro04_pal:
+  type: TEXTURE
+  offset: 0x81A72920
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_touro04_mado_tex:
+  type: TEXTURE
+  offset: 0x81A72940
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A72920
+
+int_sum_touro04_yane_tex:
+  type: TEXTURE
+  offset: 0x81A72A40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A72920
+
+int_sum_touro04_madosita_tex:
+  type: TEXTURE
+  offset: 0x81A72B40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A72920
+
+int_sum_touro04_madotop_tex:
+  type: TEXTURE
+  offset: 0x81A72BC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A72920
+
+int_sum_touro04_stand_tex:
+  type: TEXTURE
+  offset: 0x81A72C40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A72920
+
+int_sum_touro04_base_tex:
+  type: TEXTURE
+  offset: 0x81A72CC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A72920
+
+int_sum_touro04_dan_tex:
+  type: TEXTURE
+  offset: 0x81A72EC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A72920
+
+int_sum_touro04_dantop_tex:
+  type: TEXTURE
+  offset: 0x81A72FC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A72920
+
+int_sum_touro04_kazari_tex:
+  type: TEXTURE
+  offset: 0x81A73040
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A72920
+
+int_sum_touro04_v:
+  type: VTX
+  offset: 0x81A73140
+  count: 85
+
+int_sum_touro04_on_model:
+  type: GFX
+  offset: 0x81A73690
+  size: 0x98
+
+int_sum_touro04_onT_model:
+  type: GFX
+  offset: 0x81A73728
+  size: 0x128

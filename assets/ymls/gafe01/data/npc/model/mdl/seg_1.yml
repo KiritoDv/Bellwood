@@ -1,0 +1,92 @@
+:config:
+  strict_declarations: true
+
+seg_1_v:
+  type: VTX
+  offset: 0x811E6A80
+  count: 390
+
+head_seg_model:
+  type: GFX
+  offset: 0x811E82E0
+  size: 0x198
+
+mouth_seg_model:
+  type: GFX
+  offset: 0x811E8478
+  size: 0x80
+
+Rarm2_seg_model:
+  type: GFX
+  offset: 0x811E84F8
+  size: 0xC8
+
+Rarm1_seg_model:
+  type: GFX
+  offset: 0x811E85C0
+  size: 0x68
+
+Larm2_seg_model:
+  type: GFX
+  offset: 0x811E8628
+  size: 0xC8
+
+Larm1_seg_model:
+  type: GFX
+  offset: 0x811E86F0
+  size: 0x68
+
+chest_seg_model:
+  type: GFX
+  offset: 0x811E8758
+  size: 0x108
+
+tail1_seg_model:
+  type: GFX
+  offset: 0x811E8860
+  size: 0x80
+
+tail2_seg_model:
+  type: GFX
+  offset: 0x811E88E0
+  size: 0x88
+
+Rfoot3_seg_model:
+  type: GFX
+  offset: 0x811E8968
+  size: 0x88
+
+Rfoot2_seg_model:
+  type: GFX
+  offset: 0x811E89F0
+  size: 0x80
+
+Rfoot1_seg_model:
+  type: GFX
+  offset: 0x811E8A70
+  size: 0x58
+
+Lfoot3_seg_model:
+  type: GFX
+  offset: 0x811E8AC8
+  size: 0x88
+
+Lfoot2_seg_model:
+  type: GFX
+  offset: 0x811E8B50
+  size: 0x80
+
+Lfoot1_seg_model:
+  type: GFX
+  offset: 0x811E8BD0
+  size: 0x58
+
+base_seg_model:
+  type: GFX
+  offset: 0x811E8C28
+  size: 0x80
+
+cKF_bs_r_seg_1:
+  type: AC:CKF_SKELETON
+  offset: 0x811E8DE0
+  counts: { joints: 26 }

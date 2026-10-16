@@ -1,5 +1,4 @@
-extern cKF_Skeleton_R_c cKF_bs_r_int_tak_moon;
-extern cKF_Animation_R_c cKF_ba_r_int_tak_moon;
+#include "assets/data/model/int_tak_moon.h"
 
 static void fTMN_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyframe = &ftr_actor->keyframe;

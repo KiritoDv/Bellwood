@@ -1,0 +1,73 @@
+:config:
+  strict_declarations: true
+
+int_sum_golfbag_pal:
+  type: TEXTURE
+  offset: 0x819E9920
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_golfbag01_top_tex_txt:
+  type: TEXTURE
+  offset: 0x819E9940
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819E9920
+
+int_sum_golfbag01_carry_tex_txt:
+  type: TEXTURE
+  offset: 0x819E9A40
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819E9920
+
+int_sum_golfbag01_body_tex_txt:
+  type: TEXTURE
+  offset: 0x819E9BC0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x819E9920
+
+int_sum_golfbag01_clab2_tex_txt:
+  type: TEXTURE
+  offset: 0x819E9FC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E9920
+
+int_sum_golfbag01_clab1_tex_txt:
+  type: TEXTURE
+  offset: 0x819EA040
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E9920
+
+int_sum_golfbag01_clab3_tex_txt:
+  type: TEXTURE
+  offset: 0x819EA0C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819E9920
+
+int_sum_golfbag01_v:
+  type: VTX
+  offset: 0x819EA140
+  count: 86
+
+int_sum_golfbag01_on_model:
+  type: GFX
+  offset: 0x819EA6A0
+  size: 0x200

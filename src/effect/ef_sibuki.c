@@ -4,13 +4,8 @@
 #include "m_debug.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_sibuki01_00.h"
 
-extern Gfx ef_sibuki01_00_modelT[];
-
-extern u8 ef_sibuki01_1_int_i4[];
-extern u8 ef_sibuki01_2_int_i4[];
-extern u8 ef_sibuki01_3_int_i4[];
-extern u8 ef_sibuki01_4_int_i4[];
 
 static void eSibuki_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eSibuki_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);

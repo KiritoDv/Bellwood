@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "m_debug.h"
+#include "assets/data/model/ef_takurami01_yoko.h"
 
 static void eShootingKira_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eShootingKira_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -67,9 +68,6 @@ static void eShootingKira_mv(eEC_Effect_c* effect, GAME* game) {
     effect->position.x = eEC_CLIP->calc_adjust_proc(counter, 0, 42 + GETREG(MYKREG, 32), effect->acceleration.x, effect->velocity.x);
     effect->position.z = eEC_CLIP->calc_adjust_proc(counter, 0, 42 + GETREG(MYKREG, 32), effect->acceleration.z, effect->velocity.z);
 }
-
-extern Gfx ef_takurami01_normal_render_mode[];
-extern Gfx ef_takurami01_kira_modelT[];
 
 static void eShootingKira_dw(eEC_Effect_c* effect, GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;

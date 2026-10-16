@@ -1,0 +1,55 @@
+:config:
+  strict_declarations: true
+
+int_hos_turkey_pal:
+  type: TEXTURE
+  offset: 0x8180D4E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_hos_turkey_sofa_se_txt:
+  type: TEXTURE
+  offset: 0x8180D500
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8180D4E0
+
+int_hos_turkey_sofa_asi_txt:
+  type: TEXTURE
+  offset: 0x8180D700
+  format: CI4
+  width: 8
+  height: 32
+  source_encoding: gx
+  tlut: 0x8180D4E0
+
+int_hos_turkey_sofa_cov_txt:
+  type: TEXTURE
+  offset: 0x8180D780
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8180D4E0
+
+int_hos_turkey_sofa_yoko_txt:
+  type: TEXTURE
+  offset: 0x8180D980
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8180D4E0
+
+int_hos_turkey_sofa_v:
+  type: VTX
+  offset: 0x8180DB80
+  count: 89
+
+int_hos_turkey_sofa_body_model:
+  type: GFX
+  offset: 0x8180E110
+  size: 0x130

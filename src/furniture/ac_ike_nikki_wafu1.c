@@ -1,4 +1,4 @@
-extern Gfx int_ike_nikki_wafu1_on_model[];
+#include "assets/data/model/int_ike_nikki_wafu1.h"
 
 aFTR_PROFILE iam_ike_nikki_wafu1 = {
 	int_ike_nikki_wafu1_on_model,

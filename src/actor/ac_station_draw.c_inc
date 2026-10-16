@@ -1,5 +1,3 @@
-extern Gfx obj_s_shop4_window_model[];
-extern Gfx obj_w_shop4_window_model[];
 
 static int aSTA_actor_draw_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
                                    u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {

@@ -1,4 +1,4 @@
-extern Gfx int_nog_xtreeT_model[];
+#include "assets/data/model/int_nog_xtree.h"
 
 aFTR_PROFILE iam_nog_xtree = {
 	int_nog_xtreeT_model,

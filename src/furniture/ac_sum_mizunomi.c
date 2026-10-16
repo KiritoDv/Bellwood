@@ -1,7 +1,5 @@
+#include "assets/data/model/int_sum_mizunomi.h"
 extern aFTR_rig_c aSumMizunomi_sklkey;
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_sum_mizunomi;
-extern cKF_Animation_R_c cKF_ba_r_int_sum_mizunomi;
 
 aFTR_rig_c aSumMizunomi_sklkey= {
     &cKF_bs_r_int_sum_mizunomi,

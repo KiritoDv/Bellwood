@@ -1,5 +1,4 @@
-extern Gfx int_din_stego_headT_model[];
-extern Gfx int_din_stego_head_model[];
+#include "assets/data/model/int_din_stego_head.h"
 
 aFTR_PROFILE iam_din_stego_head = {
 	int_din_stego_headT_model,

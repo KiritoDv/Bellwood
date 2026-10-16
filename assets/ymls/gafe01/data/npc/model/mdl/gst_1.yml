@@ -1,0 +1,37 @@
+:config:
+  strict_declarations: true
+
+gst_1_v:
+  type: VTX
+  offset: 0x8121F608
+  count: 273
+
+head_gst_model:
+  type: GFX
+  offset: 0x81220718
+  size: 0x218
+
+feel_gst_model:
+  type: GFX
+  offset: 0x81220930
+  size: 0x50
+
+chest_gst_model:
+  type: GFX
+  offset: 0x81220980
+  size: 0xA8
+
+tail1_gst_model:
+  type: GFX
+  offset: 0x81220A28
+  size: 0xA8
+
+base_gst_model:
+  type: GFX
+  offset: 0x81220AD0
+  size: 0x70
+
+cKF_bs_r_gst_1:
+  type: AC:CKF_SKELETON
+  offset: 0x81220C78
+  counts: { joints: 26 }

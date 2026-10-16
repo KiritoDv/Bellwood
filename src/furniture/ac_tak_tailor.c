@@ -1,9 +1,5 @@
-extern u16 int_tak_tailor_on_pal[] ATTRIBUTE_ALIGN(32) = {
-    #include "assets/int_tak_tailor_on_pal.inc"
-};
-extern u16 int_tak_tailor_off_pal[] ATTRIBUTE_ALIGN(32) = {
-    #include "assets/int_tak_tailor_off_pal.inc"
-};
+#include "assets/data/model/int_tak_tailor.h"
+#include "assets/f_furniture.h"
 
 
 static void fTTR_ct(FTR_ACTOR* ftr_actor, u8* data) {
@@ -20,10 +16,6 @@ static void fTTR_dt(FTR_ACTOR* ftr_actor, u8* data) {
         zelda_free(ftr_actor->pal_p);
     }
 }
-
-extern Gfx int_tak_tailor_on_model[];
-extern Gfx int_tak_tailor_onT_model[];
-extern Gfx int_tak_tailor_offT_model[];
 
 static void fTTR_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     u16* pal_p = ftr_actor->pal_p;

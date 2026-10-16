@@ -1,0 +1,53 @@
+:config:
+  strict_declarations: true
+
+int_tak_money_pal:
+  type: TEXTURE
+  offset: 0x81A99E60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_money_front_tex_txt:
+  type: TEXTURE
+  offset: 0x81A99E80
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A99E60
+
+int_tak_money_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81A9A280
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A99E60
+
+int_tak_money_v:
+  type: VTX
+  offset: 0x81A9A480
+  count: 56
+
+int_tak_money_side_model:
+  type: GFX
+  offset: 0x81A9A800
+  size: 0xA8
+
+int_tak_money_front_model:
+  type: GFX
+  offset: 0x81A9A8A8
+  size: 0x78
+
+cKF_ba_r_int_tak_money:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A9A94C
+  joints: 3
+  counts: { flags: 3, data: 6, keys: 1, fixed: 11 }
+
+cKF_bs_r_int_tak_money:
+  type: AC:CKF_SKELETON
+  offset: 0x81A9A984
+  counts: { joints: 3 }

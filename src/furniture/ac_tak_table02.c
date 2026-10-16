@@ -1,4 +1,4 @@
-extern Gfx int_tak_table02_onT_model[];
+#include "assets/data/model/int_tak_table02.h"
 
 aFTR_PROFILE iam_tak_table02 = {
 	int_tak_table02_onT_model,

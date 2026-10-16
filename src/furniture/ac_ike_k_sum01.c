@@ -1,4 +1,4 @@
-extern Gfx int_ike_k_sum01_body_model[];
+#include "assets/data/model/int_ike_k_sum01.h"
 
 aFTR_PROFILE iam_ike_k_sum01 = {
 	int_ike_k_sum01_body_model,

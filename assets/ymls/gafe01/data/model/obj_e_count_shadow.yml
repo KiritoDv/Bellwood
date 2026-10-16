@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+obj_e_count_shadow_tex:
+  type: TEXTURE
+  offset: 0x81502500
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_e_count_shadow_v:
+  type: VTX
+  offset: 0x81502700
+  count: 4
+
+obj_e_count_shadow_model:
+  type: GFX
+  offset: 0x81502740
+  size: 0x48

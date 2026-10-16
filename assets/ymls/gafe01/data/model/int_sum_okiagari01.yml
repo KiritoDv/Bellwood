@@ -1,0 +1,75 @@
+:config:
+  strict_declarations: true
+
+int_sum_okiagari01_pal:
+  type: TEXTURE
+  offset: 0x81A35760
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_okiagari01_hand_tex_txt:
+  type: TEXTURE
+  offset: 0x81A35780
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A35760
+
+int_sum_okiagari01_bodyback_tex_txt:
+  type: TEXTURE
+  offset: 0x81A35800
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A35760
+
+int_sum_okiagari01_bodyfront_tex_txt:
+  type: TEXTURE
+  offset: 0x81A35900
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A35760
+
+int_sum_okiagari01_face_tex_txt:
+  type: TEXTURE
+  offset: 0x81A35A00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A35760
+
+int_sum_okiagari01_head_tex_txt:
+  type: TEXTURE
+  offset: 0x81A35C00
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A35760
+
+int_sum_okiagari01_v:
+  type: VTX
+  offset: 0x81A35D00
+  count: 52
+
+int_sum_okiagari01_model:
+  type: GFX
+  offset: 0x81A36040
+  size: 0x128
+
+cKF_ba_r_int_sum_okiagari01:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A3621C
+  joints: 2
+  counts: { flags: 2, data: 78, keys: 6, fixed: 3 }
+
+cKF_bs_r_int_sum_okiagari01:
+  type: AC:CKF_SKELETON
+  offset: 0x81A36248
+  counts: { joints: 2 }

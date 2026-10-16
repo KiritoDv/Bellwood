@@ -1,4 +1,4 @@
-extern Gfx int_iku_cow_model[];
+#include "assets/data/model/int_iku_cow.h"
 
 aFTR_PROFILE iam_iku_cow = {
 	int_iku_cow_model,

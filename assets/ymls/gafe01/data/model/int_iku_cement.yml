@@ -1,0 +1,82 @@
+:config:
+  strict_declarations: true
+
+int_iku_cement_pal:
+  type: TEXTURE
+  offset: 0x81851000
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_cement_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81851020
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81851000
+
+int_iku_cement_d_tex_txt:
+  type: TEXTURE
+  offset: 0x81851220
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81851000
+
+int_iku_cement_f_tex_txt:
+  type: TEXTURE
+  offset: 0x81851320
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81851000
+
+int_iku_cement_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81851420
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81851000
+
+int_iku_cement_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81851520
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81851000
+
+int_iku_cement_e_tex_txt:
+  type: TEXTURE
+  offset: 0x81851620
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81851000
+
+int_iku_cement_g_tex_txt:
+  type: TEXTURE
+  offset: 0x81851720
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81851000
+
+int_iku_cement_v:
+  type: VTX
+  offset: 0x81851820
+  count: 79
+
+int_iku_cement_model_model:
+  type: GFX
+  offset: 0x81851D10
+  size: 0x1B8

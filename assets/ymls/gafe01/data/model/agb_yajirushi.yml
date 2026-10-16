@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+agb_win_yajirushi_tex:
+  type: TEXTURE
+  offset: 0x81423340
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+agb_yajirushi_v:
+  type: VTX
+  offset: 0x81423740
+  count: 4
+
+agb_win_yajirushiT_model:
+  type: GFX
+  offset: 0x81423780
+  size: 0x50

@@ -1,0 +1,76 @@
+:config:
+  strict_declarations: true
+
+int_sum_liccachest_pal:
+  type: TEXTURE
+  offset: 0x81A16AC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_liccachest_hiki_tex_txt:
+  type: TEXTURE
+  offset: 0x81A16AE0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A16AC0
+
+int_sum_liccachest_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81A16C60
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A16AC0
+
+int_sum_liccachest_top_tex_txt:
+  type: TEXTURE
+  offset: 0x81A16E60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A16AC0
+
+int_sum_liccachest_front_tex_txt:
+  type: TEXTURE
+  offset: 0x81A16EE0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A16AC0
+
+int_sum_liccachest_v:
+  type: VTX
+  offset: 0x81A172E0
+  count: 70
+
+int_sum_liccachest_doorL_model:
+  type: GFX
+  offset: 0x81A17740
+  size: 0x80
+
+int_sum_liccachest_base_model:
+  type: GFX
+  offset: 0x81A177C0
+  size: 0xC0
+
+int_sum_liccachest_doorR_model:
+  type: GFX
+  offset: 0x81A17880
+  size: 0x80
+
+cKF_ba_r_int_sum_liccachest:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A179C8
+  joints: 5
+  counts: { flags: 5, data: 78, keys: 12, fixed: 6 }
+
+cKF_bs_r_int_sum_liccachest:
+  type: AC:CKF_SKELETON
+  offset: 0x81A17A18
+  counts: { joints: 5 }

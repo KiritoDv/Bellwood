@@ -8,6 +8,7 @@
 #include "m_field_info.h"
 #include "m_demo.h"
 #include "m_common_data.h"
+#include "assets/data/model/obj_e_mikuji_shadow.h"
 
 static void aMIK_actor_ct(ACTOR* actor, GAME* game);
 static void aMIK_actor_init(ACTOR* actor, GAME* game);
@@ -27,9 +28,6 @@ ACTOR_PROFILE Mikuji_Profile = {
     NULL
 };
 
-extern Vtx obj_e_mikuji_shadow_v[];
-extern Gfx obj_e_mikuji_shadow_model[];
-
 u8 aMIK_shadow_vtx_fix_flg_table[] = {1,0,0,1,0,1,1,0};
 bIT_ShadowData_c aMIK_shadow_data = {
     8,
@@ -38,8 +36,6 @@ bIT_ShadowData_c aMIK_shadow_data = {
     obj_e_mikuji_shadow_v,
     obj_e_mikuji_shadow_model,
 };
-
-extern Gfx obj_e_mikuji_model[];
 
 static void aMIK_set_bgOffset(MIKUJI_ACTOR* mikuji, int offs);
 

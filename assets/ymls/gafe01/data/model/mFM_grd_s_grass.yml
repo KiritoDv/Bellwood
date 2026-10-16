@@ -1,0 +1,26 @@
+:config:
+  strict_declarations: true
+
+mFM_grd_s_grass_tex:
+  type: TEXTURE
+  offset: 0x81699220
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+mFM_grd_s_grass_2_tex:
+  type: TEXTURE
+  offset: 0x81699420
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+mFM_grd_s_grass_3_tex:
+  type: TEXTURE
+  offset: 0x81699620
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

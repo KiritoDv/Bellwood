@@ -1,5 +1,4 @@
-extern cKF_Skeleton_R_c cKF_bs_r_int_tak_ham1;
-extern cKF_Animation_R_c cKF_ba_r_int_tak_ham1;
+#include "assets/data/model/int_tak_ham1.h"
 
 static void fTHM1_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyframe = &ftr_actor->keyframe;
@@ -14,11 +13,8 @@ static void fTHM1_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8*
 
     keyframe->frame_control.speed = 1.0f;
     cKF_SkeletonInfo_R_play(keyframe);
-    sAdo_OngenPos((u32)ftr_actor, 0x56, &ftr_actor->position);
+    sAdo_OngenPos((uintptr_t)ftr_actor, 0x56, &ftr_actor->position);
 }
-
-extern u8 int_tak_ham1_a1_tex_txt[];
-extern u8 int_tak_ham1_a2_tex_pic_ci4[];
 
 static u8* tak_ham1_texture_table[] = { int_tak_ham1_a1_tex_txt, int_tak_ham1_a2_tex_pic_ci4 };
 

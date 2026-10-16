@@ -1,3 +1,4 @@
+#include "assets/data/model/act_gyoei02.h"
 enum {
     aGYO_ANIME_PAT_TYPE_NONE,
     aGYO_ANIME_PAT_TYPE_FAST,
@@ -152,8 +153,6 @@ static void aGYO_actor_draw_fish(GRAPH* graph, aGYO_CTRL_ACTOR* ctrl, GAME* game
     }
 }
 
-extern Gfx act_gyoei02_00_modelT[];
-
 static void aGYO_actor_draw_gyoei(GRAPH* graph, aGYO_CTRL_ACTOR* ctrl, GAME* game) {
     s16 angleX;
     s16 angleY;
@@ -208,11 +207,14 @@ static void aGYO_actor_draw(ACTOR* actorx, GAME* game) {
         if (ctrl->exist == TRUE && ((ACTOR*)ctrl)->drawn &&
             (((ACTOR*)ctrl)->state_bitfield & (ACTOR_STATE_NO_CULL | ACTOR_STATE_NO_DRAW_WHILE_CULLED)) ==
                 (ACTOR_STATE_NO_CULL | ACTOR_STATE_NO_DRAW_WHILE_CULLED)) {
+            FrameInterpolation_RecordOpenChild(ctrl, FrameInterpolation_GetObjectEpoch(ctrl) * 2 +
+                                                         (ctrl->draw_type == aGYO_DRAW_TYPE_FISH));
             if (ctrl->draw_type == aGYO_DRAW_TYPE_FISH) {
                 aGYO_actor_draw_fish(graph, ctrl, game);
             } else {
                 aGYO_actor_draw_gyoei(graph, ctrl, game);
             }
+            FrameInterpolation_RecordCloseChild();
         }
 
         ctrl++;

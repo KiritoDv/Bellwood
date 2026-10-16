@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_iku_mario_renga_pal:
+  type: TEXTURE
+  offset: 0x8185EDE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_mario_renga_tex:
+  type: TEXTURE
+  offset: 0x8185EE00
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x8185EDE0
+
+int_iku_mario_renga_v:
+  type: VTX
+  offset: 0x8185F200
+  count: 20
+
+int_iku_mario_renga_on_model:
+  type: GFX
+  offset: 0x8185F340
+  size: 0x68

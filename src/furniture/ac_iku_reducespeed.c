@@ -1,4 +1,4 @@
-extern Gfx int_iku_reducespeed_model_model[];
+#include "assets/data/model/int_iku_reducespeed.h"
 
 aFTR_PROFILE iam_iku_reducespeed = {
 	int_iku_reducespeed_model_model,

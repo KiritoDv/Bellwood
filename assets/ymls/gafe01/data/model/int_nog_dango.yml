@@ -1,0 +1,102 @@
+:config:
+  strict_declarations: true
+
+int_nog_dango_pal:
+  type: TEXTURE
+  offset: 0x818F5FE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_dango_glass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x818F6000
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_dango_body_tex_txt:
+  type: TEXTURE
+  offset: 0x818F6020
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818F5FE0
+
+int_nog_dango_base_tex_txt:
+  type: TEXTURE
+  offset: 0x818F6120
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818F5FE0
+
+int_nog_dango_top_tex_txt:
+  type: TEXTURE
+  offset: 0x818F61A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818F5FE0
+
+int_nog_dango_side_tex_txt:
+  type: TEXTURE
+  offset: 0x818F63A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818F5FE0
+
+int_nog_dango_glass_tex_txt:
+  type: TEXTURE
+  offset: 0x818F65A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818F6000
+
+int_nog_dango_v:
+  type: VTX
+  offset: 0x818F66A0
+  count: 54
+
+int_nog_dango_body_model:
+  type: GFX
+  offset: 0x818F6A00
+  size: 0x60
+
+int_nog_dango_side_model:
+  type: GFX
+  offset: 0x818F6A60
+  size: 0x68
+
+int_nog_dango_komado_model:
+  type: GFX
+  offset: 0x818F6AC8
+  size: 0x58
+
+int_nog_dango_glass_model:
+  type: GFX
+  offset: 0x818F6B20
+  size: 0x68
+
+int_nog_dango_base_model:
+  type: GFX
+  offset: 0x818F6B88
+  size: 0xA0
+
+cKF_ba_r_int_nog_dango:
+  type: AC:CKF_ANIMATION
+  offset: 0x818F6CB8
+  joints: 6
+  counts: { flags: 6, data: 45, keys: 3, fixed: 18 }
+
+cKF_bs_r_int_nog_dango:
+  type: AC:CKF_SKELETON
+  offset: 0x818F6D14
+  counts: { joints: 6 }

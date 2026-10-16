@@ -1,0 +1,129 @@
+:config:
+  strict_declarations: true
+
+int_tak_toudai_pal:
+  type: TEXTURE
+  offset: 0x81AAD0E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_toudai_evw_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81AAD100
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_toudai_right_tex_txt:
+  type: TEXTURE
+  offset: 0x81AAD120
+  format: I8
+  width: 8
+  height: 16
+  source_encoding: gx
+
+int_tak_toudai_dai_tex_txt:
+  type: TEXTURE
+  offset: 0x81AAD1A0
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AAD0E0
+
+int_tak_toudai_grass_tex_txt:
+  type: TEXTURE
+  offset: 0x81AAD1E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AAD0E0
+
+int_tak_toudai_tesuri_tex_txt:
+  type: TEXTURE
+  offset: 0x81AAD260
+  format: CI4
+  width: 8
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AAD0E0
+
+int_tak_toudai_body2_tex_txt:
+  type: TEXTURE
+  offset: 0x81AAD2A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AAD0E0
+
+int_tak_toudai_body_tex_txt:
+  type: TEXTURE
+  offset: 0x81AAD3A0
+  format: CI4
+  width: 8
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AAD0E0
+
+int_tak_toudai_evw_tex_txt:
+  type: TEXTURE
+  offset: 0x81AAD420
+  format: CI4
+  width: 8
+  height: 8
+  source_encoding: gx
+  tlut: 0x81AAD100
+
+int_tak_toudai_v:
+  type: VTX
+  offset: 0x81AAD440
+  count: 113
+
+int_tak_toudai_right_model:
+  type: GFX
+  offset: 0x81AADB50
+  size: 0x68
+
+int_tak_toudai_back_model:
+  type: GFX
+  offset: 0x81AADBB8
+  size: 0x58
+
+int_tak_toudai_tesuri_model:
+  type: GFX
+  offset: 0x81AADC10
+  size: 0x88
+
+int_tak_toudai_grass_model:
+  type: GFX
+  offset: 0x81AADC98
+  size: 0x58
+
+int_tak_toudai_evw_model:
+  type: GFX
+  offset: 0x81AADCF0
+  size: 0x70
+
+int_tak_toudai_dai_model:
+  type: GFX
+  offset: 0x81AADD60
+  size: 0x70
+
+int_tak_toudai_body_model:
+  type: GFX
+  offset: 0x81AADDD0
+  size: 0x90
+
+cKF_ba_r_int_tak_toudai:
+  type: AC:CKF_ANIMATION
+  offset: 0x81AADEAC
+  joints: 8
+  counts: { flags: 8, data: 6, keys: 1, fixed: 26 }
+
+cKF_bs_r_int_tak_toudai:
+  type: AC:CKF_SKELETON
+  offset: 0x81AADF20
+  counts: { joints: 8 }

@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+crw_hasu1_pal:
+  type: TEXTURE
+  offset: 0x815C3CC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+crw_hasu1_tex_txt:
+  type: TEXTURE
+  offset: 0x815C3CE0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815C3CC0
+
+crw_hasu1_v:
+  type: VTX
+  offset: 0x815C3EE0
+  count: 87
+
+crw_hasu1_body_model:
+  type: GFX
+  offset: 0x815C4450
+  size: 0x110

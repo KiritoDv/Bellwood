@@ -1,0 +1,92 @@
+:config:
+  strict_declarations: true
+
+int_tak_barber_body_pal:
+  type: TEXTURE
+  offset: 0x81A910A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_barber_glass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A910C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_barber_body_tex_txt:
+  type: TEXTURE
+  offset: 0x81A910E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A910A0
+
+int_tak_barber_kosi_tex_txt:
+  type: TEXTURE
+  offset: 0x81A911E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A910A0
+
+int_tak_barber_kasa_tex_txt:
+  type: TEXTURE
+  offset: 0x81A91260
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A910A0
+
+int_tak_barber_asi_tex_txt:
+  type: TEXTURE
+  offset: 0x81A912E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A910A0
+
+int_tak_barber_glass_tex_txt:
+  type: TEXTURE
+  offset: 0x81A91360
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A910C0
+
+int_tak_barber_v:
+  type: VTX
+  offset: 0x81A913E0
+  count: 62
+
+int_tak_barber_pole_on_model:
+  type: GFX
+  offset: 0x81A917C0
+  size: 0x78
+
+int_tak_barber_glass_env_model:
+  type: GFX
+  offset: 0x81A91838
+  size: 0x70
+
+int_tak_barber_body_on_model:
+  type: GFX
+  offset: 0x81A918A8
+  size: 0xB0
+
+cKF_ba_r_int_tak_barber:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A91988
+  joints: 4
+  counts: { flags: 4, data: 6, keys: 1, fixed: 14 }
+
+cKF_bs_r_int_tak_barber:
+  type: AC:CKF_SKELETON
+  offset: 0x81A919CC
+  counts: { joints: 4 }

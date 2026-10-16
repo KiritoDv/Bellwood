@@ -1,5 +1,4 @@
-extern cKF_Skeleton_R_c cKF_bs_r_int_tak_money;
-extern cKF_Animation_R_c cKF_ba_r_int_tak_money;
+#include "assets/data/model/int_tak_money.h"
 
 static void fTMny_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyframe = &ftr_actor->keyframe;
@@ -34,12 +33,12 @@ static void fTMny_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8*
                     // play animation normally
                     keyframe->frame_control.speed = speed;
                     keyframe->frame_control.start_frame = 1.0f;
-                    keyframe->frame_control.end_frame = cKF_ba_r_int_tak_money.frames;
+                    keyframe->frame_control.end_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_tak_money);
                     break;
                 case aMR_CONTACT_DIR_RIGHT:
                     // play animation but in reverse
                     keyframe->frame_control.speed = speed;
-                    keyframe->frame_control.start_frame = cKF_ba_r_int_tak_money.frames;
+                    keyframe->frame_control.start_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_tak_money);
                     keyframe->frame_control.end_frame = 1.0f;
                     break;
                 default:
@@ -54,12 +53,12 @@ static void fTMny_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8*
                     // play animation normally
                     keyframe->frame_control.speed = speed;
                     keyframe->frame_control.start_frame = 1.0f;
-                    keyframe->frame_control.end_frame = cKF_ba_r_int_tak_money.frames;
+                    keyframe->frame_control.end_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_tak_money);
                     break;
                 case aMR_CONTACT_DIR_LEFT:
                     // play animation but in reverse
                     keyframe->frame_control.speed = speed;
-                    keyframe->frame_control.start_frame = cKF_ba_r_int_tak_money.frames;
+                    keyframe->frame_control.start_frame = cKF_ANIM_FRAMES(cKF_ba_r_int_tak_money);
                     keyframe->frame_control.end_frame = 1.0f;
                     break;
                 default:

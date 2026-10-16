@@ -1,0 +1,226 @@
+:config:
+  strict_declarations: true
+
+sprashC_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821004C0
+  size: 0x200
+  segment: 0xF
+  segment_offset: 0x0
+
+sprashA_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821006C0
+  size: 0x200
+  segment: 0xF
+  segment_offset: 0x200
+
+wave3_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821008C0
+  size: 0x400
+  segment: 0xF
+  segment_offset: 0x400
+
+wave2_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82100CC0
+  size: 0x800
+  segment: 0xF
+  segment_offset: 0x800
+
+wave1_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821014C0
+  size: 0x400
+  segment: 0xF
+  segment_offset: 0x1000
+
+sand_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821018C0
+  size: 0x400
+  segment: 0xF
+  segment_offset: 0x1400
+
+beach_pal_dummy2:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82101CC0
+  size: 0x20
+  segment: 0xF
+  segment_offset: 0x1800
+
+beach2_tex_dummy2:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82101CE0
+  size: 0x100
+  segment: 0xF
+  segment_offset: 0x1820
+
+beach1_tex_dummy2:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82101DE0
+  size: 0x400
+  segment: 0xF
+  segment_offset: 0x1920
+
+beach_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821021E0
+  size: 0x800
+  segment: 0xF
+  segment_offset: 0x1D20
+
+tunnel_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821029E0
+  size: 0x800
+  segment: 0xF
+  segment_offset: 0x2520
+
+rail_pal_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821031E0
+  size: 0x20
+  segment: 0xF
+  segment_offset: 0x2D20
+
+bush_pal_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82103200
+  size: 0x20
+  segment: 0xF
+  segment_offset: 0x2D40
+
+cliff_pal_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82103220
+  size: 0x20
+  segment: 0xF
+  segment_offset: 0x2D60
+
+earth_pal_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82103240
+  size: 0x20
+  segment: 0xF
+  segment_offset: 0x2D80
+
+station_pal_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82103260
+  size: 0x20
+  segment: 0xF
+  segment_offset: 0x2DA0
+
+bridge_2_pal_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82103280
+  size: 0x20
+  segment: 0xF
+  segment_offset: 0x2DC0
+
+bridge_1_pal_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821032A0
+  size: 0x20
+  segment: 0xF
+  segment_offset: 0x2DE0
+
+tekkyo_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821032C0
+  size: 0x800
+  segment: 0xF
+  segment_offset: 0x2E00
+
+bridge_2_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82103AC0
+  size: 0x800
+  segment: 0xF
+  segment_offset: 0x3600
+
+bridge_1_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821042C0
+  size: 0x800
+  segment: 0xF
+  segment_offset: 0x3E00
+
+water_2_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82104AC0
+  size: 0x200
+  segment: 0xF
+  segment_offset: 0x4600
+
+water_1_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82104CC0
+  size: 0x200
+  segment: 0xF
+  segment_offset: 0x4800
+
+river_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82104EC0
+  size: 0x400
+  segment: 0xF
+  segment_offset: 0x4A00
+
+stone_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821052C0
+  size: 0x800
+  segment: 0xF
+  segment_offset: 0x4E00
+
+station_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82105AC0
+  size: 0x800
+  segment: 0xF
+  segment_offset: 0x5600
+
+rail_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821062C0
+  size: 0x800
+  segment: 0xF
+  segment_offset: 0x5E00
+
+grass_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82106AC0
+  size: 0x200
+  segment: 0xF
+  segment_offset: 0x6600
+
+bush_b_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x82106CC0
+  size: 0x400
+  segment: 0xF
+  segment_offset: 0x6800
+
+bush_a_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821070C0
+  size: 0x800
+  segment: 0xF
+  segment_offset: 0x6C00
+
+cliff_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821078C0
+  size: 0x800
+  segment: 0xF
+  segment_offset: 0x7400
+
+earth_tex_dummy:
+  type: AC:RUNTIME_BUFFER
+  offset: 0x821080C0
+  size: 0x800
+  segment: 0xF
+  segment_offset: 0x7C00

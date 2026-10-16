@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_nog_bishopW_pal:
+  type: TEXTURE
+  offset: 0x818F2D00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_bishopW_base_tex:
+  type: TEXTURE
+  offset: 0x818F2D20
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x818F2D00
+
+int_nog_bishopW_circle_tex:
+  type: TEXTURE
+  offset: 0x818F2F20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818F2D00
+
+int_nog_bishopW_crown_tex:
+  type: TEXTURE
+  offset: 0x818F2FA0
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x818F2D00
+
+int_nog_bishopW_v:
+  type: VTX
+  offset: 0x818F31A0
+  count: 42
+
+int_nog_bishopW_model:
+  type: GFX
+  offset: 0x818F3440
+  size: 0x78
+
+int_nog_bishopWT_model:
+  type: GFX
+  offset: 0x818F34B8
+  size: 0x88

@@ -1,0 +1,94 @@
+:config:
+  strict_declarations: true
+
+int_kon_gomi04_pal:
+  type: TEXTURE
+  offset: 0x818A3CA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_gomi04_huta_tex_txt:
+  type: TEXTURE
+  offset: 0x818A3CC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A3CA0
+
+int_kon_gomi04_huta2_tex_txt:
+  type: TEXTURE
+  offset: 0x818A3DC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A3CA0
+
+int_kon_gomi04_yoko_tex_txt:
+  type: TEXTURE
+  offset: 0x818A3EC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A3CA0
+
+int_kon_gomi04_ue_tex_txt:
+  type: TEXTURE
+  offset: 0x818A3F40
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A3CA0
+
+int_kon_gomi04_naka_tex_txt:
+  type: TEXTURE
+  offset: 0x818A4040
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A3CA0
+
+int_kon_gomi04_sita_tex_txt:
+  type: TEXTURE
+  offset: 0x818A40C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A3CA0
+
+int_kon_gomi04_v:
+  type: VTX
+  offset: 0x818A41C0
+  count: 46
+
+int_kon_gomi04_huta2_model:
+  type: GFX
+  offset: 0x818A44A0
+  size: 0x60
+
+int_kon_gomi04_huta_model:
+  type: GFX
+  offset: 0x818A4500
+  size: 0x60
+
+int_kon_gomi04_sita_model:
+  type: GFX
+  offset: 0x818A4560
+  size: 0xD8
+
+cKF_ba_r_int_kon_gomi04:
+  type: AC:CKF_ANIMATION
+  offset: 0x818A46E0
+  joints: 4
+  counts: { flags: 4, data: 66, keys: 1, fixed: 14 }
+
+cKF_bs_r_int_kon_gomi04:
+  type: AC:CKF_SKELETON
+  offset: 0x818A4724
+  counts: { joints: 4 }

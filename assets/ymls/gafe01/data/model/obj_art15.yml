@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+obj_art15_pal:
+  type: TEXTURE
+  offset: 0x81932F70
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+obj_art15_gaku_tex:
+  type: TEXTURE
+  offset: 0x81932F90
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+  tlut: 0x81932F70
+
+obj_art15_art_tex:
+  type: TEXTURE
+  offset: 0x81933010
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: n64
+  tlut: 0x81932F70
+
+obj_art15_name_tex:
+  type: TEXTURE
+  offset: 0x81933310
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+  tlut: 0x81932F70
+
+obj_art15_v:
+  type: VTX
+  offset: 0x81933390
+  count: 30
+
+obj_art15_model:
+  type: GFX
+  offset: 0x81933570
+  size: 0x188

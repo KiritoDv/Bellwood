@@ -1,5 +1,4 @@
-extern Gfx int_kon_snoebed_on_model[];
-extern Gfx int_kon_snoebed_onT_model[];
+#include "assets/data/model/int_kon_snowbed.h"
 
 aFTR_PROFILE iam_kon_snowbed = {
 	int_kon_snoebed_on_model,

@@ -11,6 +11,7 @@
 #include "gfxalloc.h"
 #include "m_rcp.h"
 #include "m_event_map_npc.h"
+#include "assets/data/model/obj_hole_pal.h"
 
 #define GOLD_TREE_SAPLING_EFFECT_X 12.0f
 #define GOLD_TREE_SAPLING_EFFECT_Y 27.0f
@@ -207,9 +208,6 @@ static int bIT_actor_hole_effect_entry(bg_item_hole_c* hole, mActor_name_t fg_it
 #include "../src/bg_item/bg_cherry_item_data.c_inc"
 #include "../src/bg_item/bg_item_clip.c_inc"
 #include "../src/bg_item/bg_item_common.c_inc"
-
-extern u16 obj_g_hole_pal[];
-extern u16 obj_b_hole_pal[];
 
 static void bCI_actor_ct(ACTOR* actorx, GAME* game) {
     BG_ITEM_ACTOR* bg_item = (BG_ITEM_ACTOR*)actorx;

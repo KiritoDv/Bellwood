@@ -1,0 +1,107 @@
+:config:
+  strict_declarations: true
+
+int_sum_higurashi_pal:
+  type: TEXTURE
+  offset: 0x81A058A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_higurashi_hand_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x81A058C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_higurashi_base_txt:
+  type: TEXTURE
+  offset: 0x81A058E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A058A0
+
+int_sum_higurashi_top_txt:
+  type: TEXTURE
+  offset: 0x81A05960
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A058A0
+
+int_sum_higurashi_body_txt:
+  type: TEXTURE
+  offset: 0x81A05B60
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A058A0
+
+int_sum_higurashi_side_txt:
+  type: TEXTURE
+  offset: 0x81A05D60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A058A0
+
+int_sum_higurashi_hand_pic_ci4:
+  type: TEXTURE
+  offset: 0x81A05F60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A058C0
+
+int_sum_higurashi_v:
+  type: VTX
+  offset: 0x81A06060
+  count: 71
+
+int_sum_higurashi_side_model:
+  type: GFX
+  offset: 0x81A064D0
+  size: 0x68
+
+int_sum_higurashi_komado_model:
+  type: GFX
+  offset: 0x81A06538
+  size: 0x58
+
+int_sum_higurashi_glass_model:
+  type: GFX
+  offset: 0x81A06590
+  size: 0x68
+
+int_sum_higurashi_base_model:
+  type: GFX
+  offset: 0x81A065F8
+  size: 0xD0
+
+int_sum_higurashi_body_R_model:
+  type: GFX
+  offset: 0x81A066C8
+  size: 0x58
+
+int_sum_higurashi_body_L_model:
+  type: GFX
+  offset: 0x81A06720
+  size: 0x58
+
+cKF_ba_r_int_sum_higurashi:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A06968
+  joints: 8
+  counts: { flags: 8, data: 216, keys: 9, fixed: 18 }
+
+cKF_bs_r_int_sum_higurashi:
+  type: AC:CKF_SKELETON
+  offset: 0x81A069DC
+  counts: { joints: 8 }

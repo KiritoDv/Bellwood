@@ -1,0 +1,49 @@
+:config:
+  strict_declarations: true
+
+int_sugi_barbecue_pal:
+  type: TEXTURE
+  offset: 0x8197EEA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sugi_barbecue2_pal:
+  type: TEXTURE
+  offset: 0x8197EEC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sugi_barbecue_all_tex_txt:
+  type: TEXTURE
+  offset: 0x8197EEE0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x8197EEA0
+
+int_sugi_barbecue2_bar_tex_txt:
+  type: TEXTURE
+  offset: 0x8197F6E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8197EEC0
+
+int_sugi_barbecue_v:
+  type: VTX
+  offset: 0x8197F8E0
+  count: 138
+
+sugi_barbecue_b_model:
+  type: GFX
+  offset: 0x81980180
+  size: 0x60
+
+sugi_barbecue_model:
+  type: GFX
+  offset: 0x819801E0
+  size: 0x1A8

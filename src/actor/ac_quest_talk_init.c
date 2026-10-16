@@ -273,6 +273,7 @@ static int aQMgr_actor_set_errand_next(u8* next, aQMgr_regist_c* regist, u8 kind
     if (idx >= 0 && idx < mPr_ERRAND_QUEST_NUM) {
         next[idx] = kind;
     }
+    return 0;
 }
 
 static u8 aQMgr_actor_get_errand_next(aQMgr_regist_c* regist, u8* next) {

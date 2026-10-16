@@ -1,5 +1,4 @@
-extern Gfx int_sum_liccakitchen_on_model[];
-extern Gfx int_sum_liccakitchen_onT_model[];
+#include "assets/data/model/int_sum_liccakitchen.h"
 
 aFTR_PROFILE iam_sum_liccakitchen = {
 	int_sum_liccakitchen_on_model,

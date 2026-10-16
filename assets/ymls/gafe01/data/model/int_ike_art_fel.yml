@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_ike_art_fel_pal:
+  type: TEXTURE
+  offset: 0x8181CAA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_art_felgaku_tex:
+  type: TEXTURE
+  offset: 0x8181CAC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8181CAA0
+
+int_ike_art_fel1_tex:
+  type: TEXTURE
+  offset: 0x8181CBC0
+  format: CI4
+  width: 48
+  height: 48
+  source_encoding: gx
+  tlut: 0x8181CAA0
+
+int_ike_art_felstand_tex:
+  type: TEXTURE
+  offset: 0x8181D040
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x8181CAA0
+
+int_ike_art_felfront_tex:
+  type: TEXTURE
+  offset: 0x8181D240
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x8181CAA0
+
+int_ike_art_fel_v:
+  type: VTX
+  offset: 0x8181D440
+  count: 54
+
+int_ike_art_fel01_on_model:
+  type: GFX
+  offset: 0x8181D7A0
+  size: 0x90
+
+int_ike_art_fel01_onT_model:
+  type: GFX
+  offset: 0x8181D830
+  size: 0x98

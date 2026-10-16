@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f22_ito_pal:
+  type: TEXTURE
+  offset: 0x8123CEC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f22_ito_tex:
+  type: TEXTURE
+  offset: 0x8123CEE0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x8123CEC0
+
+act_f22_ito_a_v:
+  type: VTX
+  offset: 0x8123D2E0
+  count: 9
+
+act_f22_ito_aT_model:
+  type: GFX
+  offset: 0x8123D370
+  size: 0x68
+
+act_f22_ito_b_v:
+  type: VTX
+  offset: 0x8123D3D8
+  count: 9
+
+act_f22_ito_bT_model:
+  type: GFX
+  offset: 0x8123D468
+  size: 0x68
+
+act_f22_ito_c_v:
+  type: VTX
+  offset: 0x8123D4D0
+  count: 9
+
+act_f22_ito_cT_model:
+  type: GFX
+  offset: 0x8123D560
+  size: 0x68

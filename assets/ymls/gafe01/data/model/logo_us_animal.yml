@@ -1,0 +1,131 @@
+:config:
+  strict_declarations: true
+
+logo_us_pal:
+  type: TEXTURE
+  offset: 0x815E6A20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+logo_us_l_tex_txt:
+  type: TEXTURE
+  offset: 0x815E6A40
+  format: CI4
+  width: 32
+  height: 96
+  source_encoding: gx
+  tlut: 0x815E6A20
+
+logo_us_a_tex_txt:
+  type: TEXTURE
+  offset: 0x815E7040
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x815E6A20
+
+logo_us_m_1_tex_txt:
+  type: TEXTURE
+  offset: 0x815E7840
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x815E6A20
+
+logo_us_m_2_tex_txt:
+  type: TEXTURE
+  offset: 0x815E8040
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x815E6A20
+
+logo_us_i_tex_txt:
+  type: TEXTURE
+  offset: 0x815E8440
+  format: CI4
+  width: 32
+  height: 96
+  source_encoding: gx
+  tlut: 0x815E6A20
+
+logo_us_n_tex_txt:
+  type: TEXTURE
+  offset: 0x815E8A40
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x815E6A20
+
+logo_us_a_2_tex_txt:
+  type: TEXTURE
+  offset: 0x815E9240
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x815E6A20
+
+logo_us_a_1_tex_txt:
+  type: TEXTURE
+  offset: 0x815E9640
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x815E6A20
+
+logo_us_animal_v:
+  type: VTX
+  offset: 0x815E9E40
+  count: 32
+
+logo_us_z_model:
+  type: GFX
+  offset: 0x815EA040
+  size: 0x30
+
+logo_us_za_model:
+  type: GFX
+  offset: 0x815EA070
+  size: 0x30
+
+logo_us_zmB_model:
+  type: GFX
+  offset: 0x815EA0A0
+  size: 0x30
+
+logo_us_zmA_model:
+  type: GFX
+  offset: 0x815EA0D0
+  size: 0x30
+
+logo_us_zi_model:
+  type: GFX
+  offset: 0x815EA100
+  size: 0x30
+
+logo_us_zn_model:
+  type: GFX
+  offset: 0x815EA130
+  size: 0x30
+
+logo_us_zaaB_model:
+  type: GFX
+  offset: 0x815EA160
+  size: 0x30
+
+logo_us_zaaA_model:
+  type: GFX
+  offset: 0x815EA190
+  size: 0x30
+
+cKF_bs_r_logo_us_animal:
+  type: AC:CKF_SKELETON
+  offset: 0x815EA2BC
+  counts: { joints: 21 }

@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_din_trikera_pal:
+  type: TEXTURE
+  offset: 0x8163FAE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_din_trikera_body_tex:
+  type: TEXTURE
+  offset: 0x8163FB00
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x8163FAE0
+
+int_din_trikera_leg_tex:
+  type: TEXTURE
+  offset: 0x8163FE00
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8163FAE0
+
+int_din_trikera_shin_tex:
+  type: TEXTURE
+  offset: 0x8163FE80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8163FAE0
+
+int_din_trikera_thigh_tex:
+  type: TEXTURE
+  offset: 0x8163FF80
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x8163FAE0
+
+int_din_trikera_baceB_tex:
+  type: TEXTURE
+  offset: 0x81640080
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8163FAE0
+
+int_din_trikera_body_v:
+  type: VTX
+  offset: 0x81640280
+  count: 69
+
+int_din_trikera_body_model:
+  type: GFX
+  offset: 0x816406D0
+  size: 0x68
+
+int_din_trikera_bodyT_model:
+  type: GFX
+  offset: 0x81640738
+  size: 0xF8

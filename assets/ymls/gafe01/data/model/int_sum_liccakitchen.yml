@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_liccakitchen_pal:
+  type: TEXTURE
+  offset: 0x81A17A20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_liccakitchen_side_tex:
+  type: TEXTURE
+  offset: 0x81A17A40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A17A20
+
+int_sum_liccakitchen_tail_tex:
+  type: TEXTURE
+  offset: 0x81A17B40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A17A20
+
+int_sum_liccakitchen_top_tex:
+  type: TEXTURE
+  offset: 0x81A17BC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A17A20
+
+int_sum_liccakitchen_back_tex:
+  type: TEXTURE
+  offset: 0x81A17CC0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A17A20
+
+int_sum_liccakitchen_jyagu_tex:
+  type: TEXTURE
+  offset: 0x81A17E40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A17A20
+
+int_sum_liccakitchen_etc_tex:
+  type: TEXTURE
+  offset: 0x81A17EC0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A17A20
+
+int_sum_liccakitchen_front_tex:
+  type: TEXTURE
+  offset: 0x81A17FC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A17A20
+
+int_sum_liccakitchen_v:
+  type: VTX
+  offset: 0x81A181C0
+  count: 58
+
+int_sum_liccakitchen_on_model:
+  type: GFX
+  offset: 0x81A18560
+  size: 0x98
+
+int_sum_liccakitchen_onT_model:
+  type: GFX
+  offset: 0x81A185F8
+  size: 0xD8

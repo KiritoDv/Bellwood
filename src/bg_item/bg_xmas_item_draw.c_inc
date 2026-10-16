@@ -15,8 +15,10 @@ static void bXI_draw_loop_type1_xtree(GRAPH* graph, Gfx** gfx_pp, bg_item_draw_l
         if (draw_pos->cull_flag == FALSE) {
             bg_item_idx_info_c* idx_info;
 
+            FrameInterpolation_RecordOpenChild(draw_pos, 0);
             Matrix_put(&draw_pos->mtxf);
             gSPMatrix((*gfx_pp)++, _Matrix_to_Mtx_new(graph), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            FrameInterpolation_RecordCloseChild();
             idx_info = (bg_item_idx_info_c*)draw_pos->_04;
 
             if (idx_info->v1 == 0) {

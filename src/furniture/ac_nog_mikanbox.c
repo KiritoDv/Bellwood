@@ -1,4 +1,4 @@
-extern Gfx int_nog_mikanbox_model[];
+#include "assets/data/model/int_nog_mikanbox.h"
 
 aFTR_PROFILE iam_nog_mikanbox = {
 	int_nog_mikanbox_model,

@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_din_trilobite_pal:
+  type: TEXTURE
+  offset: 0x816421C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_din_trilobite_1_tex:
+  type: TEXTURE
+  offset: 0x816421E0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x816421C0
+
+int_din_trilobite_2_tex:
+  type: TEXTURE
+  offset: 0x816425E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x816421C0
+
+int_din_trilobite_3_tex:
+  type: TEXTURE
+  offset: 0x816426E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x816421C0
+
+int_din_trilobite_v:
+  type: VTX
+  offset: 0x816428E0
+  count: 34
+
+int_din_trilobite_on_model:
+  type: GFX
+  offset: 0x81642B00
+  size: 0xA8
+
+int_din_trilobite_onT_model:
+  type: GFX
+  offset: 0x81642BA8
+  size: 0x58

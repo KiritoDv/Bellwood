@@ -1,0 +1,78 @@
+:config:
+  strict_declarations: true
+
+int_sum_sofe02_pal:
+  type: TEXTURE
+  offset: 0x81A5D860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_sofe01_pal:
+  type: TEXTURE
+  offset: 0x81A5D880
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sofe01_pal:
+  type: TEXTURE
+  offset: 0x81A5D8A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_sofe02_back_txt:
+  type: TEXTURE
+  offset: 0x81A5D8C0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A5D860
+
+int_sum_sofe01_facet_txt:
+  type: TEXTURE
+  offset: 0x81A5DBC0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A5D880
+
+int_sum_sofe01_side_txt:
+  type: TEXTURE
+  offset: 0x81A5DD40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A5D8A0
+
+int_sum_sofe01_backside_txt:
+  type: TEXTURE
+  offset: 0x81A5DE40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A5D880
+
+int_sum_sofe02_front_txt:
+  type: TEXTURE
+  offset: 0x81A5DEC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A5D860
+
+int_sum_sofe02_v:
+  type: VTX
+  offset: 0x81A5E0C0
+  count: 71
+
+int_sum_sofe02_on_model:
+  type: GFX
+  offset: 0x81A5E530
+  size: 0x140

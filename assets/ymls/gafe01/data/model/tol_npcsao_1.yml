@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+tol_npcsao_1_pal:
+  type: TEXTURE
+  offset: 0x815C6DE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+tol_npcsao_1_tex:
+  type: TEXTURE
+  offset: 0x815C6E00
+  format: CI4
+  width: 64
+  height: 16
+  source_encoding: gx
+  tlut: 0x815C6DE0
+
+tol_npcsao_1_v:
+  type: VTX
+  offset: 0x815C7000
+  count: 71
+
+tol_npcsao_1_sao_model:
+  type: GFX
+  offset: 0x815C7470
+  size: 0x80
+
+tol_npcsao_1_uki_model:
+  type: GFX
+  offset: 0x815C74F0
+  size: 0x98

@@ -11,7 +11,7 @@
 #include "m_house.h"
 #include "m_bgm.h"
 #include "m_timeIn_ovl.h"
-#include "dolphin/os/OSRtc.h"
+#include "gc_compat.h"
 
 enum {
     aNPS2_TALK_SETUP_YURE,

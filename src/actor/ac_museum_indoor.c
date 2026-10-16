@@ -6,6 +6,8 @@
 #include "sys_matrix.h"
 #include "m_play.h"
 #include "m_common_data.h"
+#include "assets/data/model/rom_museum4_wall.h"
+#include "assets/data/model/rom_museum5_wall.h"
 
 static void Museum_Indoor_Actor_ct(ACTOR* actorx, GAME* game);
 static void Museum_Indoor_Actor_draw(ACTOR* actorx, GAME* game);
@@ -31,9 +33,6 @@ typedef struct museum_indoor_cull_info_s {
     int type;
     Gfx* cull_gfx;
 } aMI_cull_info_c;
-
-extern Gfx rom_museum4_wall_model[];
-extern Gfx rom_museum5_wall_model[];
 
 static aMI_cull_info_c aMI_museum_indoor_cull_info[] = {
     { SCENE_MUSEUM_ROOM_INSECT, 1, rom_museum4_wall_model },

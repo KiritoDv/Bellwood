@@ -1,0 +1,119 @@
+:config:
+  strict_declarations: true
+
+int_kon_cracker_pal:
+  type: TEXTURE
+  offset: 0x818A2620
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_cracker_ball_tex_txt:
+  type: TEXTURE
+  offset: 0x818A2640
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A2620
+
+int_kon_cracker_ito_tex_txt:
+  type: TEXTURE
+  offset: 0x818A2840
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A2620
+
+int_kon_cracker_hasira_tex_txt:
+  type: TEXTURE
+  offset: 0x818A28C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A2620
+
+int_kon_cracker_mae_tex_txt:
+  type: TEXTURE
+  offset: 0x818A29C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A2620
+
+int_kon_cracker_hari_tex_txt:
+  type: TEXTURE
+  offset: 0x818A2A40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818A2620
+
+int_kon_cracker_ue_tex_txt:
+  type: TEXTURE
+  offset: 0x818A2B40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818A2620
+
+int_kon_cracker_v:
+  type: VTX
+  offset: 0x818A2BC0
+  count: 62
+
+int_kon_cracker_ito2_model:
+  type: GFX
+  offset: 0x818A2FA0
+  size: 0x60
+
+int_kon_cracker_ball2_model:
+  type: GFX
+  offset: 0x818A3000
+  size: 0x68
+
+int_kon_cracker_ue_model:
+  type: GFX
+  offset: 0x818A3068
+  size: 0x58
+
+int_kon_cracker_ito3_model:
+  type: GFX
+  offset: 0x818A30C0
+  size: 0x60
+
+int_kon_cracker_hasira_model:
+  type: GFX
+  offset: 0x818A3120
+  size: 0xB0
+
+int_kon_cracker_ball3_model:
+  type: GFX
+  offset: 0x818A31D0
+  size: 0x68
+
+int_kon_cracker_ito1_model:
+  type: GFX
+  offset: 0x818A3238
+  size: 0x60
+
+int_kon_cracker_ball1_model:
+  type: GFX
+  offset: 0x818A3298
+  size: 0x68
+
+cKF_ba_r_int_kon_cracker:
+  type: AC:CKF_ANIMATION
+  offset: 0x818A33C4
+  joints: 10
+  counts: { flags: 10, data: 57, keys: 2, fixed: 31 }
+
+cKF_bs_r_int_kon_cracker:
+  type: AC:CKF_SKELETON
+  offset: 0x818A3450
+  counts: { joints: 10 }

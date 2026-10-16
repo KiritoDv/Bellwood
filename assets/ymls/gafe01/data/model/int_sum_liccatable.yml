@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_sum_liccatable_pal:
+  type: TEXTURE
+  offset: 0x81A1CDA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_liccatable_top_txt:
+  type: TEXTURE
+  offset: 0x81A1CDC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A1CDA0
+
+int_sum_liccatable_leg_txt:
+  type: TEXTURE
+  offset: 0x81A1CFC0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81A1CDA0
+
+int_sum_liccatable_side_txt:
+  type: TEXTURE
+  offset: 0x81A1D2C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A1CDA0
+
+int_sum_liccatable_v:
+  type: VTX
+  offset: 0x81A1D340
+  count: 33
+
+int_sum_liccatable_on_model:
+  type: GFX
+  offset: 0x81A1D550
+  size: 0x88
+
+int_sum_liccatable_onT_model:
+  type: GFX
+  offset: 0x81A1D5D8
+  size: 0x78

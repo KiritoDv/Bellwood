@@ -1,4 +1,4 @@
-extern Gfx int_nog_snowman_model[];
+#include "assets/data/model/int_nog_snowman.h"
 
 aFTR_PROFILE iam_nog_snowman = {
 	int_nog_snowman_model,

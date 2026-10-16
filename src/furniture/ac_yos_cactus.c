@@ -1,4 +1,4 @@
-extern Gfx int_yos_cactus_obj_model[];
+#include "assets/data/model/int_yos_cactus.h"
 
 aFTR_PROFILE iam_yos_cactus = {
 	int_yos_cactus_obj_model,

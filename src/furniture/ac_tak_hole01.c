@@ -1,4 +1,4 @@
-extern Gfx int_tak_hole01_onT_model[];
+#include "assets/data/model/int_tak_hole01.h"
 
 aFTR_PROFILE iam_tak_hole01 = {
 	int_tak_hole01_onT_model,

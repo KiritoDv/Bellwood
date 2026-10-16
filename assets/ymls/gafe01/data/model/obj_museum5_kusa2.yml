@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+obj_museum5_kusa2_pal:
+  type: TEXTURE
+  offset: 0x81695AC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_museum5_kusa2_tex_txt:
+  type: TEXTURE
+  offset: 0x81695AE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81695AC0
+
+obj_museum5_kusa2_v:
+  type: VTX
+  offset: 0x81695BE0
+  count: 29
+
+obj_museum5_kusa2_1_model:
+  type: GFX
+  offset: 0x81695DB0
+  size: 0x60
+
+obj_museum5_kusa2_2_model:
+  type: GFX
+  offset: 0x81695E10
+  size: 0x88
+
+obj_museum5_kusa2_3_model:
+  type: GFX
+  offset: 0x81695E98
+  size: 0x88
+
+obj_museum5_kusa2_4_model:
+  type: GFX
+  offset: 0x81695F20
+  size: 0x80
+
+cKF_bs_r_obj_museum5_kusa2:
+  type: AC:CKF_SKELETON
+  offset: 0x81695FDC
+  counts: { joints: 5 }

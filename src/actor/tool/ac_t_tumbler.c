@@ -3,6 +3,7 @@
 #include "m_name_table.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/tol_kamicup_1.h"
 
 ACTOR_PROFILE T_Tumbler_Profile = {
     mAc_PROFILE_T_TUMBLER,
@@ -75,8 +76,6 @@ extern void aTTB_actor_move(ACTOR* actorx, GAME* game) {
 
     (*tumbler->action_proc)(tumbler);
 }
-
-extern Gfx tol_kamicup_1T_model[];
 
 extern void aTTB_actor_draw(ACTOR* actorx, GAME* game) {
     TOOL_TUMBLER_ACTOR* tumbler = (TOOL_TUMBLER_ACTOR*)actorx;

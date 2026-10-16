@@ -6,6 +6,7 @@
 #include "m_item_name.h"
 #include "m_msg.h"
 #include "m_rcp.h"
+#include "assets/data/model/reserve_shadow.h"
 
 static void aRSV_actor_ct(ACTOR* actor, GAME* game);
 static void aRSV_actor_init(ACTOR* actor, GAME* game);
@@ -24,11 +25,6 @@ ACTOR_PROFILE Reserve_Profile = {
     aRSV_actor_draw,
 };
 
-extern Gfx reserve_DL_model[];
-extern Gfx reserve_winter_DL_model[];
-extern Gfx obj_s_attentionT_model[];
-extern Gfx obj_w_attentionT_model[];
-
 static void aRSV_set_bgOffset(ACTOR*, int);
 static void aRSV_setup_action(ACTOR* actor, int type);
 
@@ -43,11 +39,6 @@ static void aRSV_actor_ct(ACTOR* actor, GAME* game) {
     aRSV_setup_action(actor, 0);
     aRSV_set_bgOffset(actor, 1);
 }
-
-extern Vtx reserve_shadow_v[];
-extern Gfx reserve_shadow_model[];
-extern Vtx obj_attention_shadow_v[];
-extern Gfx obj_attention_shadowT_model[];
 
 static u8 aRSV_shadow_vtx_fix_flg_table[] = { TRUE, FALSE, FALSE, TRUE };
 

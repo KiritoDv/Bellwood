@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_cont_bed01_pal:
+  type: TEXTURE
+  offset: 0x819C8380
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_cont_bed01_head_tex:
+  type: TEXTURE
+  offset: 0x819C83A0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819C8380
+
+int_sum_cont_bed01_headside_tex:
+  type: TEXTURE
+  offset: 0x819C85A0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x819C8380
+
+int_sum_cont_bed01_top_tex:
+  type: TEXTURE
+  offset: 0x819C8620
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819C8380
+
+int_sum_cont_bed01_topside_tex:
+  type: TEXTURE
+  offset: 0x819C8820
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819C8380
+
+int_sum_cont_bed01_pillow_tex:
+  type: TEXTURE
+  offset: 0x819C8920
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C8380
+
+int_sum_cont_bed01_pillow2_tex:
+  type: TEXTURE
+  offset: 0x819C89A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C8380
+
+int_sum_cont_bed01_pillow3_tex:
+  type: TEXTURE
+  offset: 0x819C8A20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819C8380
+
+int_sum_cont_bed01_v:
+  type: VTX
+  offset: 0x819C8AA0
+  count: 56
+
+int_sum_cont_bed01_on_model:
+  type: GFX
+  offset: 0x819C8E20
+  size: 0xF0
+
+int_sum_cont_bed01_onT_model:
+  type: GFX
+  offset: 0x819C8F10
+  size: 0x88

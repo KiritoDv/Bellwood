@@ -1,4 +1,4 @@
-extern Gfx int_yos_gnome_body_model[];
+#include "assets/data/model/int_yos_gnome.h"
 
 aFTR_PROFILE iam_yos_gnome = {
 	int_yos_gnome_body_model,

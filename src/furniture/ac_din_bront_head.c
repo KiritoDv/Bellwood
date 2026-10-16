@@ -1,5 +1,4 @@
-extern Gfx int_din_bront_headT_model[];
-extern Gfx int_din_bront_head_model[];
+#include "assets/data/model/int_din_bront_head.h"
 
 aFTR_PROFILE iam_din_bront_head = {
 	int_din_bront_headT_model,

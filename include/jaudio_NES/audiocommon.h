@@ -2,11 +2,37 @@
 #define AUDIOCOMMON_H
 
 #include "types.h"
-#include "PR/abi.h"
+#include "jaudio_NES/neosabi.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#if defined(__BYTE_ORDER__) && defined(__ORDER_BIG_ENDIAN__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+#define NA_BIG_ENDIAN 1
+#else
+#define NA_BIG_ENDIAN 0
+#endif
+
+static inline u16 Na_ReadBE16(const u8* p) {
+    return (u16)((p[0] << 8) | p[1]);
+}
+
+static inline void Na_WriteBE16(u8* p, u16 value) {
+    p[0] = (u8)(value >> 8);
+    p[1] = (u8)value;
+}
+
+#if NA_BIG_ENDIAN
+#define NA_ENV16(x) ((s16)(x))
+#else
+#define NA_ENV16(x) ((s16)((((x) & 0xFF) << 8) | (((x) >> 8) & 0xFF)))
+#endif
+
+static inline s16 Na_EnvRead(s16 value) {
+    const u8* p = (const u8*)&value;
+    return (s16)((p[0] << 8) | p[1]);
+}
 
 #define S16_MIN (-0x8000)
 #define S16_MAX (0x7FFF)
@@ -37,166 +63,6 @@ extern "C" {
 #define ADSR_GOTO -2
 #define ADSR_RESTART -3
 #define ADSR_SPECIAL4 -4 // TODO: figure this out
-
-#define A_ADPCM_SHORT 0x04
-
-// Audio ABI commands
-#define A_CMD_SPNOOP        0
-#define A_CMD_ADPCM         1
-#define A_CMD_CLEARBUFF     2
-#define A_CMD_UNK3          3
-#define A_CMD_ADDMIXER      4
-#define A_CMD_RESAMPLE      5
-#define A_CMD_RESAMPLE_ZOH  6
-#define A_CMD_FIRFILTER     7
-#define A_CMD_SETBUFF       8
-#define A_CMD_DUPLICATE     9
-#define A_CMD_DMEMMOVE      10
-#define A_CMD_LOADADPCM     11
-#define A_CMD_MIXER         12
-#define A_CMD_INTERLEAVE    13
-#define A_CMD_DISTFILTER    14
-#define A_CMD_SETLOOP       15
-#define A_CMD_UNK16         16
-#define A_CMD_HALFCUT       17
-#define A_CMD_SETENVPARAM   18
-#define A_CMD_ENVMIXER      19
-#define A_CMD_LOADBUFFER2   20
-#define A_CMD_SAVEBUFFER2   21
-#define A_CMD_SETENVPARAM2  22
-#define A_CMD_PCM8DEC       23
-#define A_CMD_LOADCACHE     24
-#define A_CMD_EXIT          25
-
-#define aUnkCmd3(pkt, a1, a2, a3)                                       \
-{                                                                       \
-        Acmd *_a = (Acmd *)pkt;                                         \
-                                                                        \
-        _a->words.w0 = _SHIFTL(A_CMD_UNK3, 24, 8) | _SHIFTL(a3, 0, 16);     \
-        _a->words.w1 = _SHIFTL(a1, 16, 16) | _SHIFTL(a2, 0, 16);        \
-}
-
-#define	aHalfCut(pkt, src, dst, len)						\
-{									\
-	Acmd *_a = (Acmd *)pkt;						\
-									\
-	_a->words.w0 = _SHIFTL(A_CMD_HALFCUT, 24, 8) | _SHIFTL(len, 0, 16);    		\
-	_a->words.w1 = _SHIFTL(src, 16, 16) | _SHIFTL(dst, 0, 16);		\
-}
-
-#define	aSetEnvParam(pkt, revVol, rampRev, rampL, rampR)						\
-{									\
-	Acmd *_a = (Acmd *)pkt;						\
-									\
-	_a->words.w0 = _SHIFTL(A_CMD_SETENVPARAM, 24, 8) | _SHIFTL(revVol, 16, 8) | _SHIFTL(rampRev, 0, 16);    		\
-	_a->words.w1 = _SHIFTL(rampL, 16, 16) | _SHIFTL(rampR, 0, 16);		\
-}
-
-#define	aLoadCache(pkt, dst, src, len)						\
-{									\
-	Acmd *_a = (Acmd *)pkt;						\
-									\
-	_a->words.w0 = _SHIFTL(A_CMD_LOADCACHE, 24, 8) | _SHIFTL((len) >> 4, 16, 8) | _SHIFTL(src, 0, 16);    		\
-	_a->words.w1 = (u32)(dst);		\
-}
-
-#define	aLoadBuffer2(pkt, dst, src, len)						\
-{									\
-	Acmd *_a = (Acmd *)pkt;						\
-									\
-	_a->words.w0 = _SHIFTL(A_CMD_LOADBUFFER2, 24, 8) | _SHIFTL((len) >> 4, 16, 8) | _SHIFTL(src, 0, 16);    		\
-	_a->words.w1 = (u32)(dst);		\
-}
-
-#define	aSaveBuffer2(pkt, dst, src, len)						\
-{									\
-	Acmd *_a = (Acmd *)pkt;						\
-									\
-	_a->words.w0 = _SHIFTL(A_CMD_SAVEBUFFER2, 24, 8) | _SHIFTL((len) >> 4, 16, 8) | _SHIFTL(src, 0, 16);    		\
-	_a->words.w1 = (u32)(dst);		\
-}
-
-#define	aInterleave2(pkt, o, l, r, c)						\
-{									\
-	Acmd *_a = (Acmd *)pkt;						\
-									\
-    _a->words.w0 = (_SHIFTL(A_INTERLEAVE, 24, 8) | _SHIFTL(c >> 4, 16, 8) | _SHIFTL(o, 0, 16));            \
-    _a->words.w1 = _SHIFTL(l, 16, 16) | _SHIFTL(r, 0, 16);          \
-}
-
-#define	aSetEnvParam2(pkt, volL, volR)						\
-{									\
-	Acmd *_a = (Acmd *)pkt;						\
-									\
-	_a->words.w0 = _SHIFTL(A_CMD_SETENVPARAM2, 24, 8);    		\
-	_a->words.w1 = _SHIFTL(volL, 16, 16) | _SHIFTL(volR, 0, 16);		\
-}
-
-#define aPCM8dec(pkt, flags, state)						\
-{									\
-	Acmd *_a = (Acmd *)pkt;						\
-									\
-	_a->words.w0 = _SHIFTL(A_CMD_PCM8DEC, 24, 8) | _SHIFTL(flags, 16, 8);    		\
-	_a->words.w1 = (u32)(state);		\
-}
-
-#define aDistFilter(pkt, gain, dmem_in, dmem_out, len)						\
-{									\
-	Acmd *_a = (Acmd *)pkt;						\
-									\
-	_a->words.w0 = _SHIFTL(A_CMD_DISTFILTER, 24, 8) | _SHIFTL(gain, 16, 8) | _SHIFTL(len, 0, 16);    		\
-	_a->words.w1 = _SHIFTL(dmem_in, 16, 16) | _SHIFTL(dmem_out, 0, 16);		\
-}
-
-#define aNoiseFilter(pkt, buf, f, addr, len)                               \
-{                                                                       \
-        Acmd *_a = (Acmd *)pkt;                                         \
-                                                                        \
-        _a->words.w0 = _SHIFTL(A_CMD_SPNOOP, 24, 8) | _SHIFTL(f, 16, 8) |   \
-                    _SHIFTL(addr, 0, 16);                         \
-        _a->words.w1 = _SHIFTL(len, 16, 16) | _SHIFTL(buf, 0, 16);                            \
-}
-
-#define aFirFilter(pkt, f, bufSize, addr)                               \
-{                                                                       \
-        Acmd *_a = (Acmd *)pkt;                                         \
-                                                                        \
-        _a->words.w0 = _SHIFTL(A_CMD_FIRFILTER, 24, 8) | _SHIFTL(f, 16, 8) |   \
-                    _SHIFTL(bufSize, 0, 16);                         \
-        _a->words.w1 = (unsigned int)(addr);                            \
-}
-
-#define aFirLoadTable(pkt, size, addr) aFirFilter(pkt, 2, size, addr)
-
-#define aEnvMixer2(pkt, dmemi, count, swapLR, x0, x1, x2, x3, m, bits)   \
-{                                                                       \
-        Acmd *_a = (Acmd *)pkt;                                         \
-                                                                        \
-        _a->words.w0 = (bits | _SHIFTL(dmemi >> 4, 16, 8) |             \
-                _SHIFTL(count, 8, 8) | _SHIFTL(swapLR, 4, 1) |          \
-                _SHIFTL(x0, 3, 1) | _SHIFTL(x1, 2, 1) |                 \
-                _SHIFTL(x2, 1, 1) | _SHIFTL(x3, 0, 1));                 \
-        _a->words.w1 = (unsigned int)(m);                               \
-}
-
-#define aAddMixer(pkt, count, dmemi, dmemo, a4)                         \
-{                                                                       \
-        Acmd *_a = (Acmd *)pkt;                                         \
-                                                                        \
-        _a->words.w0 = (_SHIFTL(A_CMD_ADDMIXER, 24, 8) |                    \
-                _SHIFTL(count >> 4, 16, 8) | _SHIFTL(a4, 0, 16));       \
-        _a->words.w1 = _SHIFTL(dmemi, 16, 16) | _SHIFTL(dmemo, 0, 16);  \
-}
-
-// from MM
-#define aResampleZoh(pkt, pitch, pitchAccu)                             \
-{                                                                       \
-        Acmd *_a = (Acmd *)pkt;                                         \
-                                                                        \
-        _a->words.w0 = (_SHIFTL(A_CMD_RESAMPLE_ZOH, 24, 8) |                \
-                _SHIFTL(pitch, 0, 16));                                 \
-        _a->words.w1 = _SHIFTL(pitchAccu, 0, 16);                       \
-}
 
 #define NA_MAKE_COMMAND(a0, a1, a2, a3) \
     (u32)((((a0) & 0xFF) << 24) | (((a1) & 0xFF) << 16) | (((a2) & 0xFF) << 8) | (((a3) & 0xFF) << 0))
@@ -970,7 +836,7 @@ typedef enum NASubtrack {
     Nap_SetU16(NA_MAKE_COMMAND(AUDIOCMD_SET_GROUP_MASK, group, 0, 0), mask)
 
 #define NA_COMMAND_AUDIO_SUBTRACK_SET_FILTER(group, subtrack, filterCutoff, pFilter) \
-    Nap_SetS32(NA_MAKE_COMMAND(AUDIOCMD_OP_SUB_SET_FILTER, group, subtrack, filterCutoff), (s32)pFilter)
+    Nap_SetPtr(NA_MAKE_COMMAND(AUDIOCMD_OP_SUB_SET_FILTER, group, subtrack, filterCutoff), pFilter)
 
 #ifdef __cplusplus
 }

@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+rom_myhome_pal:
+  type: TEXTURE
+  offset: 0x818DB380
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_myhome_step_tex:
+  type: TEXTURE
+  offset: 0x818DB3A0
+  format: CI4
+  width: 128
+  height: 32
+  source_encoding: gx
+  tlut: 0x818DB380
+
+obj_myhome_step_up_v:
+  type: VTX
+  offset: 0x818DBBA0
+  count: 20
+
+obj_myhome_step_up_model:
+  type: GFX
+  offset: 0x818DBCE0
+  size: 0x70

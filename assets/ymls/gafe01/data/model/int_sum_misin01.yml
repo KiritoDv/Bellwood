@@ -1,0 +1,132 @@
+:config:
+  strict_declarations: true
+
+int_sum_misin01_pal:
+  type: TEXTURE
+  offset: 0x81A29D20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_misin01_sidefoot_tex:
+  type: TEXTURE
+  offset: 0x81A29D40
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A29D20
+
+int_sum_misin01_desktop_tex:
+  type: TEXTURE
+  offset: 0x81A29E40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A29D20
+
+int_sum_misin01_deskfront_tex:
+  type: TEXTURE
+  offset: 0x81A29EC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A29D20
+
+int_sum_misin01_deskback_tex:
+  type: TEXTURE
+  offset: 0x81A29FC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A29D20
+
+int_sum_misin01_deskside_tex:
+  type: TEXTURE
+  offset: 0x81A2A0C0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A29D20
+
+int_sum_misin01_misiside_tex:
+  type: TEXTURE
+  offset: 0x81A2A100
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A29D20
+
+int_sum_misin01_pedal_tex:
+  type: TEXTURE
+  offset: 0x81A2A200
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A29D20
+
+int_sum_misin01_kaiten_tex:
+  type: TEXTURE
+  offset: 0x81A2A280
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A29D20
+
+int_sum_misin01_harigane_tex:
+  type: TEXTURE
+  offset: 0x81A2A300
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A29D20
+
+int_sum_misin01_misibase_tex:
+  type: TEXTURE
+  offset: 0x81A2A380
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A29D20
+
+int_sum_misin01_top_tex:
+  type: TEXTURE
+  offset: 0x81A2A3C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A29D20
+
+int_sum_misin01_temaki_tex:
+  type: TEXTURE
+  offset: 0x81A2A4C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A29D20
+
+int_sum_misin01_v:
+  type: VTX
+  offset: 0x81A2A540
+  count: 86
+
+int_sum_misin01_on_model:
+  type: GFX
+  offset: 0x81A2AAA0
+  size: 0xB0
+
+int_sum_misin01_onT_model:
+  type: GFX
+  offset: 0x81A2AB50
+  size: 0x158

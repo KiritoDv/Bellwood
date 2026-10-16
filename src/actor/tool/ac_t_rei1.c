@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_lib.h"
 #include "m_rcp.h"
+#include "assets/data/model/crw_rei1.h"
 
 static void aTRI1_actor_ct(ACTOR* actor, GAME* game);
 static void aTRI1_actor_draw(ACTOR* actor, GAME* game);
@@ -23,8 +24,6 @@ ACTOR_PROFILE T_Rei1_Profile = {
     &aTRI1_actor_draw,
     NULL
 };
-
-extern Gfx crw_rei1_body_model[];
 
 static void aTRI1_actor_ct(ACTOR* actor, GAME* game){
     aTRI1_setupAction(actor, 4);

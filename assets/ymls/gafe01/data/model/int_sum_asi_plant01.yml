@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_sum_asi_plant01_pal:
+  type: TEXTURE
+  offset: 0x81A3F500
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_asi_plant01_bin_tex:
+  type: TEXTURE
+  offset: 0x81A3F520
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A3F500
+
+int_sum_asi_plant01_kuki_tex:
+  type: TEXTURE
+  offset: 0x81A3F620
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A3F500
+
+int_sum_asi_plant01_leaf_tex:
+  type: TEXTURE
+  offset: 0x81A3F720
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A3F500
+
+int_sum_asi_plant01_tuchi_tex:
+  type: TEXTURE
+  offset: 0x81A3F920
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A3F500
+
+int_sum_asi_plant01_v:
+  type: VTX
+  offset: 0x81A3F9A0
+  count: 53
+
+int_sum_asi_plant01_on_model:
+  type: GFX
+  offset: 0x81A3FCF0
+  size: 0x80
+
+int_sum_asi_plant01_onT_model:
+  type: GFX
+  offset: 0x81A3FD70
+  size: 0xA0

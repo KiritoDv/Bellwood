@@ -1,6 +1,4 @@
-extern Gfx int_sum_conpo02_on_model[];
-extern Gfx int_sum_conpo02_evwT_model[];
-extern Gfx int_sum_conpo02_p_topT_model[];
+#include "assets/data/model/int_sum_conpo02.h"
 static void aSumConpo02_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aSumConpo02_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aSumConpo02_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);

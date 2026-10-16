@@ -2,7 +2,7 @@
 #define OS_MALLOC_H
 
 #include "types.h"
-#include "dolphin/os/OSTime.h"
+#include <libultraship/libultra/time.h>
 #include "libultra/osThread.h"
 #include "libultra/osMesg.h"
 #include "libultra/ultratypes.h"
@@ -32,7 +32,7 @@ typedef struct OSMemBlock_ {
 typedef struct OSArena_ {
     /* 0x00 */ OSMemBlock* head;
     /* 0x04 */ u8* base;
-    /* 0x08 */ OSMessageQueue lockQueue;
+    /* 0x08 */ OSMesgQueue lockQueue;
     /* 0x20 */ u8 _28;
     /* 0x21 */ u8 initialized;
     /* 0x22 */ u8 flags;

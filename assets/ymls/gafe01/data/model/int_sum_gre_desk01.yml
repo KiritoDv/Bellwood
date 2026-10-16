@@ -1,0 +1,60 @@
+:config:
+  strict_declarations: true
+
+int_sum_gre_desk01_pal:
+  type: TEXTURE
+  offset: 0x819F32C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_gre_desk01_back_tex:
+  type: TEXTURE
+  offset: 0x819F32E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F32C0
+
+int_sum_gre_desk01_side_tex:
+  type: TEXTURE
+  offset: 0x819F33E0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F32C0
+
+int_sum_gre_desk01_top_tex:
+  type: TEXTURE
+  offset: 0x819F35E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F32C0
+
+int_sum_gre_desk01_foot_tex:
+  type: TEXTURE
+  offset: 0x819F36E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819F32C0
+
+int_sum_gre_desk01_v:
+  type: VTX
+  offset: 0x819F37E0
+  count: 54
+
+int_sum_gre_desk01_on_model:
+  type: GFX
+  offset: 0x819F3B40
+  size: 0x90
+
+int_sum_gre_desk01_onT_model:
+  type: GFX
+  offset: 0x819F3BD0
+  size: 0x88

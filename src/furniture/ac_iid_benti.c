@@ -1,4 +1,4 @@
-extern Gfx int_iid_benti_model[];
+#include "assets/data/model/int_iid_benti.h"
 
 aFTR_PROFILE iam_iid_benti = {
 	int_iid_benti_model,

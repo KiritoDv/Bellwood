@@ -1,5 +1,4 @@
-extern Gfx int_iku_ham_model_a_model[];
-extern Gfx int_iku_ham_model_b_model[];
+#include "assets/data/model/int_iku_ham.h"
 
 aFTR_PROFILE iam_iku_ham = {
 	int_iku_ham_model_a_model,

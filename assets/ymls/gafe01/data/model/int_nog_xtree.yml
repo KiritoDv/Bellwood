@@ -1,0 +1,28 @@
+:config:
+  strict_declarations: true
+
+int_plant02_pal:
+  type: TEXTURE
+  offset: 0x81928E40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_xtree_tex:
+  type: TEXTURE
+  offset: 0x81928E60
+  format: CI4
+  width: 32
+  height: 128
+  source_encoding: gx
+  tlut: 0x81928E40
+
+int_nog_xtree_v:
+  type: VTX
+  offset: 0x81929660
+  count: 80
+
+int_nog_xtreeT_model:
+  type: GFX
+  offset: 0x81929B60
+  size: 0xE8

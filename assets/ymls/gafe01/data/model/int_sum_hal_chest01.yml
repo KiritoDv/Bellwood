@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_sum_hal_chest01_pal:
+  type: TEXTURE
+  offset: 0x819FC2A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_hal_chest01_back_tex:
+  type: TEXTURE
+  offset: 0x819FC2C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819FC2A0
+
+int_sum_hal_chest01_front_tex:
+  type: TEXTURE
+  offset: 0x819FC3C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819FC2A0
+
+int_sum_hal_chest01_top_tex:
+  type: TEXTURE
+  offset: 0x819FC5C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819FC2A0
+
+int_sum_hal_chest01_intop_tex:
+  type: TEXTURE
+  offset: 0x819FC640
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819FC2A0
+
+int_sum_hal_chest01_inback_tex:
+  type: TEXTURE
+  offset: 0x819FC6C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819FC2A0
+
+int_sum_hal_chest01_kuki_tex:
+  type: TEXTURE
+  offset: 0x819FC7C0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819FC2A0
+
+int_sum_hal_chest01_book_tex:
+  type: TEXTURE
+  offset: 0x819FC8C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819FC2A0
+
+int_sum_hal_chest01_v:
+  type: VTX
+  offset: 0x819FC9C0
+  count: 67
+
+int_sum_hal_chest01_on_model:
+  type: GFX
+  offset: 0x819FCDF0
+  size: 0xC0
+
+int_sum_hal_chest01_onT_model:
+  type: GFX
+  offset: 0x819FCEB0
+  size: 0xD8

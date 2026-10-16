@@ -1,7 +1,5 @@
+#include "assets/data/model/int_tak_asteroid1.h"
 extern aFTR_rig_c aTakAsteroid1_sklkey;
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_tak_asteroid1;
-extern cKF_Animation_R_c cKF_ba_r_int_tak_asteroid1;
 
 aFTR_rig_c aTakAsteroid1_sklkey= {
     &cKF_bs_r_int_tak_asteroid1,

@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_shop_paper_pal:
+  type: TEXTURE
+  offset: 0x8138DEE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_shop_paper_tex:
+  type: TEXTURE
+  offset: 0x8138DF00
+  format: CI4
+  width: 16
+  height: 64
+  source_encoding: gx
+  tlut: 0x8138DEE0
+
+obj_shop_paper_v:
+  type: VTX
+  offset: 0x8138E100
+  count: 35
+
+obj_paper_mat_model:
+  type: GFX
+  offset: 0x8138E330
+  size: 0x48
+
+obj_paper_gfx_model:
+  type: GFX
+  offset: 0x8138E378
+  size: 0x50

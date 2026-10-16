@@ -1,0 +1,41 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_binsen1_pal:
+  type: TEXTURE
+  offset: 0x81444860
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_binsen1_tex:
+  type: TEXTURE
+  offset: 0x81444880
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_binsen2_tex:
+  type: TEXTURE
+  offset: 0x81444A80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_binsen3_tex:
+  type: TEXTURE
+  offset: 0x81444C80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_mwin_binsen4_tex:
+  type: TEXTURE
+  offset: 0x81444E80
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

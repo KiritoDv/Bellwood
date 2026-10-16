@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+grd_s_f_mu_1_v:
+  type: VTX
+  offset: 0x81706C90
+  count: 160
+
+grd_s_f_mu_1_modelT:
+  type: GFX
+  offset: 0x81707690
+  size: 0x8
+
+grd_s_f_mu_1_model:
+  type: GFX
+  offset: 0x81707698
+  size: 0x1C8

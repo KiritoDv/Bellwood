@@ -1,4 +1,4 @@
-extern Gfx int_hos_mario_hata_all_model[];
+#include "assets/data/model/int_hos_mario_hata.h"
 
 static void fHMD_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
     if (aFTR_CAN_PLAY_SE(ftr_actor)) {

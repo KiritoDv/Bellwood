@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_kon_jihanki03_pal:
+  type: TEXTURE
+  offset: 0x818AA1A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_jihanki03_mae_tex:
+  type: TEXTURE
+  offset: 0x818AA1C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818AA1A0
+
+int_kon_jihanki03_usiro_tex:
+  type: TEXTURE
+  offset: 0x818AA3C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818AA1A0
+
+int_kon_jihanki03_yoko_tex:
+  type: TEXTURE
+  offset: 0x818AA5C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818AA1A0
+
+int_kon_jihanki03_ten_tex:
+  type: TEXTURE
+  offset: 0x818AA7C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AA1A0
+
+int_kon_jihanki03_uti_tex:
+  type: TEXTURE
+  offset: 0x818AA840
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818AA1A0
+
+int_kon_jihanki03_v:
+  type: VTX
+  offset: 0x818AA940
+  count: 36
+
+int_kon_jihanki03_on_model:
+  type: GFX
+  offset: 0x818AAB80
+  size: 0xC0
+
+int_kon_jihanki03_onT_model:
+  type: GFX
+  offset: 0x818AAC40
+  size: 0x58

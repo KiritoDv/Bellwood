@@ -1,0 +1,78 @@
+:config:
+  strict_declarations: true
+
+int_sum_chikuon01_pal:
+  type: TEXTURE
+  offset: 0x819BA8C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_chikuon01_front_tex:
+  type: TEXTURE
+  offset: 0x819BA8E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819BA8C0
+
+int_sum_chikuon01_side_tex:
+  type: TEXTURE
+  offset: 0x819BA9E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819BA8C0
+
+int_sum_chikuon01_rapa_f_tex:
+  type: TEXTURE
+  offset: 0x819BAA60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819BA8C0
+
+int_sum_chikuon01_rapa_b_tex:
+  type: TEXTURE
+  offset: 0x819BAC60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819BA8C0
+
+int_sum_chikuon01_reco_tex:
+  type: TEXTURE
+  offset: 0x819BACE0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819BA8C0
+
+int_sum_chikuon01_hari_tex:
+  type: TEXTURE
+  offset: 0x819BADE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819BA8C0
+
+int_sum_chikuon01_v:
+  type: VTX
+  offset: 0x819BAE60
+  count: 54
+
+int_sum_chikuon01_on_model:
+  type: GFX
+  offset: 0x819BB1C0
+  size: 0x80
+
+int_sum_chikuon01_onT_model:
+  type: GFX
+  offset: 0x819BB240
+  size: 0xD8

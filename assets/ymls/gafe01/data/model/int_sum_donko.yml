@@ -1,0 +1,106 @@
+:config:
+  strict_declarations: true
+
+int_sum_donko_pal:
+  type: TEXTURE
+  offset: 0x819DC380
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_donko_glass_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x819DC3A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_donko_body_txt:
+  type: TEXTURE
+  offset: 0x819DC3C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819DC380
+
+int_sum_donko_side_txt:
+  type: TEXTURE
+  offset: 0x819DC5C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x819DC380
+
+int_sum_donko_base_txt:
+  type: TEXTURE
+  offset: 0x819DC7C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819DC380
+
+int_sum_donko_etc_txt:
+  type: TEXTURE
+  offset: 0x819DC840
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819DC380
+
+int_sum_donko_top_txt:
+  type: TEXTURE
+  offset: 0x819DC8C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819DC380
+
+int_sum_donko_glass_txt:
+  type: TEXTURE
+  offset: 0x819DC9C0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819DC3A0
+
+int_sum_donko_v:
+  type: VTX
+  offset: 0x819DCAC0
+  count: 55
+
+int_sum_donko_sakana_model:
+  type: GFX
+  offset: 0x819DCE30
+  size: 0x70
+
+int_sum_donko_top_model:
+  type: GFX
+  offset: 0x819DCEA0
+  size: 0x58
+
+int_sum_donko_evw_model:
+  type: GFX
+  offset: 0x819DCEF8
+  size: 0x68
+
+int_sum_donko_base_model:
+  type: GFX
+  offset: 0x819DCF60
+  size: 0xB8
+
+cKF_ba_r_int_sum_donko:
+  type: AC:CKF_ANIMATION
+  offset: 0x819DD0E0
+  joints: 5
+  counts: { flags: 5, data: 75, keys: 9, fixed: 9 }
+
+cKF_bs_r_int_sum_donko:
+  type: AC:CKF_SKELETON
+  offset: 0x819DD130
+  counts: { joints: 5 }

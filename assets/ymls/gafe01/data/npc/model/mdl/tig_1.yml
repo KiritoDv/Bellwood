@@ -1,0 +1,82 @@
+:config:
+  strict_declarations: true
+
+tig_1_v:
+  type: VTX
+  offset: 0x815DF4F8
+  count: 428
+
+head_tig_model:
+  type: GFX
+  offset: 0x815E0FB8
+  size: 0x1D8
+
+mouth_tig_model:
+  type: GFX
+  offset: 0x815E1190
+  size: 0x88
+
+Rarm2_tig_model:
+  type: GFX
+  offset: 0x815E1218
+  size: 0x88
+
+Rarm1_tig_model:
+  type: GFX
+  offset: 0x815E12A0
+  size: 0x78
+
+Larm2_tig_model:
+  type: GFX
+  offset: 0x815E1318
+  size: 0x88
+
+Larm1_tig_model:
+  type: GFX
+  offset: 0x815E13A0
+  size: 0x78
+
+chest_tig_model:
+  type: GFX
+  offset: 0x815E1418
+  size: 0xA0
+
+tail1_tig_model:
+  type: GFX
+  offset: 0x815E14B8
+  size: 0x58
+
+tail2_tig_model:
+  type: GFX
+  offset: 0x815E1510
+  size: 0x90
+
+Rfoot2_tig_model:
+  type: GFX
+  offset: 0x815E15A0
+  size: 0x88
+
+Rfoot1_tig_model:
+  type: GFX
+  offset: 0x815E1628
+  size: 0x80
+
+Lfoot2_tig_model:
+  type: GFX
+  offset: 0x815E16A8
+  size: 0x88
+
+Lfoot1_tig_model:
+  type: GFX
+  offset: 0x815E1730
+  size: 0x80
+
+base_tig_model:
+  type: GFX
+  offset: 0x815E17B0
+  size: 0x98
+
+cKF_bs_r_tig_1:
+  type: AC:CKF_SKELETON
+  offset: 0x815E1980
+  counts: { joints: 26 }

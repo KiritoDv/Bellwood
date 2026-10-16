@@ -1,0 +1,33 @@
+:config:
+  strict_declarations: true
+
+obj_melody_pal:
+  type: TEXTURE
+  offset: 0x81105200
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+obj_s_melody_tex:
+  type: TEXTURE
+  offset: 0x81105220
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81105200
+
+obj_s_melody_v:
+  type: VTX
+  offset: 0x81105A20
+  count: 8
+
+obj_s_melodyT_mat_model:
+  type: GFX
+  offset: 0x81105AA0
+  size: 0x28
+
+obj_s_melodyT_gfx_model:
+  type: GFX
+  offset: 0x81105AC8
+  size: 0x20

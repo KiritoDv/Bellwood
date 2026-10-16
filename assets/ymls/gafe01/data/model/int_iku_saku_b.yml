@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+int_iku_saku_b_pal:
+  type: TEXTURE
+  offset: 0x81863EA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_iku_saku_b_b_tex_txt:
+  type: TEXTURE
+  offset: 0x81863EC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81863EA0
+
+int_iku_saku_b_a_tex_txt:
+  type: TEXTURE
+  offset: 0x81863F40
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81863EA0
+
+int_iku_saku_b_c_tex_txt:
+  type: TEXTURE
+  offset: 0x81864140
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81863EA0
+
+int_iku_saku_b_v:
+  type: VTX
+  offset: 0x818641C0
+  count: 42
+
+int_iku_saku_b_model_model:
+  type: GFX
+  offset: 0x81864460
+  size: 0xC8

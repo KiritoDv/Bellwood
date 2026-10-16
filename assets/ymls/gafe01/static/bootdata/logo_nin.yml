@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+nintendo_376x104:
+  type: TEXTURE
+  offset: 0x800BE460
+  format: I4
+  width: 376
+  height: 104
+  source_encoding: gx
+
+logo_nin_v:
+  type: VTX
+  offset: 0x800C30C0
+  count: 4
+
+logo_ninT_model:
+  type: GFX
+  offset: 0x800C3100
+  size: 0x28

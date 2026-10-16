@@ -6,6 +6,7 @@
 #include "m_collision_bg.h"
 #include "sys_matrix.h"
 #include "libultra/libultra.h"
+#include "assets/data/model/obj_yubinkyoku_shine.h"
 
 static void Ef_Room_Sunshine_Posthouse_actor_ct(ACTOR* actor, GAME* play);
 static void Ef_Room_Sunshine_Posthouse_actor_dt(ACTOR* actor, GAME* play);
@@ -13,8 +14,6 @@ static void Ef_Room_Sunshine_PosthouseL_actor_draw(ACTOR* actor, GAME* play);
 static void Ef_Room_Sunshine_PosthouseL_actor_move(ACTOR* actor, GAME* play);
 static void Ef_Room_Sunshine_PosthouseR_actor_draw(ACTOR* actor, GAME* play);
 static void Ef_Room_Sunshine_PosthouseR_actor_move(ACTOR* actor, GAME* play);
-
-extern Gfx obj_yubinkyoku_shine_modelT[];
 
 ACTOR_PROFILE Room_Sunshine_Posthouse_Profile = {
     mAc_PROFILE_ROOM_SUNSHINE_POSTHOUSE,

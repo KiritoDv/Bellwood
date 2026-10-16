@@ -1,0 +1,65 @@
+:config:
+  strict_declarations: true
+
+grd_1_earth_pal:
+  type: TEXTURE
+  offset: 0x8161F978
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+grd_s_river_tex:
+  type: TEXTURE
+  offset: 0x8161F998
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: n64
+  tlut: 0x8161F978
+
+grd_water1_tex:
+  type: TEXTURE
+  offset: 0x8161FD98
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: n64
+
+grd_s_grass_tex:
+  type: TEXTURE
+  offset: 0x8161FF98
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: n64
+  tlut: 0x8161F978
+
+tmpr2_v:
+  type: VTX
+  offset: 0x81620198
+  count: 54
+
+tmpr2_grp_grd_s_r1_1_river:
+  type: GFX
+  offset: 0x816204F8
+  size: 0xF0
+
+tmpr2_grp_grd_s_r1_1_grass:
+  type: GFX
+  offset: 0x816205E8
+  size: 0x110
+
+tmpr2_grp_grd_s_r1_1_waterT:
+  type: GFX
+  offset: 0x816206F8
+  size: 0xA0
+
+tmpr2_modelT:
+  type: GFX
+  offset: 0x81620798
+  size: 0x10
+
+tmpr2_model:
+  type: GFX
+  offset: 0x816207A8
+  size: 0x18

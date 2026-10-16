@@ -1,0 +1,264 @@
+:config:
+  strict_declarations: true
+
+rom_koban_tel_pal:
+  type: TEXTURE
+  offset: 0x81939AA0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_koban_win_pal:
+  type: TEXTURE
+  offset: 0x81939AC0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_koban_us_pos_pal:
+  type: TEXTURE
+  offset: 0x81939AE0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_koban_jim_pal:
+  type: TEXTURE
+  offset: 0x81939B00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_koban_kabe_pal:
+  type: TEXTURE
+  offset: 0x81939B20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_koban_roc_pal:
+  type: TEXTURE
+  offset: 0x81939B40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_koban_tel:
+  type: TEXTURE
+  offset: 0x81939B60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81939AA0
+
+rom_koban_win:
+  type: TEXTURE
+  offset: 0x81939D60
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81939AC0
+
+rom_koban_desk_front:
+  type: TEXTURE
+  offset: 0x81939F60
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81939AC0
+
+rom_koban_desk_side:
+  type: TEXTURE
+  offset: 0x8193A060
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81939AC0
+
+rom_koban_desk_top:
+  type: TEXTURE
+  offset: 0x8193A0E0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81939AC0
+
+rom_koban_yuka:
+  type: TEXTURE
+  offset: 0x8193A1E0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81939AA0
+
+rom_koban_us_pos1:
+  type: TEXTURE
+  offset: 0x8193A9E0
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81939AE0
+
+rom_koban_us_pos2:
+  type: TEXTURE
+  offset: 0x8193ACE0
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81939AE0
+
+rom_koban_kage1:
+  type: TEXTURE
+  offset: 0x8193AFE0
+  format: I4
+  width: 32
+  height: 16
+  source_encoding: gx
+
+rom_koban_kage2:
+  type: TEXTURE
+  offset: 0x8193B0E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+rom_koban_ent:
+  type: TEXTURE
+  offset: 0x8193B160
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x81939AC0
+
+rom_koban_jim_front:
+  type: TEXTURE
+  offset: 0x8193B560
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81939B00
+
+rom_koban_jim_side:
+  type: TEXTURE
+  offset: 0x8193B760
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81939B00
+
+rom_koban_jim_top:
+  type: TEXTURE
+  offset: 0x8193B860
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81939B00
+
+rom_koban_kabe1:
+  type: TEXTURE
+  offset: 0x8193B960
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x81939B20
+
+rom_koban_telcode:
+  type: TEXTURE
+  offset: 0x8193C160
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81939AA0
+
+rom_koban_book:
+  type: TEXTURE
+  offset: 0x8193C1E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81939AA0
+
+rom_koban_roc_s:
+  type: TEXTURE
+  offset: 0x8193C260
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81939B40
+
+rom_koban_roc_t:
+  type: TEXTURE
+  offset: 0x8193C360
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81939B40
+
+rom_koban_kabe3:
+  type: TEXTURE
+  offset: 0x8193C3E0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81939B20
+
+rom_koban_isu:
+  type: TEXTURE
+  offset: 0x8193C7E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81939B00
+
+rom_koban_roc_i:
+  type: TEXTURE
+  offset: 0x8193C860
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81939B40
+
+rom_koban_roc_f3:
+  type: TEXTURE
+  offset: 0x8193C960
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81939B40
+
+police_indoor_v:
+  type: VTX
+  offset: 0x8193CD60
+  count: 425
+
+police_indoor_modelT:
+  type: GFX
+  offset: 0x8193E7F0
+  size: 0x8
+
+police_indoor_model:
+  type: GFX
+  offset: 0x8193E7F8
+  size: 0x5D0

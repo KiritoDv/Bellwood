@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+inv_mwin_kanban_pal:
+  type: TEXTURE
+  offset: 0x814589E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_mwin_kanban_tex:
+  type: TEXTURE
+  offset: 0x81458A00
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx

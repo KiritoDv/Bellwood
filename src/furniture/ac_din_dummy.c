@@ -1,4 +1,4 @@
-extern Gfx int_din_dummy_model[];
+#include "assets/data/model/int_din_dummy.h"
 
 aFTR_PROFILE iam_din_dummy = {
 	int_din_dummy_model,

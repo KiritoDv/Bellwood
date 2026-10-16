@@ -1,0 +1,8 @@
+:config:
+  strict_declarations: true
+
+cKF_ba_r_npc_1_matarou_r2:
+  type: AC:NPC_ANIM
+  offset: 0x812F7860
+  joints: 26
+  counts: { flags: 26, data: 315, keys: 50, fixed: 31 }

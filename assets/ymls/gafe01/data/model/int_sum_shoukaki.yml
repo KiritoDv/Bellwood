@@ -1,0 +1,82 @@
+:config:
+  strict_declarations: true
+
+int_sum_shoukaki_pal:
+  type: TEXTURE
+  offset: 0x81A5AF00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_shoukaki_front_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5AF20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A5AF00
+
+int_sum_shoukaki_cupside_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5B120
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A5AF00
+
+int_sum_shoukaki_tube_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5B1A0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A5AF00
+
+int_sum_shoukaki_grip_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5B2A0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A5AF00
+
+int_sum_shoukaki_pull_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5B320
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A5AF00
+
+int_sum_shoukaki_griptop_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5B3A0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A5AF00
+
+int_sum_shoukaki_gripdown_tex_txt:
+  type: TEXTURE
+  offset: 0x81A5B420
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x81A5AF00
+
+int_sum_shoukaki_v:
+  type: VTX
+  offset: 0x81A5B4A0
+  count: 66
+
+int_sum_shoukaki_model:
+  type: GFX
+  offset: 0x81A5B8C0
+  size: 0x170

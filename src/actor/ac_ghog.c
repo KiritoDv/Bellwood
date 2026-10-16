@@ -3,6 +3,8 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/obj_e_ghog.h"
+#include "assets/data/model/obj_e_ghog_shadow.h"
 
 // clang-format off
 static u8 aGhog_shadow_vtx_fix_flg_table[] = {
@@ -11,9 +13,6 @@ static u8 aGhog_shadow_vtx_fix_flg_table[] = {
     FALSE, TRUE,
 };
 // clang-format on
-
-extern Vtx obj_e_ghog_shadow_v[];
-extern Gfx obj_e_ghog_shadow_modelT[];
 
 static bIT_ShadowData_c aGhog_shadow_data = {
     ARRAY_COUNT(aGhog_shadow_vtx_fix_flg_table),
@@ -67,9 +66,6 @@ static void aGhog_actor_init(ACTOR* actorx, GAME* game) {
     aGhog_actor_move(actorx, game);
     actorx->mv_proc = &aGhog_actor_move;
 }
-
-extern Gfx obj_e_ghog_model[];
-extern Gfx obj_e_ghog_modelT[];
 
 static void aGhog_actor_draw(ACTOR* actorx, GAME* game) {
     GRAPH* graph = game->graph;

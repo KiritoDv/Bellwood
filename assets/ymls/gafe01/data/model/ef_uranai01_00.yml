@@ -1,0 +1,32 @@
+:config:
+  strict_declarations: true
+
+ef_uranai01_0_int_i4:
+  type: TEXTURE
+  offset: 0x816758A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_uranai01_1_int_i4:
+  type: TEXTURE
+  offset: 0x81675AA0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+ef_uranai01_00_v:
+  type: VTX
+  offset: 0x81675CA0
+  count: 13
+
+ef_uranai01_00_modelT:
+  type: GFX
+  offset: 0x81675D70
+  size: 0x78
+
+ef_uranai01_00_evw_anime:
+  type: AC:EVW_ANIME
+  offset: 0x81675DF0

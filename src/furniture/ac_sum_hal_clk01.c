@@ -1,5 +1,4 @@
-extern Gfx int_sum_hal_clk01_short_model[];
-extern Gfx int_sum_hal_clk01_long_model[];
+#include "assets/data/model/int_sum_hal_clk01.h"
 
 static int aSumHalClk01_DwAfter(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
                                 u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {
@@ -67,9 +66,6 @@ static void aSumHalClk01_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* ga
 
     cKF_Si3_draw_R_SV(game, keyframe, mtx, &aSumHalClk01_DwBefore, &aSumHalClk01_DwAfter, ftr_actor);
 }
-
-extern cKF_Skeleton_R_c cKF_bs_r_int_sum_hal_clk01;
-extern cKF_Animation_R_c cKF_ba_r_int_sum_hal_clk01;
 
 static void aSumHalClk01_ct(FTR_ACTOR* ftr_actor, u8* data) {
     cKF_SkeletonInfo_R_c* keyframe = &ftr_actor->keyframe;

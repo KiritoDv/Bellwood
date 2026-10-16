@@ -1,5 +1,4 @@
-extern Gfx int_tak_cone03_on_model[];
-extern Gfx int_tak_cone03_onT_model[];
+#include "assets/data/model/int_tak_cone03.h"
 
 aFTR_PROFILE iam_tak_cone03 = {
 	int_tak_cone03_on_model,

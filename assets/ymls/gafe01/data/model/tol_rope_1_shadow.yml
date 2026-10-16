@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+tol_rope_1_shadow_tex:
+  type: TEXTURE
+  offset: 0x8137B3A0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+tol_rope_1_shadow_v:
+  type: VTX
+  offset: 0x8137B420
+  count: 32
+
+tol_rope_1_shadowT_model:
+  type: GFX
+  offset: 0x8137B620
+  size: 0x78

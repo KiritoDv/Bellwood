@@ -1,5 +1,4 @@
-extern Gfx int_sum_uwa_poto01_on_model[];
-extern Gfx int_sum_uwa_poto01_onT_model[];
+#include "assets/data/model/int_sum_uwa_poto01.h"
 
 aFTR_PROFILE iam_sum_uwa_poto01 = {
 	int_sum_uwa_poto01_on_model,

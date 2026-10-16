@@ -1,4 +1,4 @@
-extern Gfx int_sum_ratan_screen_onT_model[];
+#include "assets/data/model/int_sum_ratan_screen.h"
 
 aFTR_PROFILE iam_sum_ratan_screen = {
 	int_sum_ratan_screen_onT_model,

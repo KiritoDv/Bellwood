@@ -1,16 +1,12 @@
 #include "ef_effect_control.h"
 
 #include "m_common_data.h"
+#include "assets/data/model/ef_taberu01_00.h"
 
 static void eTaberu_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eTaberu_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
 static void eTaberu_mv(eEC_Effect_c* effect, GAME* game);
 static void eTaberu_dw(eEC_Effect_c* effect, GAME* game);
-
-extern Gfx ef_taberu01_00_modelT[];
-extern Gfx ef_taberu01_01_modelT[];
-extern Gfx ef_taberu01_02_modelT[];
-extern Gfx ef_taberu01_03_modelT[];
 
 static Gfx* eTaberu_model_table[] = {
     ef_taberu01_00_modelT,

@@ -1,0 +1,48 @@
+:config:
+  strict_declarations: true
+
+act_f04_nisiki_pal:
+  type: TEXTURE
+  offset: 0x81241340
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+act_f04_nisiki_tex:
+  type: TEXTURE
+  offset: 0x81241360
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x81241340
+
+act_f04_nisiki_a_v:
+  type: VTX
+  offset: 0x81241660
+  count: 9
+
+act_f04_nisiki_aT_model:
+  type: GFX
+  offset: 0x812416F0
+  size: 0x68
+
+act_f04_nisiki_b_v:
+  type: VTX
+  offset: 0x81241758
+  count: 9
+
+act_f04_nisiki_bT_model:
+  type: GFX
+  offset: 0x812417E8
+  size: 0x68
+
+act_f04_nisiki_c_v:
+  type: VTX
+  offset: 0x81241850
+  count: 9
+
+act_f04_nisiki_cT_model:
+  type: GFX
+  offset: 0x812418E0
+  size: 0x68

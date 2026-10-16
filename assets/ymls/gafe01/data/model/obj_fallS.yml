@@ -1,0 +1,97 @@
+:config:
+  strict_declarations: true
+
+obj_fall_rainbow_1_tex_rgb_rgba16:
+  type: TEXTURE
+  offset: 0x81523360
+  format: RGBA16
+  width: 16
+  height: 8
+  source_encoding: gx
+
+obj_fall_rainbowA_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81523460
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_fallCA1_tex_rgb_ia8:
+  type: TEXTURE
+  offset: 0x815234E0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_fallA2_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x815238E0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_fallA3_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81523AE0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_fallC2_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81523B60
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+obj_fallC3_tex_rgb_i4:
+  type: TEXTURE
+  offset: 0x81523D60
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+obj_fallS_v:
+  type: VTX
+  offset: 0x81523DE0
+  count: 85
+
+obj_fallS_grpAT_model:
+  type: GFX
+  offset: 0x81524330
+  size: 0x60
+
+obj_fallS_grpBT_model:
+  type: GFX
+  offset: 0x81524390
+  size: 0x68
+
+obj_fallS_grpDT_model:
+  type: GFX
+  offset: 0x815243F8
+  size: 0x58
+
+obj_fallS_grpCT_model:
+  type: GFX
+  offset: 0x81524450
+  size: 0x68
+
+obj_fallS_rainbowT_model:
+  type: GFX
+  offset: 0x815244B8
+  size: 0x98
+
+obj_fallS_model:
+  type: GFX
+  offset: 0x81524550
+  size: 0x40
+
+obj_fallS_evw_anime:
+  type: AC:EVW_ANIME
+  offset: 0x815245B0

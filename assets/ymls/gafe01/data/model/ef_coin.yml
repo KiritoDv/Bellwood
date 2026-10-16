@@ -1,0 +1,25 @@
+:config:
+  strict_declarations: true
+
+ef_coin_tex_txt:
+  type: TEXTURE
+  offset: 0x81662EC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+ef_coin_v:
+  type: VTX
+  offset: 0x81662F40
+  count: 60
+
+ef_coin_model:
+  type: GFX
+  offset: 0x81663300
+  size: 0xC0
+
+ef_coin_modelT:
+  type: GFX
+  offset: 0x816633C0
+  size: 0xB8

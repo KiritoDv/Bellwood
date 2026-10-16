@@ -1,7 +1,4 @@
-extern u8 act_gyoei02_0_int_i4[];
-extern u8 act_gyoei02_1_int_i4[];
-extern u8 act_gyoei02_2_int_i4[];
-extern u8 act_gyoei02_3_int_i4[];
+#include "assets/data/model/act_gyoei02.h"
 
 // clang-format off
 static u8* aGYO_texture_table[] = {

@@ -1,0 +1,17 @@
+:config:
+  strict_declarations: true
+
+obj_w_fenceS_v:
+  type: VTX
+  offset: 0x811156E0
+  count: 4
+
+obj_w_fenceST_mat_model:
+  type: GFX
+  offset: 0x81115720
+  size: 0x28
+
+obj_w_fenceST_gfx_model:
+  type: GFX
+  offset: 0x81115748
+  size: 0x18

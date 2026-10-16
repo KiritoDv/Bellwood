@@ -1,0 +1,131 @@
+:config:
+  strict_declarations: true
+
+rom_toudai_yuka_pal:
+  type: TEXTURE
+  offset: 0x818BB020
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_toudai_kabe_pal:
+  type: TEXTURE
+  offset: 0x818BB040
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_toudai_step_pal:
+  type: TEXTURE
+  offset: 0x818BB060
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_toudai_meka_pal:
+  type: TEXTURE
+  offset: 0x818BB080
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_toudai_ukiwa_pal:
+  type: TEXTURE
+  offset: 0x818BB0A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+rom_toudai_yuka_tex:
+  type: TEXTURE
+  offset: 0x818BB0C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818BB020
+
+rom_toudai_kabeA_tex:
+  type: TEXTURE
+  offset: 0x818BB8C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818BB040
+
+rom_toudai_kabeB_tex:
+  type: TEXTURE
+  offset: 0x818BC0C0
+  format: CI4
+  width: 64
+  height: 64
+  source_encoding: gx
+  tlut: 0x818BB040
+
+rom_toudai_step_tex:
+  type: TEXTURE
+  offset: 0x818BC8C0
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x818BB060
+
+rom_toudai_mekaA_tex:
+  type: TEXTURE
+  offset: 0x818BCCC0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x818BB080
+
+rom_toudai_ukiwa_tex:
+  type: TEXTURE
+  offset: 0x818BCDC0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818BB0A0
+
+rom_toudai_kage1_tex:
+  type: TEXTURE
+  offset: 0x818BCFC0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+rom_toudai_mekaC_tex:
+  type: TEXTURE
+  offset: 0x818BD040
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818BB080
+
+rom_toudai_kage2_tex:
+  type: TEXTURE
+  offset: 0x818BD240
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+rom_toudai_v:
+  type: VTX
+  offset: 0x818BD2C0
+  count: 103
+
+rom_toudai_modelT:
+  type: GFX
+  offset: 0x818BD930
+  size: 0x8
+
+rom_toudai_model:
+  type: GFX
+  offset: 0x818BD938
+  size: 0x1E8

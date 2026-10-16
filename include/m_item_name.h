@@ -10,25 +10,6 @@ extern "C" {
 
 #define mIN_ITEM_NAME_LEN 16
 
-extern u8 itemName_paper[];
-extern u8 itemName_money[];
-extern u8 itemName_tool[];
-extern u8 itemName_fish[];
-extern u8 itemName_cloth[];
-extern u8 itemName_etc[];
-extern u8 itemName_carpet[];
-extern u8 itemName_wall[];
-extern u8 itemName_fruit[];
-extern u8 itemName_plant[];
-extern u8 itemName_minidisk[];
-extern u8 itemName_dummy[];
-extern u8 itemName_ticket[];
-extern u8 itemName_insect[];
-extern u8 itemName_hukubukuro[];
-extern u8 itemName_kabu[];
-
-extern u8 ftrName_table[];
-extern u8 ftrName2_table[];
 
 enum item_article {
   mIN_ARTICLE_NONE,

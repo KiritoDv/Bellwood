@@ -1,0 +1,363 @@
+:config:
+  strict_declarations: true
+
+inv_ori_tw4_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x814BEC00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_original_cloth_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x814BEC20
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_ori_tw1_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x814BEC40
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_ori_tw2_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x814BEC60
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_ori_tw3_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x814BEC80
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+inv_ori_w1_tex:
+  type: TEXTURE
+  offset: 0x814BECA0
+  format: IA8
+  width: 64
+  height: 32
+  source_encoding: gx
+
+inv_ori_w2_tex:
+  type: TEXTURE
+  offset: 0x814BF4A0
+  format: IA8
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_ori_w3_tex:
+  type: TEXTURE
+  offset: 0x814BF8A0
+  format: IA8
+  width: 32
+  height: 64
+  source_encoding: gx
+
+inv_ori_w4_tex:
+  type: TEXTURE
+  offset: 0x814C00A0
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+sav_win_waku_tex:
+  type: TEXTURE
+  offset: 0x814C01A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_original_futa2_tex:
+  type: TEXTURE
+  offset: 0x814C03A0
+  format: I4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+inv_ori_tw4_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x814C05A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x814BEC00
+
+inv_original_cloth_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x814C0620
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x814BEC20
+
+inv_ori_tw1_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x814C0820
+  format: CI4
+  width: 64
+  height: 32
+  source_encoding: gx
+  tlut: 0x814BEC40
+
+inv_ori_tw2_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x814C0C20
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x814BEC60
+
+inv_ori_tw3_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x814C0E20
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x814BEC80
+
+inv_original_v:
+  type: VTX
+  offset: 0x814C1220
+  count: 222
+
+needlework_before_model:
+  type: GFX
+  offset: 0x814C2000
+  size: 0x20
+
+inv_original_w_model_before:
+  type: GFX
+  offset: 0x814C2020
+  size: 0x38
+
+inv_original_w9_model:
+  type: GFX
+  offset: 0x814C2058
+  size: 0x38
+
+inv_original_waku_model:
+  type: GFX
+  offset: 0x814C2090
+  size: 0x68
+
+inv_original_mb_before_model:
+  type: GFX
+  offset: 0x814C20F8
+  size: 0x20
+
+inv_original_mb1_model:
+  type: GFX
+  offset: 0x814C2118
+  size: 0x18
+
+inv_original_mb2_model:
+  type: GFX
+  offset: 0x814C2130
+  size: 0x18
+
+inv_original_mb3_model:
+  type: GFX
+  offset: 0x814C2148
+  size: 0x18
+
+inv_original_mb4_model:
+  type: GFX
+  offset: 0x814C2160
+  size: 0x18
+
+inv_original_mb5_model:
+  type: GFX
+  offset: 0x814C2178
+  size: 0x18
+
+inv_original_mb6_model:
+  type: GFX
+  offset: 0x814C2190
+  size: 0x18
+
+inv_original_mb7_model:
+  type: GFX
+  offset: 0x814C21A8
+  size: 0x18
+
+inv_original_mb8_model:
+  type: GFX
+  offset: 0x814C21C0
+  size: 0x18
+
+inv_original_f_model:
+  type: GFX
+  offset: 0x814C21D8
+  size: 0x68
+
+inv_original_w1T_model:
+  type: GFX
+  offset: 0x814C2240
+  size: 0x38
+
+inv_original_w2T_model:
+  type: GFX
+  offset: 0x814C2278
+  size: 0x38
+
+inv_original_w3T_model:
+  type: GFX
+  offset: 0x814C22B0
+  size: 0x38
+
+inv_original_w4T_model:
+  type: GFX
+  offset: 0x814C22E8
+  size: 0x38
+
+inv_original_w5T_model:
+  type: GFX
+  offset: 0x814C2320
+  size: 0x38
+
+inv_original_w6T_model:
+  type: GFX
+  offset: 0x814C2358
+  size: 0x38
+
+inv_original_w7T_model:
+  type: GFX
+  offset: 0x814C2390
+  size: 0x38
+
+inv_original_w8T_model:
+  type: GFX
+  offset: 0x814C23C8
+  size: 0x38
+
+inv_original_ueT_model:
+  type: GFX
+  offset: 0x814C2400
+  size: 0x108
+
+inv_original_aw5_tex:
+  type: TEXTURE
+  offset: 0x814C2520
+  format: IA8
+  width: 16
+  height: 16
+  source_encoding: gx
+
+inv_original2_v:
+  type: VTX
+  offset: 0x814C2620
+  count: 220
+
+inv_original2_w9_model:
+  type: GFX
+  offset: 0x814C33E0
+  size: 0x38
+
+inv_original2_waku_model:
+  type: GFX
+  offset: 0x814C3418
+  size: 0x68
+
+inv_original2_mb1_model:
+  type: GFX
+  offset: 0x814C3480
+  size: 0x18
+
+inv_original2_mb2_model:
+  type: GFX
+  offset: 0x814C3498
+  size: 0x18
+
+inv_original2_mb3_model:
+  type: GFX
+  offset: 0x814C34B0
+  size: 0x18
+
+inv_original2_mb4_model:
+  type: GFX
+  offset: 0x814C34C8
+  size: 0x18
+
+inv_original2_mb5_model:
+  type: GFX
+  offset: 0x814C34E0
+  size: 0x18
+
+inv_original2_mb6_model:
+  type: GFX
+  offset: 0x814C34F8
+  size: 0x18
+
+inv_original2_mb7_model:
+  type: GFX
+  offset: 0x814C3510
+  size: 0x18
+
+inv_original2_mb8_model:
+  type: GFX
+  offset: 0x814C3528
+  size: 0x18
+
+inv_original2_f_model:
+  type: GFX
+  offset: 0x814C3540
+  size: 0x68
+
+inv_original2_w1T_model:
+  type: GFX
+  offset: 0x814C35A8
+  size: 0x38
+
+inv_original2_w2T_model:
+  type: GFX
+  offset: 0x814C35E0
+  size: 0x38
+
+inv_original2_w3T_model:
+  type: GFX
+  offset: 0x814C3618
+  size: 0x38
+
+inv_original2_w4T_model:
+  type: GFX
+  offset: 0x814C3650
+  size: 0x38
+
+inv_original2_w5T_model:
+  type: GFX
+  offset: 0x814C3688
+  size: 0x38
+
+inv_original2_w6T_model:
+  type: GFX
+  offset: 0x814C36C0
+  size: 0x38
+
+inv_original2_w7T_model:
+  type: GFX
+  offset: 0x814C36F8
+  size: 0x38
+
+inv_original2_w8T_model:
+  type: GFX
+  offset: 0x814C3730
+  size: 0x38
+
+inv_original2_ueT_model:
+  type: GFX
+  offset: 0x814C3768
+  size: 0x110

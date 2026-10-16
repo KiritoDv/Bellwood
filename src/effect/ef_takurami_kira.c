@@ -1,9 +1,7 @@
 #include "ef_effect_control.h"
 
 #include "m_common_data.h"
-
-extern Gfx ef_takurami01_kira_modelT[];
-extern Gfx ef_takurami01_normal_render_mode[];
+#include "assets/data/model/ef_takurami01_yoko.h"
 
 static void eTMK_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eTMK_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);

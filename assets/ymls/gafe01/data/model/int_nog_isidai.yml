@@ -1,0 +1,97 @@
+:config:
+  strict_declarations: true
+
+int_nog_isidai_pal:
+  type: TEXTURE
+  offset: 0x818FB4E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_isidai_glass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x818FB500
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_nog_isidai_body_tex_txt:
+  type: TEXTURE
+  offset: 0x818FB520
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x818FB4E0
+
+int_nog_isidai_top_tex_txt:
+  type: TEXTURE
+  offset: 0x818FB820
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818FB4E0
+
+int_nog_isidai_side_tex_txt:
+  type: TEXTURE
+  offset: 0x818FB920
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x818FB4E0
+
+int_nog_isidai_base_tex_txt:
+  type: TEXTURE
+  offset: 0x818FBB20
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818FB4E0
+
+int_nog_isidai_glass_tex_txt:
+  type: TEXTURE
+  offset: 0x818FBBA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818FB500
+
+int_nog_isidai_v:
+  type: VTX
+  offset: 0x818FBCA0
+  count: 57
+
+int_nog_isidai_sakana_model:
+  type: GFX
+  offset: 0x818FC030
+  size: 0x90
+
+int_sum_isidai_top_model:
+  type: GFX
+  offset: 0x818FC0C0
+  size: 0x58
+
+int_sum_isidai_evw_model:
+  type: GFX
+  offset: 0x818FC118
+  size: 0x68
+
+int_sum_isidai_base_model:
+  type: GFX
+  offset: 0x818FC180
+  size: 0x90
+
+cKF_ba_r_int_nog_isidai:
+  type: AC:CKF_ANIMATION
+  offset: 0x818FC290
+  joints: 5
+  counts: { flags: 5, data: 39, keys: 3, fixed: 15 }
+
+cKF_bs_r_int_nog_isidai:
+  type: AC:CKF_SKELETON
+  offset: 0x818FC2E0
+  counts: { joints: 5 }

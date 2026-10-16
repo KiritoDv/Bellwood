@@ -1,0 +1,87 @@
+:config:
+  strict_declarations: true
+
+int_ike_k_otome01_pal:
+  type: TEXTURE
+  offset: 0x81838520
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_k_otomefront_tex:
+  type: TEXTURE
+  offset: 0x81838540
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81838520
+
+int_ike_k_otomeleg_tex:
+  type: TEXTURE
+  offset: 0x818385C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81838520
+
+int_ike_k_otomeside_tex:
+  type: TEXTURE
+  offset: 0x818387C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81838520
+
+int_ike_k_otometop_tex:
+  type: TEXTURE
+  offset: 0x81838840
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81838520
+
+int_ike_k_otometle1_tex:
+  type: TEXTURE
+  offset: 0x818388C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x81838520
+
+int_ike_k_otometle2_tex:
+  type: TEXTURE
+  offset: 0x81838AC0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81838520
+
+int_ike_k_otometle3_tex:
+  type: TEXTURE
+  offset: 0x81838B40
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81838520
+
+int_ike_k_otome01_v:
+  type: VTX
+  offset: 0x81838BC0
+  count: 110
+
+int_ike_k_otome01_on_model:
+  type: GFX
+  offset: 0x818392A0
+  size: 0x148
+
+int_ike_k_otome01_onT_model:
+  type: GFX
+  offset: 0x818393E8
+  size: 0x80

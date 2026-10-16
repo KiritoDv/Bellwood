@@ -1,0 +1,70 @@
+:config:
+  strict_declarations: true
+
+int_tak_stew_a1_pal:
+  type: TEXTURE
+  offset: 0x81AA7540
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_stew_nabe_pal:
+  type: TEXTURE
+  offset: 0x81AA7560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_tak_stew_a1_tex:
+  type: TEXTURE
+  offset: 0x81AA7580
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_stew_nabe_tex:
+  type: TEXTURE
+  offset: 0x81AA7780
+  format: CI4
+  width: 8
+  height: 32
+  source_encoding: gx
+  tlut: 0x81AA7560
+
+int_tak_stew_etc_tex:
+  type: TEXTURE
+  offset: 0x81AA7800
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81AA7560
+
+int_tak_stew_a2_tex_rgb_ci4:
+  type: TEXTURE
+  offset: 0x81AA7880
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+
+int_tak_stew_v:
+  type: VTX
+  offset: 0x81AA7A80
+  count: 64
+
+int_tak_stew_nabe_on_model:
+  type: GFX
+  offset: 0x81AA7E80
+  size: 0x78
+
+int_tak_stew_nabe_onT_model:
+  type: GFX
+  offset: 0x81AA7EF8
+  size: 0xA8
+
+int_tak_stew_a1T_model:
+  type: GFX
+  offset: 0x81AA7FA0
+  size: 0x58

@@ -1,4 +1,4 @@
-extern Gfx int_yaz_turkey_chair_body_model[];
+#include "assets/data/model/int_yaz_turkey_chair.h"
 
 aFTR_PROFILE iam_yaz_turkey_chair = {
 	int_yaz_turkey_chair_body_model,

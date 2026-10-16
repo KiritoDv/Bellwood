@@ -1,0 +1,120 @@
+:config:
+  strict_declarations: true
+
+int_sum_blue_cab01_pal:
+  type: TEXTURE
+  offset: 0x819A9820
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_blue_cab01_grass_tex_pic_ci4_pal:
+  type: TEXTURE
+  offset: 0x819A9840
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_blue_cab01_top_tex_txt:
+  type: TEXTURE
+  offset: 0x819A9860
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819A9820
+
+int_sum_blue_cab01_hiki_tex_txt:
+  type: TEXTURE
+  offset: 0x819A98E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x819A9820
+
+int_sum_blue_cab01_intop_tex_txt:
+  type: TEXTURE
+  offset: 0x819A99E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819A9820
+
+int_sum_blue_cab01_front_tex_txt:
+  type: TEXTURE
+  offset: 0x819A9A60
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819A9820
+
+int_sum_blue_cab01_side_tex_txt:
+  type: TEXTURE
+  offset: 0x819A9BE0
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x819A9820
+
+int_sum_blue_cab01_books_tex_txt:
+  type: TEXTURE
+  offset: 0x819A9D60
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819A9820
+
+int_sum_blue_cab01_grass_tex_txt:
+  type: TEXTURE
+  offset: 0x819A9DE0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x819A9840
+
+int_sum_blue_cab01_v:
+  type: VTX
+  offset: 0x819A9E60
+  count: 77
+
+int_sum_blue_cab01_doorL_evw_model:
+  type: GFX
+  offset: 0x819AA330
+  size: 0x58
+
+int_sum_blue_cab01_doorL_model:
+  type: GFX
+  offset: 0x819AA388
+  size: 0x80
+
+int_sum_blue_cab01_base_model:
+  type: GFX
+  offset: 0x819AA408
+  size: 0xE0
+
+int_sum_blue_cab01_doorR_evw_model:
+  type: GFX
+  offset: 0x819AA4E8
+  size: 0x58
+
+int_sum_blue01_cab01_doorR_model:
+  type: GFX
+  offset: 0x819AA540
+  size: 0x80
+
+cKF_ba_r_int_sum_blue_cab01:
+  type: AC:CKF_ANIMATION
+  offset: 0x819AA694
+  joints: 7
+  counts: { flags: 7, data: 78, keys: 12, fixed: 12 }
+
+cKF_bs_r_int_sum_blue_cab01:
+  type: AC:CKF_SKELETON
+  offset: 0x819AA6FC
+  counts: { joints: 7 }

@@ -1,0 +1,106 @@
+:config:
+  strict_declarations: true
+  directory: famicom
+
+rom/01_nes_cluclu3.bin:
+  type: BLOB
+  file: famicom.arc/game/01/01_nes_cluclu3.bin.szs
+
+rom/02_usa_balloon.nes:
+  type: BLOB
+  file: famicom.arc/game/01/02_usa_balloon.nes.szs
+
+rom/03_nes_donkey1_3.bin:
+  type: BLOB
+  file: famicom.arc/game/01/03_nes_donkey1_3.bin.szs
+
+rom/04_usa_jr_math.nes:
+  type: BLOB
+  file: famicom.arc/game/01/04_usa_jr_math.nes.szs
+
+rom/05_pinball_1.nes:
+  type: BLOB
+  file: famicom.arc/game/01/05_pinball_1.nes.szs
+
+rom/06_nes_tennis3.bin:
+  type: BLOB
+  file: famicom.arc/game/01/06_nes_tennis3.bin.szs
+
+rom/07_usa_golf.nes:
+  type: BLOB
+  file: famicom.arc/game/01/07_usa_golf.nes.szs
+
+rom/08_punch_wh.nes:
+  type: BLOB
+  file: famicom.arc/game/01/08_punch_wh.nes.szs
+
+rom/09_usa_baseball_1.nes:
+  type: BLOB
+  file: famicom.arc/game/01/09_usa_baseball_1.nes.szs
+
+rom/10_cluclu_1.qd:
+  type: BLOB
+  file: famicom.arc/game/01/10_cluclu_1.qd.szs
+
+rom/11_usa_donkey3.nes:
+  type: BLOB
+  file: famicom.arc/game/01/11_usa_donkey3.nes.szs
+
+rom/12_donkeyjr_1.nes:
+  type: BLOB
+  file: famicom.arc/game/01/12_donkeyjr_1.nes.szs
+
+rom/13_soccer.nes:
+  type: BLOB
+  file: famicom.arc/game/01/13_soccer.nes.szs
+
+rom/14_exbike.nes:
+  type: BLOB
+  file: famicom.arc/game/01/14_exbike.nes.szs
+
+rom/15_usa_wario.nes:
+  type: BLOB
+  file: famicom.arc/game/01/15_usa_wario.nes.szs
+
+rom/16_usa_icecl.nes:
+  type: BLOB
+  file: famicom.arc/game/01/16_usa_icecl.nes.szs
+
+rom/17_nes_mario1_2.bin:
+  type: BLOB
+  file: famicom.arc/game/01/17_nes_mario1_2.bin.szs
+
+rom/18_smario_0.nes:
+  type: BLOB
+  file: famicom.arc/game/01/18_smario_0.nes.szs
+
+rom/19_usa_zelda1_1.nes:
+  type: BLOB
+  file: famicom.arc/game/01/19_usa_zelda1_1.nes.szs
+
+rom_index:
+  type: AC:ASSET_ARRAY
+  entries:
+    - famicom/rom/01_nes_cluclu3.bin
+    - famicom/rom/02_usa_balloon.nes
+    - famicom/rom/03_nes_donkey1_3.bin
+    - famicom/rom/04_usa_jr_math.nes
+    - famicom/rom/05_pinball_1.nes
+    - famicom/rom/06_nes_tennis3.bin
+    - famicom/rom/07_usa_golf.nes
+    - famicom/rom/08_punch_wh.nes
+    - famicom/rom/09_usa_baseball_1.nes
+    - famicom/rom/10_cluclu_1.qd
+    - famicom/rom/11_usa_donkey3.nes
+    - famicom/rom/12_donkeyjr_1.nes
+    - famicom/rom/13_soccer.nes
+    - famicom/rom/14_exbike.nes
+    - famicom/rom/15_usa_wario.nes
+    - famicom/rom/16_usa_icecl.nes
+    - famicom/rom/17_nes_mario1_2.bin
+    - famicom/rom/18_smario_0.nes
+    - famicom/rom/19_usa_zelda1_1.nes
+
+noise:
+  type: BLOB
+  file: famicom.arc/noise.bin.szs

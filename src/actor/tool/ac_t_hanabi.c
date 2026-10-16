@@ -3,6 +3,7 @@
 #include "m_rcp.h"
 #include "m_name_table.h"
 #include "sys_matrix.h"
+#include "assets/data/model/tol_utiwa_1.h"
 
 static void aTHB_actor_ct(ACTOR* actor, GAME* game);
 static void aTHB_actor_dt(ACTOR* actor, GAME* game);
@@ -22,8 +23,6 @@ ACTOR_PROFILE T_Hanabi_Profile = { mAc_PROFILE_T_HANABI,
                                    NULL };
 
 static void aTHB_setupAction(ACTOR* actor, int idx);
-
-extern Gfx main_utiwa1_model[];
 
 static void aTHB_actor_ct(ACTOR* actor, GAME* game) {
     aTHB_setupAction(actor, 1);

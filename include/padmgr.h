@@ -4,7 +4,7 @@
 #include "types.h"
 #include "irqmgr.h"
 #include "libu64/pad.h"
-#include "dolphin/os/OSMessage.h"
+#include "gc_compat.h"
 #include "libultra/osThread.h"
 #include "libu64/pad.h"
 
@@ -69,12 +69,12 @@ typedef struct {
     /* 0x000C */ void (*callback2)(void*);
     /* 0x0010 */ void* callback2_param;
     /* 0x0014 */ OSContStatus pad_status[MAXCONTROLLERS];
-    /* 0x0024 */ OSMessage _msg24;
-    /* 0x0028 */ OSMessage _msg28;
-    /* 0x002C */ OSMessage _msgBuf2C[PADMSGBUFCNT];
-    /* 0x004C */ OSMessageQueue serial_mq;
-    /* 0x006C */ OSMessageQueue controller_lock_mq;
-    /* 0x008C */ OSMessageQueue _msgQueue8C;
+    /* 0x0024 */ OSMesg _msg24;
+    /* 0x0028 */ OSMesg _msg28;
+    /* 0x002C */ OSMesg _msgBuf2C[PADMSGBUFCNT];
+    /* 0x004C */ OSMesgQueue serial_mq;
+    /* 0x006C */ OSMesgQueue controller_lock_mq;
+    /* 0x008C */ OSMesgQueue _msgQueue8C;
     /* 0x00AC */ irqmgr_client_t irqclient;
     /* 0x00B4 */ u32 _unk0; /* maybe additional value in irqmgr_client_t? */
     /* 0x00B8 */ OSThread thread;
@@ -92,8 +92,8 @@ extern int padmgr_isConnectedController(int pad);
 extern void padmgr_force_stop_ON();
 extern void padmgr_force_stop_OFF();
 extern void padmgr_RumbleSet(int pad, int intensity);
-extern void padmgr_Create(OSMessageQueue* queue, OSId id, OSPri priority, void* stack, size_t stackSize);
-extern void padmgr_Init(OSMessageQueue* queue);
+extern void padmgr_PortUpdate(void);
+extern void padmgr_Init(OSMesgQueue* queue);
 extern void padmgr_RequestPadData(pad_t* pad, int count);
 extern void padmgr_ClearPadData(pad_t* pad);
 

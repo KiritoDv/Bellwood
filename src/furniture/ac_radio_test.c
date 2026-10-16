@@ -1,3 +1,5 @@
+#include "assets/data/model/obj_e_radio.h"
+#include "assets/f_furniture.h"
 static void fRT_ct(FTR_ACTOR* ftr_actor, u8* data) {
     // nothing
 }
@@ -21,12 +23,7 @@ static void fRT_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* d
     }
 }
 
-extern Gfx radio_DL_model[];
-
 static void fRT_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data) {
-    static u16 radio_pal[] ATTRIBUTE_ALIGN(32) = { 
-        #include "assets/radio_pal.inc"
-     };
 
     OPEN_DISP(game->graph);
 

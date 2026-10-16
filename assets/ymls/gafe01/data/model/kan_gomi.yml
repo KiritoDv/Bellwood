@@ -1,0 +1,20 @@
+:config:
+  strict_declarations: true
+
+kan_win_gomi_tex:
+  type: TEXTURE
+  offset: 0x814AE4E0
+  format: I4
+  width: 16
+  height: 16
+  source_encoding: gx
+
+kan_gomi_v:
+  type: VTX
+  offset: 0x814AE560
+  count: 4
+
+kan_win_gomiT_model:
+  type: GFX
+  offset: 0x814AE5A0
+  size: 0x40

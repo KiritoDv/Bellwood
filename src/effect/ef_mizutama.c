@@ -3,6 +3,7 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/ef_koke_suiteki01_00.h"
 
 static void eMizutama_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eMizutama_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -117,12 +118,6 @@ static void eMizutama_mv(eEC_Effect_c* effect, GAME* game) {
         }
     }
 }
-
-extern u8 ef_koke_suiteki01_0_int_i4[];
-extern u8 ef_koke_suiteki01_1_int_i4[];
-extern u8 ef_koke_suiteki01_2_int_i4[];
-extern u8 ef_koke_suiteki01_3_int_i4[];
-extern Gfx ef_koke_suiteki01_00_modelT[];
 
 static void eMizutama_dw(eEC_Effect_c* effect, GAME* game) {
     static u8* mizutama_tex_tbl[] = {

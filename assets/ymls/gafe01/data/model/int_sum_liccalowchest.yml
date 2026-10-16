@@ -1,0 +1,80 @@
+:config:
+  strict_declarations: true
+
+int_sum_licca_lowchest_pal:
+  type: TEXTURE
+  offset: 0x81A19040
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_liccalowchest_hiki_tex_txt:
+  type: TEXTURE
+  offset: 0x81A19060
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A19040
+
+int_sum_liccalowchest_in_tex_txt:
+  type: TEXTURE
+  offset: 0x81A19160
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A19040
+
+int_sum_liccalowchest_front_tex_txt:
+  type: TEXTURE
+  offset: 0x81A191E0
+  format: CI4
+  width: 32
+  height: 64
+  source_encoding: gx
+  tlut: 0x81A19040
+
+int_sum_liccalowchest_side_tex_txt:
+  type: TEXTURE
+  offset: 0x81A195E0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x81A19040
+
+int_sum_liccalowchest_top_tex_txt:
+  type: TEXTURE
+  offset: 0x81A196E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81A19040
+
+int_sum_liccalowchest_v:
+  type: VTX
+  offset: 0x81A19760
+  count: 60
+
+int_sum_liccalowchest_door_model:
+  type: GFX
+  offset: 0x81A19B20
+  size: 0x98
+
+int_sum_licca_lowchest_base_model:
+  type: GFX
+  offset: 0x81A19BB8
+  size: 0xA8
+
+cKF_ba_r_int_sum_liccalowchest:
+  type: AC:CKF_ANIMATION
+  offset: 0x81A19CEC
+  joints: 3
+  counts: { flags: 3, data: 54, keys: 9, fixed: 3 }
+
+cKF_bs_r_int_sum_liccalowchest:
+  type: AC:CKF_SKELETON
+  offset: 0x81A19D24
+  counts: { joints: 3 }

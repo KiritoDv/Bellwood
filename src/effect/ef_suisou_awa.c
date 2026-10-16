@@ -4,6 +4,7 @@
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "main.h"
+#include "assets/data/model/ef_museum5_awa1.h"
 
 static void eSuisou_Awa_init(xyz_t pos, int prio, s16 angle, GAME* game, u16 item_name, s16 arg0, s16 arg1);
 static void eSuisou_Awa_ct(eEC_Effect_c* effect, GAME* game, void* ct_arg);
@@ -107,8 +108,6 @@ static void eSuisou_Awa_mv(eEC_Effect_c* effect, GAME* game) {
         }
     }
 }
-
-extern Gfx ef_museum5_awa1_model[];
 
 static void eSuisou_Awa_dw(eEC_Effect_c* effect, GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;

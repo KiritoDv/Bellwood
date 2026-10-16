@@ -1,0 +1,176 @@
+:config:
+  strict_declarations: true
+
+int_ike_island_hako01_pal:
+  type: TEXTURE
+  offset: 0x8181E580
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_island_hakoin2_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8181E5A0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_island_hakoin3_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8181E5C0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_island_hakoin5_tex_rgb_ci4_pal:
+  type: TEXTURE
+  offset: 0x8181E5E0
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_island_hakotop3_tex_txt:
+  type: TEXTURE
+  offset: 0x8181E600
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8181E580
+
+int_ike_island_hakotop1_tex_txt:
+  type: TEXTURE
+  offset: 0x8181E680
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: gx
+  tlut: 0x8181E580
+
+int_ike_island_hakotop2_tex_txt:
+  type: TEXTURE
+  offset: 0x8181E780
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8181E580
+
+int_ike_island_hakoin4_tex_txt:
+  type: TEXTURE
+  offset: 0x8181E800
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8181E580
+
+int_ike_island_hakokagi2_tex_txt:
+  type: TEXTURE
+  offset: 0x8181E880
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x8181E580
+
+int_ike_island_hakokagi1_tex_txt:
+  type: TEXTURE
+  offset: 0x8181E8C0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8181E580
+
+int_ike_island_hakoside1_tex_txt:
+  type: TEXTURE
+  offset: 0x8181E940
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x8181E580
+
+int_ike_island_hakoin1_tex_txt:
+  type: TEXTURE
+  offset: 0x8181E9C0
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x8181E580
+
+int_ike_island_hakoin2_tex_txt:
+  type: TEXTURE
+  offset: 0x8181EBC0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x8181E5A0
+
+int_ike_island_hakoin3_tex_txt:
+  type: TEXTURE
+  offset: 0x8181EC40
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x8181E5C0
+
+int_ike_island_hakoin5_tex_txt:
+  type: TEXTURE
+  offset: 0x8181ECC0
+  format: CI4
+  width: 32
+  height: 8
+  source_encoding: gx
+  tlut: 0x8181E5E0
+
+int_ike_island_hako01_v:
+  type: VTX
+  offset: 0x8181ED40
+  count: 268
+
+int_ike_island_hako01_on_model:
+  type: GFX
+  offset: 0x8181FE00
+  size: 0x170
+
+int_ike_island_hako01_in3_off_model:
+  type: GFX
+  offset: 0x8181FF70
+  size: 0x88
+
+int_ike_island_hako01_in2_off_model:
+  type: GFX
+  offset: 0x8181FFF8
+  size: 0x80
+
+int_ike_island_hako01_in1_off_model:
+  type: GFX
+  offset: 0x81820078
+  size: 0xB0
+
+int_ike_island_hako01_top_model:
+  type: GFX
+  offset: 0x81820128
+  size: 0xD8
+
+cKF_ba_r_int_ike_island_hako01:
+  type: AC:CKF_ANIMATION
+  offset: 0x81820264
+  joints: 6
+  counts: { flags: 6, data: 24, keys: 1, fixed: 20 }
+
+cKF_ba_r_int_ike_island_hako02:
+  type: AC:CKF_ANIMATION
+  offset: 0x818202DC
+  joints: 6
+  counts: { flags: 6, data: 24, keys: 3, fixed: 18 }
+
+cKF_bs_r_int_ike_island_hako01:
+  type: AC:CKF_SKELETON
+  offset: 0x81820338
+  counts: { joints: 6 }

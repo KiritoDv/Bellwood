@@ -1,0 +1,69 @@
+:config:
+  strict_declarations: true
+
+int_ike_prores_table01_pal:
+  type: TEXTURE
+  offset: 0x81846B00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_ike_prores_table01_front_tex:
+  type: TEXTURE
+  offset: 0x81846B20
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x81846B00
+
+int_ike_prores_table01_side_tex:
+  type: TEXTURE
+  offset: 0x81846E20
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x81846B00
+
+int_ike_prores_table01_top_tex:
+  type: TEXTURE
+  offset: 0x81846FA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x81846B00
+
+int_ike_prores_table01_side2_tex:
+  type: TEXTURE
+  offset: 0x818470A0
+  format: CI4
+  width: 16
+  height: 8
+  source_encoding: gx
+  tlut: 0x81846B00
+
+int_ike_prores_table01_under_tex:
+  type: TEXTURE
+  offset: 0x818470E0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x81846B00
+
+int_ike_prores_table01_v:
+  type: VTX
+  offset: 0x81847160
+  count: 72
+
+int_ike_prores_table01_on_model:
+  type: GFX
+  offset: 0x818475E0
+  size: 0x58
+
+int_ike_prores_table01_onT_model:
+  type: GFX
+  offset: 0x81847638
+  size: 0xF0

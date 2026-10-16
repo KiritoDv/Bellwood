@@ -1,0 +1,49 @@
+:config:
+  strict_declarations: true
+
+obj_clock_shop2_pal:
+  type: TEXTURE
+  offset: 0x819498B0
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+obj_clock_shop2_body_tex_txt:
+  type: TEXTURE
+  offset: 0x819498D0
+  format: CI4
+  width: 16
+  height: 32
+  source_encoding: n64
+  tlut: 0x819498B0
+
+obj_clock_shop2_v:
+  type: VTX
+  offset: 0x819499D0
+  count: 44
+
+obj_clock_shop2_body_model:
+  type: GFX
+  offset: 0x81949C90
+  size: 0x138
+
+obj_clock_shop2_long_model:
+  type: GFX
+  offset: 0x81949DC8
+  size: 0xB8
+
+obj_clock_shop2_short_model:
+  type: GFX
+  offset: 0x81949E80
+  size: 0xB8
+
+cKF_ba_r_obj_clock_shop2:
+  type: AC:CKF_ANIMATION
+  offset: 0x81949F64
+  joints: 5
+  counts: { flags: 5, data: 0, keys: 0, fixed: 18 }
+
+cKF_bs_r_obj_clock_shop2:
+  type: AC:CKF_SKELETON
+  offset: 0x81949FB4
+  counts: { joints: 5 }

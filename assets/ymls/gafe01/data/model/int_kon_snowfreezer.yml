@@ -1,0 +1,78 @@
+:config:
+  strict_declarations: true
+
+int_kon_snowtansu_tex_pal:
+  type: TEXTURE
+  offset: 0x818B1B00
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_kon_snowfreezer01_tex:
+  type: TEXTURE
+  offset: 0x818B1B20
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x818B1B00
+
+int_kon_snowfreezer02_tex:
+  type: TEXTURE
+  offset: 0x818B1E20
+  format: CI4
+  width: 16
+  height: 48
+  source_encoding: gx
+  tlut: 0x818B1B00
+
+int_kon_snowfreezer04_tex:
+  type: TEXTURE
+  offset: 0x818B1FA0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B1B00
+
+int_kon_snowfreezer03_tex:
+  type: TEXTURE
+  offset: 0x818B20A0
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B1B00
+
+int_kon_snowfreezer05_tex:
+  type: TEXTURE
+  offset: 0x818B21A0
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B1B00
+
+int_kon_snowfreezer06_tex:
+  type: TEXTURE
+  offset: 0x818B2220
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x818B1B00
+
+int_kon_snowfreezer_v:
+  type: VTX
+  offset: 0x818B22A0
+  count: 54
+
+int_kon_snowfreezer01_body_model:
+  type: GFX
+  offset: 0x818B2600
+  size: 0xC8
+
+int_kon_snowfreezer01_bodyT_model:
+  type: GFX
+  offset: 0x818B26C8
+  size: 0x98

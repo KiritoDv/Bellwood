@@ -7,6 +7,7 @@
 #include "m_cockroach.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/act_m_house_goki.h"
 
 enum {
     aHG_ACT_AWAY,
@@ -255,7 +256,7 @@ static void aHG_away(ACTOR* actorx, GAME* game) {
             }
         }
 
-        sAdo_OngenPos((u32)goki, NA_SE_GOKI_MOVE, &actorx->world.position);
+        sAdo_OngenPos((uintptr_t)goki, NA_SE_GOKI_MOVE, &actorx->world.position);
     }
 }
 
@@ -314,7 +315,7 @@ static void aHG_move(ACTOR* actorx, GAME* game) {
         if (goki->timer <= 0.0f) {
             aHG_decide_next_act_idx_wait_move(goki, game);
         } else {
-            sAdo_OngenPos((u32)goki, NA_SE_GOKI_MOVE, &actorx->world.position);
+            sAdo_OngenPos((uintptr_t)goki, NA_SE_GOKI_MOVE, &actorx->world.position);
         }
     }
 }
@@ -429,9 +430,6 @@ static void aHG_actor_move(ACTOR* actorx, GAME* game) {
 
     (*goki->act_proc)(actorx, game);
 }
-
-extern Gfx act_m_house_goki1T_model[];
-extern Gfx act_m_house_goki2T_model[];
 
 static void aHG_actor_draw(ACTOR* actorx, GAME* game) {
     static Gfx* aHG_displayList[] = { act_m_house_goki1T_model, act_m_house_goki2T_model };

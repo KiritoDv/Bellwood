@@ -1,5 +1,4 @@
-extern Gfx int_sum_guitar_03_on_model[];
-extern Gfx int_sum_guitar_03_onT_model[];
+#include "assets/data/model/int_sum_guitar03.h"
 static void aSumGuitar03_ct(FTR_ACTOR* ftr_actor, u8* data);
 static void aSumGuitar03_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);
 static void aSumGuitar03_dw(FTR_ACTOR* ftr_actor, ACTOR* my_room_actor, GAME* game, u8* data);

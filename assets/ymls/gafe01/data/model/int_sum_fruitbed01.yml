@@ -1,0 +1,51 @@
+:config:
+  strict_declarations: true
+
+int_sum_fruitbed01_pal:
+  type: TEXTURE
+  offset: 0x819DD140
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+int_sum_fruitbed01_board_tex:
+  type: TEXTURE
+  offset: 0x819DD160
+  format: CI4
+  width: 32
+  height: 48
+  source_encoding: gx
+  tlut: 0x819DD140
+
+int_sum_fruitbed01_side_tex:
+  type: TEXTURE
+  offset: 0x819DD460
+  format: CI4
+  width: 48
+  height: 32
+  source_encoding: gx
+  tlut: 0x819DD140
+
+int_sum_fruitbed01_back_tex:
+  type: TEXTURE
+  offset: 0x819DD760
+  format: CI4
+  width: 32
+  height: 16
+  source_encoding: gx
+  tlut: 0x819DD140
+
+int_sum_fruitbed01_v:
+  type: VTX
+  offset: 0x819DD860
+  count: 34
+
+int_sum_fruitbed01_on_model:
+  type: GFX
+  offset: 0x819DDA80
+  size: 0xA0
+
+int_sum_fruitbed01_onT_model:
+  type: GFX
+  offset: 0x819DDB20
+  size: 0x60

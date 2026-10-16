@@ -1,0 +1,12 @@
+:config:
+  strict_declarations: true
+
+obj_s_tree5_apple_v:
+  type: VTX
+  offset: 0x81111CD0
+  count: 12
+
+obj_s_tree5_apple_appleT_gfx_model:
+  type: GFX
+  offset: 0x81111D90
+  size: 0x20

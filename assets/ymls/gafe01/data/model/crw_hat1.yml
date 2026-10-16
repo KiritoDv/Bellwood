@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+crw_hat1_pal:
+  type: TEXTURE
+  offset: 0x815C4560
+  format: TLUT
+  colors: 16
+  source_encoding: gx
+
+crw_hat1_tex_txt:
+  type: TEXTURE
+  offset: 0x815C4580
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x815C4560
+
+crw_hat2_tex_txt:
+  type: TEXTURE
+  offset: 0x815C4600
+  format: CI4
+  width: 32
+  height: 32
+  source_encoding: gx
+  tlut: 0x815C4560
+
+crw_hat3_tex_txt:
+  type: TEXTURE
+  offset: 0x815C4800
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: gx
+  tlut: 0x815C4560
+
+crw_hat1_v:
+  type: VTX
+  offset: 0x815C4880
+  count: 37
+
+crw_hat1_body_model:
+  type: GFX
+  offset: 0x815C4AD0
+  size: 0xE0

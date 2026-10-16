@@ -1,0 +1,46 @@
+:config:
+  strict_declarations: true
+
+act_ball_d_pal:
+  type: TEXTURE
+  offset: 0x8109FFD8
+  format: TLUT
+  colors: 16
+  source_encoding: n64
+
+act_ball_d_1_tex:
+  type: TEXTURE
+  offset: 0x8109FFF8
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+  tlut: 0x8109FFD8
+
+act_ball_d_2_tex:
+  type: TEXTURE
+  offset: 0x810A0078
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+  tlut: 0x8109FFD8
+
+act_ball_d_3_tex:
+  type: TEXTURE
+  offset: 0x810A00F8
+  format: CI4
+  width: 16
+  height: 16
+  source_encoding: n64
+  tlut: 0x8109FFD8
+
+act_ball_d_v:
+  type: VTX
+  offset: 0x810A0178
+  count: 54
+
+act_ball_d_model:
+  type: GFX
+  offset: 0x810A04D8
+  size: 0x260
