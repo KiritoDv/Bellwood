@@ -1,4 +1,5 @@
 #include "port/save/SaveManager.h"
+#include "port/save/SaveGci.h"
 #include "port/save/SaveJson.h"
 
 #include <ship/Api.h>
@@ -7,6 +8,7 @@
 #include <spdlog/spdlog.h>
 
 #include <algorithm>
+#include <cctype>
 #include <chrono>
 #include <cstring>
 #include <ctime>
@@ -247,6 +249,9 @@ CardPrivate sCardPrivate;
 std::string sStationPassport;
 
 bool sSessionActive = false;
+bool sLandLoaded = false;
+bool sImportRequested = false;
+std::string sImportRequestPath;
 fs::path sSaveDirOverride;
 bool sQuitApproved = false;
 bool sSaveAndQuitRequested = false;
@@ -1050,6 +1055,106 @@ bool GameInPlay() {
     return gamePT != nullptr && gamePT->exec == play_main;
 }
 
+struct GcCard {
+    SaveGci::Town town;
+    std::vector<Passport> passports;
+    std::vector<u8> famicom;
+};
+
+bool ReadGcCard(const std::string& path, GcCard& card, std::string* error) {
+    std::vector<SaveGci::CardFile> files;
+    if (!SaveGci::ReadContainer(path, files, error)) {
+        return false;
+    }
+    const SaveGci::CardFile* town = SaveGci::FindFile(files, SaveGci::kTownFileName);
+    if (town == nullptr) {
+        auto other = std::find_if(files.begin(), files.end(), [](const SaveGci::CardFile& f) {
+            return f.name == SaveGci::kTownFileName && f.gameCode != SaveGci::kGameCode;
+        });
+        if (other != files.end()) {
+            *error = "This town is from another release of the game (" + other->gameCode +
+                     "). Only the North American release (GAFE) is supported.";
+        } else {
+            *error = "No Animal Crossing town (" + std::string(SaveGci::kTownFileName) + ") in this file.";
+        }
+        return false;
+    }
+    if (!SaveGci::ReadTown(*town, card.town, error)) {
+        return false;
+    }
+    for (const auto& f : files) {
+        if (f.gameCode != SaveGci::kGameCode || f.name.rfind(SaveGci::kPassportFilePrefix, 0) != 0) {
+            continue;
+        }
+        Passport p;
+        p.name = f.name;
+        if (SaveGci::ReadPassport(f, p.data)) {
+            card.passports.push_back(std::move(p));
+        } else {
+            SPDLOG_WARN("save import: passport {} is damaged, skipped", f.name);
+        }
+    }
+    if (const SaveGci::CardFile* nes = SaveGci::FindFile(files, SaveGci::kFamicomSaveFileName)) {
+        if (!SaveGci::ReadFamicomSave(*nes, card.famicom)) {
+            SPDLOG_WARN("save import: NES save {} is damaged, skipped", nes->name);
+        }
+    }
+    return true;
+}
+
+std::string FileStamp() {
+    std::time_t now = std::time(nullptr);
+    char buf[32];
+    std::strftime(buf, sizeof(buf), "%Y%m%d-%H%M%S", std::localtime(&now));
+    return buf;
+}
+
+std::string SafeFileName(const std::string& name) {
+    std::string out;
+    for (char c : name) {
+        out += (std::isalnum((unsigned char)c) || c == ' ' || c == '-' || c == '_') ? c : '_';
+    }
+    return out.empty() ? std::string("town") : out;
+}
+
+bool BackupBeforeImport(fs::path* dir) {
+    std::error_code ec;
+    fs::path target = SaveDir() / "backup" / ("before-import-" + FileStamp());
+    const fs::path items[] = { HomePath(), BackupPath(HomePath()), SaveDir() / "famicom.bin", SaveDir() / "card_a" };
+    bool any = false;
+    for (const auto& item : items) {
+        if (!fs::exists(item, ec)) {
+            continue;
+        }
+        fs::create_directories(target, ec);
+        fs::copy(item, target / item.filename(), fs::copy_options::recursive | fs::copy_options::overwrite_existing,
+                 ec);
+        if (ec) {
+            SPDLOG_ERROR("save import: cannot back up {}: {}", item.string(), ec.message());
+            return false;
+        }
+        any = true;
+    }
+    *dir = any ? target : fs::path();
+    return true;
+}
+
+bool WriteBinary(const fs::path& path, const std::vector<u8>& data) {
+    std::error_code ec;
+    fs::create_directories(path.parent_path(), ec);
+    fs::path tmp = path;
+    tmp += ".tmp";
+    {
+        std::ofstream out(tmp, std::ios::binary | std::ios::trunc);
+        out.write(reinterpret_cast<const char*>(data.data()), (std::streamsize)data.size());
+        if (!out) {
+            return false;
+        }
+    }
+    fs::rename(tmp, path, ec);
+    return !ec;
+}
+
 void CloseWindow() {
     if (auto window = ShipCompat::GetWindow()) {
         window->Close();
@@ -1073,6 +1178,7 @@ void mCD_init_card(void) {
 
 void mCD_InitAll(void) {
     ResetJob();
+    sLandLoaded = false;
     sKeepSave.reset();
     sKeepSaveSet = false;
     ClearCardPrivateTable();
@@ -1144,6 +1250,7 @@ void mCD_LoadLand(void) {
     int cond = mFRm_ERROR_BAD_RTC;
 
     sSessionActive = false;
+    sLandLoaded = true;
     if (f != nullptr) {
         int version = f->land ? f->land->save.save_check.version : 0;
         if (LandValid(*f) && (version == 6 || version == 5)) {
@@ -1809,6 +1916,10 @@ int SaveManager_IsPickingTownFile(void) {
     return sPicking ? 1 : 0;
 }
 
+void SaveManager_OpenImport(void) {
+    SaveManager::RequestImport("");
+}
+
 const char* SaveManager_GetTownFile(void) {
     return sOtherPath.empty() ? nullptr : sOtherPath.c_str();
 }
@@ -1837,6 +1948,149 @@ void CloseTownPicker(bool picked) {
 
 std::string TownDirectory() {
     return (SaveDir() / kTownDir).string();
+}
+
+void RequestImport(const std::string& path) {
+    sImportRequested = true;
+    sImportRequestPath = path;
+}
+
+bool TakeImportRequest(std::string* path) {
+    if (!sImportRequested) {
+        return false;
+    }
+    sImportRequested = false;
+    *path = sImportRequestPath;
+    sImportRequestPath.clear();
+    return true;
+}
+
+bool CanImportGameCubeSave(std::string* reason) {
+    if (sJob.kind != JOB_NONE || sSessionActive || sLandLoaded) {
+        if (reason != nullptr) {
+            *reason = "Import from the title screen, before pressing START.";
+        }
+        return false;
+    }
+    return true;
+}
+
+ImportPreview PreviewGameCubeSave(const std::string& path) {
+    ImportPreview p;
+    GcCard card;
+    if (!ReadGcCard(path, card, &p.error)) {
+        return p;
+    }
+    p.ok = true;
+    if (card.town.land) {
+        const Save_t& save = card.town.land->save;
+        p.land = true;
+        p.town = SaveGci::DecodeName(save.land_info.name, sizeof(save.land_info.name));
+        for (const Private_c& priv : save.private_data) {
+            if (priv.exists && mPr_NullCheckPersonalID(const_cast<PersonalID_c*>(&priv.player_ID)) == FALSE) {
+                p.players.push_back(SaveGci::DecodeName(priv.player_ID.player_name, sizeof(priv.player_ID.player_name)));
+            }
+        }
+    }
+    p.letters = !card.town.mail.empty();
+    p.designs = !card.town.original.empty();
+    p.diary = !card.town.diary.empty();
+    p.passports = (int)card.passports.size();
+    p.famicom = !card.famicom.empty();
+    return p;
+}
+
+bool ImportGameCubeSave(const std::string& path, std::string* message) {
+    std::string error;
+    if (!CanImportGameCubeSave(&error)) {
+        *message = error;
+        return false;
+    }
+    GcCard card;
+    if (!ReadGcCard(path, card, &error)) {
+        *message = error;
+        return false;
+    }
+
+    auto f = std::make_shared<TownFile>();
+    if (card.town.land) {
+        f->land = card.town.land;
+        SealSaveChecksum(f->land.get());
+        f->hasLand = true;
+    }
+    if (!card.town.mail.empty() || !card.town.original.empty() || !card.town.diary.empty()) {
+        f->others = NewKeep();
+        f->others->Init();
+        auto put = [](u8* dst, size_t size, const std::vector<u8>& src) {
+            if (!src.empty()) {
+                memcpy(dst, src.data(), std::min(size, src.size()));
+            }
+            SealBlock(dst, (u32)size);
+        };
+        put(f->others->mail, sizeof(f->others->mail), card.town.mail);
+        put(f->others->original, sizeof(f->others->original), card.town.original);
+        put(f->others->diary, sizeof(f->others->diary), card.town.diary);
+        f->hasOthers = true;
+    }
+    if (card.town.hasNoLandCode) {
+        f->noLandCode = card.town.noLandCode;
+        f->hasNoLandCode = true;
+    }
+    f->ship["importedFrom"] = fs::path(path).filename().string();
+
+    fs::path backup;
+    if (!BackupBeforeImport(&backup)) {
+        *message = "Could not back up the current town, nothing was imported.";
+        return false;
+    }
+    if (!DoWrite(MakeWrite(kSlotHome, f))) {
+        *message = "Could not write " + HomePath().string() + ".";
+        return false;
+    }
+    InvalidateSlots();
+
+    std::string town = f->land ? SaveGci::DecodeName(f->land->save.land_info.name,
+                                                     sizeof(f->land->save.land_info.name))
+                               : std::string();
+    std::ostringstream out;
+    if (f->land) {
+        out << "Imported the town of " << town << ".";
+    } else {
+        out << "Imported the letters, designs and diary of an erased town.";
+    }
+
+    if (!card.passports.empty()) {
+        auto travel = std::make_shared<TownFile>();
+        travel->passports = card.passports;
+        for (auto& p : travel->passports) {
+            SealForeigner(&p.data);
+        }
+        fs::path dir = SaveDir() / kTownDir;
+        fs::path file = dir / (SafeFileName(town) + " passports.json");
+        std::error_code ec;
+        for (int n = 2; fs::exists(file, ec); n++) {
+            file = dir / (SafeFileName(town) + " passports " + std::to_string(n) + ".json");
+        }
+        if (WriteFile(file, *travel)) {
+            out << " Travel passports were saved to " << file.string()
+                << "; pick that file as the other town to come home.";
+        } else {
+            out << " The travel passports could not be saved.";
+        }
+    }
+    if (!card.famicom.empty()) {
+        if (WriteBinary(SaveDir() / "famicom.bin", card.famicom)) {
+            out << " NES game saves were imported.";
+        } else {
+            out << " The NES game saves could not be written.";
+        }
+    }
+    if (!backup.empty()) {
+        out << " The previous save is in " << backup.string() << ".";
+    }
+    *message = out.str();
+    SPDLOG_INFO("save import: {} from {}", *message, path);
+    return true;
 }
 
 std::vector<PickerEntry> ListTownFiles() {

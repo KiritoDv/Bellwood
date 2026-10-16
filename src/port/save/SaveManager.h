@@ -6,6 +6,7 @@ extern "C" {
 
 void SaveManager_PickTownFile(void);
 int SaveManager_IsPickingTownFile(void);
+void SaveManager_OpenImport(void);
 
 const char* SaveManager_GetTownFile(void);
 void SaveManager_SetTownFile(const char* path);
@@ -21,6 +22,19 @@ namespace SaveManager {
 struct PickerEntry {
     std::string path;
     std::string label;
+};
+
+struct ImportPreview {
+    bool ok = false;
+    std::string error;
+    std::string town;
+    std::vector<std::string> players;
+    bool land = false;
+    bool letters = false;
+    bool designs = false;
+    bool diary = false;
+    int passports = 0;
+    bool famicom = false;
 };
 
 enum class QuitPrompt {
@@ -45,6 +59,12 @@ void DismissQuitPrompt();
 void RequestSaveAndQuit();
 void QuitWithoutSaving();
 bool UnsafeQuitAllowed();
+
+bool CanImportGameCubeSave(std::string* reason);
+ImportPreview PreviewGameCubeSave(const std::string& path);
+bool ImportGameCubeSave(const std::string& path, std::string* message);
+bool TakeImportRequest(std::string* path);
+void RequestImport(const std::string& path);
 
 bool RoundTripSelfTest(std::string* report);
 bool IoSelfTest(std::string* report);

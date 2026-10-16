@@ -254,6 +254,10 @@ GameEngine::GameEngine() {
     context->GetChildren().Add(gfxDebugger);
     GfxDebuggerSetComponent(gfxDebugger);
 
+    auto fileDropMgr = std::make_shared<Ship::FileDrop>(gsFast3dWindow);
+    context->GetChildren().Add(fileDropMgr);
+    fileDropMgr->Init();
+
     gsFast3dWindow->SetTitle(PORT_NAME);
     gsFast3dWindow->Init();
 
@@ -382,10 +386,6 @@ void GameEngine::FinishInit() {
     spdlog::set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
     SPDLOG_INFO("Starting {} version {} (Branch: {} | Commit: {})", PORT_NAME, (char*)gBuildVersion,
                 (char*)gGitBranch, (char*)gGitCommitHash);
-
-    auto fileDropMgr = std::make_shared<Ship::FileDrop>(gsFast3dWindow);
-    context->GetChildren().Add(fileDropMgr);
-    fileDropMgr->Init();
 
     auto audio = std::make_shared<Ship::Audio>(
         Ship::AudioSettings{ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 },

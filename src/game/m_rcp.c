@@ -321,6 +321,7 @@ extern Gfx* gfx_tex_scroll2(Gfx** gfxpp, int x, int y, int width, int height) {
     gDPTileSync(dl);
     gDPSetTileSize(dl + 1, G_TX_RENDERTILE, x, y, x + ((width - 1) << 2), y + ((height - 1) << 2));
     gSPEndDisplayList(dl + 2);
+    FrameInterpolation_RecordTexScroll(dl, 0x1000);
     return dl;
 }
 
@@ -331,6 +332,7 @@ extern Gfx* tex_scroll2(GRAPH* graph, u32 x, u32 y, int width, int height) {
         gDPSetTileSize(dl + 1, G_TX_RENDERTILE, x & 0x7FF, y & 0x7FF, ((x & 0x7FF) + ((width - 1) << 2)),
                        ((y & 0x7FF) + ((height - 1) << 2)));
         gSPEndDisplayList(dl + 2);
+        FrameInterpolation_RecordTexScroll(dl, 0x800);
     }
 
     return dl;
@@ -342,6 +344,7 @@ extern Gfx* tex_scroll2_dolphin(GRAPH* graph, int x, int y, int width, int heigh
     if (dl != NULL) {
         gDPSetTileSizeHiRes(dl, 0, x << 1, y << 1, width, height);
         gSPEndDisplayList(dl + 1);
+        FrameInterpolation_RecordTexScroll(dl, 0);
     }
 
     return dl;
@@ -359,6 +362,7 @@ extern Gfx* two_tex_scroll(GRAPH* graph, int tile1, int x1, int y1, int width1, 
         gDPSetTileSize(dl + 3, tile2, x2 & 0x7FF, y2 & 0x7FF, (x2 & 0x7FF) + ((width2 - 1) << 2),
                        (y2 & 0x7FF) + ((height2 - 1) << 2));
         gSPEndDisplayList(dl + 4);
+        FrameInterpolation_RecordTexScroll(dl, 0x800);
     }
 
     return dl;
@@ -372,6 +376,7 @@ extern Gfx* two_tex_scroll_dolphin(GRAPH* graph, int tile1, int x1, int y1, int 
         gDPSetTileSizeHiRes(dl, tile1, x1 << 1, y1 << 1, width1, height1);
         gDPSetTileSizeHiRes(dl + 1, tile2, x2 << 1, y2 << 1, width2, height2);
         gSPEndDisplayList(dl + 2);
+        FrameInterpolation_RecordTexScroll(dl, 0);
     }
 
     return dl;

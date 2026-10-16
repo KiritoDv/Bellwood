@@ -81,6 +81,8 @@ void FrameInterpolation_RecordMatrixToMtx(Mtx* dest);
 
 void FrameInterpolation_RecordMatrixRotateAxis(s16 angle, const struct xyz_s* axis, u8 mode);
 
+void FrameInterpolation_RecordTexScroll(union Gfx* dl, u32 wrap);
+
 #ifdef __cplusplus
 }
 #endif

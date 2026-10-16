@@ -9,12 +9,16 @@
 #include <SDL.h>
 #include <imgui.h>
 #include <ship/debug/Console.h>
+#include <ship/window/FileDrop.h>
 #include <ship/window/Window.h>
 #include <ship/window/gui/Gui.h>
 #include <ship/window/gui/GuiWindow.h>
 #include <spdlog/spdlog.h>
 
+#include <algorithm>
+#include <cctype>
 #include <cstring>
+#include <filesystem>
 #include <memory>
 #include <string>
 #include <vector>
@@ -23,6 +27,7 @@ namespace {
 
 const char* const kPickerTitle = "Visit another town##SaveManagerPicker";
 const char* const kQuitTitle = "Quit##SaveManagerQuit";
+const char* const kImportTitle = "Import GameCube save##SaveManagerImport";
 
 class SaveManagerWindow final : public Ship::GuiWindow {
   public:
@@ -38,6 +43,7 @@ class SaveManagerWindow final : public Ship::GuiWindow {
     void DrawElement() override {
         DrawPicker();
         DrawQuitPrompt();
+        DrawImport();
     }
 
     void UpdateElement() override {
@@ -212,6 +218,118 @@ class SaveManagerWindow final : public Ship::GuiWindow {
         ImGui::EndPopup();
     }
 
+    void ReadImport() {
+        mPreview = SaveManager::PreviewGameCubeSave(mImportPath);
+        mImportMessage.clear();
+        mImportDone = false;
+    }
+
+    void DrawImport() {
+        std::string requested;
+        if (SaveManager::TakeImportRequest(&requested)) {
+            std::snprintf(mImportPath, sizeof(mImportPath), "%s", requested.c_str());
+            mPreview = SaveManager::ImportPreview{};
+            mImportMessage.clear();
+            mImportDone = false;
+            if (!requested.empty()) {
+                ReadImport();
+            }
+            mImportOpen = true;
+        }
+        if (!mImportOpen) {
+            return;
+        }
+        if (!ImGui::IsPopupOpen(kImportTitle)) {
+            ImGui::OpenPopup(kImportTitle);
+        }
+        ImGui::SetNextWindowSize(ImVec2(620, 0), ImGuiCond_Appearing);
+        if (!ImGui::BeginPopupModal(kImportTitle, nullptr, ImGuiWindowFlags_NoSavedSettings)) {
+            return;
+        }
+        if (mImportDialog && mImportDialog->ready(0)) {
+            auto files = mImportDialog->result();
+            if (!files.empty()) {
+                std::snprintf(mImportPath, sizeof(mImportPath), "%s", files[0].c_str());
+                ReadImport();
+            }
+            mImportDialog.reset();
+        }
+
+        ImGui::TextWrapped("Bring a town over from the GameCube: pick a .gci file exported with Dolphin or GCMM, or a "
+                           "whole memory card image (.raw). You can also drop the file onto the game window.");
+        ImGui::Spacing();
+        ImGui::SetNextItemWidth(-FLT_MIN);
+        if (ImGui::InputTextWithHint("##importpath", "Path of a .gci, .gcs or .raw file", mImportPath,
+                                     sizeof(mImportPath), ImGuiInputTextFlags_EnterReturnsTrue)) {
+            ReadImport();
+        }
+        if (ImGui::Button("Browse...") && !mImportDialog) {
+            mImportDialog = std::make_unique<pfd::open_file>(
+                "Pick a GameCube save", "",
+                std::vector<std::string>{ "GameCube saves", "*.gci *.gcs *.raw *.gcp", "All files", "*" });
+        }
+        ImGui::SameLine();
+        if (ImGui::Button("Read")) {
+            ReadImport();
+        }
+        ImGui::Separator();
+
+        if (!mPreview.ok && !mPreview.error.empty()) {
+            ImGui::TextColored(ImVec4(1.0f, 0.4f, 0.4f, 1.0f), "%s", mPreview.error.c_str());
+        } else if (mPreview.ok) {
+            if (mPreview.land) {
+                ImGui::Text("Town: %s", mPreview.town.c_str());
+                std::string players;
+                for (const auto& name : mPreview.players) {
+                    players += (players.empty() ? "" : ", ") + name;
+                }
+                ImGui::Text("Players: %s", players.empty() ? "none yet" : players.c_str());
+            } else {
+                ImGui::Text("An erased town: only its letters, designs and diary are kept.");
+            }
+            ImGui::Text("Letters: %s   Designs: %s   Diary: %s", mPreview.letters ? "yes" : "no",
+                        mPreview.designs ? "yes" : "no", mPreview.diary ? "yes" : "no");
+            if (mPreview.passports > 0) {
+                ImGui::Text("Travel passports: %d", mPreview.passports);
+            }
+            if (mPreview.famicom) {
+                ImGui::Text("NES game saves: yes");
+            }
+            ImGui::Spacing();
+            ImGui::TextDisabled("Importing replaces your current town. It is copied to save/backup first.");
+        }
+
+        std::string reason;
+        bool allowed = SaveManager::CanImportGameCubeSave(&reason);
+        if (!allowed) {
+            ImGui::TextColored(ImVec4(1.0f, 0.8f, 0.3f, 1.0f), "%s", reason.c_str());
+        }
+        if (!mImportMessage.empty()) {
+            ImGui::TextWrapped("%s", mImportMessage.c_str());
+        }
+        ImGui::Separator();
+
+        ImGui::BeginDisabled(!mPreview.ok || !allowed || mImportDone);
+        if (ImGui::Button("Import")) {
+            mImportDone = SaveManager::ImportGameCubeSave(mImportPath, &mImportMessage);
+        }
+        ImGui::EndDisabled();
+        ImGui::SameLine();
+        if (ImGui::Button(mImportDone ? "Done" : "Cancel")) {
+            mImportDialog.reset();
+            mImportOpen = false;
+            ImGui::CloseCurrentPopup();
+        }
+        ImGui::EndPopup();
+    }
+
+    bool mImportOpen = false;
+    bool mImportDone = false;
+    char mImportPath[1024] = {};
+    std::string mImportMessage;
+    SaveManager::ImportPreview mPreview;
+    std::unique_ptr<pfd::open_file> mImportDialog;
+
     bool mPickerOpen = false;
     char mPath[1024] = {};
     std::string mError;
@@ -268,6 +386,22 @@ void RegisterCommands() {
                          },
                           "Round-trips the live save through the JSON adapters; 'io' also saves and loads it",
                           { { "io", Ship::ArgumentType::TEXT, true } } });
+    console->AddCommand("save_import",
+                        { [](std::shared_ptr<Ship::Console>, std::vector<std::string> args, std::string* output) {
+                             if (args.size() < 2) {
+                                 SaveManager::RequestImport("");
+                                 return 0;
+                             }
+                             std::string message;
+                             bool ok = SaveManager::ImportGameCubeSave(args[1], &message);
+                             SPDLOG_INFO("save_import: {}", message);
+                             if (output != nullptr) {
+                                 *output = message;
+                             }
+                             return ok ? 0 : 1;
+                         },
+                          "Imports a GameCube town from a .gci, .gcs or memory card image",
+                          { { "path", Ship::ArgumentType::TEXT, true } } });
     console->AddCommand("save_pick_town",
                         { [](std::shared_ptr<Ship::Console>, std::vector<std::string>, std::string*) {
                              SaveManager_PickTownFile();
@@ -278,6 +412,16 @@ void RegisterCommands() {
 }
 
 bool sQuitTestPushed = false;
+
+bool OnFileDropped(char* path) {
+    std::string ext = std::filesystem::path(path).extension().string();
+    std::transform(ext.begin(), ext.end(), ext.begin(), [](unsigned char c) { return (char)std::tolower(c); });
+    if (ext != ".gci" && ext != ".gcs" && ext != ".raw" && ext != ".gcp") {
+        return false;
+    }
+    SaveManager::RequestImport(path);
+    return true;
+}
 
 void OnFrame(IEvent*) {
     SaveManager::Tick();
@@ -306,6 +450,9 @@ void InitSaveManagerUi() {
     saveWindow->Show();
     InstallQuitFilter();
     RegisterCommands();
+    if (auto drop = ShipCompat::GetFileDropMgr()) {
+        drop->RegisterDropHandler(OnFileDropped);
+    }
     REGISTER_LISTENER(KeyboardInput, EVENT_PRIORITY_LOW, OnFrame);
 }
 

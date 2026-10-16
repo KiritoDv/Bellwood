@@ -6,6 +6,7 @@
 #include "PortModals.h"
 #include "UIWidgets.hpp"
 #include "port/build.h"
+#include "port/save/SaveManager.h"
 #include <spdlog/fmt/fmt.h>
 
 namespace PortGui {
@@ -145,6 +146,11 @@ void PortMenu::AddMenuSettings() {
             SDL_OpenURL(std::string("file:///" + std::filesystem::absolute(filesPath).string()).c_str());
         })
         .Options(ButtonOptions().Tooltip("Opens the folder that contains the save and mods folders, etc."));
+    AddWidget(path, "Import GameCube Save...", WIDGET_BUTTON)
+        .RaceDisable(false)
+        .Callback([](WidgetInfo& info) { SaveManager_OpenImport(); })
+        .Options(ButtonOptions().Tooltip(
+            "Imports a town from a GameCube memory card: a .gci file or a whole card image (.raw)."));
 #endif
     AddWidget(path, "EXPERIMENTAL", WIDGET_SEPARATOR_TEXT).Options(TextOptions().Color(Colors::Orange));
     AddWidget(path, "ImGui Menu Scaling", WIDGET_CVAR_COMBOBOX)

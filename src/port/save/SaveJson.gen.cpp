@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <cstdint>
 
-const char* const kSaveJsonLayoutHash = "2e77532ab1dbe82f";
+const char* const kSaveJsonLayoutHash = "f36b1a6f94ff4a65";
 
 static_assert(sizeof(struct OSRTCTime) == 8, "struct OSRTCTime");
 static_assert(offsetof(struct OSRTCTime, sec) == 0, "struct OSRTCTime.sec");

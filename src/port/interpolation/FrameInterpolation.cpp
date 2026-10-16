@@ -1,6 +1,11 @@
 #include "FrameInterpolation.h"
 
+#include <libultraship/libultra/gbi.h>
+
+#include <array>
 #include <cmath>
+#include <cstdlib>
+#include <deque>
 #include <map>
 #include <unordered_map>
 #include <utility>
@@ -59,6 +64,8 @@ enum class Op {
     MatrixMtxFToMtx,
     MatrixToMtx,
     MatrixRotateAxis,
+
+    TexScroll,
 };
 
 typedef pair<const void*, int> label;
@@ -124,6 +131,17 @@ union Data {
         label key;
         size_t idx;
     } open_child;
+
+    struct {
+        Gfx* dl;
+        u8 count;
+        u8 tile[2];
+        u16 wm1[2];
+        u16 hm1[2];
+        u16 s[2];
+        u16 t[2];
+        u16 period[2];
+    } tex_scroll;
 };
 
 struct Path {
@@ -153,6 +171,11 @@ size_t inv_actor_mtx_path_index;
 unordered_map<const void*, int> object_epochs;
 
 constexpr f32 kRadToDeg = 57.29577951308232f;
+constexpr int kTexScrollMax = 2;
+constexpr int kTexScrollMaxCommands = 8;
+constexpr u32 kTileSizeHiResPeriod = 0x4000;
+
+deque<array<Gfx, kTexScrollMax + 1>> tex_scroll_pool;
 constexpr int kReplayStackDepth = 64;
 MtxF replay_stack[kReplayStackDepth];
 
@@ -177,6 +200,7 @@ struct InterpolateCtx {
     float w;
     int depth;
     unordered_map<Mtx*, MtxF> mtx_replacements;
+    unordered_map<Gfx*, Gfx*> dl_replacements;
     MtxF tmp_mtxf;
     Vec3f tmp_vec3f;
     Vec3s tmp_vec3s;
@@ -235,6 +259,48 @@ struct InterpolateCtx {
         res->x = interpolate_angle(o->x, n->x);
         res->y = interpolate_angle(o->y, n->y);
         res->z = interpolate_angle(o->z, n->z);
+    }
+
+    u32 interpolate_scroll(u16 o, u16 n, u32 period) {
+        int d = ((int)n - (int)o) % (int)period;
+        if (d < 0) {
+            d += period;
+        }
+        if (d >= (int)period / 2) {
+            d -= period;
+        }
+        if (std::abs(d) > (int)period / 4) {
+            return n;
+        }
+        float v = std::fmod(o + d * step, (float)period);
+        if (v < 0.0f) {
+            v += period;
+        }
+        return (u32)std::lrint(v) % period;
+    }
+
+    void interpolate_tex_scroll(const Data& o, const Data& n) {
+        const auto& os = o.tex_scroll;
+        const auto& ns = n.tex_scroll;
+        if (ns.count == 0 || os.count != ns.count) {
+            return;
+        }
+        for (int i = 0; i < ns.count; i++) {
+            if (os.tile[i] != ns.tile[i] || os.wm1[i] != ns.wm1[i] || os.hm1[i] != ns.hm1[i] ||
+                os.period[i] != ns.period[i]) {
+                return;
+            }
+        }
+        Gfx* out = tex_scroll_pool.emplace_back().data();
+        for (int i = 0; i < ns.count; i++) {
+            u32 s = interpolate_scroll(os.s[i], ns.s[i], ns.period[i]);
+            u32 t = interpolate_scroll(os.t[i], ns.t[i], ns.period[i]);
+            out[i].words.w0 = _SHIFTL(G_SETTILESIZE, 24, 8) | _SHIFTL(s, 10, 14) | _SHIFTL(ns.wm1[i], 0, 10);
+            out[i].words.w1 =
+                _SHIFTL(1, 31, 1) | _SHIFTL(ns.tile[i], 24, 3) | _SHIFTL(t, 10, 14) | _SHIFTL(ns.hm1[i], 0, 10);
+        }
+        gSPEndDisplayList(&out[ns.count]);
+        dl_replacements[ns.dl] = out;
     }
 
     void interpolate_branch(Path* old_path, Path* new_path) {
@@ -371,6 +437,10 @@ struct InterpolateCtx {
                                 interpolate_angle(old_op.matrix_rotate_axis.angle, new_op.matrix_rotate_axis.angle),
                                 &tmp_vec3f, new_op.matrix_rotate_axis.mode);
                             break;
+
+                        case Op::TexScroll:
+                            interpolate_tex_scroll(old_op, new_op);
+                            break;
                     }
                 }
             }
@@ -400,6 +470,7 @@ FrameInterpolationResult FrameInterpolation_Interpolate(float step) {
     Matrix_SwapStack(saved);
 
     result.mtx = std::move(ctx.mtx_replacements);
+    result.dl = std::move(ctx.dl_replacements);
     return result;
 }
 
@@ -417,6 +488,7 @@ void FrameInterpolation_ShouldInterpolateFrame(bool shouldInterpolate) {
 
 void FrameInterpolation_StartRecord(void) {
     previous_recording = move(current_recording);
+    tex_scroll_pool.clear();
     current_recording = {};
     current_path.clear();
     current_path.push_back(&current_recording.root_path);
@@ -680,6 +752,53 @@ void FrameInterpolation_RecordMatrixRotateAxis(s16 angle, const Vec3f* axis, u8 
     if (!is_recording)
         return;
     append(Op::MatrixRotateAxis).matrix_rotate_axis = { angle, *axis, mode };
+}
+
+void FrameInterpolation_RecordTexScroll(Gfx* dl, u32 wrap) {
+    if (!is_recording || dl == nullptr)
+        return;
+    auto& rec = append(Op::TexScroll).tex_scroll;
+    rec = {};
+    rec.dl = dl;
+    for (Gfx* cmd = dl; (u8)(cmd->words.w0 >> 24) != (u8)G_ENDDL; cmd++) {
+        if (cmd - dl >= kTexScrollMaxCommands) {
+            rec.count = 0;
+            return;
+        }
+        if ((u8)(cmd->words.w0 >> 24) != (u8)G_SETTILESIZE) {
+            continue;
+        }
+        if (rec.count == kTexScrollMax) {
+            rec.count = 0;
+            return;
+        }
+        u32 w0 = cmd->words.w0;
+        u32 w1 = cmd->words.w1;
+        int i = rec.count;
+        rec.tile[i] = (w1 >> 24) & 7;
+        if (w1 & 0x80000000) {
+            rec.s[i] = (w0 >> 10) & 0x3FFF;
+            rec.t[i] = (w1 >> 10) & 0x3FFF;
+            rec.wm1[i] = w0 & 0x3FF;
+            rec.hm1[i] = w1 & 0x3FF;
+            rec.period[i] = kTileSizeHiResPeriod;
+        } else {
+            u32 uls = (w0 >> 12) & 0xFFF;
+            u32 ult = w0 & 0xFFF;
+            u32 span_s = (((w1 >> 12) & 0xFFF) - uls) & 0xFFF;
+            u32 span_t = ((w1 & 0xFFF) - ult) & 0xFFF;
+            if ((span_s & 3) != 0 || (span_t & 3) != 0 || wrap == 0 || wrap * 4 > kTileSizeHiResPeriod) {
+                rec.count = 0;
+                return;
+            }
+            rec.s[i] = (uls % wrap) * 4;
+            rec.t[i] = (ult % wrap) * 4;
+            rec.wm1[i] = span_s >> 2;
+            rec.hm1[i] = span_t >> 2;
+            rec.period[i] = wrap * 4;
+        }
+        rec.count++;
+    }
 }
 
 // https://stackoverflow.com/questions/1148309/inverting-a-4x4-matrix
