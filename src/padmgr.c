@@ -2,21 +2,22 @@
 
 #include "libultra/libultra.h"
 #include "m_debug.h"
-#include "jsyswrap.h"
+#include "gc_compat.h"
+#include "ac_port.h"
 
 static int frame = 0;
 padmgr padmgr_class;
 static padmgr* this = &padmgr_class;
 
-extern OSMessageQueue* padmgr_LockSerialMesgQ(void) {
-    OSMessageQueue* mq;
+extern OSMesgQueue* padmgr_LockSerialMesgQ(void) {
+    OSMesg msg;
 
-    osRecvMesg(&this->serial_mq, (OSMesg)&mq, OS_MESG_BLOCK);
-    return mq;
+    osRecvMesg(&this->serial_mq, &msg, OS_MESG_BLOCK);
+    return (OSMesgQueue*)msg.ptr;
 }
 
-extern void padmgr_UnlockSerialMesgQ(OSMessageQueue* mq) {
-    osSendMesg(&this->serial_mq, (OSMesg)mq, OS_MESG_BLOCK);
+extern void padmgr_UnlockSerialMesgQ(OSMesgQueue* mq) {
+    osSendMesg(&this->serial_mq, OS_MESG_PTR(mq), OS_MESG_BLOCK);
 }
 
 static void padmgr_LockContData(void) {
@@ -24,14 +25,14 @@ static void padmgr_LockContData(void) {
 }
 
 static void padmgr_UnlockContData(void) {
-    osSendMesg(&this->controller_lock_mq, (OSMesg)NULL, OS_MESG_BLOCK);
+    osSendMesg(&this->controller_lock_mq, OS_MESG_PTR(NULL), OS_MESG_BLOCK);
 }
 
 static void padmgr_RumbleControl(void) {
     Motor_t* motor = this->rumble.motors;
     int i;
 
-    for (i = 0; i < PAD_MAX_CONTROLLERS; i++) {
+    for (i = 0; i < MAXCONTROLLERS; i++) {
         if (this->device_type[i] == PADMGR_TYPE_CONTROLLER && this->rumble.cooldown_frames == 0) {
             if (motor->last_command != motor->now_command) {
                 if (motor->now_command == PAD_MOTOR_STOP) {
@@ -58,11 +59,11 @@ static void padmgr_RumbleControl(void) {
 }
 
 static void padmgr_RumbleStop(void) {
-    static u32 stop_command[PAD_MAX_CONTROLLERS] = { PAD_MOTOR_STOP, PAD_MOTOR_STOP, PAD_MOTOR_STOP, PAD_MOTOR_STOP };
+    static u32 stop_command[MAXCONTROLLERS] = { PAD_MOTOR_STOP, PAD_MOTOR_STOP, PAD_MOTOR_STOP, PAD_MOTOR_STOP };
     int i;
 
     PADControlAllMotors(stop_command);
-    for (i = 0; i < PAD_MAX_CONTROLLERS; i++) {
+    for (i = 0; i < MAXCONTROLLERS; i++) {
         this->rumble.motors[i].last_command = PAD_MOTOR_STOP;
         this->rumble.motors[i].now_command = PAD_MOTOR_STOP;
         this->rumble.motors[i].frames = 0;
@@ -121,7 +122,7 @@ static void padmgr_HandleDoneReadPadMsg(void) {
     for (i = 0; i < this->num_controllers; i++) {
         pad->last = pad->now;
         if (this->device_type[i] == PADMGR_TYPE_CONTROLLER) {
-            switch (cur_pad->errno) {
+            switch (cur_pad->err_no) {
                 case CONT_NO_ERROR:
                     pad->now = *cur_pad;
                     if (this->device_type[i] == PADMGR_TYPE_NONE) {
@@ -135,7 +136,7 @@ static void padmgr_HandleDoneReadPadMsg(void) {
                     pad->now.button = 0;
                     pad->now.stick_x = 0;
                     pad->now.stick_y = 0;
-                    pad->now.errno = cur_pad->errno;
+                    pad->now.err_no = cur_pad->err_no;
                     if (this->device_type[i] != PADMGR_TYPE_NONE) {
                         this->device_type[i] = PADMGR_TYPE_NONE;
                         this->pak_type[i] = PADMGR_PAK_NONE;
@@ -146,7 +147,7 @@ static void padmgr_HandleDoneReadPadMsg(void) {
             pad->now.button = 0;
             pad->now.stick_x = 0;
             pad->now.stick_y = 0;
-            pad->now.errno = cur_pad->errno;
+            pad->now.err_no = cur_pad->err_no;
         }
 
         /* Update buttons */
@@ -170,7 +171,7 @@ static void padmgr_ConnectCheck(void) {
     int i;
 
     for (i = 0; i < this->num_controllers; i++) {
-        if (this->pad_status[i].errno == CONT_NO_ERROR) {
+        if (this->pad_status[i].err_no == CONT_NO_ERROR) {
             int masked_type = this->pad_status[i].type & CONT_TYPE_MASK;
 
             switch (masked_type) {
@@ -212,7 +213,7 @@ static void padmgr_ConnectCheck(void) {
 }
 
 static void padmgr_HandleRetraceMsg(void) {
-    OSMessageQueue* serial_mq;
+    OSMesgQueue* serial_mq;
 
     serial_mq = padmgr_LockSerialMesgQ();
     osContStartReadData(serial_mq);
@@ -322,30 +323,11 @@ extern void padmgr_ClearPadData(pad_t* pad) {
     }
 }
 
-static void padmgr_MainProc(void* arg) {
-    BOOL done = FALSE;
-    int flags;
-
-    while (done == FALSE) {
-        VIWaitForRetrace();
-        flags = PADMGR_FLAG_HANDLE_RETRACE;
-
-        while (flags != 0) {
-            if ((flags & PADMGR_FLAG_DONE) != 0) {
-                flags &= ~PADMGR_FLAG_DONE;
-                done = TRUE;
-            } else if ((flags & PADMGR_FLAG_HANDLE_PRENMI) != 0) {
-                flags &= ~PADMGR_FLAG_HANDLE_PRENMI;
-                padmgr_HandlePreNMIMsg();
-            } else if ((flags & PADMGR_FLAG_HANDLE_RETRACE) != 0) {
-                flags &= ~PADMGR_FLAG_HANDLE_RETRACE;
-                padmgr_HandleRetraceMsg();
-            }
-        }
-    }
+extern void padmgr_PortUpdate(void) {
+    padmgr_HandleRetraceMsg();
 }
 
-extern void padmgr_Init(OSMessageQueue* mq) {
+extern void padmgr_Init(OSMesgQueue* mq) {
     bzero(this, sizeof(padmgr));
     osCreateMesgQueue(&this->serial_mq, &this->_msg24, 1);
     padmgr_UnlockSerialMesgQ(mq);
@@ -354,13 +336,6 @@ extern void padmgr_Init(OSMessageQueue* mq) {
     osContInit(mq, &this->pad_pattern, this->pad_status);
     this->num_controllers = MAXCONTROLLERS;
     osContSetCh(this->num_controllers);
-}
-
-extern void padmgr_Create(OSMessageQueue* serial_mq, OSId id, OSPri priority, void* stackend, size_t stack_size) {
-    padmgr_Init(serial_mq);
-    osCreateMesgQueue(&this->_msgQueue8C, this->_msgBuf2C, PADMSGBUFCNT);
-    osCreateThread2(&this->thread, id, &padmgr_MainProc, this, stackend, stack_size, priority);
-    osStartThread(&this->thread);
 }
 
 extern int padmgr_isConnectedController(int idx) {

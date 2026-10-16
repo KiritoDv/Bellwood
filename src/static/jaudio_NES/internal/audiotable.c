@@ -406,10 +406,10 @@ u8 DEFAULT_GTABLE[] = {
  */
  // clang-format off
 envdat DEFAULT_ENV[] = {
-    { 1, 32000 },
-    { 1000, 32000 },
-    { ADSR_HANG, 0 },
-    { ADSR_DISABLE, 0 },
+    { NA_ENV16(1), NA_ENV16(32000) },
+    { NA_ENV16(1000), NA_ENV16(32000) },
+    { NA_ENV16(ADSR_HANG), NA_ENV16(0) },
+    { NA_ENV16(ADSR_DISABLE), NA_ENV16(0) },
 };
 // clang-format on
 

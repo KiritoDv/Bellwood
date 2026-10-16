@@ -2,7 +2,7 @@
 
 #include "m_nmibuf.h"
 #include "padmgr.h"
-#include "jsyswrap.h"
+#include "ac_port.h"
 #include "types.h"
 
 static zuru_keycheck zuruKeyCheck;
@@ -13,6 +13,7 @@ static int zerucheck_init(zuru_keycheck* key_check) {
     key_check->state = ZURUMODE_STAGE_BEGIN_e;
     key_check->progressing = ZURUMODE_RESET;
     key_check->last_controller = 0;
+    return 0;
 }
 
 /**
@@ -193,15 +194,6 @@ static s32 zurumode_update() {
 
     if (flag_now != zurumode_now) {
         OSReport("zurumode_flag が %d から %d に変更されました\n", flag_now, zurumode_now);
-        if (zurumode_flag != 0) {
-            if (APPNMI_TESTMODE_GET() || APPNMI_ZURUMODE_GET()) {
-                JC_JUTAssertion_changeDevice(3);
-                JC_JUTDbPrint_setVisible(JC_JUTDbPrint_getManager(), 1);
-            }
-        } else {
-            JC_JUTAssertion_changeDevice(2);
-            JC_JUTDbPrint_setVisible(JC_JUTDbPrint_getManager(), 0);
-        }
     }
     return zurumode_flag;
 }
@@ -215,7 +207,7 @@ static void zurumode_callback(void* param) {
         APPNMI_ZURUMODE_CLR();
     }
     if (APPNMI_DEBUGMODE_GET() && (zuruKeyCheck.state != 0) && (zuruKeyCheck.zurumode_enabled == 0)) {
-        JW_JUTReport(60, 90, 1, "ZURU %d/%d", zuruKeyCheck.state, zuruKeyCheck.progressing);
+        AC_DebugPrint(60, 90, 1, "ZURU %d/%d", zuruKeyCheck.state, zuruKeyCheck.progressing);
     }
 
     zurumode_update();

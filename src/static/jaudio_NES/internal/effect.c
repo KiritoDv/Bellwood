@@ -10,7 +10,26 @@
 #include "jaudio_NES/track.h"
 #include "jaudio_NES/sub_sys.h"
 #include "jaudio_NES/audioheaders.h"
-#include <dolphin/os.h>
+#include "gc_compat.h"
+
+static f32 sPortGroupVolume[AUDIO_GROUP_MAX] = { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
+
+extern void Nas_SetPortGroupVolume(s32 group_idx, f32 volume) {
+    if (group_idx < 0 || group_idx >= AUDIO_GROUP_MAX || sPortGroupVolume[group_idx] == volume) {
+        return;
+    }
+
+    sPortGroupVolume[group_idx] = volume;
+    AG.groups[group_idx].flags.recalculate_volume = TRUE;
+}
+
+static f32 Nas_GetPortGroupVolume(group* group) {
+    if (group >= AG.groups && group < AG.groups + AUDIO_GROUP_MAX) {
+        return sPortGroupVolume[group - AG.groups];
+    }
+
+    return 1.0f;
+}
 
 static void __Nas_CallWaveProcess_Sub(sub* subtrack, s32 recalc_vol, s32 apply_bend) {
     f32 vol;
@@ -24,7 +43,7 @@ static void __Nas_CallWaveProcess_Sub(sub* subtrack, s32 recalc_vol, s32 apply_b
             vol *= subtrack->group->mute_volume_scale;
         }
 
-        subtrack->applied_volume = vol * vol;
+        subtrack->applied_volume = vol * vol * Nas_GetPortGroupVolume(subtrack->group);
     }
 
     if (subtrack->changes.flags.pan) {
@@ -278,7 +297,7 @@ extern f32 Nas_EnvProcess(envp* process) {
         // fallthrough
         retry:
         case ADSR_STATUS_LOOP:
-            process->delay = process->pEnvData[process->envelope_idx].delay;
+            process->delay = Na_EnvRead(process->pEnvData[process->envelope_idx].delay);
             switch (process->delay) {
                 case ADSR_DISABLE:
                     process->state.flags.status = ADSR_STATUS_DISABLED;
@@ -287,13 +306,13 @@ extern f32 Nas_EnvProcess(envp* process) {
                     process->state.flags.status = ADSR_STATUS_HANG;
                     break;
                 case ADSR_GOTO:
-                    process->envelope_idx = process->pEnvData[process->envelope_idx].value;
+                    process->envelope_idx = Na_EnvRead(process->pEnvData[process->envelope_idx].value);
                     goto retry;
                 case ADSR_RESTART:
                     process->state.flags.status = ADSR_STATUS_INITIAL;
                     break;
                 case ADSR_SPECIAL4:
-                    process->_18 = (int)process->pEnvData[process->envelope_idx].value / 32767.0f;
+                    process->_18 = (int)Na_EnvRead(process->pEnvData[process->envelope_idx].value) / 32767.0f;
                     process->state.flags.unused = TRUE;
                     process->envelope_idx++;
                     goto retry;
@@ -303,7 +322,7 @@ extern f32 Nas_EnvProcess(envp* process) {
                         process->delay = 1;
                     }
 
-                    process->target = process->pEnvData[process->envelope_idx].value / 32767.0f;
+                    process->target = Na_EnvRead(process->pEnvData[process->envelope_idx].value) / 32767.0f;
                     process->target *= process->target;
                     process->velocity = (process->target - process->current) / process->delay;
                     process->state.flags.status = ADSR_STATUS_FADE;

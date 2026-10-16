@@ -7,7 +7,7 @@
 #include "jaudio_NES/os.h"
 #include "jaudio_NES/audiomacro.h"
 #include "jaudio_NES/driver.h"
-#include "dolphin/os.h"
+#include "gc_compat.h"
 
 static void __Nas_GroupFadeOut(s32 group, s32 fadeout_timer);
 static void __Nas_GroupFadeIn(s32 group, s32 fadein_timer);
@@ -129,22 +129,22 @@ static void Nap_AudioSysProcess(AudioPort* port) {
             AG.main_group.subtracks[0]->changes.flags.volume = TRUE;
             break;
         case AUDIOCMD_SET_VFRAME_CALLBACK:
-            NA_VFRAME_CALLBACK = (VFRAME_CALLBACK)port->param.asU32;
+            NA_VFRAME_CALLBACK = (VFRAME_CALLBACK)port->param.asVoidPtr;
             break;
         case AUDIOCMD_SET_CALLBACK:
             if (port->command.arg2 == AUDIO_CALLBACK_SOUND) {
-                NA_SOUND_CALLBACK = (SOUND_CALLBACK)port->param.asU32;
+                NA_SOUND_CALLBACK = (SOUND_CALLBACK)port->param.asVoidPtr;
             } else if (port->command.arg2 == AUDIO_CALLBACK_DACOUT) {
-                NA_DACOUT_CALLBACK = (DACOUT_CALLBACK)port->param.asU32;
+                NA_DACOUT_CALLBACK = (DACOUT_CALLBACK)port->param.asVoidPtr;
             } else {
-                AG.seq_callbacks[port->command.arg2] = (SequenceCallback)port->param.asU32;
+                AG.seq_callbacks[port->command.arg2] = (SequenceCallback)port->param.asVoidPtr;
             }
             break;
         case AUDIOCMD_SET_PERC_BANK:
         case AUDIOCMD_SET_EFFECT_BANK:
         case AUDIOCMD_SET_VOICE_BANK:
             OverwriteBank(port->command.opcode - AUDIOCMD_SET_PERC_BANK, port->command.arg1, port->command.arg2,
-                          port->param.asS32);
+                          port->param.asVoidPtr);
             break;
         case AUDIOCMD_FORCE_STOP_ALL_GROUPS:
             flags = port->param.asS32;
@@ -163,10 +163,19 @@ static void Nap_AudioSysProcess(AudioPort* port) {
             Nas_SzStayDelete(port->param.asS32);
             break;
         case AUDIOCMD_SET_EXTERNAL_POINTER:
-            Nas_SetExtPointer(port->command.arg0, port->command.arg1, port->command.arg2, port->param.asS32);
+            if (port->command.arg2 == EXT_TYPE_DATA) {
+                Nas_SetExtPointer(port->command.arg0, port->command.arg1, port->command.arg2,
+                                  (uintptr_t)port->param.asVoidPtr);
+            } else {
+                Nas_SetExtPointer(port->command.arg0, port->command.arg1, port->command.arg2, port->param.asU32);
+            }
             break;
         case AUDIOCMD_SET_DELAY_LINE_PARAM:
-            Nas_SetDelayLineParam(port->command.arg1, port->command.arg0, port->param.asS32, FALSE);
+            if (port->command.arg0 == 0) {
+                Nas_SetDelayLine(port->command.arg1, (fxconfig*)port->param.asVoidPtr, 0);
+            } else {
+                Nas_SetDelayLineParam(port->command.arg1, port->command.arg0, port->param.asS32, FALSE);
+            }
             break;
         default:
             break;
@@ -212,36 +221,38 @@ extern void Nap_AudioPortInit(void) {
     AG.spec_change_mq_p->validCount;
 }
 
-static void Nap_PortSet(u32 data, s32* param_p) {
+static AudioPort* Nap_PortSet(u32 data) {
     AudioPort* port_p = &AG.audio_port_cmds[AG.thread_cmd_write_pos & 0xFF];
 
     port_p->raw_cmd = data;
-    port_p->param.asS32 = *param_p;
+    port_p->param.asVoidPtr = NULL;
 
     AG.thread_cmd_write_pos++;
     if (AG.thread_cmd_write_pos == AG.thread_cmd_read_pos) {
         AG.thread_cmd_write_pos--;
     }
+
+    return port_p;
 }
 
 extern void Nap_SetF32(u32 cmd, f32 param) {
-    Nap_PortSet(cmd, (s32*)&param);
+    Nap_PortSet(cmd)->param.asF32 = param;
 }
 
 extern void Nap_SetS32(u32 cmd, s32 param) {
-    Nap_PortSet(cmd, (s32*)&param);
+    Nap_PortSet(cmd)->param.asS32 = param;
 }
 
 extern void Nap_SetS8(u32 cmd, s8 param) {
-    u32 mod_param = (param << 24);
-
-    Nap_PortSet(cmd, (s32*)&mod_param);
+    Nap_PortSet(cmd)->param.asS8 = param;
 }
 
 extern void Nap_SetU16(u32 cmd, u16 param) {
-    u32 mod_param = (param << 16);
+    Nap_PortSet(cmd)->param.asU16 = param;
+}
 
-    Nap_PortSet(cmd, (s32*)&mod_param);
+extern void Nap_SetPtr(u32 cmd, void* param) {
+    Nap_PortSet(cmd)->param.asVoidPtr = param;
 }
 
 extern s32 Nap_SendStart(void) {
@@ -254,7 +265,7 @@ extern s32 Nap_SendStart(void) {
     }
 
     msg = ((AG.thread_cmd_read_pos & 0xFF) << 8) | (AG.thread_cmd_write_pos & 0xFF);
-    res = Z_osSendMesg(AG.thread_cmd_proc_mq_p, (OSMesg)msg, OS_MESG_NOBLOCK);
+    res = Z_osSendMesg(AG.thread_cmd_proc_mq_p, OS_MESG_32(msg), OS_MESG_NOBLOCK);
 
     if (res != -1) {
         AG.thread_cmd_read_pos = AG.thread_cmd_write_pos;
@@ -335,7 +346,7 @@ extern void Nap_AudioPortProcess(u32 msg) {
 
 extern s32 Nap_CheckSpecChange(void) {
     s32 msg;
-    s32 res = Z_osRecvMesg(AG.spec_change_mq_p, (OSMesg*)&msg, OS_MESG_NOBLOCK);
+    s32 res = Z_osRecvMesg32(AG.spec_change_mq_p, (u32*)&msg, OS_MESG_NOBLOCK);
 
     if (res == -1) {
         return 0;
@@ -351,7 +362,7 @@ static void __ClearSpecChangeQ(void) {
     s32 res;
 
     do {
-        res = Z_osRecvMesg(AG.spec_change_mq_p, (OSMesg*)&msg, OS_MESG_NOBLOCK);
+        res = Z_osRecvMesg32(AG.spec_change_mq_p, (u32*)&msg, OS_MESG_NOBLOCK);
     } while (res != -1);
 }
 
@@ -564,7 +575,7 @@ static void __SetSubParam(sub* subtrack, AudioPort* port) {
             break;
         case AUDIOCMD_OP_SUB_SET_FILTER:
             filter_cutoff = port->command.arg2;
-            if (port->param.asS32 != 0) {
+            if (port->param.asVoidPtr != NULL) {
                 subtrack->filter = (s16*)port->param.asVoidPtr;
             }
 
@@ -584,8 +595,8 @@ static void __SetSubParam(sub* subtrack, AudioPort* port) {
 }
 
 extern void Nap_WaitVsync(void) {
-    Z_osRecvMesg(AG.task_start_mq_p, (OSMesg*)0, OS_MESG_NOBLOCK);
-    Z_osRecvMesg(AG.task_start_mq_p, (OSMesg*)0, OS_MESG_BLOCK);
+    Z_osRecvMesg(AG.task_start_mq_p, NULL, OS_MESG_NOBLOCK);
+    Z_osRecvMesg(AG.task_start_mq_p, NULL, OS_MESG_BLOCK);
 }
 
 static s32 Nap_SilenceCheck_Inner(s32 flags) {
@@ -629,7 +640,7 @@ static s32 Nap_SilenceCheck_Inner(s32 flags) {
 extern u32 Nap_GetRandom(void) {
     static u32 get = 0x12345678;
     static u32 oldGetCount = 0x11111111;
-    u32 tick = OSGetTick();
+    u32 tick = osGetCount();
 
     get = (get + AG.frame_audio_task_count + tick) * (AG.audio_random_seed + 0x01234567);
     get = (get << 1) + oldGetCount + (get & 1);
@@ -641,14 +652,14 @@ extern void Nas_InitGAudio(void) {
     Nap_AudioPortInit();
 }
 
-extern s32 CreateAudioTask(Acmd* cmds, s16* pSamples, u32 nSamples, s32 param_4) {
+extern s32 CreateAudioTask(NaAcmd* cmds, s16* pSamples, u32 nSamples, s32 param_4) {
     s32 i;
     s32 max;
 
-    AG.audio_random_seed = (AG.audio_random_seed + AG.frame_audio_task_count) * OSGetTick();
+    AG.audio_random_seed = (AG.audio_random_seed + AG.frame_audio_task_count) * osGetCount();
     AG.frame_audio_task_count++;
 
-    Z_osSendMesg(AG.task_start_mq_p, (OSMesg)AG.frame_audio_task_count, OS_MESG_NOBLOCK);
+    Z_osSendMesg(AG.task_start_mq_p, OS_MESG_32(AG.frame_audio_task_count), OS_MESG_NOBLOCK);
 
     if (NA_VFRAME_CALLBACK != nullptr) {
         (*NA_VFRAME_CALLBACK)();
@@ -672,7 +683,7 @@ extern s32 CreateAudioTask(Acmd* cmds, s16* pSamples, u32 nSamples, s32 param_4)
 
     if (AG.reset_status != 0 && Nas_SpecChange() == 0) {
         if (AG.reset_status == 0) {
-            Z_osSendMesg(AG.spec_change_mq_p, (OSMesg)AG.spec_id, OS_MESG_NOBLOCK);
+            Z_osSendMesg(AG.spec_change_mq_p, OS_MESG_32(AG.spec_id), OS_MESG_NOBLOCK);
         }
 
         return 0;
@@ -690,7 +701,7 @@ extern s32 CreateAudioTask(Acmd* cmds, s16* pSamples, u32 nSamples, s32 param_4)
         if (AG.reset_status == 0) {
             u32 msg;
 
-            while (Z_osRecvMesg(AG.thread_cmd_proc_mq_p, (OSMesg*)&msg, OS_MESG_NOBLOCK) != -1) {
+            while (Z_osRecvMesg32(AG.thread_cmd_proc_mq_p, &msg, OS_MESG_NOBLOCK) != -1) {
                 Nap_AudioPortProcess(msg);
                 port_cmds++;
             }

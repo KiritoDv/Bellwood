@@ -8,14 +8,13 @@
 #include "gfxalloc.h"
 #include "gamealloc.h"
 #include "THA_GA.h"
-#include "jsyswrap.h"
 #include "m_debug_mode.h"
 #include "padmgr.h"
 #include "m_bgm.h"
 #include "libu64/debug.h"
 #include "libc64/malloc.h"
-#include "GBA/gba.h"
 #include "m_vibctl.h"
+#include "ac_port.h"
 
 GAME* gamePT = NULL;
 
@@ -34,9 +33,6 @@ static void game_move_first(GAME* this) {
     if (zurumode_flag) {
         Debug_mode_input(&this->pads[1]);
     }
-
-    JC_JUTProcBar_setVisible(JC_JUTProcBar_getManager(), GETREG(SREG, 0) != 0);
-    JC_JUTProcBar_setVisibleHeapBar(JC_JUTProcBar_getManager(), GETREG(SREG, 0) != 0);
 }
 
 extern void game_debug_draw_last(GAME* this, GRAPH* graph) {
@@ -53,7 +49,7 @@ extern void game_debug_draw_last(GAME* this, GRAPH* graph) {
 
         for (i = 0; i < MAXCONTROLLERS; i++) {
             pad_t* pad = &this->pads[i];
-            if (pad->now.errno == 0) {
+            if (pad->now.err_no == 0) {
                 last_now_button[i] = pad->now.button;
                 last_on_trigger[i] = pad->on.button;
                 last_button[i] = last_now_button[i] | last_on_trigger[i];
@@ -79,11 +75,6 @@ extern void game_debug_draw_last(GAME* this, GRAPH* graph) {
 }
 
 static void game_draw_first(GRAPH* graph) {
-    OPEN_DISP(graph);
-
-    gSPSegment(NOW_BG_OPA_DISP++, G_MWO_NUMLIGHT, 0x80000000);
-
-    CLOSE_DISP(graph);
 }
 
 extern void game_draw_last(GRAPH* graph) {
@@ -120,12 +111,7 @@ extern void SetGameFrame(int frame) {
         game_GameFrame__1F = 1.0f / game_GameFrameF;
 
         SETREG(SREG, 30, (u16)frame);
-
-        if (GETREG(SREG, 29) > 0) {
-            frame = GETREG(SREG, 29);
-        }
-
-        JC_JFWDisplay_setFrameRate(JC_JFWDisplay_getManager(), frame);
+        AC_SetFrameDivisor(frame);
     }
 }
 
@@ -165,7 +151,7 @@ static void game_init_hyral(GAME* this, size_t size) {
 }
 
 extern void game_resize_hyral(GAME* this, int size) {
-    size_t max_size, free_size, alloc_size;
+    u32 max_size, free_size, alloc_size;
     u8* old_hyral;
     u8* hyral;
 
@@ -216,9 +202,6 @@ extern void game_ct(GAME* this, void (*init)(GAME*), GRAPH* graph) {
     __gfxprint_default_flags |= GFXPRINT_FLAG_HIGHRES;
     init(this);
     mBGM_init();
-#if VERSION < VER_GAFU01_00
-    GBAInit();
-#endif
     mVibctl_init();
 }
 

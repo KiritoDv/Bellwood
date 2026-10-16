@@ -45,10 +45,6 @@ void AC_DebugPrint(int x, int y, int show_count, const char* fmt, ...);
 
 f32 AC_PadGetSubStickValue(void);
 s16 AC_PadGetSubStickAngle(void);
-void AC_PadScriptApply(void* pads);
-void AC_PadScriptSceneStarted(void);
-void AC_AcreTourFrame(void);
-void AC_AcreTourStick(s8* x, s8* y);
 
 extern s32 gAC_PrerenderFb;
 
@@ -61,7 +57,6 @@ int AC_RunFrame(void);
 void AC_SubmitFrame(void* dl);
 int AC_SetClearColor(u8 r, u8 g, u8 b);
 void AC_SetFrameDivisor(int divisor);
-void AC_DebugGameFrameOverride(void);
 
 void gfx_texture_cache_clear(void);
 void gfx_texture_cache_invalidate_range(const void* addr, size_t size);

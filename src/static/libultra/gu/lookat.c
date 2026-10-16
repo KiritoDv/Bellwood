@@ -1,5 +1,6 @@
 #include "libultra/gu.h"
-#include "MSL_C/w_math.h"
+#include "port/interpolation/FrameInterpolation.h"
+#include <math.h>
 
 void guLookAtF(float mf[4][4], float xEye, float yEye, float zEye,
 	       float xAt,  float yAt,  float zAt,
@@ -72,5 +73,6 @@ void guLookAt (Mtx *m, float xEye, float yEye, float zEye,
 
 	guLookAtF(mf, xEye, yEye, zEye, xAt, yAt, zAt, xUp, yUp, zUp);
 
+	FrameInterpolation_RecordMatrixF2L(mf, m);
 	guMtxF2L(mf, m);
 }

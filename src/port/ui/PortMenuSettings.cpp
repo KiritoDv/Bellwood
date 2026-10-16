@@ -1,0 +1,454 @@
+#include "PortMenu.h"
+#include "port/ShipCompat.h"
+#include "port/Engine.h"
+#include "Notification.h"
+#include "PortInputEditorWindow.h"
+#include "PortModals.h"
+#include "UIWidgets.hpp"
+#include "port/build.h"
+#include <spdlog/fmt/fmt.h>
+
+namespace PortGui {
+
+extern std::shared_ptr<PortMenu> mPortMenu;
+extern std::shared_ptr<PortModalWindow> mModalWindow;
+using namespace UIWidgets;
+
+static std::unordered_map<int32_t, const char*> imguiScaleOptions = {
+    { 0, "Small" },
+    { 1, "Normal" },
+    { 2, "Large" },
+    { 3, "X-Large" },
+};
+
+static const std::unordered_map<int32_t, const char*> menuThemeOptions = {
+    { UIWidgets::Colors::Red, "Red" },
+    { UIWidgets::Colors::DarkRed, "Dark Red" },
+    { UIWidgets::Colors::Orange, "Orange" },
+    { UIWidgets::Colors::Green, "Green" },
+    { UIWidgets::Colors::DarkGreen, "Dark Green" },
+    { UIWidgets::Colors::LightBlue, "Light Blue" },
+    { UIWidgets::Colors::Blue, "Blue" },
+    { UIWidgets::Colors::DarkBlue, "Dark Blue" },
+    { UIWidgets::Colors::Indigo, "Indigo" },
+    { UIWidgets::Colors::Violet, "Violet" },
+    { UIWidgets::Colors::Purple, "Purple" },
+    { UIWidgets::Colors::Brown, "Brown" },
+    { UIWidgets::Colors::Gray, "Gray" },
+    { UIWidgets::Colors::DarkGray, "Dark Gray" },
+};
+
+static const std::unordered_map<int32_t, const char*> textureFilteringMap = {
+    { Fast::FILTER_THREE_POINT, "Three-Point" },
+    { Fast::FILTER_LINEAR, "Linear" },
+    { Fast::FILTER_NONE, "None" },
+};
+
+static const std::unordered_map<int32_t, const char*> frameRateOptions = {
+    { FRAME_RATE_ORIGINAL, "Original" },     { FRAME_RATE_MATCH_REFRESH_RATE, "Match Refresh Rate" },
+    { FRAME_RATE_60, "60 FPS" },             { FRAME_RATE_120, "120 FPS" },
+    { FRAME_RATE_144, "144 FPS" },           { FRAME_RATE_UNCAPPED, "Uncapped" },
+    { FRAME_RATE_CUSTOM, "Custom" },
+};
+
+static const std::unordered_map<int32_t, const char*> notificationPosition = {
+    { 0, "Top Left" }, { 1, "Top Right" }, { 2, "Bottom Left" }, { 3, "Bottom Right" }, { 4, "Hidden" },
+};
+
+#ifdef __SWITCH__
+static const std::unordered_map<int32_t, const char*> switchPerformanceProfiles = {
+    { Ship::MAXIMUM, SWITCH_CPU_PROFILES[Ship::MAXIMUM] },
+    { Ship::HIGH, SWITCH_CPU_PROFILES[Ship::HIGH] },
+    { Ship::BOOST, SWITCH_CPU_PROFILES[Ship::BOOST] },
+    { Ship::STOCK, SWITCH_CPU_PROFILES[Ship::STOCK] },
+    { Ship::POWERSAVINGM1, SWITCH_CPU_PROFILES[Ship::POWERSAVINGM1] },
+    { Ship::POWERSAVINGM2, SWITCH_CPU_PROFILES[Ship::POWERSAVINGM2] },
+    { Ship::POWERSAVINGM3, SWITCH_CPU_PROFILES[Ship::POWERSAVINGM3] }
+};
+#endif
+
+void PortMenu::AddMenuSettings() {
+    // Add Settings Menu
+    AddMenuEntry("Settings", CVAR_SETTING("Menu.SettingsSidebarSection"));
+    AddSidebarEntry("Settings", "General", 2);
+    WidgetPath path = { "Settings", "General", SECTION_COLUMN_1 };
+
+    // General - Settings
+    AddWidget(path, "Menu Settings", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Menu Theme", WIDGET_CVAR_COMBOBOX)
+        .CVar(CVAR_SETTING("Menu.Theme"))
+        .RaceDisable(false)
+        .Options(ComboboxOptions()
+                     .Tooltip("Changes the Theme of the Menu Widgets.")
+                     .ComboMap(menuThemeOptions)
+                     .DefaultIndex(Colors::LightBlue));
+    AddWidget(path, "Menu Controller Navigation", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_IMGUI_CONTROLLER_NAV)
+        .RaceDisable(false)
+        .Options(CheckboxOptions()
+                     .Tooltip("Allows controller navigation of the port menu (Settings, Enhancements,...)\nCAUTION: "
+                              "This will disable game inputs while the menu is visible.\n\nD-pad to move between "
+                              "items, A to select, B to move up in scope.")
+#ifdef __SWITCH__
+                     .DefaultValue(true)
+#endif
+        );
+    AddWidget(path, "Menu Background Opacity", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar(CVAR_SETTING("Menu.BackgroundOpacity"))
+        .RaceDisable(false)
+        .Options(FloatSliderOptions().DefaultValue(0.85f).IsPercentage().Tooltip(
+            "Sets the opacity of the background of the port menu."));
+
+    AddWidget(path, "General Settings", WIDGET_SEPARATOR_TEXT);
+#if not defined(__SWITCH__) and not defined(__WIIU__)
+    AddWidget(path, "Cursor Always Visible", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_SETTING("CursorVisibility"))
+        .RaceDisable(false)
+        .Callback([](WidgetInfo& info) {
+            ShipCompat::GetWindow()->SetForceCursorVisibility(CVarGetInteger(CVAR_SETTING("CursorVisibility"), 0));
+        })
+        .Options(CheckboxOptions().Tooltip("Makes the cursor always visible, even in full screen."));
+#endif
+    AddWidget(path, "Search In Sidebar", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_SETTING("Menu.SidebarSearch"))
+        .RaceDisable(false)
+        .Callback([](WidgetInfo& info) {
+            if (CVarGetInteger(CVAR_SETTING("Menu.SidebarSearch"), 0)) {
+                mPortMenu->InsertSidebarSearch();
+            } else {
+                mPortMenu->RemoveSidebarSearch();
+            }
+        })
+        .Options(CheckboxOptions().Tooltip(
+            "Displays the Search menu as a sidebar entry in Settings instead of in the header."));
+    AddWidget(path, "Search Input Autofocus", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_SETTING("Menu.SearchAutofocus"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip(
+            "Search input box gets autofocus when visible. Does not affect using other widgets."));
+#ifdef __SWITCH__
+    AddWidget(path, "Hardware", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Switch performance mode", WIDGET_CVAR_COMBOBOX)
+        .CVar(CVAR_SWITCH_PERF_MODE)
+        .RaceDisable(false)
+        .Callback([](WidgetInfo& info) { Ship::Switch::ApplyOverclock(); })
+        .Options(ComboboxOptions()
+                     .DefaultIndex(Ship::MAXIMUM)
+                     .ComboMap(switchPerformanceProfiles)
+                     .Tooltip("Sets the Nintendo Switch CPU performance profile."));
+#endif
+#if not defined(__SWITCH__) and not defined(__WIIU__)
+    AddWidget(path, "Open App Files Folder", WIDGET_BUTTON)
+        .RaceDisable(false)
+        .Callback([](WidgetInfo& info) {
+            std::string filesPath = Ship::Context::GetAppDirectoryPath();
+            SDL_OpenURL(std::string("file:///" + std::filesystem::absolute(filesPath).string()).c_str());
+        })
+        .Options(ButtonOptions().Tooltip("Opens the folder that contains the save and mods folders, etc."));
+#endif
+    AddWidget(path, "EXPERIMENTAL", WIDGET_SEPARATOR_TEXT).Options(TextOptions().Color(Colors::Orange));
+    AddWidget(path, "ImGui Menu Scaling", WIDGET_CVAR_COMBOBOX)
+        .CVar(CVAR_SETTING("ImGuiScale"))
+        .RaceDisable(false)
+        .Options(ComboboxOptions()
+                     .ComboMap(imguiScaleOptions)
+                     .Tooltip("Changes the scaling of the ImGui menu elements.")
+                     .DefaultIndex(1)
+                     .ComponentAlignment(ComponentAlignments::Right)
+                     .LabelPosition(LabelPositions::Far))
+        .Callback([](WidgetInfo& info) { GameEngine::Instance->ScaleImGui(); });
+
+    // General - About
+    path.column = SECTION_COLUMN_2;
+
+    AddWidget(path, "About", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, PORT_NAME, WIDGET_TEXT);
+    if (gGitCommitTag[0] != 0) {
+        AddWidget(path, gBuildVersion, WIDGET_TEXT);
+    } else {
+        AddWidget(path, ("Branch: " + std::string(gGitBranch)), WIDGET_TEXT);
+        AddWidget(path, ("Commit: " + std::string(gGitCommitHash)), WIDGET_TEXT);
+    }
+    // for (uint32_t i = 0; i < ResourceMgr_GetNumGameVersions(); i++) {
+    //     AddWidget(path, GetGameVersionString(i), WIDGET_TEXT);
+    // }
+
+    // Audio Settings
+    path.sidebarName = "Audio";
+    path.column = SECTION_COLUMN_1;
+    AddSidebarEntry("Settings", "Audio", 3);
+
+    AddWidget(path, "Master Volume: %d %%", WIDGET_CVAR_SLIDER_INT)
+        .CVar(CVAR_SETTING("Volume.Master"))
+        .RaceDisable(false)
+        .Options(IntSliderOptions().Min(0).Max(100).DefaultValue(50).ShowButtons(true).Format(""));
+    AddWidget(path, "Music Volume: %d %%", WIDGET_CVAR_SLIDER_INT)
+        .CVar(CVAR_SETTING("Volume.Music"))
+        .RaceDisable(false)
+        .Options(IntSliderOptions().Min(0).Max(100).DefaultValue(100).ShowButtons(true).Format(""));
+    AddWidget(path, "Sound Effects Volume: %d %%", WIDGET_CVAR_SLIDER_INT)
+        .CVar(CVAR_SETTING("Volume.SFX"))
+        .RaceDisable(false)
+        .Options(IntSliderOptions().Min(0).Max(100).DefaultValue(100).ShowButtons(true).Format(""));
+    AddWidget(path, "Audio API (Needs reload)", WIDGET_AUDIO_BACKEND).RaceDisable(false);
+
+    // Graphics Settings
+    static int32_t maxFps = 360;
+    const char* tooltip = "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. This is "
+                          "purely visual and does not impact game logic, execution of glitches etc.\n\nA higher target "
+                          "FPS than your monitor's refresh rate will waste resources, and might give a worse result.";
+    path.sidebarName = "Graphics";
+    AddSidebarEntry("Settings", "Graphics", 3);
+    AddWidget(path, "Graphics Options", WIDGET_SEPARATOR_TEXT);
+#ifndef __SWITCH__
+    AddWidget(path, "Toggle Fullscreen", WIDGET_BUTTON)
+        .RaceDisable(false)
+        .Callback([](WidgetInfo& info) { ShipCompat::GetWindow()->ToggleFullscreen(); })
+        .Options(ButtonOptions().Tooltip("Toggles Fullscreen On/Off."));
+#endif
+    AddWidget(path, "Internal Resolution", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar(CVAR_INTERNAL_RESOLUTION)
+        .RaceDisable(false)
+        .Callback([](WidgetInfo& info) {
+            ShipCompat::GetWindow()->SetResolutionMultiplier(CVarGetFloat(CVAR_INTERNAL_RESOLUTION, 1));
+        })
+        .PreFunc([](WidgetInfo& info) {
+            if (mPortMenu->disabledMap.at(DISABLE_FOR_ADVANCED_RESOLUTION_ON).active &&
+                mPortMenu->disabledMap.at(DISABLE_FOR_VERTICAL_RES_TOGGLE_ON).active) {
+                info.activeDisables.push_back(DISABLE_FOR_ADVANCED_RESOLUTION_ON);
+                info.activeDisables.push_back(DISABLE_FOR_VERTICAL_RES_TOGGLE_ON);
+            } else if (mPortMenu->disabledMap.at(DISABLE_FOR_LOW_RES_MODE_ON).active) {
+                info.activeDisables.push_back(DISABLE_FOR_LOW_RES_MODE_ON);
+            }
+        })
+        .Options(
+            FloatSliderOptions()
+                .Tooltip("Multiplies your output resolution by the value inputted, as a more intensive but effective "
+                         "form of anti-aliasing.")
+                .ShowButtons(false)
+                .IsPercentage()
+                .Min(0.5f)
+                .Max(2.0f));
+#ifndef __WIIU__
+    AddWidget(path, "Anti-aliasing (MSAA)", WIDGET_CVAR_SLIDER_INT)
+        .CVar(CVAR_MSAA_VALUE)
+        .RaceDisable(false)
+        .Callback([](WidgetInfo& info) { ShipCompat::GetWindow()->SetMsaaLevel(CVarGetInteger(CVAR_MSAA_VALUE, 1)); })
+        .Options(
+            IntSliderOptions()
+                .Tooltip("Activates MSAA (multi-sample anti-aliasing) from 2x up to 8x, to smooth the edges of "
+                         "rendered geometry.\n"
+                         "Higher sample count will result in smoother edges on models, but may reduce performance.")
+                .Min(1)
+                .Max(8)
+                .DefaultValue(1));
+#endif
+    AddWidget(path, "Frame Rate", WIDGET_CVAR_COMBOBOX)
+        .CVar(CVAR_SETTING("FrameRateMode"))
+        .RaceDisable(false)
+        .Options(ComboboxOptions()
+                     .Tooltip("Original: the game's own rate (60, 30 or 20 FPS depending on the scene), with no "
+                              "interpolation.\n60/120/144 FPS: interpolates extra frames between game frames up to "
+                              "that rate.\nMatch Refresh Rate: interpolates up to your display's refresh rate.\n"
+                              "Uncapped: draws as many interpolated frames as the machine allows (VSync still limits "
+                              "it to the refresh rate).\nCustom: uses the FPS slider below.\n\nInterpolation is "
+                              "purely visual: game logic and audio still run at the original rate.")
+                     .ComboMap(frameRateOptions)
+                     .DefaultIndex(FRAME_RATE_60));
+    auto fps = CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 60);
+    const char* fpsFormat = fps == 60 ? "Original (%d)" : "%d";
+    AddWidget(path, "Current FPS", WIDGET_CVAR_SLIDER_INT)
+        .CVar(CVAR_SETTING("InterpolationFPS"))
+        .RaceDisable(false)
+        .Callback([](WidgetInfo& info) {
+            auto options = std::static_pointer_cast<IntSliderOptions>(info.options);
+            int32_t defaultValue = options->defaultValue;
+            if (CVarGetInteger(info.cVar, defaultValue) == defaultValue) {
+                options->format = "Original (%d)";
+            } else {
+                options->format = "%d";
+            }
+        })
+        .PreFunc([](WidgetInfo& info) {
+            info.isHidden = CVarGetInteger(CVAR_SETTING("FrameRateMode"), FRAME_RATE_60) != FRAME_RATE_CUSTOM;
+            if (mPortMenu->disabledMap.at(DISABLE_FOR_MATCH_REFRESH_RATE_ON).active)
+                info.activeDisables.push_back(DISABLE_FOR_MATCH_REFRESH_RATE_ON);
+        })
+        .Options(IntSliderOptions().Tooltip(tooltip).Min(30).Max(maxFps).DefaultValue(60).Format(fpsFormat));
+    AddWidget(path, "Match Refresh Rate", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_SETTING("MatchRefreshRate"))
+        .RaceDisable(false)
+        .PreFunc([](WidgetInfo& info) {
+            info.isHidden = CVarGetInteger(CVAR_SETTING("FrameRateMode"), FRAME_RATE_60) != FRAME_RATE_CUSTOM;
+        })
+        .Options(CheckboxOptions().Tooltip("Matches interpolation value to the refresh rate of your display."));
+    AddWidget(path, "Renderer API (Needs reload)", WIDGET_VIDEO_BACKEND).RaceDisable(false);
+    AddWidget(path, "Enable Vsync", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_VSYNC_ENABLED)
+        .RaceDisable(false)
+        .PreFunc([](WidgetInfo& info) { info.isHidden = mPortMenu->disabledMap.at(DISABLE_FOR_NO_VSYNC).active; })
+        .Options(CheckboxOptions()
+                     .Tooltip("Removes tearing, but clamps your max FPS to your displays refresh rate.")
+                     .DefaultValue(true));
+    AddWidget(path, "Windowed Fullscreen", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_SDL_WINDOWED_FULLSCREEN)
+        .RaceDisable(false)
+        .PreFunc([](WidgetInfo& info) {
+            info.isHidden = mPortMenu->disabledMap.at(DISABLE_FOR_NO_WINDOWED_FULLSCREEN).active;
+        })
+        .Options(CheckboxOptions().Tooltip("Enables Windowed Fullscreen Mode."));
+    AddWidget(path, "Allow multi-windows", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENABLE_MULTI_VIEWPORTS)
+        .RaceDisable(false)
+        .PreFunc([](WidgetInfo& info) {
+            info.isHidden = mPortMenu->disabledMap.at(DISABLE_FOR_NO_MULTI_VIEWPORT).active;
+        })
+        .Options(CheckboxOptions()
+                     .Tooltip("Allows multiple windows to be opened at once. Requires a reload to take effect.")
+                     .DefaultValue(true));
+    AddWidget(path, "Texture Filter (Needs reload)", WIDGET_CVAR_COMBOBOX)
+        .CVar(CVAR_TEXTURE_FILTER)
+        .RaceDisable(false)
+        .Options(ComboboxOptions()
+                     .Tooltip("Sets the applied Texture Filtering.")
+                     .ComboMap(textureFilteringMap)
+                     .DefaultIndex(Fast::FILTER_LINEAR));
+
+    path.column = SECTION_COLUMN_2;
+    AddWidget(path, "Advanced Graphics Options", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "HD Texture Upload Budget", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.Graphics.TextureUploadBudget")
+        .RaceDisable(false)
+        .Options(IntSliderOptions()
+                     .Tooltip("Max new HD-pack texture uploads per frame (0 = unlimited). Lower values spread big "
+                              "4K uploads across frames so entering a new area doesn't hitch; the base texture "
+                              "shows until each HD replacement is ready.")
+                     .Min(0)
+                     .Max(8)
+                     .DefaultValue(1));
+    AddWidget(path, "Async Texture Loading", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Graphics.AsyncTextureLoad")
+        .RaceDisable(false)
+        .Options(CheckboxOptions()
+                     .Tooltip("Decodes HD/replacement textures on a background thread instead of blocking the "
+                              "render thread, so loading a level doesn't hitch. The vanilla texture shows until "
+                              "its HD version finishes loading, then swaps in. Only active with Alternative "
+                              "Assets enabled.")
+                     .DefaultValue(false));
+    AddWidget(path, "Debug HD Replacement", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Graphics.TextureReplacementDebug")
+        .RaceDisable(false)
+        .Options(CheckboxOptions()
+                     .Tooltip("Tints draws by HD-replacement state: blue = HD active, green flash = just "
+                              "uploaded, red = base shown while the HD upload is still pending.")
+                     .DefaultValue(false));
+
+    path.sidebarName = "Shaders";
+    path.column = SECTION_COLUMN_1;
+    AddSidebarEntry("Settings", "Shaders", 1);
+
+    AddWidget(path, "Shader Settings", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Popout Shader Settings", WIDGET_WINDOW_BUTTON)
+        .CVar(CVAR_WINDOW("ShaderSettings"))
+        .RaceDisable(false)
+        .WindowName("Shader Settings")
+        .HideInSearch(true)
+        .Options(WindowButtonOptions().Tooltip("Tweakables for shader packs: post-processing passes and @setting "
+                                               "values declared by custom shaders."));
+
+    // Controls
+    path.sidebarName = "Controls";
+    path.column = SECTION_COLUMN_1;
+    AddSidebarEntry("Settings", "Controls", 1);
+    AddWidget(path, "Clear Devices", WIDGET_BUTTON)
+        .Callback([](WidgetInfo& info) {
+            PortGui::mModalWindow->RegisterPopup(
+                "Clear Config",
+                "This will completely erase the controls config, including registered devices.\nContinue?", "Clear",
+                "Cancel",
+                []() {
+                    ShipCompat::GetConsoleVariables()->ClearBlock(CVAR_PREFIX_SETTING ".Controllers");
+                    uint8_t bits = 0;
+                    ShipCompat::GetControlDeck()->Init(&bits);
+                },
+                nullptr);
+        })
+        .Options(ButtonOptions().Size(Sizes::Inline));
+    AddWidget(path, "Controller Bindings", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Popout Bindings Window", WIDGET_WINDOW_BUTTON)
+        .CVar(CVAR_WINDOW("ControllerConfiguration"))
+        .RaceDisable(false)
+        .WindowName("Configure Controller")
+        .HideInSearch(true)
+        .Options(WindowButtonOptions().Tooltip("Enables the separate Bindings Window."));
+
+    // Input Viewer
+    path.sidebarName = "Input Viewer";
+    AddSidebarEntry("Settings", path.sidebarName, 3);
+    AddWidget(path, "Input Viewer", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Toggle Input Viewer", WIDGET_WINDOW_BUTTON)
+        .CVar(CVAR_WINDOW("InputViewer"))
+        .RaceDisable(false)
+        .WindowName("Input Viewer")
+        .HideInSearch(true)
+        .Options(WindowButtonOptions().Tooltip("Toggles the Input Viewer.").EmbedWindow(false));
+
+    AddWidget(path, "Input Viewer Settings", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Popout Input Viewer Settings", WIDGET_WINDOW_BUTTON)
+        .CVar(CVAR_WINDOW("InputViewerSettings"))
+        .RaceDisable(false)
+        .WindowName("Input Viewer Settings")
+        .HideInSearch(true)
+        .Options(WindowButtonOptions().Tooltip("Enables the separate Input Viewer Settings Window."));
+
+    // Notifications
+    path.sidebarName = "Notifications";
+    path.column = SECTION_COLUMN_1;
+    AddSidebarEntry("Settings", path.sidebarName, 3);
+    AddWidget(path, "Position", WIDGET_CVAR_COMBOBOX)
+        .CVar(CVAR_SETTING("Notifications.Position"))
+        .RaceDisable(false)
+        .Options(ComboboxOptions()
+                     .Tooltip("Which corner of the screen notifications appear in.")
+                     .ComboMap(notificationPosition)
+                     .DefaultIndex(3));
+    AddWidget(path, "Duration (seconds):", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar(CVAR_SETTING("Notifications.Duration"))
+        .RaceDisable(false)
+        .Options(FloatSliderOptions()
+                     .Tooltip("How long notifications are displayed for.")
+                     .Format("%.1f")
+                     .Step(0.1f)
+                     .Min(3.0f)
+                     .Max(30.0f)
+                     .DefaultValue(10.0f));
+    AddWidget(path, "Background Opacity", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar(CVAR_SETTING("Notifications.BgOpacity"))
+        .RaceDisable(false)
+        .Options(FloatSliderOptions()
+                     .Tooltip("How opaque the background of notifications is.")
+                     .DefaultValue(0.5f)
+                     .IsPercentage());
+    AddWidget(path, "Size:", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar(CVAR_SETTING("Notifications.Size"))
+        .RaceDisable(false)
+        .Options(FloatSliderOptions()
+                     .Tooltip("How large notifications are.")
+                     .Format("%.1f")
+                     .Step(0.1f)
+                     .Min(1.0f)
+                     .Max(5.0f)
+                     .DefaultValue(1.8f));
+    AddWidget(path, "Test Notification", WIDGET_BUTTON)
+        .RaceDisable(false)
+        .Callback([](WidgetInfo& info) {
+            Notification::Emit({
+                .prefix = "Welcome",
+                .message = "to",
+                .suffix = PORT_NAME ".",
+            });
+        })
+        .Options(ButtonOptions().Tooltip("Displays a test notification."));
+}
+
+} // namespace PortGui

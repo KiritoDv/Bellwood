@@ -1,5 +1,5 @@
 #include "libultra/gu.h"
-#include "MSL_C/w_math.h"
+#include <math.h>
 
 void guNormalize(float* x, float* y, float* z) {
     float norm = sqrtf(*x * *x + *y * *y + *z * *z);

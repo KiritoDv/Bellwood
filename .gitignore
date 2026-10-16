@@ -38,3 +38,25 @@ compile_commands.json
 
 # For saving work files into (like IDB)
 temp/
+
+# PC port build output
+/acport.o2r
+/ac.o2r
+/properties.h
+/src/port/build.c
+/_packages/
+/cmake-build-*/
+!/CMakeLists.txt
+
+# Game images
+*.iso
+*.gcm
+*.ciso
+*.gcz
+*.rvz
+/acport.cfg.json
+/imgui.ini
+/logs/
+/save/
+/torch.hash.yml
+.DS_Store

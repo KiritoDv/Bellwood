@@ -1,13 +1,12 @@
 #include "graph.h"
 
 #include "audio.h"
-#include "dvderr.h"
 #include "famicom_emu.h"
 #include "first_game.h"
 #include "game.h"
 #include "irqmgr.h"
 #include "libc64/malloc.h"
-#include "libforest/emu64/emu64_wrapper.h"
+#include "ac_port.h"
 #include "jsyswrap.h"
 #include "libu64/debug.h"
 #include "libultra/libultra.h"
@@ -20,6 +19,8 @@
 #include "m_trademark.h"
 #include "m_vibctl.h"
 #include "player_select.h"
+#include "padmgr.h"
+#include "gc_compat.h"
 #include "save_menu.h"
 #include "second_game.h"
 #include "sys_dynamic.h"
@@ -34,7 +35,7 @@ u8 SoftResetEnable;
 #endif
 static int frame; // TODO: this is actually declared in graph_task_set00
 
-#define CONSTRUCT_THA_GA(tha_ga, name, name2) (THA_GA_ct((tha_ga), sys_dynamic.##name, ##name2##_SIZE * sizeof(Gfx)))
+#define CONSTRUCT_THA_GA(tha_ga, name, name2) (THA_GA_ct((tha_ga), sys_dynamic.name, name2##_SIZE * sizeof(Gfx)))
 
 static void graph_setup_double_buffer(GRAPH* this) {
     bzero(&sys_dynamic, sizeof(dynamic_t));
@@ -106,9 +107,9 @@ extern void graph_dt(GRAPH* this) {
     zurumode_cleanup();
 }
 
-static void graph_task_set00(GRAPH* this) {
-    ucode_info ucode[2];
+Gfx* gAC_PendingDL;
 
+static void graph_task_set00(GRAPH* this) {
     GRAPH_SET_DOING_POINT(this, WAIT_TASK);
     GRAPH_SET_DOING_POINT(this, WAIT_TASK_FINISHED);
     if (ResetStatus < IRQ_RESET_DELAY) {
@@ -118,17 +119,7 @@ static void graph_task_set00(GRAPH* this) {
         }
 
         if (ResetStatus < IRQ_RESET_DELAY) {
-            ucode[0].type = UCODE_TYPE_POLY_TEXT;
-            ucode[1].type = UCODE_TYPE_SPRITE_TEXT;
-            ucode[0].ucode_p = ucode_GetPolyTextStart();
-            ucode[1].ucode_p = ucode_GetSpriteTextStart();
-            JW_BeginFrame();
-            emu64_init();
-            emu64_set_ucode_info(2, ucode);
-            emu64_set_first_ucode(ucode[0].ucode_p);
-            emu64_taskstart(this->Gfx_list05); /* work data */
-            emu64_cleanup();
-            JW_EndFrame();
+            gAC_PendingDL = this->Gfx_list05; /* work data */
             frame++;
         }
     }
@@ -301,35 +292,79 @@ static void graph_main(GRAPH* this, GAME* game) {
 }
 #endif
 
-extern void graph_proc(void* arg) {
+typedef enum {
+    RUN_FRAME_BOOT,
+    RUN_FRAME_NEW_GAME,
+    RUN_FRAME_RUN,
+    RUN_FRAME_DONE,
+} RunFrameState;
+
+static struct {
+    RunFrameState state;
+    DLFTBL_GAME* dlftbl;
+    GAME* game;
+} l_run_frame;
+
+extern int AC_RunFrame(void) {
     GRAPH* __graph = &graph_class;
-    DLFTBL_GAME* dlftbl = &game_dlftbls[0];
-    graph_ct(&graph_class);
 
-    while (dlftbl != NULL) {
-        size_t size = dlftbl->alloc_size;
-        GAME* game = (GAME*)malloc(size);
-        game_class_p = game;
-        bzero(game, size);
-        GRAPH_SET_DOING_POINT(__graph, GAME_CT);
-        game_ct(game, dlftbl->init, __graph);
-        emu64_refresh();
-        GRAPH_SET_DOING_POINT(__graph, GAME_CT_FINISHED);
-
-        while (game_is_doing(game)) {
-            if (!dvderr_draw()) {
-                graph_main(__graph, game);
-            }
-        }
-
-        dlftbl = game_get_next_game_dlftbl(game);
-        GRAPH_SET_DOING_POINT(__graph, GAME_18);
-        GRAPH_SET_DOING_POINT(__graph, GAME_DT);
-        game_dt(game);
-        GRAPH_SET_DOING_POINT(__graph, GAME_DT_FINISHED);
-        free(game);
-        game_class_p = NULL;
+    if (l_run_frame.state == RUN_FRAME_BOOT) {
+        graph_ct(__graph);
+        l_run_frame.dlftbl = &game_dlftbls[0];
+        l_run_frame.state = RUN_FRAME_NEW_GAME;
     }
 
-    graph_dt(__graph);
+    while (l_run_frame.state != RUN_FRAME_DONE) {
+        if (l_run_frame.state == RUN_FRAME_NEW_GAME) {
+            size_t size;
+            GAME* game;
+
+            if (l_run_frame.dlftbl == NULL) {
+                graph_dt(__graph);
+                l_run_frame.state = RUN_FRAME_DONE;
+                break;
+            }
+
+            size = l_run_frame.dlftbl->alloc_size;
+            game = (GAME*)ac_malloc(size);
+            if (game == NULL) {
+                _dbg_hungup(__FILE__, __LINE__);
+            }
+            game_class_p = game;
+            bzero(game, size);
+            GRAPH_SET_DOING_POINT(__graph, GAME_CT);
+            game_ct(game, l_run_frame.dlftbl->init, __graph);
+            gfx_texture_cache_clear();
+            GRAPH_SET_DOING_POINT(__graph, GAME_CT_FINISHED);
+            l_run_frame.game = game;
+            l_run_frame.state = RUN_FRAME_RUN;
+            OSReport("AC_RunFrame: game %d constructed\n", (int)(l_run_frame.dlftbl - game_dlftbls));
+            FrameInterpolation_ShouldInterpolateFrame(FALSE);
+            FrameInterpolation_DontInterpolateCamera();
+        }
+
+        if (game_is_doing(l_run_frame.game)) {
+            padmgr_PortUpdate();
+            gAC_PendingDL = NULL;
+            FrameInterpolation_StartRecord();
+            graph_main(__graph, l_run_frame.game);
+            FrameInterpolation_StopRecord();
+            if (gAC_PendingDL != NULL) {
+                AC_SubmitFrame(gAC_PendingDL);
+            }
+            return TRUE;
+        }
+
+        l_run_frame.dlftbl = game_get_next_game_dlftbl(l_run_frame.game);
+        GRAPH_SET_DOING_POINT(__graph, GAME_18);
+        GRAPH_SET_DOING_POINT(__graph, GAME_DT);
+        game_dt(l_run_frame.game);
+        GRAPH_SET_DOING_POINT(__graph, GAME_DT_FINISHED);
+        ac_free(l_run_frame.game);
+        l_run_frame.game = NULL;
+        game_class_p = NULL;
+        l_run_frame.state = RUN_FRAME_NEW_GAME;
+    }
+
+    return FALSE;
 }

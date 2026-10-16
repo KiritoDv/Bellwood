@@ -1,0 +1,20 @@
+2ae8f56e7791d37e165bd5900921f2269f9515bf:
+  name: Animal Crossing [GAFE01 rev 0]
+  path: assets/ymls/gafe01
+  gamecube:
+    dol: { file: sys/main.dol, segment: 0x80 }
+    rel:
+      - file: files/foresta.rel.szs
+        sha1: c59d278ad8542bb05d6cbb632f60a0db05bef203
+        sections: { .data: 0x81000000, .rodata: 0x82000000, .bss: 0x82100000, .ctors: 0x82380000, .dtors: 0x82380100, .text: 0x82400000 }
+    files:
+      - { file: files/audiorom.img,  segment: 0x83 }
+      - { file: files/forest_1st.arc, type: rarc, segment: 0x84 }
+      - { file: files/forest_2nd.arc, type: rarc, segment: 0x85 }
+      - { file: files/famicom.arc,    type: rarc, segment: 0x86 }
+  config:
+    gbi: F3DEX2_AC
+    gbi_floats: false
+    strict_declarations: true
+    global_addr_space: true
+    output: { binary: ac.o2r }

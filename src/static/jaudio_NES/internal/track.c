@@ -6,7 +6,7 @@
 #include "jaudio_NES/memory.h"
 #include "jaudio_NES/sub_sys.h"
 #include "jaudio_NES/system.h"
-#include "dolphin/os.h"
+#include "gc_compat.h"
 
 #define COMMON_SCRIPT_END -1
 
@@ -1288,7 +1288,7 @@ static void Nas_SubSeq(sub* subtrack) {
                             case SUBTRACK_CMD_INIT_INSTRUMENTS: // Load subtrack bank and set instruments
                                 cmdArgU8 = cmdArgs[0];
                                 if (grp->bank_id != 0xFF) {
-                                    cmdArgU16 = ((u16*)AG.map_header)[grp->seq_id];
+                                    cmdArgU16 = Na_ReadBE16(&AG.map_header[grp->seq_id * 2]);
                                     lo_bits = ((u8*)AG.map_header)[cmdArgU16]; // load number of banks
                                     // inverse lookup, 1 = last bank, 2 = second to last, ...
                                     cmdArgU8 = ((u8*)AG.map_header)[cmdArgU16 + lo_bits - cmdArgU8];
@@ -1396,7 +1396,7 @@ static void Nas_SubSeq(sub* subtrack) {
                             case SUBTRACK_CMD_SET_INSTRUMENT_BANK: // set bank
                                 cmdArgU8 = cmdArgs[0];
                                 if (grp->bank_id != 0xFF) {
-                                    cmdArgU16 = ((u16*)AG.map_header)[grp->seq_id]; // get offset for bank info for seq
+                                    cmdArgU16 = Na_ReadBE16(&AG.map_header[grp->seq_id * 2]); // get offset for bank info for seq
                                     lo_bits = ((u8*)AG.map_header)[cmdArgU16]; // read number of banks
                                     // inverse lookup, 1 = last bank, 2 = second to last, ...
                                     cmdArgU8 = ((u8*)AG.map_header)[cmdArgU16 + lo_bits - cmdArgU8];
@@ -1554,13 +1554,13 @@ static void Nas_SubSeq(sub* subtrack) {
                                 break;
                             case SUBTRACK_CMD_LOAD_DYNVAL_FROM_GROUP_SEQ: // load dynamic idx
                                 cmdArgU16 = (u16)cmdArgs[0];
-                                subtrack->dynamic_value = *(u16*)&grp->seq_data[cmdArgU16 + m->value * 2];
+                                subtrack->dynamic_value = Na_ReadBE16(&grp->seq_data[cmdArgU16 + m->value * 2]);
                                 break;
                             case SUBTRACK_CMD_SET_DYNTBL_FROM_GROUP_SEQ: // set dynamic table
                                 subtrack->dyn_tbl = (unsigned char(*)[][2]) & grp->seq_data[subtrack->dynamic_value];
                                 break;
                             case SUBTRACK_CMD_LOAD_DYNVAL_FROM_DYNTBL: // read from dynamic table
-                                subtrack->dynamic_value = ((u16*)subtrack->dyn_tbl)[m->value];
+                                subtrack->dynamic_value = Na_ReadBE16((*subtrack->dyn_tbl)[m->value]);
                                 break;
                             case SUBTRACK_CMD_MACRO_LOAD_FROM_DYNTBL: // read to macro register from dynamic table
                                 m->value = (*subtrack->dyn_tbl)[0][m->value];
@@ -1642,7 +1642,7 @@ static void Nas_SubSeq(sub* subtrack) {
                                 seq_data = &grp->seq_data[cmdArgU16 + subtrack->subtrack_idx];
                                 *seq_data = (u8)m->value + cmdArgU8;
                                 break;
-                            case SUBTRACK_CMD_MACRO_BIT_MOD: // manipulate macro register value
+                            case SUBTRACK_CMD_MACRO_BIT_MOD:; // manipulate macro register value
                                 u32 shift = (cmdArgs[0] & 0xF);
                                 lo_bits = (m->value & 0x80);
                                 new_var2 = (cmdArgs[0] & 0x80);
@@ -2026,7 +2026,7 @@ static void Nas_GroupSeq(group* grp) {
                                 temp = Nas_ReadWordData(m);
                                 if (m->value != -1) {
                                     new_var = (u16*)(grp->seq_data + (u32)(temp + m->value * 2));
-                                    temp = *new_var;
+                                    temp = Na_ReadBE16((u8*)new_var);
                                     for (i = 0; i < ARRAY_COUNT(grp->subtracks); i++) {
                                         grp->subtracks[i]->muted = temp & 1;
                                         temp = temp >> 1;

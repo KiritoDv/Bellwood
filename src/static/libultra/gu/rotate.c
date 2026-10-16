@@ -1,5 +1,6 @@
 #include "libultra/gu.h"
-#include "MSL_C/math.h"
+#include "port/interpolation/FrameInterpolation.h"
+#include <math.h>
 
 void guRotateF(float mf[4][4], float a, float x, float y, float z)
 {
@@ -47,5 +48,6 @@ void guRotateF(float mf[4][4], float a, float x, float y, float z)
 void guRotate(Mtx *m, float a, float x, float y, float z) {
     float mf[4][4];
     guRotateF(mf, a, x, y, z);
+    FrameInterpolation_RecordMatrixF2L(mf, m);
     guMtxF2L(mf, m);
 }

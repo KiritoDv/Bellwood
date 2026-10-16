@@ -1,4 +1,5 @@
 #include "libultra/gu.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 void guOrthoF(float mf[4][4], float l, float r, float b, float t, float n, float f, float scale)
 {
@@ -23,5 +24,6 @@ void guOrtho(Mtx *m, float l, float r, float b, float t, float n, float f, float
 {
 	float mf[4][4];
 	guOrthoF(mf, l, r, b, t, n, f, scale);
+	FrameInterpolation_RecordMatrixF2L(mf, m);
 	guMtxF2L(mf, m);
 }

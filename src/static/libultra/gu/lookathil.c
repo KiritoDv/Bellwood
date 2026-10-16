@@ -1,5 +1,5 @@
 #include "libultra/gu.h"
-#include "MSL_C/w_math.h"
+#include <math.h>
 
 void guLookAtHiliteF(float mf[4][4], LookAt *l, Hilite *h, 
 		float xEye, float yEye, float zEye,

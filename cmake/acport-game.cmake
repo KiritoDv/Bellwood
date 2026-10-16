@@ -58,17 +58,3 @@ endif()
 
 target_sources(${PROJECT_NAME} PRIVATE $<TARGET_OBJECTS:acgame>)
 add_dependencies(${PROJECT_NAME} acgame)
-
-add_executable(acport_f11_test EXCLUDE_FROM_ALL src/port/test/f11_test.c src/lb_rtc.c)
-target_include_directories(acport_f11_test BEFORE PRIVATE
-    ${CMAKE_SOURCE_DIR}/include
-    ${CMAKE_SOURCE_DIR}/src
-    ${CMAKE_SOURCE_DIR}/libultraship/include
-    ${CMAKE_SOURCE_DIR}/libultraship/include/libultraship
-    ${CMAKE_BINARY_DIR}
-)
-target_compile_definitions(acport_f11_test PRIVATE F3DEX_GBI_2 TARGET_PC VERSION=VER_GAFE01_00 DEBUG=0 NDEBUG)
-set_target_properties(acport_f11_test PROPERTIES C_STANDARD 11 C_EXTENSIONS ON)
-if (NOT MSVC)
-    target_compile_options(acport_f11_test PRIVATE -funsigned-char -fwrapv -fno-strict-aliasing -w)
-endif()

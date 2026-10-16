@@ -3,7 +3,7 @@
 #include "libc64/malloc.h"
 
 extern void* gamealloc_malloc(GameAlloc* gamealloc, size_t size) {
-  GameAllocList* alloc = (GameAllocList*)malloc(size + sizeof(GameAllocList));
+  GameAllocList* alloc = (GameAllocList*)ac_malloc(size + sizeof(GameAllocList));
 
   if (alloc != NULL) {
     alloc->alloc_size = size;
@@ -28,7 +28,7 @@ extern void gamealloc_free(GameAlloc* gamealloc, void* ptr) {
     alloc->next->prev = alloc->prev;
     gamealloc->tail = gamealloc->head.prev;
 
-    free(alloc);
+    ac_free(alloc);
   }
 }
 
@@ -40,7 +40,7 @@ extern void gamealloc_cleanup(GameAlloc* gamealloc) {
   while (now_p != end_p) {
     GameAllocList* temp_p = now_p;
     now_p = now_p->next;
-    free(temp_p);
+    ac_free(temp_p);
   }
 
   gamealloc->tail = end_p;

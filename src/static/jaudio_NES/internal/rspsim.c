@@ -1,6 +1,6 @@
 #include "jaudio_NES/rspsim.h"
 
-#include <dolphin/os.h>
+#include "gc_compat.h"
 #include "jaudio_NES/sample.h"
 #include "jaudio_NES/rate.h"
 #include "jaudio_NES/audiocommon.h"
@@ -42,8 +42,8 @@ static s16 AD4[16] = {
 static void Jac_Resample16(s16* input_L_channel, s16* input_R_channel, s16* output_interleaved, s32 input_sample_count,
                            s32 output_sample_count, s16* history_buffer, u16* position_p, s32 is_first_block);
 
-extern void RspStart2(u32* task, s32 tasks, s32 mode) {
-    static u32* taskp;
+extern void RspStart2(NaAcmd* task, s32 tasks, s32 mode) {
+    static NaAcmd* taskp;
     static s32 alltasks;
     static s32 consumes;
 
@@ -55,18 +55,19 @@ extern void RspStart2(u32* task, s32 tasks, s32 mode) {
     if (alltasks > 0) {
         consumes = RspStart(taskp, alltasks);
         alltasks -= consumes;
-        taskp += consumes * 2;
+        taskp += consumes;
     }
 }
 
 #define DMEM_OFS(ofs) ((s16*)&((u8*)DMEM)[(ofs)])
 
 #pragma scheduling 7400
-extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
+extern s32 RspStart(NaAcmd* pTaskCmds, s32 allTasks) {
     static BOOL init = TRUE;
     s32 i; // r30
     u32 cmdLo; // r29
     u32 cmdHi;
+    void* cmdPtr;
     u16 DMEMCount; // r28
     u16 DMEMIn; // r27
     u16 DMEMOut; // r26
@@ -91,15 +92,16 @@ extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
     }
 
     for (i = 0; i < allTasks; i++) {
-        cmdLo = pTaskCmds[1];
-        cmdHi = pTaskCmds[0];
-        pTaskCmds += 2;
+        cmdHi = pTaskCmds->words.w0;
+        cmdLo = (u32)pTaskCmds->words.w1;
+        cmdPtr = (void*)pTaskCmds->words.w1;
+        pTaskCmds++;
 
         switch (cmdHi >> 24) {
             case A_CMD_LOADCACHE: // A_LOADCACHE (special to GC?)
-                sp128 = (u8*)cmdLo;
+                sp128 = (u8*)cmdPtr;
                 sp12C = cmdHi & 0xFFFF;
-                DCTouchRange((void*)cmdLo, ((cmdHi >> 16) & 0xFF) * 16);
+                DCTouchRange(cmdPtr, ((cmdHi >> 16) & 0xFF) * 16);
                 break;
 
             case A_CMD_SPNOOP: // A_SPNOOP
@@ -115,7 +117,7 @@ extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
                     Jac_bcopy(loop_point, &DMEM[DMEMOut], 16 * sizeof(s16));
                 } else {
                     // copy from address in command
-                    Jac_bcopy((void*)cmdLo, &DMEM[DMEMOut], 16 * sizeof(s16));
+                    Jac_bcopy(cmdPtr, &DMEM[DMEMOut], 16 * sizeof(s16));
                 }
 
                 s32 j;
@@ -193,11 +195,11 @@ extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
                     }
                 }
                 src = var_r17 - 16;
-                Jac_bcopy(src, (void*)cmdLo, 16 * sizeof(s16));
+                Jac_bcopy(src, cmdPtr, 16 * sizeof(s16));
                 break;
             }
 
-            case A_CMD_CLEARBUFF: // A_CLEARBUFF
+            case A_CMD_CLEARBUFF:; // A_CLEARBUFF
                 u16 addr = cmdHi & 0xFFFF;
                 u16 size = cmdLo & 0xFFFF;
                 Jac_bzero(&DMEM[addr], size);
@@ -222,7 +224,7 @@ extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
                     Jac_bzero(spC, 8 * sizeof(s16));
                     var_r7 = 0;
                 } else {
-                    Jac_bcopy((void*)cmdLo, spC, 8 * sizeof(s16));
+                    Jac_bcopy(cmdPtr, spC, 8 * sizeof(s16));
                     var_r7 = spC[4] & 0x7FFF;
                 }
                 var_r4 = (s16*)&DMEM[DMEMIn];
@@ -272,7 +274,14 @@ extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
                     *var_r6++ = var_r15;
                 }
                 spC[var_r8] = var_r7 & 0x7FFF;
-                Jac_bcopy(&spC[var_r8 - 4], (void*)cmdLo, 8 * sizeof(s16));
+                {
+                    s16 state[8] = { 0 };
+
+                    for (j = 0; j < 5; j++) {
+                        state[j] = spC[var_r8 - 4 + j];
+                    }
+                    Jac_bcopy(state, cmdPtr, sizeof(state));
+                }
                 break;
             }
 
@@ -312,7 +321,7 @@ extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
             }
 
             case A_CMD_LOADADPCM: // A_LOADADPCM
-                Jac_bcopy((void*)cmdLo, ADPCM_BOOKBUF, cmdHi & 0xFFFF);
+                Jac_bcopy(cmdPtr, ADPCM_BOOKBUF, cmdHi & 0xFFFF);
                 ADPCM_BOOKBUF_SIZE = cmdHi & 0xFFFF;
                 break;
 
@@ -369,7 +378,7 @@ extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
             //     break;
 
             case A_CMD_SETLOOP: // A_SETLOOP
-                loop_point = (void*)cmdLo;
+                loop_point = cmdPtr;
                 break;
 
             case A_CMD_UNK16: { // ???
@@ -406,13 +415,13 @@ extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
 
             case A_CMD_LOADBUFFER2: { // A_LOADBUFF2
                 u16 size = ((cmdHi >> 16) & 0xFF) * 16;
-                Jac_bcopy((void*)cmdLo, (s16*)&DMEM[cmdHi & 0xFFFF], size);
+                Jac_bcopy(cmdPtr, (s16*)&DMEM[cmdHi & 0xFFFF], size);
                 break;
             }
 
             case A_CMD_SAVEBUFFER2: { // A_SAVEBUFF2
                 u16 size = ((cmdHi >> 16) & 0xFF) * 16;
-                Jac_bcopy(DMEM_OFS(cmdHi & 0xFFFF), (void*)cmdLo, size);
+                Jac_bcopy(DMEM_OFS(cmdHi & 0xFFFF), cmdPtr, size);
                 break;
             }
 
@@ -592,7 +601,7 @@ extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
                     Jac_bcopy(loop_point, DMEM_OFS(DMEMOut), 16 * sizeof(s16));
                 } else {
                     // copy from address in command
-                    Jac_bcopy((void*)cmdLo, DMEM_OFS(DMEMOut), 16 * sizeof(s16));
+                    Jac_bcopy(cmdPtr, DMEM_OFS(DMEMOut), 16 * sizeof(s16));
                 }
 
                 u16 temp1 = DMEMOut + 32;
@@ -607,7 +616,7 @@ extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
 
                 u16 temp2 = DMEMOut;
                 temp2 += 32;
-                Jac_bcopy(&DMEM[temp2 - 32], (void*)cmdLo, 32);
+                Jac_bcopy(&DMEM[temp2 - 32], cmdPtr, 32);
                 break;
             }
 
@@ -626,7 +635,7 @@ extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
 
                 flags = cmdHi >> 16;
                 if (flags & 2) {
-                    sp120 = (s16*)cmdLo;
+                    sp120 = (s16*)cmdPtr;
                     sp124 = (cmdHi & 0xFFFF) >> 1;
                 } else {
                     var_r14_3 = (s16*)&DMEM[cmdHi & 0xFFFF];
@@ -635,7 +644,7 @@ extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
                             sp3C[j] = 0;
                         }
                     } else {
-                        Jac_bcopy((void*)cmdLo, sp3C, 16 * sizeof(s16));
+                        Jac_bcopy(cmdPtr, sp3C, 16 * sizeof(s16));
                     }
                     for (j = 0; j < 8; j++) {
                         sp1C[j] = sp120[j] >> 3;
@@ -661,7 +670,7 @@ extern s32 RspStart(u32* pTaskCmds, s32 allTasks) {
                             var_r8_3 = 0;
                         }
                     }
-                    Jac_bcopy(sp3C, (void*)cmdLo, 16 * sizeof(s16));
+                    Jac_bcopy(sp3C, cmdPtr, 16 * sizeof(s16));
                 }
                 break;
             }

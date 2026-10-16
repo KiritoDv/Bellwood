@@ -6,7 +6,7 @@
 #include "jaudio_NES/track.h"
 #include "jaudio_NES/os.h"
 #include "jaudio_NES/system.h"
-#include "dolphin/os.h"
+#include "gc_compat.h"
 
 void DirtyWave(s32);
 void* __Nas_SzCacheCheck_Inner(s32 a, s32 b, s32 c);
@@ -266,8 +266,8 @@ void Nas_HeapInit(ALHeap* heap, u8* p2, s32 p3) {
         heap->current = NULL;
         heap->last = NULL;
     } else {
-        length = p3 - ((u32)p2 & 0x1F);
-        heap->base = (u8*)ALIGN_NEXT((u32)p2, 32);
+        length = p3 - ((uintptr_t)p2 & 0x1F);
+        heap->base = (u8*)ALIGN_NEXT((uintptr_t)p2, 32);
         heap->current = heap->base;
         heap->length = length;
         heap->last = NULL;
@@ -281,7 +281,7 @@ void Nas_HeapInit(ALHeap* heap, u8* p2, s32 p3) {
  */
 void Nas_SzStayClear(SZStay* p1) {
     p1->heap.current = p1->heap.base;
-    p1->heap.count = NULL;
+    p1->heap.count = 0;
     p1->num_entries = 0;
 }
 
@@ -640,7 +640,7 @@ void* Nas_SzHeapAlloc(s32 tableType, s32 size, s32 param_3, s32 id) {
                 alloc = auto_heap->entries[0].addr;
             } break;
             case TRUE: {
-                auto_heap->entries[1].addr = (u8*)OSRoundDown32B(heap->base + heap->length - size);
+                auto_heap->entries[1].addr = (u8*)((uintptr_t)(heap->base + heap->length - size) & ~(uintptr_t)0x1F);
                 auto_heap->entries[1].id = id;
                 auto_heap->entries[1].size = size;
                 if (auto_heap->entries[0].id != HEAP_INVALID_INDEX && heap->current > auto_heap->entries[1].addr) {
@@ -1050,7 +1050,7 @@ void __Nas_MemoryReconfig() {
                                                                        sizeof(commonch));
 
     for (i = 0; i < ARRAY_COUNT(AG.abi_cmd_bufs); i++) {
-        AG.abi_cmd_bufs[i] = (Acmd*)Nas_NcHeapAlloc_CL(&AG.misc_heap, AG.max_audio_cmds * sizeof(Acmd));
+        AG.abi_cmd_bufs[i] = (NaAcmd*)Nas_NcHeapAlloc_CL(&AG.misc_heap, AG.max_audio_cmds * sizeof(NaAcmd));
     }
     AG.adsr_decay_table = (f32*)Nas_HeapAlloc(&AG.misc_heap, sizeof(f32) * 0x100);
     MakeReleaseTable();
@@ -1361,7 +1361,7 @@ void __RestoreAddr(Wavelookuptable* a, smzwavetable* b) {
         u8* o = a_sample + a->_08;
         if (b_sample >= a_sample && b_sample < o) {
             // fakematch?
-            b->sample = (u8*)((u32)a->_04 + (b->sample - (u32)a->sample));
+            b->sample = a->_04 + (b->sample - a->sample);
             if (EXGTYPE == 0) {
                 b->medium = a->medium;
             } else {
@@ -1502,7 +1502,6 @@ void Nas_SetDelayLineParam(s32 a, s32 b, s32 c, s32 d) {
     delay* delay = &AG.synth_delay[a];
     switch (b) {
         case 0: {
-            Nas_SetDelayLine(a, (fxconfig*)c, 0);
         } break;
         case 1: {
             if (c < 4) {

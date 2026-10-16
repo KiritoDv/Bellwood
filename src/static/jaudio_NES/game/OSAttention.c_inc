@@ -1,8 +1,9 @@
 #include "jaudio_NES/OSAttention.h"
 
-#include "MSL_C/printf.h"
+#include <stdio.h>
+#include <stdarg.h>
 
-extern "C" int OSAttention(const char* msg, ...) {
+int OSAttention(const char* msg, ...) {
     va_list marker;
 
     va_start(marker, msg);

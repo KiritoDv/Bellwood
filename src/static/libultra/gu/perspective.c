@@ -1,5 +1,6 @@
 #include "libultra/gu.h"
-#include "MSL_C/math.h"
+#include "port/interpolation/FrameInterpolation.h"
+#include <math.h>
 
 void guPerspectiveF(float mf[4][4], u16 *perspNorm, float fovy, float aspect, float near, float far, float scale)
 {
@@ -40,5 +41,6 @@ void guPerspective(Mtx *m, u16 *perspNorm, float fovy, float aspect, float near,
 
 	guPerspectiveF(mf, perspNorm, fovy, aspect, near, far, scale);
 
+	FrameInterpolation_RecordMatrixF2L(mf, m);
 	guMtxF2L(mf, m);
 }

@@ -1,0 +1,13 @@
+set(AC_IMPORTER_SOURCES
+    ${CMAKE_CURRENT_LIST_DIR}/AcImporters.h
+    ${CMAKE_CURRENT_LIST_DIR}/AcImporters.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/AcResourceType.h
+    ${CMAKE_CURRENT_LIST_DIR}/EvwAnimeFactory.h
+    ${CMAKE_CURRENT_LIST_DIR}/EvwAnimeFactory.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/NpcAnimationFactory.h
+    ${CMAKE_CURRENT_LIST_DIR}/NpcAnimationFactory.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/types/EvwAnime.h
+    ${CMAKE_CURRENT_LIST_DIR}/types/EvwAnime.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/types/NpcAnimation.h
+    ${CMAKE_CURRENT_LIST_DIR}/types/NpcAnimation.cpp
+)

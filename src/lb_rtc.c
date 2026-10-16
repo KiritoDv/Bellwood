@@ -45,7 +45,7 @@
 #include "m_common_data.h"
 #include "m_lib.h"
 #include "types.h"
-#include "dolphin/os.h"
+#include "ac_port.h"
 
 static BOOL l_lbRTC_isInitial = TRUE;
 static lbRTC_time_c l_lbRTC_Time;
@@ -59,8 +59,8 @@ static BOOL l_lbRTC_IsSampled;
  *
  * @return OSTime representing the current hardware time in ticks.
  */
-static OSTime lbRTC_GetHardTime() {
-  return OSGetTime();
+static ACTime lbRTC_GetHardTime() {
+  return AC_GetTime();
 }
 
 /**
@@ -71,7 +71,7 @@ static OSTime lbRTC_GetHardTime() {
  *
  * @return OSTime representing the current hardware time in ticks.
  */
-extern OSTime lbRTC_HardTime() {
+extern ACTime lbRTC_HardTime() {
   return lbRTC_GetHardTime();
 }
 
@@ -84,7 +84,7 @@ extern OSTime lbRTC_HardTime() {
  * @param calendar_time Pointer to the source OSCalendarTime structure.
  * @param datetime Pointer to the destination lbRTC_time_c structure.
  */
-static void lbRTC_CalenderTimeToRTCTime(const OSCalendarTime* calendar_time, lbRTC_time_c* datetime) {
+static void lbRTC_CalenderTimeToRTCTime(const ACCalendarTime* calendar_time, lbRTC_time_c* datetime) {
   datetime->sec = calendar_time->sec;
   datetime->min = calendar_time->min;
   datetime->hour = calendar_time->hour;
@@ -107,8 +107,8 @@ static void lbRTC_CalenderTimeToRTCTime(const OSCalendarTime* calendar_time, lbR
  * @param time Pointer to the lbRTC_time_c structure to be converted.
  * @return OSTime representing the given lbRTC_time_c in ticks.
  */
-static OSTime lbRTC_RTCTimeToTicks(const lbRTC_time_c* time)  {
-  OSCalendarTime ctime;
+static ACTime lbRTC_RTCTimeToTicks(const lbRTC_time_c* time)  {
+  ACCalendarTime ctime;
   int i;
   int month = time->month;
 
@@ -133,7 +133,7 @@ static OSTime lbRTC_RTCTimeToTicks(const lbRTC_time_c* time)  {
   ctime.usec = 0;
 
   // Convert the OSCalendarTime structure to ticks and return it
-  return OSCalendarTimeToTicks(&ctime);
+  return AC_CalendarTimeToTicks(&ctime);
 }
 
 /**
@@ -146,11 +146,11 @@ static OSTime lbRTC_RTCTimeToTicks(const lbRTC_time_c* time)  {
  * @param time Pointer to the lbRTC_time_c structure that will hold the game time.
  */
 static void lbRTC_GetGameTime(lbRTC_time_c* time) {
-  OSCalendarTime ctime;
-  OSTime t = lbRTC_GetHardTime();
+  ACCalendarTime ctime;
+  ACTime t = lbRTC_GetHardTime();
   t += Save_Get(time_delta);
 
-  OSTicksToCalendarTime(t, &ctime);
+  AC_TicksToCalendarTime(t, &ctime);
   lbRTC_CalenderTimeToRTCTime(&ctime, time);
 }
 
@@ -304,6 +304,10 @@ typedef union {
   lbRTC_ymd_c ymd;
 } ymd_u;
 
+static int lbRTC_ymd_key(const lbRTC_ymd_c* ymd) {
+  return ((int)ymd->year << 16) | ((int)ymd->month << 8) | (int)ymd->day;
+}
+
 /**
  * @brief Compare two dates to determine if they are equal, lesser, or greater.
  *
@@ -334,7 +338,7 @@ extern int lbRTC_IsEqualDate(
   ymd1.ymd.month = m1;
   ymd1.ymd.day = d1;
 
-  res = ymd0.raw - ymd1.raw;
+  res = lbRTC_ymd_key(&ymd0.ymd) - lbRTC_ymd_key(&ymd1.ymd);
   if (res == 0) {
     return lbRTC_EQUAL;
   }
@@ -508,10 +512,10 @@ extern int lbRTC_IsOverRTC(const lbRTC_time_c* time) {
  * @return Number of minutes between the two given times, negative if time0 is earlier than time1.
  */
 static int lbRTC_IntervalTime_sub(const lbRTC_time_c* time0, const lbRTC_time_c* time1) {
-  OSTime osTime1 = lbRTC_RTCTimeToTicks(time1);
-  OSTime osTime0 = lbRTC_RTCTimeToTicks(time0);
+  ACTime osTime1 = lbRTC_RTCTimeToTicks(time1);
+  ACTime osTime0 = lbRTC_RTCTimeToTicks(time0);
   
-  return OSTicksToSeconds(osTime0 - osTime1) / lbRTC_SECONDS_PER_MINUTE;
+  return ACTicksToSeconds(osTime0 - osTime1) / lbRTC_SECONDS_PER_MINUTE;
 }
 
 /**

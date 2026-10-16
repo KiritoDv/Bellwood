@@ -38,7 +38,7 @@ static void gfxprint_setup(gfxprint_t* this) {
   }
 
   /* Initialize font color */
-  gDPSetColor(this->glistp++, G_SETPRIMCOLOR, this->color.rgba8888);
+  gDPSetColor(this->glistp++, G_SETPRIMCOLOR, rgba8888_get(&this->color));
 }
 
 extern void gfxprint_color(gfxprint_t* this, u32 r, u32 g, u32 b, u32 a) {
@@ -48,7 +48,7 @@ extern void gfxprint_color(gfxprint_t* this, u32 r, u32 g, u32 b, u32 a) {
   this->color.c.a = a;
 
   gDPPipeSync(this->glistp++);
-  gDPSetColor(this->glistp++, G_SETPRIMCOLOR, this->color.rgba8888);
+  gDPSetColor(this->glistp++, G_SETPRIMCOLOR, rgba8888_get(&this->color));
 }
 
 extern void gfxprint_locate(gfxprint_t* this, int x, int y) {
@@ -92,7 +92,7 @@ static void gfxprint_putc1(gfxprint_t* this, char c) {
                           this->position_y + 32, tile, x0 << 5, x1 << 5, 1024,
                           1024);
     }
-    gDPSetColor(this->glistp++, G_SETPRIMCOLOR, this->color.rgba8888);
+    gDPSetColor(this->glistp++, G_SETPRIMCOLOR, rgba8888_get(&this->color));
   }
 
   if (gfxprint_isHighres(this)) {

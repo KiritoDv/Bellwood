@@ -3,8 +3,10 @@
 #include "m_skin_matrix.h"
 #include "graph.h"
 #include "libc64/math64.h"
-#include "MSL_C/w_math.h"
+#include <math.h>
 #include "libforest/gbi_extensions.h"
+#include "libultra/gu.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 // clang-format off
 Mtx Mtx_clear = gdSPDefMtx(
@@ -33,11 +35,13 @@ void new_Matrix(GAME* game) {
 }
 
 void Matrix_push() {
+    FrameInterpolation_RecordMatrixPush();
     Matrix_copy_MtxF(Matrix_now + 1, Matrix_now);
     Matrix_now++;
 }
 
 void Matrix_pull() {
+    FrameInterpolation_RecordMatrixPop();
     Matrix_now--;
 }
 
@@ -46,6 +50,7 @@ void Matrix_get(MtxF* dest) {
 }
 
 void Matrix_put(MtxF* src) {
+    FrameInterpolation_RecordMatrixPut(src);
     Matrix_copy_MtxF(Matrix_now, src);
 }
 
@@ -53,8 +58,17 @@ MtxF* get_Matrix_now(void) {
     return (Matrix_now);
 }
 
+MtxF* Matrix_SwapStack(MtxF* stack) {
+    MtxF* prev = Matrix_now;
+
+    Matrix_now = stack;
+    return prev;
+}
+
 void Matrix_mult(MtxF* m, u8 mode) {
     MtxF* curm = get_Matrix_now();
+
+    FrameInterpolation_RecordMatrixMult(m, mode);
 
     if (mode == MTX_MULT) {
         Skin_Matrix_MulMatrix(curm, m, curm);
@@ -66,6 +80,8 @@ void Matrix_mult(MtxF* m, u8 mode) {
 void Matrix_translate(f32 x, f32 y, f32 z, u8 mode) {
     MtxF* curm = Matrix_now;
     f32 tx, ty;
+
+    FrameInterpolation_RecordMatrixTranslate(x, y, z, mode);
 
     if (mode == MTX_MULT) {
         tx = curm->xx;
@@ -87,6 +103,8 @@ void Matrix_translate(f32 x, f32 y, f32 z, u8 mode) {
 
 void Matrix_scale(f32 x, f32 y, f32 z, u8 mode) {
     MtxF* curm = Matrix_now;
+
+    FrameInterpolation_RecordMatrixScale(x, y, z, mode);
 
     if (mode == MTX_MULT) {
         curm->xx *= x;
@@ -111,6 +129,8 @@ void Matrix_RotateX(s16 x, int mode) {
     f32 sin;
     f32 cos;
     f32 fp, st2;
+
+    FrameInterpolation_RecordMatrixRotate1Coord(0, x, mode);
 
     if (mode == MTX_MULT) {
         if (x != 0) {
@@ -174,6 +194,8 @@ void Matrix_RotateY(s16 y, int mode) {
     f32 sin;
     f32 cos;
     f32 fp, st2;
+
+    FrameInterpolation_RecordMatrixRotate1Coord(1, y, mode);
 
     if (mode == MTX_MULT) {
         if (y != 0) {
@@ -239,6 +261,8 @@ void Matrix_RotateZ(s16 z, int mode) {
     f32 cos;
     f32 fp, st2;
 
+    FrameInterpolation_RecordMatrixRotate1Coord(2, z, mode);
+
     if (mode == MTX_MULT) {
         if (z != 0) {
             curm = Matrix_now;
@@ -302,6 +326,8 @@ void Matrix_rotateXYZ(s16 x, s16 y, s16 z, int mode) {
     f32 sin;
     f32 cos;
     f32 fp, st2;
+
+    FrameInterpolation_RecordMatrixRotateXYZ(x, y, z, mode);
 
     if (mode == MTX_MULT) {
         sin = sin_s(z);
@@ -385,6 +411,8 @@ void Matrix_softcv3_mult(xyz_t* pos, s_xyz* rot) {
     MtxF* curm = Matrix_now;
     f32 sin, cos;
     f32 fp, st2;
+
+    FrameInterpolation_RecordMatrixTranslateRotateZYX(pos, rot);
 
     sin = sin_s(rot->z);
     cos = cos_s(rot->z);
@@ -528,81 +556,19 @@ void Matrix_softcv3_load(s_xyz* src, f32 x, f32 y, f32 z) {
     } else {
         curm->yx = 0.0f;
     }
+    FrameInterpolation_RecordMatrixSetTranslateRotateYXZ(x, y, z, src);
 }
 
 Mtx* _MtxF_to_Mtx(MtxF* src, Mtx* dest) {
-    int fp;
-    u16* m1 = (u16*)&dest->m[0][0];
-    u16* m2 = (u16*)&dest->m[2][0];
-
-    fp = src->xx * 0x10000;
-    m1[0] = (fp >> 0x10);
-    m1[16 + 0] = fp & 0xFFFF;
-
-    fp = src->yx * 0x10000;
-    m1[1] = (fp >> 0x10);
-    m1[16 + 1] = fp & 0xFFFF;
-
-    fp = src->zx * 0x10000;
-    m1[2] = (fp >> 0x10);
-    m1[16 + 2] = fp & 0xFFFF;
-
-    fp = src->wx * 0x10000;
-    m1[3] = (fp >> 0x10);
-    m1[16 + 3] = fp & 0xFFFF;
-
-    fp = src->xy * 0x10000;
-    m1[4] = (fp >> 0x10);
-    m1[16 + 4] = fp & 0xFFFF;
-
-    fp = src->yy * 0x10000;
-    m1[5] = (fp >> 0x10);
-    m1[16 + 5] = fp & 0xFFFF;
-
-    fp = src->zy * 0x10000;
-    m1[6] = (fp >> 0x10);
-    m1[16 + 6] = fp & 0xFFFF;
-
-    fp = src->wy * 0x10000;
-    m1[7] = (fp >> 0x10);
-    m1[16 + 7] = fp & 0xFFFF;
-
-    fp = src->xz * 0x10000;
-    m1[8] = (fp >> 0x10);
-    m1[16 + 8] = fp & 0xFFFF;
-
-    fp = src->yz * 0x10000;
-    m1[9] = (fp >> 0x10);
-    m2[9] = fp & 0xFFFF;
-
-    fp = src->zz * 0x10000;
-    m1[10] = (fp >> 0x10);
-    m2[10] = fp & 0xFFFF;
-
-    fp = src->wz * 0x10000;
-    m1[11] = (fp >> 0x10);
-    m2[11] = fp & 0xFFFF;
-
-    fp = src->xw * 0x10000;
-    m1[12] = (fp >> 0x10);
-    m2[12] = fp & 0xFFFF;
-
-    fp = src->yw * 0x10000;
-    m1[13] = (fp >> 0x10);
-    m2[13] = fp & 0xFFFF;
-
-    fp = src->zw * 0x10000;
-    m1[14] = (fp >> 0x10);
-    m2[14] = fp & 0xFFFF;
-
-    fp = src->ww * 0x10000;
-    m1[15] = (fp >> 0x10);
-    m2[15] = fp & 0xFFFF;
+    FrameInterpolation_RecordMatrixMtxFToMtx(src, dest);
+    guMtxF2L(src->mf, dest);
     return dest;
 }
 
 Mtx* _Matrix_to_Mtx(Mtx* dest) {
-    return _MtxF_to_Mtx(Matrix_now, dest);
+    FrameInterpolation_RecordMatrixToMtx(dest);
+    guMtxF2L(Matrix_now->mf, dest);
+    return dest;
 }
 
 Mtx* _Matrix_to_Mtx_new(GRAPH* graph) {
@@ -672,25 +638,7 @@ void Matrix_copy_MtxF(MtxF* dest, MtxF* src) {
 }
 
 void Matrix_MtxtoMtxF(Mtx* src, MtxF* dest) {
-    u16* m1 = (u16*)&src->m[0][0];
-    u16* m2 = (u16*)&src->m[2][0];
-
-    dest->xx = ((m1[0] << 0x10) | m2[0]) * (1 / (f64)0x10000);
-    dest->yx = ((m1[1] << 0x10) | m2[1]) * (1 / (f64)0x10000);
-    dest->zx = ((m1[2] << 0x10) | m2[2]) * (1 / (f64)0x10000);
-    dest->wx = ((m1[3] << 0x10) | m2[3]) * (1 / (f64)0x10000);
-    dest->xy = ((m1[4] << 0x10) | m2[4]) * (1 / (f64)0x10000);
-    dest->yy = ((m1[5] << 0x10) | m2[5]) * (1 / (f64)0x10000);
-    dest->zy = ((m1[6] << 0x10) | m2[6]) * (1 / (f64)0x10000);
-    dest->wy = ((m1[7] << 0x10) | m2[7]) * (1 / (f64)0x10000);
-    dest->xz = ((m1[8] << 0x10) | m2[8]) * (1 / (f64)0x10000);
-    dest->yz = ((m1[9] << 0x10) | m2[9]) * (1 / (f64)0x10000);
-    dest->zz = ((m1[10] << 0x10) | m2[10]) * (1 / (f64)0x10000);
-    dest->wz = ((m1[11] << 0x10) | m2[11]) * (1 / (f64)0x10000);
-    dest->xw = ((m1[12] << 0x10) | m2[12]) * (1 / (f64)0x10000);
-    dest->yw = ((m1[13] << 0x10) | m2[13]) * (1 / (f64)0x10000);
-    dest->zw = ((m1[14] << 0x10) | m2[14]) * (1 / (f64)0x10000);
-    dest->ww = ((m1[15] << 0x10) | m2[15]) * (1 / (f64)0x10000);
+    guMtxL2F(dest->mf, src);
 }
 
 void Matrix_reverse(MtxF* curm) {
@@ -805,6 +753,8 @@ void Matrix_RotateVector(s16 angle, xyz_t* axis, u8 mode) {
     f32 temp3; // component z
     f32 temp4; // component q?
 
+    FrameInterpolation_RecordMatrixRotateAxis(angle, axis, mode);
+
     if (mode == MTX_MULT) {
         if (angle != 0) {
             curm = Matrix_now;
@@ -891,54 +841,32 @@ void Matrix_RotateVector(s16 angle, xyz_t* axis, u8 mode) {
 }
 
 void suMtxMakeTS(Mtx* mtx, f32 scaleX, f32 scaleY, f32 scaleZ, f32 translateX, f32 translateY, f32 translateZ) {
-    struct {
-        s16 intPart[4][4];
-        u16 fracPart[4][4];
-    }* mu = (void*)mtx;
-    int fp;
+    f32 mf[4][4];
 
-    fp = scaleX * 0x10000;
-    mtx->m[0][0] = fp;
-    mu->intPart[0][1] = 0;
-    mtx->m[0][1] = 0;
-    mtx->m[2][0] = (u32)fp << 16;
-
-    fp = scaleY * 0x10000;
-    mtx->m[2][1] = 0;
-    mtx->m[0][2] = (u32)fp >> 16;
-    mtx->m[0][3] = 0;
-    mtx->m[2][2] = fp & 0xFFFF;
-    mtx->m[2][3] = 0;
-
-    fp = scaleZ * 0x10000;
-    mtx->m[1][0] = 0;
-    mtx->m[1][1] = fp;
-    mu->intPart[2][3] = 0;
-    mtx->m[3][0] = 0;
-    mtx->m[3][1] = (u32)fp << 16;
-
-    fp = translateX * 0x10000;
-    mu->intPart[3][0] = ((u32)fp >> 16) & 0xFFFF;
-    mu->fracPart[3][0] = fp & 0xFFFF;
-
-    fp = translateY * 0x10000;
-    mu->intPart[3][1] = ((u32)fp >> 16) & 0xFFFF;
-    mu->fracPart[3][1] = fp & 0xFFFF;
-
-    fp = translateZ * 0x10000;
-    mu->intPart[3][2] = ((u32)fp >> 16) & 0xFFFF;
-    mu->intPart[3][3] = 1;
-    mtx->m[3][3] = (u32)fp << 16;
+    mf[0][0] = scaleX;
+    mf[0][1] = 0.0f;
+    mf[0][2] = 0.0f;
+    mf[0][3] = 0.0f;
+    mf[1][0] = 0.0f;
+    mf[1][1] = scaleY;
+    mf[1][2] = 0.0f;
+    mf[1][3] = 0.0f;
+    mf[2][0] = 0.0f;
+    mf[2][1] = 0.0f;
+    mf[2][2] = scaleZ;
+    mf[2][3] = 0.0f;
+    mf[3][0] = translateX;
+    mf[3][1] = translateY;
+    mf[3][2] = translateZ;
+    mf[3][3] = 1.0f;
+    FrameInterpolation_RecordMatrixF2L(mf, mtx);
+    guMtxF2L(mf, mtx);
 }
 
 // S(RxRyRz)T where S is a scale matrix, Rx/Ry/Rz are rotations about the x/y/z axes, and T is a translation
 void suMtxMakeSRT(Mtx* mtx, f32 scaleX, f32 scaleY, f32 scaleZ, s16 rotX, s16 rotY, s16 rotZ, f32 translateX,
                   f32 translateY, f32 translateZ) {
-    int fp;
-    struct {
-        s16 intPart[4][4];
-        u16 fracPart[4][4];
-    }* mu = (void*)mtx;
+    f32 mf[4][4];
     f32 sinX = sin_s(rotX);
     f32 sinY = sin_s(rotY); // sp+38
     f32 sinZ = sin_s(rotZ); // sp+34
@@ -946,68 +874,40 @@ void suMtxMakeSRT(Mtx* mtx, f32 scaleX, f32 scaleY, f32 scaleZ, s16 rotX, s16 ro
     f32 cosY = cos_s(rotY); // sp+2C
     f32 cosZ = cos_s(rotZ);
 
-    fp = cosY * cosZ * scaleX * 0x10000;
-    mu->intPart[0][0] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[0][0] = fp & 0xFFFF;
+    mf[0][0] = cosY * cosZ * scaleX;
 
-    fp = cosY * sinZ * scaleX * 0x10000;
-    mu->intPart[0][1] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[0][1] = fp & 0xFFFF;
+    mf[0][1] = cosY * sinZ * scaleX;
 
-    fp = -sinY * scaleX * 0x10000;
-    mu->intPart[0][2] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[0][2] = fp & 0xFFFF;
+    mf[0][2] = -sinY * scaleX;
 
-    fp = ((sinX * sinY * cosZ) - (cosX * sinZ)) * scaleY * 0x10000;
-    mu->intPart[1][0] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[1][0] = fp & 0xFFFF;
+    mf[1][0] = ((sinX * sinY * cosZ) - (cosX * sinZ)) * scaleY;
 
-    fp = ((sinX * sinY * sinZ) + (cosX * cosZ)) * scaleY * 0x10000;
-    mu->intPart[1][1] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[1][1] = fp & 0xFFFF;
+    mf[1][1] = ((sinX * sinY * sinZ) + (cosX * cosZ)) * scaleY;
 
-    fp = sinX * cosY * scaleY * 0x10000;
-    mu->intPart[1][2] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[1][2] = fp & 0xFFFF;
+    mf[1][2] = sinX * cosY * scaleY;
 
-    fp = ((cosX * sinY * cosZ) + (sinX * sinZ)) * scaleZ * 0x10000;
-    mu->intPart[2][0] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[2][0] = fp & 0xFFFF;
+    mf[2][0] = ((cosX * sinY * cosZ) + (sinX * sinZ)) * scaleZ;
 
-    fp = ((cosX * sinY * sinZ) - (sinX * cosZ)) * scaleZ * 0x10000;
-    mu->intPart[2][1] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[2][1] = fp & 0xFFFF;
+    mf[2][1] = ((cosX * sinY * sinZ) - (sinX * cosZ)) * scaleZ;
 
-    fp = cosX * cosY * scaleZ * 0x10000;
-    mu->intPart[2][2] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[2][2] = fp & 0xFFFF;
+    mf[2][2] = cosX * cosY * scaleZ;
 
-    fp = translateX * 0x10000;
-    mu->intPart[3][0] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[3][0] = fp & 0xFFFF;
+    mf[3][0] = translateX;
 
-    fp = translateY * 0x10000;
-    mu->intPart[3][1] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[3][1] = fp & 0xFFFF;
+    mf[3][1] = translateY;
 
-    fp = translateZ * 0x10000;
-    mu->intPart[3][2] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[3][2] = fp & 0xFFFF;
+    mf[3][2] = translateZ;
 
-    mu->intPart[0][3] = mu->intPart[1][3] = mu->intPart[2][3] = 0;
-    mu->fracPart[0][3] = mu->fracPart[1][3] = mu->fracPart[2][3] = 0;
-    mu->intPart[3][3] = 1;
-    mu->fracPart[3][3] = 0;
+    mf[0][3] = mf[1][3] = mf[2][3] = 0.0f;
+    mf[3][3] = 1.0f;
+    FrameInterpolation_RecordMatrixF2L(mf, mtx);
+    guMtxF2L(mf, mtx);
 }
 
 // S(RzRxRy)T where S is a scale matrix, Rx/Ry/Rz are rotations, and T is a translation
 void suMtxMakeSRT_ZXY(Mtx* mtx, f32 scaleX, f32 scaleY, f32 scaleZ, s16 rotX, s16 rotY, s16 rotZ, f32 translateX,
                       f32 translateY, f32 translateZ) {
-    int fp;
-    struct {
-        s16 intPart[4][4];
-        u16 fracPart[4][4];
-    }* mu = (void*)mtx;
+    f32 mf[4][4];
     f32 sinX = sin_s(rotX); // sp+4C
     f32 sinY = sin_s(rotY); // likely sp+48
     f32 sinZ = sin_s(rotZ); // sp+44
@@ -1015,56 +915,32 @@ void suMtxMakeSRT_ZXY(Mtx* mtx, f32 scaleX, f32 scaleY, f32 scaleZ, s16 rotX, s1
     f32 cosY = cos_s(rotY); // sp+3C
     f32 cosZ = cos_s(rotZ); // likely sp+38
 
-    fp = ((cosY * cosZ) + (sinX * sinY * sinZ)) * scaleX * 0x10000;
-    mu->intPart[0][0] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[0][0] = fp & 0xFFFF;
+    mf[0][0] = ((cosY * cosZ) + (sinX * sinY * sinZ)) * scaleX;
 
-    fp = cosX * sinZ * scaleX * 0x10000;
-    mu->intPart[0][1] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[0][1] = fp & 0xFFFF;
+    mf[0][1] = cosX * sinZ * scaleX;
 
-    fp = (-(sinY * cosZ) + (sinX * cosY * sinZ)) * scaleX * 0x10000;
-    mu->intPart[0][2] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[0][2] = fp & 0xFFFF;
+    mf[0][2] = (-(sinY * cosZ) + (sinX * cosY * sinZ)) * scaleX;
 
-    fp = (-(cosY * sinZ) + (sinX * sinY * cosZ)) * scaleY * 0x10000;
-    mu->intPart[1][0] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[1][0] = fp & 0xFFFF;
+    mf[1][0] = (-(cosY * sinZ) + (sinX * sinY * cosZ)) * scaleY;
 
-    fp = cosX * cosZ * scaleY * 0x10000;
-    mu->intPart[1][1] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[1][1] = fp & 0xFFFF;
+    mf[1][1] = cosX * cosZ * scaleY;
 
-    fp = ((sinY * sinZ) + (sinX * cosY * cosZ)) * scaleY * 0x10000;
-    mu->intPart[1][2] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[1][2] = fp & 0xFFFF;
+    mf[1][2] = ((sinY * sinZ) + (sinX * cosY * cosZ)) * scaleY;
 
-    fp = cosX * sinY * scaleZ * 0x10000;
-    mu->intPart[2][0] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[2][0] = fp & 0xFFFF;
+    mf[2][0] = cosX * sinY * scaleZ;
 
-    fp = -sinX * scaleZ * 0x10000;
-    mu->intPart[2][1] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[2][1] = fp & 0xFFFF;
+    mf[2][1] = -sinX * scaleZ;
 
-    fp = cosX * cosY * scaleZ * 0x10000;
-    mu->intPart[2][2] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[2][2] = fp & 0xFFFF;
+    mf[2][2] = cosX * cosY * scaleZ;
 
-    fp = translateX * 0x10000;
-    mu->intPart[3][0] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[3][0] = fp & 0xFFFF;
+    mf[3][0] = translateX;
 
-    fp = translateY * 0x10000;
-    mu->intPart[3][1] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[3][1] = fp & 0xFFFF;
+    mf[3][1] = translateY;
 
-    fp = translateZ * 0x10000;
-    mu->intPart[3][2] = ((u32)fp >> 0x10) & 0xFFFF;
-    mu->fracPart[3][2] = fp & 0xFFFF;
+    mf[3][2] = translateZ;
 
-    mu->intPart[0][3] = mu->intPart[1][3] = mu->intPart[2][3] = 0;
-    mu->fracPart[0][3] = mu->fracPart[1][3] = mu->fracPart[2][3] = 0;
-    mu->intPart[3][3] = 1;
-    mu->fracPart[3][3] = 0;
+    mf[0][3] = mf[1][3] = mf[2][3] = 0.0f;
+    mf[3][3] = 1.0f;
+    FrameInterpolation_RecordMatrixF2L(mf, mtx);
+    guMtxF2L(mf, mtx);
 }

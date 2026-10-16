@@ -4,9 +4,11 @@
 #include "jaudio_NES/sub_sys.h"
 #include "jaudio_NES/system.h"
 #include "jaudio_NES/audiowork.h"
+#include "jaudio_NES/naport.h"
+#include "jaudio_NES/os.h"
 
 static s32 current_sub_track = 0;
-u32 na_melody_id_hist[2];
+uintptr_t na_melody_id_hist[2];
 
 // clang-format off
 static const s32 melody_seq_size[] = {
@@ -640,7 +642,7 @@ static void Na_MelodyStart(u16 voice, s16 subTrack, const u8* pData) {
 
     u8* dst;
     s16 seq_idx = 248;
-    u16 size = ((u16*)AG.groups[0].seq_data)[2];
+    u16 size = Na_ReadBE16(&AG.groups[0].seq_data[4]);
 
     switch (subTrack) {
         case 6:
@@ -653,28 +655,23 @@ static void Na_MelodyStart(u16 voice, s16 subTrack, const u8* pData) {
             break;
     }
 
-    u8* src;
+    const u8* src;
+    u32 src_size;
 
     dst = AG.groups[0].seq_data + size;
-    ArcHeader* seq_header = AG.seq_header;
     size_t seq_size = melody_seq_size[voice];
-    int medium = seq_header->entries[seq_idx].medium;
-    src = (u8*)seq_header->entries[seq_idx].addr + melody_seq_offset[voice];
-    // clang-format off
-    Nas_FastCopy(
-        src,        /* Voice melody data is broken up in single sequence */
-        dst,        /* Destination buffer */
-        seq_size,   /* melody sequence size */
-        medium      /* medium (always cart in AC?) */
-    );
-    // clang-format on
 
-    u16* dst16 = (u16*)(dst + 4);
+    /* Voice melody data is broken up in single sequence */
+    if (!NaPort_GetSeq(seq_idx, &src, &src_size) || melody_seq_offset[voice] + seq_size > src_size) {
+        return;
+    }
+    Z_bcopy((void*)(src + melody_seq_offset[voice]), dst, seq_size);
+
     for (int i = 0; i < 19; i++) {
-        dst16[i] += size;
+        Na_WriteBE16(dst + 4 + i * 2, Na_ReadBE16(dst + 4 + i * 2) + size);
     }
 
-    Nap_SetS32(NA_MAKE_COMMAND(0x10, 0x00, subTrack, 0x00), (u64)pData);
+    Nap_SetPtr(NA_MAKE_COMMAND(0x10, 0x00, subTrack, 0x00), (void*)pData);
     Nap_SetS8(NA_MAKE_COMMAND(0x06, 0x00, subTrack, 0x02), voice);
     Nap_SetS8(NA_MAKE_COMMAND(0x06, 0x00, subTrack, 0x00), 0);
 }
@@ -695,7 +692,7 @@ extern s16 Na_MelodyGetSubTrackNum(s16 inst) {
     }
 }
 
-extern void Na_FurnitureInst(u32 id, u8 inst, u8* melody, u16 angle, f32 dist) {
+extern void Na_FurnitureInst(uintptr_t id, u8 inst, u8* melody, u16 angle, f32 dist) {
     s32 sub_track;
 
     if (id == na_melody_id_hist[current_sub_track]) {
@@ -717,7 +714,7 @@ extern void Na_FurnitureInst(u32 id, u8 inst, u8* melody, u16 angle, f32 dist) {
     u8 pan = angle2pan(angle, dist);
     f32 vol = distance2vol(dist);
 
-    Nap_SetS32(NA_MAKE_COMMAND(0x10, 0x02, sub_track, 0x00), (u64)melody);
+    Nap_SetPtr(NA_MAKE_COMMAND(0x10, 0x02, sub_track, 0x00), melody);
     Nap_SetS8(NA_MAKE_COMMAND(0x06, 0x02, sub_track, 0x02), inst);
     Nap_SetS8(NA_MAKE_COMMAND(0x06, 0x02, sub_track, 0x00), 0);
     Nap_SetF32(NA_MAKE_COMMAND(0x01, 0x02, sub_track, 0x00), vol);

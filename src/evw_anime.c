@@ -3,6 +3,7 @@
 #include "m_play.h"
 #include "libforest/gbi_extensions.h"
 #include "m_rcp.h"
+#include "ac_asset.h"
 
 static Gfx* evw_tex_scroll_set(GAME_PLAY* play, const EVW_ANIME_SCROLL* scroll) {
     int scroll_x = scroll->x * play->game_frame;
@@ -289,6 +290,8 @@ extern void Evw_Anime_Set(GAME_PLAY* play, EVW_ANIME_DATA* evw_anime_data) {
         &evw_anime_scroll1,       &evw_anime_scroll2,          &evw_anime_colreg_manual,
         &evw_anime_colreg_linear, &evw_anime_colreg_nonlinear, &evw_anime_texanime,
     };
+
+    evw_anime_data = (EVW_ANIME_DATA*)LOAD_ASSET(evw_anime_data);
 
     if (evw_anime_data != NULL) {
         int segment = evw_anime_data->segment;

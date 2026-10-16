@@ -1,6 +1,6 @@
 #include "sys_romcheck.h"
 
-#include "dolphin/dvd.h"
+#include "gc_compat.h"
 #include "m_nmibuf.h"
 
 extern void sys_romcheck() {

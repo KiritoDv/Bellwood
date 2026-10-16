@@ -1,7 +1,20 @@
 #include "jaudio_NES/emusound.hpp"
-#include "dolphin/os.h"
 #include "jaudio_NES/aictrl.h"
+#include "jaudio_NES/audiocommon.h"
+#include "libultra/libultra.h"
 #include "jaudio_NES/sample.h"
+
+#if NA_BIG_ENDIAN
+#define NES_BITS2(a, b) a; b;
+#define NES_BITS3(a, b, c) a; b; c;
+#define NES_BITS4(a, b, c, d) a; b; c; d;
+#define NES_BITS8(a, b, c, d, e, f, g, h) a; b; c; d; e; f; g; h;
+#else
+#define NES_BITS2(a, b) b; a;
+#define NES_BITS3(a, b, c) c; b; a;
+#define NES_BITS4(a, b, c, d) d; c; b; a;
+#define NES_BITS8(a, b, c, d, e, f, g, h) h; g; f; e; d; c; b; a;
+#endif
 
 #define NES_CLOCK_SPEED 1789773
 
@@ -14,8 +27,13 @@ typedef struct _NESSoundStruct2 {
     union {
         u32 _04;
         struct {
+#if NA_BIG_ENDIAN
             u16 _04_hi;
             u16 _04_lo;
+#else
+            u16 _04_lo;
+            u16 _04_hi;
+#endif
         } _04p;
     };
     u32 _08;
@@ -48,8 +66,13 @@ typedef struct _NESSoundStruct {
     union {
         u32 _04;
         struct {
+#if NA_BIG_ENDIAN
             u16 _04_hi;
             u16 _04_lo;
+#else
+            u16 _04_lo;
+            u16 _04_hi;
+#endif
         } _04p;
     };
     u32 _08;
@@ -93,8 +116,13 @@ typedef struct _NESSoundStructF {
     union {
         u32 _04;
         struct {
+#if NA_BIG_ENDIAN
             u16 _04_hi;
             u16 _04_lo;
+#else
+            u16 _04_lo;
+            u16 _04_hi;
+#endif
         } _04p;
     };
     u32 _08;
@@ -172,64 +200,45 @@ f32 NOISE_FREQ_TABLE[] = { 4.f,  2.f,   1.f,   0.5f,  0.25f, 0.2f,  0.15f, 0.12f
 typedef struct _PulseChannel {
     // https://www.nesdev.org/wiki/APU_Pulse
     // $4000/$4004
-    u8 Duty : 2;
-    u8 EnvelopeLoopCounter : 1;
-    u8 ConstantVolume : 1;
-    u8 EnvelopePeriod_Volume : 4;
+    NES_BITS4(u8 Duty : 2, u8 EnvelopeLoopCounter : 1, u8 ConstantVolume : 1, u8 EnvelopePeriod_Volume : 4)
     // $4001/$4005
-    u8 SweepUnitEnabled : 1;
-    u8 SweepUnitPeriod : 3;
-    u8 SweepUnitNegative : 1;
-    u8 SweepUnitShiftCount : 3;
+    NES_BITS4(u8 SweepUnitEnabled : 1, u8 SweepUnitPeriod : 3, u8 SweepUnitNegative : 1, u8 SweepUnitShiftCount : 3)
     // $4002/$4006
     u8 TimerLow : 8;
     // $4003/$4007
-    u8 LengthCounterLow : 5;
-    u8 TimerHigh : 3;
+    NES_BITS2(u8 LengthCounterLow : 5, u8 TimerHigh : 3)
 } PulseChannel;
 
 typedef struct _TriangleChannel {
     // https://www.nesdev.org/wiki/APU_Triangle
     // $4008
-    u8 LengthCounter : 1;
-    u8 LinearCounterReloadVaue : 7;
+    NES_BITS2(u8 LengthCounter : 1, u8 LinearCounterReloadVaue : 7)
     // $4009
     u8 _unused_4009 : 8;
     // $400A
     u8 TimerLow : 8;
     // $400B
-    u8 LengthCounterLoad : 5;
-    u8 TimerHigh : 3;
+    NES_BITS2(u8 LengthCounterLoad : 5, u8 TimerHigh : 3)
 } TriangleChannel;
 
 typedef struct _NoiseChannel {
     // https://www.nesdev.org/wiki/APU_Noise
     // $400C
-    u8 _unused_400C_high2 : 2;
-    u8 LoopEnvelope : 1;
-    u8 ConstantVolume : 1;
-    u8 EnvelopePeriod_Volume : 4;
+    NES_BITS4(u8 _unused_400C_high2 : 2, u8 LoopEnvelope : 1, u8 ConstantVolume : 1, u8 EnvelopePeriod_Volume : 4)
     // $400D
     u8 _unused_400D : 8;
     // $400E
-    u8 LoopNoise : 1;
-    u8 _unused_400E_3bits : 3;
-    u8 Period : 4;
+    NES_BITS3(u8 LoopNoise : 1, u8 _unused_400E_3bits : 3, u8 Period : 4)
     // $400F
-    u8 LengthCounterLoad : 5;
-    u8 _unused_400F_low3 : 3;
+    NES_BITS2(u8 LengthCounterLoad : 5, u8 _unused_400F_low3 : 3)
 } NoiseChannel;
 
 typedef struct _DMCChannel {
     // https://www.nesdev.org/wiki/APU_DMC
     // $4010
-    u8 IRQEnable : 1;
-    u8 LoopSample : 1;
-    u8 _unused_4010_middle2 : 2;
-    u8 FrequencyIndex : 4;
+    NES_BITS4(u8 IRQEnable : 1, u8 LoopSample : 1, u8 _unused_4010_middle2 : 2, u8 FrequencyIndex : 4)
     // $4011
-    u8 _unused_4011_heigh : 1;
-    u8 DirectLoad : 7;
+    NES_BITS2(u8 _unused_4011_heigh : 1, u8 DirectLoad : 7)
     // $4012
     u8 SampleAddress : 8;
     // $4013
@@ -237,19 +246,14 @@ typedef struct _DMCChannel {
 } DMCChannel;
 
 typedef struct _WaveTableEntry {
-    u8 Read : 2;
-    u8 Sample : 6;
+    NES_BITS2(u8 Read : 2, u8 Sample : 6)
 } WaveTableEntry;
 
 typedef struct _unknown_C0 {
-    u8 _0_7 : 1; // 10000000
-    u8 _0_6 : 3; // 01100000
-    u8 _0_3 : 4; // 00001111
+    NES_BITS3(u8 _0_7 : 1, u8 _0_6 : 3, u8 _0_3 : 4)
     u8 _1;
     u8 _2;
-    u8 _3_7 : 1; // 10000000
-    u8 _3_6 : 3; // 01110000
-    u8 _3_3 : 4; // 00001111
+    NES_BITS3(u8 _3_7 : 1, u8 _3_6 : 3, u8 _3_3 : 4)
 } Unknown_VRC;
 
 typedef struct _APURegisters {
@@ -267,60 +271,40 @@ typedef struct _APURegisters {
     u8 _unused_4014;
     // https://www.nesdev.org/wiki/APU#Status_($4015)
     // $4015
-    u8 DMCInterrupt : 1;
-    u8 FrameInterrupt : 1;
-    u8 _unused_4015_1bit : 1;
-    u8 LengthCounterStatus : 1;
-    u8 NoiseStatus : 1;
-    u8 TriangleStatus : 1;
-    u8 Pulse2Status : 1;
-    u8 Pulse1Status : 1;
+    NES_BITS8(u8 DMCInterrupt : 1, u8 FrameInterrupt : 1, u8 _unused_4015_1bit : 1, u8 LengthCounterStatus : 1,
+              u8 NoiseStatus : 1, u8 TriangleStatus : 1, u8 Pulse2Status : 1, u8 Pulse1Status : 1)
     // $4016
     u8 _unused_4016;
     // https://www.nesdev.org/wiki/APU#Frame_Counter_($4017)
     // $4017
-    u8 FrameCounter_5FrameSequence : 1;
-    u8 FrameCounter_DisableFrameInterrupt : 1;
-    u8 _unused_4017_low : 6;
+    NES_BITS3(u8 FrameCounter_5FrameSequence : 1, u8 FrameCounter_DisableFrameInterrupt : 1, u8 _unused_4017_low : 6)
 
     artificial_padding(0x17, 0x40, u8);
     // $4040 - $4079 https://www.nesdev.org/wiki/FDS_audio#Wavetable_RAM_($4040-$407F)
     WaveTableEntry WaveTable[0x40];
     // $4080 https://www.nesdev.org/wiki/FDS_audio#Volume_envelope_($4080)
-    u8 VolumeEnvelopeEnabled : 1;
-    u8 VolumeEnvelopeIncreasing : 1;
-    u8 VolumeEnvelopeGainAndSpeed : 6;
+    NES_BITS3(u8 VolumeEnvelopeEnabled : 1, u8 VolumeEnvelopeIncreasing : 1, u8 VolumeEnvelopeGainAndSpeed : 6)
     // $4081
     u8 _unused_4081;
     // $4082 https://www.nesdev.org/wiki/FDS_audio#Frequency_low_($4082)
     u8 FrequencyLow;
     // $4083 https://www.nesdev.org/wiki/FDS_audio#Frequency_high_($4083)
-    u8 HighSpeedFrequency : 1;
-    u8 DisableSweepAndEnvelope : 1;
-    u8 _unused_4083_midbits : 2;
-    u8 FrequencyHigh : 4;
+    NES_BITS4(u8 HighSpeedFrequency : 1, u8 DisableSweepAndEnvelope : 1, u8 _unused_4083_midbits : 2,
+              u8 FrequencyHigh : 4)
     // $4084 https://www.nesdev.org/wiki/FDS_audio#Mod_envelope_($4084)
-    u8 ModEnvelopeEnabled : 1;
-    u8 ModEnvelopeIncreasing : 1;
-    u8 ModEnvelopeGainAndSpeed : 6;
+    NES_BITS3(u8 ModEnvelopeEnabled : 1, u8 ModEnvelopeIncreasing : 1, u8 ModEnvelopeGainAndSpeed : 6)
     // $4085 https://www.nesdev.org/wiki/FDS_audio#Mod_counter_($4085)
-    u8 _unused_4085_high : 1;
-    u8 ModCounter : 7;
+    NES_BITS2(u8 _unused_4085_high : 1, u8 ModCounter : 7)
     // $4086 https://www.nesdev.org/wiki/FDS_audio#Mod_frequency_low_($4086)
     u8 ModFrequencyLow;
     // $4087 https://www.nesdev.org/wiki/FDS_audio#Mod_frequency_high_($4087)
-    u8 HaltModTableCounter : 1;
-    u8 ForceAccumulatorStepOut : 1;
-    u8 _unused_4087_mid : 2;
-    u8 ModFrequencyHigh : 4;
+    NES_BITS4(u8 HaltModTableCounter : 1, u8 ForceAccumulatorStepOut : 1, u8 _unused_4087_mid : 2,
+              u8 ModFrequencyHigh : 4)
     // $4088 https://www.nesdev.org/wiki/FDS_audio#Mod_table_write_($4088)
     // unused in the following code
-    u8 _unused_4088_high : 5;
-    u8 ModulationTableWrite : 3;
+    NES_BITS2(u8 _unused_4088_high : 5, u8 ModulationTableWrite : 3)
     // $4089 https://www.nesdev.org/wiki/FDS_audio#Wave_write_/_master_volume_($4089)
-    u8 WaveTableWriteEnable : 1;
-    u8 _unused_4089_midbits : 5;
-    u8 WaveTableMasterVolume : 2;
+    NES_BITS3(u8 WaveTableWriteEnable : 1, u8 _unused_4089_midbits : 5, u8 WaveTableMasterVolume : 2)
     // $408A https://www.nesdev.org/wiki/FDS_audio#Envelope_speed_($408A)
     u8 EnvelopeSpeed;
 
@@ -330,10 +314,7 @@ typedef struct _APURegisters {
     Unknown_VRC _C4;
     Unknown_VRC _C8;
     artificial_padding(0xc8, 0xd5, Unknown_VRC);
-    u8 _unused_D5_high : 5;
-    u8 _D5_2 : 1;
-    u8 _D5_1 : 1;
-    u8 _D5_0 : 1;
+    NES_BITS4(u8 _unused_D5_high : 5, u8 _D5_2 : 1, u8 _D5_1 : 1, u8 _D5_0 : 1)
 
 } APURegisters;
 
@@ -1551,11 +1532,11 @@ void __Sound_Write_Disk(u16 a, u8 b) {
         }
     }
 }
-OSMessageQueue SoundQ;
-OSMessage SoundQbuf[0x1000];
+OSMesgQueue SoundQ;
+OSMesg SoundQbuf[0x1000];
 
 void HS_Event_Reset() {
-    OSInitMessageQueue(&SoundQ, SoundQbuf, ARRAY_COUNT(SoundQbuf));
+    osCreateMesgQueue(&SoundQ, SoundQbuf, ARRAY_COUNT(SoundQbuf));
 }
 
 void HS_Event_Update() {
@@ -1564,12 +1545,14 @@ void HS_Event_Update() {
         u8 a, b;
     } tempBuf;
     tempBuf message;
+    OSMesg msg;
 
     while (1) {
-        // this should take a void** for message, and it fills out the OSMessage(which is a void*)
-        if (!OSReceiveMessage(&SoundQ, (OSMessage*)&message, 0)) {
+        if (osRecvMesg(&SoundQ, &msg, OS_MESG_NOBLOCK) != 0) {
             break;
         }
+        message.a = (u8)(msg.data32 >> 24);
+        message.b = (u8)(msg.data32 >> 16);
         __Sound_Write_HVC(message.a, message.b);
     }
 }
@@ -1579,7 +1562,7 @@ void HS_Event_Write(u16 a, u8 b) {
         a = (a - 0xf40);
     }
 
-    OSSendMessage(&SoundQ, (OSMessage)((a - 0x4000) << 0x18 | b << 0x10), 0);
+    osSendMesg(&SoundQ, OS_MESG_32((u32)(a - 0x4000) << 0x18 | (u32)b << 0x10), OS_MESG_NOBLOCK);
     switch (a & 0xff) {
         case 3: {
             DUMMY_ACTIVE[0] = 2;
@@ -1691,6 +1674,7 @@ int Sound_Make_HVC(s32 count, s16* v) {
     DUMMY_ACTIVE[6] = 0;
     DUMMY_ACTIVE[7] = 0;
     DUMMY_ACTIVE[8] = 0;
+    return count;
 }
 
 s16 sound_loop_buffer[0x2000];
@@ -1726,10 +1710,10 @@ void Sample_Copy(u16 count, s16* v) {
 }
 
 void Sound_Write(u16 event, u8 value, u16 maybe_frames) {
+    Jac_LockMix();
     if (event == 0) {
         static f32 create_counter = 0;
         static f32 create_speed;
-        int interrupts = OSDisableInterrupts();
         if (buffer_remain < 0x460) {
             create_speed = 2.038168f * ((5.f * (0x460 - buffer_remain) + 1680.f) / 1680.f);
             if (create_speed > 2.5) {
@@ -1757,10 +1741,10 @@ void Sound_Write(u16 event, u8 value, u16 maybe_frames) {
                 buffer_remain++;
             }
         }
-        OSRestoreInterrupts(interrupts);
     } else {
         HS_Event_Write(event, value);
     }
+    Jac_UnlockMix();
 }
 
 void Sound_Reset() {
@@ -1835,15 +1819,19 @@ s16* __FrameCallback(s32 a) {
 }
 
 void EmuSound_Start(u8* noise_data) {
+    Jac_LockMix();
     NOISE_DTABLE = noise_data;
     Sound_Reset();
     exitflag = 0;
     old_mixcall = Jac_GetMixcallback(&old_mixmode);
     Jac_RegisterMixcallback(__FrameCallback, 0);
+    Jac_UnlockMix();
 }
 
 void EmuSound_Exit() {
+    Jac_LockMix();
     exitflag = TRUE;
+    Jac_UnlockMix();
 }
 
 u8 Sound_Read(u16 reg_addr) {    
@@ -1911,11 +1899,13 @@ void Sound_SetE000(u8* romTop) {
 }
 
 void Sound_SetMMC(u8 mmcMode) {
+    Jac_LockMix();
     FRAME_SAMPLE = 0x280;
     PHASE_SAMPLE = 0xa0;
     beforemode = 0;
     MMC_MODE = mmcMode;
     Sound_Reset();
+    Jac_UnlockMix();
 }
 
 #pragma force_active on

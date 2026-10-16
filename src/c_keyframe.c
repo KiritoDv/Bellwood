@@ -1,6 +1,6 @@
 #include "c_keyframe.h"
 
-#include "MSL_C/w_math.h"
+#include <math.h>
 #include "graph.h"
 #include "libultra/libultra.h"
 #include "sys_math3d.h"
@@ -301,6 +301,9 @@ static void cKF_SkeletonInfo_morphST(s16* now, s16* target, f32 step) {
  *
  * @param keyframe Pointer to the skeleton info structure to be cleared.
  */
+#define cKF_LOAD_SKEL(skel) ((cKF_Skeleton_R_c*)LOAD_ASSET(skel))
+#define cKF_LOAD_ANIM(anim) ((cKF_Animation_R_c*)LOAD_ASSET(anim))
+
 static void cKF_SkeletonInfo_R_zeroClear(cKF_SkeletonInfo_R_c* keyframe) {
     bzero(keyframe, sizeof(cKF_SkeletonInfo_R_c));
 }
@@ -310,8 +313,8 @@ extern void cKF_SkeletonInfo_R_ct(cKF_SkeletonInfo_R_c* keyframe, cKF_Skeleton_R
     cKF_SkeletonInfo_R_zeroClear(keyframe);
     cKF_FrameControl_ct(&keyframe->frame_control);
 
-    keyframe->skeleton = skeleton;
-    keyframe->animation = animation;
+    keyframe->skeleton = cKF_LOAD_SKEL(skeleton);
+    keyframe->animation = cKF_LOAD_ANIM(animation);
     keyframe->current_joint = work_table;
     keyframe->target_joint = target_table;
 }
@@ -321,24 +324,28 @@ extern void cKF_SkeletonInfo_R_dt(cKF_SkeletonInfo_R_c* keyframe) {
 
 extern void cKF_SkeletonInfo_R_init_standard_stop(cKF_SkeletonInfo_R_c* keyframe, cKF_Animation_R_c* animation,
                                                   s_xyz* rotation_diff_table) {
+    animation = cKF_LOAD_ANIM(animation);
     cKF_SkeletonInfo_R_init(keyframe, keyframe->skeleton, animation, 1.0f, animation->frames, 1.0f, 0.5f, 0.0f,
                             cKF_FRAMECONTROL_STOP, rotation_diff_table);
 }
 
 extern void cKF_SkeletonInfo_R_init_standard_stop_morph(cKF_SkeletonInfo_R_c* keyframe, cKF_Animation_R_c* animation,
                                                         s_xyz* rotation_diff_table, f32 morph) {
+    animation = cKF_LOAD_ANIM(animation);
     cKF_SkeletonInfo_R_init(keyframe, keyframe->skeleton, animation, 1.0f, animation->frames, 1.0f, 0.5f, morph,
                             cKF_FRAMECONTROL_STOP, rotation_diff_table);
 }
 
 extern void cKF_SkeletonInfo_R_init_standard_repeat(cKF_SkeletonInfo_R_c* keyframe, cKF_Animation_R_c* animation,
                                                     s_xyz* rotation_diff_table) {
+    animation = cKF_LOAD_ANIM(animation);
     cKF_SkeletonInfo_R_init(keyframe, keyframe->skeleton, animation, 1.0f, animation->frames, 1.0f, 0.5f, 0.0f,
                             cKF_FRAMECONTROL_REPEAT, rotation_diff_table);
 }
 
 extern void cKF_SkeletonInfo_R_init_standard_repeat_morph(cKF_SkeletonInfo_R_c* keyframe, cKF_Animation_R_c* animation,
                                                           s_xyz* rotation_diff_table, f32 morph) {
+    animation = cKF_LOAD_ANIM(animation);
     cKF_SkeletonInfo_R_init(keyframe, keyframe->skeleton, animation, 1.0f, animation->frames, 1.0f, 0.5f, morph,
                             cKF_FRAMECONTROL_REPEAT, rotation_diff_table);
 }
@@ -347,8 +354,8 @@ extern void cKF_SkeletonInfo_R_init(cKF_SkeletonInfo_R_c* keyframe, cKF_Skeleton
                                     cKF_Animation_R_c* animation, f32 start_frame, f32 end_frame, f32 current_frame,
                                     f32 frame_speed, f32 morph_counter, int mode, s_xyz* rotation_diff_table) {
     keyframe->morph_counter = morph_counter;
-    keyframe->skeleton = skeleton;
-    keyframe->animation = animation;
+    keyframe->skeleton = cKF_LOAD_SKEL(skeleton);
+    keyframe->animation = cKF_LOAD_ANIM(animation);
 
     cKF_FrameControl_setFrame(&keyframe->frame_control, start_frame, end_frame, keyframe->animation->frames,
                               current_frame, frame_speed, mode);
@@ -555,7 +562,7 @@ extern int cKF_SkeletonInfo_R_play(cKF_SkeletonInfo_R_c* keyframe) {
  * @param keyframe Pointer to the animation structure.
  * @return Pointer to the flag table.
  */
-inline u8* cKF_Animation_R_getFlagTable(cKF_Animation_R_c* keyframe) {
+static inline u8* cKF_Animation_R_getFlagTable(cKF_Animation_R_c* keyframe) {
     return keyframe->flag_table;
 }
 
@@ -568,7 +575,7 @@ inline u8* cKF_Animation_R_getFlagTable(cKF_Animation_R_c* keyframe) {
  * @param keyframe Pointer to the animation structure.
  * @return Pointer to the fixed table.
  */
-inline s16* cKF_Animation_R_getFixedTable(cKF_Animation_R_c* keyframe) {
+static inline s16* cKF_Animation_R_getFixedTable(cKF_Animation_R_c* keyframe) {
     return keyframe->fixed_table;
 }
 
@@ -581,7 +588,7 @@ inline s16* cKF_Animation_R_getFixedTable(cKF_Animation_R_c* keyframe) {
  * @param keyframe Pointer to the animation structure.
  * @return Pointer to the key table.
  */
-inline s16* cKF_Animation_R_getKeyTable(cKF_Animation_R_c* keyframe) {
+static inline s16* cKF_Animation_R_getKeyTable(cKF_Animation_R_c* keyframe) {
     return keyframe->key_table;
 }
 
@@ -594,7 +601,7 @@ inline s16* cKF_Animation_R_getKeyTable(cKF_Animation_R_c* keyframe) {
  * @param keyframe Pointer to the animation structure.
  * @return Pointer to the data table.
  */
-inline s16* cKF_Animation_R_getDataTable(cKF_Animation_R_c* keyframe) {
+static inline s16* cKF_Animation_R_getDataTable(cKF_Animation_R_c* keyframe) {
     return keyframe->data_table;
 }
 
@@ -718,6 +725,7 @@ extern void cKF_Si3_draw_SV_R_child(GAME* game, cKF_SkeletonInfo_R_c* keyframe, 
     cKF_Joint_R_c* skel_c_joint;
     s_xyz* cur_joint;
     GRAPH* graph;
+    int interp_scope;
 
     skel_c_joint = keyframe->skeleton->joint_table;
     skel_c_joint += *joint_num;
@@ -753,6 +761,7 @@ extern void cKF_Si3_draw_SV_R_child(GAME* game, cKF_SkeletonInfo_R_c* keyframe, 
         joint1.z = keyframe->updated_base_model_rotation.z;
     }
 
+    interp_scope = FrameInterpolation_RecordOpenChildScope(keyframe, *joint_num);
     graph = game->graph;
     OPEN_DISP(graph);
     Matrix_push();
@@ -793,6 +802,7 @@ extern void cKF_Si3_draw_SV_R_child(GAME* game, cKF_SkeletonInfo_R_c* keyframe, 
     if (postrender_callback != NULL) {
         postrender_callback(game, keyframe, *joint_num, &mjoint_m, &joint_f, arg, &joint1, &trans);
     }
+    FrameInterpolation_RecordCloseChildScope(interp_scope);
 
     joint_num[0]++; // Move onto next joint
 
@@ -831,6 +841,7 @@ extern void cKF_SkeletonInfo_R_init_standard_repeat_speedsetandmorph(cKF_Skeleto
                                                                      cKF_Animation_R_c* animation,
                                                                      s_xyz* rotation_diff_table, f32 frame_speed,
                                                                      f32 morph_counter) {
+    animation = cKF_LOAD_ANIM(animation);
     cKF_SkeletonInfo_R_init(keyframe, keyframe->skeleton, animation, 1.0f, animation->frames, 1.0f, frame_speed,
                             morph_counter, cKF_FRAMECONTROL_REPEAT, rotation_diff_table);
 }
@@ -839,6 +850,7 @@ extern void cKF_SkeletonInfo_R_init_standard_repeat_setframeandspeedandmorph(cKF
                                                                              cKF_Animation_R_c* animation,
                                                                              s_xyz* rotation_diff_table, f32 frame,
                                                                              f32 frame_speed, f32 morph_counter) {
+    animation = cKF_LOAD_ANIM(animation);
     cKF_SkeletonInfo_R_init(keyframe, keyframe->skeleton, animation, 1.0f, animation->frames, frame, frame_speed,
                             morph_counter, cKF_FRAMECONTROL_REPEAT, rotation_diff_table);
 }
@@ -848,6 +860,7 @@ extern void cKF_SkeletonInfo_R_init_standard_setframeandspeedandmorphandmode(cKF
                                                                              s_xyz* rotation_diff_table, f32 frame,
                                                                              f32 frame_speed, f32 morph_counter,
                                                                              int mode) {
+    animation = cKF_LOAD_ANIM(animation);
     cKF_SkeletonInfo_R_init(keyframe, keyframe->skeleton, animation, 1.0f, animation->frames, frame, frame_speed,
                             morph_counter, mode, rotation_diff_table);
 }
@@ -856,6 +869,7 @@ extern void cKF_SkeletonInfo_R_init_reverse_setspeedandmorphandmode(cKF_Skeleton
                                                                     cKF_Animation_R_c* animation,
                                                                     s_xyz* rotation_diff_table, f32 frame_speed,
                                                                     f32 morph_counter, int mode) {
+    animation = cKF_LOAD_ANIM(animation);
     cKF_SkeletonInfo_R_init(keyframe, keyframe->skeleton, animation, animation->frames, 1.0f, animation->frames,
                             frame_speed, morph_counter, mode, rotation_diff_table);
 }

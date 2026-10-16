@@ -1,6 +1,8 @@
 #include "f_furniture.h"
+#include "ac_port.h"
+#include "ac_asset.h"
 
-#include "dolphin/os/OSCache.h"
+#include "gc_compat.h"
 #include "m_rcp.h"
 #include "m_play.h"
 #include "m_common_data.h"
@@ -74,38 +76,50 @@ static void fFTR_MorphHousePalette(u16* dst_pal_p, u16* off_pal_p, u16* on_pal_p
     }
 
     if (dst_pal_p != NULL) {
+        u16 off_pal[16];
+        u16 on_pal[16];
+        f32 t = ftr_actor->dynamic_work_f[0];
+
+        AC_AssetCopy(off_pal, off_pal_p, 0, sizeof(off_pal));
+        AC_AssetCopy(on_pal, on_pal_p, 0, sizeof(on_pal));
+
         for (i = 0; i < 16; i++) {
-            // clang-format off
+            u16 off = AC_Pal5551Get(off_pal, i);
+            u16 on = AC_Pal5551Get(on_pal, i);
+            u16 r0 = (off >> 11) & 0x1F;
+            u16 g0 = (off >> 6) & 0x1F;
+            u16 b0 = (off >> 1) & 0x1F;
+            u16 r = (u16)((f32)r0 + t * ((f32)((on >> 11) & 0x1F) - (f32)r0)) & 0x1F;
+            u16 g = (u16)((f32)g0 + t * ((f32)((on >> 6) & 0x1F) - (f32)g0)) & 0x1F;
+            u16 b = (u16)((f32)b0 + t * ((f32)((on >> 1) & 0x1F) - (f32)b0)) & 0x1F;
 
-            // We assume that the palette will be RGB5A3 with no alpha component so:
-            // [1][rrrrr][ggggg][bbbbb]
-            dst_pal_p[i] = 0;
-
-            // Red
-            dst_pal_p[i] |= ((u16)((f32)((off_pal_p[i] >> 10) & 0x1F) +
-                                   ftr_actor->dynamic_work_f[0] *
-                                       ((f32)((on_pal_p[i] >> 10) & 0x1F) - (f32)((off_pal_p[i] >> 10) & 0x1F))) & 0x1F) << 10;
-
-            // Green
-            dst_pal_p[i] |= ((u16)((f32)((off_pal_p[i] >> 5) & 0x1F) +
-                                   ftr_actor->dynamic_work_f[0] *
-                                       ((f32)((on_pal_p[i] >> 5) & 0x1F) - (f32)((off_pal_p[i] >> 5) & 0x1F))) & 0x1F) << 5;
-
-            // Blue
-            dst_pal_p[i] |= ((u16)((f32)((off_pal_p[i] >> 0) & 0x1F) +
-                                   ftr_actor->dynamic_work_f[0] *
-                                       ((f32)((on_pal_p[i] >> 0) & 0x1F) - (f32)((off_pal_p[i] >> 0) & 0x1F))) & 0x1F) << 0;
-
-            // Alpha-bit (not sure why they bother even masking this out)
-            dst_pal_p[i] |= (u16)(off_pal_p[i] & 0x8000);
-            // clang-format on
+            AC_Pal5551Put(dst_pal_p, i, (u16)((r << 11) | (g << 6) | (b << 1) | (off & 1)));
         }
 
-        DCStoreRangeNoSync(dst_pal_p, 16 * sizeof(u16));
+        AC_TexInvalidateRange(dst_pal_p, 16 * sizeof(u16));
+    }
+}
+
+static void fFTR_MyhomePalToRGBA5551(void) {
+    static int converted = FALSE;
+    int i;
+    int j;
+
+    if (!converted) {
+        for (i = 0; i < ARRAY_COUNT(fFTR_myhome_off_pal_table); i++) {
+            for (j = 0; j < 16; j++) {
+                AC_Pal5551Put(fFTR_myhome_off_pal_table[i], j, AC_RGB5A3To5551(fFTR_myhome_off_pal_table[i][j]));
+                AC_Pal5551Put(fFTR_myhome_on_pal_table[i], j, AC_RGB5A3To5551(fFTR_myhome_on_pal_table[i][j]));
+            }
+        }
+
+        converted = TRUE;
     }
 }
 
 static void fFTR_MorphHousepaletteCt(u16* dst_pal_p, u16* off_pal_p, u16* on_pal_p, FTR_ACTOR* ftr_actor) {
+    fFTR_MyhomePalToRGBA5551();
+
     if (ftr_actor->switch_bit == TRUE) {
         ftr_actor->dynamic_work_f[0] = 1.0f;
     } else {

@@ -10,7 +10,7 @@
 #include "jaudio_NES/track.h"
 #include "jaudio_NES/sub_sys.h"
 #include "jaudio_NES/audioheaders.h"
-#include <dolphin/os.h>
+#include "gc_compat.h"
 
 static void Nas_smzSetPitch(channel* chan, f32 pitch);
 static void Nas_AddListHead(link* list, link* l);
@@ -189,7 +189,7 @@ extern void Nas_UpdateChannel(void) {
         playback_chan = &chan->playback_ch;
 
         if (playback_chan->current_parent_note != NA_NO_NOTE) {
-            if ((u32)playback_chan->current_parent_note < 0x7FFFFFFF) {
+            if (playback_chan->current_parent_note == NULL) {
                 continue;
             }
 
@@ -408,7 +408,7 @@ extern perctable* PercToPp(s32 prog, s32 drum) {
         return NULL;
     }
 
-    if ((u32)AG.voice_info[prog].percussion < OS_BASE_CACHED) {
+    if (AG.voice_info[prog].percussion == NULL) {
         return NULL;
     }
 
@@ -438,7 +438,7 @@ extern percvoicetable* VpercToVep(s32 prog, s32 sfx) {
         return NULL;
     }
 
-    if ((u32)AG.voice_info[prog].effects < OS_BASE_CACHED) {
+    if (AG.voice_info[prog].effects == NULL) {
         return NULL;
     }
 
@@ -455,7 +455,7 @@ extern percvoicetable* VpercToVep(s32 prog, s32 sfx) {
     return vtbl;
 }
 
-extern s32 OverwriteBank(s32 type, s32 bankId, s32 idx, s32 table) {
+extern s32 OverwriteBank(s32 type, s32 bankId, s32 idx, void* table) {
     if (bankId == 0xFF) {
         return -1;
     }
@@ -668,7 +668,7 @@ extern void Nas_DeAllocAllVoices(chnode* node) {
 
         while (TRUE) {
             cur = src->next;
-            if ((s32)cur == (s32)src || cur == NULL) {
+            if (cur == src || cur == NULL) {
                 break;
             }
 
