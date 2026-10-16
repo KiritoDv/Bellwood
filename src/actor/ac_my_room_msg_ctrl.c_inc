@@ -1021,7 +1021,7 @@ static void aMR_MsgControlQqqEmulator(ACTOR* actorx, GAME* game) {
                 aMR_SetEmulatorStartMessage(actorx, TRUE);
                 break;
             case mChoice_CHOICE1:
-                if (my_room->emu_info.agb_rom_no != 255) {
+                if (my_room->emu_info.agb_rom_no != 255 && AC_GbaLinkAvailable()) {
                     my_room->requested_msg_type = aMR_MSG_STATE_PREPARE_COMMUNICATION;
                     mMsg_SET_CONTINUE_MSG_NUM(0x3DCE); /* GBA */
                     mMsg_UNSET_LOCKCONTINUE();

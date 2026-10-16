@@ -19,6 +19,7 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "assets/data/model/furniture_stop.h"
+#include "ac_port.h"
 
 enum {
     aMR_ICON_LEAF,

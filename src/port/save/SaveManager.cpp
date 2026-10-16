@@ -1,5 +1,6 @@
 #include "port/save/SaveManager.h"
 #include "port/save/SaveGci.h"
+#include "port/save/SaveGifts.h"
 #include "port/save/SaveJson.h"
 
 #include <ship/Api.h>
@@ -965,6 +966,7 @@ int PrepareSaveHome(int mode, SaveHomeContext& ctx) {
     }
     ctx.landSaved = Save_Get(save_exist);
     ctx.copyProtect = (u16)Common_Get(copy_protect);
+    SaveGifts::Deliver();
     mCD_SaveHome_SetData(mode);
     ctx.file = SlotFileForWrite(ctx.slot);
     ctx.file->land = SealedCommonSave();
@@ -1059,6 +1061,9 @@ struct GcCard {
     SaveGci::Town town;
     std::vector<Passport> passports;
     std::vector<u8> famicom;
+    std::vector<SaveGci::CardFile> nesGames;
+    std::vector<std::pair<std::string, std::vector<u8>>> nesSaves;
+    std::vector<SaveGci::CardFile> gifts;
 };
 
 bool ReadGcCard(const std::string& path, GcCard& card, std::string* error) {
@@ -1097,6 +1102,21 @@ bool ReadGcCard(const std::string& path, GcCard& card, std::string* error) {
     if (const SaveGci::CardFile* nes = SaveGci::FindFile(files, SaveGci::kFamicomSaveFileName)) {
         if (!SaveGci::ReadFamicomSave(*nes, card.famicom)) {
             SPDLOG_WARN("save import: NES save {} is damaged, skipped", nes->name);
+        }
+    }
+    for (const auto& f : files) {
+        if (f.gameCode != SaveGci::kGameCode) {
+            continue;
+        }
+        if (f.name.rfind(SaveGci::kFamicomGamePrefix, 0) == 0 && f.name != SaveGci::kFamicomSaveFileName) {
+            card.nesGames.push_back(f);
+        } else if (f.name.rfind(SaveGci::kFamicomGameSavePrefix, 0) == 0) {
+            std::vector<u8> save;
+            if (SaveGci::ReadFamicomSave(f, save, "GAFEFSE\x1A")) {
+                card.nesSaves.emplace_back(f.name, std::move(save));
+            }
+        } else if (f.name.rfind(SaveGci::kGiftFilePrefix, 0) == 0) {
+            card.gifts.push_back(f);
         }
     }
     return true;
@@ -1997,6 +2017,8 @@ ImportPreview PreviewGameCubeSave(const std::string& path) {
     p.diary = !card.town.diary.empty();
     p.passports = (int)card.passports.size();
     p.famicom = !card.famicom.empty();
+    p.nesGames = (int)card.nesGames.size();
+    p.gifts = (int)card.gifts.size();
     return p;
 }
 
@@ -2084,6 +2106,26 @@ bool ImportGameCubeSave(const std::string& path, std::string* message) {
         } else {
             out << " The NES game saves could not be written.";
         }
+    }
+    fs::path famicomDir = Ship::Context::GetPathRelativeToAppDirectory("famicom");
+    std::vector<std::pair<fs::path, std::vector<u8>>> extra;
+    for (const auto& game : card.nesGames) {
+        extra.emplace_back(famicomDir / (game.name + ".gci"), SaveGci::WriteGci(game));
+    }
+    for (const auto& [name, data] : card.nesSaves) {
+        extra.emplace_back(SaveDir() / "famicom" / (name + ".bin"), data);
+    }
+    for (const auto& gift : card.gifts) {
+        extra.emplace_back(fs::path(SaveGifts::Directory()) / (gift.name + ".gci"), SaveGci::WriteGci(gift));
+    }
+    for (const auto& [path, data] : extra) {
+        if (!WriteBinary(path, data)) {
+            SPDLOG_WARN("save import: cannot write {}", path.string());
+        }
+    }
+    if (!card.nesGames.empty() || !card.gifts.empty()) {
+        out << " Copied " << card.nesGames.size() << " memory card NES games and " << card.gifts.size()
+            << " gift letter files.";
     }
     if (!backup.empty()) {
         out << " The previous save is in " << backup.string() << ".";

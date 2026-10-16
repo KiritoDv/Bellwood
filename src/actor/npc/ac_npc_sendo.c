@@ -6,6 +6,7 @@
 #include "m_msg.h"
 #include "libultra/libultra.h"
 #include "GBA2/gba2.h"
+#include "ac_port.h"
 #include "m_ledit_ovl.h"
 
 static void aSEN_actor_ct(ACTOR* actorx, GAME* game);

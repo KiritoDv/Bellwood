@@ -9,6 +9,7 @@
 #include "m_player_lib.h"
 #include "m_msg.h"
 #include "GBA2/gba2.h"
+#include "ac_port.h"
 #include "libultra/libultra.h"
 
 enum {
@@ -301,7 +302,7 @@ static void aPT_Connect_AGB_to_Rcv_Init(PTERMINAL_ACTOR* actor, GAME* game) {
 static void aPT_Connect_AGB_to_Rcv(PTERMINAL_ACTOR* actor, GAME* game) {
     if (mMsg_CHECK_MAINNORMALCONTINUE()) {
         if (mMsg_GET_MSG_NUM() == 0x3DEF) {
-            int res = mGcgba_ConnectEnabled();
+            int res = AC_EReaderConnect();
 
             mMsg_SET_LOCKCONTINUE();
             switch (res) {
@@ -338,7 +339,7 @@ static void aPT_Connect_AGB_to_Snd_Init(PTERMINAL_ACTOR* actor, GAME* game) {
 static void aPT_Connect_AGB_to_Snd(PTERMINAL_ACTOR* actor, GAME* game) {
     if (mMsg_CHECK_MAINNORMALCONTINUE()) {
         if (mMsg_GET_MSG_NUM() == 0x3DF2) {
-            int res = mGcgba_ConnectEnabled();
+            int res = AC_EReaderConnect();
 
             mMsg_SET_LOCKCONTINUE();
             switch (res) {
@@ -373,7 +374,7 @@ static void aPT_Send(PTERMINAL_ACTOR* actor, GAME* game) {
     size_t eappli_size = mEA_dl_carde_program_size();
     u8* eappli_p = mEA_dl_carde_program_p();
 
-    switch (mGcgba_send_eAppri(eappli_p, eappli_size)) {
+    switch (AC_EReaderSendApp(eappli_p, eappli_size)) {
         case GBA2_EAPPLI_SUCCESS:
             mMsg_UNSET_LOCKCONTINUE();
             mMsg_SET_CONTINUE_MSG_NUM(0x3DF4);
@@ -426,7 +427,7 @@ static void aPT_Receive_Init(PTERMINAL_ACTOR* actor, GAME* game) {
 static void aPT_Receive(PTERMINAL_ACTOR* actor, GAME* game) {
     int res;
 
-    switch (mGcgba_Read(aPT_receive_buf, sizeof(aPT_receive_buf), GBA2_EAPPLI_TYPE_PTERMINAL)) {
+    switch (AC_EReaderRead(aPT_receive_buf, sizeof(aPT_receive_buf), GBA2_EAPPLI_TYPE_PTERMINAL)) {
         case GBA2_GBA_STATE_SUCCESS:
             mGcgba_EndComm();
 

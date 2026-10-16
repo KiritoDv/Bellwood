@@ -9,6 +9,7 @@
 #include "m_malloc.h"
 #include "m_eappli.h"
 #include "GBA2/gba2.h"
+#include "ac_port.h"
 
 enum {
     aMSC_ACT_MENU_OPEN_WAIT,
@@ -157,7 +158,7 @@ static void aMSC_check_connect_agb_start_wait(MSCORE_CONTROL_ACTOR* mscore_ctrl,
 static void aMSC_check_connect_agb_end_wait(MSCORE_CONTROL_ACTOR* mscore_ctrl, GAME_PLAY* play) {
     int next_act_idx = -1;
 
-    switch (mGcgba_ConnectEnabled()) {
+    switch (AC_EReaderConnect()) {
         case GBA2_GBA_STATE_TRANSMITTING:
             break;
         case GBA2_GBA_STATE_SUCCESS:
@@ -189,7 +190,7 @@ static void aMSC_check_connect_agb_end_wait(MSCORE_CONTROL_ACTOR* mscore_ctrl, G
 static void aMSC_read_data(MSCORE_CONTROL_ACTOR* mscore_ctrl, GAME_PLAY* play) {
     mMsg_Window_c* msg_p = mMsg_Get_base_window_p();
 
-    switch (mGcgba_Read(mscore_ctrl->readbuf_p, sizeof(mscore_ctrl->melody), GBA2_EAPPLI_TYPE_MUSICSCORE)) {
+    switch (AC_EReaderRead(mscore_ctrl->readbuf_p, sizeof(mscore_ctrl->melody), GBA2_EAPPLI_TYPE_MUSICSCORE)) {
         case GBA2_GBA_STATE_TRANSMITTING:
             break;
         case GBA2_GBA_STATE_SUCCESS:
@@ -220,7 +221,7 @@ static void aMSC_send_prg(MSCORE_CONTROL_ACTOR* mscore_ctrl, GAME_PLAY* play) {
     mMsg_Window_c* msg_p = mMsg_Get_base_window_p();
     int idx = -1;
 
-    switch (mGcgba_send_eAppri(mEA_dl_carde_program_p(), mEA_dl_carde_program_size())) {
+    switch (AC_EReaderSendApp(mEA_dl_carde_program_p(), mEA_dl_carde_program_size())) {
         case GBA2_EAPPLI_SUCCESS:
             idx = 0;
             break;

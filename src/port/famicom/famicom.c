@@ -46,6 +46,7 @@ static const u8 l_nes_palette[64 * 2] = {
 };
 
 static const u8 l_save_data_name[FAMICOM_SAVE_DATA_NAME_LEN] = { 'G', 'A', 'F', 'E', 'F', 'S', 'C', 0x1A };
+static const u8 l_card_save_data_name[FAMICOM_SAVE_DATA_NAME_LEN] = { 'G', 'A', 'F', 'E', 'F', 'S', 'E', 0x1A };
 
 FamicomCommon famicomCommon;
 u8 famicomCommonSave[FAMICOM_SAVE_TOTAL_SIZE];
@@ -188,7 +189,9 @@ static void famicom_free_buffers(void) {
         my_free(famicomCommon.highscore_flagsp);
         my_free(famicomCommon.bbramp);
         my_free(famicomCommon.nesromp);
+        my_free(famicomCommon.card_tagsp);
     }
+    famicomCommon.card_tagsp = NULL;
     famicomCommon.highscore_flagsp = NULL;
     famicomCommon.bbramp = NULL;
     famicomCommon.nesromp = NULL;
@@ -205,16 +208,27 @@ extern int famicom_init(int rom_idx, Famicom_MallocInfo* malloc_info, int player
 
     famicomCommon.save_pl_no = (player_no >= 0 && player_no < PLAYER_NUM) ? player_no : 0;
 
-    if (rom_idx <= 0 || rom_idx > FAMICOM_INTERNAL_ROM_NUM) {
+    if (rom_idx < 0) {
+        FamicomCardGame game;
+
+        if (!FamicomCard_Load(-rom_idx - 1, &game)) {
+            return -1;
+        }
+        famicomCommon.nesrom_memcard = TRUE;
+        famicomCommon.rom_no = (u8)-rom_idx;
+        memcpy(famicomCommon.famicom_save_name, game.save_name, sizeof(famicomCommon.famicom_save_name));
+        rom_size = game.rom_size;
+        FamicomCard_Release();
+    } else if (rom_idx == 0 || rom_idx > FAMICOM_INTERNAL_ROM_NUM) {
         return -1;
+    } else {
+        famicomCommon.rom_no = (u8)rom_idx;
+        if (save_game_image == FALSE) {
+            famicom_save_common_setup();
+        }
+        rom_size = ASSET_SIZE(l_rom_paths[rom_idx - 1]);
     }
 
-    famicomCommon.rom_no = (u8)rom_idx;
-    if (save_game_image == FALSE) {
-        famicom_save_common_setup();
-    }
-
-    rom_size = ASSET_SIZE(l_rom_paths[rom_idx - 1]);
     l_noise = (u8*)LOAD_ASSET_RAW(FAMICOM_NOISE_PATH);
     if (rom_size == 0 || l_noise == NULL || ASSET_SIZE(FAMICOM_NOISE_PATH) <= NES_FDS_BIOS_SIZE) {
         l_noise = NULL;
@@ -234,19 +248,75 @@ extern int famicom_init(int rom_idx, Famicom_MallocInfo* malloc_info, int player
     return 0;
 }
 
-static int famicom_rom_load(void) {
-    const char* path = l_rom_paths[famicomCommon.rom_no - 1];
-    void* rom = LOAD_ASSET_RAW(path);
-    u32 max_ofs = 0;
-    int highscore_num;
+static int famicom_card_rom_load(void) {
+    FamicomCardGame game;
 
-    if (rom == NULL || ASSET_SIZE(path) != famicomCommon.nesrom_size) {
+    if (!FamicomCard_Load(famicomCommon.rom_no - 1, &game) || game.rom_size != famicomCommon.nesrom_size) {
+        FamicomCard_Release();
         return -1;
     }
 
     nesinfo_init();
-    memcpy(famicomCommon.nesromp, rom, famicomCommon.nesrom_size);
-    nesinfo_tags_set(famicomCommon.rom_no - 1);
+    memcpy(famicomCommon.nesromp, game.rom, game.rom_size);
+    if (game.tags_size != 0) {
+        famicomCommon.card_tagsp = (u8*)my_malloc(game.tags_size, 4);
+        if (famicomCommon.card_tagsp == NULL) {
+            FamicomCard_Release();
+            return -1;
+        }
+        memcpy(famicomCommon.card_tagsp, game.tags, game.tags_size);
+    }
+    nesinfo_tags_start = famicomCommon.card_tagsp;
+    nesinfo_tags_end = famicomCommon.card_tagsp + game.tags_size;
+    nesinfo_tags_size = (u32)game.tags_size;
+    FamicomCard_Release();
+    return 0;
+}
+
+static void famicom_card_save_setup(u32 max_ofs) {
+    FamicomSaveDataHeader* header;
+
+    if (famicomCommon.save_pl_no < 0) {
+        return;
+    }
+
+    famicomCommon.save_data_name = l_card_save_data_name;
+    famicomCommon.save_data_single_size = max_ofs + 0xB;
+    famicomCommon.save_data_total_size = FAMICOM_SAVE_HEADER_SIZE + famicomCommon.save_data_single_size * PLAYER_NUM;
+    header = (FamicomSaveDataHeader*)FamicomCard_SaveBuffer(famicomCommon.save_data_total_size);
+    memset(header, 0, famicomCommon.save_data_total_size);
+    famicomCommon.save_data_header = header;
+
+    if (FamicomCard_ReadSave(famicomCommon.famicom_save_name, header, famicomCommon.save_data_total_size) !=
+            (int)famicomCommon.save_data_total_size ||
+        famicom_save_data_check(header, -1, famicomCommon.save_data_name) != 0) {
+        famicom_save_data_init(header, famicomCommon.save_data_single_size, famicomCommon.save_data_name);
+    }
+
+    famicomCommon.internal_save_datap =
+        (u8*)header + FAMICOM_SAVE_HEADER_SIZE + famicomCommon.save_data_single_size * famicomCommon.save_pl_no;
+}
+
+static int famicom_rom_load(void) {
+    u32 max_ofs = 0;
+    int highscore_num;
+
+    if (famicomCommon.nesrom_memcard) {
+        if (famicom_card_rom_load() != 0) {
+            return -1;
+        }
+    } else {
+        const char* path = l_rom_paths[famicomCommon.rom_no - 1];
+        void* rom = LOAD_ASSET_RAW(path);
+
+        if (rom == NULL || ASSET_SIZE(path) != famicomCommon.nesrom_size) {
+            return -1;
+        }
+
+        nesinfo_init();
+        memcpy(famicomCommon.nesromp, rom, famicomCommon.nesrom_size);
+        nesinfo_tags_set(famicomCommon.rom_no - 1);
+    }
     nesinfo_data_size = (u32)famicomCommon.nesrom_size;
     nesinfo_data_start = famicomCommon.nesromp;
     nesinfo_data_end = famicomCommon.nesromp + famicomCommon.nesrom_size;
@@ -258,9 +328,13 @@ static int famicom_rom_load(void) {
         return -1;
     }
 
-    if (famicomCommon.save_data_header != NULL) {
+    if (famicomCommon.nesrom_memcard) {
+        famicom_card_save_setup(max_ofs);
+    } else if (famicomCommon.save_data_header != NULL) {
         famicomCommon.internal_save_datap =
             famicomCommonSave + FAMICOM_SAVE_HEADER_SIZE + FAMICOM_SAVE_SINGLE_SIZE * famicomCommon.save_pl_no;
+    }
+    if (famicomCommon.internal_save_datap != NULL) {
         nesinfo_tag_process1(famicomCommon.internal_save_datap, 1, NULL);
     }
 
@@ -477,6 +551,21 @@ extern int famicom_internal_data_save(void) {
 }
 
 extern int famicom_external_data_save(void) {
+    FamicomSaveDataHeader* header = famicomCommon.save_data_header;
+
+    if (!famicomCommon.nesrom_memcard || header == NULL) {
+        return FAMICOM_RESULT_OK;
+    }
+    if (famicom_save_data_check(header, -1, famicomCommon.save_data_name) != 0) {
+        return FAMICOM_RESULT_BROKEN;
+    }
+
+    header->no_save = FALSE;
+    famicom_save_data_setup(header, famicomCommon.save_data_single_size, famicomCommon.save_data_name);
+    if (!FamicomCard_WriteSave(famicomCommon.famicom_save_name, header, famicomCommon.save_data_total_size)) {
+        return FAMICOM_RESULT_NOSPACE;
+    }
+
     return FAMICOM_RESULT_OK;
 }
 
@@ -485,8 +574,13 @@ extern int famicom_external_data_save_check(void) {
 }
 
 extern int famicom_get_disksystem_titles(int* n_games, char* title_name_bufp, int namebuf_size) {
-    if (n_games != NULL) {
-        *n_games = 0;
+    int count = FamicomCard_Count();
+
+    if (title_name_bufp != NULL && namebuf_size >= FAMICOM_MORI_NAME_LEN) {
+        count = FamicomCard_Titles((u8*)title_name_bufp, namebuf_size / FAMICOM_MORI_NAME_LEN);
     }
-    return FALSE;
+    if (n_games != NULL) {
+        *n_games = count;
+    }
+    return TRUE;
 }

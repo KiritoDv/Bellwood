@@ -750,7 +750,7 @@ static void aNNW_talk_gba_tool_bf(NPC_NEEDLEWORK_ACTOR* actor, GAME_PLAY* play) 
 static void aNNW_talk_gba_tool(NPC_NEEDLEWORK_ACTOR* actor, GAME_PLAY* play) {
     mMsg_Window_c* msg_p = mMsg_Get_base_window_p();
 
-    switch (aNNW_check_GBA(&actor->gba_ready)) {
+    switch (AC_DesignFilesEnabled() ? aNNW_GBA_STATE_READY : aNNW_check_GBA(&actor->gba_ready)) {
         case aNNW_GBA_STATE_TRANSMITTING:
             break;
         case aNNW_GBA_STATE_READY:
@@ -1004,7 +1004,7 @@ static void aNNW_talk_card_e_load_prg_bf_0(NPC_NEEDLEWORK_ACTOR* actor, GAME_PLA
 static void aNNW_talk_card_e_load_prg_bf_1(NPC_NEEDLEWORK_ACTOR* actor, GAME_PLAY* play) {
     mMsg_Window_c* msg_p = mMsg_Get_base_window_p();
 
-    switch (aNNW_check_GBA(&actor->gba_ready)) {
+    switch (AC_EReaderConnect() == GBA2_GBA_STATE_SUCCESS ? aNNW_GBA_STATE_READY : aNNW_check_GBA(&actor->gba_ready)) {
         case aNNW_GBA_STATE_TRANSMITTING:
             break;
         case aNNW_GBA_STATE_READY:
@@ -1099,7 +1099,7 @@ static void aNNW_talk_card_e_load_bf_0(NPC_NEEDLEWORK_ACTOR* actor, GAME_PLAY* p
 static void aNNW_talk_card_e_load_bf_1(NPC_NEEDLEWORK_ACTOR* actor, GAME_PLAY* play) {
     mMsg_Window_c* msg_p = mMsg_Get_base_window_p();
 
-    switch (aNNW_check_GBA(&actor->gba_ready)) {
+    switch (AC_EReaderConnect() == GBA2_GBA_STATE_SUCCESS ? aNNW_GBA_STATE_READY : aNNW_check_GBA(&actor->gba_ready)) {
         case aNNW_GBA_STATE_TRANSMITTING:
             break;
         case aNNW_GBA_STATE_READY:

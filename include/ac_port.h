@@ -46,6 +46,16 @@ void AC_DebugPrint(int x, int y, int show_count, const char* fmt, ...);
 f32 AC_PadGetSubStickValue(void);
 s16 AC_PadGetSubStickAngle(void);
 
+int AC_GbaIslandWithoutGba(void);
+int AC_GbaLinkAvailable(void);
+int AC_EReaderConnect(void);
+int AC_EReaderSendApp(u8* program, size_t size);
+int AC_EReaderRead(u8* buf, size_t size, u8 type);
+int AC_DesignFilesEnabled(void);
+int AC_DesignExport(const u8* designs, int count);
+int AC_DesignImportReady(void);
+int AC_DesignImport(u8* designs, int count);
+
 extern s32 gAC_PrerenderFb;
 
 void AC_TexInvalidateRange(const void* addr, size_t size);

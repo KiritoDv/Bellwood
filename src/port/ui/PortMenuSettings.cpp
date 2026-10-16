@@ -455,6 +455,42 @@ void PortMenu::AddMenuSettings() {
             });
         })
         .Options(ButtonOptions().Tooltip("Displays a test notification."));
+
+    path.sidebarName = "Game Boy Advance";
+    path.column = SECTION_COLUMN_1;
+    AddSidebarEntry("Settings", path.sidebarName, 2);
+    AddWidget(path, "Island Without a GBA", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("Gba.IslandWithoutGba"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "Kapp'n's boat waits at the dock and takes you to the island without a Game Boy Advance."));
+    AddWidget(path, "e-Reader Card Files", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("Gba.EReaderFiles"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "The post office, the Able Sisters and the town tune board read e-Reader card files (.raw, .bin) "
+            "instead of an e-Reader."));
+    AddWidget(path, "Design Files", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("Gba.DesignFiles"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "The Able Sisters' GBA design tool saves your designs as PNG files in the designs folder and loads "
+            "them back from there."));
+#if not defined(__SWITCH__) and not defined(__WIIU__)
+    path.column = SECTION_COLUMN_2;
+    for (const char* folder : { "ecards", "designs", "famicom" }) {
+        std::string label = std::string("Open ") + folder + " Folder";
+        AddWidget(path, label, WIDGET_BUTTON)
+            .RaceDisable(false)
+            .Callback([folder](WidgetInfo& info) {
+                std::filesystem::path dir = Ship::Context::GetPathRelativeToAppDirectory(folder);
+                std::error_code ec;
+                std::filesystem::create_directories(dir, ec);
+                SDL_OpenURL(std::string("file:///" + std::filesystem::absolute(dir).string()).c_str());
+            })
+            .Options(ButtonOptions().Tooltip("Opens the folder in the file browser."));
+    }
+#endif
 }
 
 } // namespace PortGui

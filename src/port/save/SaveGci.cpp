@@ -106,6 +106,7 @@ int PickBlock(const std::vector<u8>& img, size_t a, size_t b, size_t counterOffs
 }
 
 void ParseEntry(const u8* e, CardFile& f) {
+    f.entry.assign(e, e + kEntrySize);
     f.gameCode.assign(reinterpret_cast<const char*>(e), 4);
     f.maker.assign(reinterpret_cast<const char*>(e + 4), 2);
     const char* name = reinterpret_cast<const char*>(e + 8);
@@ -433,25 +434,72 @@ bool ReadPassport(const CardFile& file, mCD_foreigner_c& out) {
     return mPr_NullCheckPersonalID(&out.priv.player_ID) == FALSE;
 }
 
-bool ReadFamicomSave(const CardFile& file, std::vector<uint8_t>& out) {
-    static const u8 kName[FAMICOM_SAVE_DATA_NAME_LEN] = { 'G', 'A', 'F', 'E', 'F', 'S', 'C', 0x1A };
+bool ReadFamicomSave(const CardFile& file, std::vector<uint8_t>& out, const char* identifier) {
     const std::vector<u8>& d = file.data;
-    for (size_t at = 0; at + FAMICOM_SAVE_TOTAL_SIZE <= d.size(); at += 4) {
+    for (size_t at = 0; at + FAMICOM_SAVE_HEADER_SIZE <= d.size(); at += 4) {
         const u8* h = d.data() + at;
-        if (memcmp(h, kName, sizeof(kName)) != 0 || h[0x0A] != FAMICOM_SAVE_HEADER_SIZE ||
-            Be16(h + 0x0C) != FAMICOM_SAVE_SINGLE_SIZE) {
+        if (memcmp(h, identifier, FAMICOM_SAVE_DATA_NAME_LEN) != 0 || h[0x0A] != FAMICOM_SAVE_HEADER_SIZE) {
             continue;
         }
+        size_t total = FAMICOM_SAVE_HEADER_SIZE + (size_t)Be16(h + 0x0C) * PLAYER_NUM;
         u8 sum = 0;
         for (size_t i = 0; i < FAMICOM_SAVE_HEADER_SIZE; i++) {
             sum += h[i];
         }
-        if (sum == 0) {
-            out.assign(h, h + FAMICOM_SAVE_TOTAL_SIZE);
+        if (sum == 0 && at + total <= d.size()) {
+            out.assign(h, h + total);
             return true;
         }
     }
     return false;
+}
+
+size_t DataOffset(const CardFile& file) {
+    if (file.entry.size() < kEntrySize) {
+        return 0;
+    }
+    const u8* e = file.entry.data();
+    u32 iconAddr = Be32(e + 0x2C);
+    if (iconAddr == 0xFFFFFFFF) {
+        return 0;
+    }
+    size_t offset = iconAddr;
+    switch (e[0x07] & 3) {
+        case 1:
+            offset += 0xC00 + 0x200;
+            break;
+        case 2:
+            offset += 0x1800;
+            break;
+    }
+    u16 iconFormat = Be16(e + 0x30);
+    bool palette = false;
+    for (int i = 0; i < 8; i++) {
+        switch ((iconFormat >> (i * 2)) & 3) {
+            case 1:
+                offset += 0x400;
+                palette = true;
+                break;
+            case 2:
+                offset += 0x800;
+                break;
+        }
+    }
+    if (palette) {
+        offset += 0x200;
+    }
+    return offset;
+}
+
+std::vector<uint8_t> WriteGci(const CardFile& file) {
+    std::vector<uint8_t> out(file.entry);
+    out.resize(kEntrySize, 0xFF);
+    u16 blocks = (u16)((file.data.size() + kBlockSize - 1) / kBlockSize);
+    out[0x38] = blocks >> 8;
+    out[0x39] = blocks & 0xFF;
+    out.insert(out.end(), file.data.begin(), file.data.end());
+    out.resize(kEntrySize + blocks * kBlockSize, 0);
+    return out;
 }
 
 std::string DecodeName(const uint8_t* text, size_t len) {

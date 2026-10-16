@@ -14,6 +14,7 @@
 #include "m_ledit_ovl.h"
 #include "m_bgm.h"
 #include "GBA2/gba2.h"
+#include "ac_port.h"
 
 enum {
     aNNW_TALK_WHAT_HAPPEN_FIRST,

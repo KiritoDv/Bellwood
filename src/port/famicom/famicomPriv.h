@@ -28,7 +28,18 @@ typedef struct FamicomCommon {
     size_t save_data_total_size;
     size_t save_data_single_size;
     const u8* save_data_name;
+    u8 nesrom_memcard;
+    u8* card_tagsp;
+    char famicom_save_name[33];
 } FamicomCommon;
+
+typedef struct FamicomCardGame {
+    const u8* rom;
+    size_t rom_size;
+    const u8* tags;
+    size_t tags_size;
+    char save_name[33];
+} FamicomCardGame;
 
 extern FamicomCommon famicomCommon;
 extern u8 famicomCommonSave[FAMICOM_SAVE_TOTAL_SIZE];
@@ -46,6 +57,14 @@ extern u8 ics_bad;
 
 int FamicomPort_ReadSave(void* data, size_t size);
 int FamicomPort_WriteSave(const void* data, size_t size);
+
+int FamicomCard_Count(void);
+int FamicomCard_Titles(u8* names, int max_games);
+int FamicomCard_Load(int index, FamicomCardGame* game);
+void FamicomCard_Release(void);
+u8* FamicomCard_SaveBuffer(size_t size);
+int FamicomCard_ReadSave(const char* name, void* data, size_t size);
+int FamicomCard_WriteSave(const char* name, const void* data, size_t size);
 
 #ifdef __cplusplus
 }

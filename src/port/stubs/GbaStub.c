@@ -12,7 +12,7 @@ void mGcgba_EndComm(void) {
 }
 
 int mGcgba_ConnectEnabled(void) {
-    return FALSE;
+    return GBA2_GBA_STATE_ERROR;
 }
 
 int mGcgba_Boot(u8* data_buf, size_t buf_size) {
@@ -20,11 +20,11 @@ int mGcgba_Boot(u8* data_buf, size_t buf_size) {
 }
 
 int mGcgba_IsEditor(void) {
-    return FALSE;
+    return GBA2_GBA_STATE_ERROR;
 }
 
 int mGcgba_IsIsland(void) {
-    return FALSE;
+    return GBA2_GBA_STATE_ERROR;
 }
 
 int mGcgba_Recv(u8* recv_bufp, size_t recv_buf_size) {

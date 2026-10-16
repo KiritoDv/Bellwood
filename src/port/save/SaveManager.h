@@ -35,6 +35,8 @@ struct ImportPreview {
     bool diary = false;
     int passports = 0;
     bool famicom = false;
+    int nesGames = 0;
+    int gifts = 0;
 };
 
 enum class QuitPrompt {

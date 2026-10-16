@@ -76,6 +76,10 @@ static int aNNW_check_GBA(u8* gba_connected_p) {
 static int aNNW_mGcgba_boot(u8* gba_connected_p) {
     int status;
 
+    if (AC_DesignFilesEnabled()) {
+        return aNNW_GBA_STATE_READY;
+    }
+
     if (*gba_connected_p == FALSE) {
         mGcgba_InitVar();
         *gba_connected_p = TRUE;
@@ -97,6 +101,10 @@ static int aNNW_mGcgba_boot(u8* gba_connected_p) {
 
 static int aNNW_SendPrg(u8* gba_connected_p) {
     int status;
+
+    if (AC_DesignFilesEnabled()) {
+        return aNNW_GBA_STATE_READY;
+    }
 
     if (*gba_connected_p == FALSE) {
         mGcgba_InitVar();
@@ -120,6 +128,11 @@ static int aNNW_SendPrg(u8* gba_connected_p) {
 static int aNNW_SendData(u8* gba_connected_p) {
     int status;
 
+    if (AC_DesignFilesEnabled()) {
+        return AC_DesignExport(aNNW_trance_data, mPr_ORIGINAL_DESIGN_COUNT) ? aNNW_GBA_STATE_READY
+                                                                            : aNNW_GBA_STATE_NOT_CONNECTED;
+    }
+
     if (*gba_connected_p == FALSE) {
         mGcgba_InitVar();
         *gba_connected_p = TRUE;
@@ -142,6 +155,11 @@ static int aNNW_SendData(u8* gba_connected_p) {
 static int aNNW_RecvData(u8* gba_connected_p) {
     int status;
 
+    if (AC_DesignFilesEnabled()) {
+        return AC_DesignImport(aNNW_trance_data, mPr_ORIGINAL_DESIGN_COUNT) ? aNNW_GBA_STATE_READY
+                                                                            : aNNW_GBA_STATE_NOT_CONNECTED;
+    }
+
     if (*gba_connected_p == FALSE) {
         mGcgba_InitVar();
         *gba_connected_p = TRUE;
@@ -162,6 +180,10 @@ static int aNNW_RecvData(u8* gba_connected_p) {
 }
 
 static int aNNW_IsEditor(u8* gba_connected_p) {
+    if (AC_DesignFilesEnabled()) {
+        return AC_DesignImportReady() ? aNNW_GBA_STATE_READY : aNNW_GBA_STATE_EDITOR_READY;
+    }
+
     if (*gba_connected_p == FALSE) {
         mGcgba_InitVar();
         *gba_connected_p = TRUE;
@@ -192,7 +214,7 @@ static int aNNW_Send_card_e(u8* gba_connected_p) {
         *gba_connected_p = TRUE;
     }
 
-    return mGcgba_send_eAppri(mEA_dl_carde_program_p(), mEA_dl_carde_program_size());
+    return AC_EReaderSendApp(mEA_dl_carde_program_p(), mEA_dl_carde_program_size());
 }
 
 static int aNNW_RecvData_card_e(u8* gba_connected_p) {
@@ -203,7 +225,7 @@ static int aNNW_RecvData_card_e(u8* gba_connected_p) {
         *gba_connected_p = TRUE;
     }
 
-    status = mGcgba_Read(aNNW_trance_data, sizeof(mNW_original_design_c), GBA2_EAPPLI_TYPE_NEEDLEWORK);
+    status = AC_EReaderRead(aNNW_trance_data, sizeof(mNW_original_design_c), GBA2_EAPPLI_TYPE_NEEDLEWORK);
     if (status != GBA2_GBA_STATE_TRANSMITTING) {
         *gba_connected_p = FALSE;
     }

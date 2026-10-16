@@ -1,4 +1,5 @@
 #include "port/save/SaveManager.h"
+#include "port/gba/GbaPort.h"
 
 #include "port/ShipCompat.h"
 #include "port/ShipInit.hpp"
@@ -295,6 +296,12 @@ class SaveManagerWindow final : public Ship::GuiWindow {
             if (mPreview.famicom) {
                 ImGui::Text("NES game saves: yes");
             }
+            if (mPreview.nesGames > 0) {
+                ImGui::Text("Memory card NES games: %d", mPreview.nesGames);
+            }
+            if (mPreview.gifts > 0) {
+                ImGui::Text("Gift letter files: %d", mPreview.gifts);
+            }
             ImGui::Spacing();
             ImGui::TextDisabled("Importing replaces your current town. It is copied to save/backup first.");
         }
@@ -414,6 +421,9 @@ void RegisterCommands() {
 bool sQuitTestPushed = false;
 
 bool OnFileDropped(char* path) {
+    if (GbaPort::ScanWaiting()) {
+        return false;
+    }
     std::string ext = std::filesystem::path(path).extension().string();
     std::transform(ext.begin(), ext.end(), ext.begin(), [](unsigned char c) { return (char)std::tolower(c); });
     if (ext != ".gci" && ext != ".gcs" && ext != ".raw" && ext != ".gcp") {

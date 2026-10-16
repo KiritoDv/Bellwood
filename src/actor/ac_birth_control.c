@@ -4,6 +4,7 @@
 #include "m_field_info.h"
 #include "m_common_data.h"
 #include "GBA2/gba2.h"
+#include "ac_port.h"
 
 static void aBC_actor_move(ACTOR*, GAME*);
 
@@ -262,7 +263,7 @@ static void aBC_set_boat(BIRTH_CONTROL_ACTOR* birth_control, GAME_PLAY* play) {
     if (boat_ut_p != NULL) {
       mActor_name_t boat_item = *boat_ut_p;
 
-      switch (mGcgba_ConnectEnabled()) {
+      switch (AC_GbaIslandWithoutGba() ? GBA2_GBA_STATE_SUCCESS : mGcgba_ConnectEnabled()) {
         case GBA2_GBA_STATE_SUCCESS:
           /* Successfully connected to the GBA */
           mGcgba_InitVar();
