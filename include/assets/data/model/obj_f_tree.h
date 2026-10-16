@@ -1,0 +1,20 @@
+#ifndef ASSETS_DATA_MODEL_OBJ_F_TREE_H
+#define ASSETS_DATA_MODEL_OBJ_F_TREE_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const char obj_f_tree_leaf_tex_txt[];
+extern const char obj_f_tree_cutS_tex_txt[];
+extern const char obj_f_tree_cutL_tex_txt[];
+
+#define obj_f_tree_leaf_tex_txt_PATH "__OTR__data/model/obj_f_tree/obj_f_tree_leaf_tex_txt"
+#define obj_f_tree_cutS_tex_txt_PATH "__OTR__data/model/obj_f_tree/obj_f_tree_cutS_tex_txt"
+#define obj_f_tree_cutL_tex_txt_PATH "__OTR__data/model/obj_f_tree/obj_f_tree_cutL_tex_txt"
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
