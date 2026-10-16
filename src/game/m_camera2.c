@@ -2,7 +2,7 @@
 
 #include "m_play.h"
 #include "sys_math3d.h"
-#include "MSL_C/math.h"
+#include <math.h>
 #include "c_keyframe.h"
 #include "m_player_lib.h"
 #include "m_room_type.h"

@@ -1,4 +1,6 @@
+#include "ac_asset.h"
 #include "m_player_lib.h"
+#include "ac_port.h"
 
 #include "m_play.h"
 #include "m_actor.h"
@@ -8,164 +10,10 @@
 #include "ac_t_umbrella.h"
 #include "ac_snowman.h"
 #include "ac_uki.h"
-
-extern cKF_Animation_R_c cKF_ba_r_ply_1_wait1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_walk1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_axe1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_run1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_push1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_pull1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_hold_wait1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_pickup1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_Lturn1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_Rturn1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_get1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_get_change1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_get_putaway1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_open1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_putaway1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_trans_wait1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_transfer1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_umb_open1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_umbrella1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_dash1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_run_slip1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_get_pull1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_get_m1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kamae_move_m1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kamae_wait_m1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kokeru_a1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kokeru_getup_a1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kokeru_getup_n1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kokeru_n1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_net1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_net_swing1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_axe_swing1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kamae_slip_m1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kokeru1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kokeru_getup1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_sitdown1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_sitdown_wait1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_standup1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_putaway_m1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_bed_wait1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_inbed_L1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_inbed_R1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_intrain1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kagu_open_d1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kagu_open_h1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kagu_open_k1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_negaeri_L1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_negaeri_R1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_outbed_L1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_outbed_R1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_outtrain1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kagu_close_d1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kagu_close_h1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kagu_close_k1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kagu_wait_d1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kagu_wait_h1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kagu_wait_k1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_go_out_o1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_go_out_s1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_into_s1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_axe_hane1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_axe_suka1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_hold_wait_h1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_hold_wait_o1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_get_t1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_get_t2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_putaway_t1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_sao1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_sao_swing1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_turi_hiki1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_turi_wait1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_not_get_t1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_menu_catch1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_menu_change1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_umb_close1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_not_sao_swing1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_intrain_wait1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_clear_table1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_dig1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_fill_up1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_not_dig1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_clear_table_l1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_pickup_l1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_scoop1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_confirm1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_dig_suka1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_get_d1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_putaway_d1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_dig_kabu1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_fill_up_i1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_send_mail1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_get_f1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_get_pull_f1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_get_putaway_f1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_trans_wait_f1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_transfer_f1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_shake1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_tired1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_wash1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_wash2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_wash3;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_wash4;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_wash5;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_fukubiki1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_omairi1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_saisen1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_return_mail1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_return_mail2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_return_mail3;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_eat1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_gaaan1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_gaaan2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_deru1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_guratuku1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_mogaku1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_otiru1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_zassou1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_knock1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_biku1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_hati1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_hati2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_hati3;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_push_yuki1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_deru2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_otiru2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_itazura1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_umb_rot1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_pickup_wait1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_yatta1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_yatta2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_yatta3;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_kaza1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_mosquito1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_mosquito2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_ride1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_ride2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_ridewait;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_getoff1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_getoff2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_utiwa_wait1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_utiwa_d1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_axe_break1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_axe_breakwait1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_light_on1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_taisou1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_taisou2_1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_taisou2_2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_taisou3;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_taisou4_1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_taisou4_2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_taisou5_1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_taisou5_2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_taisou6_1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_taisou6_2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_taisou7_1;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_taisou7_2;
-extern cKF_Animation_R_c cKF_ba_r_ply_1_omairi_us1;
+#include "assets/data/model/boy_model.h"
+#include "assets/data/model/girl_model.h"
+#include "assets/data/model/player_anim.h"
+#include "assets/data/model/player_tool.h"
 
 extern cKF_Animation_R_c* mPlib_Get_Pointer_Animation(int anim_idx) {
     static cKF_Animation_R_c* data[] = {
@@ -598,57 +446,6 @@ extern int mPlib_Get_BasicPartTableIndex_fromAnimeIndex(int anim_idx) {
     return -1;
 }
 
-extern Gfx tol_axe_1_model[];
-extern Gfx tol_axe_1_b_model[];
-extern Gfx tol_axe_1_c_model[];
-extern Gfx tol_axe_2_model[];
-extern cKF_Skeleton_R_c cKF_bs_r_tol_net_1;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_net_2;
-extern cKF_Animation_R_c cKF_ba_r_tol_net_1_get_m1;
-extern cKF_Animation_R_c cKF_ba_r_tol_net_1_net_swing1;
-extern cKF_Animation_R_c cKF_ba_r_tol_net_1_kamae_main_m1;
-extern cKF_Animation_R_c cKF_ba_r_tol_net_1_kokeru_getup_n1;
-extern cKF_Animation_R_c cKF_ba_r_tol_net_1_kokeru_n1;
-extern cKF_Animation_R_c cKF_ba_r_tol_net_1_swing_wait1;
-extern cKF_Animation_R_c cKF_ba_r_tol_net_1_yatta_m1;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_sao_1;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_sao_2;
-extern cKF_Animation_R_c cKF_ba_r_tol_sao_1_sao_get_t1;
-extern cKF_Animation_R_c cKF_ba_r_tol_sao_1_sao_move1;
-extern cKF_Animation_R_c cKF_ba_r_tol_sao_1_sao_sinari1;
-extern cKF_Animation_R_c cKF_ba_r_tol_sao_1_sao_swing1;
-extern cKF_Animation_R_c cKF_ba_r_tol_sao_1_sao_wait1;
-extern cKF_Animation_R_c cKF_ba_r_tol_sao_1_not_sao_swing1;
-extern Gfx tol_scoop_1_model[];
-extern Gfx tol_scoop_2_model[];
-extern cKF_Skeleton_R_c cKF_bs_r_tol_balloon1;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_balloon2;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_balloon3;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_balloon4;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_balloon5;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_balloon6;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_balloon7;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_balloon8;
-extern cKF_Animation_R_c cKF_ba_r_tol_balloon1_wait;
-extern cKF_Animation_R_c cKF_ba_r_tol_balloon1_gyaza1;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_kaza1;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_kaza2;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_kaza3;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_kaza4;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_kaza5;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_kaza6;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_kaza7;
-extern cKF_Skeleton_R_c cKF_bs_r_tol_kaza8;
-extern cKF_Animation_R_c cKF_ba_r_tol_kaza1_wait;
-extern Gfx tol_fan1_model[];
-extern Gfx tol_fan2_model[];
-extern Gfx tol_fan3_model[];
-extern Gfx tol_fan4_model[];
-extern Gfx tol_fan5_model[];
-extern Gfx tol_fan6_model[];
-extern Gfx tol_fan7_model[];
-extern Gfx tol_fan8_model[];
-
 extern void* mPlib_Get_Item_DataPointer(int data_kind) {
     if (mPlayer_ITEM_DATA_VALID(data_kind)) {
         static void* mPlib_Item_DataPointer[] = {
@@ -978,22 +775,22 @@ static u32 mPlib_Get_UseFaceRom_index(int sex, int face_type, int swell, int dec
     return ofs;
 }
 
-static u32 mPlib_Get_UseFaceTexRom_p_common(int sex, int face_type, int swell, int decoy) {
+static uintptr_t mPlib_Get_UseFaceTexRom_p_common(int sex, int face_type, int swell, int decoy) {
     u32 idx = mPlib_Get_UseFaceRom_index(sex, face_type, swell, decoy, mPlayer_USE_FACE_ROM_TYPE_TEX);
     u32 base_address = JW_GetAramAddress(RESOURCE_FACE_BOY);
 
     return base_address + idx * 0xE20;
 }
 
-static u32 mPlib_Get_UseFaceTexRom_p(void) {
+static uintptr_t mPlib_Get_UseFaceTexRom_p(void) {
     return mPlib_Get_UseFaceTexRom_p_common(Now_Private->gender, Now_Private->face, Common_Get(player_bee_swell_flag),
                                             Common_Get(player_decoy_flag));
 }
 
-static u32 mPlib_Get_UseFacePalletRom_p(void) {
+static uintptr_t mPlib_Get_UseFacePalletRom_p(void) {
     int sunburn_rank = Now_Private->sunburn.rank;
     int decoy_flag = Common_Get(player_decoy_flag);
-    u32 base;
+    uintptr_t base;
     u32 ofs;
 
     if (sunburn_rank > 0 && decoy_flag == FALSE) {
@@ -1016,7 +813,7 @@ extern void mPlib_Object_Exchange_keep_new_PlayerMdl(GAME_PLAY* play) {
     actor_dlftbls[player_data->profile].profile->obj_bank_id = mPlib_get_player_Object_Bank();
 }
 
-static int mPlib_Object_Exchange_keep_new(GAME_PLAY* play, s16 bank, u32 src, u32 size, int aram_flag) {
+static int mPlib_Object_Exchange_keep_new(GAME_PLAY* play, s16 bank, uintptr_t src, u32 size, int aram_flag) {
     Object_Exchange_c* obj_ex = &play->object_exchange;
     Object_Bank_c* bank_p = &obj_ex->banks[obj_ex->bank_idx];
 
@@ -1032,11 +829,11 @@ static int mPlib_Object_Exchange_keep_new(GAME_PLAY* play, s16 bank, u32 src, u3
             bcopy((void*)src, bank_p->dma_start, size);
         }
 
-        DCStoreRangeNoSync(bank_p->ram_start, size);
+        AC_TexInvalidateRange(bank_p->ram_start, size);
     }
 
     if (obj_ex->bank_idx < (mSc_OBJECT_BANK_NUM - 1)) {
-        obj_ex->next_bank_ram_address = (char*)ALIGN_NEXT((u32)obj_ex->next_bank_ram_address + size, 32);
+        obj_ex->next_bank_ram_address = (char*)ALIGN_NEXT((uintptr_t)obj_ex->next_bank_ram_address + size, 32);
         obj_ex->bank_idx++;
     }
 
@@ -1057,7 +854,7 @@ static int Change_Player_face_bank_ID_Index(void) {
     return Player_face_bank_ID_Index;
 }
 
-extern u32 mPlib_Get_PlayerTexRom_p(int idx) {
+extern uintptr_t mPlib_Get_PlayerTexRom_p(int idx) {
     if (mPlib_Check_PlayerClothInAram(idx)) {
         u32 addr = JW_GetAramAddress(RESOURCE_TEX_BOY);
         addr += idx * mNW_DESIGN_TEX_SIZE;
@@ -1069,25 +866,25 @@ extern u32 mPlib_Get_PlayerTexRom_p(int idx) {
             org_idx = 0;
         }
 
-        return (u32)Now_Private->my_org[org_idx & 7].design.data;
+        return (uintptr_t)Now_Private->my_org[org_idx & 7].design.data;
     }
 }
 
-static u32 mPlib_Get_UseTexRom_p(void) {
+static uintptr_t mPlib_Get_UseTexRom_p(void) {
     return mPlib_Get_PlayerTexRom_p(Now_Private->cloth.idx);
 }
 
 static int Player_Tex_bank_ID[] = { -1, -1 };
 
 extern void mPlib_Object_Exchange_keep_new_PlayerTex(GAME_PLAY* play, int bank_idx, int bank) {
-    u32 tex = mPlib_Get_UseTexRom_p();
+    uintptr_t tex = mPlib_Get_UseTexRom_p();
     int idx = mPlib_Object_Exchange_keep_new(play, ACTOR_OBJ_BANK_14, tex, mNW_DESIGN_TEX_SIZE,
                                              mPlib_Check_PlayerClothInAram(Now_Private->cloth.idx));
 
     Player_Tex_bank_ID[bank_idx] = bank + idx;
 }
 
-extern u32 mPlib_Get_PlayerPalletRom_p(int idx) {
+extern uintptr_t mPlib_Get_PlayerPalletRom_p(int idx) {
     if (mPlib_Check_PlayerClothInAram(idx)) {
         u32 addr = JW_GetAramAddress(RESOURCE_PALLET_BOY);
         addr += idx * mNW_PALETTE_SIZE;
@@ -1099,18 +896,18 @@ extern u32 mPlib_Get_PlayerPalletRom_p(int idx) {
             org_idx = 0;
         }
 
-        return (u32)mNW_PaletteIdx2Palette(Now_Private->my_org[org_idx & 7].palette);
+        return (uintptr_t)mNW_PaletteIdx2Palette(Now_Private->my_org[org_idx & 7].palette);
     }
 }
 
-static u32 mPlib_Get_UsePalletRom_p(void) {
+static uintptr_t mPlib_Get_UsePalletRom_p(void) {
     return mPlib_Get_PlayerPalletRom_p(Now_Private->cloth.idx);
 }
 
 static int Player_Pallet_bank_ID[] = { -1, -1 };
 
 extern void mPlib_Object_Exchange_keep_new_PlayerPallet(GAME_PLAY* play, int bank_idx, int bank) {
-    u32 pal = mPlib_Get_UsePalletRom_p();
+    uintptr_t pal = mPlib_Get_UsePalletRom_p();
 
     Player_Pallet_bank_ID[bank_idx] =
         bank + mPlib_Object_Exchange_keep_new(play, ACTOR_OBJ_BANK_15, pal, mNW_PALETTE_SIZE,
@@ -1202,7 +999,7 @@ extern void mPlib_change_player_cloth(GAME* game, u16 cloth_idx) {
 
     {
         u8* player_tex_p = mPlib_get_player_tex_p(game);
-        u32 player_tex_rom_p = mPlib_Get_PlayerTexRom_p(idx);
+        uintptr_t player_tex_rom_p = mPlib_Get_PlayerTexRom_p(idx);
 
         if (mPlib_Check_PlayerClothInAram(idx)) {
             _JW_GetResourceAram(player_tex_rom_p, player_tex_p, mNW_DESIGN_TEX_SIZE);
@@ -1210,12 +1007,12 @@ extern void mPlib_change_player_cloth(GAME* game, u16 cloth_idx) {
             bcopy((u8*)player_tex_rom_p, player_tex_p, mNW_DESIGN_TEX_SIZE);
         }
 
-        DCStoreRangeNoSync(player_tex_p, mNW_DESIGN_TEX_SIZE);
+        AC_TexInvalidateRange(player_tex_p, mNW_DESIGN_TEX_SIZE);
     }
 
     {
         u16* player_pallet_p = mPlib_get_player_pallet_p(game);
-        u32 player_pallet_rom_p = mPlib_Get_PlayerPalletRom_p(idx);
+        uintptr_t player_pallet_rom_p = mPlib_Get_PlayerPalletRom_p(idx);
 
         if (mPlib_Check_PlayerClothInAram(idx)) {
             _JW_GetResourceAram(player_pallet_rom_p, (u8*)player_pallet_p, mNW_PALETTE_SIZE);
@@ -1223,7 +1020,7 @@ extern void mPlib_change_player_cloth(GAME* game, u16 cloth_idx) {
             bcopy((u16*)player_pallet_rom_p, player_pallet_p, mNW_PALETTE_SIZE);
         }
 
-        DCStoreRangeNoSync(player_pallet_p, mNW_PALETTE_SIZE);
+        AC_TexInvalidateRange(player_pallet_p, mNW_PALETTE_SIZE);
     }
 }
 
@@ -1232,22 +1029,22 @@ extern void mPlib_change_player_face_pallet(GAME* game) {
 
     {
         u16* player_face_pallet_p = mPlib_get_player_face_pallet_p(game);
-        u32 player_face_pallet_rom_p = mPlib_Get_UseFacePalletRom_p();
+        uintptr_t player_face_pallet_rom_p = mPlib_Get_UseFacePalletRom_p();
 
         if (player_face_pallet_p != NULL && player_face_pallet_rom_p != 0) {
             _JW_GetResourceAram(player_face_pallet_rom_p, (u8*)player_face_pallet_p, mNW_PALETTE_SIZE);
-            DCStoreRangeNoSync(player_face_pallet_p, mNW_PALETTE_SIZE);
+            AC_TexInvalidateRange(player_face_pallet_p, mNW_PALETTE_SIZE);
         }
     }
 }
 
 extern void mPlib_change_player_face(GAME* game) {
     u8* player_face_p = mPlib_get_player_face_p(game);
-    u32 player_face_rom_p = mPlib_Get_UseFaceTexRom_p();
+    uintptr_t player_face_rom_p = mPlib_Get_UseFaceTexRom_p();
 
     if (player_face_p != NULL && player_face_rom_p != 0) {
         _JW_GetResourceAram(player_face_rom_p, player_face_p, 0xE00);
-        DCStoreRangeNoSync(player_face_p, 0xE00);
+        AC_TexInvalidateRange(player_face_p, 0xE00);
     }
 
     mPlib_change_player_face_pallet(game);
@@ -1274,9 +1071,6 @@ extern int mPlib_get_player_actor_request_main_index(GAME* game) {
 
     return -1;
 }
-
-extern cKF_Skeleton_R_c cKF_bs_r_boy_1;
-extern cKF_Skeleton_R_c cKF_bs_r_grl_1;
 
 extern cKF_Skeleton_R_c* mPlib_get_player_mdl_p(void) {
     if (Now_Private->gender == mPr_SEX_MALE) {
@@ -1313,8 +1107,8 @@ extern void mPlib_change_player_cloth_info_lv2(Private_c* priv, mActor_name_t it
 
 extern void mPlib_Load_PlayerTexAndPallet(void* tex_p, void* pal_p, int idx) {
     if (idx >= 0 && idx < (CLOTH_NUM + 1 + mPr_ORIGINAL_DESIGN_COUNT) && tex_p != NULL && pal_p != NULL) {
-        u32 tex_rom_p = mPlib_Get_PlayerTexRom_p(idx);
-        u32 pal_rom_p = mPlib_Get_PlayerPalletRom_p(idx);
+        uintptr_t tex_rom_p = mPlib_Get_PlayerTexRom_p(idx);
+        uintptr_t pal_rom_p = mPlib_Get_PlayerPalletRom_p(idx);
 
         if (mPlib_Check_PlayerClothInAram(idx)) {
             _JW_GetResourceAram(tex_rom_p, (u8*)tex_p, mNW_DESIGN_TEX_SIZE);
@@ -1324,8 +1118,8 @@ extern void mPlib_Load_PlayerTexAndPallet(void* tex_p, void* pal_p, int idx) {
             bcopy((u16*)pal_rom_p, pal_p, mNW_PALETTE_SIZE);
         }
 
-        DCStoreRangeNoSync(tex_p, mNW_DESIGN_TEX_SIZE);
-        DCStoreRangeNoSync(pal_p, mNW_PALETTE_SIZE);
+        AC_TexInvalidateRange(tex_p, mNW_DESIGN_TEX_SIZE);
+        AC_TexInvalidateRange(pal_p, mNW_PALETTE_SIZE);
     }
 }
 
@@ -1622,7 +1416,7 @@ extern void mPlib_request_main_demo_wait_from_submenu(ACTOR* speak_actor_p) {
     change_data_from_submenu_p->requested_index_pending = TRUE;
 
     req_demo_wait_p->umbrella_flag = FALSE;
-    req_demo_wait_p->label = (u32)speak_actor_p;
+    req_demo_wait_p->label = (uintptr_t)speak_actor_p;
 
     if (speak_actor_p != NULL) {
         mPlib_Set_able_force_speak_label(speak_actor_p);
@@ -1647,47 +1441,13 @@ extern int mPlib_Check_able_force_speak_label(GAME* game, ACTOR* label) {
 
 extern void mPlib_Set_able_force_speak_label(ACTOR* label) {
     if (Common_Get(player_actor_exists)) {
-        GET_PLAYER_ACTOR_NOW()->able_force_speak_label = (u32)label;
+        GET_PLAYER_ACTOR_NOW()->able_force_speak_label = (uintptr_t)label;
     }
 }
 
 extern void mPlib_Reset_able_force_speak_label(void) {
     mPlib_Set_able_force_speak_label(NULL);
 }
-
-extern u8 ply_1_get_change12_tex_index[];
-extern u8 ply_1_kokeru_a12_tex_index[];
-extern u8 ply_1_kokeru_getup_a12_tex_index[];
-extern u8 ply_1_kokeru_getup_n12_tex_index[];
-extern u8 ply_1_kokeru_n12_tex_index[];
-extern u8 ply_1_axe_swing12_tex_index[];
-extern u8 ply_1_kokeru12_tex_index[];
-extern u8 ply_1_kokeru_getup12_tex_index[];
-extern u8 ply_1_axe_hane12_tex_index[];
-extern u8 ply_1_axe_suka12_tex_index[];
-extern u8 ply_1_get_t12_tex_index[];
-extern u8 ply_1_menu_change12_tex_index[];
-extern u8 ply_1_not_sao_swing12_tex_index[];
-extern u8 ply_1_not_dig12_tex_index[];
-extern u8 ply_1_dig_suka12_tex_index[];
-extern u8 ply_1_shake12_tex_index[];
-extern u8 ply_1_eat12_tex_index[];
-extern u8 ply_1_gaaan12_tex_index[];
-extern u8 ply_1_deru12_tex_index[];
-extern u8 ply_1_guratuku12_tex_index[];
-extern u8 ply_1_otiru12_tex_index[];
-extern u8 ply_1_biku12_tex_index[];
-extern u8 ply_1_hati12_tex_index[];
-extern u8 ply_1_hati22_tex_index[];
-extern u8 ply_1_hati32_tex_index[];
-extern u8 ply_1_deru22_tex_index[];
-extern u8 ply_1_otiru22_tex_index[];
-extern u8 ply_1_itazura12_tex_index[];
-extern u8 ply_1_yatta12_tex_index[];
-extern u8 ply_1_yatta22_tex_index[];
-extern u8 ply_1_yatta32_tex_index[];
-extern u8 ply_1_mosquito12_tex_index[];
-extern u8 ply_1_axe_break12_tex_index[];
 
 extern u8* mPlib_Get_PlayerEyeTexAnimation_p(int anim_idx) {
     if (anim_idx >= 0 && anim_idx < mPlayer_ANIM_NUM) {
@@ -1851,47 +1611,11 @@ extern u8* mPlib_Get_PlayerEyeTexAnimation_p(int anim_idx) {
             NULL,
         };
 
-        return eye_tex_index_table[anim_idx];
+        return (u8*)LOAD_ASSET(eye_tex_index_table[anim_idx]);
     }
 
     return NULL;
 }
-
-extern u8 ply_1_get_change11_tex_index[];
-extern u8 ply_1_kokeru_a11_tex_index[];
-extern u8 ply_1_kokeru_getup_a11_tex_index[];
-extern u8 ply_1_kokeru_getup_n11_tex_index[];
-extern u8 ply_1_kokeru_n11_tex_index[];
-extern u8 ply_1_axe_swing11_tex_index[];
-extern u8 ply_1_kokeru11_tex_index[];
-extern u8 ply_1_kokeru_getup11_tex_index[];
-extern u8 ply_1_axe_hane11_tex_index[];
-extern u8 ply_1_axe_suka11_tex_index[];
-extern u8 ply_1_get_t11_tex_index[];
-extern u8 ply_1_get_t21_tex_index[];
-extern u8 ply_1_not_get_t11_tex_index[];
-extern u8 ply_1_menu_change11_tex_index[];
-extern u8 ply_1_not_sao_swing11_tex_index[];
-extern u8 ply_1_not_dig11_tex_index[];
-extern u8 ply_1_dig_suka11_tex_index[];
-extern u8 ply_1_eat11_tex_index[];
-extern u8 ply_1_gaaan11_tex_index[];
-extern u8 ply_1_deru11_tex_index[];
-extern u8 ply_1_guratuku11_tex_index[];
-extern u8 ply_1_mogaku11_tex_index[];
-extern u8 ply_1_otiru11_tex_index[];
-extern u8 ply_1_biku11_tex_index[];
-extern u8 ply_1_hati11_tex_index[];
-extern u8 ply_1_hati21_tex_index[];
-extern u8 ply_1_hati31_tex_index[];
-extern u8 ply_1_deru21_tex_index[];
-extern u8 ply_1_otiru21_tex_index[];
-extern u8 ply_1_itazura11_tex_index[];
-extern u8 ply_1_yatta11_tex_index[];
-extern u8 ply_1_yatta21_tex_index[];
-extern u8 ply_1_yatta31_tex_index[];
-extern u8 ply_1_mosquito11_tex_index[];
-extern u8 ply_1_axe_break11_tex_index[];
 
 extern u8* mPlib_Get_PlayerMouthTexAnimation_p(int anim_idx) {
     if (anim_idx >= 0 && anim_idx < mPlayer_ANIM_NUM) {
@@ -2055,7 +1779,7 @@ extern u8* mPlib_Get_PlayerMouthTexAnimation_p(int anim_idx) {
             NULL,
         };
 
-        return mouth_tex_index_table[anim_idx];
+        return (u8*)LOAD_ASSET(mouth_tex_index_table[anim_idx]);
     }
 
     return NULL;
@@ -2129,7 +1853,7 @@ extern int mPlib_request_main_hold_type1(GAME* game, int ftr_no, int player_dire
 }
 
 extern int mPlib_request_main_recieve_wait_type1(GAME* game, mActor_name_t item, int counter_flag) {
-    GET_PLAYER_ACTOR_GAME(game)->request_main_recieve_wait_all_proc(
+    return GET_PLAYER_ACTOR_GAME(game)->request_main_recieve_wait_all_proc(
         game, GET_PLAYER_ACTOR_GAME(game)->main_data.talk.talk_actor_p,
         GET_PLAYER_ACTOR_GAME(game)->main_data.talk.turn_flag, GET_PLAYER_ACTOR_GAME(game)->now_main_index, item,
         counter_flag, mPlayer_REQUEST_PRIORITY_19);
@@ -2149,8 +1873,9 @@ extern int mPlib_request_main_give_type1(GAME* game, mActor_name_t item, int mod
         turn_flag = FALSE;
     }
 
-    GET_PLAYER_ACTOR_GAME(game)->request_main_give_all_proc(game, talk_actor_p, turn_flag, return_main_index, item,
-                                                            mode, present, on_surface, mPlayer_REQUEST_PRIORITY_19);
+    return GET_PLAYER_ACTOR_GAME(game)->request_main_give_all_proc(game, talk_actor_p, turn_flag, return_main_index,
+                                                                   item, mode, present, on_surface,
+                                                                   mPlayer_REQUEST_PRIORITY_19);
 }
 
 extern int mPlib_request_main_sitdown_type1(GAME* game, int direct, const xyz_t* pos_p, int ftr_no) {
@@ -2572,7 +2297,7 @@ extern int mPlib_check_label_player_demo_wait(GAME* game, void* label) {
     if (mPlib_get_player_actor_main_index(game) == mPlayer_INDEX_DEMO_WAIT) {
         mPlayer_main_demo_wait_c* demo_wait_p = &GET_PLAYER_ACTOR_GAME(game)->main_data.demo_wait;
 
-        if (demo_wait_p->label == (u32)label) {
+        if (demo_wait_p->label == (uintptr_t)label) {
             return TRUE;
         }
     }
@@ -2747,11 +2472,11 @@ extern int mPlib_Check_StopNet(xyz_t* pos_p) {
     return GET_PLAYER_ACTOR_NOW()->Check_StopNet_proc(GET_PLAYER_ACTOR_NOW_ACTOR(), pos_p);
 }
 
-extern u32 mPlib_Get_item_net_catch_label(void) {
+extern uintptr_t mPlib_Get_item_net_catch_label(void) {
     return GET_PLAYER_ACTOR_NOW()->Get_item_net_catch_label_proc(GET_PLAYER_ACTOR_NOW_ACTOR());
 }
 
-extern int mPlib_Change_item_net_catch_label(u32 label, s8 type) {
+extern int mPlib_Change_item_net_catch_label(uintptr_t label, s8 type) {
     return GET_PLAYER_ACTOR_NOW()->Change_item_net_catch_label_proc(GET_PLAYER_ACTOR_NOW_ACTOR(), label, type);
 }
 

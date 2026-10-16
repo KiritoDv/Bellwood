@@ -82,7 +82,7 @@ static void mMsg_MainSetup_Appear(mMsg_Window_c* msg_p, GAME* game) {
         }
 
         msg_p->data_loaded = TRUE;
-        emu64_refresh();
+        gfx_texture_cache_clear();
     } else {
         msg_p->data_loaded = FALSE;
     }

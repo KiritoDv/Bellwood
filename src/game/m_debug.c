@@ -7,7 +7,7 @@ Debug_mode* debug_mode;
 extern void new_Debug_mode() {
   int i;
 
-  debug_mode = (Debug_mode*)malloc(sizeof(Debug_mode));
+  debug_mode = (Debug_mode*)ac_malloc(sizeof(Debug_mode));
 
   debug_mode->mode = 0;
   debug_mode->type = 0;

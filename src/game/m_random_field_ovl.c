@@ -1712,6 +1712,7 @@ static int mRF_SetUniqueRailBlock(u8* blocks) {
             set_t1 = TRUE;
         }
     }
+    return 0;
 }
 
 static int mRF_CountPureRiver(u8* blocks) {

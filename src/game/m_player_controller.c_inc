@@ -182,8 +182,8 @@ static int Player_actor_CheckController_forRadio_exercise(GAME* game) {
         return -1;
     }
 
-    if (JW_JUTGamepad_getSubStickValue() > 0.6f) {
-        s16 angle = JW_JUTGamepad_getSubStickAngle();
+    if (AC_PadGetSubStickValue() > 0.6f) {
+        s16 angle = AC_PadGetSubStickAngle();
 
         if (angle >= 0) {
             if (angle < DEG2SHORT_ANGLE2(22.5f)) {

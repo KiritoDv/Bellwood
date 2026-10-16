@@ -23,6 +23,7 @@ extern int mSN_ClearSnowmanData(mActor_name_t* ac, int idx){
 
     bzero(Save_GetPointer(snowmen.snowmen_data[idx]), sizeof(mSN_snowman_data_c));
     *ac = 0;
+    return 0;
 }
 
 int mSN_ClearSnowman(u16* ac){

@@ -115,7 +115,9 @@ extern void mCoBG_InitDecalCircle(void) {
     // @BUG - they incorrectly clear 3x the memory necessary.
     // I'm guessing that they did 3 * sizeof(array) rather than
     // 3 * sizeof(struct).
-#ifndef BUGFIXES
+#if defined(TARGET_PC) && !defined(BUGFIXES)
+    bzero(mCoBG_regist_circle_info, sizeof(mCoBG_regist_circle_info));
+#elif !defined(BUGFIXES)
     bzero(mCoBG_regist_circle_info, 3 * sizeof(mCoBG_regist_circle_info));
 #else
     bzero(mCoBG_regist_circle_info, sizeof(mCoBG_regist_circle_info_c));

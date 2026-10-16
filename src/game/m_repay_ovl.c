@@ -5,6 +5,7 @@
 #include "m_name_table.h"
 #include "m_player_lib.h"
 #include "sys_matrix.h"
+#include "assets/data/model/fkm_win.h"
 
 static mRP_Ovl_c rp_ovl_data;
 static mActor_name_t mRP_money_name[MONEY_NUM] = { ITM_MONEY_100, ITM_MONEY_1000, ITM_MONEY_10000, ITM_MONEY_30000 };
@@ -151,9 +152,6 @@ static void mRP_repay_ovl_move(Submenu* submenu) {
   (*ovl_move_proc[menu_info->proc_status])(submenu, menu_info);
 }
 
-extern Gfx fkm_win_mode[];
-extern Gfx fkm_win_model[];
-
 static void mRP_set_frame_dl(Submenu* submenu, GRAPH* graph, mSM_MenuInfo_c* menu_info, f32 x, f32 y) {
   f32 tex_x;
   f32 tex_y;
@@ -178,7 +176,7 @@ static void mRP_set_frame_dl(Submenu* submenu, GRAPH* graph, mSM_MenuInfo_c* men
   tex_y = -submenu->overlay->menu_control.texture_pos[1] * 4.0f;
   s = (int)tex_x & 0xFF;
   t = (int)tex_y & 0xFF;
-  gDPSetTileSize_Dolphin(gfx++, G_TX_RENDERTILE, s, t, 32, 32);
+  gDPSetTileSizeHiRes(gfx++, G_TX_RENDERTILE, s, t, 32, 32);
 
   /* Draw background frame */
   gSPDisplayList(gfx++, fkm_win_model);

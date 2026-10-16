@@ -9,6 +9,8 @@
 #include "m_hand_ovl.h"
 #include "m_font.h"
 #include "m_haniwaPortrait_ovl.h"
+#include "assets/data/model/hni_win.h"
+#include "assets/data/model/inv_item.h"
 
 static mHW_Ovl_c haniwa_ovl_data;
 
@@ -254,9 +256,6 @@ static void mHW_haniwa_ovl_move(Submenu* submenu) {
     }
 }
 
-extern Gfx hni_win_mode[];
-extern Gfx hni_win_modelT[];
-
 static void mHW_set_frame_dl(Submenu* submenu, GRAPH* graph, f32 pos_x, f32 pos_y) {
     int tex_x;
     int tex_y;
@@ -271,13 +270,11 @@ static void mHW_set_frame_dl(Submenu* submenu, GRAPH* graph, f32 pos_x, f32 pos_
     gDPTileSync(POLY_OPA_DISP++);
     tex_x = -submenu->overlay->menu_control.texture_pos[0] * 8;
     tex_y = -submenu->overlay->menu_control.texture_pos[1] * 8;
-    gDPSetTileSize_Dolphin(POLY_OPA_DISP++, G_TX_RENDERTILE, (u8)tex_x, (u8)tex_y, 32, 32);
+    gDPSetTileSizeHiRes(POLY_OPA_DISP++, G_TX_RENDERTILE, (u8)tex_x, (u8)tex_y, 32, 32);
     gSPDisplayList(POLY_OPA_DISP++, hni_win_modelT);
 
     CLOSE_POLY_OPA_DISP(graph);
 }
-
-extern Gfx inv_item_mode[];
 
 static void mHW_set_item(Submenu* submenu, GRAPH* graph, mSM_MenuInfo_c* menu_info, f32 pos_x, f32 pos_y) {
     Haniwa_Item_c* item = Save_Get(homes[menu_info->data1]).haniwa.items;

@@ -6,6 +6,12 @@
 #include "m_name_table.h"
 #include "m_bgm.h"
 #include "m_common_data.h"
+#include "ac_asset.h"
+#include "assets/data/titledemo/pact0.h"
+#include "assets/data/titledemo/pact1.h"
+#include "assets/data/titledemo/pact2.h"
+#include "assets/data/titledemo/pact3.h"
+#include "assets/data/titledemo/pact4.h"
 
 #define mTD_HEADER_POSX 0
 #define mTD_HEADER_POSY 1
@@ -22,7 +28,7 @@ static u16 get_demo_header(int titledemo_no, int key) {
     static u16* pact_data_head_pt[mTD_TITLE_DEMO_NUM] = { pact0_head_table, pact1_head_table, pact2_head_table,
                                                             pact3_head_table, pact4_head_table };
 
-    return pact_data_head_pt[titledemo_no][key];
+    return ((u16*)LOAD_ASSET(pact_data_head_pt[titledemo_no]))[key];
 }
 
 extern int mTD_demono_get() {
@@ -68,7 +74,7 @@ static u16 get_tdemo_keydata(int frame) {
     u16* pact_data_keydata_pt[mTD_TITLE_DEMO_NUM] = { pact0_key_data, pact1_key_data, pact2_key_data, pact3_key_data,
                                                       pact4_key_data };
 
-    return pact_data_keydata_pt[mEv_CheckTitleDemo() - mEv_TITLEDEMO_START1][frame];
+    return ((u16*)LOAD_ASSET(pact_data_keydata_pt[mEv_CheckTitleDemo() - mEv_TITLEDEMO_START1]))[frame];
 }
 
 /* @fakematch? - the weirdness with btn_a needing to be assigned to a u8 then int needs to be investigated */

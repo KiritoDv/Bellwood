@@ -98,19 +98,19 @@ extern void fbdemo_cleanup(fbdemo_c* this) {
     msleep(100);
 
     if (this->vtxData != NULL) {
-        free(this->vtxData);
+        ac_free(this->vtxData);
         this->vtxData = NULL;
     }
     if (this->vtxFrame1 != NULL) {
-        free(this->vtxFrame1);
+        ac_free(this->vtxFrame1);
         this->vtxFrame1 = NULL;
     }
     if (this->vtxFrame2 != NULL) {
-        free(this->vtxFrame2);
+        ac_free(this->vtxFrame2);
         this->vtxFrame2 = NULL;
     }
     if (this->gfx != NULL) {
-        free(this->gfx);
+        ac_free(this->gfx);
         this->gfx = NULL;
     }
 }
@@ -124,31 +124,31 @@ extern fbdemo_c* fbdemo_init(fbdemo_c* this, int cols, int rows) {
     this->rows = rows;
 
     this->frame = 0;
-    this->vtxData = malloc((cols + 1) * sizeof(xy_t) * (rows + 1));
+    this->vtxData = ac_malloc((cols + 1) * sizeof(xy_t) * (rows + 1));
 
-    this->vtxFrame1 = malloc((cols + 1) * sizeof(Vtx) * (rows + 1));
-    this->vtxFrame2 = malloc((cols + 1) * sizeof(Vtx) * (rows + 1));
+    this->vtxFrame1 = ac_malloc((cols + 1) * sizeof(Vtx) * (rows + 1));
+    this->vtxFrame2 = ac_malloc((cols + 1) * sizeof(Vtx) * (rows + 1));
 
-    this->gfx = malloc(((this->cols * 9 + 1) * this->rows + 2) * sizeof(Gfx));
+    this->gfx = ac_malloc(((this->cols * 9 + 1) * this->rows + 2) * sizeof(Gfx));
 
     if ((this->vtxData == NULL) || (this->vtxFrame1 == NULL) || (this->vtxFrame2 == NULL) || (this->gfx == NULL)) {
         if (this->vtxData != NULL) {
-            free(this->vtxData);
+            ac_free(this->vtxData);
             this->vtxData = NULL;
         }
 
         if (this->vtxFrame1 != NULL) {
-            free(this->vtxFrame1);
+            ac_free(this->vtxFrame1);
             this->vtxFrame1 = NULL;
         }
 
         if (this->vtxFrame2 != NULL) {
-            free(this->vtxFrame2);
+            ac_free(this->vtxFrame2);
             this->vtxFrame2 = NULL;
         }
 
         if (this->gfx != NULL) {
-            free(this->gfx);
+            ac_free(this->gfx);
             this->gfx = NULL;
         }
 

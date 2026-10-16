@@ -3,6 +3,8 @@
 #include "m_common_data.h"
 #include "m_font.h"
 #include "sys_matrix.h"
+#include "assets/data/model/bir_win.h"
+#include "assets/data/model/tim_win.h"
 
 static mBR_Ovl_c birthday_ovl_data;
 
@@ -109,22 +111,6 @@ static void mBR_birthday_ovl_move(Submenu* submenu) {
   (*ovl_move_proc[menu_info->proc_status])(submenu, menu_info);
 }
 
-extern Gfx birthday_win_mode[];
-extern Gfx birthday_win_model[];
-extern Gfx brt_win_month_model[];
-
-extern u8 tim_win_january_tex_rgb_i4[];
-extern u8 tim_win_february_tex_rgb_i4[];
-extern u8 tim_win_march_tex_rgb_i4[];
-extern u8 tim_win_april_tex_rgb_i4[];
-extern u8 tim_win_may_tex_rgb_i4[];
-extern u8 tim_win_june_tex_rgb_i4[];
-extern u8 tim_win_july_tex_rgb_i4[];
-extern u8 tim_win_august_tex_rgb_i4[];
-extern u8 tim_win_september_tex_rgb_i4[];
-extern u8 tim_win_october_tex_rgb_i4[];
-extern u8 tim_win_november_tex_rgb_i4[];
-extern u8 tim_win_december_tex_rgb_i4[];
 
 static void mBR_set_dl(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* game) {
   static u8 chr_table[21] = "When's your birthday?";
@@ -173,7 +159,7 @@ static void mBR_set_dl(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* game) 
   tex_y = -submenu->overlay->menu_control.texture_pos[1] * 4.0f;
   s = (int)tex_x & 0xFF;
   t = (int)tex_y & 0xFF;
-  gDPSetTileSize_Dolphin(gfx++, G_TX_RENDERTILE, s, t, 32, 32);
+  gDPSetTileSizeHiRes(gfx++, G_TX_RENDERTILE, s, t, 32, 32);
   gSPDisplayList(gfx++, birthday_win_model);
 
   color_p = color_type[birthday_ovl->idx != mBR_Ovl_IDX_MONTH];

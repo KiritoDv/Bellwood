@@ -1,3 +1,4 @@
+#include "ac_asset.h"
 #include "m_editor_ovl.h"
 
 #include "audio.h"
@@ -15,6 +16,10 @@
 #include "sys_matrix.h"
 #include "m_rcp.h"
 #include "m_lib.h"
+#include "assets/data/model/kai_sousa.h"
+#include "assets/data/model/kai_sousa2.h"
+#include "assets/data/model/lat_sp.h"
+#include "assets/data/model/sousa_ink.h"
 
 static u8 mED_ornament_table[] = {
     // clang-format off
@@ -1778,10 +1783,6 @@ static void mED_editor_ovl_move(Submenu* submenu) {
     (*ovl_move_proc[menu_info->proc_status])(submenu, menu_info);
 }
 
-extern u8 kai_sousa_button1a_tex_rgb_ia8[];
-extern u8 kai_sousa_button1b_tex_rgb_ia8[];
-extern Gfx kai_sousa_abuttonT_model[];
-
 static void mED_KeyDraw_A_button(GRAPH* graph) {
     static u8* tex[] = { kai_sousa_button1a_tex_rgb_ia8, kai_sousa_button1b_tex_rgb_ia8 };
 
@@ -1801,11 +1802,6 @@ static void mED_KeyDraw_A_button(GRAPH* graph) {
     SET_POLY_OPA_DISP(gfx);
     CLOSE_DISP(graph);
 }
-
-extern u8 kai_sousa_button2a_tex_rgb_ia8[];
-extern u8 kai_sousa_button2b_tex_rgb_ia8[];
-extern Gfx kai_sousa_bbuttonT_model[];
-extern Gfx kai_sousa_cancelT_model[];
 
 static void mED_KeyDraw_B_button(GRAPH* graph) {
     static u8* tex[] = { kai_sousa_button2a_tex_rgb_ia8, kai_sousa_button2b_tex_rgb_ia8 };
@@ -1827,12 +1823,6 @@ static void mED_KeyDraw_B_button(GRAPH* graph) {
     SET_POLY_OPA_DISP(gfx);
     CLOSE_DISP(graph);
 }
-
-extern u8 kai_sousa_xbutton_tex_rgb_ia8[];
-extern u8 kai_sousa_xbutton2_tex_rgb_ia8[];
-extern Gfx kai_sousa_xbuttonT_model[];
-extern Gfx kai_sousa_henkan_model[];
-extern Gfx kai_sousa_yajirushi_model[];
 
 static void mED_KeyDraw_X_button(GRAPH* graph, mED_Ovl_c* editor_ovl) {
     static u8* tex[] = { kai_sousa_xbutton_tex_rgb_ia8, kai_sousa_xbutton2_tex_rgb_ia8 };
@@ -1859,14 +1849,6 @@ static void mED_KeyDraw_X_button(GRAPH* graph, mED_Ovl_c* editor_ovl) {
     SET_POLY_OPA_DISP(gfx);
     CLOSE_DISP(graph);
 }
-
-extern u8 kai_sousa_ybutton_tex_rgb_ia8[];
-extern u8 kai_sousa_ybutton2_tex_rgb_ia8[];
-extern Gfx kai_sousa_ybuttonT_model[];
-extern Gfx kai_sousa_kirikae_model[];
-extern Gfx kai_sousa_letter_model[];
-extern Gfx kai_sousa_sign_model[];
-extern Gfx kai_sousa_mark_model[];
 
 static void mED_KeyDraw_Y_button(GRAPH* graph, mED_Ovl_c* editor_ovl) {
     static u8* tex[] = { kai_sousa_ybutton_tex_rgb_ia8, kai_sousa_ybutton2_tex_rgb_ia8 };
@@ -1910,9 +1892,6 @@ static void mED_KeyDraw_Y_button(GRAPH* graph, mED_Ovl_c* editor_ovl) {
     CLOSE_DISP(graph);
 }
 
-extern Gfx kai_sousa_startbuttonT_model[];
-extern Gfx kai_sousa_endT_model[];
-
 static void mED_KeyDraw_START_button(GRAPH* graph) {
     Gfx* gfx;
 
@@ -1930,14 +1909,6 @@ typedef struct l_button_info_s {
     u8* tex;
     int prim;
 } mED_L_button_info_c;
-
-extern u8 kai_sousa_caps_tex_rgb_i4[];
-extern u8 kai_sousa_small_tex_rgb_i4[];
-extern u8 kai_sousa_lbutton_tex_rgb_ia8[];
-extern u8 kai_sousa_lbutton2_tex_rgb_ia8[];
-extern Gfx kai_sousa_lwaku_model[];
-extern Gfx kai_sousa_lmoji_model[];
-extern Gfx kai_sousa_lbuttonT_model[];
 
 static void mED_KeyDraw_L_button(GRAPH* graph, mED_Ovl_c* editor_ovl) {
     static mED_L_button_info_c data[mED_INPUT_MODE_NUM][mED_SHIFT_NUM] = { { { kai_sousa_caps_tex_rgb_i4, 0 },
@@ -1987,11 +1958,6 @@ static void mED_KeyDraw_L_button(GRAPH* graph, mED_Ovl_c* editor_ovl) {
     CLOSE_DISP(graph);
 }
 
-extern u8 kai_sousa_rbutton_tex_rgb_ia8[];
-extern u8 kai_sousa_rbutton2_tex_rgb_ia8[];
-extern Gfx kai_sousa_rbuttonT_model[];
-extern Gfx kai_sousa_spaceT_model[];
-
 static void mED_KeyDraw_R_button(GRAPH* graph, mED_Ovl_c* editor_ovl) {
     static u8* btn_tex[] = { kai_sousa_rbutton_tex_rgb_ia8, kai_sousa_rbutton2_tex_rgb_ia8 };
 
@@ -2013,16 +1979,13 @@ static void mED_KeyDraw_R_button(GRAPH* graph, mED_Ovl_c* editor_ovl) {
     CLOSE_DISP(graph);
 }
 
-extern Vtx kai_sousa2_v[];
-extern u8 testbutton[];
-
 static void mED_KeyDraw_keyboard(GRAPH* graph, mED_Ovl_c* editor_ovl) {
     static u8 model_type[mED_COLUMNS * mED_ROWS] = { 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1,
                                                      1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0 };
 
     static rgba_t sel_col[2] = { { 205, 0, 0, 255 }, { 0, 0, 205, 255 } };
 
-    Vtx* vert = &kai_sousa2_v[0];
+    Vtx* vert = (Vtx*)LOAD_ASSET(kai_sousa2_v);
     u8* mtype = &model_type[0];
     int selected_col;
     int selected_row;
@@ -2058,9 +2021,7 @@ static void mED_KeyDraw_keyboard(GRAPH* graph, mED_Ovl_c* editor_ovl) {
                 selected = FALSE;
             }
 
-            gDPSetTextureImage_Dolphin(gfx++, G_IM_FMT_I, G_IM_SIZ_4b, 16, 16, testbutton);
-            gDPSetTile_Dolphin(gfx++, G_DOLPHIN_TLUT_DEFAULT_MODE, G_TX_RENDERTILE, 15, GX_MIRROR, GX_MIRROR, GX_CLAMP,
-                               GX_CLAMP);
+            gDPLoadTextureBlock_4b(gfx++, testbutton, G_IM_FMT_I, 16, 16, 15, G_TX_MIRROR, G_TX_MIRROR, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
             gSPVertex(gfx++, vert, 4, 0);
 
             if (*mtype != 0) {
@@ -2088,14 +2049,6 @@ static void mED_KeyDraw_keyboard(GRAPH* graph, mED_Ovl_c* editor_ovl) {
     CLOSE_DISP(graph);
 }
 
-extern u8 kai_sousa_controllpad1_tex_rgb_ia8[];
-extern u8 kai_sousa_controllpad2_tex_rgb_ia8[];
-extern u8 kai_sousa_controllpad3_tex_rgb_ia8[];
-extern u8 kai_sousa_controllpad4_tex_rgb_ia8[];
-extern u8 kai_sousa_controllpad5_tex_rgb_ia8[];
-
-extern Gfx kai_sousa_controllpadT_model[];
-extern Gfx kai_sousa_cursorT_model[];
 
 static void mED_KeyDraw_J_key(GRAPH* graph) {
     static u8* tex[5] = { kai_sousa_controllpad1_tex_rgb_ia8, kai_sousa_controllpad3_tex_rgb_ia8,
@@ -2126,15 +2079,6 @@ static void mED_KeyDraw_J_key(GRAPH* graph) {
     CLOSE_DISP(graph);
 }
 
-extern u8 kai_sousa_3Dst_tex_rgb_ia8[];
-extern u8 kai_sousa_3Dst2_tex_rgb_ia8[];
-extern u8 kai_sousa_3Dst3_tex_rgb_ia8[];
-extern u8 kai_sousa_3Dst4_tex_rgb_ia8[];
-extern u8 kai_sousa_3Dst5_tex_rgb_ia8[];
-extern u8 kai_sousa_3Dst6_tex_rgb_ia8[];
-
-extern Gfx kai_sousa_3DT_model[];
-extern Gfx kai_sousa_3DstT_model[];
 
 static void mED_KeyDraw_3D_stick(GRAPH* graph, mED_Ovl_c* editor_ovl) {
     static u8* tex[mED_STICK_AREA_NUM] = { kai_sousa_3Dst4_tex_rgb_ia8, kai_sousa_3Dst3_tex_rgb_ia8,
@@ -2168,12 +2112,6 @@ static void mED_KeyDraw_3D_stick(GRAPH* graph, mED_Ovl_c* editor_ovl) {
 
     Matrix_pull();
 }
-
-extern Gfx kai_sousa_mode[];
-extern Gfx kai_sousa_shitaT_model[];
-extern Gfx kai_sousa_controllerT_model[];
-extern Gfx kai_sousa_controller2T_model[];
-extern Gfx kai_sousa_mojibanT_model[];
 
 static void mED_KeyDraw(mED_Ovl_c* editor_ovl, GRAPH* graph, f32 x, f32 y) {
     Gfx* gfx;
@@ -2213,11 +2151,6 @@ static void mED_KeyDraw(mED_Ovl_c* editor_ovl, GRAPH* graph, f32 x, f32 y) {
     mED_KeyDraw_3D_stick(graph, editor_ovl);
     mED_KeyDraw_keyboard(graph, editor_ovl);
 }
-
-extern Gfx kai_sousa_ink_mode[];
-extern Gfx kai_sousa_ink_model[];
-extern Gfx kai_sousa_inktuboT_model[];
-extern Gfx kai_sousa_inkmojiT_model[];
 
 static void mED_InkPotDraw(Submenu* submenu, mED_Ovl_c* editor_ovl, GRAPH* graph, f32 x, f32 y) {
     f32 line_y;
@@ -2273,8 +2206,6 @@ static void mED_InkPotDraw(Submenu* submenu, mED_Ovl_c* editor_ovl, GRAPH* graph
     SET_POLY_OPA_DISP(gfx);
     CLOSE_DISP(graph);
 }
-
-extern Gfx lat_sousa_spT_model[];
 
 static void mED_StringsDraw_spaceCode(GAME* game, rgba_t* color, f32 x, f32 y) {
     GRAPH* graph = game->graph;
@@ -2402,8 +2333,6 @@ static void mED_set_dl(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* game) 
     mED_InkPotDraw(submenu, editor_ovl, graph, menu_info->position[0], menu_info->position[1]);
     mED_StringsDraw(submenu, editor_ovl, game, menu_info->position[0], menu_info->position[1]);
 }
-
-extern Gfx lat_end_cordT_model[];
 
 static void mED_endCode_draw(Submenu* submenu, GAME* game, f32 x, f32 y) {
     GRAPH* graph = game->graph;

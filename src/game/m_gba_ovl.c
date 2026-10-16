@@ -7,6 +7,11 @@
 #include "m_hand_ovl.h"
 #include "m_common_data.h"
 #include "m_malloc.h"
+#include "assets/data/model/agb_yajirushi.h"
+#include "assets/data/model/cad_win.h"
+#include "assets/data/model/gba_win.h"
+#include "assets/data/model/inv_mb.h"
+#include "assets/data/model/inv_original.h"
 
 static u8 gb_ovl_change_flg = FALSE;
 
@@ -71,10 +76,6 @@ extern u8* mGB_get_image_texture(Submenu* submenu, int idx) {
 
     return gba_ovl->original_p[idx].design.data;
 }
-
-extern Gfx inv_md_base_model_before[];
-extern Gfx inv_md_base_model_a[];
-extern Gfx inv_md_base_model_b[];
 
 extern void mGB_draw_gba(Submenu* submenu, GRAPH* graph, f32 pos_x, f32 pos_y, f32 scale, int idx, int shadow_flag) {
     if (scale < 0.05f) {
@@ -167,34 +168,7 @@ static void mGB_gba_ovl_move(Submenu* submenu) {
     (*ovl_move_proc[menu_info->proc_status])(submenu, menu_info);
 }
 
-extern Gfx needlework_before_model[];
-extern Gfx gba_win_w_before_model[];
-extern Gfx gba_win_w1T_model[];
-extern Gfx gba_win_w2T_model[];
-extern Gfx gba_win_w3T_model[];
-extern Gfx gba_win_w4T_model[];
-extern Gfx gba_win_w5T_model[];
-extern Gfx gba_win_w6T_model[];
-extern Gfx gba_win_w7T_model[];
-extern Gfx gba_win_w8T_model[];
-extern Gfx gba_win_w9T_model[];
-extern Gfx gba_win_w10T_model[];
-extern Gfx gba_win_w11_model[];
-extern Gfx gba_win_ueT_model[];
-extern Gfx gba_win_waku_model[];
-extern Gfx gba_win_mb_before_model[];
-extern Gfx gba_win_f_model[];
 
-extern Gfx gba_win_mb1_model[];
-extern Gfx gba_win_mb2_model[];
-extern Gfx gba_win_mb3_model[];
-extern Gfx gba_win_mb4_model[];
-extern Gfx gba_win_mb5_model[];
-extern Gfx gba_win_mb6_model[];
-extern Gfx gba_win_mb7_model[];
-extern Gfx gba_win_mb8_model[];
-
-extern Gfx agb_win_yajirushiT_model[];
 
 static void mGB_set_frame_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu_info) {
     static Gfx* gfx_table[] = {
@@ -219,7 +193,7 @@ static void mGB_set_frame_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu_
     tex_x = 220.0f + -submenu->overlay->menu_control.texture_pos[0] * 4.0f;
     tex_y = 360.0f + -submenu->overlay->menu_control.texture_pos[1] * 4.0f;
     gSPDisplayList(POLY_OPA_DISP++, gba_win_w_before_model);
-    gDPSetTileSize_Dolphin(POLY_OPA_DISP++, G_TX_RENDERTILE, (u16)tex_x, (u16)tex_y, 32, 32);
+    gDPSetTileSizeHiRes(POLY_OPA_DISP++, G_TX_RENDERTILE, (u16)tex_x, (u16)tex_y, 32, 32);
     gSPDisplayList(POLY_OPA_DISP++, gba_win_w1T_model);
     gSPDisplayList(POLY_OPA_DISP++, gba_win_w2T_model);
     gSPDisplayList(POLY_OPA_DISP++, gba_win_w3T_model);
@@ -237,11 +211,8 @@ static void mGB_set_frame_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu_
 
     for (k = 0; k < mNW_DESIGN_COUNT; k++) {
         if (!mGB_check_hide_flg(submenu, k)) {
-            gDPLoadTLUT_Dolphin(POLY_OPA_DISP++, 15, 16, 1, mGB_get_image_pal(submenu, k));
-            gDPSetTextureImage_Dolphin(POLY_OPA_DISP++, G_IM_FMT_CI, G_IM_SIZ_4b, 32, 32,
-                                       mGB_get_image_texture(submenu, k));
-            gDPSetTile_Dolphin(POLY_OPA_DISP++, G_DOLPHIN_TLUT_DEFAULT_MODE, 0, 15, GX_MIRROR, GX_MIRROR, GX_CLAMP,
-                               GX_CLAMP);
+            gDPLoadTLUT_pal16(POLY_OPA_DISP++, 15, mGB_get_image_pal(submenu, k));
+            gDPLoadTextureBlock_4b(POLY_OPA_DISP++, mGB_get_image_texture(submenu, k), G_IM_FMT_CI, 32, 32, 15, G_TX_MIRROR, G_TX_MIRROR, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
             gSPDisplayList(POLY_OPA_DISP++, gfx_table[k]);
         }
     }
@@ -267,9 +238,6 @@ static void mGB_set_frame_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu_
     }
 }
 
-extern Gfx cad_win_mode[];
-extern Gfx cad_win_model[];
-
 static void mGB_set_card_frame_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu_info) {
     GRAPH* graph = game->graph;
     int i;
@@ -286,7 +254,7 @@ static void mGB_set_card_frame_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* 
     gSPMatrix(POLY_OPA_DISP++, _Matrix_to_Mtx_new(graph), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     tex_x = -submenu->overlay->menu_control.texture_pos[0] * 4.0f;
     tex_y = -submenu->overlay->menu_control.texture_pos[1] * 4.0f;
-    gDPSetTileSize_Dolphin(POLY_OPA_DISP++, G_TX_RENDERTILE, (u16)tex_x, (u16)tex_y, 32, 32);
+    gDPSetTileSizeHiRes(POLY_OPA_DISP++, G_TX_RENDERTILE, (u16)tex_x, (u16)tex_y, 32, 32);
     gSPSegment(POLY_OPA_DISP++, ANIME_1_TXT_SEG, mGB_get_image_pal(submenu, 0));
     gSPSegment(POLY_OPA_DISP++, ANIME_2_TXT_SEG, mGB_get_image_texture(submenu, 0));
     gSPDisplayList(POLY_OPA_DISP++, cad_win_model);

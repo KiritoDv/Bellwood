@@ -9,7 +9,7 @@
 #include "types.h"
 #include "libultra/gu.h"
 #include "sys_matrix.h"
-#include "MSL_C/w_math.h"
+#include <math.h>
 #include "m_rcp.h"
 #include "libc64/math64.h"
 #include "libultra/libultra.h"

@@ -1,5 +1,8 @@
 #include "m_bg_tex.h"
 
+#if __has_include("assets/bg_common_buffers.h")
+AC_BgCommonBuffers gBgCommon;
+#else
 u8 sprashC_tex_dummy[512];
 u8 sprashA_tex_dummy[512];
 u8 wave3_tex_dummy[1024];
@@ -32,6 +35,7 @@ u8 bush_b_tex_dummy[1024];
 u8 bush_a_tex_dummy[2048];
 u8 cliff_tex_dummy[2048];
 u8 earth_tex_dummy[2048];
+#endif
 
 BSS_ORDER_GROUP_START
   BSS_ORDER_ITEM(sprashC_tex_dummy);

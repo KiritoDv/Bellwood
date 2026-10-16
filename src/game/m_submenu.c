@@ -135,7 +135,7 @@ static int mSM_ovlptr_dllcnv_sub(void* proc, mSM_dlftbl_c* dlftbl, Submenu* subm
 
 extern void* mSM_ovlptr_dllcnv(void* proc, Submenu* submenu, int dlf_idx) {
     if (SubmenuArea_visit != NULL) {
-        return; // ??
+        return proc; // ??
     } else if (mSM_ovlptr_dllcnv_sub(proc, SubmenuArea_dlftbl, submenu, dlf_idx) == FALSE) {
         return NULL;
     }
@@ -195,7 +195,7 @@ extern void mSM_open_submenu_new(Submenu* submenu, int type, int arg0, int arg1,
     mSM_open_submenu_new2(submenu, type, arg0, arg1, arg2, 0);
 }
 
-extern void mSM_open_submenu_new2(Submenu* submenu, int type, int arg0, int arg1, void* arg2, int arg3) {
+extern void mSM_open_submenu_new2(Submenu* submenu, int type, int arg0, int arg1, void* arg2, intptr_t arg3) {
     submenu->menu_type = type;
     submenu->param0 = arg0;
     submenu->param1 = arg1;
@@ -620,7 +620,7 @@ static char* mSM_Object_Exchange_keep_new(GAME_PLAY* play, s16 bank_id, size_t s
     bank->size = size;
 
     if (exchange->bank_idx < mSc_OBJECT_BANK_NUM - 1) {
-        exchange->next_bank_ram_address = (char*)ALIGN_NEXT((u32)(exchange->next_bank_ram_address + size), 16);
+        exchange->next_bank_ram_address = (char*)ALIGN_NEXT((uintptr_t)(exchange->next_bank_ram_address + size), 16);
         exchange->bank_idx++;
     }
 

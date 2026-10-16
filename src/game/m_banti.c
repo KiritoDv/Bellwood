@@ -7,14 +7,16 @@
 #include "sys_matrix.h"
 #include "m_font.h"
 #include "m_common_data.h"
+#include "assets/data/model/cKF_ba_r_clk_hiniti.h"
+#include "assets/data/model/cKF_ba_r_clk_jikan.h"
+#include "assets/data/model/clk_hiniti.h"
+#include "assets/data/model/clk_jikan.h"
+#include "assets/data/model/clk_win.h"
 
 static Banti_c banti;
 
 static void banti_animation_init_hiduke(Banti_anim_c* anim);
 static void banti_animation_init_jikan(Banti_anim_c* anim);
-
-extern cKF_Skeleton_R_c cKF_bs_r_clk_hiniti;
-extern cKF_Skeleton_R_c cKF_bs_r_clk_jikan;
 
 extern void banti_ct() {
     bzero(&banti, sizeof(Banti_c));
@@ -125,16 +127,13 @@ static f32 banti_calc_disp_alpha_rate(GAME_PLAY* play) {
     } else {
         add_calc(&banti.alpha, 0.0f, 1.0f - sqrtf(0.8), 0.0425f, 0.0005f); /* fade out */
     }
+    return banti.alpha;
 }
-
-extern cKF_Animation_R_c cKF_ba_r_clk_hiniti;
 
 static void banti_animation_init_hiduke(Banti_anim_c* anim) {
     cKF_SkeletonInfo_R_init(&anim->keyframe, anim->keyframe.skeleton, &cKF_ba_r_clk_hiniti, 1.0f, 15.0f, 1.0f, 0.5f,
                             0.0f, cKF_FRAMECONTROL_STOP, NULL);
 }
-
-extern cKF_Animation_R_c cKF_ba_r_clk_jikan;
 
 static void banti_animation_init_jikan(Banti_anim_c* anim) {
     cKF_SkeletonInfo_R_init(&anim->keyframe, anim->keyframe.skeleton, &cKF_ba_r_clk_jikan, 1.0f, 15.0f, 1.0f, 0.5f,
@@ -338,38 +337,6 @@ static int banti_draw_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joi
     return 0;
 }
 
-extern u8 clk_win_suuji1_TA_tex_txt[];
-extern u8 clk_win_suuji2_TA_tex_txt[];
-extern u8 clk_win_suuji3_TA_tex_txt[];
-extern u8 clk_win_suuji4_TA_tex_txt[];
-extern u8 clk_win_suuji5_TA_tex_txt[];
-extern u8 clk_win_suuji6_TA_tex_txt[];
-extern u8 clk_win_suuji7_TA_tex_txt[];
-extern u8 clk_win_suuji8_TA_tex_txt[];
-extern u8 clk_win_suuji9_TA_tex_txt[];
-extern u8 clk_win_suuji10_TA_tex_txt[];
-extern u8 clk_win_suuji11_TA_tex_txt[];
-extern u8 clk_win_suuji12_TA_tex_txt[];
-extern u8 clk_win_suuji13_TA_tex_txt[];
-extern u8 clk_win_suuji14_TA_tex_txt[];
-extern u8 clk_win_suuji15_TA_tex_txt[];
-extern u8 clk_win_suuji16_TA_tex_txt[];
-extern u8 clk_win_suuji17_TA_tex_txt[];
-extern u8 clk_win_suuji18_TA_tex_txt[];
-extern u8 clk_win_suuji19_TA_tex_txt[];
-extern u8 clk_win_suuji20_TA_tex_txt[];
-extern u8 clk_win_suuji21_TA_tex_txt[];
-extern u8 clk_win_suuji22_TA_tex_txt[];
-extern u8 clk_win_suuji23_TA_tex_txt[];
-extern u8 clk_win_suuji24_TA_tex_txt[];
-extern u8 clk_win_suuji25_TA_tex_txt[];
-extern u8 clk_win_suuji26_TA_tex_txt[];
-extern u8 clk_win_suuji27_TA_tex_txt[];
-extern u8 clk_win_suuji28_TA_tex_txt[];
-extern u8 clk_win_suuji29_TA_tex_txt[];
-extern u8 clk_win_suuji30_TA_tex_txt[];
-extern u8 clk_win_suuji31_TA_tex_txt[];
-
 static void banti_draw_hiduke_sub(Gfx** gfx_pp, GAME* game, Banti_anim_c* anim, int tex0_idx, int tex1_idx,
                                   int pos_idx) {
     static u8* hiniti_tex_table[31] = {
@@ -422,18 +389,6 @@ static void banti_draw_hiduke(Gfx** gfx_pp, GAME_PLAY* play, int alpha) {
     banti_draw_hiduke_sub(gfx_pp, (GAME*)play, &banti.day_anim, banti.displayed_time.day - 1, banti.next_time.day - 1,
                           1);
 }
-
-extern u8 clk_win_jikan0_TA_tex_txt[];
-extern u8 clk_win_jikan1_TA_tex_txt[];
-extern u8 clk_win_jikan2_TA_tex_txt[];
-extern u8 clk_win_jikan3_TA_tex_txt[];
-extern u8 clk_win_jikan4_TA_tex_txt[];
-extern u8 clk_win_jikan5_TA_tex_txt[];
-extern u8 clk_win_jikan6_TA_tex_txt[];
-extern u8 clk_win_jikan7_TA_tex_txt[];
-extern u8 clk_win_jikan8_TA_tex_txt[];
-extern u8 clk_win_jikan9_TA_tex_txt[];
-extern u8 clk_win_jikan_TA_tex_txt[];
 
 static void banti_draw_jikan_sub(Gfx** gfx_pp, GAME* game, Banti_anim_c* anim, int idx0, int idx1, int hide_zero,
                                  int pos_idx) {
@@ -513,23 +468,8 @@ static void banti_draw_jikan(Gfx** gfx_pp, GAME_PLAY* play, int alpha) {
                          banti.next_time.min % 10, FALSE, 3);
 }
 
-extern u8 clk_win_pm_tex_rgb_ia8[];
-extern u8 clk_win_am_tex_rgb_ia8[];
 
-extern Gfx clk_win_mode[];
 
-extern u8 clk_win_sun_tex_rgb_ia8[];
-extern u8 clk_win_mon_tex_rgb_ia8[];
-extern u8 clk_win_tue_tex_rgb_ia8[];
-extern u8 clk_win_wed_tex_rgb_ia8[];
-extern u8 clk_win_thu_tex_rgb_ia8[];
-extern u8 clk_win_fri_tex_rgb_ia8[];
-extern u8 clk_win_sat_tex_rgb_ia8[];
-
-extern Gfx clk_win_youbiT_model[];
-extern Gfx clk_win_maruT_model[];
-extern Gfx clk_win_maru2T_model[];
-extern Gfx clk_win_ampmT_model[];
 
 extern void banti_draw(GAME_PLAY* play) {
     static u8* week_tex_table[lbRTC_WEEK] = { clk_win_sun_tex_rgb_ia8, clk_win_mon_tex_rgb_ia8, clk_win_tue_tex_rgb_ia8,

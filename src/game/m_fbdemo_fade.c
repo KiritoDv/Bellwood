@@ -82,7 +82,7 @@ void fbdemo_fade_startup(fbdemo_fade* this) {
 void fbdemo_fade_settype(fbdemo_fade* this, int type) { this->type = type; }
 
 void fbdemo_fade_setcolor_rgba8888(fbdemo_fade* this, u32 color) {
-  this->color.rgba = color;
+  Color_RGBA8_u32_set(&this->color, color);
 }
 
 u8 fbdemo_fade_is_finish(fbdemo_fade* this) { return this->isDone; }

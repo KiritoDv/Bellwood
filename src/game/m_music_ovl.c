@@ -7,6 +7,10 @@
 #include "m_font.h"
 #include "m_msg.h"
 #include "sys_matrix.h"
+#include "assets/data/model/mus_icon.h"
+#include "assets/data/model/mus_mark.h"
+#include "assets/data/model/mus_win.h"
+#include "assets/data/model/mus_win2.h"
 
 static mMU_Ovl_c music_ovl_data;
 
@@ -97,16 +101,6 @@ static mActor_name_t mMU_get_md_no(Submenu* submenu) {
     return ITM_MINIDISK_START + idx;
 }
 
-extern Gfx mus_win_model_before[];
-extern Gfx mus_win_model[];
-extern Gfx mus_win_ueT_model[];
-extern Gfx mus_win_ue2T_model[];
-extern Gfx mus_tag_nes_model[];
-extern Gfx mus_icon_model_before[];
-extern Gfx mus_icon_model[];
-extern Gfx mus_mark_before[];
-extern Gfx mus_mark_model[];
-
 static void mMU_set_dl(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* game) {
     GRAPH* graph = game->graph;
     int i;
@@ -131,7 +125,7 @@ static void mMU_set_dl(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* game) 
     tex_y = -submenu->overlay->menu_control.texture_pos[1] * 4.0f;
     i = (int)tex_x;
     j = (int)tex_y;
-    gDPSetTileSize_Dolphin(POLY_OPA_DISP++, G_TX_RENDERTILE, (int)i & 0xFF, (int)j & 0xFF, 32, 32);
+    gDPSetTileSizeHiRes(POLY_OPA_DISP++, G_TX_RENDERTILE, (int)i & 0xFF, (int)j & 0xFF, 32, 32);
     
     gSPDisplayList(POLY_OPA_DISP++, mus_win_model);
     gSPDisplayList(POLY_OPA_DISP++, mus_win_ueT_model);

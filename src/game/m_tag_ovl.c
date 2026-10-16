@@ -26,6 +26,10 @@
 #include "sys_matrix.h"
 #include "m_roll_lib.h"
 #include "m_house.h"
+#include "assets/data/model/inv_item.h"
+#include "assets/data/model/sen_itemw.h"
+#include "assets/data/model/sen_qitem.h"
+#include "assets/data/model/sen_win.h"
 
 static void mTG_mark_main_CLR(Submenu* submenu, const mSM_MenuInfo_c* menu_info);
 
@@ -3096,6 +3100,7 @@ static int mTG_get_unit_front_player(xyz_t* pos_p, const xyz_t* player_pos, s16 
     pos_p->x = player_pos->x + offset_pos[dir][0];
     pos_p->y = player_pos->y;
     pos_p->z = player_pos->z + offset_pos[dir][1];
+    return dir;
 }
 
 static int mTG_check_free_2nd_layer(const xyz_t* pos_p) {
@@ -8133,27 +8138,8 @@ typedef struct {
     Gfx* right_arrow;
 } mTG_disp_data_c;
 
-extern Gfx sen_itemw_wakuT_model[];
-extern Gfx sen_itemw_kage_model[];
-extern Gfx sen_itemw_yajirushi_model[];
-extern Gfx sen_itemw_yajirushi2T_model[];
 
-extern Gfx sen_qitem_wakuT_model[];
-extern Gfx sen_qitem_kage_model[];
-extern Gfx sen_qitem_yajirushiT_model[];
-extern Gfx sen_qitem_yajirushi2T_model[];
-extern Gfx sen_qitem_yajirushi3_model[];
-extern Gfx sen_qitem_yajirushi4T_model[];
-extern Gfx sen_qitem_yajirushi5_model[];
-extern Gfx sen_qitem_yajirushi6T_model[];
 
-extern Gfx sen_win_wakuT_model[];
-extern Gfx sen_win_kageT_model[];
-extern Gfx sen_win_yajirushiT_model[];
-extern Gfx sen_win_yajirushi2T_model[];
-
-extern Gfx sen_item2_DL_mode[];
-extern Gfx sen_win_cursor_model[];
 
 static void mTG_set_win_field(GRAPH* graph, Submenu* submenu, mSM_MenuInfo_c* menu_info, mTG_tag_c* tag, f32 pos_x,
                               f32 pos_y, int win_type, int draw_no) {
@@ -8762,9 +8748,6 @@ static void mTG_set_dl(Submenu* submenu, mSM_MenuInfo_c* menu_info, GRAPH* graph
         mTG_set_character(submenu, menu_info, game, graph, tag, base_x, base_y);
     }
 }
-
-extern Gfx inv_item_shadow_mode[];
-extern Gfx inv_item_mode[];
 
 static void mTG_draw_mail(Submenu* submenu, GRAPH* graph, Mail_c* mail, f32 x, f32 y) {
     OPEN_POLY_OPA_DISP(graph);

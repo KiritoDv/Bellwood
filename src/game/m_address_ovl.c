@@ -5,6 +5,8 @@
 #include "m_editor_ovl.h"
 #include "m_font.h"
 #include "sys_matrix.h"
+#include "assets/data/model/lat_atena_kageT.h"
+#include "assets/data/model/lat_mes.h"
 
 static mAD_Ovl_c adrs_ovl_data;
 
@@ -449,8 +451,6 @@ static void mAD_address_draw_init(Submenu* submenu) {
     }
 }
 
-extern Gfx lat_mes_winT_model[];
-
 static void mAD_set_first_tag(Submenu* submenu, GAME* game, GRAPH* graph, f32 pos_x, f32 pos_y) {
     static u8* title_table[] = { mAD_title_str, mAD_title_str2 };
     static int title_length[] = { sizeof(mAD_title_str), sizeof(mAD_title_str2) };
@@ -481,9 +481,6 @@ static void mAD_set_first_tag(Submenu* submenu, GAME* game, GRAPH* graph, f32 po
     len = title_length[idx];
     mFont_SetLineStrings(game, title_p, len, 160.0f + (pos_x + offset[idx][0]), 120.0f - (pos_y + offset[idx][1]), 80, 80, 230, 255, FALSE, TRUE, 1.0f, 1.0f, mFont_MODE_POLY);
 }
-
-extern Gfx lat_atena_model[];
-extern Gfx lat_atena_winT_model[];
 
 static void mAD_set_addressSel_tag_field(GRAPH* graph, f32 pos_x, f32 pos_y, int idx, int col_idx) {
     static rgba_t prim_color[2][3] = {

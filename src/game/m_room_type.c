@@ -1,4 +1,5 @@
 #include "m_room_type.h"
+#include "ac_port.h"
 
 #include "m_name_table.h"
 #include "m_common_data.h"
@@ -7,7 +8,7 @@
 #include "padmgr.h"
 #include "game.h"
 #include "m_house.h"
-#include "dolphin/os/OSCache.h"
+#include "gc_compat.h"
 #include "jsyswrap.h"
 #include "m_player_lib.h"
 
@@ -2114,12 +2115,12 @@ extern void mRmTp_CopyWallData(u8* dst, int wall_no) {
             mNW_CopyOriginalPalette(dst, original);
             mNW_CopyOriginalTexture(dst + mNW_PALETTE_SIZE, original);
             mNW_CopyOriginalTexture(dst + mNW_PALETTE_SIZE + 0x800, original);
-            DCStoreRangeNoSync(dst, mNW_PALETTE_SIZE + 0x1000);
+            AC_TexInvalidateRange(dst, mNW_PALETTE_SIZE + 0x1000);
         } else if (wall_no >= 0 && wall_no < WALL_ETC_END) {
             u32 base_addr = JW_GetAramAddress(RESOURCE_PLAYER_ROOM_WALL);
 
             _JW_GetResourceAram(base_addr + wall_no * 0x1020, dst, 0x1020);
-            DCStoreRangeNoSync(dst, mNW_PALETTE_SIZE + 0x1000);
+            AC_TexInvalidateRange(dst, mNW_PALETTE_SIZE + 0x1000);
         }
     }
 }
@@ -2143,12 +2144,12 @@ extern void mRmTp_CopyFloorData(u8* dst, int floor_no) {
             mNW_CopyOriginalTexture(dst + mNW_PALETTE_SIZE + 0x0800, original);
             mNW_CopyOriginalTexture(dst + mNW_PALETTE_SIZE + 0x1000, original);
             mNW_CopyOriginalTexture(dst + mNW_PALETTE_SIZE + 0x1800, original);
-            DCStoreRangeNoSync(dst, mNW_PALETTE_SIZE + 0x2000);
+            AC_TexInvalidateRange(dst, mNW_PALETTE_SIZE + 0x2000);
         } else if (floor_no >= 0 && floor_no < FLOOR_PLAYER_ROOM_END) {
             u32 base_addr = JW_GetAramAddress(RESOURCE_PLAYER_ROOM_FLOOR);
 
             _JW_GetResourceAram(base_addr + floor_no * 0x2020, dst, 0x2020);
-            DCStoreRangeNoSync(dst, mNW_PALETTE_SIZE + 0x2000);
+            AC_TexInvalidateRange(dst, mNW_PALETTE_SIZE + 0x2000);
         }
     }
 }

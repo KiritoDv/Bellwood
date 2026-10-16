@@ -5,7 +5,7 @@
 #include "m_common_data.h"
 #include "m_field_info.h"
 #include "m_event.h"
-#include "dolphin/pad.h"
+#include "gc_compat.h"
 
 static const u8 mVW_Non[1] = { PAD_MOTOR_STOP };
 

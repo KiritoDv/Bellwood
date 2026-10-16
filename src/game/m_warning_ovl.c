@@ -3,6 +3,7 @@
 #include "audio.h"
 #include "sys_matrix.h"
 #include "m_font.h"
+#include "assets/data/model/att_win.h"
 
 typedef struct warning_ovl_line_s {
   f32 pos_x;
@@ -90,7 +91,7 @@ static u8 wr_with_secret_codes[18] = "with secret codes!";
 static u8 wr_this_item[10] = "this item!";
 
 /* Line definitions */
-#define mWR_LINE(str, pos_x, pos_y) { (pos_x), (pos_y), ##str, ARRAY_COUNT(str) }
+#define mWR_LINE(str, pos_x, pos_y) { (pos_x), (pos_y), str, ARRAY_COUNT(str) }
 
 static mWR_line_c wr_mailbox_line[] = {
   mWR_LINE(wr_You_cant_hold,             70.0f, 28.0f),
@@ -213,7 +214,7 @@ static mWR_line_c wr_pr_fork_line[] = {
   mWR_LINE(wr_this_item,     80.0f, 24.0f)
 };
 
-#define mWR_DATA(line, scale_x, scale_y) { ##line, ARRAY_COUNT(line), (scale_x), (scale_y) }
+#define mWR_DATA(line, scale_x, scale_y) { line, ARRAY_COUNT(line), (scale_x), (scale_y) }
 #define mWR_NULL { NULL, 0, 1.0f, 1.0f }
 
 static mWR_data_c wr_win_data[] = {
@@ -333,9 +334,6 @@ static void mWR_warning_ovl_move(Submenu* submenu) {
       break;
   }
 }
-
-extern Gfx att_win_model[];
-extern Gfx att_win_cursor_model[];
 
 static void mWR_set_frame_dl(Submenu* submenu, GRAPH* graph, mSM_MenuInfo_c* menu_info, mWR_data_c* data) {
   Gfx* gfx;

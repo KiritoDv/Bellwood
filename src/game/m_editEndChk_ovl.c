@@ -3,6 +3,9 @@
 #include "audio.h"
 #include "m_font.h"
 #include "sys_matrix.h"
+#include "assets/data/model/lat_kakunin.h"
+#include "assets/data/model/lat_sentaku2.h"
+#include "assets/data/model/onp_sentaku.h"
 
 typedef struct editEndChk_win_data_s {
     int answer_num;
@@ -16,11 +19,6 @@ typedef struct editEndChk_win_data_s {
     f32 question_y;
 } mEE_win_data_c;
 
-extern Gfx lat_sentaku2_winT_model[];
-extern Gfx lat_sentaku2_c_model[];
-
-extern Gfx lat_sentaku_winT_model[];
-extern Gfx lat_sentaku_c_model[];
 
 static mEE_win_data_c win_data[] = {
     { 2, lat_sentaku2_winT_model, lat_sentaku2_c_model, -45.0f, 43.0f, 65.0f, -74.0f, 0.0f, 0.0f },
@@ -117,10 +115,6 @@ static void mEE_editEndChk_ovl_move(Submenu* submenu) {
     (*menu_info->pre_move_func)(submenu);
     (*ovl_move_proc[menu_info->proc_status])(submenu, menu_info);
 }
-
-extern Gfx lat_kakunin_DL_mode[];
-extern Gfx lat_kakunin_wakuT_model[];
-extern Gfx lat_kakunin_c_model[];
 
 static void mEE_set_question_field(Submenu* submenu, GRAPH* graph, f32 x, f32 y) {
     Gfx* gfx;

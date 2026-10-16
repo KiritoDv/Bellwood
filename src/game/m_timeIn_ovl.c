@@ -3,6 +3,8 @@
 #include "m_common_data.h"
 #include "m_font.h"
 #include "sys_matrix.h"
+#include "assets/data/model/tim_hari.h"
+#include "assets/data/model/tim_win.h"
 
 static mTI_Ovl_c ti_ovl_data;
 
@@ -242,31 +244,7 @@ static void mTI_timeIn_ovl_move(Submenu* submenu) {
   (*ovl_move_proc[menu_info->proc_status])(submenu, menu_info);
 }
 
-extern Gfx tim_win_mode[];
-extern Gfx tim_win_model[];
-extern Gfx tim_win_month_model[];
-extern Gfx tim_win_youbi_model[];
 
-extern u8 tim_win_sun_tex_rgb_i4[];
-extern u8 tim_win_mon_tex_rgb_i4[];
-extern u8 tim_win_tue_tex_rgb_i4[];
-extern u8 tim_win_wed_tex_rgb_i4[];
-extern u8 tim_win_thu_tex_rgb_i4[];
-extern u8 tim_win_fri_tex_rgb_i4[];
-extern u8 tim_win_sat_tex_rgb_i4[];
-
-extern u8 tim_win_january_tex_rgb_i4[];
-extern u8 tim_win_february_tex_rgb_i4[];
-extern u8 tim_win_march_tex_rgb_i4[];
-extern u8 tim_win_april_tex_rgb_i4[];
-extern u8 tim_win_may_tex_rgb_i4[];
-extern u8 tim_win_june_tex_rgb_i4[];
-extern u8 tim_win_july_tex_rgb_i4[];
-extern u8 tim_win_august_tex_rgb_i4[];
-extern u8 tim_win_september_tex_rgb_i4[];
-extern u8 tim_win_october_tex_rgb_i4[];
-extern u8 tim_win_november_tex_rgb_i4[];
-extern u8 tim_win_december_tex_rgb_i4[];
 
 static void mTI_set_frame_dl(Submenu* submenu, GRAPH* graph, f32 x, f32 y) {
   static u8* week_tex[lbRTC_WEEK] = {
@@ -322,7 +300,7 @@ static void mTI_set_frame_dl(Submenu* submenu, GRAPH* graph, f32 x, f32 y) {
   tex_y = -submenu->overlay->menu_control.texture_pos[1] * 4.0f;
   s = (int)tex_x;
   t = (int)tex_y;
-  gDPSetTileSize_Dolphin(gfx++, G_TX_RENDERTILE, s, t, 32, 32);
+  gDPSetTileSizeHiRes(gfx++, G_TX_RENDERTILE, s, t, 32, 32);
 
   /* Draw window background */
   gSPDisplayList(gfx++, tim_win_model);
@@ -348,11 +326,6 @@ static void mTI_set_frame_dl(Submenu* submenu, GRAPH* graph, f32 x, f32 y) {
   SET_POLY_OPA_DISP(gfx);
   CLOSE_DISP(graph);
 }
-
-extern Gfx tim_hari_mode[];
-extern Gfx tim_hari_b1T_model[];
-extern Gfx tim_hari_b2T_model[];
-extern Gfx tim_hari_b3T_model[];
 
 static void mTI_set_clock(Submenu* submenu, GRAPH* graph, f32 x, f32 y) {
   static Gfx* displayList_table[] = {

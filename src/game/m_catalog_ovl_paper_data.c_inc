@@ -1,67 +1,67 @@
-extern Gfx lat_letter01_model[];
-extern Gfx lat_letter02_model[];
-extern Gfx lat_letter03_model[];
-extern Gfx lat_letter04_model[];
-extern Gfx lat_letter05_model[];
-extern Gfx lat_letter06_model[];
-extern Gfx lat_letter07_model[];
-extern Gfx lat_letter08_model[];
-extern Gfx lat_letter09_model[];
-extern Gfx lat_letter10_model[];
-extern Gfx lat_letter11_model[];
-extern Gfx lat_letter12_model[];
-extern Gfx lat_letter13_model[];
-extern Gfx lat_letter14_model[];
-extern Gfx lat_letter15_model[];
-extern Gfx lat_letter16_model[];
-extern Gfx lat_letter17_model[];
-extern Gfx lat_letter18_model[];
-extern Gfx lat_letter19_model[];
-extern Gfx lat_letter20_model[];
-extern Gfx lat_letter21_model[];
-extern Gfx lat_letter22_model[];
-extern Gfx lat_letter23_model[];
-extern Gfx lat_letter24_model[];
-extern Gfx lat_letter25_model[];
-extern Gfx lat_letter26_model[];
-extern Gfx lat_letter27_model[];
-extern Gfx lat_letter28_model[];
-extern Gfx lat_letter29_model[];
-extern Gfx lat_letter30_model[];
-extern Gfx lat_letter31_model[];
-extern Gfx lat_letter32_model[];
-extern Gfx lat_letter33_model[];
-extern Gfx lat_letter34_model[];
-extern Gfx lat_letter35_model[];
-extern Gfx lat_letter36_model[];
-extern Gfx lat_letter37_model[];
-extern Gfx lat_letter38_model[];
-extern Gfx lat_letter39_model[];
-extern Gfx lat_letter40_model[];
-extern Gfx lat_letter41_model[];
-extern Gfx lat_letter42_model[];
-extern Gfx lat_letter43_model[];
-extern Gfx lat_letter44_model[];
-extern Gfx lat_letter45_model[];
-extern Gfx lat_letter46_model[];
-extern Gfx lat_letter47_model[];
-extern Gfx lat_letter48_model[];
-extern Gfx lat_letter49_model[];
-extern Gfx lat_letter50_model[];
-extern Gfx lat_letter51_model[];
-extern Gfx lat_letter52_model[];
-extern Gfx lat_letter53_model[];
-extern Gfx lat_letter54_model[];
-extern Gfx lat_letter55_model[];
-extern Gfx lat_letter56_model[];
-extern Gfx lat_letter57_model[];
-extern Gfx lat_letter58_model[];
-extern Gfx lat_letter59_model[];
-extern Gfx lat_letter60_model[];
-extern Gfx lat_letter61_model[];
-extern Gfx lat_letter62_model[];
-extern Gfx lat_letter63_win_model[];
-extern Gfx lat_letter64_model[];
+#include "assets/data/model/lat_letter01.h"
+#include "assets/data/model/lat_letter02.h"
+#include "assets/data/model/lat_letter03.h"
+#include "assets/data/model/lat_letter04.h"
+#include "assets/data/model/lat_letter05.h"
+#include "assets/data/model/lat_letter06.h"
+#include "assets/data/model/lat_letter07.h"
+#include "assets/data/model/lat_letter08.h"
+#include "assets/data/model/lat_letter09.h"
+#include "assets/data/model/lat_letter10.h"
+#include "assets/data/model/lat_letter11.h"
+#include "assets/data/model/lat_letter12.h"
+#include "assets/data/model/lat_letter13.h"
+#include "assets/data/model/lat_letter14.h"
+#include "assets/data/model/lat_letter15.h"
+#include "assets/data/model/lat_letter16.h"
+#include "assets/data/model/lat_letter17.h"
+#include "assets/data/model/lat_letter18.h"
+#include "assets/data/model/lat_letter19.h"
+#include "assets/data/model/lat_letter20.h"
+#include "assets/data/model/lat_letter21.h"
+#include "assets/data/model/lat_letter22.h"
+#include "assets/data/model/lat_letter23.h"
+#include "assets/data/model/lat_letter24.h"
+#include "assets/data/model/lat_letter25.h"
+#include "assets/data/model/lat_letter26.h"
+#include "assets/data/model/lat_letter27.h"
+#include "assets/data/model/lat_letter28.h"
+#include "assets/data/model/lat_letter30.h"
+#include "assets/data/model/lat_letter31.h"
+#include "assets/data/model/lat_letter32.h"
+#include "assets/data/model/lat_letter33.h"
+#include "assets/data/model/lat_letter34.h"
+#include "assets/data/model/lat_letter35.h"
+#include "assets/data/model/lat_letter36.h"
+#include "assets/data/model/lat_letter37.h"
+#include "assets/data/model/lat_letter38.h"
+#include "assets/data/model/lat_letter39.h"
+#include "assets/data/model/lat_letter40.h"
+#include "assets/data/model/lat_letter41.h"
+#include "assets/data/model/lat_letter42.h"
+#include "assets/data/model/lat_letter43.h"
+#include "assets/data/model/lat_letter44.h"
+#include "assets/data/model/lat_letter45.h"
+#include "assets/data/model/lat_letter46.h"
+#include "assets/data/model/lat_letter47.h"
+#include "assets/data/model/lat_letter48.h"
+#include "assets/data/model/lat_letter49.h"
+#include "assets/data/model/lat_letter50.h"
+#include "assets/data/model/lat_letter51.h"
+#include "assets/data/model/lat_letter52.h"
+#include "assets/data/model/lat_letter53.h"
+#include "assets/data/model/lat_letter54.h"
+#include "assets/data/model/lat_letter55.h"
+#include "assets/data/model/lat_letter56.h"
+#include "assets/data/model/lat_letter57.h"
+#include "assets/data/model/lat_letter58.h"
+#include "assets/data/model/lat_letter59.h"
+#include "assets/data/model/lat_letter60.h"
+#include "assets/data/model/lat_letter61.h"
+#include "assets/data/model/lat_letter62.h"
+#include "assets/data/model/lat_letter63.h"
+#include "assets/data/model/lat_letter64.h"
+#include "assets/data/model/lat_letter65.h"
 
 // clang-format off
 static Gfx* paper_disp_model[] = {
@@ -323,58 +323,6 @@ static Gfx* paper_disp_model[] = {
     NULL,
 };
 // clang-format on
-
-extern Gfx lat_letter01_sen_model[];
-extern Gfx lat_letter02_sen_model[];
-extern Gfx lat_letter03_sen_model[];
-extern Gfx lat_letter04_senT_model[];
-extern Gfx lat_letter06_sen_model[];
-extern Gfx lat_letter07_sen_model[];
-extern Gfx lat_letter08_sen_model[];
-extern Gfx lat_letter10_sen_model[];
-extern Gfx lat_letter12_sen_model[];
-extern Gfx lat_letter16_sen_model[];
-extern Gfx lat_letter17_sen_model[];
-extern Gfx lat_letter18_sen_model[];
-extern Gfx lat_letter20_sen_model[];
-extern Gfx lat_letter21_sen_model[];
-extern Gfx lat_letter22_sen_model[];
-extern Gfx lat_letter29_sen_model[];
-extern Gfx lat_letter30_sen_model[];
-extern Gfx lat_letter31_sen_model[];
-extern Gfx lat_letter32_sen_model[];
-extern Gfx lat_letter33_sen_model[];
-extern Gfx lat_letter34_sen_model[];
-extern Gfx lat_letter35_sen_model[];
-extern Gfx lat_letter36_sen_model[];
-extern Gfx lat_letter37_sen_model[];
-extern Gfx lat_letter38_sen_model[];
-extern Gfx lat_letter39_sen_model[];
-extern Gfx lat_letter40_sen_model[];
-extern Gfx lat_letter41_sen_model[];
-extern Gfx lat_letter42_sen_model[];
-extern Gfx lat_letter43_sen_model[];
-extern Gfx lat_letter44_sen_model[];
-extern Gfx lat_letter45_sen_model[];
-extern Gfx lat_letter46_sen_model[];
-extern Gfx lat_letter47_sen_model[];
-extern Gfx lat_letter48_sen_model[];
-extern Gfx lat_letter49_sen_model[];
-extern Gfx lat_letter50_sen_model[];
-extern Gfx lat_letter51_sen_model[];
-extern Gfx lat_letter52_sen_model[];
-extern Gfx lat_letter53_sen_model[];
-extern Gfx lat_letter54_sen_model[];
-extern Gfx lat_letter55_sen_model[];
-extern Gfx lat_letter56_sen_model[];
-extern Gfx lat_letter57_sen_model[];
-extern Gfx lat_letter58_sen_model[];
-extern Gfx lat_letter59_sen_model[];
-extern Gfx lat_letter60_sen_model[];
-extern Gfx lat_letter61_sen_model[];
-extern Gfx lat_letter62_sen_model[];
-extern Gfx lat_letter63_senT_model[];
-extern Gfx lat_letter64_sen_model[];
 
 static Gfx* paper_disp_sen_model[] = {
     lat_letter01_sen_model,

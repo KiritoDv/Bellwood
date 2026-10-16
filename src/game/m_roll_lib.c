@@ -283,6 +283,7 @@ extern int mRlib_PSnowmanBreakNeckSwing(s16* head_angle_y, f32 f0, f32 scale) {
         Matrix_rotateXYZ(rot_x, 0, rot_z, MTX_MULT);              // rotate at location
         Matrix_translate(0.0f, scale * 1400.0f, 0.0f, MTX_MULT);  // restore original location
     }
+    return 0;
 }
 
 extern int mRlib_PSnowman_NormalTalk(ACTOR* actor, GAME_PLAY* play, f32* speed, mDemo_REQUEST_PROC demo_req_proc) {

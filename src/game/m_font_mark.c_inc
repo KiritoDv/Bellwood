@@ -1,3 +1,8 @@
+#include "assets/data/font/FONT_nes_tex_choice.h"
+#include "assets/data/font/FONT_nes_tex_cursor.h"
+#include "assets/data/font/FONT_nes_tex_jyouge.h"
+#include "assets/data/font/FONT_nes_tex_next.h"
+#include "assets/data/font/FONT_nes_tex_sayuu.h"
 static u8* mFont_Get_MarkTex_p(int mark_type) {
   static u8* tex_p_array[mFont_MARKTYPE_TOTAL] = {
     FONT_nes_tex_jyouge,
@@ -68,12 +73,7 @@ extern f32 mFont_SetMarkChar(
 
       CLOSE_DISP(graph);
 
-      gDPLoadTextureTile_4b_Dolphin(
-        gfx++,
-        tex,
-        G_IM_FMT_I,
-        w, (h + 3)
-      );
+      gDPLoadTextureBlockWide_4b(gfx++, tex, G_IM_FMT_I, w, (h + 3), 0, G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
       gSPEndDisplayList(gfx);
       next_x = mFont_SetVertexRectangle(game, x, y, w, h, scale_x, scale_y, mode);

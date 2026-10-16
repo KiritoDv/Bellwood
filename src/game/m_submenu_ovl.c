@@ -6,7 +6,7 @@
 #include "m_rcp.h"
 #include "libultra/libultra.h"
 #include "sys_matrix.h"
-#include "libforest/emu64/emu64_wrapper.h"
+#include "ac_port.h"
 #include "m_inventory_ovl.h"
 #include "m_hboard_ovl.h"
 #include "m_timeIn_ovl.h"
@@ -40,6 +40,47 @@
 #include "m_tag_ovl.h"
 #include "m_hand_ovl.h"
 #include "m_haniwaPortrait_ovl.h"
+#include "assets/data/model/inv_item.h"
+#include "assets/data/model/inv_mark.h"
+#include "assets/data/model/inv_mwin10.h"
+#include "assets/data/model/inv_mwin11.h"
+#include "assets/data/model/inv_mwin12.h"
+#include "assets/data/model/inv_mwin13.h"
+#include "assets/data/model/inv_mwin14.h"
+#include "assets/data/model/inv_mwin15.h"
+#include "assets/data/model/inv_mwin16.h"
+#include "assets/data/model/inv_mwin2.h"
+#include "assets/data/model/inv_mwin3.h"
+#include "assets/data/model/inv_mwin4.h"
+#include "assets/data/model/inv_mwin5.h"
+#include "assets/data/model/inv_mwin6.h"
+#include "assets/data/model/inv_mwin7.h"
+#include "assets/data/model/inv_mwin8.h"
+#include "assets/data/model/inv_mwin9.h"
+#include "assets/data/model/inv_mwin_2cabu1.h"
+#include "assets/data/model/inv_mwin_ame.h"
+#include "assets/data/model/inv_mwin_binsen.h"
+#include "assets/data/model/inv_mwin_cabu.h"
+#include "assets/data/model/inv_mwin_cnaegi.h"
+#include "assets/data/model/inv_mwin_fork.h"
+#include "assets/data/model/inv_mwin_fuku3.h"
+#include "assets/data/model/inv_mwin_fukubukuro.h"
+#include "assets/data/model/inv_mwin_g.h"
+#include "assets/data/model/inv_mwin_haniwa.h"
+#include "assets/data/model/inv_mwin_hitodama.h"
+#include "assets/data/model/inv_mwin_kanban.h"
+#include "assets/data/model/inv_mwin_kaseki.h"
+#include "assets/data/model/inv_mwin_matutake.h"
+#include "assets/data/model/inv_mwin_nittki.h"
+#include "assets/data/model/inv_mwin_nuts.h"
+#include "assets/data/model/inv_mwin_okane.h"
+#include "assets/data/model/inv_mwin_ono.h"
+#include "assets/data/model/inv_mwin_pbox.h"
+#include "assets/data/model/inv_mwin_pbox2.h"
+#include "assets/data/model/inv_mwin_sanddollar.h"
+#include "assets/data/model/inv_mwin_taisou.h"
+#include "assets/data/model/inv_mwin_unknown.h"
+#include "assets/data/model/inv_mwin_yashi.h"
 
 static Submenu_Overlay_c ovl_base;
 
@@ -97,10 +138,10 @@ static void mSM_change_view(GRAPH* graph, f32 eye_dist, f32 y_lookAt, f32 vp_x, 
         viewport = &viewport_data;
     } else {
         viewport->vp.vscale[0] = width << 1;
-        viewport->vp.vtrans[0] = (width << 1) + (s16)(int)vp_x;
+        viewport->vp.vtrans[0] = (width << 1) + 2 * (s16)(int)vp_x;
 
         viewport->vp.vscale[1] = height << 1;
-        viewport->vp.vtrans[1] = (height << 1) + (s16)(int)vp_y;
+        viewport->vp.vtrans[1] = (height << 1) + 2 * (s16)(int)vp_y;
 
         viewport->vp.vtrans[2] = 511;
         viewport->vp.vscale[2] = 511;
@@ -158,126 +199,6 @@ static void mSM_set_char_matrix(GRAPH* graph) {
     gSPMatrix(POLY_OPA_DISP++, &Mtx_clear, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     CLOSE_POLY_OPA_DISP(graph);
-}
-
-static void mSM_cbuf_copy(GRAPH* graph, PreRender* prerender, int x, int y, int mode) {
-    int temp;
-    int temp0;
-    int src_w;
-    int src_h;
-    int dst_w;
-    int dst_h;
-    int uls;
-    int ult;
-    int lrs;
-    int lrt;
-    int tmem_line;
-    int y_min;
-    int x_min;
-    int x_max;
-    int y_max;
-    int tex_wd;
-    void* src_buffer;
-    void* dst_buffer;
-
-    if (x >= (640 - 1) || x <= -prerender->width_bak || y <= -prerender->height_bak || y >= (480 - 1)) {
-        return;
-    }
-
-    if (x < 0) {
-        x_max = prerender->width_bak + x;
-        x_min = -x;
-        x = 0;
-    } else {
-        x_min = 0;
-
-        if (x + prerender->width_bak >= 640) {
-            x_max = 640 - x;
-        } else {
-            x_max = prerender->width_bak;
-        }
-    }
-
-    if (y < 0) {
-        y_max = prerender->height_bak + y;
-        y_min = -y;
-        y = 0;
-    } else {
-        y_min = 0;
-
-        if (y + prerender->height_bak >= 480) {
-            y_max = (480 - 1) - y;
-        } else {
-            y_max = prerender->height_bak;
-        }
-    }
-
-    if (mode == 0) {
-        src_w = 640;
-        src_h = 480;
-        dst_w = prerender->width_bak;
-        dst_h = prerender->height_bak;
-        uls = x;
-        ult = y;
-        lrt = y_min;
-        lrs = x_min;
-        src_buffer = prerender->framebuffer_bak;
-    } else {
-        src_w = prerender->width_bak;
-        src_h = prerender->height_bak;
-        dst_w = 640;
-        dst_h = 480;
-        uls = x_min;
-        ult = y_min;
-        lrt = y;
-        lrs = x;
-        dst_buffer = prerender->framebuffer_bak;
-    }
-
-    tmem_line = (4 << 10) / ((((x_max + 4) - 1) & ~(4 - 1)) * 2);
-    temp0 = uls + (x_max - 1);
-    tex_wd = (lrs + x_max - 1) << 2;
-    lrs <<= 2;
-
-    OPEN_DISP(graph);
-    if (mode) {
-        Gfx* gfx = NOW_POLY_OPA_DISP;
-
-        prerender->width = 640;
-        prerender->height = 480;
-        PreRender_CopyRGBC(prerender, &gfx, x - x_min, y - y_min);
-
-        SET_POLY_OPA_DISP(gfx);
-    } else {
-        gDPPipeSync(NEXT_POLY_OPA_DISP);
-        gSPClearGeometryMode(NEXT_POLY_OPA_DISP, 0xFFFFFF);
-        gDPSetOtherMode(NEXT_POLY_OPA_DISP,
-                        G_AD_DISABLE | G_CD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE |
-                            G_TD_CLAMP | G_TP_NONE | G_CYC_COPY | G_PM_NPRIMITIVE,
-                        G_AC_NONE | G_ZS_PRIM | G_RM_NOOP | G_RM_NOOP2);
-        gDPSetColorImage(NEXT_POLY_OPA_DISP, G_IM_FMT_RGBA, G_IM_SIZ_16b, dst_w, src_buffer);
-        gDPSetScissor(NEXT_POLY_OPA_DISP, G_SC_NON_INTERLACE, 0, 0, dst_w, dst_h);
-
-        while (y_max > 0) {
-            if (tmem_line > y_max) {
-                tmem_line = y_max;
-            }
-
-            temp = ult + tmem_line - 1;
-            gDPLoadTextureTile(NEXT_POLY_OPA_DISP, dst_buffer, G_IM_FMT_RGBA, G_IM_SIZ_16b, src_w, src_h, uls, ult,
-                               temp0, temp, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,
-                               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-
-            gSPTextureRectangle(NEXT_POLY_OPA_DISP, lrs, lrt << 2, tex_wd, (lrt + tmem_line - 1) << 2, G_TX_RENDERTILE,
-                                uls << 5, ult << 5, (4 << 10), (1 << 10));
-
-            ult += tmem_line;
-            lrt += tmem_line;
-            y_max -= tmem_line;
-        }
-    }
-
-    CLOSE_DISP(graph);
 }
 
 static void mSM_set_drawMode(GRAPH* graph, PreRender* prerender, f32 eye_dist, f32 eye_height, s16 angle) {
@@ -386,8 +307,6 @@ typedef struct inventory_icon_info_s {
     u8* tex;
 } mSM_inventory_icon_info_c;
 
-extern u8 inv_win_mark_tex[];
-
 static void mSM_set_dl_item(GRAPH* graph, f32 x, f32 y, f32 scale, mSM_inventory_icon_info_c* icon_info, u16* palette,
                             u8 l, rgba_t* color, int draw_shadow, int draw_mark) {
     f32 rect_xh;
@@ -419,10 +338,8 @@ static void mSM_set_dl_item(GRAPH* graph, f32 x, f32 y, f32 scale, mSM_inventory
     gDPPipeSync(POLY_OPA_DISP++);
     gDPSetTextureLUT(POLY_OPA_DISP++, G_TT_RGBA16);
     gDPSetTexturePersp(POLY_OPA_DISP++, G_TP_NONE);
-    gDPLoadTLUT_Dolphin(POLY_OPA_DISP++, 15, 16, 1, palette);
-    gDPSetTextureImage_Dolphin(POLY_OPA_DISP++, G_IM_FMT_CI, G_IM_SIZ_4b, 32, 32, icon_info->tex);
-    gDPSetTile_Dolphin(POLY_OPA_DISP++, G_DOLPHIN_TLUT_DEFAULT_MODE, G_TX_RENDERTILE, 15, GX_MIRROR, GX_MIRROR,
-                       GX_CLAMP, GX_CLAMP);
+    gDPLoadTLUT_pal16(POLY_OPA_DISP++, 15, palette);
+    gDPLoadTextureBlock_4b(POLY_OPA_DISP++, icon_info->tex, G_IM_FMT_CI, 32, 32, 15, G_TX_MIRROR, G_TX_MIRROR, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
 
     t = (int)(x * 0.975f);
     x = (160.0f + (f32)t) - scale * 12.0f;
@@ -455,9 +372,7 @@ static void mSM_set_dl_item(GRAPH* graph, f32 x, f32 y, f32 scale, mSM_inventory
         gDPSetAlphaCompare(POLY_OPA_DISP++, G_AC_NONE);
         gDPSetBlendColor(POLY_OPA_DISP++, 255, 255, 255, 8);
         gDPSetTextureLUT(POLY_OPA_DISP++, G_TT_NONE); // duplicate?
-        gDPSetTextureImage_Dolphin(POLY_OPA_DISP++, G_IM_FMT_IA, G_IM_SIZ_8b, 16, 16, inv_win_mark_tex);
-        gDPSetTile_Dolphin(POLY_OPA_DISP++, G_DOLPHIN_TLUT_DEFAULT_MODE, G_TX_RENDERTILE, 0, GX_MIRROR, GX_MIRROR,
-                           GX_CLAMP, GX_CLAMP);
+        gDPLoadTextureBlock(POLY_OPA_DISP++, inv_win_mark_tex, G_IM_FMT_IA, G_IM_SIZ_8b, 16, 16, 0, G_TX_MIRROR, G_TX_MIRROR, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
         gDPSetBlendColor(POLY_OPA_DISP++, 255, 255, 255, 254); // bug? doesn't this undo the previous blend color set?
         gDPSetCombineMode(POLY_OPA_DISP++, G_CC_BLENDPEDECALA, G_CC_BLENDPEDECALA);
 
@@ -483,410 +398,69 @@ static void mSM_set_dl_item(GRAPH* graph, f32 x, f32 y, f32 scale, mSM_inventory
     CLOSE_POLY_OPA_DISP(graph);
 }
 
-extern u16 inv_mwin_leaf_pal[];
-extern u8 inv_mwin_leaf_tex[];
-
-extern u16 inv_mwin_haniwa_pal[];
-extern u8 inv_mwin_haniwa_tex[];
-
-extern u16 inv_mwin_kaseki2_pal[];
-extern u8 inv_mwin_kaseki2_tex[];
-
-extern u16 inv_mwin_unknown_pal[];
-extern u8 inv_mwin_unknown_tex[];
-
-extern u16 inv_mwin_pbox2_pal[];
-extern u8 inv_mwin_pbox_tex[];
-
-extern u16 inv_mwin_pbox1_tex_rgb_ci4_pal[];
-extern u8 inv_mwin_pbox1_tex_rgb_ci4[];
-
-extern u16 inv_mwin_pbox2_tex_rgb_ci4_pal[];
-extern u8 inv_mwin_pbox2_tex_rgb_ci4[];
-
-extern u16 inv_mwin_pbox3_tex_rgb_ci4_pal[];
-extern u8 inv_mwin_pbox3_tex_rgb_ci4[];
-
-extern u16 inv_mwin_pbox4_tex_rgb_ci4_pal[];
-extern u8 inv_mwin_pbox4_tex_rgb_ci4[];
-
-extern u16 inv_mwin_pbox5_tex_rgb_ci4_pal[];
-extern u8 inv_mwin_pbox5_tex_rgb_ci4[];
-
-extern u16 inv_mwin_binsen1_pal[];
-extern u8 inv_mwin_binsen1_tex[];
-extern u8 inv_mwin_binsen2_tex[];
-extern u8 inv_mwin_binsen3_tex[];
-extern u8 inv_mwin_binsen4_tex[];
-
-extern u16 inv_mwin_okane1_pal[];
-extern u8 inv_mwin_okane1_tex[];
-extern u8 inv_mwin_okane2_tex[];
-extern u8 inv_mwin_okane3_tex[];
-extern u8 inv_mwin_okane4_tex[];
-
-extern u16 inv_mwin_mushi_pal[];
-extern u8 inv_mwin_mushi_tex[];
-extern u16 inv_mwin_ono_pal[];
-extern u8 inv_mwin_ono_tex[];
-extern u16 inv_mwin_scoop_pal[];
-extern u8 inv_mwin_scoop_tex[];
-extern u16 inv_mwin_turi_tex_pal[];
-extern u8 inv_mwin_turi_tex[];
-extern u16 inv_mwin_unbrella_pal[];
-extern u8 inv_mwin_unbrella_tex[];
-extern u16 inv_mwin_mushi_pal[];
-extern u8 inv_mwin_mushi_tex[];
-extern u16 inv_mwin_gmushi_pal[];
-extern u8 inv_mwin_gmushi_tex[];
-extern u16 inv_mwin_gono_pal[];
-extern u8 inv_mwin_gono_tex[];
-extern u16 inv_mwin_gscoop_pal[];
-extern u8 inv_mwin_gscoop_tex[];
-extern u16 inv_mwin_gturi_pal[];
-extern u8 inv_mwin_gturi_tex[];
-extern u16 inv_mwin_ono_pal[];
-extern u8 inv_mwin_ono_tex[];
-extern u8 inv_mwin_ono2_tex[];
-extern u8 inv_mwin_ono3_tex[];
-extern u16 inv_mwin_fuusen_pal[];
-extern u8 inv_mwin_fuusen_tex[];
-extern u16 inv_mwin_kazaguruma_pal[];
-extern u8 inv_mwin_kazaguruma_tex[];
-extern u16 inv_mwin_utiwa_pal[];
-extern u8 inv_mwin_utiwa_tex[];
-
-extern u16 inv_mwin_01funa_pal[];
-extern u8 inv_mwin_01funa_tex[];
-extern u16 inv_mwin_02masu_pal[];
-extern u8 inv_mwin_02masu_tex[];
-extern u16 inv_mwin_03koi_pal[];
-extern u8 inv_mwin_03koi_tex[];
-extern u16 inv_mwin_04nishiki_pal[];
-extern u8 inv_mwin_04nishiki_tex[];
-extern u16 inv_mwin_07namazu_pal[];
-extern u8 inv_mwin_07namazu_tex[];
-extern u16 inv_mwin_13bass_pal[];
-extern u8 inv_mwin_13bass_tex[];
-extern u16 inv_mwin_14bassm_pal[];
-extern u8 inv_mwin_14bassm_tex[];
-extern u16 inv_mwin_15bassl_pal[];
-extern u8 inv_mwin_15bassl_tex[];
-extern u16 inv_mwin_12gill_pal[];
-extern u8 inv_mwin_12gill_tex[];
-extern u16 inv_mwin_08oonamazu_pal[];
-extern u8 inv_mwin_08oonamazu_tex[];
-extern u16 inv_mwin_16raigyo_pal[];
-extern u8 inv_mwin_16raigyo_tex[];
-extern u16 inv_mwin_05nigoi_pal[];
-extern u8 inv_mwin_05nigoi_tex[];
-extern u16 inv_mwin_06ugui_pal[];
-extern u8 inv_mwin_06ugui_tex[];
-extern u16 inv_mwin_09oikawa_pal[];
-extern u8 inv_mwin_09oikawa_tex[];
-extern u16 inv_mwin_10tanago_pal[];
-extern u8 inv_mwin_10tanago_tex[];
-extern u16 inv_mwin_11dojyou_pal[];
-extern u8 inv_mwin_11dojyou_tex[];
-extern u16 inv_mwin_19wakasagi_pal[];
-extern u8 inv_mwin_19wakasagi_tex[];
-extern u16 inv_mwin_20ayu_pal[];
-extern u8 inv_mwin_20ayu_tex[];
-extern u16 inv_mwin_21yamame_pal[];
-extern u8 inv_mwin_21yamame_tex[];
-extern u16 inv_mwin_23iwana_pal[];
-extern u8 inv_mwin_23iwana_tex[];
-extern u16 inv_mwin_22niji_pal[];
-extern u8 inv_mwin_22niji_tex[];
-extern u16 inv_mwin_24itou_pal[];
-extern u8 inv_mwin_24itou_tex[];
-extern u16 inv_mwin_25sake_pal[];
-extern u8 inv_mwin_25sake_tex[];
-extern u16 inv_mwin_26kingyo_pal[];
-extern u8 inv_mwin_26kingyo_tex[];
-extern u16 inv_mwin_30pirania_pal[];
-extern u8 inv_mwin_30pirania_tex[];
-extern u16 inv_mwin_31aroana_pal[];
-extern u8 inv_mwin_31aroana_tex[];
-extern u16 inv_mwin_17unagi_pal[];
-extern u8 inv_mwin_17unagi_tex[];
-extern u16 inv_mwin_18donko_pal[];
-extern u8 inv_mwin_18donko_tex[];
-extern u16 inv_mwin_29angel_pal[];
-extern u8 inv_mwin_29angel_tex[];
-extern u16 inv_mwin_28gupi_pal[];
-extern u8 inv_mwin_28gupi_tex[];
-extern u16 inv_mwin_27demekin_pal[];
-extern u8 inv_mwin_27demekin_tex[];
-extern u16 inv_mwin_32kaseki_pal[];
-extern u8 inv_mwin_32kaseki_tex[];
-extern u16 inv_mwin_33zarigani_pal[];
-extern u8 inv_mwin_33zarigani_tex[];
-extern u16 inv_mwin_34kaeru_pal[];
-extern u8 inv_mwin_34kaeru_tex[];
-extern u16 inv_mwin_35medaka_pal[];
-extern u8 inv_mwin_35medaka_tex[];
-extern u16 inv_mwin_36kurage_pal[];
-extern u8 inv_mwin_36kurage_tex[];
-extern u16 inv_mwin_37suzuki_pal[];
-extern u8 inv_mwin_37suzuki_tex[];
-extern u16 inv_mwin_38tai_pal[];
-extern u8 inv_mwin_38tai_tex[];
-extern u16 inv_mwin_39ishidai_pal[];
-extern u8 inv_mwin_39ishidai_tex[];
-extern u16 inv_mwin_40piraruku_pal[];
-extern u8 inv_mwin_40piraruku_tex[];
-
-extern u16 inv_mwin_fuku3_pal[];
-extern u8 inv_mwin_fuku3_tex[];
-
-extern u16 inv_mwin_mtegami_pal[];
-extern u8 inv_mwin_mtegami_tex[];
-
-extern u16 inv_mwin_video_pal[];
-extern u8 inv_mwin_video_tex[];
-
-extern u16 inv_mwin_tetyou_pal[];
-extern u8 inv_mwin_tetyou_tex[];
-
-extern u16 inv_mwin_pokepi_pal[];
-extern u8 inv_mwin_pokepi_tex[];
-
-extern u16 inv_mwin_manga_pal[];
-extern u8 inv_mwin_manga_tex[];
-
-extern u16 inv_mwin_ehon_pal[];
-extern u8 inv_mwin_ehon_tex[];
-
-extern u16 inv_mwin_GB_pal[];
-extern u8 inv_mwin_GB_tex[];
-
-extern u16 inv_mwin_camera2_pal[];
-extern u8 inv_mwin_camera_tex[];
-
-extern u16 inv_mwin_tokei_pal[];
-extern u8 inv_mwin_tokei_tex[];
-
-extern u16 inv_mwin_hankati_pal[];
-extern u8 inv_mwin_hankati_tex[];
-
-extern u16 inv_mwin_glasses_pal[];
-extern u8 inv_mwin_glasses_tex[];
-
-extern u16 inv_mwin_aki_pal[];
-extern u8 inv_mwin_akikan_tex[];
-
-extern u16 inv_mwin_kutu_pal[];
-extern u8 inv_mwin_kutu_tex[];
-
-extern u8 inv_mwin_taiya_tex[];
-
-extern u16 inv_mwin_kaseki_pal[];
-extern u8 inv_mwin_kaseki_tex[];
-
-extern u16 inv_mwin_ana_pal[];
-extern u8 inv_mwin_ana_tex[];
-
-extern u16 inv_mwin_hiougi_pal[];
-extern u8 inv_mwin_hiougi_tex[];
-
-extern u16 inv_mwin_hirako_pal[];
-extern u8 inv_mwin_hirako_tex[];
-
-extern u16 inv_mwin_hone_pal[];
-extern u8 inv_mwin_hone_tex[];
-
-extern u16 inv_mwin_hoshida_pal[];
-extern u8 inv_mwin_hoshida_tex[];
-
-extern u16 inv_mwin_sanddollar_pal[];
-extern u8 inv_mwin_sanddollar_tex[];
-
-extern u16 inv_mwin_syako_pal[];
-extern u8 inv_mwin_syako_tex[];
-
-extern u16 inv_mwin_hora_pal[];
-extern u8 inv_mwin_hora_tex[];
-
-extern u16 inv_mwin_sango_pal[];
-extern u8 inv_mwin_sango_tex[];
-
-extern u16 inv_mwin_kanban_pal[];
-extern u8 inv_mwin_kanban_tex[];
-
-extern u16 inv_mwin_taisou_pal[];
-extern u8 inv_mwin_taisou_tex[];
-
-extern u16 inv_mwin_fork_pal[];
-extern u8 inv_mwin_fork_tex[];
-
-extern u16 inv_mwin_jyuutan_pal[];
-extern u8 inv_mwin_jyuutan_tex[];
-
-extern u16 inv_mwin_kabe2_pal[];
-extern u8 inv_mwin_kabe_tex[];
-
-extern u16 inv_mwin_apple_pal[];
-extern u8 inv_mwin_apple_tex[];
-
-extern u16 inv_mwin_nuts_pal[];
-extern u8 inv_mwin_nuts_tex[];
-
-extern u16 inv_mwin_pear_pal[];
-extern u8 inv_mwin_pear_tex[];
-
-extern u16 inv_mwin_peach_pal[];
-extern u8 inv_mwin_peach_tex[];
-
-extern u16 inv_mwin_orange_pal[];
-extern u8 inv_mwin_orange_tex[];
-
-extern u16 inv_mwin_matutake2_pal[];
-extern u8 inv_mwin_matutake_tex[];
-
-extern u16 inv_mwin_ame_pal[];
-extern u8 inv_mwin_ame_tex[];
-
-extern u16 inv_mwin_yashi_pal[];
-extern u8 inv_mwin_yashi_tex[];
-
-extern u16 inv_mwin_naegi_pal[];
-extern u8 inv_mwin_naegi_tex[];
-
-extern u16 inv_mwin_cnaegi_pal[];
-extern u8 inv_mwin_cnaegi_tex[];
-
-extern u16 inv_mwin_seed_pal[];
-extern u8 inv_mwin_seed_tex[];
-
-extern u16 inv_mwin_onpu_pal[];
-extern u8 inv_mwin_onpu_tex[];
-
-extern u16 inv_mwin_nittki_pal[];
-extern u8 inv_mwin_nittki_tex[];
-
-extern u16 inv_mwin_1fukubiki_pal[];
-extern u16 inv_mwin_2fukubiki_pal[];
-extern u16 inv_mwin_3fukubiki_pal[];
-extern u16 inv_mwin_4fukubiki_pal[];
-extern u16 inv_mwin_5fukubiki_pal[];
-extern u16 inv_mwin_6fukubiki_pal[];
-extern u16 inv_mwin_7fukubiki_pal[];
-extern u16 inv_mwin_8fukubiki_pal[];
-extern u16 inv_mwin_9fukubiki_pal[];
-extern u16 inv_mwin_10fukubiki_pal[];
-extern u16 inv_mwin_11fukubiki_pal[];
-extern u16 inv_mwin_12fukubiki_pal[];
-
-extern u8 inv_mwin_1biki1_tex[];
-extern u8 inv_mwin_1biki2_tex[];
-extern u8 inv_mwin_1biki3_tex[];
-extern u8 inv_mwin_1biki4_tex[];
-extern u8 inv_mwin_1biki5_tex[];
-
-extern u16 inv_mwin_01monshiro_pal[];
-extern u8 inv_mwin_01monshiro_tex[];
-extern u16 inv_mwin_02monki_pal[];
-extern u8 inv_mwin_02monki_tex[];
-extern u16 inv_mwin_03kiageha_pal[];
-extern u8 inv_mwin_03kiageha_tex[];
-extern u16 inv_mwin_04ohmurasaki_pal[];
-extern u8 inv_mwin_04ohmurasaki_tex[];
-extern u16 inv_mwin_06minmin_pal[];
-extern u8 inv_mwin_06minmin_tex[];
-extern u16 inv_mwin_07tukutuku_pal[];
-extern u8 inv_mwin_07tukutuku_tex[];
-extern u16 inv_mwin_08higurashi_pal[];
-extern u8 inv_mwin_08higurashi_tex[];
-extern u16 inv_mwin_05abura_pal[];
-extern u8 inv_mwin_05abura_tex[];
-extern u16 inv_mwin_23hati_pal[];
-extern u8 inv_mwin_23hati_tex[];
-extern u16 inv_mwin_10shiokara_pal[];
-extern u8 inv_mwin_10shiokara_tex[];
-extern u16 inv_mwin_09akiakane_pal[];
-extern u8 inv_mwin_09akiakane_tex[];
-extern u16 inv_mwin_11ginyanma_pal[];
-extern u8 inv_mwin_11ginyanma_tex[];
-extern u16 inv_mwin_12oniyanma_pal[];
-extern u8 inv_mwin_12oniyanma_tex[];
-extern u16 inv_mwin_20syouryou_pal[];
-extern u8 inv_mwin_20syouryou_tex[];
-extern u16 inv_mwin_21tonosama_pal[];
-extern u8 inv_mwin_21tonosama_tex[];
-extern u16 inv_mwin_13koorogi_pal[];
-extern u8 inv_mwin_13koorogi_tex[];
-extern u16 inv_mwin_14kirigirisu_pal[];
-extern u8 inv_mwin_14kirigirisu_tex[];
-extern u16 inv_mwin_16suzumushi_pal[];
-extern u8 inv_mwin_16suzumushi_tex[];
-extern u16 inv_mwin_15matumushi_pal[];
-extern u8 inv_mwin_15matumushi_tex[];
-extern u16 inv_mwin_25kanabun_pal[];
-extern u8 inv_mwin_25kanabun_tex[];
-extern u16 inv_mwin_28kabuto_pal[];
-extern u8 inv_mwin_28kabuto_tex[];
-extern u16 inv_mwin_29hirata_pal[];
-extern u8 inv_mwin_29hirata_tex[];
-extern u16 inv_mwin_27tamamushi_pal[];
-extern u8 inv_mwin_27tamamushi_tex[];
-extern u16 inv_mwin_26gomadara_pal[];
-extern u8 inv_mwin_26gomadara_tex[];
-extern u16 inv_mwin_17tentou_pal[];
-extern u8 inv_mwin_17tentou_tex[];
-extern u16 inv_mwin_18nanahoshi_pal[];
-extern u8 inv_mwin_18nanahoshi_tex[];
-extern u16 inv_mwin_19kamakiri_pal[];
-extern u8 inv_mwin_19kamakiri_tex[];
-extern u16 inv_mwin_24genji_pal[];
-extern u8 inv_mwin_24genji_tex[];
-extern u16 inv_mwin_22danna_pal[];
-extern u8 inv_mwin_22danna_tex[];
-extern u16 inv_mwin_30nokogiri_pal[];
-extern u8 inv_mwin_30nokogiri_tex[];
-extern u16 inv_mwin_31miyama_pal[];
-extern u8 inv_mwin_31miyama_tex[];
-extern u16 inv_mwin_32okuwa_pal[];
-extern u8 inv_mwin_32okuwa_tex[];
-extern u16 inv_mwin_33maimai_pal[];
-extern u8 inv_mwin_33maimai_tex[];
-extern u16 inv_mwin_34kera_pal[];
-extern u8 inv_mwin_34kera_tex[];
-extern u16 inv_mwin_35amenbo_pal[];
-extern u8 inv_mwin_35amenbo_tex[];
-extern u16 inv_mwin_36mino_pal[];
-extern u8 inv_mwin_36mino_tex[];
-extern u16 inv_mwin_37dango_pal[];
-extern u8 inv_mwin_37dango_tex[];
-extern u16 inv_mwin_38kumo_pal[];
-extern u8 inv_mwin_38kumo_tex[];
-extern u16 inv_mwin_39ari_pal[];
-extern u8 inv_mwin_39ari_tex[];
-extern u16 inv_mwin_40ka_pal[];
-extern u8 inv_mwin_40ka_tex[];
-extern u16 inv_mwin_hitodama_pal[];
-extern u8 inv_mwin_hitodama1_tex[];
-extern u8 inv_mwin_hitodama2_tex[];
-extern u8 inv_mwin_hitodama3_tex[];
-extern u8 inv_mwin_hitodama4_tex[];
-extern u8 inv_mwin_hitodama5_tex[];
-
-extern u16 inv_mwin_fukubukuro_pal[];
-extern u8 inv_mwin_fukubukuro_tex[];
-
-extern u16 inv_mwin_fukubukuro2_pal[];
-extern u8 inv_mwin_fukubukuro_tex_rgb_ci4[];
-
-extern u16 inv_mwin_fukubukuro2_tex_rgb_ci4_pal[];
-extern u8 inv_mwin_fukubukuro2_tex_rgb_ci4[];
-
-extern u16 inv_mwin_cabu1_pal[];
-extern u8 inv_mwin_cabu1_tex[];
-extern u8 inv_mwin_cabu2_tex[];
-extern u8 inv_mwin_cabu3_tex[];
-
-extern u16 inv_mwin_2cabu1_pal[];
-extern u8 inv_mwin_2cabu1_tex[];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 static void mSM_draw_item(GRAPH* graph, f32 pos_x, f32 pos_y, f32 scale, mActor_name_t item, int present_flag,
                           int color_flag, int anim_frame, int shadow_flag, int mark_flag) {
@@ -1491,20 +1065,8 @@ enum {
     mSM_MAIL_NUM
 };
 
-extern u16 inv_mwin_mtegami_pal[];
-extern u8 inv_mwin_mtegami_tex[];
-extern u8 inv_mwin_pmtegami_tex[];
 
-extern u16 inv_mwin_otegami_pal[];
-extern u8 inv_mwin_otegami_tex[];
-extern u8 inv_mwin_potegami_tex[];
 
-extern u16 inv_mwin_mtegami2_pal[];
-extern u8 inv_mwin_mtegami2_tex[];
-extern u8 inv_mwin_pmtegami2_tex[];
-
-extern Gfx inv_item_model[];
-extern Gfx inv_mark_model[];
 
 static void mSM_draw_mail(GRAPH* graph, f32 pos_x, f32 pos_y, f32 scale, Mail_c* mail, int color_flag, int shadow_flag,
                           int mark_flag) {
@@ -1963,7 +1525,7 @@ static void mSM_ovl_prog_seg(Submenu* submenu, mSM_Ovl_dlftbl_c* dlftbl) {
 
         dlftbl->seg_start = NULL;
         dlftbl->seg_end = NULL;
-        submenu->next_overlay_address = (char*)ALIGN_NEXT((u32)dlftbl->seg_end - (u32)dlftbl->seg_start, 64);
+        submenu->next_overlay_address = (char*)ALIGN_NEXT((uintptr_t)dlftbl->seg_end - (uintptr_t)dlftbl->seg_start, 64);
         ct_proc = dlftbl->ct_proc;
         (*ct_proc)(submenu);
         dlftbl->ct_proc = ct_proc;
@@ -2203,7 +1765,7 @@ static void mSM_return_func(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
             submenu->current_menu_type = menu_info->pre_menu_type;
             submenu->overlay->menu_control.menu_move_func = (SUBMENU_PROC)&none_proc1;
             submenu->overlay->menu_control.menu_draw_func = (SUBMENU_GAME_PROC)&none_proc1;
-            emu64_refresh();
+            gfx_texture_cache_clear();
         } else {
             mSM_set_before_menu_proc(submenu);
         }
@@ -2312,7 +1874,7 @@ extern void mSM_menu_ovl_init(Submenu* submenu) {
     hand_program_dlftbl.in_ram_flag = FALSE;
     haniwa_program_dlftbl.in_ram_flag = FALSE;
 
-    emu64_refresh();
+    gfx_texture_cache_clear();
     submenu->current_menu_type = mSM_OVL_NONE;
     control->menu_move_func = (SUBMENU_PROC)&none_proc1;
     control->menu_draw_func = (SUBMENU_GAME_PROC)&none_proc1;
@@ -2327,7 +1889,6 @@ extern void mSM_menu_ovl_init(Submenu* submenu) {
     submenu->overlay->move_End_proc = &mSM_move_End;
     submenu->overlay->move_chg_base_proc = &mSM_move_chg_base;
     submenu->overlay->set_char_matrix_proc = &mSM_set_char_matrix;
-    submenu->overlay->cbuf_copy_proc = &mSM_cbuf_copy;
     submenu->overlay->set_drawMode_proc = &mSM_set_drawMode;
     submenu->overlay->draw_item_proc = &mSM_draw_item;
     submenu->overlay->draw_mail_proc = &mSM_draw_mail;

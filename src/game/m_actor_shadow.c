@@ -7,9 +7,8 @@
 #include "m_lib.h"
 #include "m_lights.h"
 #include "libultra/libultra.h"
-
-extern Gfx ef_shadow_out_modelT[];
-extern Gfx ef_shadow_in_modelT[];
+#include "assets/data/model/ef_shadow_in2.h"
+#include "assets/data/model/ef_shadow_out.h"
 
 int mActorShadow_OperateScrollLimit(int value, int step, int limit) {
     if (step != 0) {
@@ -172,7 +171,7 @@ Gfx* mActorShadow_SetTexScroll(ACTOR* actor, Shadow_Info* shadow, GAME* game) {
         step = 0;
     }
 
-    mActorShadow_TileScroll2(&x1, &y1, 0, 0, 0, 0, 0x20, 0x10, (u32*)&actor->shape_info.unk_20, &y2, step, 0,
+    return mActorShadow_TileScroll2(&x1, &y1, 0, 0, 0, 0, 0x20, 0x10, (u32*)&actor->shape_info.unk_20, &y2, step, 0,
                              shadow->unk34, 0, 0x20, 0x10, game);
 }
 

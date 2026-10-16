@@ -6,6 +6,9 @@
 #include "m_player_lib.h"
 #include "m_inventory_ovl.h"
 #include "m_hand_ovl.h"
+#include "assets/data/model/inv_item.h"
+#include "assets/data/model/pos_win.h"
+#include "assets/data/model/pos_yaji.h"
 
 static mMB_Ovl_c mail_ovl_data;
 
@@ -84,10 +87,6 @@ static void mMB_mailbox_ovl_move(Submenu* submenu) {
     }
 }
 
-extern Gfx pos_win_mode[];
-extern Gfx pos_win_model[];
-extern Gfx pos_yaji_wakuT_model[];
-
 static void mMB_set_frame_dl(Submenu* submenu, GRAPH* graph, mSM_MenuInfo_c* menu_info, f32 pos_x, f32 pos_y) {
     int tex_x;
     int tex_y;
@@ -103,7 +102,7 @@ static void mMB_set_frame_dl(Submenu* submenu, GRAPH* graph, mSM_MenuInfo_c* men
     
     tex_x = -submenu->overlay->menu_control.texture_pos[0] * 4.0f;
     tex_y = -submenu->overlay->menu_control.texture_pos[1] * 4.0f;
-    gDPSetTileSize_Dolphin(POLY_OPA_DISP++, G_TX_RENDERTILE, (u8)tex_x, (u8)tex_y, 32, 32);
+    gDPSetTileSizeHiRes(POLY_OPA_DISP++, G_TX_RENDERTILE, (u8)tex_x, (u8)tex_y, 32, 32);
     gSPDisplayList(POLY_OPA_DISP++, pos_win_model);
     
     if (submenu->overlay->mailbox_ovl->display_flag) {
@@ -114,8 +113,6 @@ static void mMB_set_frame_dl(Submenu* submenu, GRAPH* graph, mSM_MenuInfo_c* men
 
     CLOSE_POLY_OPA_DISP(graph);
 }
-
-extern Gfx inv_item_mode[];
 
 static void mMB_set_mail(Submenu* submenu, GRAPH* graph, f32 pos_x, f32 pos_y) {
     Mail_c* mail = Common_Get(now_home)->mailbox;

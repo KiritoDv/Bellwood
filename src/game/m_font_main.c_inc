@@ -1,3 +1,4 @@
+#include "assets/data/font/FONT_nes_tex_font1.h"
 static u8* mFont_Get_FontTex_p() {
   return FONT_nes_tex_font1;
 }
@@ -249,6 +250,7 @@ static Gfx* mFont_gppSetPrimColor(Gfx** gpp, rgba_t* color) {
   );
 
   *gpp = g;
+  return g;
 }
 
 extern void mFont_SetPrimColor(GRAPH* graph, int r, int g, int b, int a, int mode) {
@@ -330,12 +332,7 @@ static void mFont_gppLoadTexture(Gfx** gpp, int c, int* uls, int* ult, int* lrs,
   int n_lrs = n_uls + (mFont_TEX_CHAR_WIDTH - 1);
   int n_lrt = n_ult + (mFont_TEX_CHAR_HEIGHT - 1);
 
-  gDPLoadTextureTile_4b_Dolphin(
-    g++,
-    font_tex,
-    G_IM_FMT_I,
-    mFont_TEX_CHAR_WIDTH * 16, mFont_TEX_CHAR_HEIGHT * 16
-  );
+  gDPLoadTextureBlockWide_4b(g++, font_tex, G_IM_FMT_I, mFont_TEX_CHAR_WIDTH * 16, mFont_TEX_CHAR_HEIGHT * 16, 0, G_TX_CLAMP, G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
 
   *gpp = g;

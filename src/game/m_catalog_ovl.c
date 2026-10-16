@@ -50,6 +50,15 @@ typedef struct {
 #include "../src/actor/ac_furniture_profile_data.c_inc" /* furniture quality */
 #include "../src/game/m_catalog_ovl_paper_data.c_inc"
 #include "../src/game/m_catalog_ovl_data.c_inc"
+#include "assets/data/model/clg_floor2.h"
+#include "assets/data/model/clg_hoshi.h"
+#include "assets/data/model/clg_hyouji.h"
+#include "assets/data/model/clg_music.h"
+#include "assets/data/model/clg_shirushi.h"
+#include "assets/data/model/clg_tagu.h"
+#include "assets/data/model/clg_win1.h"
+#include "assets/data/model/mCL_lat_letter.h"
+#include "assets/data/model/mCL_rom_myhome1_wall.h"
 
 #define mCL_ITEM_INFO(list) \
     { (list), ARRAY_COUNT(list) }
@@ -67,43 +76,6 @@ static mCL_item_info_c mCL_item_idx_data[] = {
     mCL_ITEM_INFO(mCL_music_idx_list),
 };
 // clang-format on
-
-extern u16 clg_win_ha_tex_rgb_ci4_pal[];
-extern u8 clg_win_ha_tex_rgb_ci4[];
-extern Gfx clg_win_haT_model[];
-extern Gfx clg_win_ha2T_model[];
-extern u16 clg_win_kabe_tex_rgb_ci4_pal[];
-extern u8 clg_win_kabe_tex_rgb_ci4[];
-extern Gfx clg_win_kabeT_model[];
-extern Gfx clg_win_kabe2T_model[];
-extern u16 clg_win_jyuutan_tex_rgb_ci4_pal[];
-extern u8 clg_win_jyuutan_tex_rgb_ci4[];
-extern Gfx clg_win_jyuutanT_model[];
-extern Gfx clg_win_jyuutan2T_model[];
-extern u16 clg_win_fuku_tex_rgb_ci4_pal[];
-extern u8 clg_win_fuku_tex_rgb_ci4[];
-extern Gfx clg_win_fukuT_model[];
-extern Gfx clg_win_fuku2T_model[];
-extern u16 clg_win_kasa_tex_rgb_ci4_pal[];
-extern u8 clg_win_kasa_tex_rgb_ci4[];
-extern Gfx clg_win_kasaT_model[];
-extern Gfx clg_win_kasa2T_model[];
-extern u16 clg_win_tegami_tex_rgb_ci4_pal[];
-extern u8 clg_win_tegami_tex_rgb_ci4[];
-extern Gfx clg_win_tegamiT_model[];
-extern Gfx clg_win_tegami2T_model[];
-extern u16 clg_win_hani_tex_rgb_ci4_pal[];
-extern u8 clg_win_hani_tex_rgb_ci4[];
-extern Gfx clg_win_haniwaT_model[];
-extern Gfx clg_win_haniwa2T_model[];
-extern u16 clg_win_hone_tex_rgb_ci4_pal[];
-extern u8 clg_win_hone_tex_rgb_ci4[];
-extern Gfx clg_win_honeT_model[];
-extern Gfx clg_win_hone2T_model[];
-extern u16 clg_win_onpu_tex_rgb_ci4_pal[];
-extern u8 clg_win_onpu_tex_rgb_ci4[];
-extern Gfx clg_win_onpuT_model[];
-extern Gfx clg_win_onpu2T_model[];
 
 // clang-format off
 static mCL_win_data_c mCL_win_data[] = {
@@ -742,8 +714,8 @@ static void mCL_furniture_draw(mCL_Item_c* item, GAME* game) {
     gDPSetTexEdgeAlpha(NEXT_POLY_XLU_DISP, edge_alpha);
 
     if (aMR_DrawDolphinMode(ftr_actor->name)) {
-        gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_DOLPHIN);
-        gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_DOLPHIN);
+        gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_HALFTEXEL);
+        gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_HALFTEXEL);
     } else {
         gDPSetTextureAdjustMode(NEXT_POLY_OPA_DISP, G_TA_N64);
         gDPSetTextureAdjustMode(NEXT_POLY_XLU_DISP, G_TA_N64);
@@ -781,8 +753,6 @@ static void mCL_furniture_draw(mCL_Item_c* item, GAME* game) {
     CLOSE_DISP(game->graph);
 }
 
-extern Gfx mCL_lat_letter_sen_mode[];
-
 static void mCL_paper_draw(mCL_Item_c* item, mSM_MenuInfo_c* menu_info, GRAPH* graph) {
     Gfx* gfx;
 
@@ -799,8 +769,6 @@ static void mCL_paper_draw(mCL_Item_c* item, mSM_MenuInfo_c* menu_info, GRAPH* g
     SET_POLY_OPA_DISP(gfx);
     CLOSE_DISP(graph);
 }
-
-extern Gfx mCL_rom_myhome1_wall_model[];
 
 static void mCL_wall_draw(mCL_Item_c* item, mSM_MenuInfo_c* menu_info, GRAPH* graph) {
     u8* wall_p = item->seg1;
@@ -819,8 +787,6 @@ static void mCL_wall_draw(mCL_Item_c* item, mSM_MenuInfo_c* menu_info, GRAPH* gr
     SET_POLY_OPA_DISP(gfx);
     CLOSE_DISP(graph);
 }
-
-extern Gfx mCL_rom_myhome1_floor_model[];
 
 static void mCL_carpet_draw(mCL_Item_c* item, mSM_MenuInfo_c* menu_info, GRAPH* graph) {
     u8* floor_p = item->seg1;
@@ -844,8 +810,6 @@ static void mCL_carpet_draw(mCL_Item_c* item, mSM_MenuInfo_c* menu_info, GRAPH* 
     CLOSE_DISP(graph);
 }
 
-extern Gfx mCL_music_model[];
-
 static void mCL_music_draw(mCL_Item_c* item, mSM_MenuInfo_c* menu_info, GRAPH* graph) {
     Gfx* gfx;
 
@@ -860,7 +824,6 @@ static void mCL_music_draw(mCL_Item_c* item, mSM_MenuInfo_c* menu_info, GRAPH* g
     CLOSE_DISP(graph);
 }
 
-extern Gfx mCL_lat_letter_mode[];
 typedef void (*mCL_ITEM_DRAW_PROC)(mCL_Item_c*, mSM_MenuInfo_c*, GRAPH*);
 
 static void mCL_item_draw(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* game, GRAPH* graph, mCL_Item_c* item,
@@ -960,22 +923,6 @@ static void mCL_price_draw(Submenu* submenu, GAME* game, GRAPH* graph, mCL_Item_
     }
 }
 
-extern Gfx clg_win_na1T_model[];
-extern Gfx clg_win_na2T_model[];
-extern Gfx clg_win_na3T_model[];
-extern Gfx clg_win_na4T_model[];
-extern Gfx clg_win_na5T_model[];
-extern Gfx clg_win_na6T_model[];
-extern Gfx clg_win_na7T_model[];
-
-extern Gfx clg_mwin_mode[];
-extern Gfx clg_mwin1_model[];
-extern Gfx clg_name_mode[];
-extern Gfx clg_mwin2_model[];
-extern Gfx clg_win_cbT_model[];
-extern Gfx clg_win_beruT_model[];
-extern Gfx clg_win_shirushi1T_model[];
-extern Gfx clg_win_hoshiT_model[];
 
 static void mCL_set_page_dl(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* game, GRAPH* graph, int page_no,
                             int disp_entries_flag) {
@@ -1015,14 +962,12 @@ static void mCL_set_page_dl(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* g
 
     if (disp_entries_flag) {
         gSPDisplayList(gfx++, clg_mwin_mode);
-        gDPLoadTLUT_Dolphin(gfx++, 14, 16, 1, win_data->win_pal);
-        gDPSetTextureImage_Dolphin(gfx++, G_IM_FMT_CI, G_IM_SIZ_4b, 32, 32, win_data->win_tex);
-        gDPSetTile_Dolphin(gfx++, G_DOLPHIN_TLUT_DEFAULT_MODE, G_TX_RENDERTILE, 14, GX_REPEAT, GX_REPEAT, GX_CLAMP,
-                           GX_CLAMP);
+        gDPLoadTLUT_pal16(gfx++, 14, win_data->win_pal);
+        gDPLoadTextureBlock_4b(gfx++, win_data->win_tex, G_IM_FMT_CI, 32, 32, 14, G_TX_WRAP, G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
         gDPTileSync(gfx++);
         x = (int)(-submenu->overlay->menu_control.texture_pos[0] * 4.0f);
         y = (int)(-submenu->overlay->menu_control.texture_pos[1] * 4.0f);
-        gDPSetTileSize_Dolphin(gfx++, G_TX_RENDERTILE, x, y, 32, 32);
+        gDPSetTileSizeHiRes(gfx++, G_TX_RENDERTILE, x, y, 32, 32);
         gSPDisplayList(gfx++, clg_mwin1_model);
         gSPDisplayList(gfx++, clg_name_mode);
 
@@ -1179,9 +1124,6 @@ static void mCL_set_page_dl(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* g
         }
     }
 }
-
-extern Gfx clg_tag_win_mode[];
-extern Gfx clg_tag_picture_mode[];
 
 static void mCL_set_wchange_dl(Submenu* submenu, mSM_MenuInfo_c* menu_info, GRAPH* graph) {
     mCL_Ovl_c* catalog_ovl = submenu->overlay->catalog_ovl;
@@ -1417,7 +1359,7 @@ extern void mCL_catalog_ovl_construct(Submenu* submenu) {
             seg0_p += 0x2000;
 
             overlay->catalog_ovl->item_data[i].seg1 =
-                (u8*)ALIGN_NEXT((u32)overlay->catalog_ovl->item_data[i].segment_data, 32);
+                (u8*)ALIGN_NEXT((uintptr_t)overlay->catalog_ovl->item_data[i].segment_data, 32);
         }
 
         submenu->next_overlay_address = (char*)seg0_p;

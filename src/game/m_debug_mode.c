@@ -23,8 +23,8 @@
 #include "m_all_grow.h"
 #include "m_card.h"
 #include "m_flashrom.h"
-#include "dolphin/dvd.h"
-#include "jsyswrap.h"
+#include "gc_compat.h"
+#include "ac_port.h"
 #include "boot.h"
 #include "m_common_data.h"
 
@@ -144,78 +144,6 @@ static void Debug_Print2_output(gfxprint_t* gfxprint) {
 #define PAD_BUTTON_IS_DOWN(buttons, button) (((int)(buttons) | (~(int)(button))) == -1)
 
 static int Debug_console(pad_t* pad) {
-    static f32 console_scroll;
-    static f32 console_offset_x;
-    static f32 font_scale_x[] = {
-        1.0f, 0.9f, 0.8f, 0.7f, 0.6f, 0.5f, 0.4f, 0.3f,
-    };
-    static f32 font_scale_y[] = {
-        1.0f, 0.9f, 0.8f, 0.7f, 0.6f, 0.5f, 0.4f, 0.3f,
-    };
-
-    void* sys_console = JC_JFWSystem_getSystemConsole();
-
-    if (sys_console != NULL) {
-        /* Toggle console visiblity when Z button is released */
-        if (PAD_BUTTON_IS_DOWN(pad->on.button, BUTTON_Z) && (pad->now.button & (~BUTTON_Z)) == 0) {
-            JC_JUTConsole_setVisible(sys_console, !JC_JUTConsole_isVisible(sys_console));
-        }
-
-        if (JC_JUTConsole_isVisible(sys_console)) {
-            int scroll_x, scroll_y;
-            f32 log_stick_x = (f32)pad->off.stick_x / 60.0f;
-            f32 log_stick_y = (f32)pad->off.stick_y / 60.0f;
-
-            /* B button clears console */
-            if (PAD_BUTTON_IS_DOWN(pad->on.button, BUTTON_B)) {
-                JC_JUTConsole_clear(sys_console);
-            }
-
-            /* L button to scroll */
-            if (PAD_BUTTON_IS_DOWN(pad->now.button, BUTTON_L)) {
-                console_scroll -= log_stick_y;
-
-                if (console_scroll > 1.0f) {
-                    scroll_y = (int)console_scroll;
-                } else if (console_scroll < -1.0f) {
-                    scroll_y = -(int)-console_scroll; /* nice double neg */
-                } else {
-                    scroll_y = 0;
-                }
-
-                if (scroll_y != 0) {
-                    console_scroll -= scroll_y;
-                    JC_JUTConsole_scroll(sys_console, scroll_y);
-                }
-
-                console_offset_x -= log_stick_x;
-                if (console_offset_x > 1.0f) {
-                    scroll_x = (int)console_offset_x;
-                } else if (console_offset_x < -1.0f) {
-                    scroll_x = -(int)-console_offset_x; /* nice double neg */
-                } else {
-                    scroll_x = 0;
-                }
-
-                if (scroll_x != 0) {
-                    console_offset_x -= scroll_x;
-                    JC_JUTConsole_setPosition(sys_console, scroll_x + JC_JUTConsole_getPositionX(sys_console), 42);
-                }
-
-                JW_JUTReport(30, 440, 1, "SCROLL：%3d %3d Output=%1x", JC_JUTConsole_getLineOffset(sys_console),
-                             JC_JUTConsole_getPositionX(sys_console), JC_JUTConsole_getOutput(sys_console));
-            }
-
-            /* R button re-prints console */
-            if (PAD_BUTTON_IS_DOWN(pad->on.button, BUTTON_R)) {
-                JC_JUTConsole_dumpToTerminal(sys_console, -1); /* -1 is probably a define */
-                JC_JUTConsole_setOutput(sys_console, 3);       /* Again, 3 is probably a define */
-            }
-
-            return TRUE;
-        }
-    }
-
     return FALSE;
 }
 
@@ -246,21 +174,21 @@ extern void Debug_mode_input(pad_t* pad) {
         if (PAD_BUTTON_IS_DOWN(now_button, BUTTON_L) && PAD_BUTTON_IS_DOWN(now_button, BUTTON_R)) {
             DVDDiskID* diskid = DVDGetCurrentDiskID();
             if (diskid != NULL) {
-                JW_JUTReport(50, 50, 1, "%.4s %.2s 0x%02x(%d)", diskid->gameName, diskid->company, diskid->gameVersion,
+                AC_DebugPrint(50, 50, 1, "%.4s %.2s 0x%02x(%d)", diskid->gameName, diskid->company, diskid->gameVersion,
                              diskid->gameVersion);
             }
 
             if (boot_copyDate != NULL) {
-                JW_JUTReport(320, 50, 1, "%.19s", boot_copyDate);
+                AC_DebugPrint(320, 50, 1, "%.19s", boot_copyDate);
             }
 
-            JW_JUTReport(50, 60, 1, "Z=%d Z2=%d ANB=%08x", zurumode_flag != 0, zurumode_flag >= 2, APPNMI_GETVAL());
+            AC_DebugPrint(50, 60, 1, "Z=%d Z2=%d ANB=%08x", zurumode_flag != 0, zurumode_flag >= 2, APPNMI_GETVAL());
 
             /* Additionally, pressing Z after L + R will print out each bit in debug appNMI buffer */
             if (PAD_BUTTON_IS_DOWN(pad->now.button, BUTTON_Z)) {
                 int i;
                 for (i = 0; i < 32; i++) {
-                    JW_JUTReport(50 + i * 12, 70, 1, "%1x", (APPNMI_GETVAL() >> (31 - i)) & 1);
+                    AC_DebugPrint(50 + i * 12, 70, 1, "%1x", (APPNMI_GETVAL() >> (31 - i)) & 1);
                 }
             }
         }
@@ -737,7 +665,7 @@ extern void Debug_mode_output(GRAPH* graph) {
         last_gfx = gfxprint_close(print_p);
         gSPEndDisplayList(last_gfx++);
 
-        glist_used_bytes = (int)last_gfx - (int)start_gfx;
+        glist_used_bytes = (intptr_t)last_gfx - (intptr_t)start_gfx;
         gfxclose(start_gfx, last_gfx);
         SET_POLY_OPA_DISP(last_gfx);
         gfxprint_cleanup(print_p);

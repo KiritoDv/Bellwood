@@ -1,3 +1,4 @@
+#include "assets/game/m_player.h"
 typedef void (*mPlayer_item_proc)(ACTOR* actor, int, int);
 
 static void Player_actor_Item_Setup_main(ACTOR* actor, int now, int last) {

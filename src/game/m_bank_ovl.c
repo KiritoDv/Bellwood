@@ -6,6 +6,7 @@
 #include "m_font.h"
 #include "m_lib.h"
 #include "m_common_data.h"
+#include "assets/data/model/tyo_win.h"
 
 static int aNSM_sack_amount[MONEY_NUM] = { 100, 1000, 10000, 30000 };
 
@@ -210,11 +211,6 @@ static void mBN_bank_ovl_move(Submenu* submenu) {
     (*ovl_move_proc[menu->proc_status])(submenu, menu);
 }
 
-extern Gfx tyo_win_mode[];
-extern Gfx tyo_win_model[];
-extern Gfx tyo_win_moji2T_model[];
-extern Gfx tyo_win_moji3T_model[];
-
 static void mBN_set_frame_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu) {
     GRAPH* g = game->graph;
     mBN_Ovl_c* bank_ovl = submenu->overlay->bank_ovl;
@@ -232,7 +228,7 @@ static void mBN_set_frame_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu)
     gSPMatrix(gfx++, _Matrix_to_Mtx_new(g), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     s = -submenu->overlay->menu_control.texture_pos[0] * 4.0f;
     t = -submenu->overlay->menu_control.texture_pos[1] * 4.0f;
-    gDPSetTileSize_Dolphin(gfx++, 0, s, t, 32, 32);
+    gDPSetTileSizeHiRes(gfx++, 0, s, t, 32, 32);
     gSPDisplayList(gfx++, tyo_win_model);
 
     if (bank_ovl->now_bell <= bank_ovl->player_bell) {

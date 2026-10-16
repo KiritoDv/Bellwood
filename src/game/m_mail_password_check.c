@@ -9,6 +9,7 @@
 #include "_mem.h"
 #include "m_common_data.h"
 #include "libultra/libultra.h"
+#include <stdlib.h>
 
 static u8 usable_to_fontnum[64] = {
     CHAR_b,   CHAR_K,       CHAR_z, CHAR_FIVE, CHAR_c,       CHAR_q, CHAR_Y,     CHAR_Z,     CHAR_O,     CHAR_d,
@@ -170,7 +171,7 @@ static void mMpswd_bit_shift(u8* pswd, int shift) {
     memcpy(buf + 1, pswd + 2, (mMpswd_PASSWORD_DATA_LEN - 2));
 
     // this has to be a fakematch
-    bytes_shifted = __abs(shift);
+    bytes_shifted = abs(shift);
     bytes_shifted /= 8; // degenerate code
     bits_shifted = ABS(shift) % 8;
 

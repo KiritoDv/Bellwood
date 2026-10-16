@@ -5,6 +5,8 @@
 #include "m_editor_ovl.h"
 #include "m_font.h"
 #include "sys_matrix.h"
+#include "assets/data/model/pas_start.h"
+#include "assets/data/model/pas_win.h"
 
 mPM_Ovl_c pm_ovl_data;
 
@@ -46,12 +48,6 @@ static void mPM_passwordMake_ovl_move(Submenu* submenu) {
   (*ovl_move_proc[menu_info->proc_status])(submenu, menu_info);
 }
 
-extern Gfx pas_win_mode[];
-extern Gfx pas_win_model[];
-extern Gfx pas_win_waku1_model[];
-extern Gfx pas_win_waku2_model[];
-extern Gfx pas_start_model[];
-
 static void mPM_set_frame_dl(Submenu* submenu, GRAPH* graph, mSM_MenuInfo_c* menu_info, int sel_idx, f32 x, f32 y) {
   static u8 waku_color[mPM_ENTRY_NUM][3] = {
     { 150,  50,  30 },
@@ -82,7 +78,7 @@ static void mPM_set_frame_dl(Submenu* submenu, GRAPH* graph, mSM_MenuInfo_c* men
   tile_y = -submenu->overlay->menu_control.texture_pos[1] * 4.0f;
   s = (int)tile_x;
   t = (int)tile_y;
-  gDPSetTileSize_Dolphin(gfx++, G_TX_RENDERTILE, s, t, 32, 32);
+  gDPSetTileSizeHiRes(gfx++, G_TX_RENDERTILE, s, t, 32, 32);
 
   /* Draw background */
   gSPDisplayList(gfx++, pas_win_model);

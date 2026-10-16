@@ -1,6 +1,7 @@
 #include "m_debug_display.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "assets/data/model/darrow.h"
 
 enum {
     Debug_Display_DRAW_SPRITE,
@@ -51,13 +52,6 @@ extern Debug_display* Debug_Display_new(f32 posX, f32 posY, f32 posZ, s16 rotX, 
     return debug_display;
 }
 
-extern u8 no_txt[];
-extern u8 nx_txt[];
-extern u8 np_txt[];
-extern u8 nt_txt[];
-extern Gfx darrow_model[];
-extern Gfx camera_model[];
-
 extern void Debug_Display_output(GAME_PLAY* play) {
     static DEBUG_DISP_PROC debug_display_output_proc[] = { debug_display_output_sprite_16x16_I8,
                                                            debug_display_output_polygon };
@@ -76,8 +70,6 @@ extern void Debug_Display_output(GAME_PLAY* play) {
         display = display->next;
     }
 }
-
-extern Gfx RCP_debug_texture_16x16_8[];
 
 static void debug_display_output_sprite_16x16_I8(Debug_display* display, void* txt, GAME_PLAY* play) {
 

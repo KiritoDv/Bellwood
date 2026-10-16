@@ -1,4 +1,5 @@
 #include "m_needlework_ovl.h"
+#include "ac_port.h"
 
 #include "m_submenu_ovl.h"
 #include "m_common_data.h"
@@ -7,6 +8,9 @@
 #include "m_tag_ovl.h"
 #include "m_hand_ovl.h"
 #include "m_malloc.h"
+#include "assets/data/model/inv_mb.h"
+#include "assets/data/model/inv_original.h"
+#include "assets/data/model/sav_mark.h"
 
 static int mNW_with_cporiginal_check(Submenu* submenu) {
     switch (submenu->overlay->menu_info[mSM_OVL_NEEDLEWORK].data0) {
@@ -137,10 +141,6 @@ extern mNW_original_design_c* mNW_get_image_data(Submenu* submenu, int idx) {
     return &Now_Private->my_org[image_no & 7];
 }
 
-extern Gfx inv_md_base_model_before[];
-extern Gfx inv_md_base_model_a[];
-extern Gfx inv_md_base_model_b[];
-
 extern void mNW_draw_original(Submenu* submenu, GRAPH* graph, f32 pos_x, f32 pos_y, f32 scale, int idx,
                               int shadow_flag) {
     if (scale < 0.05f) {
@@ -254,30 +254,6 @@ static void mNW_needlework_ovl_move(Submenu* submenu) {
     (*ovl_move_proc[menu_info->proc_status])(submenu, menu_info);
 }
 
-extern Gfx needlework_before_model[];
-extern Gfx inv_original_w_model_before[];
-extern Gfx inv_original_w1T_model[];
-extern Gfx inv_original_w2T_model[];
-extern Gfx inv_original_w3T_model[];
-extern Gfx inv_original_w4T_model[];
-extern Gfx inv_original_w5T_model[];
-extern Gfx inv_original_w6T_model[];
-extern Gfx inv_original_w7T_model[];
-extern Gfx inv_original_w8T_model[];
-extern Gfx inv_original_w9_model[];
-extern Gfx inv_original_ueT_model[];
-extern Gfx inv_original_waku_model[];
-extern Gfx inv_original_mb_before_model[];
-extern Gfx inv_original_f_model[];
-
-extern Gfx inv_original_mb1_model[];
-extern Gfx inv_original_mb2_model[];
-extern Gfx inv_original_mb3_model[];
-extern Gfx inv_original_mb4_model[];
-extern Gfx inv_original_mb5_model[];
-extern Gfx inv_original_mb6_model[];
-extern Gfx inv_original_mb7_model[];
-extern Gfx inv_original_mb8_model[];
 
 static void mNW_set_frame_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu_info) {
     static Gfx* gfx_table[] = {
@@ -305,7 +281,7 @@ static void mNW_set_frame_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu_
     tex_x = -submenu->overlay->menu_control.texture_pos[0] * 4.0f;
     tex_y = -submenu->overlay->menu_control.texture_pos[1] * 4.0f;
     gSPDisplayList(POLY_OPA_DISP++, inv_original_w_model_before);
-    gDPSetTileSize_Dolphin(POLY_OPA_DISP++, G_TX_RENDERTILE, tex_x, tex_y, 32, 32);
+    gDPSetTileSizeHiRes(POLY_OPA_DISP++, G_TX_RENDERTILE, tex_x, tex_y, 32, 32);
     gSPDisplayList(POLY_OPA_DISP++, inv_original_w1T_model);
     gSPDisplayList(POLY_OPA_DISP++, inv_original_w2T_model);
     gSPDisplayList(POLY_OPA_DISP++, inv_original_w3T_model);
@@ -321,11 +297,8 @@ static void mNW_set_frame_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu_
 
     for (i = 0; i < mNW_DESIGN_COUNT; i++) {
         if (!mNW_check_hide_flg(submenu, i)) {
-            gDPLoadTLUT_Dolphin(POLY_OPA_DISP++, 15, 16, 1, mNW_get_image_pal(submenu, i));
-            gDPSetTextureImage_Dolphin(POLY_OPA_DISP++, G_IM_FMT_CI, G_IM_SIZ_4b, 32, 32,
-                                       mNW_get_image_texture(submenu, i));
-            gDPSetTile_Dolphin(POLY_OPA_DISP++, G_DOLPHIN_TLUT_DEFAULT_MODE, 0, 15, GX_MIRROR, GX_MIRROR, GX_CLAMP,
-                               GX_CLAMP);
+            gDPLoadTLUT_pal16(POLY_OPA_DISP++, 15, mNW_get_image_pal(submenu, i));
+            gDPLoadTextureBlock_4b(POLY_OPA_DISP++, mNW_get_image_texture(submenu, i), G_IM_FMT_CI, 32, 32, 15, G_TX_MIRROR, G_TX_MIRROR, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
             gSPDisplayList(POLY_OPA_DISP++, gfx_table[i]);
         }
     }
@@ -334,8 +307,6 @@ static void mNW_set_frame_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu_
 
     CLOSE_POLY_OPA_DISP(graph);
 }
-
-extern Gfx sav_mark_winT_before_model[];
 
 extern void mNW_draw_sav_mark_before(GAME* game) {
     int g;
@@ -358,8 +329,6 @@ extern void mNW_draw_sav_mark_before(GAME* game) {
     CLOSE_POLY_OPA_DISP(game->graph);
 }
 
-extern Gfx sav_mark_winT_model[];
-
 extern void mNW_draw_sav_mark(GAME* game, int x, int y) {
     GRAPH* graph = game->graph;
     int g;
@@ -373,27 +342,6 @@ extern void mNW_draw_sav_mark(GAME* game, int x, int y) {
     CLOSE_POLY_OPA_DISP(graph);
 }
 
-extern Gfx inv_original2_w1T_model[];
-extern Gfx inv_original2_w2T_model[];
-extern Gfx inv_original2_w3T_model[];
-extern Gfx inv_original2_w4T_model[];
-extern Gfx inv_original2_w5T_model[];
-extern Gfx inv_original2_w6T_model[];
-extern Gfx inv_original2_w7T_model[];
-extern Gfx inv_original2_w8T_model[];
-extern Gfx inv_original2_w9_model[];
-extern Gfx inv_original2_ueT_model[];
-extern Gfx inv_original2_waku_model[];
-extern Gfx inv_original2_f_model[];
-
-extern Gfx inv_original2_mb1_model[];
-extern Gfx inv_original2_mb2_model[];
-extern Gfx inv_original2_mb3_model[];
-extern Gfx inv_original2_mb4_model[];
-extern Gfx inv_original2_mb5_model[];
-extern Gfx inv_original2_mb6_model[];
-extern Gfx inv_original2_mb7_model[];
-extern Gfx inv_original2_mb8_model[];
 
 static void mNW_set_frame_dl_cpo(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu_info) {
     static Gfx* gfx_table[] = {
@@ -425,7 +373,7 @@ static void mNW_set_frame_dl_cpo(Submenu* submenu, GAME* game, mSM_MenuInfo_c* m
     tex_x = (int)(-submenu->overlay->menu_control.texture_pos[0] * 4.0f);
     tex_y = (int)(-submenu->overlay->menu_control.texture_pos[1] * 4.0f);
     gSPDisplayList(POLY_OPA_DISP++, inv_original_w_model_before);
-    gDPSetTileSize_Dolphin(POLY_OPA_DISP++, G_TX_RENDERTILE, tex_x, tex_y, 32, 32);
+    gDPSetTileSizeHiRes(POLY_OPA_DISP++, G_TX_RENDERTILE, tex_x, tex_y, 32, 32);
     gSPDisplayList(POLY_OPA_DISP++, inv_original2_w1T_model);
     gSPDisplayList(POLY_OPA_DISP++, inv_original2_w2T_model);
     gSPDisplayList(POLY_OPA_DISP++, inv_original2_w3T_model);
@@ -441,11 +389,8 @@ static void mNW_set_frame_dl_cpo(Submenu* submenu, GAME* game, mSM_MenuInfo_c* m
 
     for (i = 0; i < mNW_DESIGN_COUNT; i++) {
         if (!mNW_check_hide_flg(submenu, i)) {
-            gDPLoadTLUT_Dolphin(POLY_OPA_DISP++, 15, 16, 1, mNW_get_image_pal(submenu, i));
-            gDPSetTextureImage_Dolphin(POLY_OPA_DISP++, G_IM_FMT_CI, G_IM_SIZ_4b, 32, 32,
-                                       mNW_get_image_texture(submenu, i));
-            gDPSetTile_Dolphin(POLY_OPA_DISP++, G_DOLPHIN_TLUT_DEFAULT_MODE, 0, 15, GX_MIRROR, GX_MIRROR, GX_CLAMP,
-                               GX_CLAMP);
+            gDPLoadTLUT_pal16(POLY_OPA_DISP++, 15, mNW_get_image_pal(submenu, i));
+            gDPLoadTextureBlock_4b(POLY_OPA_DISP++, mNW_get_image_texture(submenu, i), G_IM_FMT_CI, 32, 32, 15, G_TX_MIRROR, G_TX_MIRROR, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
             gSPDisplayList(POLY_OPA_DISP++, gfx_table[i]);
         }
     }
@@ -523,7 +468,7 @@ static void mNW_needlework_ovl_init(Submenu* submenu) {
     bcopy(Now_Private->my_org, overlay->needlework_ovl->my_org, sizeof(Now_Private->my_org));
 
     for (i = 0; i < mNW_DESIGN_COUNT; i++) {
-        DCStoreRangeNoSync(overlay->needlework_ovl->my_org[i].design.data, mNW_DESIGN_TEX_SIZE);
+        AC_TexInvalidateRange(overlay->needlework_ovl->my_org[i].design.data, mNW_DESIGN_TEX_SIZE);
     }
 
     bcopy(Now_Private->my_org_no_table, overlay->needlework_ovl->my_org_no_table, mNW_DESIGN_COUNT * sizeof(u8));

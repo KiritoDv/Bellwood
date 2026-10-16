@@ -8,6 +8,10 @@
 #include "m_editEndChk_ovl.h"
 #include "m_cpwarning_ovl.h"
 #include "m_malloc.h"
+#include "assets/data/model/dia_hyouji.h"
+#include "assets/data/model/dia_win.h"
+#include "assets/data/model/dia_win2.h"
+#include "assets/data/model/dia_win3.h"
 
 enum {
     mDI_MOVE_READ,
@@ -644,13 +648,8 @@ static void mDI_diary_ovl_move(Submenu* submenu) {
 }
 
 #if VERSION == VER_GAFE01_00
-extern Gfx dia_init_mode[];
 // extern Gfx kei_win_b2_model[];
-extern Gfx kei_win_b2_model_1_data_4075A0[];
 // extern Gfx kei_win_amojiT_model[];
-extern Gfx kei_win_amojiT_model_1_data_407620[];
-extern Gfx dia_win_bb_model[];
-extern Gfx dia_win_mojiT_model[];
 
 static void mDI_set_button_dl(GRAPH* graph, f32 pos_x, f32 pos_y) {
     OPEN_POLY_OPA_DISP(graph);
@@ -668,13 +667,10 @@ static void mDI_set_button_dl(GRAPH* graph, f32 pos_x, f32 pos_y) {
     CLOSE_POLY_OPA_DISP(graph);
 }
 #else
-extern Gfx dia_init_mode[];
 // extern Gfx kei_win_b2_model[];
 extern Gfx kei_win_b2_model_1_data_407600[];
 // extern Gfx kei_win_amojiT_model[];
 extern Gfx kei_win_amojiT_model_1_data_407680[];
-extern Gfx dia_win_bb_model[];
-extern Gfx dia_win_mojiT_model[];
 
 static void mDI_set_button_dl(GRAPH* graph, f32 pos_x, f32 pos_y) {
     OPEN_POLY_OPA_DISP(graph);
@@ -693,28 +689,6 @@ static void mDI_set_button_dl(GRAPH* graph, f32 pos_x, f32 pos_y) {
 }
 #endif
 
-extern Gfx dia_init_mode_letter[];
-extern Gfx dia_win_wT_model[];
-extern Gfx dia_win_fusenT_model[];
-extern Gfx dia_win_tukiT_model[];
-extern Gfx dia_win_moji_model[];
-extern Gfx dia_win2_wT_model[];
-extern Gfx dia_win2_fusenT_model[];
-extern Gfx dia_win3_wT_model[];
-extern Gfx dia_win3_fusenT_model[];
-
-extern u8 dia_win_april_tex_rgb_ia8[];
-extern u8 dia_win_august_tex_rgb_ia8[];
-extern u8 dia_win_december_tex_rgb_ia8[];
-extern u8 dia_win_february_tex_rgb_ia8[];
-extern u8 dia_win_january_tex_rgb_ia8[];
-extern u8 dia_win_july_tex_rgb_ia8[];
-extern u8 dia_win_june_tex_rgb_ia8[];
-extern u8 dia_win_march_tex_rgb_ia8[];
-extern u8 dia_win_may_tex_rgb_ia8[];
-extern u8 dia_win_november_tex_rgb_ia8[];
-extern u8 dia_win_october_tex_rgb_ia8[];
-extern u8 dia_win_september_tex_rgb_ia8[];
 
 static void mDI_set_frame_dl(GRAPH* graph, mSM_MenuInfo_c* menu_info, mDI_Ovl_c* diary_ovl, f32 pos_x, f32 pos_y, int month) {
     // clang-format off
@@ -762,7 +736,7 @@ static void mDI_set_frame_dl(GRAPH* graph, mSM_MenuInfo_c* menu_info, mDI_Ovl_c*
     gSPDisplayList(POLY_OPA_DISP++, dia_init_mode_letter);
     gSPDisplayList(POLY_OPA_DISP++, dia_win_wT_model);
     gSPDisplayList(POLY_OPA_DISP++, dia_win_fusenT_model);
-    gDPLoadTextureBlock_8b_Dolphin(POLY_OPA_DISP++, month_tex_table[month], G_IM_FMT_IA, 16, 64, 0, GX_MIRROR, GX_MIRROR, 0, 0);
+    gDPLoadTextureBlock(POLY_OPA_DISP++, month_tex_table[month], G_IM_FMT_IA, G_IM_SIZ_8b, 64, 16, 0, G_TX_MIRROR, G_TX_MIRROR, 6, 4, G_TX_NOLOD, G_TX_NOLOD);
     gSPDisplayList(POLY_OPA_DISP++, dia_win_tukiT_model);
 
     Matrix_push();

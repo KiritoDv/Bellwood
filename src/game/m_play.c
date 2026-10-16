@@ -1,4 +1,5 @@
 #include "m_play.h"
+#include "m_bg_tex.h"
 
 #include "m_common_data.h"
 #include "libultra/libultra.h"
@@ -19,7 +20,7 @@
 #include "m_card.h"
 #include "m_eappli.h"
 #include "famicom_emu.h"
-#include "Famicom/famicomPriv.h"
+#include "Famicom/famicom.h"
 #include "m_malloc.h"
 #include "m_field_info.h"
 #include "m_time.h"
@@ -32,12 +33,14 @@
 #include "gfxalloc.h"
 #include "m_debug_display.h"
 #include "jsyswrap.h"
+#include "ac_port.h"
 #include "m_trademark.h"
 #include "zurumode.h"
 #include "m_scene_table.h"
 #include "m_player_lib.h"
 #include "m_skin_matrix.h"
 #include "padmgr.h"
+#include "assets/static/version.h"
 
 #define Game_play_HYRAL_SIZE 0x3E800 // 256,000 bytes
 #define Game_play_IS_PAUSED(play) (ZURUMODE2_ENABLED() ? (!Pause_proc(&(play)->pause, &(play)->game.pads[PAD1])) : FALSE)
@@ -45,7 +48,6 @@
 static fbdemo_c fbdemo;
 static u16 S_back_title_timer = 0;
 static u16 S_se_endcheck_timeout = 0;
-static u8 gxbuf[0x140] ATTRIBUTE_ALIGN(32);
 static u8 prbuf[(2*SCREEN_WIDTH) * (2*SCREEN_HEIGHT) * sizeof(u32)] ATTRIBUTE_ALIGN(32); // 0x12C000
 
 static void Game_play_fbdemo_wipe_init(GAME_PLAY* play);
@@ -81,6 +83,7 @@ static void event_title_flag_off() {
 static void Game_play_camera_proc(GAME_PLAY* play) {
     Camera2_ClearActorTalking_Cull(play);
     Camera2_process(play);
+    FrameInterpolation_CameraUpdated(&play->camera.lookat.eye, &play->camera.lookat.center);
 }
 
 static void Game_play_fbdemo_wipe_destroy(GAME_PLAY* play) {
@@ -405,8 +408,8 @@ extern void play_init(GAME* game) {
     int type;
     fbdemo_fade* fade;
     int freebytes;
-    u32 alloc;
-    u32 aligned;
+    uintptr_t alloc;
+    uintptr_t aligned;
     u32 size;
 
     game_resize_hyral(game, -Game_play_HYRAL_SIZE); // reserve bytes from gamealloc
@@ -471,7 +474,7 @@ extern void play_init(GAME* game) {
     play->fade_color_value.rgba8888 = 0;
 
     freebytes = game_getFreeBytes(game);
-    alloc = (u32)THA_alloc16(&game->tha, freebytes);
+    alloc = (uintptr_t)THA_alloc16(&game->tha, freebytes);
     aligned = ALIGN_NEXT(alloc, 16);
     size = aligned - alloc;
 
@@ -548,6 +551,7 @@ static void Game_play_move(GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;
     int pause;
 
+    FrameInterpolation_PauseRecord();
     game->doing_point = 0;
     game->doing_point_specific = 0x8D;
     game->doing_point = 1;
@@ -603,6 +607,7 @@ static void Game_play_move(GAME* game) {
     title_demo_move(play);
     game->doing_point = 0;
     game->doing_point_specific = 0x95;
+    FrameInterpolation_ResumeRecord();
 }
 
 // @BUG - this function works properly in N64, but not in GC.
@@ -642,23 +647,21 @@ static void setupViewMatrix(GAME_PLAY* play, GRAPH* graph1, GRAPH* graph2) {
     play->billboard_matrix.mf[3][2] = 0.0f;
 
     Matrix_reverse(&play->billboard_matrix);
+    FrameInterpolation_RecordOpenChild(NULL, FrameInterpolation_GetCameraEpoch());
     play->billboard_mtx_p = _MtxF_to_Mtx(&play->billboard_matrix, GRAPH_ALLOC_TYPE(graph2, MtxF, 1));
+    FrameInterpolation_RecordCloseChild();
     gSPSegment(NEXT_BG_OPA_DISP, 7, play->billboard_mtx_p);
     gSPSegment(NEXT_POLY_OPA_DISP, 7, play->billboard_mtx_p);
+#ifdef AC_BG_COMMON_SEGMENT
+    gSPSegment(NEXT_BG_OPA_DISP, AC_BG_COMMON_SEGMENT, &gBgCommon);
+    gSPSegment(NEXT_POLY_OPA_DISP, AC_BG_COMMON_SEGMENT, &gBgCommon);
+#endif
 
     CLOSE_DISP(graph1);
 }
 
 static void copy_efb_to_texture(Gfx** graph, void* buf) {
-    u32 dl;
-
-    GXBeginDisplayList(gxbuf, sizeof(gxbuf));
-    GXSetTexCopySrc(0, 0, SCREEN_WIDTH * 2, SCREEN_HEIGHT * 2);
-    GXSetTexCopyDst(SCREEN_WIDTH * 2, SCREEN_HEIGHT * 2, GX_TF_RGB565, 0);
-    GXSetCopyFilter(0, 0, 0, 0);
-    GXCopyTex(buf, 0);
-    dl = GXEndDisplayList();
-    gGXCallDisplayList((*graph)++, gxbuf, dl);
+    gDPCopyFB((*graph)++, gAC_PrerenderFb, 0, FALSE, NULL);
 }
 
 static int makeBumpTexture(GAME_PLAY* play, GRAPH* graph1, GRAPH* graph2) {
@@ -673,6 +676,7 @@ static int makeBumpTexture(GAME_PLAY* play, GRAPH* graph1, GRAPH* graph2) {
     OPEN_DISP(graph1);
 
     if ((GETREG(HREG, 80) != 10) || (GETREG(HREG, 92) != 0)) {
+        FrameInterpolation_PauseRecord();
         newdisp = NOW_POLY_OPA_DISP;
         polydisp = gfxopen(newdisp);
 
@@ -694,18 +698,21 @@ static int makeBumpTexture(GAME_PLAY* play, GRAPH* graph1, GRAPH* graph2) {
         }
 
         fbdemo_fade_draw(&play->color_fade, &polydisp);
-        fade_rgba8888_draw(&polydisp, play->fade_color_value.rgba8888);
+        fade_rgba8888_draw(&polydisp, rgba8888_get(&play->fade_color_value));
 
         gSPEndDisplayList(polydisp++);
 
         gfxclose(newdisp, polydisp);
 
         SET_POLY_OPA_DISP(polydisp);
+        FrameInterpolation_ResumeRecord();
     }
 
     if (play->fb_mode == FBDEMO_MODE_MOVE) {
         fbdemo_disp = NOW_POLY_OPA_DISP;
+        FrameInterpolation_PauseRecord();
         fbdemo_draw(&fbdemo, &fbdemo_disp);
+        FrameInterpolation_ResumeRecord();
         SET_POLY_OPA_DISP(fbdemo_disp);
         return 1;
     }
@@ -726,10 +733,9 @@ static int makeBumpTexture(GAME_PLAY* play, GRAPH* graph1, GRAPH* graph2) {
                         G_AD_PATTERN | G_CD_MAGICSQ | G_CK_NONE | G_TC_CONV | G_TF_POINT | G_TT_NONE | G_TL_TILE |
                             G_TD_CLAMP | G_TP_NONE | G_CYC_COPY | G_PM_NPRIMITIVE,
                         G_AC_NONE | G_ZS_PIXEL | G_RM_NOOP | G_RM_NOOP2);
-        gDPSetTextureImage_Dolphin(rect_disp++, G_IM_FMT_I, G_IM_SIZ_16b, (2*SCREEN_HEIGHT), (2*SCREEN_WIDTH), prbuf);
-        gDPSetTile_Dolphin(rect_disp++, G_DOLPHIN_TLUT_DEFAULT_MODE, 0, 0, 0, 0, 0, 0);
-        gSPTextureRectangle(rect_disp++, 0, 0, ((2*SCREEN_WIDTH) - 1) << 2, ((2*SCREEN_HEIGHT) - 1) << 2, G_TX_RENDERTILE, 0, 0, (256) << G_TEXTURE_IMAGE_FRAC,
-                            (256) << G_TEXTURE_IMAGE_FRAC);
+        gDPSetTextureImageFB(rect_disp++, G_IM_FMT_RGBA, G_IM_SIZ_16b, (2*SCREEN_WIDTH), gAC_PrerenderFb);
+        gDPImageRectangle(rect_disp++, 0 << 2, 0 << 2, 0, 0, (2*SCREEN_WIDTH) << 2, (2*SCREEN_HEIGHT) << 2,
+                          (2*SCREEN_WIDTH), (2*SCREEN_HEIGHT), G_TX_RENDERTILE, (2*SCREEN_WIDTH), (2*SCREEN_HEIGHT));
 
         SET_POLY_OPA_DISP(rect_disp);
         return 1;
@@ -738,11 +744,15 @@ static int makeBumpTexture(GAME_PLAY* play, GRAPH* graph1, GRAPH* graph2) {
     if ((GETREG(HREG, 80) != 10) || (GETREG(HREG, 85) != 0)) {
         Actor_info_draw_actor(play, &play->actor_info);
         Camera2_draw(play);
+        FrameInterpolation_PauseRecord();
         mMsg_Draw((GAME*)play);
+        FrameInterpolation_ResumeRecord();
     }
 
     if ((GETREG(HREG, 80) != 10) || (GETREG(HREG, 93) != 0)) {
+        FrameInterpolation_PauseRecord();
         Debug_Display_output(play);
+        FrameInterpolation_ResumeRecord();
     }
 
     if ((play->submenu.mode == mSM_MODE_PRERENDER_INIT) || (play->fb_mode == FBDEMO_MODE_CREATE)) {
@@ -772,9 +782,9 @@ static int makeBumpTexture(GAME_PLAY* play, GRAPH* graph1, GRAPH* graph2) {
 }
 
 static void draw_version(GRAPH* graph) {
-    JW_JUTReport(0x82, 0x172, 1, "[CopyDate:%.19s]", boot_copyDate);
-    JW_JUTReport(0x82, 0x180, 1, "[Date:%s]", &__DateTime__);
-    JW_JUTReport(0x82, 0x18E, 1, "[Creator:%s]", &__Creator__);
+    AC_DebugPrint(0x82, 0x172, 1, "[CopyDate:%.19s]", boot_copyDate);
+    AC_DebugPrint(0x82, 0x180, 1, "[Date:%s]", &__DateTime__);
+    AC_DebugPrint(0x82, 0x18E, 1, "[Creator:%s]", &__Creator__);
 }
 
 static void Game_play_draw(GAME_PLAY* play) {
@@ -801,9 +811,11 @@ static void Game_play_draw(GAME_PLAY* play) {
         setupViewMatrix(play, graph, graph);
 
         if ((makeBumpTexture(play, graph, graph) == 1) && ((GETREG(HREG, 80) != 10) || (GETREG(HREG, 89) != 0))) {
+            FrameInterpolation_PauseRecord();
             watch_my_step_draw(play);
             banti_draw(play);
             mSM_submenu_draw(&play->submenu, (GAME*)play);
+            FrameInterpolation_ResumeRecord();
         }
     }
     if (zurumode_flag != 0) {

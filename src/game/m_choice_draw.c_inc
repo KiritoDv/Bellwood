@@ -1,3 +1,4 @@
+#include "assets/game/m_choice.h"
 static void mChoice_SetMatrix(mChoice_c* choice, GAME* game, int type) {
     GRAPH* graph = game->graph;
     f32 scale = choice->scale;
@@ -57,31 +58,6 @@ static void mChoice_UnSetMatrixDisplay(GAME* game, int type) {
 
     CLOSE_DISP(graph);
 }
-
-static u8 con_waku_swaku3_tex[] ATTRIBUTE_ALIGN(32) = {
-#ifndef __INTELLISENSE__
-#include "assets/con_waku_swaku3_tex.inc"
-#endif
-};
-
-static Vtx con_sentaku2_v[] = {
-#ifndef __INTELLISENSE__
-#include "assets/con_sentaku2_v.inc"
-#endif
-};
-
-static Gfx con_sentaku2_modelT[] = {
-    gsSPTexture(0, 0, 0, 0, G_ON),
-    gsDPSetPrimColor(0, 255, 255, 255, 155, 255),
-    gsDPLoadTextureBlock_4b_Dolphin(con_waku_swaku3_tex, G_IM_FMT_I, 128, 64, 15, GX_MIRROR, GX_MIRROR, 0, 0),
-    gsSPVertex(&con_sentaku2_v[0], 4, 0),
-    gsSPNTrianglesInit_5b(2,       // tri count
-                          0, 1, 2, // tri0
-                          0, 2, 3, // tri1
-                          0, 0, 0  // tri2
-                          ),
-    gsSPEndDisplayList(),
-};
 
 static Gfx mChoice_init_disp[] = {
     gsDPPipeSync(),

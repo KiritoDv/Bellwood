@@ -146,6 +146,7 @@ static int Player_actor_lean_angle_Fill_scoop(ACTOR* actor) {
     }
 
     Player_actor_lean_angle_scoop_common(actor, &player->main_data.fill_scoop.target_pos, 42.0f + mod);
+    return 0;
 }
 
 static void Player_actor_request_proc_index_fromFill_scoop(ACTOR* actor, GAME* game, int end_flag) {

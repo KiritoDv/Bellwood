@@ -13,6 +13,60 @@
 #include "m_bg_tex.h"
 #include "m_house.h"
 #include "m_bgm.h"
+#include "ac_asset.h"
+#include "ac_port.h"
+#include "assets/data/field/bg/beach_pal.h"
+#include "assets/data/field/bg/bush_pal.h"
+#include "assets/data/field/bg/cliff_pal.h"
+#include "assets/data/field/bg/earth_pal.h"
+#include "assets/data/field/bg/rail_pal.h"
+#include "assets/data/model/mFM_grd_beachA_tex.h"
+#include "assets/data/model/mFM_grd_beachB_tex.h"
+#include "assets/data/model/mFM_grd_s_beach_tex.h"
+#include "assets/data/model/mFM_grd_s_bridge1.h"
+#include "assets/data/model/mFM_grd_s_bridge1_pal.h"
+#include "assets/data/model/mFM_grd_s_bridge2.h"
+#include "assets/data/model/mFM_grd_s_bridge2_pal.h"
+#include "assets/data/model/mFM_grd_s_bushA.h"
+#include "assets/data/model/mFM_grd_s_bushB.h"
+#include "assets/data/model/mFM_grd_s_cliff.h"
+#include "assets/data/model/mFM_grd_s_earth.h"
+#include "assets/data/model/mFM_grd_s_grass.h"
+#include "assets/data/model/mFM_grd_s_rail.h"
+#include "assets/data/model/mFM_grd_s_river.h"
+#include "assets/data/model/mFM_grd_s_sand.h"
+#include "assets/data/model/mFM_grd_s_station.h"
+#include "assets/data/model/mFM_grd_s_station1_pal.h"
+#include "assets/data/model/mFM_grd_s_stone.h"
+#include "assets/data/model/mFM_grd_s_tekkyo.h"
+#include "assets/data/model/mFM_grd_s_tunnel.h"
+#include "assets/data/model/mFM_grd_sprashA_tex.h"
+#include "assets/data/model/mFM_grd_sprashC_tex.h"
+#include "assets/data/model/mFM_grd_w_bridge1.h"
+#include "assets/data/model/mFM_grd_w_bridge2.h"
+#include "assets/data/model/mFM_grd_w_bushA.h"
+#include "assets/data/model/mFM_grd_w_bushB.h"
+#include "assets/data/model/mFM_grd_w_cliff.h"
+#include "assets/data/model/mFM_grd_w_earth.h"
+#include "assets/data/model/mFM_grd_w_grass.h"
+#include "assets/data/model/mFM_grd_w_rail.h"
+#include "assets/data/model/mFM_grd_w_river.h"
+#include "assets/data/model/mFM_grd_w_sand.h"
+#include "assets/data/model/mFM_grd_w_station.h"
+#include "assets/data/model/mFM_grd_w_stone.h"
+#include "assets/data/model/mFM_grd_w_tekkyo.h"
+#include "assets/data/model/mFM_grd_w_tunnel.h"
+#include "assets/data/model/mFM_grd_water1_tex.h"
+#include "assets/data/model/mFM_grd_water2_tex.h"
+#include "assets/data/model/mFM_grd_wave1_tex.h"
+#include "assets/data/model/mFM_grd_wave2_tex.h"
+#include "assets/data/model/mFM_grd_wave3_tex.h"
+#include "assets/data/model/mFM_obj_01_zassou.h"
+#include "assets/data/model/mFm_obj_palm_01.h"
+#include "assets/data/model/mFm_obj_tree_01.h"
+#include "assets/data/model/mFm_obj_tree_01_dol.h"
+#include "assets/data/model/obj_a_01_flower.h"
+#include "assets/data/model/obj_gold_01.h"
 
 // clang-format off
 static mActor_name_t l_fg_outer_fill[UT_Z_NUM * UT_X_NUM] = {
@@ -391,7 +445,7 @@ extern void mFM_GetPolicePos(int* bx, int* bz, int* ut_x, int* ut_z) {
 
 static void mFM_SetMoveActorInfo(mFM_block_info_c* block_info, int bx_max, int bz_max,
                                  mFM_move_actor_data_c* move_actor_data, u32 param_5, u32 param_6) {
-    mFM_move_actor_data_c* move_ac_data_p = move_actor_data;
+    mFM_move_actor_data_c* move_ac_data_p = (mFM_move_actor_data_c*)LOAD_ASSET(move_actor_data);
 
     if (block_info != NULL) {
         for (move_ac_data_p; move_ac_data_p != NULL && move_ac_data_p->name_id != RSV_NO; move_ac_data_p++) {
@@ -576,12 +630,7 @@ static void mFM_set_pal_p(mFM_field_pal_c* pal) {
     }
 }
 
-extern u16 mFM_obj_a_01_flower_pal[3 * 9][16];
-extern u16 mFM_obj_01_zassou_pal[9][16];
-extern u16 mFM_obj_tree_01_pal[14][16];
-extern u16 mFM_obj_tree_01_pal_dol[14][16];
-extern u16 mFM_obj_palm_01_pal[14][16];
-extern u16 mFM_obj_gold_01_pal_dol[14][16];
+#define mFM_PAL16_OFS(row) ((row) * 16 * sizeof(u16))
 
 static void mFM_SetFGPal(mFM_field_pal_c* pal, int term) {
     static int tree_pal_idx_table[mTM_TERM_NUM] = { 10, 12, 13, 0, 1, 2, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10, 11, 10 };
@@ -590,29 +639,23 @@ static void mFM_SetFGPal(mFM_field_pal_c* pal, int term) {
 
     int idx = flower_pal_idx_table[term];
 
-    bcopy(mFM_obj_a_01_flower_pal[0 * 9 + idx], pal->flower0_pal, 16 * sizeof(u16));
-    bcopy(mFM_obj_a_01_flower_pal[1 * 9 + idx], pal->flower1_pal, 16 * sizeof(u16));
-    bcopy(mFM_obj_a_01_flower_pal[2 * 9 + idx], pal->flower2_pal, 16 * sizeof(u16));
-    bcopy(mFM_obj_01_zassou_pal[idx], pal->grass_pal, 16 * sizeof(u16));
-    bcopy(mFM_obj_tree_01_pal[tree_pal_idx_table[term]], pal->tree_pal, 16 * sizeof(u16));
-    bcopy(mFM_obj_tree_01_pal_dol[tree_pal_idx_table[term]], pal->cedar_tree_pal, 16 * sizeof(u16));
-    bcopy(mFM_obj_palm_01_pal[tree_pal_idx_table[term]], pal->palm_tree_pal, 16 * sizeof(u16));
-    bcopy(mFM_obj_gold_01_pal_dol[tree_pal_idx_table[term]], pal->golden_tree_pal, 16 * sizeof(u16));
+    AC_AssetCopy(pal->flower0_pal, mFM_obj_a_01_flower_pal, mFM_PAL16_OFS(0 * 9 + idx), 16 * sizeof(u16));
+    AC_AssetCopy(pal->flower1_pal, mFM_obj_a_01_flower_pal, mFM_PAL16_OFS(1 * 9 + idx), 16 * sizeof(u16));
+    AC_AssetCopy(pal->flower2_pal, mFM_obj_a_01_flower_pal, mFM_PAL16_OFS(2 * 9 + idx), 16 * sizeof(u16));
+    AC_AssetCopy(pal->grass_pal, mFM_obj_01_zassou_pal, mFM_PAL16_OFS(idx), 16 * sizeof(u16));
+    AC_AssetCopy(pal->tree_pal, mFM_obj_tree_01_pal, mFM_PAL16_OFS(tree_pal_idx_table[term]), 16 * sizeof(u16));
+    AC_AssetCopy(pal->cedar_tree_pal, mFM_obj_tree_01_pal_dol, mFM_PAL16_OFS(tree_pal_idx_table[term]),
+                 16 * sizeof(u16));
+    AC_AssetCopy(pal->palm_tree_pal, mFM_obj_palm_01_pal, mFM_PAL16_OFS(tree_pal_idx_table[term]), 16 * sizeof(u16));
+    AC_AssetCopy(pal->golden_tree_pal, mFM_obj_gold_01_pal_dol, mFM_PAL16_OFS(tree_pal_idx_table[term]),
+                 16 * sizeof(u16));
 }
-
-extern u16 mFM_earth_pal[mFM_FIELD_PAL_NUM][16];
-extern u16 mFM_cliff_pal[mFM_FIELD_PAL_NUM][16];
-extern u16 mFM_bush_pal[mFM_FIELD_PAL_NUM][16];
-extern u16 mFM_rail_pal[mFM_FIELD_PAL_NUM][16];
-extern u16 mFM_beach_pal[mFM_FIELD_PAL_NUM][16];
 
 static void mFM_SetFieldPal(mFM_field_pal_c* pal) {
     static int field_pal_idx_table[mTM_TERM_NUM] = { 9, 10, 11, 0, 1, 1, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9 };
 
     u32 term = Common_Get(time.term_idx);
     int field_pal_idx;
-    int i;
-    u16* pal_src;
 
     if (term >= mTM_TERM_NUM) {
         term = mTM_TERM_0;
@@ -624,20 +667,9 @@ static void mFM_SetFieldPal(mFM_field_pal_c* pal) {
 
     field_pal_idx = field_pal_idx_table[term];
 
-    pal_src = mFM_earth_pal[field_pal_idx];
-    for (i = 0; i < 16; i++) {
-        pal->earth_pal[i] = pal_src[i];
-    }
-
-    pal_src = mFM_cliff_pal[field_pal_idx];
-    for (i = 0; i < 16; i++) {
-        pal->cliff_pal[i] = pal_src[i];
-    }
-
-    pal_src = mFM_bush_pal[field_pal_idx];
-    for (i = 0; i < 16; i++) {
-        pal->bush_pal[i] = pal_src[i];
-    }
+    AC_AssetCopy(pal->earth_pal, mFM_earth_pal, mFM_PAL16_OFS(field_pal_idx), 16 * sizeof(u16));
+    AC_AssetCopy(pal->cliff_pal, mFM_cliff_pal, mFM_PAL16_OFS(field_pal_idx), 16 * sizeof(u16));
+    AC_AssetCopy(pal->bush_pal, mFM_bush_pal, mFM_PAL16_OFS(field_pal_idx), 16 * sizeof(u16));
 
     mFM_SetFGPal(pal, term);
 }
@@ -847,8 +879,8 @@ static mFM_fdinfo_c* mFM_MakeField(u16 scene, u16 bg_max, u8 bg_num) {
 
     for (i = 0; i < field_info->bg_num; i++) {
         field_info->bg_display_list_p[i] = (u8*)zelda_malloc(field_info->bg_max);
-        field_info->bg_display_list_p[i] = (u8*)((u32)(field_info->bg_display_list_p[i]) + (16 - 1));
-        field_info->bg_display_list_p[i] = (u8*)((u32)(field_info->bg_display_list_p[i]) & (~(16 - 1)));
+        field_info->bg_display_list_p[i] = (u8*)((uintptr_t)(field_info->bg_display_list_p[i]) + (16 - 1));
+        field_info->bg_display_list_p[i] = (u8*)((uintptr_t)(field_info->bg_display_list_p[i]) & (~(16 - 1)));
     }
 
     mFM_set_pal_p(&field_info->field_palette);
@@ -877,34 +909,6 @@ static mBGTex_obj_c l_bg_pal_common_dummy[5] = { { earth_pal_dummy, 16 * sizeof(
                                                  { rail_pal_dummy, 16 * sizeof(u16) },
                                                  { beach_pal_dummy2, 16 * sizeof(u16) } };
 
-extern u8 mFM_grd_s_earth_tex[];
-extern u8 mFM_grd_s_cliff_tex[];
-extern u8 mFM_grd_s_bushA_tex[];
-extern u8 mFM_grd_s_bushB_tex[];
-extern u8 mFM_grd_s_grass_tex[];
-extern u8 mFM_grd_s_rail_tex[];
-extern u8 mFM_grd_s_station_tex[];
-extern u8 mFM_grd_s_stone_tex[];
-extern u8 mFM_grd_s_river_tex[];
-extern u8 mFM_grd_water1_tex[];
-extern u8 mFM_grd_water2_tex[];
-extern u8 mFM_grd_s_bridge1_tex[];
-extern u8 mFM_grd_s_bridge2_tex[];
-extern u8 mFM_grd_s_tekkyo_tex[];
-extern u8 mFM_grd_s_tunnel_tex[];
-extern u8 mFM_grd_s_beach_tex[];
-extern u16 mFM_grd_s_bridge1_pal[];
-extern u16 mFM_grd_s_bridge2_pal[];
-extern u16 mFM_grd_s_station1_pal[];
-extern u8 mFM_grd_beachA_tex[];
-extern u8 mFM_grd_beachB_tex[];
-extern u8 mFM_grd_s_sand_tex[];
-extern u8 mFM_grd_wave1_tex[];
-extern u8 mFM_grd_wave2_tex[];
-extern u8 mFM_grd_wave3_tex[];
-extern u8 mFM_grd_sprashA_tex[];
-extern u8 mFM_grd_sprashC_tex[];
-
 static void* l_bg_tex_segment_rom_start_s_0[mFM_FIELD_TEX_NUM] = {
     mFM_grd_s_earth_tex, mFM_grd_s_cliff_tex,   mFM_grd_s_bushA_tex,   mFM_grd_s_bushB_tex,    mFM_grd_s_grass_tex,
     mFM_grd_s_rail_tex,  mFM_grd_s_station_tex, mFM_grd_s_stone_tex,   mFM_grd_s_river_tex,    mFM_grd_water1_tex,
@@ -913,21 +917,6 @@ static void* l_bg_tex_segment_rom_start_s_0[mFM_FIELD_TEX_NUM] = {
     mFM_grd_beachB_tex,  mFM_grd_s_sand_tex,    mFM_grd_wave1_tex,     mFM_grd_wave2_tex,      mFM_grd_wave3_tex,
     mFM_grd_sprashA_tex, mFM_grd_sprashC_tex
 };
-
-extern u8 mFM_grd_s_earth_2_tex[];
-extern u8 mFM_grd_s_cliff_2_tex[];
-extern u8 mFM_grd_s_bushA_2_tex[];
-extern u8 mFM_grd_s_bushB_2_tex[];
-extern u8 mFM_grd_s_grass_2_tex[];
-extern u8 mFM_grd_s_rail_2_tex[];
-extern u8 mFM_grd_s_station_2_tex[];
-extern u8 mFM_grd_s_stone_2_tex[];
-extern u8 mFM_grd_s_river_2_tex[];
-extern u8 mFM_grd_s_bridge1_2_tex[];
-extern u8 mFM_grd_s_bridge2_2_tex[];
-extern u8 mFM_grd_s_tekkyo_2_tex[];
-extern u8 mFM_grd_s_tunnel_2_tex[];
-extern u8 mFM_grd_s_sand_2_tex[];
 
 static void* l_bg_tex_segment_rom_start_s_1[mFM_FIELD_TEX_NUM] = {
     mFM_grd_s_earth_2_tex,   mFM_grd_s_cliff_2_tex,  mFM_grd_s_bushA_2_tex,   mFM_grd_s_bushB_2_tex,
@@ -938,21 +927,6 @@ static void* l_bg_tex_segment_rom_start_s_1[mFM_FIELD_TEX_NUM] = {
     mFM_grd_beachB_tex,      mFM_grd_s_sand_2_tex,   mFM_grd_wave1_tex,       mFM_grd_wave2_tex,
     mFM_grd_wave3_tex,       mFM_grd_sprashA_tex,    mFM_grd_sprashC_tex
 };
-
-extern u8 mFM_grd_s_earth_3_tex[];
-extern u8 mFM_grd_s_cliff_3_tex[];
-extern u8 mFM_grd_s_bushA_3_tex[];
-extern u8 mFM_grd_s_bushB_3_tex[];
-extern u8 mFM_grd_s_grass_3_tex[];
-extern u8 mFM_grd_s_rail_3_tex[];
-extern u8 mFM_grd_s_station_3_tex[];
-extern u8 mFM_grd_s_stone_3_tex[];
-extern u8 mFM_grd_s_river_3_tex[];
-extern u8 mFM_grd_s_bridge1_3_tex[];
-extern u8 mFM_grd_s_bridge2_3_tex[];
-extern u8 mFM_grd_s_tekkyo_3_tex[];
-extern u8 mFM_grd_s_tunnel_3_tex[];
-extern u8 mFM_grd_s_sand_3_tex[];
 
 static void* l_bg_tex_segment_rom_start_s_2[mFM_FIELD_TEX_NUM] = {
     mFM_grd_s_earth_3_tex,   mFM_grd_s_cliff_3_tex,  mFM_grd_s_bushA_3_tex,   mFM_grd_s_bushB_3_tex,
@@ -967,20 +941,6 @@ static void* l_bg_tex_segment_rom_start_s_2[mFM_FIELD_TEX_NUM] = {
 static void** l_bg_tex_segment_table[mFM_BG_TEX_NUM] = { l_bg_tex_segment_rom_start_s_0, l_bg_tex_segment_rom_start_s_1,
                                                          l_bg_tex_segment_rom_start_s_2 };
 
-extern u8 mFM_grd_w_earth_tex[];
-extern u8 mFM_grd_w_cliff_tex[];
-extern u8 mFM_grd_w_bushA_tex[];
-extern u8 mFM_grd_w_bushB_tex[];
-extern u8 mFM_grd_w_grass_tex[];
-extern u8 mFM_grd_w_rail_tex[];
-extern u8 mFM_grd_w_station_tex[];
-extern u8 mFM_grd_w_stone_tex[];
-extern u8 mFM_grd_w_river_tex[];
-extern u8 mFM_grd_w_bridge1_tex[];
-extern u8 mFM_grd_w_bridge2_tex[];
-extern u8 mFM_grd_w_tekkyo_tex[];
-extern u8 mFM_grd_w_sand_tex[];
-
 static void* l_bg_tex_segment_rom_start_w_0[mFM_FIELD_TEX_NUM] = {
     mFM_grd_w_earth_tex, mFM_grd_w_cliff_tex,   mFM_grd_w_bushA_tex,   mFM_grd_w_bushB_tex,    mFM_grd_w_grass_tex,
     mFM_grd_w_rail_tex,  mFM_grd_w_station_tex, mFM_grd_w_stone_tex,   mFM_grd_w_river_tex,    mFM_grd_water1_tex,
@@ -989,21 +949,6 @@ static void* l_bg_tex_segment_rom_start_w_0[mFM_FIELD_TEX_NUM] = {
     mFM_grd_beachB_tex,  mFM_grd_w_sand_tex,    mFM_grd_wave1_tex,     mFM_grd_wave2_tex,      mFM_grd_wave3_tex,
     mFM_grd_sprashA_tex, mFM_grd_sprashC_tex
 };
-
-extern u8 mFM_grd_w_earth_2_tex[];
-extern u8 mFM_grd_w_cliff_2_tex[];
-extern u8 mFM_grd_w_bushA_2_tex[];
-extern u8 mFM_grd_w_bushB_2_tex[];
-extern u8 mFM_grd_w_grass_2_tex[];
-extern u8 mFM_grd_w_rail_2_tex[];
-extern u8 mFM_grd_w_station_2_tex[];
-extern u8 mFM_grd_w_stone_2_tex[];
-extern u8 mFM_grd_w_river_2_tex[];
-extern u8 mFM_grd_w_bridge1_2_tex[];
-extern u8 mFM_grd_w_bridge2_2_tex[];
-extern u8 mFM_grd_w_tekkyo_2_tex[];
-extern u8 mFM_grd_w_tunnel_2_tex[];
-extern u8 mFM_grd_w_sand_2_tex[];
 
 static void* l_bg_tex_segment_rom_start_w_1[mFM_FIELD_TEX_NUM] = {
     mFM_grd_w_earth_2_tex,   mFM_grd_w_cliff_2_tex,  mFM_grd_w_bushA_2_tex,   mFM_grd_w_bushB_2_tex,
@@ -1014,21 +959,6 @@ static void* l_bg_tex_segment_rom_start_w_1[mFM_FIELD_TEX_NUM] = {
     mFM_grd_beachB_tex,      mFM_grd_w_sand_2_tex,   mFM_grd_wave1_tex,       mFM_grd_wave2_tex,
     mFM_grd_wave3_tex,       mFM_grd_sprashA_tex,    mFM_grd_sprashC_tex
 };
-
-extern u8 mFM_grd_w_earth_3_tex[];
-extern u8 mFM_grd_w_cliff_3_tex[];
-extern u8 mFM_grd_w_bushA_3_tex[];
-extern u8 mFM_grd_w_bushB_3_tex[];
-extern u8 mFM_grd_w_grass_3_tex[];
-extern u8 mFM_grd_w_rail_3_tex[];
-extern u8 mFM_grd_w_station_3_tex[];
-extern u8 mFM_grd_w_stone_3_tex[];
-extern u8 mFM_grd_w_river_3_tex[];
-extern u8 mFM_grd_w_bridge1_3_tex[];
-extern u8 mFM_grd_w_bridge2_3_tex[];
-extern u8 mFM_grd_w_tekkyo_3_tex[];
-extern u8 mFM_grd_w_tunnel_3_tex[];
-extern u8 mFM_grd_w_sand_3_tex[];
 
 static void* l_bg_tex_segment_rom_start_w_2[mFM_FIELD_TEX_NUM] = {
     mFM_grd_w_earth_3_tex,   mFM_grd_w_cliff_3_tex,  mFM_grd_w_bushA_3_tex,   mFM_grd_w_bushB_3_tex,
@@ -1069,8 +999,9 @@ static void mFM_LoadBGCommonMonthlyPal() {
     idx = field_pal_idx_table[term];
 
     for (i = 0; i < 5; i++) {
-        bcopy(l_bg_pal_segment_rom_start[i] + ((l_bg_pal_common_dummy[i].size * idx) & ~1),
-              l_bg_pal_common_dummy[i].data, l_bg_pal_common_dummy[i].size);
+        AC_AssetCopy(l_bg_pal_common_dummy[i].data, l_bg_pal_segment_rom_start[i],
+                     (l_bg_pal_common_dummy[i].size * idx) & ~1, l_bg_pal_common_dummy[i].size);
+        AC_TexInvalidateRange(l_bg_pal_common_dummy[i].data, l_bg_pal_common_dummy[i].size);
     }
 }
 
@@ -1105,7 +1036,8 @@ static void mFM_LoadBGCommonTex(int update_tex, u8 tex_idx) {
 
     for (i = 0; i < mFM_FIELD_TEX_NUM; i++) {
         if (update_tex == TRUE || l_water_permission[i] == TRUE) {
-            bcopy(bg_tex_tbl[i], l_bg_tex_common_dummy[i].data, l_bg_tex_common_dummy[i].size);
+            AC_AssetCopy(l_bg_tex_common_dummy[i].data, bg_tex_tbl[i], 0, l_bg_tex_common_dummy[i].size);
+            AC_TexInvalidateRange(l_bg_tex_common_dummy[i].data, l_bg_tex_common_dummy[i].size);
         }
     }
 
@@ -1460,7 +1392,7 @@ extern void mFM_InitFgCombiSaveData(GAME* game) {
             fg_data_p = (mFM_fg_data_c*)(ALIGN_NEXT((u32)gamealloc_data_p, 32));
         }
 #else
-        fg_data_p = (mFM_fg_data_c*)(ALIGN_NEXT((u32)gamealloc_data_p, 32));
+        fg_data_p = (mFM_fg_data_c*)(ALIGN_NEXT((uintptr_t)gamealloc_data_p, 32));
 #endif
     } else {
         fg_data_p = (mFM_fg_data_c*)zelda_malloc_align(fg_datasize_align, 32);
@@ -1794,7 +1726,7 @@ extern void mFM_SetIslandNpcRoomData(GAME* game, int malloc_flag) {
         fgnpc_data_p = (mFM_fg_data_c*)zelda_malloc_align(fgnpc_size_align, 32);
     } else if (game != NULL) {
         gamealloc_data_p = gamealloc_malloc(gamealloc, fgnpc_size_align + 32);
-        fgnpc_data_p = (mFM_fg_data_c*)(ALIGN_NEXT((u32)gamealloc_data_p, 32));
+        fgnpc_data_p = (mFM_fg_data_c*)(ALIGN_NEXT((uintptr_t)gamealloc_data_p, 32));
     } else {
         fgnpc_data_p = (mFM_fg_data_c*)zelda_malloc_align(fgnpc_size_align, 32);
     }

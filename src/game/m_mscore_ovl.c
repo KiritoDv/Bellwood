@@ -8,6 +8,11 @@
 #include "sys_matrix.h"
 #include "m_font.h"
 #include "m_bgm.h"
+#include "assets/data/model/onp_hyouji.h"
+#include "assets/data/model/onp_hyouji2.h"
+#include "assets/data/model/onp_win.h"
+#include "assets/data/model/sen_itemw.h"
+#include "assets/data/model/sen_win.h"
 
 static mMS_Ovl_c mscore_ovl_data;
 
@@ -35,36 +40,8 @@ typedef struct {
     f32 offset[2];
 } mMS_note_frame_c;
 
-extern u8 onp_win_q_tex_rgb_i4[];
-extern u8 onp_win_a_tex_rgb_i4[];
-extern u8 onp_win_b_tex_rgb_i4[];
-extern u8 onp_win_c_tex_rgb_i4[];
-extern u8 onp_win_d_tex_rgb_i4[];
-extern u8 onp_win_e_tex_rgb_i4[];
-extern u8 onp_win_f_tex_rgb_i4[];
-extern u8 onp_win_g_tex_rgb_i4[];
 
-extern u8 onp_win_bou1_tex[];
-extern u8 onp_win_shimari_tex_rgb_ia8[];
-extern u8 onp_win_onpu8_tex_rgb_i4[];
-extern u8 onp_win_z_tex_rgb_i4[];
 
-extern u8 onp_win_test1_tex_rgb_ia8[];
-extern u8 onp_win_test2_tex_rgb_ia8[];
-extern u8 onp_win_test3_tex_rgb_ia8[];
-extern u8 onp_win_test5_tex_rgb_ia8[];
-extern u8 onp_win_test10_tex_rgb_ia8[];
-extern u8 onp_win_test11_tex_rgb_ia8[];
-extern u8 onp_win_shimari_tex_rgb_ia8[];
-
-extern Gfx onp_hyouji_waku1T_model[];
-extern Gfx onp_hyouji_waku2T_model[];
-extern Gfx onp_hyouji_waku3T_model[];
-extern Gfx onp_hyouji_waku4T_model[];
-extern Gfx onp_hyouji_bouT_model[];
-extern Gfx onp_hyouji_moji1T_model[];
-extern Gfx onp_hyouji_waku_mode[];
-extern Gfx onp_hyouji_moji_mode[];
 
 // clang-format off
 static mMS_note_frame_c note_frame[] = {
@@ -338,30 +315,11 @@ static void mMS_MScore_draw_init(mSM_MenuInfo_c* menu_info) {
     // empty
 }
 
-extern u8 start2_tex_rgb_ia8[];
-extern u8 start_tex_rgb_ia8[];
-extern u8 onp__x2_tex_rgb_ia8[];
-extern u8 onp__x_tex_rgb_ia8[];
-extern u8 onp__y2_tex_rgb_ia8[];
-extern u8 onp__y_tex_rgb_ia8[];
-extern u8 onp_win_rbutton2_tex_rgb_ia8[];
-extern u8 onp_win_rbutton_tex_rgb_ia8[];
-
-extern Gfx onp_win_model[];
-extern Gfx onp_win_mojiT_model[];
-extern Gfx onp_win_zT_model[];
-extern Gfx onp_win_rT_model[];
-extern Gfx onp_win_sT_model[];
 #if VERSION == VER_GAFE01_00
-extern Gfx onp_win_rmoji_model[];
 #else
 extern Gfx onp_win_rmoji_model_1_data_4A4020[];
 #endif
-extern Gfx onp_win_owariT_model[];
 
-extern Gfx sen_item2_DL_mode[];
-extern Gfx sen_win_wakuT_model[];
-extern Gfx sen_win_cursor_model[];
 
 static void mMS_set_dl(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* game) {
     static rgb_t color_data[] = { { 255, 0, 0 }, { 0, 0, 255 } };

@@ -2,7 +2,7 @@
 #include "game.h"
 #include "m_lib.h"
 #include "m_event.h"
-#include "MSL_C/w_math.h"
+#include <math.h>
 #include "sys_math.h"
 
 /**

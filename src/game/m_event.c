@@ -28,6 +28,25 @@ typedef union ymdh {
     u32 raw;
 } mEv_ymdh_u;
 
+static inline u32 mEv_ymdh_raw(const mEv_ymdh_u* u) {
+    return ((u32)u->year << 24) | ((u32)u->month << 16) | ((u32)u->day << 8) | (u32)u->hour;
+}
+
+static inline void mEv_ymdh_set_raw(mEv_ymdh_u* u, u32 v) {
+    u->year = (u8)(v >> 24);
+    u->month = (u8)(v >> 16);
+    u->day = (u8)(v >> 8);
+    u->hour = (u8)v;
+}
+
+#define mEv_RAW(x) \
+    _Generic((x), mEv_MonthDay_u: mEv_md_raw, mEv_schedule_date_u: mEv_sd_raw, mEv_ymdh_u: mEv_ymdh_raw)(&(x))
+#define mEv_SET_RAW(x, v)                                                                                         \
+    _Generic((x), mEv_MonthDay_u: mEv_md_set_raw, mEv_schedule_date_u: mEv_sd_set_raw, mEv_ymdh_u: mEv_ymdh_set_raw)( \
+        &(x), (v))
+#define mEv_MD(x) mEv_sd_md(&(x))
+#define mEv_SET_MD(x, v) mEv_sd_set_md(&(x), (v))
+
 static int update_save_area(void);
 
 extern void mEv_ClearSpecialEvent(mEv_special_c* special_event) {
@@ -434,7 +453,7 @@ static u16 after_n_day(u16 month_day, int n_day) {
     mEv_MonthDay_u after;
     u8 day;
 
-    after.raw = month_day;
+    mEv_SET_RAW(after, month_day);
 
     if (n_day >= 0) {
         day = last_day_of_month(after.month);
@@ -463,7 +482,7 @@ static u16 after_n_day(u16 month_day, int n_day) {
         }
     }
 
-    return after.raw;
+    return mEv_RAW(after);
 }
 
 extern lbRTC_day_t mEv_get_next_weekday(lbRTC_weekday_t weekday) {
@@ -641,24 +660,24 @@ static int add_event_today(u16 month_day, mEv_schedule_c* schedule) {
         lbRTC_hour_t i;
 
         if ((start_hour & mEv_SCHEDULE_TODAY) != 0) {
-            ev_today->begin_date.raw = month_day;
-            ev_today->end_date.raw = month_day;
+            mEv_SET_RAW(ev_today->begin_date, month_day);
+            mEv_SET_RAW(ev_today->end_date, month_day);
             start_hour &= ~mEv_SCHEDULE_TODAY;
             end_hour &= ~mEv_SCHEDULE_TODAY;
         } else {
-            ev_today->begin_date.raw = schedule->date[0].md;
-            ev_today->end_date.raw = schedule->date[1].md;
+            mEv_SET_RAW(ev_today->begin_date, mEv_MD(schedule->date[0]));
+            mEv_SET_RAW(ev_today->end_date, mEv_MD(schedule->date[1]));
         }
 
         if ((start_hour & mEv_SCHEDULE_MULTIDAY) != 0) {
             start_hour &= ~mEv_SCHEDULE_MULTIDAY;
             end_hour &= ~mEv_SCHEDULE_MULTIDAY;
 
-            if (month_day != schedule->date[0].md) {
+            if (month_day != mEv_MD(schedule->date[0])) {
                 start_hour = 0;
             }
 
-            if (month_day != schedule->date[1].md) {
+            if (month_day != mEv_MD(schedule->date[1])) {
                 end_hour = 23;
             }
         }
@@ -701,7 +720,7 @@ static int check_and_clear_event_today(Event_c* event, int type) {
             if (type == today_event->type && flags == 0) {
                 today_event->type = -1;
                 today_event->active_hours = 0;
-                today_event->end_date.raw = 0;
+                mEv_SET_RAW(today_event->end_date, 0);
                 today_event->status = 0;
                 n_today_events--;
                 index_today[type] = 0xFF;
@@ -735,7 +754,7 @@ static int delete_too_short_event(Event_c* event, int type, u32 date) {
             case mEv_EVENT_HARVEST_MOON_FESTIVAL:
             case mEv_EVENT_FISHING_TOURNEY_2:
             case mEv_EVENT_HARVEST_FESTIVAL: {
-                new_date.raw = date;
+                mEv_SET_RAW(new_date, date);
                 new_date.d.hour = mEv_get_end_time(today_event->type);
 
                 break;
@@ -744,8 +763,8 @@ static int delete_too_short_event(Event_c* event, int type, u32 date) {
             case mEv_EVENT_HALLOWEEN:
             case mEv_EVENT_TOY_DAY_JINGLE:
             case mEv_EVENT_NEW_YEARS_EVE_COUNTDOWN: {
-                new_date.raw = 0;
-                new_date.md = today_event->end_date.raw;
+                mEv_SET_RAW(new_date, 0);
+                mEv_SET_MD(new_date, mEv_RAW(today_event->end_date));
                 new_date.d.hour = mEv_get_end_time(today_event->type);
 
                 break;
@@ -756,7 +775,7 @@ static int delete_too_short_event(Event_c* event, int type, u32 date) {
             }
         }
 
-        if (new_date.raw != date) {
+        if (mEv_RAW(new_date) != date) {
             return FALSE;
         }
 
@@ -778,7 +797,8 @@ static void init_today_event() {
 
         ev_today->type = -1;
         ev_today->active_hours = 0;
-        ev_today->begin_date.raw = ev_today->end_date.raw = 0;
+        mEv_SET_RAW(ev_today->begin_date, 0);
+        mEv_SET_RAW(ev_today->end_date, 0);
         ev_today->status = 0;
     }
 
@@ -795,7 +815,8 @@ static void init_time_seat() {
         mEv_event_today_c* ev_today = &event_today[i];
 
         ev_today->active_hours = 0;
-        ev_today->begin_date.raw = ev_today->end_date.raw = 0;
+        mEv_SET_RAW(ev_today->begin_date, 0);
+        mEv_SET_RAW(ev_today->end_date, 0);
         ev_today->status &= ~mEv_STATUS_EXIST;
     }
 }
@@ -888,22 +909,22 @@ static int init_special_event(int new_event) {
     event_year = Save_Get(event_year);
     type = ev_save_common->special_event.type;
 
-    rtc_sched.raw = 0;
+    mEv_SET_RAW(rtc_sched, 0);
     rtc_sched.d.month = rtc_time->month;
     rtc_sched.d.day = rtc_time->day;
 
-    special_monthday[0].raw = dates_p[mEv_SAVE_DATE_SPECIAL1];
+    mEv_SET_RAW(special_monthday[0], dates_p[mEv_SAVE_DATE_SPECIAL1]);
 
-    special_ymdh.raw = (dates_p[mEv_SAVE_DATE_SPECIAL0] << 8) & 0x000FFFF00;
+    mEv_SET_RAW(special_ymdh, (dates_p[mEv_SAVE_DATE_SPECIAL0] << 8) & 0x000FFFF00);
     special_ymdh.year = event_year % 100;
 
     
     
 #if VERSION >= VER_GAFU01_00
-    rtc_ymdh.raw = (rtc_sched.md) << 8;
+    mEv_SET_RAW(rtc_ymdh, (mEv_MD(rtc_sched)) << 8);
     rtc_ymdh.year = rtc_time->year % 100;
     rtc_ymdh.hour = rtc_time->hour;
-    special_end_ymdh.raw = (dates_p[mEv_SAVE_DATE_SPECIAL2] << 8) & 0x000FFFF00;
+    mEv_SET_RAW(special_end_ymdh, (dates_p[mEv_SAVE_DATE_SPECIAL2] << 8) & 0x000FFFF00);
     t = event_year % 100;
     if (dates_p[mEv_SAVE_DATE_SPECIAL0] > dates_p[mEv_SAVE_DATE_SPECIAL2]) {
         t++;
@@ -911,19 +932,19 @@ static int init_special_event(int new_event) {
 
     special_end_ymdh.year = t;
 #else
-    rtc_ymdh.raw = (rtc_sched.md) << 8;
+    mEv_SET_RAW(rtc_ymdh, (mEv_MD(rtc_sched)) << 8);
     rtc_ymdh.year = rtc_time->year % 100;
     rtc_ymdh.hour = rtc_time->hour;
-    special_end_ymdh.raw = (dates_p[mEv_SAVE_DATE_SPECIAL2] << 8) & 0x000FFFF00;
+    mEv_SET_RAW(special_end_ymdh, (dates_p[mEv_SAVE_DATE_SPECIAL2] << 8) & 0x000FFFF00);
     special_end_ymdh.year = (event_year % 100) + ((dates_p[mEv_SAVE_DATE_SPECIAL0] > dates_p[mEv_SAVE_DATE_SPECIAL2] &&
-                                                   dates_p[mEv_SAVE_DATE_SPECIAL0] > rtc_sched.md)
+                                                   dates_p[mEv_SAVE_DATE_SPECIAL0] > mEv_MD(rtc_sched))
                                                       ? 1
                                                       : 0);
 #endif
 
     special_end_ymdh.hour = get_special_event_end_time(type);
 
-    if (check_ymdh_range(rtc_ymdh.raw, special_ymdh.raw, special_end_ymdh.raw) == FALSE || new_event) {
+    if (check_ymdh_range(mEv_RAW(rtc_ymdh), mEv_RAW(special_ymdh), mEv_RAW(special_end_ymdh)) == FALSE || new_event) {
         int player_id = Common_Get(now_private)->player_ID.player_id;
         int n;
         int seed = player_id;
@@ -957,17 +978,17 @@ static int init_special_event(int new_event) {
                 next_event_day_gap = 2; // minimum of 2 days between special events
             }
 
-            special_monthday[0].raw = after_n_day(rtc_sched.md, next_event_day_gap);
+            mEv_SET_RAW(special_monthday[0], after_n_day(mEv_MD(rtc_sched), next_event_day_gap));
 // Aus version prevents special events from happening on the last day of the year
 #if VERSION >= VER_GAFU01_00
-            if (special_monthday[0].raw == mEv_MonthDay(lbRTC_DECEMBER, 31)) {
-                special_monthday[0].raw = after_n_day(special_monthday[0].raw, 1);
+            if (mEv_RAW(special_monthday[0]) == mEv_MonthDay(lbRTC_DECEMBER, 31)) {
+                mEv_SET_RAW(special_monthday[0], after_n_day(mEv_RAW(special_monthday[0]), 1));
             }
 #endif
-            if (rtc_sched.md <= sale_day && sale_day <= special_monthday[0].raw) {
+            if (mEv_MD(rtc_sched) <= sale_day && sale_day <= mEv_RAW(special_monthday[0])) {
                 /* Force the next special event to be Crazy Redd since Sale Day falls between now and the rolled
                  * event date */
-                special_monthday[0].raw = sale_day;
+                mEv_SET_RAW(special_monthday[0], sale_day);
                 type = mEv_EVENT_BROKER_SALE;
             }
 
@@ -979,8 +1000,8 @@ static int init_special_event(int new_event) {
                     lbRTC_day_t last_day = last_day_of_month(special_monthday[0].month);
 
                     if (special_monthday[0].day != last_day &&
-                        (special_monthday[0].raw < mEv_MonthDay(lbRTC_JANUARY, 1) ||
-                         special_monthday[0].raw > mEv_MonthDay(lbRTC_JANUARY, 3)) &&
+                        (mEv_RAW(special_monthday[0]) < mEv_MonthDay(lbRTC_JANUARY, 1) ||
+                         mEv_RAW(special_monthday[0]) > mEv_MonthDay(lbRTC_JANUARY, 3)) &&
                         mEv_CheckEvent(mEv_SAVED_RENEWSHOP) != TRUE) {
                         /* Set shop sale starting hour randomly between 12PM and 7PM */
                         Save_Get(event_save_common).dates[mEv_SAVE_DATE_SPECIAL3] = 12 + RANDOM(8);
@@ -990,7 +1011,7 @@ static int init_special_event(int new_event) {
                 }
 
                 case mEv_EVENT_BROKER_SALE: {
-                    if (special_monthday[0].raw != mEv_MonthDay(lbRTC_JULY, 4)) {
+                    if (mEv_RAW(special_monthday[0]) != mEv_MonthDay(lbRTC_JULY, 4)) {
                         /* Set broker sale start hour to 6PM when it's not the Fireworks Festival */
                         Save_Get(event_save_common).dates[mEv_SAVE_DATE_SPECIAL3] = 18;
                         break;
@@ -999,7 +1020,7 @@ static int init_special_event(int new_event) {
                 }
 
                 case mEv_EVENT_GYPSY: {
-                    if (special_monthday[0].raw != mEv_MonthDay(lbRTC_DECEMBER, 31)) {
+                    if (mEv_RAW(special_monthday[0]) != mEv_MonthDay(lbRTC_DECEMBER, 31)) {
                         Save_Get(event_save_common).dates[mEv_SAVE_DATE_SPECIAL3] =
                             21; // default event start time is 9pm?
                         break;
@@ -1011,11 +1032,11 @@ static int init_special_event(int new_event) {
             break;
         }
 
-        special_end_monthday.raw = after_n_day(special_monthday[0].raw, type != mEv_EVENT_SHOP_SALE); // ??
+        mEv_SET_RAW(special_end_monthday, after_n_day(mEv_RAW(special_monthday[0]), type != mEv_EVENT_SHOP_SALE)); // ??
         Save_Get(event_save_common).special_event.type = type;
-        dates_p[mEv_SAVE_DATE_SPECIAL0] = rtc_sched.md;             // current date
-        dates_p[mEv_SAVE_DATE_SPECIAL1] = special_monthday[0].raw;  // start date
-        dates_p[mEv_SAVE_DATE_SPECIAL2] = special_end_monthday.raw; // end date
+        dates_p[mEv_SAVE_DATE_SPECIAL0] = mEv_MD(rtc_sched);             // current date
+        dates_p[mEv_SAVE_DATE_SPECIAL1] = mEv_RAW(special_monthday[0]);  // start date
+        dates_p[mEv_SAVE_DATE_SPECIAL2] = mEv_RAW(special_end_monthday); // end date
         Save_Set(event_year, rtc_time->year);
         Save_Get(post_office).leaflet_recipient_flags.event_flags =
             0b1111; // deliver leaflet to all players if necessary for event
@@ -1036,8 +1057,8 @@ static int update_special_event(mEv_schedule_c* sched) {
         case mEv_EVENT_SHOP_SALE:
         case mEv_EVENT_CARPET_PEDDLER: {
             if (type != sched->type) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
                 active = FALSE;
             }
             break;
@@ -1045,8 +1066,8 @@ static int update_special_event(mEv_schedule_c* sched) {
 
         case mEv_EVENT_HANDBILL_SHOP_SALE: {
             if (type != mEv_EVENT_SHOP_SALE) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
                 active = FALSE;
             }
             break;
@@ -1054,8 +1075,8 @@ static int update_special_event(mEv_schedule_c* sched) {
 
         case mEv_EVENT_HANDBILL_BROKER: {
             if (type != mEv_EVENT_BROKER_SALE) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
                 active = FALSE;
             }
             break;
@@ -1082,11 +1103,11 @@ extern u16 mEv_get_bargain_day() {
 static int is_special_event_valid() {
     mEv_schedule_date_u date;
 
-    date.raw = 0;
+    mEv_SET_RAW(date, 0);
     date.d.month = Common_Get(time.rtc_time.month);
     date.d.day = Common_Get(time.rtc_time.day);
 
-    return check_date_range(date.md, Save_Get(event_save_common).dates[mEv_SAVE_DATE_SPECIAL0],
+    return check_date_range(mEv_MD(date), Save_Get(event_save_common).dates[mEv_SAVE_DATE_SPECIAL0],
                             Save_Get(event_save_common).dates[mEv_SAVE_DATE_SPECIAL2]);
 }
 
@@ -1152,9 +1173,9 @@ static void init_weekly_event() {
     switch (rtc_time->weekday) {
         case lbRTC_SUNDAY: {
             /* Update Joan's data */
-            if (today_date.raw != sched_date) {
+            if (mEv_RAW(today_date) != sched_date) {
                 mEv_ClearEventKabuPeddler(kabu_peddler_data);
-                sched_date = today_date.raw;
+                sched_date = mEv_RAW(today_date);
                 event_dates[mEv_SAVE_DATE_WEEKLY] = sched_date;
                 Save_Get(event_save_common).weekly_event.type = mEv_EVENT_KABU_PEDDLER;
                 flag = 1;
@@ -1164,8 +1185,8 @@ static void init_weekly_event() {
 
         case lbRTC_SATURDAY: {
             /* Update K.K. Slider's data */
-            if (today_date.raw != sched_date) {
-                sched_date = today_date.raw;
+            if (mEv_RAW(today_date) != sched_date) {
+                sched_date = mEv_RAW(today_date);
                 event_dates[mEv_SAVE_DATE_WEEKLY] = sched_date;
                 Save_Get(event_save_common).weekly_event.type = mEv_EVENT_KK_SLIDER;
                 flag = 1;
@@ -1174,21 +1195,21 @@ static void init_weekly_event() {
         }
 
         default: {
-            monday_date = after_n_day(today_date.raw, lbRTC_MONDAY - rtc_time->weekday);
-            friday_date = after_n_day(today_date.raw, lbRTC_FRIDAY - rtc_time->weekday);
+            monday_date = after_n_day(mEv_RAW(today_date), lbRTC_MONDAY - rtc_time->weekday);
+            friday_date = after_n_day(mEv_RAW(today_date), lbRTC_FRIDAY - rtc_time->weekday);
 
             /* Check if we should reschedule Gulliver */
             if (sched_date == 0 || check_date_range(sched_date, monday_date, friday_date) == FALSE) {
-                u8 ofs = 1 + (today_date.raw + rtc_time->hour) % 5;
+                u8 ofs = 1 + (mEv_RAW(today_date) + rtc_time->hour) % 5;
                 /* Schedule a new date for the event between Monday & Friday */
-                sched_date = after_n_day(today_date.raw, ofs - rtc_time->weekday);
+                sched_date = after_n_day(mEv_RAW(today_date), ofs - rtc_time->weekday);
                 event_dates[mEv_SAVE_DATE_WEEKLY] = sched_date;
                 Save_Get(event_save_common).weekly_event.type = mEv_EVENT_DOZAEMON; // Gulliver
                 Save_Get(event_save_common).dozaemon_completed = FALSE;
             }
 
             /* Check if Guillver should spawn today */
-            if (sched_date == today_date.raw) {
+            if (sched_date == mEv_RAW(today_date)) {
                 flag = mEv_EVENT_DOZAEMON;
             }
 
@@ -1197,7 +1218,7 @@ static void init_weekly_event() {
     }
 
     /* Check if we should schedule Tortimer's 3rd bridge event */
-    if (rtc_time->weekday == lbRTC_SATURDAY || (rtc_time->weekday != lbRTC_SUNDAY && sched_date != today_date.raw)) {
+    if (rtc_time->weekday == lbRTC_SATURDAY || (rtc_time->weekday != lbRTC_SUNDAY && sched_date != mEv_RAW(today_date))) {
         /* Gulliver wasn't scheduled today, so check the criteria is met */
         if (Common_Get(player_no) != mPr_FOREIGNER && Save_Get(now_npc_max) >= ANIMAL_NUM_MAX &&
             Save_Get(bridge).exists != TRUE && mSC_LightHouse_travel_check() == FALSE) {
@@ -1205,9 +1226,16 @@ static void init_weekly_event() {
         }
 
         /* Update bridge location seed and date */
-        if (flag == mEv_EVENT_SONCHO_BRIDGE_MAKE && Save_Get(event_save_common).bridge_day != today_date.raw) {
-            Save_Get(event_save_common).bridge_day = today_date.raw;
-            Save_Get(event_save_common).bridge_flags.raw++;
+        if (flag == mEv_EVENT_SONCHO_BRIDGE_MAKE && Save_Get(event_save_common).bridge_day != mEv_RAW(today_date)) {
+            Save_Get(event_save_common).bridge_day = mEv_RAW(today_date);
+            {
+                u8 flags = (u8)((Save_Get(event_save_common).bridge_flags.used_all_locations << 7) |
+                                Save_Get(event_save_common).bridge_flags.locations_used);
+
+                flags++;
+                Save_Get(event_save_common).bridge_flags.used_all_locations = flags >> 7;
+                Save_Get(event_save_common).bridge_flags.locations_used = flags & 0x7F;
+            }
         }
     }
 
@@ -1221,17 +1249,17 @@ static void init_weekly_event() {
     Save_Get(event_save_common).weekly_event.flags = flag;
     Save_Get(event_save_common).ghost_event_type = mEv_EVENT_NUM; // Wisp is not set to spawn
     ghost_date = Save_Get(event_save_common).ghost_day;
-    monday_date = after_n_day(today_date.raw, -lbRTC_WEEK);
-    friday_date = after_n_day(today_date.raw, 4);
+    monday_date = after_n_day(mEv_RAW(today_date), -lbRTC_WEEK);
+    friday_date = after_n_day(mEv_RAW(today_date), 4);
 
     /* Check if we should refresh Wisp's spawn date */
     if (ghost_date == 0 || check_date_range(ghost_date, monday_date, friday_date) == FALSE) {
-        ghost_date = after_n_day(today_date.raw, 2 + RANDOM(3));
+        ghost_date = after_n_day(mEv_RAW(today_date), 2 + RANDOM(3));
         Save_Get(event_save_common).ghost_day = ghost_date;
     }
 
     /* Spawn Wisp if his scheduled appearance date is within [today-7, today] */
-    if (check_date_range(ghost_date, monday_date, today_date.raw)) {
+    if (check_date_range(ghost_date, monday_date, mEv_RAW(today_date))) {
         Save_Get(event_save_common).ghost_event_type = mEv_EVENT_GHOST;
     }
 }
@@ -1241,8 +1269,8 @@ static void update_soncho_event(mEv_schedule_c* sched) {
         case mEv_EVENT_SONCHO_VACATION_JANUARY:
         case mEv_EVENT_SONCHO_VACATION_FEBRUARY: {
             if (mSC_LightHouse_Event_Start() == FALSE) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
             }
 
             break;
@@ -1250,8 +1278,8 @@ static void update_soncho_event(mEv_schedule_c* sched) {
 
         case mEv_EVENT_SONCHO_FISHING_TOURNEY_1: {
             if (Save_Get(event_save_common).soncho_event_type != 0xFF) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
             }
 
             break;
@@ -1259,8 +1287,8 @@ static void update_soncho_event(mEv_schedule_c* sched) {
 
         case mEv_EVENT_SONCHO_FISHING_TOURNEY_2: {
             if (Save_Get(event_save_common).soncho_event_type != 0xFF) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
             }
 
             break;
@@ -1324,8 +1352,8 @@ static void update_sports_fair(mEv_schedule_c* sched, lbRTC_day_t* equinox_day) 
         case mEv_EVENT_SPRING_EQUINOX:
         case mEv_EVENT_SONCHO_SPRING_SPORTS_FAIR: {
             if (rtc_time->month != lbRTC_MARCH || rtc_time->day != lbRk_VernalEquinoxDay(rtc_time->year)) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
             } else {
                 sched->date[0].d.day = rtc_time->day;
                 sched->date[1].d.day = rtc_time->day;
@@ -1346,8 +1374,8 @@ static void update_sports_fair(mEv_schedule_c* sched, lbRTC_day_t* equinox_day) 
         case mEv_EVENT_AUTUMN_EQUINOX:
         case mEv_EVENT_SONCHO_FALL_SPORTS_FAIR: {
             if (rtc_time->month != lbRTC_SEPTEMBER || rtc_time->day != lbRk_AutumnalEquinoxDay(rtc_time->year)) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
             } else {
                 sched->date[0].d.day = rtc_time->day;
                 sched->date[1].d.day = rtc_time->day;
@@ -1372,8 +1400,8 @@ static void update_sports_fair(mEv_schedule_c* sched, lbRTC_day_t* equinox_day) 
         case mEv_EVENT_SPORTS_FAIR:
         case mEv_EVENT_WEATHER_SPORTS_FAIR: {
             if (*equinox_day == 0) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
             } else {
                 sched->date[0].d.day = *equinox_day;
                 sched->date[1].d.day = *equinox_day;
@@ -1457,8 +1485,8 @@ static void update_weekly_event(mEv_schedule_c* sched) {
         case mEv_EVENT_KK_SLIDER:
         case mEv_EVENT_KABU_PEDDLER: {
             if (type != sched->type) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
             }
 
             break;
@@ -1466,8 +1494,8 @@ static void update_weekly_event(mEv_schedule_c* sched) {
 
         case mEv_EVENT_DOZAEMON: {
             if (Save_Get(event_save_common).weekly_event.flags == mEv_EVENT_SONCHO_BRIDGE_MAKE || type != sched->type) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
             }
 
             break;
@@ -1476,8 +1504,8 @@ static void update_weekly_event(mEv_schedule_c* sched) {
         case mEv_EVENT_SONCHO_BRIDGE_MAKE:
         case mEv_EVENT_MASK_NPC: {
             if (Save_Get(event_save_common).weekly_event.flags != sched->type) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
             }
 
             break;
@@ -1485,8 +1513,8 @@ static void update_weekly_event(mEv_schedule_c* sched) {
 
         case mEv_EVENT_BRIDGE_MAKE: {
             if (Save_Get(bridge).pending != TRUE || Save_Get(bridge).exists || mEv_bridge_time_check() == lbRTC_OVER) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
             }
 
             break;
@@ -1494,8 +1522,8 @@ static void update_weekly_event(mEv_schedule_c* sched) {
 
         case mEv_EVENT_GHOST: {
             if (Save_Get(event_save_common).ghost_event_type != mEv_EVENT_GHOST) {
-                sched->date[1].raw = 0;
-                sched->date[0].raw = 0;
+                mEv_SET_RAW(sched->date[1], 0);
+                mEv_SET_RAW(sched->date[0], 0);
             }
 
             break;
@@ -1603,12 +1631,12 @@ static u32 decode_date(u32 d) {
     int day;
     int hour;
 
-    date.raw = d;
+    mEv_SET_RAW(date, d);
 
     /* Process month */
     month = date.d.month;
     if ((month & mEv_SCHEDULE_USE_SAVE_MONTH)) {
-        date.md = Save_Get(event_save_common).dates[month & 0xF];
+        mEv_SET_MD(date, Save_Get(event_save_common).dates[month & 0xF]);
     } else if ((month & mEv_SCHEDULE_NOW_MONTH)) {
         date.d.month = rtc_time->month;
     } else if ((month & mEv_SCHEDULE_HARVEST_MOON_DATE)) {
@@ -1625,7 +1653,7 @@ static u32 decode_date(u32 d) {
         date.d.day = m_weekday2day(date.d.month, day & ~mEv_SCHEDULE_DAY_AFTER);
 
         if ((day & mEv_SCHEDULE_DAY_AFTER)) {
-            date.md = after_n_day(date.md, 1);
+            mEv_SET_MD(date, after_n_day(mEv_MD(date), 1));
         }
     } else if ((day & mEv_SCHEDULE_LAST_DAY_OF_MONTH)) {
         date.d.day = last_day_of_month(date.d.month);
@@ -1639,7 +1667,7 @@ static u32 decode_date(u32 d) {
         date.d.hour = Save_Get(event_save_common).dates[(hour & 0x1F) % 8] | (hour & 0xC0);
     }
 
-    return date.raw;
+    return mEv_RAW(date);
 }
 
 static int set_one_time_active(int event) {
@@ -1705,11 +1733,11 @@ static void update_schedule_today(Event_c* event) {
         today_date.d.day = rtc_time->day;
         today_date.d.hour = rtc_time->hour;
         today_date.d._2 = 0;
-        Save_Get(event_save_common).dates[mEv_SAVE_DATE_TODAY] = today_date.md;
+        Save_Get(event_save_common).dates[mEv_SAVE_DATE_TODAY] = mEv_MD(today_date);
 
         birthday_date.month = priv->birthday.month;
         birthday_date.day = priv->birthday.day;
-        Save_Get(event_save_common).dates[mEv_SAVE_DATE_BIRTHDAY] = birthday_date.raw;
+        Save_Get(event_save_common).dates[mEv_SAVE_DATE_BIRTHDAY] = mEv_RAW(birthday_date);
 
         Save_Get(event_save_common).soncho_event_type = 0xFF;
 
@@ -1735,30 +1763,30 @@ static void update_schedule_today(Event_c* event) {
                         break;
                 }
 
-                sched.date[0].raw = decode_date(sched.date[0].raw);
+                mEv_SET_RAW(sched.date[0], decode_date(mEv_RAW(sched.date[0])));
                 camper_date.month = sched.date[0].d.month;
                 camper_date.day = sched.date[0].d.day;
 
                 /* Move back to the previous week if processing on Sunday */
                 if (rtc_time->weekday == lbRTC_SUNDAY) {
-                    camper_date.raw = after_n_day(camper_date.raw, -lbRTC_WEEK);
+                    mEv_SET_RAW(camper_date, after_n_day(mEv_RAW(camper_date), -lbRTC_WEEK));
                     sched.date[0].d.month = camper_date.month;
                     sched.date[0].d.day = camper_date.day;
                 }
 
                 /* Summer campers only stick around for one day */
-                camper_date.raw = after_n_day(camper_date.raw, 1);
+                mEv_SET_RAW(camper_date, after_n_day(mEv_RAW(camper_date), 1));
                 sched.date[1].d.month = camper_date.month;
                 sched.date[1].d.day = camper_date.day;
             } else {
-                sched.date[0].raw = decode_date(sched.date[0].raw);
-                sched.date[1].raw = decode_date(sched.date[1].raw);
+                mEv_SET_RAW(sched.date[0], decode_date(mEv_RAW(sched.date[0])));
+                mEv_SET_RAW(sched.date[1], decode_date(mEv_RAW(sched.date[1])));
             }
 
             /* Check & add event if it is currently active */
-            if (check_date_range(today_date.md, sched.date[0].md, sched.date[1].md)) {
+            if (check_date_range(mEv_MD(today_date), mEv_MD(sched.date[0]), mEv_MD(sched.date[1]))) {
                 update_soncho_event2(sched_p);
-                add_event_today(today_date.md, sched_p);
+                add_event_today(mEv_MD(today_date), sched_p);
             }
         }
 
@@ -1802,7 +1830,7 @@ static void update_schedule_today(Event_c* event) {
             new_ev_sched.date[0].d.month = rtc_time->month;
             new_ev_sched.date[1].d.day = rtc_time->day;
             new_ev_sched.date[0].d.day = rtc_time->day;
-            add_event_today(today_date.md, &new_ev_sched);
+            add_event_today(mEv_MD(today_date), &new_ev_sched);
             set_one_time_active(type);
         }
 
@@ -1846,12 +1874,12 @@ static void update_schedule_today(Event_c* event) {
             new_ev_sched.date[0].d.month = rtc_time->month;
             new_ev_sched.date[1].d.day = rtc_time->day;
             new_ev_sched.date[0].d.day = rtc_time->day;
-            add_event_today(today_date.md, &new_ev_sched);
+            add_event_today(mEv_MD(today_date), &new_ev_sched);
         }
 
         if (first_enter_check()) {
             for (i = 0; i < mEv_EVENT_NUM; i++) {
-                delete_too_short_event(event, i, today_date.raw);
+                delete_too_short_event(event, i, mEv_RAW(today_date));
             }
         }
 
@@ -2634,11 +2662,11 @@ extern void mEv_make_new_special_event() {
             memcpy(sched_p, &event_schedule_data[i], sizeof(mEv_schedule_c));
 
             if (update_special_event(sched_p)) {
-                sched.date[0].raw = decode_date(sched.date[0].raw);
-                sched.date[1].raw = decode_date(sched.date[1].raw);
+                mEv_SET_RAW(sched.date[0], decode_date(mEv_RAW(sched.date[0])));
+                mEv_SET_RAW(sched.date[1], decode_date(mEv_RAW(sched.date[1])));
 
-                if (check_date_range(today_date.md, sched.date[0].md, sched.date[1].md)) {
-                    add_event_today(today_date.md, sched_p);
+                if (check_date_range(mEv_MD(today_date), mEv_MD(sched.date[0]), mEv_MD(sched.date[1]))) {
+                    add_event_today(mEv_MD(today_date), sched_p);
                 }
             }
         }
@@ -2735,14 +2763,14 @@ extern int mEv_get_special_event_state() {
     event_date.day = Save_Get(event_save_data).special.scheduled.day;
     event_date.hour = Save_Get(event_save_data).special.scheduled.hour;
 
-    event_date_start.raw = event_date.raw;
-    today_date_start.raw = today_date.raw;
+    mEv_SET_RAW(event_date_start, mEv_RAW(event_date));
+    mEv_SET_RAW(today_date_start, mEv_RAW(today_date));
 
     today_date_start.hour = 0;
     event_date_start.hour = 0;
 
     if (event_type == mEv_EVENT_SHOP_SALE) {
-        if (event_date.raw == today_date.raw) {
+        if (mEv_RAW(event_date) == mEv_RAW(today_date)) {
             active = TRUE;
         }
     } else if (mEv_check_status(event_type, mEv_STATUS_ACTIVE)) {
@@ -2751,9 +2779,9 @@ extern int mEv_get_special_event_state() {
 
     if (active) {
         res = mEv_SPECIAL_STATE_ACTIVE;
-    } else if (check_ymdh_range(today_date.raw, event_date_start.raw, event_date.raw)) {
+    } else if (check_ymdh_range(mEv_RAW(today_date), mEv_RAW(event_date_start), mEv_RAW(event_date))) {
         res = mEv_SPECIAL_STATE_SCHEDULED_TODAY;
-    } else if (Save_Get(event_save_data).special.kind != 0xFFFFFFFF && event_date_start.raw > today_date_start.raw) {
+    } else if (Save_Get(event_save_data).special.kind != 0xFFFFFFFF && mEv_RAW(event_date_start) > mEv_RAW(today_date_start)) {
         res = mEv_SPECIAL_STATE_SCHEDULED_LATER;
     }
 
@@ -2775,7 +2803,7 @@ extern int mEv_snowman_born_check() {
     snowman_date.day = Save_Get(snowman_day);
     snowman_date.hour = Save_Get(snowman_hour);
 
-    snowman_date_end.raw = snowman_date.raw;
+    mEv_SET_RAW(snowman_date_end, mEv_RAW(snowman_date));
     snowman_date_end.hour = 5;
 
     if (snowman_date.hour >= 6) {
@@ -2784,9 +2812,9 @@ extern int mEv_snowman_born_check() {
 
         snowman_monthday.month = snowman_date.month;
         snowman_monthday.day = snowman_date.day;
-        next_monthday.raw = after_n_day(snowman_monthday.raw, 1);
+        mEv_SET_RAW(next_monthday, after_n_day(mEv_RAW(snowman_monthday), 1));
 
-        if (next_monthday.raw == mEv_MonthDay(lbRTC_JANUARY, 1)) {
+        if (mEv_RAW(next_monthday) == mEv_MonthDay(lbRTC_JANUARY, 1)) {
             snowman_date_end.year = (snowman_date_end.year + 1) % 100;
         }
 
@@ -2794,7 +2822,7 @@ extern int mEv_snowman_born_check() {
         snowman_date_end.day = next_monthday.day;
     }
 
-    if (check_ymdh_range(today_date.raw, snowman_date.raw, snowman_date_end.raw)) {
+    if (check_ymdh_range(mEv_RAW(today_date), mEv_RAW(snowman_date), mEv_RAW(snowman_date_end))) {
         return FALSE;
     }
 

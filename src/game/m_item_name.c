@@ -5,6 +5,8 @@
 #include "m_room_type.h"
 #include "m_actor_type.h"
 #include "m_font.h"
+#include "assets/data/item/item_name.h"
+#include "ac_asset.h"
 
 static u8 itemArt_Paper[PAPER_NUM] = {
     mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE,
@@ -463,8 +465,8 @@ static u8 ftrArt[FTR_NUM] = {
  * @param dst Destination item name buffer
  * @param src Source item name buffer
  **/
-static void mIN_dma_itemName(u8* dst, u8* src) {
-    mem_copy(dst, src, mIN_ITEM_NAME_LEN);
+static void mIN_dma_itemName(u8* dst, const u8* table, u32 ofs) {
+    AC_AssetCopy(dst, table, ofs, mIN_ITEM_NAME_LEN);
 }
 
 /**
@@ -509,28 +511,28 @@ extern void mIN_copy_name_str(u8* dst, mActor_name_t item) {
     } else {
         switch (ITEM_NAME_GET_TYPE(item_no)) {
             case NAME_TYPE_ITEM1: {
-                mIN_dma_itemName(item_name, itemName_table[ITEM_NAME_GET_CAT(item_no)] +
-                                                ITEM_NAME_GET_INDEX(item_no) * mIN_ITEM_NAME_LEN);
+                mIN_dma_itemName(item_name, itemName_table[ITEM_NAME_GET_CAT(item_no)],
+                                 ITEM_NAME_GET_INDEX(item_no) * mIN_ITEM_NAME_LEN);
                 mem_copy(dst, item_name, mIN_ITEM_NAME_LEN);
                 break;
             }
 
             case NAME_TYPE_FTR0: {
-                mIN_dma_itemName(item_name, ftrName_table + ((item_no / 4) & 0x3FF) * mIN_ITEM_NAME_LEN);
+                mIN_dma_itemName(item_name, ftrName_table, ((item_no / 4) & 0x3FF) * mIN_ITEM_NAME_LEN);
                 mem_copy(dst, item_name, mIN_ITEM_NAME_LEN);
                 break;
             }
 
             case NAME_TYPE_FTR1: {
-                mIN_dma_itemName(item_name, ftrName2_table + ((item_no / 4) & 0x3FF) * mIN_ITEM_NAME_LEN);
+                mIN_dma_itemName(item_name, ftrName2_table, ((item_no / 4) & 0x3FF) * mIN_ITEM_NAME_LEN);
                 mem_copy(dst, item_name, mIN_ITEM_NAME_LEN);
                 break;
             }
 
             default: {
                 if (ITEM_IS_SIGNBOARD(item_no)) {
-                    mIN_dma_itemName(item_name,
-                                     itemName_table[ITEM1_CAT_ETC] + (ITM_SIGNBOARD & 0xFF) * mIN_ITEM_NAME_LEN);
+                    mIN_dma_itemName(item_name, itemName_table[ITEM1_CAT_ETC],
+                                     (ITM_SIGNBOARD & 0xFF) * mIN_ITEM_NAME_LEN);
                     mem_copy(dst, item_name, mIN_ITEM_NAME_LEN);
                 } else if (item_no == EMPTY_NO) {
                     mem_clear(dst, mIN_ITEM_NAME_LEN, CHAR_SPACE);

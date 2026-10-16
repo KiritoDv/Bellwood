@@ -922,7 +922,8 @@ static void select_draw_main(GAME_SELECT* select) {
     rect_moji(g);
 
     {
-        gfxprint_t* gfxprint_p = __alloca(sizeof(gfxprint_t));
+        gfxprint_t gfxprint_obj;
+        gfxprint_t* gfxprint_p = &gfxprint_obj;
         int i;
         gfxprint_init(gfxprint_p);
         gfxprint_open(gfxprint_p, NOW_POLY_OPA_DISP);
@@ -978,7 +979,8 @@ static void select_draw_wait(GAME_SELECT* select) {
 
     rect_moji(g);
     {
-        gfxprint_t* gfxprint_p = __alloca(sizeof(gfxprint_t));
+        gfxprint_t gfxprint_obj;
+        gfxprint_t* gfxprint_p = &gfxprint_obj;
 
         gfxprint_init(gfxprint_p);
         gfxprint_open(gfxprint_p, NOW_POLY_OPA_DISP);

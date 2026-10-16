@@ -1,4 +1,5 @@
 #include "m_design_ovl.h"
+#include "ac_asset.h"
 
 #include "m_debug.h"
 #include "padmgr.h"
@@ -9,12 +10,20 @@
 #include "sys_matrix.h"
 #include "m_needlework_ovl.h"
 #include "m_editEndChk_ovl.h"
+#include "assets/data/model/des_cursor.h"
+#include "assets/data/model/des_cursor2.h"
+#include "assets/data/model/des_marking.h"
+#include "assets/data/model/des_sen.h"
+#include "assets/data/model/des_suuji.h"
+#include "assets/data/model/des_tool.h"
+#include "assets/data/model/des_tool2.h"
+#include "assets/data/model/des_win.h"
 
 #define mDE_POS_MIN 0
 #define mDE_POS_MAX 31
 #define mDE_DESIGN_TEXELS (mNW_ORIGINAL_DESIGN_WIDTH * mNW_ORIGINAL_DESIGN_HEIGHT)
 
-#define mDE_POS2TEXEL(x, y) ((((x) & 7) + ((y) & 7) * 8 + ((((x) & 0x18) >> 3) + (((y) & 0x18) >> 3) * 4) * 0x40) >> 1)
+#define mDE_POS2TEXEL(x, y) (((((y) & 0x1F) * mNW_ORIGINAL_DESIGN_WIDTH) + ((x) & 0x1F)) >> 1)
 
 u16 mDE_SinCosTBL[] = {
     0,    6,    12,   18,   25,   31,   37,   43,   49,   56,   62,   68,   74,   80,   86,   92,   97,   103,  109,
@@ -260,25 +269,11 @@ static void mDE_pallet_RGB5A3_to_RGB24(mDE_Ovl_c* design_ovl) {
     int i;
 
     for (i = 0; i < mNW_PALETTE_COUNT; i++) {
-        u16 color = design_ovl->palette_p[i];
+        u16 color = AC_Pal5551Get(design_ovl->palette_p, i);
 
-        if (color & 0x8000) {
-            // fully opaque, a1r5g5b5
-            // design_ovl->rgb8_pal[i].r = (((color >> 10) & 0x1F) * 255) / 31;
-            // design_ovl->rgb8_pal[i].g = (((color >> 5) & 0x1F) * 255) / 31;
-            // design_ovl->rgb8_pal[i].b = (((color >> 0) & 0x1F) * 255) / 31;
-            design_ovl->rgb8_pal[i].r = (mDE_EXTRACT_COMPONENT(color, 10, 5) * 255) / 31;
-            design_ovl->rgb8_pal[i].g = (mDE_EXTRACT_COMPONENT(color,  5, 5) * 255) / 31;
-            design_ovl->rgb8_pal[i].b = (mDE_EXTRACT_COMPONENT(color,  0, 5) * 255) / 31;
-        } else {
-            // transparent color, a3r4g4b4
-            // design_ovl->rgb8_pal[i].r = ((color >> 8) & 0xF) * 17;
-            // design_ovl->rgb8_pal[i].g = ((color >> 4) & 0xF) * 17;
-            // design_ovl->rgb8_pal[i].b = ((color >> 0) & 0xF) * 17;
-            design_ovl->rgb8_pal[i].r = mDE_EXTRACT_COMPONENT(color, 8, 4) * 17;
-            design_ovl->rgb8_pal[i].g = mDE_EXTRACT_COMPONENT(color, 4, 4) * 17;
-            design_ovl->rgb8_pal[i].b = mDE_EXTRACT_COMPONENT(color, 0, 4) * 17;
-        }
+        design_ovl->rgb8_pal[i].r = (mDE_EXTRACT_COMPONENT(color, 11, 5) * 255) / 31;
+        design_ovl->rgb8_pal[i].g = (mDE_EXTRACT_COMPONENT(color, 6, 5) * 255) / 31;
+        design_ovl->rgb8_pal[i].b = (mDE_EXTRACT_COMPONENT(color, 1, 5) * 255) / 31;
     }
 }
 
@@ -2186,29 +2181,6 @@ void mDE_design_ovl_move(Submenu* submenu) {
     ovl_move_proc[overlay->proc_status](submenu, overlay);
 }
 
-extern Gfx des_sen_waku_model[], des_win_before[], des_win_before_model[], des_win_before_model_2[],
-    des_win_waku_model[], des_win_waku2_model[], des_win_color_model[], des_win_toubai_model[], des_win_main_model[],
-    des_win_color_before_model[], des_win_grid_model[], des_win_grid2_model[], des_cursor_waku2T_model[],
-    des_tool_pen_all_model[], des_tool_nuri_all_model[], des_tool_waku_all_model[], des_tool_kao_all_model[],
-    des_tool_mark_all_model[], des_tool_pen1T_model[], des_tool_nuriT_model[], des_tool_waku1T_model[],
-    des_tool_mark1T_model[], des_tool_undoT_model[], des_tool_pen1_tex_rgb_ia8[], des_tool_pen2_tex_rgb_ia8[],
-    des_tool_pen3_tex_rgb_ia8[], des_tool_nuri1_tex_rgb_ia8[], des_tool_nuri2_tex_rgb_ia8[],
-    des_tool_nuri3_tex_rgb_ia8[], des_tool_nuri4_tex_rgb_ia8[], des_tool_nuri5_tex_rgb_ia8[],
-    des_tool_nuri6_tex_rgb_ia8[], des_tool_waku1_tex_rgb_ia8[], des_tool_waku2_tex_rgb_ia8[],
-    des_tool_waku3_tex_rgb_ia8[], des_tool_waku4_tex_rgb_ia8[], des_tool_waku5_tex_rgb_ia8[],
-    des_tool_mark1_tex_rgb_ia8[], des_tool_mark2_tex_rgb_ia8[], des_tool_mark3_tex_rgb_ia8[],
-    des_tool_mark4_tex_rgb_ia8[], des_tool_kao1_tex[], des_tool_kao2_tex[], des_tool_kao3_tex[], des_tool_kao4_tex[],
-    des_tool_kao5_tex[], des_win_suuji0_tex_rgb_i4[], des_win_suuji1_tex_rgb_i4[], des_win_suuji2_tex_rgb_i4[],
-    des_win_suuji3_tex_rgb_i4[], des_win_suuji4_tex_rgb_i4[], des_win_suuji5_tex_rgb_i4[], des_win_suuji6_tex_rgb_i4[],
-    des_win_suuji7_tex_rgb_i4[], des_win_suuji8_tex_rgb_i4[], des_win_suuji9_tex_rgb_i4[], des_cursor_penT_model[],
-    des_cursor_nuriT_model[], des_cursor_waku1T_model[], des_cursor_mark1_model[], des_cursor_mark2_model[],
-    des_cursor_mark3_model[], des_cursor_mark4_model[], des_cursor_undo_model[], des_cursor_spT_model[],
-    des_cursor_wakuT_model[], des_cursor_kao1T_model[], des_cursor_kao2T_model[], des_cursor_kao3T_model[],
-    des_cursor_kao4_model[], des_cursor_kao5_model[], des_win_area1_model[], des_win_area2_model[],
-    des_win_area4_model[], des_win_area3_model[], des_win_shikiri_model[], des_win_suuji_before[],
-    des_win_suuji3_model[], des_win_suuji4_model[], des_win_suuji2_model[], des_win_suuji1_model[],
-    des_win_marking_model[], des_win_marking2T_model[];
-
 void mDE_set_frame_tool_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu) {
 
     static Gfx* tool_pen_table[] = { des_tool_pen1_tex_rgb_ia8, des_tool_pen2_tex_rgb_ia8, des_tool_pen3_tex_rgb_ia8 };
@@ -2587,9 +2559,8 @@ void mDE_set_frame_main_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu) {
     gSPDisplayList(POLY_OPA_DISP++, des_win_before_model_2);
     gSPDisplayList(POLY_OPA_DISP++, des_win_waku_model);
     gDPSetTextureFilter(POLY_OPA_DISP++, G_TF_POINT);
-    gDPLoadTLUT_Dolphin(POLY_OPA_DISP++, 15, 16, 1, design_ovl->palette_p);
-    gDPLoadTextureBlock_4b_Dolphin(POLY_OPA_DISP++, design_ovl->texture.data, G_IM_FMT_CI, 32, 32, 15, GX_MIRROR,
-                                   GX_MIRROR, 0, 0);
+    gDPLoadTLUT_pal16(POLY_OPA_DISP++, 15, design_ovl->palette_p);
+    gDPLoadTextureBlock_4b(POLY_OPA_DISP++, design_ovl->texture.data, G_IM_FMT_CI, 32, 32, 15, G_TX_MIRROR, G_TX_MIRROR, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
     gSPDisplayList(POLY_OPA_DISP++, des_win_toubai_model);
     gSPDisplayList(POLY_OPA_DISP++, des_win_main_model);
     gDPSetTextureFilter(POLY_OPA_DISP++, G_TF_BILERP);

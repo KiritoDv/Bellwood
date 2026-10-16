@@ -1,3 +1,4 @@
+#include "assets/game/m_msg.h"
 static void mMsg_SetMatrix(mMsg_Window_c* msg_p, GAME* game, int mode) {
   GRAPH* graph = game->graph;
   f32 scale = msg_p->window_scale;

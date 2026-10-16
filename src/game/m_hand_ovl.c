@@ -12,12 +12,10 @@
 #include "m_needlework_ovl.h"
 #include "sys_matrix.h"
 #include "m_rcp.h"
+#include "assets/data/model/cKF_bs_r_hnd.h"
+#include "assets/data/model/inv_item.h"
 
 static mHD_Ovl_c hand_ovl_data;
-
-extern cKF_Animation_R_c cKF_ba_r_hnd_sasu;
-extern cKF_Animation_R_c cKF_ba_r_hnd_side;
-extern cKF_Animation_R_c cKF_ba_r_hnd_catch;
 
 static cKF_AnimInfo_c mHD_animeTable[mHD_ACTION_NUM] = {
     { &cKF_ba_r_hnd_sasu, 1.0f, 1.0f, 16.0f, cKF_FRAMECONTROL_REPEAT, 0.0f },
@@ -42,8 +40,6 @@ static void mHD_set_anime(Submenu* submenu, cKF_SkeletonInfo_R_c* keyframe) {
     cKF_SkeletonInfo_R_init(keyframe, keyframe->skeleton, anim_info->animation, anim_info->start_frame,
                             anim_info->end_frame, anim_info->start_frame, anim_speed, 0.0f, anim_info->mode, NULL);
 }
-
-extern cKF_Skeleton_R_c cKF_bs_r_hnd;
 
 static void mHD_hand_shape_init(Submenu* submenu) {
     mHD_Ovl_c* hand_ovl = submenu->overlay->hand_ovl;
@@ -827,9 +823,6 @@ static void mHD_hand_ovl_move(Submenu* submenu) {
         }
     }
 }
-
-extern Gfx inv_item_shadow_mode[];
-extern Gfx inv_item_mode[];
 
 static void mHD_draw_item(Submenu* submenu, GRAPH* graph, f32* pos) {
     mHD_Ovl_c* hand_ovl = submenu->overlay->hand_ovl;

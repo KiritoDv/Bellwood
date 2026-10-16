@@ -4,10 +4,8 @@
 #include "libultra/libultra.h"
 #include "m_play.h"
 #include "sys_matrix.h"
+#include "assets/data/model/point_light.h"
 Light_buffer light_list_buf;
-
-extern Gfx point_light_init_model[];
-extern Gfx point_light_model[];
 
 static void Light_point_color_set(Lights* lights, u8 r, u8 g, u8 b, s16 radius);
 static void Global_light_list_ct(Global_light* light);
@@ -367,10 +365,12 @@ extern void Light_list_point_draw(GAME_PLAY* play) {
                 rad = (lightInfo->radius * lightInfo->radius) * 2.60000001617e-06f;
                 gDPSetPrimColor(dl++, 0, 0, lightInfo->color[0], lightInfo->color[1], lightInfo->color[2], 50);
 
+                FrameInterpolation_RecordOpenChild(light->info, 0);
                 Matrix_translate(lightInfo->x, lightInfo->y, lightInfo->z, MTX_LOAD);
                 Matrix_scale(rad, rad, rad, MTX_MULT);
 
                 gSPMatrix(dl++, _Matrix_to_Mtx_new(play->game.graph), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+                FrameInterpolation_RecordCloseChild();
 
                 gSPDisplayList(dl++, point_light_model);
             }

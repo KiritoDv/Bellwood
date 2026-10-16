@@ -121,6 +121,7 @@ static void Actor_ct(ACTOR* actor, GAME* game) {
     exchange = &play->object_exchange;
     bank = &exchange->banks[actor->data_bank_id];
 
+    FrameInterpolation_ResetObject(actor);
     bank->num_exist++;
     if (actor->part == ACTOR_PART_NPC) {
         NPC_ACTOR* npc_actor = (NPC_ACTOR*)actor;
@@ -208,9 +209,9 @@ static void Actor_draw_ta_set(ACTOR* actor, GAME_PLAY* play) {
     g = play->game.graph;
     OPEN_DISP(g);
 
-    gDPSetTextureAdjustMode(NOW_POLY_OPA_DISP++, G_TA_DOLPHIN);
-    gDPSetTextureAdjustMode(NOW_SHADOW_DISP++, G_TA_DOLPHIN);
-    gDPSetTextureAdjustMode(NOW_POLY_XLU_DISP++, G_TA_DOLPHIN);
+    gDPSetTextureAdjustMode(NOW_POLY_OPA_DISP++, G_TA_HALFTEXEL);
+    gDPSetTextureAdjustMode(NOW_SHADOW_DISP++, G_TA_HALFTEXEL);
+    gDPSetTextureAdjustMode(NOW_POLY_XLU_DISP++, G_TA_HALFTEXEL);
 
     gDPSetTexEdgeAlpha(NOW_POLY_OPA_DISP++, 127);
     gDPSetTexEdgeAlpha(NOW_SHADOW_DISP++, 127);
@@ -241,6 +242,8 @@ static void Actor_draw_ta_clr(ACTOR* actor, GAME_PLAY* play) {
 }
 
 static void Actor_draw(GAME_PLAY* play, ACTOR* actor) {
+    int interp_scope =
+        FrameInterpolation_RecordOpenChildScope(actor, FrameInterpolation_GetObjectEpoch(actor) * 0x10000 + actor->id);
     LightsN* lights = Global_light_read(&play->global_light, play->game.graph);
 
     /* Light actor */
@@ -250,6 +253,7 @@ static void Actor_draw(GAME_PLAY* play, ACTOR* actor) {
     LightsN_disp_BG(lights, play->game.graph);
 
     /* Load actor position/scale matrix */
+    FrameInterpolation_RecordActorPosRotMatrix();
     Matrix_softcv3_load(&actor->shape_info.rotation, actor->world.position.x,
                         actor->world.position.y + actor->shape_info.ofs_y * actor->scale.y, actor->world.position.z);
     Matrix_scale(actor->scale.x, actor->scale.y, actor->scale.z, MTX_MULT);
@@ -263,6 +267,7 @@ static void Actor_draw(GAME_PLAY* play, ACTOR* actor) {
     if (actor->shape_info.shadow_proc != NULL) {
         (*actor->shape_info.shadow_proc)(actor, lights, play);
     }
+    FrameInterpolation_RecordCloseChildScope(interp_scope);
 }
 
 extern int Actor_draw_actor_no_culling_check(ACTOR* actor) {

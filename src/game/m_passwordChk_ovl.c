@@ -5,6 +5,7 @@
 #include "m_editor_ovl.h"
 #include "m_font.h"
 #include "sys_matrix.h"
+#include "assets/data/model/pwd_win.h"
 
 mPC_Ovl_c pc_ovl_data;
 
@@ -44,9 +45,6 @@ static void mPC_passwordChk_ovl_move(Submenu* submenu) {
   (*ovl_move_proc[menu_info->proc_status])(submenu, menu_info);
 }
 
-extern Gfx pwd_win_mode[];
-extern Gfx pwd_win_model[];
-
 static void mPC_set_frame_dl(Submenu* submenu, GRAPH* graph, f32 x, f32 y) {
   mPC_Ovl_c* passwordChk_ovl = submenu->overlay->passwordChk_ovl;
   Gfx* gfx;
@@ -68,7 +66,7 @@ static void mPC_set_frame_dl(Submenu* submenu, GRAPH* graph, f32 x, f32 y) {
   /* Setup background tiling offset */
   s = -submenu->overlay->menu_control.texture_pos[0] * 4.0f;
   t = -submenu->overlay->menu_control.texture_pos[1] * 4.0f;
-  gDPSetTileSize_Dolphin(gfx++, G_TX_RENDERTILE, s, t, 32, 32);
+  gDPSetTileSizeHiRes(gfx++, G_TX_RENDERTILE, s, t, 32, 32);
 
   /* Draw background */
   gSPDisplayList(gfx++, pwd_win_model);

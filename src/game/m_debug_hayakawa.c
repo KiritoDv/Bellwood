@@ -18,16 +18,13 @@
 
 #include "m_debug.h"
 #include "libu64/u64types.h"
-#include "dolphin/os.h"
-#include "jsyswrap.h"
+#include "gc_compat.h"
+#include "libc64/malloc.h"
 #include "libc64/__osMalloc.h"
 #include "m_rcp.h"
 #include "main.h"
 #include "m_lib.h"
-#include "libforest/osreport.h"
-#include "libforest/emu64.h"
 #include "gfxalloc.h"
-#include "dolphin/vi.h"
 #include "libu64/gfxprint.h"
 
 /**
@@ -105,30 +102,7 @@ extern void debug_hayakawa_move(pad_t* pad) {
     debug_hayakawa_bitset(10, 46);
 
     switch ((int)GETREG(HREG, HREG_STATE_IDX)) {
-        /**
-         * Loads/Stores HREG settings into emu64 aflags.
-         * HREG[81] = saved emu64 aflag load/store start index
-         * HREG[95] = now emu64 aflag load/store start index
-         *
-         * HREG[81] == HREG[95]: Store 12 HREG values (82 - 93) into aflags
-         * HREG[81] != HREG[95]: Load 12 HREG values (82 - 93) from aflags
-         */
-        case 1: {
-            if (hreg_init_check(1)) {
-                SETREG(HREG, 95, -1);
-            }
-
-            if (GETREG(HREG, HREG_STATE_ARGS_START) != GETREG(HREG, 95)) {
-                SETREG(HREG, 95, GETREG(HREG, HREG_STATE_ARGS_START));
-                for (i = 0; i < 12; i++) {
-                    SETREG(HREG, 82 + i, emu64_get_aflags(GETREG(HREG, HREG_STATE_ARGS_START) + i));
-                }
-            } else {
-                for (i = 0; i < 12; i++) {
-                    emu64_set_aflags(GETREG(HREG, HREG_STATE_ARGS_START) + i, GETREG(HREG, 82 + i));
-                }
-            }
-        }
+        case 1:
         /* Fallthrough 1 -> 2 -> 3 -> 4 -> 6 */
         /**
          * Loads the active thread count into HREG.
@@ -156,8 +130,7 @@ extern void debug_hayakawa_move(pad_t* pad) {
                 switch (GETREG(HREG, 82)) {
                     case 1: {
                         OSReport("*** RootHeapDump ***\n");
-                        JC_JKRHeap_dump(JC_JFWSystem_getRootHeap());
-                        OSReport("RootHeapFree=%08x\n", JC_JKRHeap_getTotalFreeSize(JC_JFWSystem_getRootHeap()));
+                        DisplayArena();
                     } break;
                 }
             }
@@ -178,23 +151,6 @@ extern void debug_hayakawa_move(pad_t* pad) {
             hreg_init_check(4);
             if (GETREG(HREG, HREG_STATE_ARGS_START) < 0) {
                 SETREG(HREG, HREG_STATE_ARGS_START, 0);
-                switch (GETREG(HREG, 82)) {
-                    case 1:
-                        JW_SetProgressiveMode(FALSE);
-                        break;
-
-                    case 2:
-                        JW_SetProgressiveMode(TRUE);
-                        break;
-
-                    case 3:
-                        JW_SetLowResoMode(FALSE);
-                        break;
-
-                    case 4:
-                        JW_SetLowResoMode(TRUE);
-                        break;
-                }
             }
         }
         /* Fallthrough 4 -> 6 */
@@ -361,12 +317,11 @@ extern void debug_hayakawa_move(pad_t* pad) {
             switch (GETREG(HREG, HREG_STATE_ARGS_START)) {
                 /* Load */
                 case 1: {
-                    SETREG(HREG, 83, *(u8*)(GETREG(HREG, 82) * 0x100000 - 0x80000000));
+                    SETREG(HREG, 83, 0);
                 } break;
 
                 /* Store */
                 case 2: {
-                    *(u8*)(GETREG(HREG, 82) * 0x100000 - 0x80000000) = (u8)GETREG(HREG, 83);
                 } break;
             }
         } break;
@@ -385,10 +340,6 @@ extern void debug_hayakawa_move(pad_t* pad) {
                 OSReportEnable();
             }
         }
-
-        JC_JUTDbPrint_setVisible(JC_JUTDbPrint_getManager(), !(GETREG(SREG, 21) & 2));
-        JC_JUTProcBar_setVisible(JC_JUTProcBar_getManager(), !(GETREG(SREG, 21) & 4));
-        JC_JUTProcBar_setVisibleHeapBar(JC_JUTProcBar_getManager(), !(GETREG(SREG, 21) & 4));
     }
 }
 

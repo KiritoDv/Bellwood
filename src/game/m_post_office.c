@@ -351,6 +351,7 @@ extern int mPO_delivery_one_address(int house_no) {
     mPO_delivery_one_address_leaflet(&Save_Get(post_office).leaflet_recipient_flags.leaflet_flags,
                                      &Save_Get(post_office).leaflet, house_no);
     mPO_delivery_one_address_event_leaflet(house_no);
+    return 0;
 }
 
 static void mPO_delivery_mail() {

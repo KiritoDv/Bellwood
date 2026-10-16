@@ -5,6 +5,7 @@
 #include "m_font.h"
 #include "m_haniwaPortrait_ovl.h"
 #include "sys_matrix.h"
+#include "assets/data/model/hni_den.h"
 
 static int mHB_strLineCheck(u8** str_pp, u8* str_end_p, int* line_width, int* line_len) {
   u8* str_p = *str_pp;
@@ -78,8 +79,6 @@ static void mHB_hboard_ovl_move(Submenu* submenu) {
     }
   }
 }
-
-extern Gfx hni_den_model[];
 
 static void mHB_set_frame_dl(GRAPH* graph, mSM_MenuInfo_c* menu_info, f32 x, f32 y) {
   Gfx* gfx;

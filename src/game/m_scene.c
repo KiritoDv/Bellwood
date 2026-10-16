@@ -1,4 +1,5 @@
 #include "m_scene.h"
+#include "ac_port.h"
 
 #include "m_player_lib.h"
 #include "libultra/libultra.h"
@@ -40,7 +41,7 @@ extern char* mSc_secure_exchange_keep_bank(Object_Exchange_c* exchange, s16 bank
     Object_Bank_c* bank = exchange->banks + exchange->bank_idx;
 
     if (exchange->bank_idx < mSc_OBJECT_BANK_NUM) {
-        area = (char*)ALIGN_NEXT((u32)exchange->next_bank_ram_address + size, 32);
+        area = (char*)ALIGN_NEXT((uintptr_t)exchange->next_bank_ram_address + size, 32);
 
         if (area >= exchange->max_ram_address) {
             area = NULL;
@@ -67,7 +68,7 @@ extern void mSc_background_dmacopy_controller(Object_Bank_c* bank) {
             if (bank->_14 == 0) {
                 osCreateMesgQueue(&bank->dma_controller_msg_queue, &bank->dma_controller_msg, 1);
                 _JW_GetResourceAram(bank->rom_addr, (u8*)bank->dma_start, bank->size);
-                DCStoreRangeNoSync(bank->dma_start, bank->size);
+                AC_TexInvalidateRange(bank->dma_start, bank->size);
                 bank->state = 0;
             }
 
@@ -75,7 +76,7 @@ extern void mSc_background_dmacopy_controller(Object_Bank_c* bank) {
         }
 
         case 2: {
-            if (osRecvMesg(&bank->dma_controller_msg_queue, NULL, OS_MESSAGE_NOBLOCK) == FALSE) {
+            if (osRecvMesg(&bank->dma_controller_msg_queue, NULL, OS_MESG_NOBLOCK) == FALSE) {
                 mSc_set_bank_status_after(bank);
             }
 
@@ -114,7 +115,7 @@ extern void mSc_regist_initial_exchange_bank(GAME_PLAY* play) {
         size = (u32)(play->object_exchange.max_ram_address - play->object_exchange.next_bank_ram_address) / 2;
         play->object_exchange.start_address_save[0] = play->object_exchange.next_bank_ram_address;
         play->object_exchange.end_address_save[0] =
-            (char*)ALIGN_NEXT((u32)play->object_exchange.next_bank_ram_address + size, 32);
+            (char*)ALIGN_NEXT((uintptr_t)play->object_exchange.next_bank_ram_address + size, 32);
 
         play->object_exchange.start_address_save[1] = play->object_exchange.end_address_save[0];
         play->object_exchange.end_address_save[1] = play->object_exchange.max_ram_address;
@@ -134,14 +135,14 @@ extern void mSc_regist_initial_exchange_bank(GAME_PLAY* play) {
 
 static void mSc_dmacopy_all_exchange_bank_sub(Object_Bank_c* bank, Object_Exchange_c* exchange, int idx) {
     if (idx >= exchange->exchange_id) {
-        char* area = (char*)ALIGN_NEXT((u32)exchange->next_bank_ram_address + bank->size, 32);
+        char* area = (char*)ALIGN_NEXT((uintptr_t)exchange->next_bank_ram_address + bank->size, 32);
 
         if (area >= exchange->max_ram_address) {
             exchange->selected_partition = (exchange->selected_partition + 1) % 2;
             exchange->next_bank_ram_address = exchange->start_address_save[exchange->selected_partition];
             exchange->max_ram_address = exchange->end_address_save[exchange->selected_partition];
 
-            area = (char*)ALIGN_NEXT((u32)exchange->next_bank_ram_address + bank->size, 32);
+            area = (char*)ALIGN_NEXT((uintptr_t)exchange->next_bank_ram_address + bank->size, 32);
         }
 
         bank->dma_start = exchange->next_bank_ram_address;
@@ -150,7 +151,7 @@ static void mSc_dmacopy_all_exchange_bank_sub(Object_Bank_c* bank, Object_Exchan
     }
 
     _JW_GetResourceAram(bank->rom_addr, (u8*)bank->dma_start, bank->size);
-    DCStoreRangeNoSync(bank->dma_start, bank->size);
+    AC_TexInvalidateRange(bank->dma_start, bank->size);
     mSc_set_bank_status_after(bank);
 }
 

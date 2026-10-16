@@ -5,6 +5,9 @@
 #include "libultra/gu.h"
 #include "libultra/libultra.h"
 #include "m_rcp.h"
+#include "assets/data/model/ef_wipe1.h"
+#include "assets/data/model/ef_wipe2.h"
+#include "assets/data/model/ef_wipe3.h"
 
 void fbdemo_triforce_startup(fbdemo_triforce* this) {
   this->finished = 0;

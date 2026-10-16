@@ -224,6 +224,7 @@ static int Player_actor_lean_angle_scoop_common(ACTOR* actor, const xyz_t* pos, 
     }
 
     add_calc_short_angle2(&actor->shape_info.rotation.x, ang, 1.0f - sqrtf(0.5), 273, 0);
+    return 0;
 }
 
 static void Player_actor_lean_angle_Dig_scoop(ACTOR* actor) {

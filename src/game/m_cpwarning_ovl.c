@@ -4,6 +4,7 @@
 #include "sys_matrix.h"
 #include "m_common_data.h"
 #include "m_font.h"
+#include "assets/data/model/dia_att.h"
 
 static mCW_Ovl_c cpwarning_ovl_data;
 
@@ -90,9 +91,6 @@ static void mCW_cpwarning_ovl_move(Submenu* submenu) {
     menu_info->pre_move_func(submenu);
     (*ovl_move_proc[menu_info->proc_status])(submenu, menu_info);
 }
-
-extern Gfx dia_att_winT_model[];
-extern Gfx dia_att_cursor_model[];
 
 static void mCW_set_frame_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu_info) {
     GRAPH* graph = game->graph;

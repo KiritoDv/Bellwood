@@ -216,7 +216,7 @@ static void Player_actor_Item_DMA_Data(ACTOR* actor, int skl_idx, int anim_idx, 
             cKF_SkeletonInfo_R_ct(keyf, skeleton, NULL, joint_work, morph_work);
             keyf->frame_control.current_frame = frame;
         } else if (change_bank != 0) {
-            keyf->skeleton = skeleton;
+            keyf->skeleton = (cKF_Skeleton_R_c*)LOAD_ASSET(skeleton);
             keyf->animation = NULL;
         } else {
             cKF_SkeletonInfo_R_ct(keyf, skeleton, NULL, joint_work, morph_work);

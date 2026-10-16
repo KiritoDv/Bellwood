@@ -1,3 +1,4 @@
+#include "ac_port.h"
 #include "m_rcp.h"
 
 #include "gfxalloc.h"
@@ -320,6 +321,7 @@ extern Gfx* gfx_tex_scroll2(Gfx** gfxpp, int x, int y, int width, int height) {
     gDPTileSync(dl);
     gDPSetTileSize(dl + 1, G_TX_RENDERTILE, x, y, x + ((width - 1) << 2), y + ((height - 1) << 2));
     gSPEndDisplayList(dl + 2);
+    return dl;
 }
 
 extern Gfx* tex_scroll2(GRAPH* graph, u32 x, u32 y, int width, int height) {
@@ -338,7 +340,7 @@ extern Gfx* tex_scroll2_dolphin(GRAPH* graph, int x, int y, int width, int heigh
     Gfx* dl = GRAPH_ALLOC_TYPE(graph, Gfx, 2);
 
     if (dl != NULL) {
-        gDPSetTileSize_Dolphin(dl, 0, x << 1, y << 1, width, height);
+        gDPSetTileSizeHiRes(dl, 0, x << 1, y << 1, width, height);
         gSPEndDisplayList(dl + 1);
     }
 
@@ -367,8 +369,8 @@ extern Gfx* two_tex_scroll_dolphin(GRAPH* graph, int tile1, int x1, int y1, int 
     Gfx* dl = GRAPH_ALLOC_TYPE(graph, Gfx, 3);
 
     if (dl != NULL) {
-        gDPSetTileSize_Dolphin(dl, tile1, x1 << 1, y1 << 1, width1, height1);
-        gDPSetTileSize_Dolphin(dl + 1, tile2, x2 << 1, y2 << 1, width2, height2);
+        gDPSetTileSizeHiRes(dl, tile1, x1 << 1, y1 << 1, width1, height1);
+        gDPSetTileSizeHiRes(dl + 1, tile2, x2 << 1, y2 << 1, width2, height2);
         gSPEndDisplayList(dl + 2);
     }
 
@@ -396,7 +398,7 @@ extern void DisplayList_initialize(GRAPH* graph, u8 clear_r, u8 clear_g, u8 clea
     gDPSetScissor(NOW_BG_OPA_DISP++, G_SC_NON_INTERLACE, 0, 0, 640, 480);
     gDPSetScissor(NOW_BG_XLU_DISP++, G_SC_NON_INTERLACE, 0, 0, 640, 480);
 
-    if (((game == NULL) || (fbdemo_mode < 2)) && (JW_setClearColor(clear_r, clear_g, clear_b))) {
+    if (((game == NULL) || (fbdemo_mode < 2)) && AC_SetClearColor(clear_r, clear_g, clear_b)) {
         gDPSetCycleType(NOW_POLY_OPA_DISP++, G_CYC_FILL);
         gDPSetRenderMode(NOW_POLY_OPA_DISP++, G_RM_NOOP, G_RM_NOOP2);
         gDPSetFillColor(NOW_POLY_OPA_DISP++, (GPACK_RGBA5551(clear_r, clear_g, clear_b, 1) << 16) |

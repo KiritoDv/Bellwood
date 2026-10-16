@@ -12,6 +12,9 @@
 #include "m_font.h"
 #include "m_common_data.h"
 #include "m_malloc.h"
+#include "assets/data/model/ctl_sentaku.h"
+#include "assets/data/model/ctl_win1.h"
+#include "assets/data/model/inv_item.h"
 
 static mCM_Ovl_c cpmail_ovl_data;
 
@@ -22,39 +25,6 @@ typedef struct {
     u8* tex_p;
     rgba_t title_color;
 } mCM_disp_data_c;
-
-extern Gfx ctl_win1_color_mode[];
-extern Gfx ctl_win1_tagu1T_model[];
-extern Gfx ctl_win1_tagu2T_model[];
-extern Gfx ctl_win1_tagu3T_model[];
-extern Gfx ctl_win1_tagu4T_model[];
-extern Gfx ctl_win1_tagu5T_model[];
-extern Gfx ctl_win1_tagu6T_model[];
-extern Gfx ctl_win1_tagu7T_model[];
-extern Gfx ctl_win1_tagu8T_model[];
-extern Gfx ctl_win2_color_mode[];
-extern Gfx ctl_win3_color_mode[];
-extern Gfx ctl_win4_color_mode[];
-extern Gfx ctl_win5_color_mode[];
-extern Gfx ctl_win6_color_mode[];
-extern Gfx ctl_win7_color_mode[];
-extern Gfx ctl_win8_color_mode[];
-extern u8 ctl_win_nuno1_tex_rgb_ci4[];
-extern u16 ctl_win_nuno1_tex_rgb_ci4_pal[];
-extern u8 ctl_win_nuno2_tex_rgb_ci4[];
-extern u16 ctl_win_nuno2_tex_rgb_ci4_pal[];
-extern u8 ctl_win_nuno3_tex_rgb_ci4[];
-extern u16 ctl_win_nuno3_tex_rgb_ci4_pal[];
-extern u8 ctl_win_nuno4_tex_rgb_ci4[];
-extern u16 ctl_win_nuno4_tex_rgb_ci4_pal[];
-extern u8 ctl_win_nuno5_tex_rgb_ci4[];
-extern u16 ctl_win_nuno5_tex_rgb_ci4_pal[];
-extern u8 ctl_win_nuno6_tex_rgb_ci4[];
-extern u16 ctl_win_nuno6_tex_rgb_ci4_pal[];
-extern u8 ctl_win_nuno7_tex_rgb_ci4[];
-extern u16 ctl_win_nuno7_tex_rgb_ci4_pal[];
-extern u8 ctl_win_nuno8_tex_rgb_ci4[];
-extern u16 ctl_win_nuno8_tex_rgb_ci4_pal[];
 
 static mCM_disp_data_c mCM_disp_data[8] = {
     {ctl_win1_tagu1T_model, ctl_win1_color_mode, ctl_win_nuno1_tex_rgb_ci4_pal, ctl_win_nuno1_tex_rgb_ci4, { 0x46, 0x28, 0x14, 0xFF } },
@@ -161,8 +131,6 @@ static void mCM_cpmail_ovl_move(Submenu* submenu) {
     }
 }
 
-extern Gfx inv_item_mode[];
-
 static void mCM_set_mail(Submenu* submenu, GRAPH* graph, float pos_x, float pos_y, int page_num) {
     mIV_Ovl_c* inv_ovl = submenu->overlay->inventory_ovl;
     mCM_Ovl_c* cpmail_ovl = submenu->overlay->cpmail_ovl;
@@ -220,12 +188,6 @@ static float mCM_get_page_posY(Submenu* submenu, mSM_MenuInfo_c* menu_info, int 
     }
 }
 
-extern Gfx ctl_tag_mode[];
-extern Gfx ctl_win_mode[];
-extern Gfx ctl_win_model[];
-extern Gfx ctl_win1_kageT_model[];
-extern Gfx ctl_sentaku_taguT_model[];
-
 static void mCM_set_page_dl(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* game, GRAPH* graph, int page_num, int flag) {
     mCM_disp_data_c* disp_data_p = &mCM_disp_data[page_num];
     mCM_Ovl_c* cpmail_ovl = submenu->overlay->cpmail_ovl;
@@ -244,13 +206,13 @@ static void mCM_set_page_dl(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* g
 
     if (flag) {
         gSPDisplayList(POLY_OPA_DISP++, ctl_win_mode);
-        gDPLoadTLUT_Dolphin(POLY_OPA_DISP++, 14, 16, 1, disp_data_p->pal_p);
-        gDPLoadTextureBlock_4b_Dolphin(POLY_OPA_DISP++, disp_data_p->tex_p, G_IM_FMT_CI, 32, 32, 14, GX_REPEAT, GX_REPEAT, 0, 0);
+        gDPLoadTLUT_pal16(POLY_OPA_DISP++, 14, disp_data_p->pal_p);
+        gDPLoadTextureBlock_4b(POLY_OPA_DISP++, disp_data_p->tex_p, G_IM_FMT_CI, 32, 32, 14, G_TX_WRAP, G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
         gDPTileSync(POLY_OPA_DISP++);
         
         tex_x = -submenu->overlay->menu_control.texture_pos[0] * 4.0f;
         tex_y = -submenu->overlay->menu_control.texture_pos[1] * 4.0f;
-        gDPSetTileSize_Dolphin(POLY_OPA_DISP++, G_TX_RENDERTILE, (u8)tex_x, (u8)tex_y, 32, 32);
+        gDPSetTileSizeHiRes(POLY_OPA_DISP++, G_TX_RENDERTILE, (u8)tex_x, (u8)tex_y, 32, 32);
         gSPDisplayList(POLY_OPA_DISP++, ctl_win_model);
     } else {
         gSPDisplayList(POLY_OPA_DISP++, ctl_tag_mode);

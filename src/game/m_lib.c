@@ -48,7 +48,7 @@
 #include "m_play.h"
 #include "main.h"
 #include "libultra/libultra.h"
-#include "MSL_C/w_math.h"
+#include <math.h>
 #include "libc64/qrand.h"
 #include "sys_matrix.h"
 #include "sys_math.h"

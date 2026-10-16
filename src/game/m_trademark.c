@@ -11,7 +11,7 @@
 #include "m_private.h"
 #include "m_time.h"
 #include "libultra/libultra.h"
-#include "initial_menu.h"
+#include "nintendo_logo.h"
 #include "m_titledemo.h"
 #include "m_bgm.h"
 #include "m_rcp.h"
@@ -27,12 +27,13 @@
 #include "m_vibctl.h"
 #include "sys_matrix.h"
 #include "sys_vimgr.h"
-#include "jsyswrap.h"
 #include "libc64/qrand.h"
 #include "m_common_data.h"
 #include "m_play.h"
+#include "ac_port.h"
+#include "gc_compat.h"
 
-static int mTR_first_flag = TRUE;
+static int mTR_first_flag = FALSE;
 
 static Door_data_c demo_1_door_data = { SCENE_TITLE_DEMO, 4, FALSE, 0, { 2180, 200, 824 }, EMPTY_NO, 3, { 0, 0, 0 } };
 
@@ -50,7 +51,11 @@ static Door_data_c* l_demo_door_data_table[mTD_TITLE_DEMO_NUM] = { &demo_1_door_
 
 #define DEMO_NPC(name, bx, bz, utx, utz) \
     { NPC_##name, (bx), (bz), (utx), (utz) }
+#if defined(TARGET_PC) && !defined(BUGFIXES)
+static mNpc_demo_npc_c demo_npc_list[ANIMAL_NUM_MAX] = {
+#else
 static mNpc_demo_npc_c demo_npc_list[] = {
+#endif
     DEMO_NPC(BOB, 1, 2, 3, 7),     DEMO_NPC(PAOLO, 1, 2, 8, 11),  DEMO_NPC(VESTA, 1, 4, 12, 11),
     DEMO_NPC(JOEY, 2, 3, 5, 6),    DEMO_NPC(LOBO, 2, 3, 4, 12),   DEMO_NPC(CARRIE, 3, 5, 11, 5),
     DEMO_NPC(TANK, 4, 3, 3, 12),   DEMO_NPC(BUZZ, 4, 4, 3, 4),    DEMO_NPC(RASHER, 4, 4, 12, 13),
@@ -64,7 +69,11 @@ static mNpc_demo_npc_c demo_npc_list[] = {
 #endif
 };
 
+#if defined(TARGET_PC) && !defined(BUGFIXES)
+static int demo_npc_num = ANIMAL_NUM_MAX - 1;
+#else
 static int demo_npc_num = sizeof(demo_npc_list) / sizeof(mNpc_demo_npc_c);
+#endif
 
 static int set_npc_4_title_demo(GAME_TRADEMARK* trademark) {
     Animal_c* animals = Save_Get(animals);
@@ -207,6 +216,7 @@ static void trademark_cancel(GAME_TRADEMARK* trademark) {
     }
 
     trademark->cancel = TRUE;
+    OSReport("trademark: START pressed, logo cancelled\n");
 }
 
 static void trademark_move(GAME_TRADEMARK* trademark) {
@@ -302,7 +312,6 @@ extern void trademark_cleanup(GAME* game) {
         home++;
     }
 
-    JW_SetLogoMode(0);
     SoftResetEnable = TRUE;
 }
 
@@ -339,7 +348,6 @@ extern void trademark_init(GAME* game) {
 
     SetGameFrame(1);
     viBlack(FALSE);
-    JW_SetLogoMode(1);
     mMsg_aram_init();
 
     Common_Set(player_no, 0);

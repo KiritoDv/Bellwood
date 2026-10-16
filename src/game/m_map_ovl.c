@@ -11,82 +11,19 @@
 #include "sys_matrix.h"
 #include "m_malloc.h"
 #include "m_common_data.h"
-
-extern u8 kan_tizu_f_TA_tex_txt[];
-extern u8 kan_tizu_tst1_TA_tex_txt[];
-extern u8 kan_tizu_t_TA_tex_txt[];
-extern u8 kan_tizu_tr1_TA_tex_txt[];
-extern u8 kan_tizu_fmh_TA_tex_txt[];
-extern u8 kan_tizu_c1_TA_tex_txt[];
-extern u8 kan_tizu_c2_TA_tex_txt[];
-extern u8 kan_tizu_c3_TA_tex_txt[];
-extern u8 kan_tizu_c4_TA_tex_txt[];
-extern u8 kan_tizu_c5_TA_tex_txt[];
-extern u8 kan_tizu_c6_TA_tex_txt[];
-extern u8 kan_tizu_c7_TA_tex_txt[];
-extern u8 kan_tizu_c1r1_TA_tex_txt[];
-extern u8 kan_tizu_c2r1_TA_tex_txt[];
-extern u8 kan_tizu_c3r1_TA_tex_txt[];
-extern u8 kan_tizu_c4r1_TA_tex_txt[];
-extern u8 kan_tizu_c5r1_TA_tex_txt[];
-extern u8 kan_tizu_c6r1_TA_tex_txt[];
-extern u8 kan_tizu_c7r1_TA_tex_txt[];
-extern u8 kan_tizu_c1r2_TA_tex_txt[];
-extern u8 kan_tizu_c2r2_TA_tex_txt[];
-extern u8 kan_tizu_c3r2_TA_tex_txt[];
-extern u8 kan_tizu_c4r2_TA_tex_txt[];
-extern u8 kan_tizu_c5r2_TA_tex_txt[];
-extern u8 kan_tizu_c1r2_TA_tex_txt[];
-extern u8 kan_tizu_c4r2_TA_tex_txt[];
-extern u8 kan_tizu_c5r2_TA_tex_txt[];
-extern u8 kan_tizu_c6r3_TA_tex_txt[];
-extern u8 kan_tizu_c7r3_TA_tex_txt[];
-extern u8 kan_tizu_r1_TA_tex_txt[];
-extern u8 kan_tizu_r2_TA_tex_txt[];
-extern u8 kan_tizu_r2_TA_tex_txt[];
-extern u8 kan_tizu_r4_TA_tex_txt[];
-extern u8 kan_tizu_r5_TA_tex_txt[];
-extern u8 kan_tizu_r6_TA_tex_txt[];
-extern u8 kan_tizu_r7_TA_tex_txt[];
-extern u8 kan_tizu_r1b_TA_tex_txt[];
-extern u8 kan_tizu_r2b_TA_tex_txt[];
-extern u8 kan_tizu_r2b_TA_tex_txt[];
-extern u8 kan_tizu_r4b_TA_tex_txt[];
-extern u8 kan_tizu_r5b_TA_tex_txt[];
-extern u8 kan_tizu_r6b_TA_tex_txt[];
-extern u8 kan_tizu_r7b_TA_tex_txt[];
-extern u8 kan_tizu_c1s_TA_tex_txt[];
-extern u8 kan_tizu_c2s_TA_tex_txt[];
-extern u8 kan_tizu_c3s_TA_tex_txt[];
-extern u8 kan_tizu_c4s_TA_tex_txt[];
-extern u8 kan_tizu_c5s_TA_tex_txt[];
-extern u8 kan_tizu_c6s_TA_tex_txt[];
-extern u8 kan_tizu_c7s_TA_tex_txt[];
-extern u8 kan_tizu_m_TA_tex_txt[];
-extern u8 kan_tizu_mr1_TA_tex_txt[];
-extern u8 kan_tizu_fsh_TA_tex_txt[];
-extern u8 kan_tizu_fpk_TA_tex_txt[];
-extern u8 kan_tizu_fpo_TA_tex_txt[];
-extern u8 kan_tizu_fko_TA_tex_txt[];
-extern u8 kan_tizu_pr1_TA_tex_txt[];
-extern u8 kan_tizu_pr2_TA_tex_txt[];
-extern u8 kan_tizu_pr2_TA_tex_txt[];
-extern u8 kan_tizu_pr4_TA_tex_txt[];
-extern u8 kan_tizu_pr5_TA_tex_txt[];
-extern u8 kan_tizu_pr6_TA_tex_txt[];
-extern u8 kan_tizu_pr7_TA_tex_txt[];
-extern u8 kan_tizu_mr1b_TA_tex_txt[];
-extern u8 kan_tizu_fmu_TA_tex_txt[];
-extern u8 kan_tizu_fta_TA_tex_txt[];
-extern u8 kan_tizu_tr1b_TA_tex_txt[];
-extern u8 kan_tizu_c1r2b_TA_tex_txt[];
-extern u8 kan_tizu_c3r1b_TA_tex_txt[];
-extern u8 kan_tizu_c4r1b_TA_tex_txt[];
-extern u8 kan_tizu_c4r2b_TA_tex_txt[];
-extern u8 kan_tizu_c5r2b_TA_tex_txt[];
-extern u8 kan_tizu_c6r1b_TA_tex_txt[];
-extern u8 kan_tizu_c7r1b_TA_tex_txt[];
-extern u8 kan_tizu_mwf_TA_tex_txt[];
+#include "assets/data/model/kan_eki.h"
+#include "assets/data/model/kan_fune.h"
+#include "assets/data/model/kan_gomi.h"
+#include "assets/data/model/kan_hyouji.h"
+#include "assets/data/model/kan_hyouji2.h"
+#include "assets/data/model/kan_hyouji3.h"
+#include "assets/data/model/kan_tizu.h"
+#include "assets/data/model/kan_waku.h"
+#include "assets/data/model/kan_win.h"
+#include "assets/data/model/mMP_house_pos_list.h"
+#include "ac_asset.h"
+#include "assets/data/submenu/map/kan_tizu.h"
+#include "assets/data/submenu/map/kan_tizu2.h"
 
 static u8* l_map_texture[mFM_BLOCK_TYPE_NUM] = {
     kan_tizu_f_TA_tex_txt, // mFM_BLOCK_TYPE_BORDER_CLIFF_TOP
@@ -421,9 +358,6 @@ static u8 pluss_bridge[mFM_BLOCK_TYPE_NUM] = {
     mFM_BLOCK_TYPE_NONE, // mFM_BLOCK_TYPE_RIVER_WEST_CLIFF_TOP_LEFT_CORNER_BRIDGE
 };
 
-extern Gfx kan_win_model[];
-extern Gfx kan_win_model2[];
-
 static Gfx* kan_win_wakuT_model_p;
 static Gfx* kan_win_waku1T_model_p;
 static Gfx* kan_win_waku2T_model_p;
@@ -432,17 +366,7 @@ static Gfx* kan_win_waku4T_model_p;
 static Gfx* kan_win_color0_mode_p;
 static Gfx* kan_win_color1_mode_p;
 
-extern Gfx kan_win_wakuT_model[];
-extern Gfx kan_waku_w1T_model[];
-extern Gfx kan_waku_w2T_model[];
-extern Gfx kan_waku_w3T_model[];
-extern Gfx kan_waku_w4T_model[];
-extern Gfx kan_win_color0_mode[];
-extern Gfx kan_win_color1_mode[];
 
-extern mMP_HousePos_c mMP_house_pos_list[];
-
-extern Gfx kan_win_mode[];
 
 static u16 kan_tizu1_pal[16] ATTRIBUTE_ALIGN(32) = {
     0x0000, 0xc3b0, 0x9e87, 0xd294, 0xca52, 0xbdef, 0xb5ad, 0xb9ce,
@@ -456,58 +380,23 @@ static u16 kan_tizu2_pal[16] ATTRIBUTE_ALIGN(32) = {
 
 static u16* l_kan_tizu_pal[2] = { kan_tizu1_pal, kan_tizu2_pal };
 
-extern u8 kan_win_suuji1_tex_rgb_ia8[];
-extern u8 kan_win_suuji2_tex_rgb_ia8[];
-extern u8 kan_win_suuji3_tex_rgb_ia8[];
-extern u8 kan_win_suuji4_tex_rgb_ia8[];
-extern u8 kan_win_suuji5_tex_rgb_ia8[];
-
 static u8* kan_win_evw_anime_1_tex_table[FG_BLOCK_X_NUM] = {
     kan_win_suuji1_tex_rgb_ia8, kan_win_suuji2_tex_rgb_ia8, kan_win_suuji3_tex_rgb_ia8,
     kan_win_suuji4_tex_rgb_ia8, kan_win_suuji5_tex_rgb_ia8,
 };
-
-extern u8 kan_win_a_tex_rgb_ia8[];
-extern u8 kan_win_b_tex_rgb_ia8[];
-extern u8 kan_win_c_tex_rgb_ia8[];
-extern u8 kan_win_d_tex_rgb_ia8[];
-extern u8 kan_win_e_tex_rgb_ia8[];
-extern u8 kan_win_f_tex_rgb_ia8[];
 
 static u8* kan_win_evw_anime_2_tex_table[FG_BLOCK_Z_NUM] = {
     kan_win_a_tex_rgb_ia8, kan_win_b_tex_rgb_ia8, kan_win_c_tex_rgb_ia8,
     kan_win_d_tex_rgb_ia8, kan_win_e_tex_rgb_ia8, kan_win_f_tex_rgb_ia8,
 };
 
-extern Gfx kan_win_npcT_1_model[];
-extern Gfx kan_win_npcT_2_model[];
-extern Gfx kan_win_npcT_3_model[];
-
-extern Gfx kan_win_npc2T_1_model[];
-extern Gfx kan_win_npc2T_2_model[];
-extern Gfx kan_win_npc2T_3_model[];
 
 static Gfx* kan_win_npcT_table[] = { kan_win_npcT_1_model, kan_win_npcT_2_model, kan_win_npcT_3_model };
 
 static Gfx* kan_win_npc2T_table[] = { kan_win_npc2T_1_model, kan_win_npc2T_2_model, kan_win_npc2T_3_model };
 
-extern Gfx kan_win_genzaiT_model[];
 
-extern Gfx kan_tizu_mode[];
-extern Gfx kan_tizu_model[];
 
-extern Gfx kan_win_cursorT_model[];
-
-extern Gfx kan_win_playerT_model[];
-extern Gfx kan_win_omiseT_model[];
-extern Gfx kan_win_koubanT_model[];
-extern Gfx kan_win_yuuT_model[];
-extern Gfx kan_win_yashiroT_model[];
-extern Gfx kan_win_ekiT_model[];
-extern Gfx kan_win_gomiT_model[];
-extern Gfx kan_win_mu_model[];
-extern Gfx kan_win_ta_model[];
-extern Gfx kan_win_funeT_model[];
 
 static mMP_LabelWord_c mMP_label_word_npc = { -92.0f, -19.0f, NULL, 0 };
 
@@ -740,7 +629,7 @@ static void mMP_set_house_data(mMP_Ovl_c* map_ovl, mSM_MenuInfo_c* menu) {
         block_label->residents[residents] = resident_p;
     }
 
-    house_pos_top = mMP_house_pos_list;
+    house_pos_top = (mMP_HousePos_c*)LOAD_ASSET(mMP_house_pos_list);
     /* Process animal resident info next */
     resident_p = &map_ovl->animal_info[0];
     residents = 0;
@@ -1065,7 +954,7 @@ static void mMP_set_map_dl(GRAPH* graph, mMP_Ovl_c* map_ovl) {
 
     gfx = NOW_POLY_OPA_DISP;
 
-    gDPSetTextureAdjustMode(gfx++, G_TA_DOLPHIN);
+    gDPSetTextureAdjustMode(gfx++, G_TA_HALFTEXEL);
     gSPDisplayList(gfx++, kan_tizu_mode);
 
     Matrix_push();

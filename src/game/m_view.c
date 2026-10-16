@@ -5,6 +5,7 @@
 #include "m_field_info.h"
 #include "sys_matrix.h"
 #include "libultra/libultra.h"
+#include <math.h>
 
 static void set_viewport(Vp* viewport, rect* screen_rect) {
   int width = screen_rect->r - screen_rect->l;
@@ -15,8 +16,8 @@ static void set_viewport(Vp* viewport, rect* screen_rect) {
   viewport->vp.vscale[2] = 511;
   viewport->vp.vscale[3] = 0;
 
-  viewport->vp.vtrans[0] = (width + screen_rect->l) * 4;
-  viewport->vp.vtrans[1] = (height + screen_rect->top) * 4;
+  viewport->vp.vtrans[0] = (width + 2 * screen_rect->l) * 4;
+  viewport->vp.vtrans[1] = (height + 2 * screen_rect->top) * 4;
   viewport->vp.vtrans[2] = 511;
   viewport->vp.vtrans[3] = 0;
 }
@@ -214,6 +215,85 @@ extern int showView(View* view, int flag_mask) {
   }
 }
 
+static void view_check_camera_cut(View* view) {
+  static View old_view;
+  float dirx = view->eye.x - view->center.x;
+  float diry = view->eye.y - view->center.y;
+  float dirz = view->eye.z - view->center.z;
+  float dir_dist = sqrtf(dirx * dirx + diry * diry + dirz * dirz);
+  float odirx = old_view.eye.x - old_view.center.x;
+  float odiry = old_view.eye.y - old_view.center.y;
+  float odirz = old_view.eye.z - old_view.center.z;
+  float odir_dist = sqrtf(odirx * odirx + odiry * odiry + odirz * odirz);
+  float ex = view->eye.x - old_view.eye.x;
+  float ey = view->eye.y - old_view.eye.y;
+  float ez = view->eye.z - old_view.eye.z;
+  float lx = view->center.x - old_view.center.x;
+  float ly = view->center.y - old_view.center.y;
+  float lz = view->center.z - old_view.center.z;
+  float ux = view->up.x - old_view.up.x;
+  float uy = view->up.y - old_view.up.y;
+  float uz = view->up.z - old_view.up.z;
+  float eye_dist;
+  float look_dist;
+  float up_dist;
+  float d_dist;
+  int dont_interpolate = FALSE;
+
+  if (dir_dist > 0.0f) {
+    dirx /= dir_dist;
+    diry /= dir_dist;
+    dirz /= dir_dist;
+  }
+  if (odir_dist > 0.0f) {
+    odirx /= odir_dist;
+    odiry /= odir_dist;
+    odirz /= odir_dist;
+  }
+
+  eye_dist = sqrtf(ex * ex + ey * ey + ez * ez);
+  look_dist = sqrtf(lx * lx + ly * ly + lz * lz);
+  up_dist = sqrtf(ux * ux + uy * uy + uz * uz);
+  d_dist = sqrtf((dirx - odirx) * (dirx - odirx) + (diry - odiry) * (diry - odiry) + (dirz - odirz) * (dirz - odirz));
+
+  if (up_dist < 0.01f && d_dist < 0.01f) {
+    if (eye_dist + look_dist > 300.0f) {
+      dont_interpolate = TRUE;
+    }
+  } else {
+    if (eye_dist >= 400.0f) {
+      dont_interpolate = TRUE;
+    }
+    if (look_dist >= 100.0f) {
+      dont_interpolate = TRUE;
+    }
+    if (up_dist >= 1.50f) {
+      dont_interpolate = TRUE;
+    }
+    if (d_dist >= 1.414f && look_dist >= 15.0f) {
+      dont_interpolate = TRUE;
+    }
+    if (d_dist >= 1.414f && up_dist >= 0.31f && look_dist >= 1.0f && eye_dist >= 300.0f) {
+      dont_interpolate = TRUE;
+    }
+    if (d_dist >= 0.5f && up_dist >= 0.31f && look_dist >= 3.0f && eye_dist >= 170.0f) {
+      dont_interpolate = TRUE;
+    }
+    if (look_dist >= 52.0f && eye_dist >= 52.0f) {
+      dont_interpolate = TRUE;
+    }
+    if (look_dist >= 30.0f && eye_dist >= 90.0f) {
+      dont_interpolate = TRUE;
+    }
+  }
+
+  if (dont_interpolate) {
+    FrameInterpolation_DontInterpolateCamera();
+  }
+
+  old_view = *view;
+}
+
 extern int showPerspectiveView(View* view) {
   GRAPH* g = view->graph;
   Vp* vp;
@@ -236,6 +316,9 @@ extern int showPerspectiveView(View* view) {
   gSPViewport(NOW_LIGHT_DISP++, vp);
   gSPViewport(NOW_BG_OPA_DISP++, vp);
   gSPViewport(NOW_BG_XLU_DISP++, vp);
+
+  view_check_camera_cut(view);
+  FrameInterpolation_RecordOpenChild(NULL, FrameInterpolation_GetCameraEpoch());
 
   /* update perspective matrix */
   mtx = GRAPH_ALLOC_TYPE(g, Mtx, 1);
@@ -294,6 +377,7 @@ extern int showPerspectiveView(View* view) {
 
   gSPMatrix(NOW_BG_XLU_DISP++, mtx, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
+  FrameInterpolation_RecordCloseChild();
   CLOSE_DISP(g);
 
   return TRUE;

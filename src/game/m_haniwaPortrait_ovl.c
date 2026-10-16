@@ -2,9 +2,9 @@
 
 #include "m_rcp.h"
 #include "sys_matrix.h"
-
-extern cKF_Skeleton_R_c cKF_bs_r_hnw;
-extern cKF_Animation_R_c cKF_ba_r_hnw_move;
+#include "assets/data/model/hnw_face.h"
+#include "assets/data/model/hnw_model.h"
+#include "assets/data/model/hnw_move.h"
 
 static mHP_Ovl_c hp_ovl_data;
 
@@ -19,9 +19,6 @@ static void mHP_haniwaPortrait_shape_move(Submenu* submenu) {
   cKF_SkeletonInfo_R_play(&submenu->overlay->hanwiaPortrait_ovl->keyframe);
 }
 
-extern u8 hnw_tmem_txt[];
-extern u16 hnw_face[];
-
 static void mHP_haniwaPortrait_shape_draw(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* game) {
   GRAPH* graph = game->graph;
   Mtx* mtx = GRAPH_ALLOC_TYPE(graph, Mtx, submenu->overlay->hanwiaPortrait_ovl->keyframe.skeleton->num_shown_joints);
@@ -35,7 +32,7 @@ static void mHP_haniwaPortrait_shape_draw(Submenu* submenu, mSM_MenuInfo_c* menu
     gDPPipeSync(NOW_POLY_OPA_DISP++);
     gSPMatrix(NOW_POLY_OPA_DISP++, _Matrix_to_Mtx_new(graph), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPSegment(NOW_POLY_OPA_DISP++, G_MWO_SEGMENT_B, hnw_tmem_txt);
-    gDPLoadTLUT_Dolphin(NOW_POLY_OPA_DISP++, 15, 16, 1, hnw_face);
+    gDPLoadTLUT_pal16(NOW_POLY_OPA_DISP++, 15, hnw_face);
 
     if (menu_info->data0 == 0) {
       gDPSetPrimColor(NOW_POLY_OPA_DISP++, 0, 128, 255, 255, 255, 255);

@@ -92,7 +92,8 @@ extern void mEA_SetLetterCardE(int card_no) {
 
 #define MY_ORIGINAL_DESIGN_DATA_SIZE (4 * (32 / 2) * 32)
 extern void mEA_GetCardDLProgram() {
-    if (Save_Get(scene_no) != SCENE_TITLE_DEMO && Common_Get(carde_program_p) == NULL) {
+    if (Save_Get(scene_no) != SCENE_TITLE_DEMO && Common_Get(carde_program_p) == NULL &&
+        JW_GetResSizeFileNo(RESOURCE_MY_ORIGINAL) > MY_ORIGINAL_DESIGN_DATA_SIZE + 0x34) {
         u32 crc;
 
         Common_Set(carde_program_size, JW_GetResSizeFileNo(RESOURCE_MY_ORIGINAL) -

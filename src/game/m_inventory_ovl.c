@@ -14,6 +14,56 @@
 #include "padmgr.h"
 #include "m_play.h"
 #include "m_font.h"
+#include "assets/data/model/ef_shadow_in2.h"
+#include "assets/data/model/ef_takurami01_yoko.h"
+#include "assets/data/model/inv_item.h"
+#include "assets/data/model/inv_mushi.h"
+#include "assets/data/model/inv_mwin.h"
+#include "assets/data/model/inv_sakana.h"
+#include "assets/data/model/obj_item_apple2.h"
+#include "assets/data/model/obj_item_coco.h"
+#include "assets/data/model/obj_item_kabu2.h"
+#include "assets/data/model/obj_item_matutake2.h"
+#include "assets/data/model/obj_item_nuts.h"
+#include "assets/data/model/obj_item_orange2.h"
+#include "assets/data/model/obj_item_peach.h"
+#include "assets/data/model/obj_item_pear.h"
+#include "assets/data/model/obj_shop_candy.h"
+#include "assets/data/model/tol_uki_1.h"
+#include "assets/data/model/tol_uki_2.h"
+#include "assets/data/model/tol_umb_01.h"
+#include "assets/data/model/tol_umb_02.h"
+#include "assets/data/model/tol_umb_03.h"
+#include "assets/data/model/tol_umb_04.h"
+#include "assets/data/model/tol_umb_05.h"
+#include "assets/data/model/tol_umb_06.h"
+#include "assets/data/model/tol_umb_07.h"
+#include "assets/data/model/tol_umb_08.h"
+#include "assets/data/model/tol_umb_09.h"
+#include "assets/data/model/tol_umb_10.h"
+#include "assets/data/model/tol_umb_11.h"
+#include "assets/data/model/tol_umb_12.h"
+#include "assets/data/model/tol_umb_13.h"
+#include "assets/data/model/tol_umb_14.h"
+#include "assets/data/model/tol_umb_15.h"
+#include "assets/data/model/tol_umb_16.h"
+#include "assets/data/model/tol_umb_17.h"
+#include "assets/data/model/tol_umb_18.h"
+#include "assets/data/model/tol_umb_19.h"
+#include "assets/data/model/tol_umb_20.h"
+#include "assets/data/model/tol_umb_21.h"
+#include "assets/data/model/tol_umb_22.h"
+#include "assets/data/model/tol_umb_23.h"
+#include "assets/data/model/tol_umb_24.h"
+#include "assets/data/model/tol_umb_25.h"
+#include "assets/data/model/tol_umb_26.h"
+#include "assets/data/model/tol_umb_27.h"
+#include "assets/data/model/tol_umb_28.h"
+#include "assets/data/model/tol_umb_29.h"
+#include "assets/data/model/tol_umb_30.h"
+#include "assets/data/model/tol_umb_31.h"
+#include "assets/data/model/tol_umb_32.h"
+#include "assets/data/model/tol_umb_w.h"
 
 enum {
     mIV_ITEM_KIND_AXE,
@@ -435,10 +485,10 @@ static void mIV_pl_load_player_anime(Submenu* submenu, f32 morph_frame) {
 
             if (item_anim_idx >= mIV_ITEM_KIND_YELLOW_PINWHEEL && item_anim_idx <= mIV_ITEM_KIND_FANCY_PINWHEEL) {
                 cKF_SkeletonInfo_R_init(&inv_ovl->item_keyframe, inv_ovl->item_keyframe.skeleton, item_anim, 1.0f,
-                                        (f32)item_anim->frames, 1.0f, 7.5f, 0.0f, cKF_FRAMECONTROL_REPEAT, NULL);
+                                        (f32)cKF_ANIM_FRAMES(item_anim), 1.0f, 7.5f, 0.0f, cKF_FRAMECONTROL_REPEAT, NULL);
             } else {
                 cKF_SkeletonInfo_R_init(&inv_ovl->item_keyframe, inv_ovl->item_keyframe.skeleton, item_anim, 1.0f,
-                                        (f32)item_anim->frames, 1.0f, 0.5f, 0.0f, cKF_FRAMECONTROL_REPEAT, NULL);
+                                        (f32)cKF_ANIM_FRAMES(item_anim), 1.0f, 0.5f, 0.0f, cKF_FRAMECONTROL_REPEAT, NULL);
             }
 
             cKF_SkeletonInfo_R_play(&inv_ovl->item_keyframe);
@@ -587,73 +637,6 @@ typedef struct umbrella_data_s {
     Gfx* kasa_model;
 } mIV_umbrella_data_c;
 
-extern Gfx e_umb01_model[];
-extern Gfx kasa_umb01_model[];
-extern Gfx e_umb02_model[];
-extern Gfx kasa_umb02_model[];
-extern Gfx e_umb03_model[];
-extern Gfx kasa_umb03_model[];
-extern Gfx e_umb04_model[];
-extern Gfx kasa_umb04_model[];
-extern Gfx e_umb05_model[];
-extern Gfx kasa_umb05_model[];
-extern Gfx e_umb06_model[];
-extern Gfx kasa_umb06_model[];
-extern Gfx e_umb07_model[];
-extern Gfx kasa_umb07_model[];
-extern Gfx e_umb08_model[];
-extern Gfx kasa_umb08_model[];
-extern Gfx e_umb09_model[];
-extern Gfx kasa_umb09_model[];
-extern Gfx e_umb10_model[];
-extern Gfx kasa_umb10_model[];
-extern Gfx e_umb11_model[];
-extern Gfx kasa_umb11_model[];
-extern Gfx e_umb12_model[];
-extern Gfx kasa_umb12_model[];
-extern Gfx e_umb13_model[];
-extern Gfx kasa_umb13_model[];
-extern Gfx e_umb14_model[];
-extern Gfx kasa_umb14_model[];
-extern Gfx e_umb15_model[];
-extern Gfx kasa_umb15_model[];
-extern Gfx e_umb16_model[];
-extern Gfx kasa_umb16_model[];
-extern Gfx e_umb17_model[];
-extern Gfx kasa_umb17_model[];
-extern Gfx e_umb18_model[];
-extern Gfx kasa_umb18_model[];
-extern Gfx e_umb19_model[];
-extern Gfx kasa_umb19_model[];
-extern Gfx e_umb20_model[];
-extern Gfx kasa_umb20_model[];
-extern Gfx e_umb21_model[];
-extern Gfx kasa_umb21_model[];
-extern Gfx e_umb22_model[];
-extern Gfx kasa_umb22_model[];
-extern Gfx e_umb23_model[];
-extern Gfx kasa_umb23_model[];
-extern Gfx e_umb24_model[];
-extern Gfx kasa_umb24_model[];
-extern Gfx e_umb25_model[];
-extern Gfx kasa_umb25_model[];
-extern Gfx e_umb26_model[];
-extern Gfx kasa_umb26_model[];
-extern Gfx e_umb27_model[];
-extern Gfx kasa_umb27_model[];
-extern Gfx e_umb28_model[];
-extern Gfx kasa_umb28_model[];
-extern Gfx e_umb29_model[];
-extern Gfx kasa_umb29_model[];
-extern Gfx e_umb30_model[];
-extern Gfx kasa_umb30_model[];
-extern Gfx e_umb31_model[];
-extern Gfx kasa_umb31_model[];
-extern Gfx e_umb32_model[];
-extern Gfx kasa_umb32_model[];
-extern Gfx e_umb_w_model[];
-extern Gfx kasa_umb_w_model[];
-
 static void mIV_pl_shape_item_draw_umbrella(Submenu* submenu, GAME* game) {
     // clang-format off
     static mIV_umbrella_data_c pl_umb_data[] = {
@@ -730,9 +713,6 @@ static void mIV_pl_shape_item_draw_umbrella(Submenu* submenu, GAME* game) {
 
     CLOSE_POLY_OPA_DISP(graph);
 }
-
-extern Gfx inv_uki_model[];  // rod
-extern Gfx inv_uki2_model[]; // golden rod
 
 static void mIV_pl_shape_item_draw_rod(Submenu* submenu, GAME* game) {
     mSM_Segment_c* seg = &submenu->overlay->segment;
@@ -954,24 +934,6 @@ static void mIV_pl_equip_item_draw(Submenu* submenu, GAME* game) {
     }
 }
 
-extern Gfx apple_DL_mode[];
-extern Gfx nuts_DL_mode[];
-extern Gfx pear_DL_mode[];
-extern Gfx peach_DL_mode[];
-extern Gfx orange_DL_mode[];
-extern Gfx matutake_DL_mode[];
-extern Gfx obj_item_cocoT_mat_model[];
-extern Gfx kabu_DL_mode[];
-
-extern Gfx apple_DL_vtx[];
-extern Gfx nuts_DL_vtx[];
-extern Gfx pear_DL_vtx[];
-extern Gfx peach_DL_vtx[];
-extern Gfx orange_DL_vtx[];
-extern Gfx matutake_DL_vtx[];
-extern Gfx obj_shop_candy_modelT[];
-extern Gfx obj_item_cocoT_gfx_model[];
-extern Gfx kabu_DL_vtx[];
 
 static void mIV_pl_food_item_draw(Submenu* submenu, GAME* game) {
     // clang-format off
@@ -1139,9 +1101,6 @@ static void mIV_pl_shape_draw(Submenu* submenu, GAME* game) {
     }
 }
 
-extern Gfx ef_takurami01_menu_render_mode[];
-extern Gfx ef_takurami01_kira_modelT[];
-
 static void mIV_pl_eff_draw(GRAPH* graph, Submenu* submenu) {
     int i;
     mIV_pl_eff_c* pl_eff;
@@ -1165,8 +1124,6 @@ static void mIV_pl_eff_draw(GRAPH* graph, Submenu* submenu) {
 
     CLOSE_DISP(graph);
 }
-
-extern Gfx ef_shadow_in_modelT[];
 
 static void mIV_pl_shadow_draw(GAME_PLAY* play, ACTOR* actorx) {
     if (actorx != NULL) {
@@ -1456,15 +1413,6 @@ static void mIV_inventory_ovl_move(Submenu* submenu) {
     }
 }
 
-extern Gfx inv_mwin_mode[];
-extern Gfx inv_sakana_model[];
-extern Gfx inv_mwin_model[];
-extern Gfx inv_mushi_model[];
-extern Gfx inv_sakana_part_model[];
-extern Gfx inv_mushi_part_model[];
-extern Gfx inv_sakana_scroll_mode[];
-extern Gfx inv_mushi_scroll_mode[];
-
 static void mIV_set_base_frame_dl(Submenu* submenu, GAME_PLAY* play, GRAPH* graph, int page, int scroll_flag, f32 pos_x,
                                   f32 pos_y) {
     static Gfx* base_frame[] = { inv_sakana_model, inv_mwin_model, inv_mushi_model };
@@ -1484,10 +1432,8 @@ static void mIV_set_base_frame_dl(Submenu* submenu, GAME_PLAY* play, GRAPH* grap
         int tex_y;
 
         if (page == mIV_PAGE_INVENTORY) {
-            gDPLoadTLUT_Dolphin(POLY_OPA_DISP++, 14, 16, 1, mSM_Get_ground_pallet_p(play));
-            gDPSetTextureImage_Dolphin(POLY_OPA_DISP++, G_IM_FMT_CI, G_IM_SIZ_4b, 32, 32, mSM_Get_ground_tex_p(play));
-            gDPSetTile_Dolphin(POLY_OPA_DISP++, G_DOLPHIN_TLUT_DEFAULT_MODE, G_TX_RENDERTILE, 14, GX_REPEAT, GX_REPEAT,
-                               GX_CLAMP, GX_CLAMP);
+            gDPLoadTLUT_pal16(POLY_OPA_DISP++, 14, mSM_Get_ground_pallet_p(play));
+            gDPLoadTextureBlock_4b(POLY_OPA_DISP++, mSM_Get_ground_tex_p(play), G_IM_FMT_CI, 32, 32, 14, G_TX_WRAP, G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
         } else {
             gSPDisplayList(POLY_OPA_DISP++, scroll_set[page]);
         }
@@ -1505,37 +1451,9 @@ static void mIV_set_base_frame_dl(Submenu* submenu, GAME_PLAY* play, GRAPH* grap
 }
 
 /* letter slots */
-extern Gfx inv_mwin_1aT_model[];
-extern Gfx inv_mwin_2aT_model[];
-extern Gfx inv_mwin_3aT_model[];
-extern Gfx inv_mwin_4aT_model[];
-extern Gfx inv_mwin_5aT_model[];
-extern Gfx inv_mwin_6aT_model[];
-extern Gfx inv_mwin_7aT_model[];
-extern Gfx inv_mwin_8aT_model[];
-extern Gfx inv_mwin_9aT_model[];
-extern Gfx inv_mwin_10aT_model[];
 
 /* item slots */
-extern Gfx inv_mwin_1bT_model[];
-extern Gfx inv_mwin_2bT_model[];
-extern Gfx inv_mwin_3bT_model[];
-extern Gfx inv_mwin_4bT_model[];
-extern Gfx inv_mwin_5bT_model[];
-extern Gfx inv_mwin_6bT_model[];
-extern Gfx inv_mwin_7bT_model[];
-extern Gfx inv_mwin_8bT_model[];
-extern Gfx inv_mwin_9bT_model[];
-extern Gfx inv_mwin_10bT_model[];
-extern Gfx inv_mwin_11bT_model[];
-extern Gfx inv_mwin_12bT_model[];
-extern Gfx inv_mwin_13bT_model[];
-extern Gfx inv_mwin_14bT_model[];
-extern Gfx inv_mwin_15bT_model[];
 
-extern Gfx inv_mwin_item_frame_mode[];
-extern Gfx inv_mwin_kuni_model[];
-extern Gfx inv_mwin_kuni2_model[];
 
 static void mIV_set_normal_frame_dl(Submenu* submenu, GAME_PLAY* play, GRAPH* graph, f32 pos_x, f32 pos_y) {
     static Gfx* item_frame_disp[] = {
@@ -1600,8 +1518,6 @@ static int mIV_is_mark_check(mIV_Ovl_c* inv_ovl, int idx) {
 
     return FALSE;
 }
-
-extern Gfx inv_item_mode[];
 
 static void mIV_set_item(Submenu* submenu, mSM_MenuInfo_c* menu_info, GRAPH* graph, f32 pos_x, f32 pos_y) {
     mIV_Ovl_c* inv_ovl;

@@ -1,3 +1,4 @@
+#include "ac_asset.h"
 #include "m_ledit_ovl.h"
 
 #include "m_submenu_ovl.h"
@@ -7,6 +8,15 @@
 #include "m_font.h"
 #include "m_common_data.h"
 #include "m_debug.h"
+#include "assets/data/item/item_name.h"
+#include "assets/data/model/dna_win.h"
+#include "assets/data/model/kti_win.h"
+#include "assets/data/model/lat_sp.h"
+#include "assets/data/model/mra_win.h"
+#include "assets/data/model/nam_win.h"
+#include "assets/data/model/req_win.h"
+#include "assets/data/model/rst_win.h"
+#include "assets/data/model/shi_win.h"
 
 static u8 mLE_player_title[16] = "Enter your name.";
 static u8 mLE_country_title[18] = "Enter Destination.";
@@ -30,26 +40,11 @@ typedef struct ledit_win_data_s {
     Gfx* gfx_model;
 } mLE_win_data_c;
 
-extern Gfx nam_win_mode[];
-extern Gfx nam_win_model[];
 
-extern Gfx mra_win_mode[];
-extern Gfx mra_win_model[];
 
-extern Gfx ephrase_win_mode[];
-extern Gfx ephrase_win_model[];
 
-extern Gfx rst_win_mode[];
-extern Gfx rst_win_model[];
 
-extern Gfx req_win_mode[];
-extern Gfx req_win_model[];
 
-extern Gfx dna_win_mode[];
-extern Gfx dna_win_model[];
-
-extern Gfx shi_win_mode[];
-extern Gfx shi_win_model[];
 
 // clang-format off
 static mLE_win_data_c mLE_win_data[] = {
@@ -166,9 +161,6 @@ static void mLE_ledit_ovl_move(Submenu* submenu) {
     menu_info->pre_move_func(submenu);
     (*ovl_move_proc[menu_info->proc_status])(submenu, menu_info);
 }
-
-extern Gfx ledit_common_mode[];
-extern Gfx lat_sousa_spT_model[];
 
 static void mLE_set_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu_info) {
     mED_Ovl_c* editor_ovl = submenu->overlay->editor_ovl;
@@ -292,7 +284,7 @@ static void mLE_ledit_ovl_init(Submenu* submenu) {
         str = (u8*)menu_info->data2;
 
         if (menu_info->data0 == mLE_TYPE_REQUEST) {
-            mem_copy((u8*)mLE_md_name, itemName_minidisk, sizeof(mLE_md_name));
+            AC_AssetCopy(mLE_md_name, itemName_minidisk, 0, sizeof(mLE_md_name));
         }
     }
 

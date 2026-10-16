@@ -45,6 +45,7 @@ static int Player_actor_Movement_Reflect_scoop(ACTOR* actor) {
     if (cur_frame < 13.0f) {
         actor->world.angle.y = actor->shape_info.rotation.y;
     }
+    return 0;
 }
 
 static int Player_actor_CulcAnimation_Reflect_scoop(ACTOR* actor, f32* frame_calc) {

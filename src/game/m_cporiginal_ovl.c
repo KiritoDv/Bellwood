@@ -10,6 +10,11 @@
 #include "m_tag_ovl.h"
 #include "m_hand_ovl.h"
 #include "m_malloc.h"
+#include "assets/data/model/inv_mb.h"
+#include "assets/data/model/sav_mb_model.h"
+#include "assets/data/model/sav_sentaku.h"
+#include "assets/data/model/sav_win.h"
+#include "assets/data/model/sav_win1.h"
 
 static mCO_Ovl_c co_ovl_data;
 
@@ -118,8 +123,6 @@ static mNW_original_tex_c* mCO_get_texture(Submenu* submenu, int folder, int idx
     return &cporiginal_ovl->card_original->original[folder][idx].design;
 }
 
-extern mNW_original_tex_c sav_nuki_tex;
-
 static mNW_original_tex_c* mCO_get_texture_pat_idx(Submenu* submenu, int pat_idx) {
     mCO_Ovl_c* cporiginal_ovl = submenu->overlay->cporiginal_ovl;
     mNW_original_tex_c* tex = &sav_nuki_tex;
@@ -153,9 +156,6 @@ static int mCO_get_pallet_no_pat_idx(Submenu* submenu, int pat_idx) {
 
     return ret;
 }
-
-extern Gfx inv_md_base_model_before[];
-extern Gfx inv_md_base_model_b[];
 
 extern void mCO_draw_cporiginal(Submenu* submenu, GRAPH* graph, f32 pos_x, f32 pos_y, f32 scale, int idx,
                                 int color_flag) {
@@ -334,9 +334,6 @@ static void mCO_cporiginal_ovl_move(Submenu* submenu) {
     (*ovl_move_proc[menu_info->proc_status])(submenu, menu_info);
 }
 
-extern Gfx sav_win1_taguT_model[];
-extern Gfx sav_win1_kage_model[];
-
 static void mCO_set_frame_tagS_dl(Submenu* submenu, GAME* game, int folder) {
     // clang-format off
     static rgb8_t prim_table[mCO_PAGE_NUM] = {
@@ -393,8 +390,6 @@ static void mCO_set_frame_tagS_dl(Submenu* submenu, GAME* game, int folder) {
     CLOSE_POLY_OPA_DISP(graph);
 }
 
-extern Gfx sav_sentaku_taguT_model[];
-
 static void mCO_set_frame_tagT_dl(Submenu* submenu, GAME* game, int folder) {
     // clang-format off
     static rgb8_t prim_table[mCO_PAGE_NUM] = {
@@ -430,9 +425,6 @@ static void mCO_set_frame_tagT_dl(Submenu* submenu, GAME* game, int folder) {
 
     CLOSE_POLY_OPA_DISP(graph);
 }
-
-extern Gfx sav_win1_ueT_model[];
-extern Gfx sav_win1_nameT_model2[];
 
 static void mCO_set_frame_ueT_dl(Submenu* submenu, GAME* game, int folder) {
     GRAPH* graph = game->graph;
@@ -495,20 +487,6 @@ static void mCO_set_frame_ueT_dl(Submenu* submenu, GAME* game, int folder) {
     CLOSE_POLY_OPA_DISP(graph);
 }
 
-extern u16 sav_win1_nuno_tex_rgb_ci4_pal[];
-extern u16 sav_win2_nuno_tex_rgb_ci4_pal[];
-extern u16 sav_win3_nuno_tex_rgb_ci4_pal[];
-extern u16 sav_win4_nuno_tex_rgb_ci4_pal[];
-extern u16 sav_win5_nuno_tex_rgb_ci4_pal[];
-extern u16 sav_win6_nuno_tex_rgb_ci4_pal[];
-extern u16 sav_win7_nuno_tex_rgb_ci4_pal[];
-extern u16 sav_win8_nuno_tex_rgb_ci4_pal[];
-
-extern Gfx save_win1_w_before_model[];
-extern Gfx save_win1_w_all_model[];
-extern Gfx sav_win1_waku_model[];
-extern Gfx sav_mb_model[];
-extern Gfx sav_win1_f_model[];
 
 static void mCO_set_frame_main_dl(Submenu* submenu, GAME* game, int folder) {
     // clang-format off
@@ -539,9 +517,9 @@ static void mCO_set_frame_main_dl(Submenu* submenu, GAME* game, int folder) {
     OPEN_POLY_OPA_DISP(graph);
 
     gSPMatrix(POLY_OPA_DISP++, _Matrix_to_Mtx_new(graph), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gDPLoadTLUT_Dolphin(POLY_OPA_DISP++, 14, 16, 1, pallet_table[folder]);
+    gDPLoadTLUT_pal16(POLY_OPA_DISP++, 14, pallet_table[folder]);
     gSPDisplayList(POLY_OPA_DISP++, save_win1_w_before_model);
-    gDPSetTileSize_Dolphin(POLY_OPA_DISP++, G_TX_RENDERTILE, tex_x, tex_y, 32, 32);
+    gDPSetTileSizeHiRes(POLY_OPA_DISP++, G_TX_RENDERTILE, tex_x, tex_y, 32, 32);
     gSPDisplayList(POLY_OPA_DISP++, save_win1_w_all_model);
     gSPDisplayList(POLY_OPA_DISP++, sav_win1_waku_model);
 

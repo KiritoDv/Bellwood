@@ -8,15 +8,10 @@
 #include "m_font.h"
 #include "m_quest.h"
 #include "sys_matrix.h"
+#include "assets/data/model/kei_hyouji.h"
+#include "assets/data/model/kei_win.h"
 
 static mNT_Ovl_c notice_ovl_data;
-
-extern u8 kei_win_st1_tex_rgb_ia8[];
-extern u8 kei_win_st2_tex_rgb_ia8[];
-extern u8 kei_win_st3_tex_rgb_ia8[];
-extern u8 kei_win_st4_tex_rgb_ia8[];
-extern u8 kei_win_st5_tex_rgb_ia8[];
-extern u8 kei_win_st6_tex_rgb_ia8[];
 
 static u8* kei_win_st_tex_tbl[] = { kei_win_st5_tex_rgb_ia8, kei_win_st4_tex_rgb_ia8, kei_win_st2_tex_rgb_ia8,
                                     kei_win_st4_tex_rgb_ia8, kei_win_st5_tex_rgb_ia8, kei_win_st6_tex_rgb_ia8,
@@ -420,8 +415,6 @@ static u8** mNT_notice_draw_init(mSM_MenuInfo_c* menu_info) {
 }
 #endif
 
-extern Gfx kei_win_model[];
-
 static void mNT_set_frame_dl(GRAPH* graph, f32 x, f32 y) {
     Gfx* gfx;
 
@@ -437,12 +430,6 @@ static void mNT_set_frame_dl(GRAPH* graph, f32 x, f32 y) {
     SET_POLY_OPA_DISP(gfx);
     CLOSE_DISP(graph);
 }
-
-extern Gfx kei_hyouji_model[];
-extern Gfx kei_win_yaji1T_mode[];
-extern Gfx kei_win_yaji1T_model[];
-extern Gfx kei_win_yaji2T_model[];
-extern Gfx kei_win_stT_model[];
 
 static void mNT_set_key_dl(mNT_Ovl_c* notice_ovl, GRAPH* graph, f32 y) {
     Gfx* gfx;
