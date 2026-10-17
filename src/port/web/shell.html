@@ -194,6 +194,129 @@
     window.addEventListener('pointerdown', resumeGameAudio, true);
     window.addEventListener('keydown', resumeGameAudio, true);
 
+    var CrashSymbols = {
+      frame: /[^\s()@]*wasm-function\[\d+\]:0x([0-9a-f]+)/,
+      pending: null,
+      reported: [],
+
+      load: function() {
+        if (!CrashSymbols.pending) {
+          CrashSymbols.pending = fetch('bellwood.wasm.map')
+            .then(function(response) { return response.ok ? response.json() : null; })
+            .then(function(map) { return map ? CrashSymbols.parse(map) : null; })
+            .catch(function() { return null; });
+        }
+        return CrashSymbols.pending;
+      },
+
+      parse: function(map) {
+        var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+        var digits = new Int8Array(128);
+        for (var i = 0; i < alphabet.length; i++) digits[alphabet.charCodeAt(i)] = i;
+
+        var text = map.mappings;
+        var count = 1;
+        for (var j = 0; j < text.length; j++) {
+          var c = text.charCodeAt(j);
+          if (c === 44 || c === 59) count++;
+        }
+
+        var symbols = {
+          sources: map.sources.map(CrashSymbols.normalize),
+          size: 0,
+          offsets: new Int32Array(count),
+          files: new Int32Array(count),
+          lines: new Int32Array(count),
+          columns: new Int32Array(count),
+        };
+        var fields = [], value = 0, shift = 0;
+        var offset = 0, file = 0, line = 0, column = 0;
+
+        for (var k = 0; k <= text.length; k++) {
+          var code = k < text.length ? text.charCodeAt(k) : 44;
+          if (code === 44 || code === 59) {
+            if (fields.length > 0) {
+              offset += fields[0];
+              var n = symbols.size++;
+              symbols.offsets[n] = offset;
+              if (fields.length >= 4) {
+                file += fields[1];
+                line += fields[2];
+                column += fields[3];
+                symbols.files[n] = file;
+              } else {
+                symbols.files[n] = -1;
+              }
+              symbols.lines[n] = line;
+              symbols.columns[n] = column;
+              fields = [];
+            }
+            if (code === 59) offset = 0;
+            continue;
+          }
+          var digit = digits[code];
+          value += (digit & 31) * Math.pow(2, shift);
+          if (digit & 32) {
+            shift += 5;
+          } else {
+            fields.push(value % 2 ? -(value - 1) / 2 : value / 2);
+            value = 0;
+            shift = 0;
+          }
+        }
+        return symbols;
+      },
+
+      normalize: function(path) {
+        var parts = [];
+        path.split('/').forEach(function(part) {
+          if (part === '..' && parts.length > 0 && parts[parts.length - 1] !== '..') {
+            parts.pop();
+          } else if (part !== '.') {
+            parts.push(part);
+          }
+        });
+        return parts.join('/');
+      },
+
+      lookup: function(symbols, offset) {
+        var low = 0, high = symbols.size - 1, found = -1;
+        while (low <= high) {
+          var mid = (low + high) >> 1;
+          if (symbols.offsets[mid] <= offset) {
+            found = mid;
+            low = mid + 1;
+          } else {
+            high = mid - 1;
+          }
+        }
+        if (found < 0 || symbols.files[found] < 0) return null;
+        return symbols.sources[symbols.files[found]] + ':' + (symbols.lines[found] + 1) + ':' +
+               (symbols.columns[found] + 1);
+      },
+
+      report: function(error) {
+        var stack = error && error.stack ? String(error.stack) : '';
+        if (!CrashSymbols.frame.test(stack) || CrashSymbols.reported.indexOf(stack) >= 0) return;
+        CrashSymbols.reported.push(stack);
+        CrashSymbols.load().then(function(symbols) {
+          if (!symbols) {
+            console.error('[Bellwood] Crash (no source map available):\n' + stack);
+            return;
+          }
+          var frames = stack.split('\n').map(function(frame) {
+            var match = CrashSymbols.frame.exec(frame);
+            var location = match && CrashSymbols.lookup(symbols, parseInt(match[1], 16));
+            return location ? frame.replace(CrashSymbols.frame, location) : frame;
+          });
+          console.error('[Bellwood] Crash:\n' + frames.join('\n'));
+        });
+      },
+    };
+
+    window.addEventListener('error', function(event) { CrashSymbols.report(event.error); });
+    window.addEventListener('unhandledrejection', function(event) { CrashSymbols.report(event.reason); });
+
     window.onerror = function(msg, src, line) {
       Module.setStatus('Fatal error: ' + msg + ' (' + src + ':' + line + ')');
     };

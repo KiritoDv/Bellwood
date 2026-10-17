@@ -37,7 +37,7 @@ endif()
 
 if(EMSCRIPTEN)
     add_compile_definitions(USE_OPENGLES=1)
-    add_compile_options(-pthread -sUSE_SDL=2 -fexceptions)
+    add_compile_options(-pthread -sUSE_SDL=2 -fexceptions -gline-tables-only)
     add_link_options(-pthread -sUSE_SDL=2)
 endif()
 
@@ -765,6 +765,9 @@ if(EMSCRIPTEN)
     "-sASYNCIFY_REMOVE=@${CMAKE_SOURCE_DIR}/src/port/web/asyncify-remove.txt"
     -sASYNCIFY_STACK_SIZE=8388608
     -sASSERTIONS=1
+    -gsource-map
+    --profiling-funcs
+    "-sSOURCE_MAP_PREFIXES=${CMAKE_SOURCE_DIR}/="
     -sFORCE_FILESYSTEM=1
     -sEXPORTED_FUNCTIONS=_main,_malloc,_free
     -sEXPORTED_RUNTIME_METHODS=FS,ccall,cwrap,UTF8ToString,stringToUTF8
