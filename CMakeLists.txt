@@ -5,7 +5,7 @@ set(PORT_ARCHIVE "${PORT_NAME}.o2r")
 set(GAME_ARCHIVE "ac.o2r")
 
 # Set the project version and language
-project(${PORT_NAME} VERSION 0.1.0 LANGUAGES C CXX)
+project(${PORT_NAME} VERSION 1.0.0 LANGUAGES C CXX)
 include(FetchContent)
 
 include(cmake/bellwood-cvars.cmake)
@@ -62,8 +62,8 @@ math(EXPR PATCH_INDEX "${PROJECT_VERSION_PATCH}")
 # Use the patch number to select the correct word
 list(GET NATO_PHONETIC_ALPHABET ${PATCH_INDEX} PROJECT_PATCH_WORD)
 
-set(PROJECT_BUILD_NAME "${PORT_NAME} ${PROJECT_PATCH_WORD}" CACHE STRING "" FORCE)
-set(PROJECT_TEAM "${PORT_NAME}" CACHE STRING "" FORCE)
+set(PROJECT_BUILD_NAME "Nectarine ${PROJECT_PATCH_WORD}" CACHE STRING "" FORCE)
+set(PROJECT_TEAM "Lywx" CACHE STRING "" FORCE)
 
 # Get Git Information
 execute_process(
@@ -852,7 +852,7 @@ endif()
 endif()
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_DESKTOP_FILE_TERMINAL YES)
-set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_DESKTOP_FILE "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}.desktop")
+set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_DESKTOP_FILE "${CMAKE_SOURCE_DIR}/bellwood.desktop")
 set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_ICON_FILE "${CMAKE_SOURCE_DIR}/logo.png")
 
 if(CMAKE_SYSTEM_NAME MATCHES "Linux")

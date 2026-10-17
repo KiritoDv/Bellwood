@@ -60,8 +60,11 @@ bool CopyTexture(const std::shared_ptr<AC::AssetArray>& index, size_t entry, uin
     if (index == nullptr || entry >= index->mPtrs.size() || index->mPtrs[entry] == 0) {
         return false;
     }
-    const char* path = (const char*)index->mPtrs[entry];
-    auto res = ShipCompat::GetResourceManager()->LoadResource(path);
+    std::string path = (const char*)index->mPtrs[entry];
+    if (path.starts_with("__OTR__")) {
+        path = path.substr(7);
+    }
+    auto res = ShipCompat::GetResourceManager()->LoadResource(path, true);
     auto tex = std::dynamic_pointer_cast<Fast::Texture>(res);
     if (tex == nullptr) {
         SPDLOG_ERROR("ARAM: {} is not a texture", path);

@@ -12,6 +12,213 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  build-linux:
+    name: Linux
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-14 g++-14 git cmake ninja-build lsb-release file \
+            libsdl2-dev libpng-dev libzip-dev zipcmp zipmerge ziptool \
+            nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libfmt-dev libboost-dev \
+            libopengl-dev libgl1-mesa-dev zlib1g-dev libbz2-dev \
+            libvulkan-dev libshaderc-dev glslang-dev spirv-tools
+
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.24
+        with:
+          key: linux-ccache-${{ github.ref }}
+          restore-keys: |
+            linux-ccache-
+
+      - name: Cache third-party source builds
+        uses: actions/cache@v6
+        with:
+          key: linux-thirdparty-sdl2.30.3-tinyxml2.10.0.0-libzip1.10.1
+          path: |
+            SDL2-2.30.3
+            tinyxml2-10.0.0
+            libzip-1.10.1
+
+      - name: Install latest SDL
+        run: |
+          if [ ! -d "SDL2-2.30.3" ]; then
+            wget -q https://www.libsdl.org/release/SDL2-2.30.3.tar.gz
+            tar -xzf SDL2-2.30.3.tar.gz
+            (cd SDL2-2.30.3 && ./configure --enable-hidapi-libusb && make -j$(nproc))
+          fi
+          sudo make -C SDL2-2.30.3 install
+          sudo cp -av /usr/local/lib/libSDL* /lib/x86_64-linux-gnu/
+
+      - name: Install latest tinyxml2
+        run: |
+          if [ ! -d "tinyxml2-10.0.0" ]; then
+            wget -q -O tinyxml2-10.0.0.tar.gz https://github.com/leethomason/tinyxml2/archive/refs/tags/10.0.0.tar.gz
+            tar -xzf tinyxml2-10.0.0.tar.gz
+            cmake -S tinyxml2-10.0.0 -B tinyxml2-10.0.0/build
+            cmake --build tinyxml2-10.0.0/build -j$(nproc)
+          fi
+          sudo cmake --install tinyxml2-10.0.0/build
+
+      - name: Install libzip without crypto
+        run: |
+          if [ ! -d "libzip-1.10.1" ]; then
+            wget -q https://github.com/nih-at/libzip/releases/download/v1.10.1/libzip-1.10.1.tar.gz
+            tar -xzf libzip-1.10.1.tar.gz
+            cmake -S libzip-1.10.1 -B libzip-1.10.1/build \
+              -DENABLE_COMMONCRYPTO=OFF -DENABLE_GNUTLS=OFF -DENABLE_MBEDTLS=OFF -DENABLE_OPENSSL=OFF
+            cmake --build libzip-1.10.1/build -j$(nproc)
+          fi
+          sudo cmake --install libzip-1.10.1/build
+          sudo cp -av /usr/local/lib/libzip* /lib/x86_64-linux-gnu/
+          sudo ldconfig
+
+      - uses: root-project/gcc-problem-matcher-improved@v0.0.1-alpha.1
+
+      - name: Build
+        env:
+          CC: gcc-14
+          CXX: g++-14
+        run: |
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+          cmake --build build --target Bellwood --parallel $(nproc)
+
+      - name: Create AppImage
+        run: |
+          export APPIMAGE_EXTRACT_AND_RUN=1
+          cd build
+          cpack -G External
+
+      - name: Create package
+        run: |
+          mkdir Bellwood-linux
+          mv build/*.appimage Bellwood-linux/Bellwood.AppImage
+          cp README.md Bellwood-linux/readme.txt
+          wget -q -O Bellwood-linux/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
+
+      - name: Upload build
+        uses: actions/upload-artifact@v7
+        with:
+          name: Bellwood-linux
+          path: Bellwood-linux
+
+  build-windows:
+    name: Windows
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Cache vcpkg binaries
+        uses: actions/cache@v6
+        with:
+          key: windows-vcpkg-${{ hashFiles('CMakeLists.txt') }}
+          restore-keys: |
+            windows-vcpkg-
+          path: |
+            ~/AppData/Local/vcpkg/archives
+
+      - name: Cache Vulkan SDK
+        uses: actions/cache@v6
+        with:
+          key: windows-vulkan-sdk-v1
+          path: C:\VulkanSDK
+
+      - name: Install Vulkan SDK
+        shell: pwsh
+        run: |
+          if (-not (Test-Path "C:\VulkanSDK\Lib")) {
+            $url = "https://sdk.lunarg.com/sdk/download/latest/windows/vulkan_sdk.exe"
+            Invoke-WebRequest -Uri $url -OutFile "$env:RUNNER_TEMP\vulkan_sdk.exe"
+            $p = Start-Process -FilePath "$env:RUNNER_TEMP\vulkan_sdk.exe" `
+              -ArgumentList "--root","C:\VulkanSDK","--accept-licenses","--default-answer","--confirm-command","install" `
+              -Wait -PassThru
+            if ($p.ExitCode -ne 0) { throw "Vulkan SDK install failed with exit code $($p.ExitCode)" }
+          }
+          "VULKAN_SDK=C:\VulkanSDK" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Build
+        run: |
+          cmake -S . -B build/x64 -G "Visual Studio 17 2022" -T ClangCL -A x64
+          cmake --build build/x64 --config Release --target Bellwood --parallel
+
+      - name: Create package
+        run: |
+          mkdir Bellwood-windows
+          mkdir Bellwood-windows/debug
+          Move-Item build/x64/Release/Bellwood.exe Bellwood-windows/
+          Copy-Item build/x64/Bellwood.o2r Bellwood-windows/
+          Move-Item build/x64/Release/config.yml Bellwood-windows/
+          Move-Item build/x64/Release/assets Bellwood-windows/
+          Get-ChildItem build/x64/Release/*.pdb | Move-Item -Destination Bellwood-windows/debug/
+          Get-ChildItem build/x64/Release/*.dll | Copy-Item -Destination Bellwood-windows/
+          Copy-Item README.md Bellwood-windows/readme.txt
+          if (-not (Test-Path Bellwood-windows/shaderc_shared.dll)) {
+            $shaderc = Get-ChildItem "$env:VULKAN_SDK/Bin/shaderc_shared.dll" -ErrorAction SilentlyContinue
+            if (-not $shaderc) { throw "shaderc_shared.dll not found in the Vulkan SDK; the Vulkan backend would not start" }
+            Copy-Item $shaderc.FullName Bellwood-windows/
+          }
+          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "Bellwood-windows/gamecontrollerdb.txt"
+
+      - name: Upload build
+        uses: actions/upload-artifact@v7
+        with:
+          name: Bellwood-windows
+          path: Bellwood-windows
+
+  build-macos:
+    name: macOS
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Install dependencies
+        uses: melusina-org/setup-macports@v1
+        with:
+          parameters: '.github/macports.yml'
+
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.24
+        with:
+          key: macos-ccache-${{ github.ref }}
+          restore-keys: |
+            macos-ccache-
+
+      - name: Build
+        run: |
+          export VULKAN_SDK=/opt/local
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+          cmake --build build --target Bellwood --parallel $(sysctl -n hw.logicalcpu)
+
+      - name: Create package
+        run: |
+          (cd build && cpack)
+          mkdir Bellwood-mac
+          mv _packages/*.dmg Bellwood-mac/Bellwood.dmg
+          cp README.md Bellwood-mac/readme.txt
+
+      - name: Upload build
+        uses: actions/upload-artifact@v7
+        with:
+          name: Bellwood-mac
+          path: Bellwood-mac
+
   build-android:
     name: Android
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository

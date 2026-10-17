@@ -5,6 +5,7 @@
 #include "spdlog/spdlog.h"
 #include "ResourceUtil.h"
 #include <fast/resource/ResourceType.h>
+#include <fast/resource/type/Texture.h>
 
 namespace AC {
 std::shared_ptr<Ship::IResource>
@@ -39,9 +40,8 @@ ResourceFactoryBinaryAssetArrayV0::ReadResource(std::shared_ptr<Ship::File> file
             SPDLOG_ERROR("AssetArray {}: entry {} failed to load {}", initData->Path, i, path);
         }
         if (asset != nullptr) {
-            auto data = asset->GetInitData();
-            if (data->Type == (uint32_t)Fast::ResourceType::Texture) {
-                array->mPaths.push_back("__OTR__" + data->Path);
+            if (std::dynamic_pointer_cast<Fast::Texture>(asset) != nullptr) {
+                array->mPaths.push_back(std::string("__OTR__") + path);
                 array->mPtrs.push_back(reinterpret_cast<uintptr_t>(array->mPaths.back().c_str()));
             } else {
                 array->mPtrs.push_back(reinterpret_cast<uintptr_t>(asset->GetRawPointer()));

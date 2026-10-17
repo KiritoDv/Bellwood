@@ -1,0 +1,12 @@
+ports:
+  - name: ninja
+  - name: libsdl2
+  - name: libpng
+  - name: glew
+  - name: libzip
+  - name: nlohmann-json
+  - name: tinyxml2
+  - name: vulkan-headers
+  - name: vulkan-loader
+  - name: MoltenVK
+  - name: shaderc
