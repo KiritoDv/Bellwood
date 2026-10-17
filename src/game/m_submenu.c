@@ -1,5 +1,6 @@
 #include "m_submenu.h"
 #include "m_submenu_ovl.h"
+#include "port/events/Events.h"
 
 #include "m_common_data.h"
 #include "m_name_table.h"
@@ -208,6 +209,7 @@ extern void mSM_open_submenu_new(Submenu* submenu, int type, int arg0, int arg1,
 }
 
 extern void mSM_open_submenu_new2(Submenu* submenu, int type, int arg0, int arg1, void* arg2, intptr_t arg3) {
+    CALL_EVENT(SubmenuOpen, &type, arg0, arg1);
     submenu->menu_type = type;
     submenu->param0 = arg0;
     submenu->param1 = arg1;
@@ -357,6 +359,7 @@ static void mSM_move_LINKWait(Submenu* submenu) {
         submenu->draw_proc = (SUBMENU_GAME_PROC)&none_proc1;
         submenu->process_status = mSM_PROCESS_PLAY;
         submenu->open_flag = TRUE;
+        CALL_EVENT(SubmenuOpened, submenu->menu_type);
         submenu->after_mode = 7;
         submenu->unk_164 = 0;
         mMl_clear_mail(&submenu->mail);
@@ -390,6 +393,7 @@ static void mSM_move_Play(Submenu* submenu) {
 static void mSM_move_End(Submenu* submenu) {
     mSM_dlftbl_c* dlftbl = &SubmenuArea_dlftbl[mSM_DLF_SUBMENU_OVL];
     GAME_PLAY* play = (GAME_PLAY*)gamePT;
+    int type = submenu->menu_type;
 
     (*submenu->move_proc)(submenu);
     submenu->process_status = mSM_PROCESS_WAIT;
@@ -415,6 +419,8 @@ static void mSM_move_End(Submenu* submenu) {
             mMsg_sound_spec_change_voice(msg_win);
         }
     }
+
+    CALL_EVENT(SubmenuClosed, type);
 }
 
 extern void mSM_submenu_move(Submenu* submenu) {

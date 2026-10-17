@@ -10,6 +10,7 @@
 #include "sys_math.h"
 #include "jaudio_NES/kappa.h"
 #include "jaudio_NES/staff.h"
+#include "port/events/Events.h"
 
 int S_ongenpos_refuse_fg;
 
@@ -47,14 +48,20 @@ extern void sAdo_GameFrame() {
 }
 
 extern void sAdo_BgmStart(u8 id) {
-    Na_BgmStart(id);
+    CALL_CANCELLABLE_EVENT(PlayBgmEvent, &id) {
+        Na_BgmStart(id);
+    }
 }
 
 extern void sAdo_BgmStop(u16 id) {
-    Na_BgmStop(id);
+    CALL_CANCELLABLE_EVENT(StopBgmEvent, &id) {
+        Na_BgmStop(id);
+    }
 }
 extern void sAdo_SysTrgStart(u16 id) {
-    Na_SysTrgStart(id);
+    CALL_CANCELLABLE_EVENT(PlaySystemSfxEvent, &id) {
+        Na_SysTrgStart(id);
+    }
 }
 
 extern void sAdo_PlyWalkSe(u16 walk, const xyz_t* pos) {
@@ -134,6 +141,11 @@ extern void sAdo_OngenPos(uintptr_t p1, u8 p2, const xyz_t* pos) {
 extern void sAdo_OngenTrgStart(u16 id, const xyz_t* pos) {
     u16 scalc;
     f32 fcalc;
+
+    CALL_EVENT(PlaySfxEvent, &id, (const f32*)pos);
+    if (PlaySfxEvent_.Event.Cancelled) {
+        return;
+    }
 
     sAdo_Calc_MicPosition_forTrig(&fcalc, &scalc, pos);
     Na_OngenTrgStart(id, scalc, fcalc);
@@ -277,6 +289,11 @@ extern void sAdos_TTKK_ARM(u8 mode) {
 extern void sAdo_OngenTrgStartSpeed(f32 speed, u16 s1, const xyz_t* pos) {
     f32 fcalc;
     u16 scalc;
+
+    CALL_EVENT(PlaySfxEvent, &s1, (const f32*)pos);
+    if (PlaySfxEvent_.Event.Cancelled) {
+        return;
+    }
 
     sAdo_Calc_MicPosition_forTrig(&fcalc, &scalc, pos);
 

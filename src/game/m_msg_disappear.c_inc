@@ -28,6 +28,7 @@ static void mMsg_Main_Disappear(mMsg_Window_c* msg_p, GAME* game) {
 }
 
 static void mMsg_MainSetup_Disappear(mMsg_Window_c* msg_p, GAME* game) {
+    CALL_EVENT(MessageClosed, msg_p->msg_data != NULL ? msg_p->msg_data->msg_no : -1);
     mMsg_sound_spec_change_scene(msg_p);
     msg_p->main_index = mMsg_INDEX_DISAPPEAR;
     msg_p->draw_flag = TRUE;

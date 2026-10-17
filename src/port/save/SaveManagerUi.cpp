@@ -525,7 +525,7 @@ void InitSaveManagerUi() {
     if (auto drop = ShipCompat::GetFileDropMgr()) {
         drop->RegisterDropHandler(OnFileDropped);
     }
-    REGISTER_LISTENER(KeyboardInput, EVENT_PRIORITY_LOW, OnFrame);
+    REGISTER_LISTENER(GameLoopTick, EVENT_PRIORITY_LOW, OnFrame);
 }
 
 RegisterShipInitFunc sInitSaveManagerUi(InitSaveManagerUi);

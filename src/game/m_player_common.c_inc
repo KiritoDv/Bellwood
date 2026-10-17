@@ -7,6 +7,11 @@ static int Player_actor_check_request_main_priority(GAME* game, int priority) {
 static void Player_actor_request_main_index(GAME* game, int request_index, int priority) {
     PLAYER_ACTOR* player = GET_PLAYER_ACTOR_GAME(game);
 
+    CALL_EVENT(PlayerStateRequest, player, &request_index, priority);
+    if (PlayerStateRequest_.Event.Cancelled) {
+        return;
+    }
+
     player->requested_main_index = request_index;
     player->requested_main_index_priority = priority;
     player->requested_main_index_changed = TRUE;
@@ -1448,6 +1453,7 @@ static void Player_actor_setup_main_Base2(ACTOR* actorx, GAME* game, int main_in
     player->now_main_index = main_index;
     player->requested_main_index_changed = FALSE;
     player->settled_requested_main_index_priority = FALSE;
+    CALL_EVENT(PlayerStateChanged, player, player->prev_main_index, player->now_main_index);
 
     Player_actor_Set_start_refuse(actorx, game);
     Player_actor_Set_address_able_display(actorx);

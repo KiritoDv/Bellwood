@@ -8,6 +8,7 @@
 #include "jsyswrap.h"
 #include "m_bgm.h"
 #include "ac_port.h"
+#include "port/events/Events.h"
 #include "sys_matrix.h"
 
 static u32 Msg_table_rom_start = 0;

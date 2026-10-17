@@ -25,6 +25,7 @@
 #include <vector>
 
 #include "port/ShipCompat.h"
+#include "port/events/Events.h"
 #include "port/ui/cvar_prefixes.h"
 
 #define this this_
@@ -988,6 +989,7 @@ int FinishSaveHome(int mode, const SaveHomeContext& ctx, bool ok) {
     if (mode == 0) {
         sSessionActive = false;
     }
+    CALL_EVENT(SaveWritten, mode);
     return mCD_TRANS_ERR_NONE;
 }
 
@@ -1268,6 +1270,7 @@ void mCD_LoadLand(void) {
     FileState state;
     auto f = LoadSlot(kSlotHome, &state);
     int cond = mFRm_ERROR_BAD_RTC;
+    bool hasTown = false;
 
     sSessionActive = false;
     sLandLoaded = true;
@@ -1276,6 +1279,7 @@ void mCD_LoadLand(void) {
         if (LandValid(*f) && (version == 6 || version == 5)) {
             bcopy(f->land.get(), Common_GetPointer(save), sizeof(Save));
             Common_Set(copy_protect, Save_Get(copy_protect));
+            hasTown = true;
             if (f->hasOthers) {
                 OthersToAram(*f->others, true);
             }
@@ -1299,6 +1303,7 @@ void mCD_LoadLand(void) {
         Save_Get(save_check).version == 5) {
         bcopy(&Save_Get(save_check).time, Save_GetPointer(saved_auto_nwrite_time), sizeof(lbRTC_time_c));
     }
+    CALL_EVENT(SaveLoaded, hasTown);
 }
 
 void mCD_ReCheckLoadLand(GAME_PLAY* play) {
@@ -2136,6 +2141,7 @@ bool ImportGameCubeSave(const std::string& path, std::string* message) {
     }
     *message = out.str();
     SPDLOG_INFO("save import: {} from {}", *message, path);
+    CALL_EVENT(SaveImported, path.c_str());
     return true;
 }
 

@@ -211,6 +211,7 @@ file(GLOB_RECURSE PORT_GAME_C_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} CONFIGU
     "src/port/input/*.c"
     "src/port/stubs/*.c"
     "src/port/famicom/*.c"
+    "src/port/events/*.c"
 )
 list(REMOVE_ITEM ALL_FILES ${PORT_GAME_C_FILES})
 list(FILTER ALL_FILES EXCLUDE REGEX "^src/port/audio/.*\\.(c|cpp)$")
@@ -648,6 +649,9 @@ file(GLOB_RECURSE PORT_O2R_INPUTS CONFIGURE_DEPENDS
 
 if(NOT BELLWOOD_CROSS_BUILD)
 include(ExternalProject)
+if (MSVC)
+    set(TORCH_BUILD_COMMAND BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> --config Release --target torch)
+endif()
 ExternalProject_Add(TorchExternal
 	PREFIX TorchExternal
     SOURCE_DIR ${CMAKE_SOURCE_DIR}/Torch
@@ -665,6 +669,7 @@ ExternalProject_Add(TorchExternal
         -DBUILD_NAUDIO=ON
         -DBUILD_GAMECUBE=${BUILD_GAMECUBE}
         -DBUILD_AC=${BUILD_AC}
+        ${TORCH_BUILD_COMMAND}
     INSTALL_COMMAND ""
     BUILD_ALWAYS TRUE
     EXCLUDE_FROM_ALL TRUE

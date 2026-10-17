@@ -1,5 +1,6 @@
 #include "m_scene.h"
 #include "ac_port.h"
+#include "port/events/Events.h"
 
 #include "m_player_lib.h"
 #include "libultra/libultra.h"
@@ -495,6 +496,11 @@ extern int goto_other_scene(GAME_PLAY* play, Door_data_c* door_data, int update_
 
     if (player != NULL) {
         if (play->fb_wipe_mode == WIPE_MODE_NONE) {
+            CALL_EVENT(SceneChangeRequest, door_data);
+            if (SceneChangeRequest_.Event.Cancelled) {
+                return 0;
+            }
+
             play->fb_fade_type = FADE_TYPE_OUT;
 
             if (door_data->wipe_type == WIPE_TYPE_NORMAL) {
@@ -543,6 +549,11 @@ extern int goto_emu_game(GAME* game, s16 famicom_rom_id) {
 
     if (player != NULL) {
         Door_data_c* door_data;
+
+        CALL_EVENT(FamicomStart, &famicom_rom_id);
+        if (FamicomStart_.Event.Cancelled) {
+            return FALSE;
+        }
 
         play->fb_fade_type = FADE_TYPE_OUT_START_EMU;
         play->fb_wipe_type = WIPE_TYPE_FADE_BLACK;

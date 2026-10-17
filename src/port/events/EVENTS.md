@@ -1,0 +1,392 @@
+# Bellwood Event Reference
+
+Events are dispatched via `CALL_EVENT` or `CALL_CANCELLABLE_EVENT` and consumed via `REGISTER_LISTENER`. All events fire on the game thread.
+
+**Cancellable events**: a listener can set `event->Cancelled = true` to block the game's default behaviour. The exact effect is described per event. Non-cancellable events carry data for observation only.
+
+**Mutable pointer fields**: fields typed as a pointer (e.g. `int32_t* msgNo`) let listeners write through them to change what the game uses. You do not need to cancel the event to redirect a value; just write to `*ev->field`.
+
+**Polled events**: events marked _(polled)_ are detected by comparing game state once per play frame, so they fire on the frame after the change and do not fire outside the play state.
+
+```cpp
+#include "port/events/Events.h"
+
+REGISTER_LISTENER(EventName, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+    EventName* ev = (EventName*)event;
+    // read / modify / cancel
+    event->Cancelled = true;
+});
+```
+
+Game structs are passed through forward-declared tags (`struct actor_s*`, `struct player_actor_s*`, `struct game_play_s*`, `struct door_data_s*`). Include the matching game header (`m_actor.h`, `m_player.h`, `m_play.h`, `m_scene.h`) to read them.
+
+---
+
+## Engine Events
+
+### `EngineReady`
+Fires once after the engine, the resource manager and the GUI are initialised.
+
+---
+
+### `KeyboardInput`
+```c
+uint32_t scancode;
+```
+Fires when a keyboard key is pressed (desktop only).
+
+---
+
+### `GameLoopTick`
+Fires every main-loop iteration, before the game frame runs. Fires even while the game is not running yet (disc extraction, setup screens).
+
+---
+
+### `GameFrameUpdate`
+Fires once per game logic frame, before the current game state runs.
+
+---
+
+### `GameStateChanged`
+```c
+int32_t prev;
+int32_t now;
+```
+Fires after a new game state has been constructed. Values are `BellwoodGameState` (`BW_GAME_STATE_PLAY`, `BW_GAME_STATE_TRADEMARK`, ...); `prev` is `BW_GAME_STATE_NONE` on boot. Moving between scenes reconstructs the play state, so `BW_GAME_STATE_PLAY -> BW_GAME_STATE_PLAY` is normal.
+
+---
+
+### `GameReset`
+Fires when the game is soft reset or rebooted, before the running state is torn down.
+
+---
+
+### `ControllerRead`
+```c
+OSContPad* pads;
+int32_t count;
+```
+Fires after the controllers are read, before the game sees the new input. Write through `pads` to change what the game reads this frame.
+
+---
+
+## Actor Events
+
+### `ActorSpawn` _(cancellable)_
+```c
+int16_t* profile;
+float* pos;      // x, y, z
+int16_t* rot;    // x, y, z
+uint16_t* name;
+int16_t* arg;
+```
+Fires before an actor is allocated. Write through the pointers to spawn something else or somewhere else; an out of range profile is ignored.
+**Cancel**: the actor is not created and the spawn returns `NULL`.
+
+---
+
+### `ActorInit`
+```c
+struct actor_s* actor;
+```
+Fires after an actor's constructor has run. Actors whose data bank is still loading are constructed on a later frame, so this can fire after `ActorSpawn` by a few frames.
+
+---
+
+### `ActorUpdate` _(cancellable)_
+```c
+struct actor_s* actor;
+```
+Fires every frame before an actor's update function.
+**Cancel**: the actor does not update this frame.
+
+---
+
+### `ActorDraw` _(cancellable)_
+```c
+struct actor_s* actor;
+```
+Fires every frame before an actor is drawn.
+**Cancel**: the actor and its shadow are not drawn this frame.
+
+---
+
+### `ActorDestroy`
+```c
+struct actor_s* actor;
+```
+Fires when an actor is destroyed, before its save and destructor functions run.
+
+---
+
+## Player Events
+
+### `PlayerStateRequest` _(cancellable)_
+```c
+struct player_actor_s* player;
+int32_t* index;
+int32_t priority;
+```
+Fires when something requests a new player main state (`mPlayer_INDEX_*`). Write `*index` to request a different state.
+**Cancel**: the request is dropped.
+
+---
+
+### `PlayerStateChanged`
+```c
+struct player_actor_s* player;
+int32_t prev;
+int32_t now;
+```
+Fires after the player switches to a new main state.
+
+---
+
+### `PlayerMoneyChanged` _(polled)_
+```c
+uint32_t prev;
+uint32_t now;
+```
+Fires when the amount of Bells in the player's wallet changes.
+
+---
+
+### `PlayerInventoryChanged` _(polled)_
+```c
+int32_t slot;
+uint16_t prev;
+uint16_t now;
+```
+Fires once for every pocket slot whose item changed.
+
+---
+
+### `PlayerAcreChanged` _(polled)_
+```c
+int32_t prevX;
+int32_t prevZ;
+int32_t x;
+int32_t z;
+```
+Fires when the player walks into another acre of an outdoor field. After a scene load the previous acre is `-1, -1`.
+
+---
+
+## Game Events
+
+### `SceneChangeRequest` _(cancellable)_
+```c
+struct door_data_s* door;
+```
+Fires when the game asks to leave the current scene through a door or exit. Write through `door` (`Door_data_c`) to change the destination.
+**Cancel**: the player stays in the scene.
+
+---
+
+### `SceneLoaded`
+```c
+struct game_play_s* play;
+int32_t scene;
+```
+Fires at the end of play initialisation, once the scene and its actors are set up.
+
+---
+
+### `SceneUnloaded`
+```c
+struct game_play_s* play;
+int32_t scene;
+```
+Fires when the play state is being torn down, before anything is freed.
+
+---
+
+### `PlayUpdate`
+```c
+struct game_play_s* play;
+```
+Fires once per play frame, before actors and the field update.
+
+---
+
+### `FamicomStart` _(cancellable)_
+```c
+int16_t* romId;
+```
+Fires before a Famicom (NES) game is launched from furniture. Write `*romId` to launch a different game.
+**Cancel**: nothing is launched.
+
+---
+
+### `MessageLoad`
+```c
+int32_t* msgNo;
+```
+Fires before a message is read from the message table. Write `*msgNo` to load a different message; out of range values are ignored.
+
+---
+
+### `MessageLoaded`
+```c
+int32_t msgNo;
+uint8_t* text;
+uint32_t size;
+uint32_t capacity;
+```
+Fires after a message is copied into the text buffer, before its length is measured. Rewrite `text` in place to change what is shown; keep it inside `capacity` and terminated with an end code.
+
+---
+
+### `MessageOpened`
+```c
+struct actor_s* speaker;
+int32_t msgNo;
+```
+Fires when a dialogue window starts opening. `speaker` may be `NULL`.
+
+---
+
+### `MessageClosed`
+```c
+int32_t msgNo;
+```
+Fires when a dialogue window starts closing.
+
+---
+
+### `SubmenuOpen`
+```c
+int32_t* type;
+int32_t param0;
+int32_t param1;
+```
+Fires when the game asks for a menu (`mSM_OVL_*`: inventory, map, letters, shops, ...). Write `*type` to open a different menu.
+
+---
+
+### `SubmenuOpened`
+```c
+int32_t type;
+```
+Fires once a menu is linked in and starts running.
+
+---
+
+### `SubmenuClosed`
+```c
+int32_t type;
+```
+Fires when a menu closes and control goes back to the player.
+
+---
+
+### `TimeHourChanged`
+```c
+int32_t prev;
+int32_t now;
+```
+Fires when the in-game clock reaches a new hour.
+
+---
+
+### `TimeDayChanged`
+```c
+int32_t year;
+int32_t month;
+int32_t day;
+```
+Fires when the in-game date changes, including the first clock read after boot.
+
+---
+
+### `WeatherChanged` _(polled)_
+```c
+int32_t prev;
+int32_t now;
+int32_t prevIntensity;
+int32_t intensity;
+```
+Fires when the town weather (`mEnv_WEATHER_*`) or its intensity changes.
+
+---
+
+## Save Events
+
+### `SaveLoaded`
+```c
+bool hasTown;
+```
+Fires after the home save slot has been read into memory. `hasTown` is false for a new game.
+
+---
+
+### `SaveWritten`
+```c
+int32_t mode;
+```
+Fires after the town has been written to disk. `mode` is the game's save mode; `0` ends the session (save and quit).
+
+---
+
+### `SaveImported`
+```c
+const char* path;
+```
+Fires after a GameCube memory card save has been imported.
+
+---
+
+## Audio Events
+
+### `PlayBgmEvent` _(cancellable)_
+```c
+uint8_t* id;
+```
+Fires before background music starts. Write `*id` to play a different track.
+**Cancel**: the music does not start.
+
+---
+
+### `StopBgmEvent` _(cancellable)_
+```c
+uint16_t* id;
+```
+Fires before background music stops.
+**Cancel**: the music keeps playing.
+
+---
+
+### `PlaySystemSfxEvent` _(cancellable)_
+```c
+uint16_t* id;
+```
+Fires before a system (menu / UI) sound effect plays. Write `*id` to play a different sound (`NA_SE_*`).
+**Cancel**: the sound does not play.
+
+---
+
+### `PlaySfxEvent` _(cancellable)_
+```c
+uint16_t* id;
+const float* pos;  // x, y, z
+```
+Fires before a positional sound effect plays. Write `*id` to play a different sound (`NA_SE_*`).
+**Cancel**: the sound does not play.
+
+---
+
+## Render Events
+
+### `RenderGamePre`
+```c
+struct game_play_s* play;
+```
+Fires after the play frame's display lists are reset, before the scene is drawn.
+
+---
+
+### `RenderGamePost`
+```c
+struct game_play_s* play;
+```
+Fires after the play frame has been drawn, menus included.

@@ -19,6 +19,7 @@
 #include "m_malloc.h"
 #include "m_common_data.h"
 #include "ac_port.h"
+#include "port/events/Events.h"
 
 #ifdef MUST_MATCH
 /* @unused | necessary for proper float ordering*/
@@ -161,6 +162,7 @@ static void Actor_ct(ACTOR* actor, GAME* game) {
     if (Actor_data_bank_dma_end_check(actor, play) == TRUE) {
         (*actor->ct_proc)(actor, game);
         actor->ct_proc = NULL;
+        CALL_EVENT(ActorInit, actor);
     }
 }
 
@@ -168,6 +170,8 @@ static void Actor_dt(ACTOR* actor, GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;
     Object_Exchange_c* exchange;
     ACTOR* t;
+
+    CALL_EVENT(ActorDestroy, actor);
 
     if (actor->sv_proc != NULL) {
         (*actor->sv_proc)(actor, game);
@@ -440,6 +444,7 @@ extern void Actor_info_call_actor(GAME_PLAY* play, Actor_info* actor_info) {
                     (*actor->ct_proc)(actor, (GAME*)play);
                     play->game.doing_point_specific = 153;
                     actor->ct_proc = NULL;
+                    CALL_EVENT(ActorInit, actor);
                 }
 
                 next = actor->next_actor;
@@ -475,7 +480,9 @@ extern void Actor_info_call_actor(GAME_PLAY* play, Actor_info* actor_info) {
                     if ((actor->state_bitfield & (ACTOR_STATE_NO_MOVE_WHILE_CULLED | ACTOR_STATE_NO_CULL)) ||
                         actor->part == ACTOR_PART_NPC) {
                         play->game.doing_point_specific = 161;
-                        (*actor->mv_proc)(actor, (GAME*)play);
+                        CALL_CANCELLABLE_EVENT(ActorUpdate, actor) {
+                            (*actor->mv_proc)(actor, (GAME*)play);
+                        }
                         play->game.doing_point_specific = 162;
                     }
 
@@ -514,8 +521,10 @@ extern void Actor_info_draw_actor(GAME_PLAY* play, Actor_info* actor_info) {
                 if ((actor->state_bitfield & (ACTOR_STATE_NO_DRAW_WHILE_CULLED | ACTOR_STATE_NO_CULL))) {
                     if ((actor->state_bitfield & ACTOR_STATE_INVISIBLE) == 0 && actor->cull_while_talking == FALSE &&
                         actor->skip_drawing == FALSE) {
-                        Actor_draw(play, actor);
-                        actor->drawn = TRUE;
+                        CALL_CANCELLABLE_EVENT(ActorDraw, actor) {
+                            Actor_draw(play, actor);
+                            actor->drawn = TRUE;
+                        }
                     }
                 } else {
                     Actor_delete_check(actor, (GAME*)play);
@@ -699,6 +708,25 @@ extern ACTOR* Actor_info_make_actor(Actor_info* actor_info, GAME* game, s16 prof
     mAc_overlay_info_c overlay_info; /* Required to be a struct, stubbed in GC */
 
     play = (GAME_PLAY*)game;
+    {
+        s16 requested = profile_no;
+        f32 pos[3] = { x, y, z };
+        s16 rot[3] = { rot_x, rot_y, rot_z };
+
+        CALL_EVENT(ActorSpawn, &profile_no, pos, rot, &name_id, &arg);
+        if (ActorSpawn_.Event.Cancelled) {
+            return NULL;
+        }
+        if (profile_no < 0 || profile_no >= mAc_PROFILE_NUM) {
+            profile_no = requested;
+        }
+        x = pos[0];
+        y = pos[1];
+        z = pos[2];
+        rot_x = rot[0];
+        rot_y = rot[1];
+        rot_z = rot[2];
+    }
     dlftbl = actor_dlftbls + profile_no;
     overlay_info.actor_name = "";
     if (actor_info->total_num > mAc_MAX_ACTORS) {

@@ -34,6 +34,7 @@
 #include "m_debug_display.h"
 #include "jsyswrap.h"
 #include "ac_port.h"
+#include "port/events/Events.h"
 #include "m_trademark.h"
 #include "zurumode.h"
 #include "m_scene_table.h"
@@ -356,6 +357,7 @@ static void Game_play_fbdemo_proc(GAME_PLAY* play) {
 extern void play_cleanup(GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;
 
+    CALL_EVENT(SceneUnloaded, play, play->scene_id);
     mMsg_dt(game);
     banti_dt();
 
@@ -498,6 +500,8 @@ extern void play_init(GAME* game) {
     watch_my_step_ct();
     event_title_flag_off();
     mEA_GetCardDLProgram();
+    PortEvents_WatchReset();
+    CALL_EVENT(SceneLoaded, play, play->scene_id);
 }
 
 static void Game_play_move_fbdemo_not_move(GAME* game) {
@@ -551,6 +555,8 @@ static void Game_play_move(GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;
     int pause;
 
+    PortEvents_Watch(play);
+    CALL_EVENT(PlayUpdate, play);
     FrameInterpolation_PauseRecord();
     game->doing_point = 0;
     game->doing_point_specific = 0x8D;
@@ -819,6 +825,7 @@ static void Game_play_draw(GAME_PLAY* play) {
 #endif
 
     DisplayList_initialize(graph, fill_r, fill_g, fill_b, &play->game);
+    CALL_EVENT(RenderGamePre, play);
 
     if ((GETREG(HREG, 80) != 10) || (GETREG(HREG, 82) != 0)) {
         setupFog(play, graph);
@@ -845,6 +852,7 @@ static void Game_play_draw(GAME_PLAY* play) {
                 break;
         }
     }
+    CALL_EVENT(RenderGamePost, play);
 }
 
 extern void play_main(GAME* game) {

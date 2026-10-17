@@ -41,6 +41,7 @@
 #include "m_field_info.h"
 #include "m_kabu_manager.h"
 #include "zurumode.h"
+#include "port/events/Events.h"
 
 static int debug_disp = 0;
 static u8 l_renew_is = 0;
@@ -449,8 +450,14 @@ extern void mTM_time() {
   int add_min;
   int time_add_sec;
   int temp;
+  int hour;
+  int month;
+  int year;
 
   day = Common_Get(time.rtc_time.day);
+  hour = Common_Get(time.rtc_time.hour);
+  month = Common_Get(time.rtc_time.month);
+  year = Common_Get(time.rtc_time.year);
 
   // Control the time step based on certain input conditions
   mTM_TimestepControl();
@@ -508,6 +515,16 @@ extern void mTM_time() {
   // Update current time and trigger Stalk Market change if the day changed
   if (Common_Get(time.rtc_time.day) != day) {
     Kabu_manager();
+  }
+
+  if (Common_Get(time.rtc_time.hour) != hour) {
+    CALL_EVENT(TimeHourChanged, hour, Common_Get(time.rtc_time.hour));
+  }
+
+  if (Common_Get(time.rtc_time.day) != day || Common_Get(time.rtc_time.month) != month ||
+      Common_Get(time.rtc_time.year) != year) {
+    CALL_EVENT(TimeDayChanged, Common_Get(time.rtc_time.year), Common_Get(time.rtc_time.month),
+               Common_Get(time.rtc_time.day));
   }
 
   // Calculate rad_hour and rad_min values for clock hands

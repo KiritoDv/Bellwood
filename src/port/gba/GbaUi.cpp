@@ -232,7 +232,7 @@ void InitGbaUi() {
         drop->RegisterDropHandler(OnFileDropped);
     }
     RegisterCommands();
-    REGISTER_LISTENER(KeyboardInput, EVENT_PRIORITY_LOW, OnFrame);
+    REGISTER_LISTENER(GameLoopTick, EVENT_PRIORITY_LOW, OnFrame);
 }
 
 RegisterShipInitFunc sInitGbaUi(InitGbaUi);

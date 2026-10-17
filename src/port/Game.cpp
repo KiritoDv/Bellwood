@@ -15,6 +15,7 @@
 #endif
 
 #include "port/audio/ACAudio.h"
+#include "port/events/Events.h"
 #ifdef __EMSCRIPTEN__
 #include "port/web/WebUtils.h"
 #endif
@@ -31,6 +32,7 @@ static bool sGameRunning = false;
 void push_frame() {
     GameEngine::StartAudioFrame();
     GameEngine::Instance->StartFrame();
+    CALL_EVENT(GameLoopTick);
     if (sGameRunning) {
         sGameRunning = AC_RunFrame() != 0;
         AC_AudioFrame(game_GameFrame);

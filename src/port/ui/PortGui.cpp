@@ -14,6 +14,7 @@
 
 #include <ship/window/gui/ConsoleWindow.h>
 #include <ship/window/gui/EventDebuggerWindow.h>
+#include <libultraship/bridge/eventsbridge.h>
 #if __has_include(<ship/window/gui/ShaderSettingsWindow.h>)
 #include <ship/window/gui/ShaderSettingsWindow.h>
 #define PORT_HAS_SHADER_SETTINGS 1
@@ -60,7 +61,9 @@ void SetupGuiElements() {
     mConsoleWindow = std::make_shared<Ship::ConsoleWindow>(CVAR_WINDOW("DevConsole"), "Console##Dev", ImVec2(820, 630));
     gui->AddGuiWindow(mConsoleWindow);
 
-    mEventDebuggerWindow = std::make_shared<Ship::EventDebuggerWindow>(CVAR_WINDOW("EventDebugger"), "Event Debugger");
+    mEventDebuggerWindow = std::make_shared<Ship::EventDebuggerWindow>(
+        ShipCompat::GetConsoleVariables(), ShipCompat::GetWindow(), EventSystemGetEvents(), CVAR_WINDOW("EventDebugger"),
+        "Event Debugger");
     gui->AddGuiWindow(mEventDebuggerWindow);
 
     if (gui->GetGuiWindow("Gfx Debugger") == nullptr) {

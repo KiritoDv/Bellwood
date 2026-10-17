@@ -27,6 +27,7 @@
 #include "sys_dynamic.h"
 #include "sys_ucode.h"
 #include "zurumode.h"
+#include "port/events/Events.h"
 
 GRAPH graph_class;
 
@@ -317,6 +318,7 @@ extern int AC_RunFrame(void) {
 
     while (l_run_frame.state != RUN_FRAME_DONE) {
         if (AC_TakeRebootRequest()) {
+            CALL_EVENT(GameReset);
             if (l_run_frame.game != NULL) {
                 game_dt(l_run_frame.game);
                 ac_free(l_run_frame.game);
@@ -357,6 +359,13 @@ extern int AC_RunFrame(void) {
             l_run_frame.game = game;
             l_run_frame.state = RUN_FRAME_RUN;
             OSReport("AC_RunFrame: game %d constructed\n", (int)(l_run_frame.dlftbl - game_dlftbls));
+            {
+                static int prev_state = BW_GAME_STATE_NONE;
+                int now_state = (int)(l_run_frame.dlftbl - game_dlftbls);
+
+                CALL_EVENT(GameStateChanged, prev_state, now_state);
+                prev_state = now_state;
+            }
             FrameInterpolation_ShouldInterpolateFrame(FALSE);
             FrameInterpolation_DontInterpolateCamera();
         }
@@ -364,6 +373,7 @@ extern int AC_RunFrame(void) {
         if (game_is_doing(l_run_frame.game)) {
             AC_ResetTick();
             padmgr_PortUpdate();
+            CALL_EVENT(GameFrameUpdate);
             gAC_PendingDL = NULL;
             FrameInterpolation_StartRecord();
             graph_main(__graph, l_run_frame.game);

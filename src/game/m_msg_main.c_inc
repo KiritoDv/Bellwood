@@ -318,6 +318,15 @@ static int mMsg_Count_MsgData(u8* data) {
 }
 
 static int mMsg_LoadMsgData(mMsg_Data_c* msg_data, int index, int cut) {
+    {
+        int requested = index;
+
+        CALL_EVENT(MessageLoad, &index);
+        if (index < 0 || index >= MSG_MAX) {
+            index = requested;
+        }
+    }
+
     if (msg_data != NULL) {
         u32 addr;
         u32 size;
@@ -345,6 +354,7 @@ static int mMsg_LoadMsgData(mMsg_Data_c* msg_data, int index, int cut) {
                 *dst_p++ = *src_p++;
             }
 
+            CALL_EVENT(MessageLoaded, index, msg_data->text_buf.data, size, sizeof(msg_data->text_buf.data));
             msg_data->msg_no = index;
             msg_data->data_loaded = TRUE;
             msg_data->msg_len = mMsg_Count_MsgData(msg_data->text_buf.data);

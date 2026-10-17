@@ -36,6 +36,7 @@ static void mMsg_MainSetup_Appear(mMsg_Window_c* msg_p, GAME* game) {
         int show_name = appear_data->name_shown_flag;
 
         mMsg_Set_client_actor_p(msg_p, actor, show_name);
+        CALL_EVENT(MessageOpened, actor, msg_p->msg_data->msg_no);
         msg_p->window_background_color = appear_data->window_color;
         mMsg_sound_spec_change_voice(msg_p);
         mMsg_sound_voice_mode(msg_p);

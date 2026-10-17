@@ -4,6 +4,7 @@
 #include "m_debug.h"
 #include "gc_compat.h"
 #include "ac_port.h"
+#include "port/events/Events.h"
 
 static int frame = 0;
 padmgr padmgr_class;
@@ -228,6 +229,8 @@ static void padmgr_HandleRetraceMsg(void) {
     if (this->rumble.reset) {
         bzero(this->cur_pads, sizeof(this->cur_pads));
     }
+
+    CALL_EVENT(ControllerRead, this->cur_pads, MAXCONTROLLERS);
 
     osContStartQuery(serial_mq);
     osRecvMesg(serial_mq, NULL, OS_MESG_BLOCK);
