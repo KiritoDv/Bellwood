@@ -396,7 +396,8 @@ jobs:
         run: |
           BUILD=build-web
           mkdir Bellwood-web
-          for f in bellwood.js bellwood.wasm bellwood.wasm.map bellwood.data coi-serviceworker.js; do
+          for f in bellwood.js bellwood.wasm bellwood.wasm.map bellwood.data coi-serviceworker.js favicon.png \
+                   apple-touch-icon.png; do
             test -s "$BUILD/$f" || { echo "::error::$BUILD/$f missing or empty"; exit 1; }
             cp "$BUILD/$f" Bellwood-web/
           done
