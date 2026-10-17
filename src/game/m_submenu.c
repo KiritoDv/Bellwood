@@ -169,6 +169,18 @@ extern void load_player(Submenu* submenu) {
     }
 }
 
+extern void mSM_submenu_relink(Submenu* submenu) {
+    mSM_dlftbl_c* dlftbl = &SubmenuArea_dlftbl[mSM_DLF_SUBMENU_OVL];
+
+    if (SubmenuArea_visit != dlftbl) {
+        if (SubmenuArea_visit != NULL) {
+            SubmenuArea_DoUnlink(SubmenuArea_visit, submenu);
+        }
+
+        SubmenuArea_DoLink(dlftbl, submenu, mSM_DLF_SUBMENU_OVL);
+    }
+}
+
 extern void mSM_submenu_ct(Submenu* submenu) {
     bzero(submenu, sizeof(Submenu));
     submenu->process_status = mSM_PROCESS_WAIT;

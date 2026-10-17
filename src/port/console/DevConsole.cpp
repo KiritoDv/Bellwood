@@ -16,5 +16,13 @@
     std::reinterpret_pointer_cast<Ship::ConsoleWindow>(ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Console")) \
         ->SendInfoMessage
 
+extern "C" void AC_RequestReset(void);
+
 void DevConsole_Init(void) {
+    CMD_REGISTER("reset", { [](std::shared_ptr<Ship::Console>, std::vector<std::string>, std::string*) {
+                               AC_RequestReset();
+                               return 0;
+                           },
+                            "Presses the GameCube reset button",
+                            {} });
 }

@@ -10,6 +10,7 @@
 #include "jsyswrap.h"
 #include "libu64/debug.h"
 #include "libultra/libultra.h"
+#include "libultra/initialize.h"
 #include "m_bgm.h"
 #include "m_debug.h"
 #include "m_game_dlftbls.h"
@@ -315,6 +316,23 @@ extern int AC_RunFrame(void) {
     }
 
     while (l_run_frame.state != RUN_FRAME_DONE) {
+        if (AC_TakeRebootRequest()) {
+            if (l_run_frame.game != NULL) {
+                game_dt(l_run_frame.game);
+                ac_free(l_run_frame.game);
+                l_run_frame.game = NULL;
+                game_class_p = NULL;
+            }
+
+            __osInitialize_common();
+            ResetStatus = IRQ_RESET_NORMAL;
+            ResetTime = 0;
+            SoftResetEnable = FALSE;
+            l_run_frame.dlftbl = &game_dlftbls[0];
+            l_run_frame.state = RUN_FRAME_NEW_GAME;
+            OSReport("AC_RunFrame: reboot\n");
+        }
+
         if (l_run_frame.state == RUN_FRAME_NEW_GAME) {
             size_t size;
             GAME* game;
@@ -344,6 +362,7 @@ extern int AC_RunFrame(void) {
         }
 
         if (game_is_doing(l_run_frame.game)) {
+            AC_ResetTick();
             padmgr_PortUpdate();
             gAC_PendingDL = NULL;
             FrameInterpolation_StartRecord();
@@ -353,6 +372,10 @@ extern int AC_RunFrame(void) {
                 AC_SubmitFrame(gAC_PendingDL);
             }
             return TRUE;
+        }
+
+        if (osShutdown != FALSE && game_get_next_game_init(l_run_frame.game) == second_game_init) {
+            osShutdownStart(OS_RESET_RESTART);
         }
 
         l_run_frame.dlftbl = game_get_next_game_dlftbl(l_run_frame.game);

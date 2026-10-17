@@ -214,6 +214,7 @@ extern void* mSM_ovlptr_dllcnv(void* proc, Submenu* submenu, int dlf_idx);
 extern void mSM_submenu_ovlptr_init(GAME_PLAY* play);
 extern void mSM_submenu_ovlptr_cleanup(Submenu* submenu);
 extern void load_player(Submenu* submenu);
+extern void mSM_submenu_relink(Submenu* submenu);
 extern void mSM_submenu_ct(Submenu* submenu);
 extern void mSM_submenu_dt(Submenu* submenu);
 extern void mSM_open_submenu(Submenu* submenu, int type, int arg0, int arg1);

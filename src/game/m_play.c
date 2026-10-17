@@ -660,8 +660,12 @@ static void setupViewMatrix(GAME_PLAY* play, GRAPH* graph1, GRAPH* graph2) {
     CLOSE_DISP(graph1);
 }
 
+static u32 l_prerender_size_key;
+static int l_prerender_recapture;
+
 static void copy_efb_to_texture(Gfx** graph, void* buf) {
     gDPCopyFB((*graph)++, gAC_PrerenderFb, 0, FALSE, NULL);
+    l_prerender_size_key = AC_RenderSizeKey();
 }
 
 static int makeBumpTexture(GAME_PLAY* play, GRAPH* graph1, GRAPH* graph2) {
@@ -724,6 +728,11 @@ static int makeBumpTexture(GAME_PLAY* play, GRAPH* graph1, GRAPH* graph2) {
         play->submenu.mode = mSM_MODE_IDLE;
     }
 
+    if (play->submenu.mode == mSM_MODE_PRERENDER_DONE && AC_RenderSizeKey() != l_prerender_size_key) {
+        play->submenu.mode = mSM_MODE_PRERENDER_INIT;
+        l_prerender_recapture = TRUE;
+    }
+
     if (play->submenu.mode == mSM_MODE_PRERENDER_DONE) {
         poly = NOW_POLY_OPA_DISP;
 
@@ -734,8 +743,9 @@ static int makeBumpTexture(GAME_PLAY* play, GRAPH* graph1, GRAPH* graph2) {
                             G_TD_CLAMP | G_TP_NONE | G_CYC_COPY | G_PM_NPRIMITIVE,
                         G_AC_NONE | G_ZS_PIXEL | G_RM_NOOP | G_RM_NOOP2);
         gDPSetTextureImageFB(rect_disp++, G_IM_FMT_RGBA, G_IM_SIZ_16b, (2*SCREEN_WIDTH), gAC_PrerenderFb);
-        gDPImageRectangle(rect_disp++, 0 << 2, 0 << 2, 0, 0, (2*SCREEN_WIDTH) << 2, (2*SCREEN_HEIGHT) << 2,
-                          (2*SCREEN_WIDTH), (2*SCREEN_HEIGHT), G_TX_RENDERTILE, (2*SCREEN_WIDTH), (2*SCREEN_HEIGHT));
+        gDPImageRectangle(rect_disp++, OTRGetRectDimensionFromLeftEdge(0.0f) * 4, 0 << 2, 0, 0,
+                          OTRGetRectDimensionFromRightEdge(0.0f) * 4, (2*SCREEN_HEIGHT) << 2, (2*SCREEN_WIDTH),
+                          (2*SCREEN_HEIGHT), G_TX_RENDERTILE, (2*SCREEN_WIDTH), (2*SCREEN_HEIGHT));
 
         SET_POLY_OPA_DISP(rect_disp);
         return 1;
@@ -768,6 +778,11 @@ static int makeBumpTexture(GAME_PLAY* play, GRAPH* graph1, GRAPH* graph2) {
         SET_POLY_OPA_DISP(fb_disp);
 
         if (play->submenu.mode == mSM_MODE_PRERENDER_INIT) {
+            if (l_prerender_recapture) {
+                mSM_submenu_relink(&play->submenu);
+                l_prerender_recapture = FALSE;
+            }
+
             play->submenu.mode = mSM_MODE_PRERENDER_WAIT;
             SETREG(SREG, 3, -(GETREG(SREG, 3)));
         } else {

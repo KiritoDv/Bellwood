@@ -6,6 +6,18 @@
 #include "m_warning_ovl.h"
 #include "sys_matrix.h"
 #include "m_malloc.h"
+#include "main.h"
+#include "ac_port.h"
+
+static f32 mCD_page_width(void) {
+    f32 width = OTRGetDimensionFromRightEdge(0.0f) / 2.0f - OTRGetDimensionFromLeftEdge(0.0f) / 2.0f;
+
+    return width > SCREEN_WIDTH_F ? width : SCREEN_WIDTH_F;
+}
+
+static f32 mCD_page_step(f32 step) {
+    return step * mCD_page_width() / SCREEN_WIDTH_F;
+}
 
 static u32 mCD_visiter_chk(int player_no, int month, int day) {
     u32 ret = FALSE;
@@ -483,7 +495,7 @@ static void mCD_MVPL_select(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
         if (calendar->_105C == mCD_STICK_AREA_LEFT) {
             if (calendar->_1056 > calendar->_1059 - 11) {
                 calendar->_105A = 1;
-                menu_info->position[0] = -320.0f;
+                menu_info->position[0] = -mCD_page_width();
                 calendar->move_proc_idx = mCD_MVPL_MV1;
                 calendar->_1056--;
                 sAdo_SysTrgStart(NA_SE_5F);
@@ -491,7 +503,7 @@ static void mCD_MVPL_select(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
         } else if (calendar->_105C == mCD_STICK_AREA_RIGHT) {
             if (calendar->_1056 < calendar->_1059 + 11) {
                 calendar->_105A = 1;
-                menu_info->position[0] = 320.0f;
+                menu_info->position[0] = mCD_page_width();
                 calendar->move_proc_idx = mCD_MVPL_MV0;
                 calendar->_1056++;
                 sAdo_SysTrgStart(NA_SE_5F);
@@ -499,13 +511,13 @@ static void mCD_MVPL_select(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
         } else if ((trigger & BUTTON_CUP) && calendar->_105C == mCD_STICK_AREA_CENTER) {
             if (calendar->_1059 > calendar->_1056) {
                 calendar->_105A = calendar->_1059 - calendar->_1056;
-                menu_info->position[0] = 320.0f;
+                menu_info->position[0] = mCD_page_width();
                 calendar->move_proc_idx = mCD_MVPL_MV0;
                 calendar->_1056++;
                 sAdo_SysTrgStart(NA_SE_5F);
             } else if (calendar->_1059 < calendar->_1056) {
                 calendar->_105A = calendar->_1056 - calendar->_1059;
-                menu_info->position[0] = -320.0f;
+                menu_info->position[0] = -mCD_page_width();
                 calendar->move_proc_idx = mCD_MVPL_MV1;
                 calendar->_1056--;
                 sAdo_SysTrgStart(NA_SE_5F);
@@ -524,7 +536,7 @@ static void mCD_MVPL_mv(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
     int flag;
 
     if (calendar->_105A == 1) {
-        f32 val = add_calc(&menu_info->position[0], 0.0f, 0.4f, 37.0f, 1.25f);
+        f32 val = add_calc(&menu_info->position[0], 0.0f, 0.4f, mCD_page_step(37.0f), mCD_page_step(1.25f));
 
         if (fabsf(val) < 0.1f) {
             flag = TRUE;
@@ -532,14 +544,14 @@ static void mCD_MVPL_mv(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
             flag = FALSE;
         }
     } else if (menu_info->position[0] > 0.0f) {
-        menu_info->position[0] -= 37.0f;
+        menu_info->position[0] -= mCD_page_step(37.0f);
         if (menu_info->position[0] <= 0.0f) {
             flag = TRUE;
         } else {
             flag = FALSE;
         }
     } else {
-        menu_info->position[0] += 37.0f;
+        menu_info->position[0] += mCD_page_step(37.0f);
         if (menu_info->position[0] >= 0.0f) {
             flag = TRUE;
         } else {
@@ -555,10 +567,10 @@ static void mCD_MVPL_mv(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
         } else {
             sAdo_SysTrgStart(NA_SE_5F);
             if (calendar->move_proc_idx == mCD_MVPL_MV1) {
-                menu_info->position[0] -= 320.0f;
+                menu_info->position[0] -= mCD_page_width();
                 calendar->_1056--;
             } else {
-                menu_info->position[0] += 320.0f;
+                menu_info->position[0] += mCD_page_width();
                 calendar->_1056++;
             }
         }
@@ -792,11 +804,13 @@ static void mCD_calendar_ovl_draw(Submenu* submenu, GAME* game) {
 
     if (menu_info->proc_status != mSM_OVL_PROC_OBEY) {
         if (calendar->move_proc_idx == mCD_MVPL_MV0) {
-            mCD_set_base_dl(submenu, game, menu_info->position[0] - 320.0f, menu_info->position[1], calendar->_1056 - 1);
+            mCD_set_base_dl(submenu, game, menu_info->position[0] - mCD_page_width(), menu_info->position[1],
+                            calendar->_1056 - 1);
         }
 
         if (calendar->move_proc_idx == mCD_MVPL_MV1) {
-            mCD_set_base_dl(submenu, game, menu_info->position[0] + 320.0f, menu_info->position[1], calendar->_1056 + 1);
+            mCD_set_base_dl(submenu, game, menu_info->position[0] + mCD_page_width(), menu_info->position[1],
+                            calendar->_1056 + 1);
         }
 
         mCD_set_base_dl(submenu, game, menu_info->position[0], menu_info->position[1], calendar->_1056);

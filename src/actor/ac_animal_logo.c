@@ -19,6 +19,7 @@
 #include "sys_matrix.h"
 #include "m_time.h"
 #include "m_font.h"
+#include "ac_port.h"
 #include "libultra/libultra.h"
 #include "m_flashrom.h"
 #include "assets/data/model/cKF_ba_r_logo_us_animal.h"
@@ -588,6 +589,15 @@ static void aAL_press_start_draw(ANIMAL_LOGO_ACTOR* actor, GRAPH* graph) {
   CLOSE_DISP(graph);
 }
 
+static int aAL_skl_wide_before(GAME* game, cKF_SkeletonInfo_R_c* keyframe, int joint_idx, Gfx** joint_shape,
+                               u8* joint_flags, void* arg, s_xyz* joint_rot, xyz_t* joint_pos) {
+  if (joint_idx == 0 && joint_pos->x > 0.0f) {
+    joint_pos->x *= AC_WideScale();
+  }
+
+  return TRUE;
+}
+
 static void aAL_skl_draw(GAME* game, cKF_SkeletonInfo_R_c* skl_keyframe) {
   Mtx* m;
 
@@ -595,7 +605,7 @@ static void aAL_skl_draw(GAME* game, cKF_SkeletonInfo_R_c* skl_keyframe) {
 
   m = GRAPH_ALLOC_TYPE(game->graph, Mtx, skl_keyframe->skeleton->num_shown_joints);
   if (m != NULL) {
-    cKF_Si3_draw_R_SV(game, skl_keyframe, m, NULL, NULL, NULL);
+    cKF_Si3_draw_R_SV(game, skl_keyframe, m, &aAL_skl_wide_before, NULL, NULL);
   }
 
   CLOSE_DISP(game->graph);

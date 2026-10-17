@@ -10,12 +10,24 @@
 #include "sys_matrix.h"
 #include "assets/data/model/kei_hyouji.h"
 #include "assets/data/model/kei_win.h"
+#include "main.h"
+#include "ac_port.h"
 
 static mNT_Ovl_c notice_ovl_data;
 
 static u8* kei_win_st_tex_tbl[] = { kei_win_st5_tex_rgb_ia8, kei_win_st4_tex_rgb_ia8, kei_win_st2_tex_rgb_ia8,
                                     kei_win_st4_tex_rgb_ia8, kei_win_st5_tex_rgb_ia8, kei_win_st6_tex_rgb_ia8,
                                     kei_win_st3_tex_rgb_ia8, kei_win_st6_tex_rgb_ia8, kei_win_st1_tex_rgb_ia8 };
+
+static f32 mNT_page_width(void) {
+    f32 width = OTRGetDimensionFromRightEdge(0.0f) / 2.0f - OTRGetDimensionFromLeftEdge(0.0f) / 2.0f;
+
+    return width > SCREEN_WIDTH_F ? width : SCREEN_WIDTH_F;
+}
+
+static f32 mNT_page_step(f32 step) {
+    return step * mNT_page_width() / SCREEN_WIDTH_F;
+}
 
 static int mNT_strLineCheck(u8** str_pp, u8* str_end_p, int* width, int* line) {
     u8* str_p = *str_pp;
@@ -155,7 +167,7 @@ static void mNT_Play_page_read(Submenu* submenu, mSM_MenuInfo_c* menu_info, mNT_
     } else if (chkTrigger(BUTTON_A)) {
         notice_ovl->mode = mNT_PLAY_PAGE_TO_WRITE;
         notice_ovl->now_page = mNtc_BOARD_POST_COUNT;
-        menu_info->position[0] = 320.0f;
+        menu_info->position[0] = mNT_page_width();
         mem_copy((u8*)&notice_ovl->post.post_time, (u8*)Common_GetPointer(time.rtc_time), sizeof(lbRTC_time_c));
         mem_clear(notice_ovl->post.message, sizeof(notice_ovl->post.message), CHAR_SPACE);
         sAdo_SysTrgStart(0x5F);
@@ -180,9 +192,9 @@ static void mNT_Play_page_read(Submenu* submenu, mSM_MenuInfo_c* menu_info, mNT_
         notice_ovl->now_page += (move_page / notice_ovl->move_time);
 
         if (move_page > 0) {
-            menu_info->position[0] = 320.0f;
+            menu_info->position[0] = mNT_page_width();
         } else {
-            menu_info->position[0] = -320.0f;
+            menu_info->position[0] = -mNT_page_width();
         }
 
         sAdo_SysTrgStart(0x5F);
@@ -195,7 +207,7 @@ static void mNT_Play_page_move(Submenu* submenu, mSM_MenuInfo_c* menu_info, mNT_
     f32 tmp;
 
     if (notice_ovl->move_time == 1) {
-        tmp = add_calc(&menu_info->position[0], 0.0f, 0.4f, 74.0f, 2.5f);
+        tmp = add_calc(&menu_info->position[0], 0.0f, 0.4f, mNT_page_step(74.0f), mNT_page_step(2.5f));
 
         if (fabsf(tmp) < 0.1f) {
             move_flag = TRUE;
@@ -205,7 +217,7 @@ static void mNT_Play_page_move(Submenu* submenu, mSM_MenuInfo_c* menu_info, mNT_
     } else {
         if (menu_info->position[0] > 0.0f) {
             direction = 1;
-            menu_info->position[0] = menu_info->position[0] - 74.0f;
+            menu_info->position[0] = menu_info->position[0] - mNT_page_step(74.0f);
 
             if (menu_info->position[0] <= 0.0f) {
                 move_flag = TRUE;
@@ -214,7 +226,7 @@ static void mNT_Play_page_move(Submenu* submenu, mSM_MenuInfo_c* menu_info, mNT_
             }
         } else {
             direction = 0;
-            menu_info->position[0] += 74.0f;
+            menu_info->position[0] += mNT_page_step(74.0f);
 
             if (menu_info->position[0] >= 0.0f) {
                 move_flag = TRUE;
@@ -236,10 +248,10 @@ static void mNT_Play_page_move(Submenu* submenu, mSM_MenuInfo_c* menu_info, mNT_
             notice_ovl->disp_page = notice_ovl->now_page;
 
             if (direction) {
-                menu_info->position[0] += 320.0f;
+                menu_info->position[0] += mNT_page_width();
                 notice_ovl->now_page += ((notice_ovl->page_count - notice_ovl->now_page) - 1) / notice_ovl->move_time;
             } else {
-                menu_info->position[0] -= 320.0f;
+                menu_info->position[0] -= mNT_page_width();
                 notice_ovl->now_page -= notice_ovl->now_page / notice_ovl->move_time;
             }
         }
@@ -247,7 +259,7 @@ static void mNT_Play_page_move(Submenu* submenu, mSM_MenuInfo_c* menu_info, mNT_
 }
 
 static void mNT_Play_page_to_write(Submenu* submenu, mSM_MenuInfo_c* menu_info, mNT_Ovl_c* notice_ovl) {
-    f32 c0 = add_calc(&menu_info->position[0], 0.0f, 0.4f, 74.0f, 2.5f);
+    f32 c0 = add_calc(&menu_info->position[0], 0.0f, 0.4f, mNT_page_step(74.0f), mNT_page_step(2.5f));
     f32 c1;
     int page_stopped;
     int control_stopped;
@@ -274,7 +286,7 @@ static void mNT_Play_page_to_write(Submenu* submenu, mSM_MenuInfo_c* menu_info, 
 }
 
 static void mNT_Play_page_to_read(Submenu* submenu, mSM_MenuInfo_c* menu_info, mNT_Ovl_c* notice_ovl) {
-    f32 c0 = add_calc(&menu_info->position[0], 0.0f, 0.4f, 74.0f, 2.5f);
+    f32 c0 = add_calc(&menu_info->position[0], 0.0f, 0.4f, mNT_page_step(74.0f), mNT_page_step(2.5f));
     f32 c1;
     int page_stopped;
     int control_stopped;
@@ -345,7 +357,7 @@ static void mNT_move_Obey(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
             menu_info->proc_status = mSM_OVL_PROC_PLAY;
             notice_ovl->mode = mNT_PLAY_PAGE_TO_READ;
             notice_ovl->now_page = notice_ovl->page_count - 1;
-            menu_info->position[0] = -320.0f;
+            menu_info->position[0] = -mNT_page_width();
         }
     }
 }
@@ -652,9 +664,9 @@ static void mNT_set_dl(Submenu* submenu, GAME* game, mSM_MenuInfo_c* menu_info) 
     mNT_set_page_dl(submenu, menu_info, game, graph, x, y, notice_ovl->now_page);
     if (notice_ovl->disp_page != notice_ovl->now_page) {
         if (notice_ovl->now_page > notice_ovl->disp_page) {
-            x -= 320.0f;
+            x -= mNT_page_width();
         } else {
-            x += 320.0f;
+            x += mNT_page_width();
         }
 
         mNT_set_page_dl(submenu, menu_info, game, graph, x, y, notice_ovl->disp_page);

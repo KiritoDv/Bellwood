@@ -56,6 +56,7 @@ s16 OTRGetRectDimensionFromLeftEdgeOverride(f32 v);
 s16 OTRGetRectDimensionFromRightEdgeOverride(f32 v);
 
 f32 AC_WideScale(void);
+u32 AC_RenderSizeKey(void);
 int AC_WideCount(f32* carry);
 
 int AC_GbaIslandWithoutGba(void);
@@ -79,6 +80,9 @@ int AC_RunFrame(void);
 void AC_SubmitFrame(void* dl);
 int AC_SetClearColor(u8 r, u8 g, u8 b);
 void AC_SetFrameDivisor(int divisor);
+void AC_RequestReset(void);
+void AC_ResetTick(void);
+int AC_TakeRebootRequest(void);
 
 void gfx_texture_cache_clear(void);
 void gfx_texture_cache_invalidate_range(const void* addr, size_t size);

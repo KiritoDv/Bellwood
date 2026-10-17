@@ -5,6 +5,9 @@
 #include "m_common_data.h"
 #include "GBA2/gba2.h"
 #include "ac_port.h"
+#include "ac_structure.h"
+
+#define aBC_WIDE_STRUCTURE_RESERVE 4
 
 static void aBC_actor_move(ACTOR*, GAME*);
 
@@ -41,6 +44,45 @@ static f32 aBC_pos_table[UT_BASE_NUM] = {
   mFI_UT_WORLDSIZE_X_F * 15 + mFI_UT_WORLDSIZE_HALF_X_F   // 620.0f
 };
 
+static int aBC_free_structure_slots(void) {
+  aSTR_Clip_c* clip = Common_Get(clip).structure_clip;
+  int count = 0;
+  int i;
+
+  if (clip == NULL) {
+    return 0;
+  }
+
+  for (i = 0; i < aSTR_ACTOR_TBL_COUNT; i++) {
+    if (clip->structure_actor_tbl[i] != NULL && clip->structure_actor_used_tbl[i] == FALSE) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+static int aBC_wide_neighbor_block(GAME_PLAY* play, int bx, int bz) {
+  int now_bx = play->block_table.block_x;
+
+  return AC_WideScale() > 1.0f && bz == play->block_table.block_z && (bx == now_bx - 1 || bx == now_bx + 1);
+}
+
+static int aBC_keep_wide_structure(GAME_PLAY* play, ACTOR* actor) {
+  int bx;
+  int bz;
+
+  if (ITEM_NAME_GET_TYPE(actor->npc_id) != NAME_TYPE_STRUCT || aBC_free_structure_slots() < aBC_WIDE_STRUCTURE_RESERVE) {
+    return FALSE;
+  }
+
+  if (mFI_Wpos2BlockNum(&bx, &bz, actor->home.position) == FALSE) {
+    return FALSE;
+  }
+
+  return aBC_wide_neighbor_block(play, bx, bz);
+}
+
 static void aBC_deleteActor_part(GAME_PLAY* play, int part) {
   mFI_block_tbl_c* last_block_table = &play->last_block_table;
   s8 last_bx = last_block_table->block_x;
@@ -64,7 +106,13 @@ static void aBC_deleteActor_part(GAME_PLAY* play, int part) {
       (check_bx >= 0 && check_bx != last_bx && check_bx != now_bx) &&
       (check_bz >= 0 && check_bz != last_bz && check_bz != now_bz)
     ) {
-      Actor_delete(actor);
+      if (part == ACTOR_PART_ITEM && aBC_keep_wide_structure(play, actor)) {
+        actor->block_x = now_bx;
+        actor->block_z = now_bz;
+      }
+      else {
+        Actor_delete(actor);
+      }
     }
 
     actor = actor->next_actor;
@@ -184,6 +232,52 @@ static int aBC_setupCommonMvActor(GAME_PLAY* play, mFM_move_actor_c* mv_actor_li
   }
 
   return res;
+}
+
+static void aBC_setupWideStructures(GAME_PLAY* play) {
+  static int side[] = { -1, 1 };
+  aSTR_Clip_c* clip = Common_Get(clip).structure_clip;
+  int i;
+
+  if (clip == NULL || AC_WideScale() <= 1.0f || mFI_GET_TYPE(mFI_GetFieldId()) != mFI_FIELDTYPE_FG ||
+      (play->game_frame & 15) != 0) {
+    return;
+  }
+
+  for (i = 0; i < 2; i++) {
+    int bx = play->block_table.block_x + side[i];
+    int bz = play->block_table.block_z;
+    mActor_name_t* item_p;
+    f32 base_x;
+    f32 base_z;
+    int ut_x;
+    int ut_z;
+
+    if (mFI_BlockCheck(bx, bz) == FALSE || mFI_CheckBgDma(bx, bz) == FALSE) {
+      continue;
+    }
+
+    item_p = mFI_BkNumtoUtFGTop(bx, bz);
+    if (item_p == NULL) {
+      continue;
+    }
+
+    mFI_BkNum2WposXZ(&base_x, &base_z, bx, bz);
+
+    for (ut_z = 0; ut_z < UT_Z_NUM; ut_z++) {
+      for (ut_x = 0; ut_x < UT_X_NUM; ut_x++) {
+        if (ITEM_NAME_GET_TYPE(*item_p) == NAME_TYPE_STRUCT) {
+          if (aBC_free_structure_slots() <= aBC_WIDE_STRUCTURE_RESERVE) {
+            return;
+          }
+
+          (*clip->setup_actor_proc)((GAME*)play, *item_p, -1, base_x + aBC_pos_table[ut_x], base_z + aBC_pos_table[ut_z]);
+        }
+
+        item_p++;
+      }
+    }
+  }
 }
 
 static void aBC_setupMvActor(BIRTH_CONTROL_ACTOR* birth_control, GAME_PLAY* play) {
@@ -319,6 +413,9 @@ static void aBC_actor_move(ACTOR* actorx, GAME* game) {
     if (birth_control->setup_actor_flag) {
       aBC_deleteActor_part(play, ACTOR_PART_ITEM);
       aBC_setupActor(birth_control, play);
+    }
+    else {
+      aBC_setupWideStructures(play);
     }
 
     if (birth_control->move_actor_list_exists_flag == TRUE && birth_control->move_actor_bitfield != 0) {

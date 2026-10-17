@@ -90,6 +90,7 @@ namespace fs = std::filesystem;
 
 extern "C" {
 bool prevAltAssets = false;
+extern int32_t gAC_PrerenderFb;
 }
 
 typedef struct {
@@ -399,6 +400,8 @@ void GameEngine::FinishInit() {
     gsFast3dWindow->SetRendererUCode(ucode_f3dex2_ac);
     gsFast3dWindow->SetTextureFilter((Fast::FilteringMode)CVarGetInteger(CVAR_TEXTURE_FILTER, Fast::FILTER_LINEAR));
     GameEngine_GetInterpreter()->SetNativeDimensions(NATIVE_SCREEN_WIDTH, NATIVE_SCREEN_HEIGHT);
+    gAC_PrerenderFb = gfx_create_framebuffer(NATIVE_SCREEN_WIDTH, NATIVE_SCREEN_HEIGHT, NATIVE_SCREEN_WIDTH,
+                                             NATIVE_SCREEN_HEIGHT, 1, false);
 
     auto loader = ShipCompat::GetResourceManager()->GetResourceLoader();
     auto blobFactory = std::make_shared<Ship::ResourceFactoryBinaryBlobV0>();
@@ -1455,6 +1458,11 @@ extern "C" float AC_WideScale(void) {
     float scale = (OTRGetDimensionFromRightEdge(0.0f) - OTRGetDimensionFromLeftEdge(0.0f)) /
                   (float)interpreter->mNativeDimensions.width;
     return scale > 1.0f ? scale : 1.0f;
+}
+
+extern "C" uint32_t AC_RenderSizeKey(void) {
+    auto interpreter = GameEngine_GetInterpreter();
+    return (interpreter->mCurDimensions.width << 16) ^ interpreter->mCurDimensions.height;
 }
 
 extern "C" int AC_WideCount(float* carry) {

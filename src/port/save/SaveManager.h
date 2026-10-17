@@ -6,6 +6,7 @@ extern "C" {
 
 void SaveManager_PickTownFile(void);
 int SaveManager_IsPickingTownFile(void);
+int SaveManager_IsSaving(void);
 void SaveManager_OpenImport(void);
 
 const char* SaveManager_GetTownFile(void);

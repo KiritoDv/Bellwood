@@ -1936,6 +1936,10 @@ int SaveManager_IsPickingTownFile(void) {
     return sPicking ? 1 : 0;
 }
 
+int SaveManager_IsSaving(void) {
+    return sJob.kind != JOB_NONE ? 1 : 0;
+}
+
 void SaveManager_OpenImport(void) {
     SaveManager::RequestImport("");
 }

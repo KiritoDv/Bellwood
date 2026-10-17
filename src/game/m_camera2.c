@@ -9,6 +9,12 @@
 #include "m_collision_bg.h"
 #include "m_scene_table.h"
 #include "m_common_data.h"
+#include "m_random_field_h.h"
+#include "ac_port.h"
+
+#define CAMERA2_FIELD_VIEW_HALF_WIDTH 177.0f
+#define CAMERA2_BORDER_VIEW_DEPTH 200.0f
+#define CAMERA2_ROOM_VIEW_HALF_WIDTH 165.0f
 
 #if VERSION >= VER_GAFU01_00
 #define CAMERA2_STAFFROLL_CENTER_X_ROT_STEP_DIVISOR 3333
@@ -1267,6 +1273,48 @@ static void Camera2_main_Talk(GAME_PLAY* play) {
     Camera2_change_main_index(play);
 }
 
+static int Camera2_IsFieldEdgeBlock(int block_x, int block_z) {
+    return mFI_BlockCheck(block_x, block_z) == FALSE ||
+           (mFI_BkNum2BlockKind(block_x, block_z) & mRF_BLOCKKIND_BORDER) != 0;
+}
+
+static void Camera2_WideBorderX(GAME_PLAY* play, f32 scale, f32* x_max, f32* x_min) {
+    f32 wide_scale = AC_WideScale();
+
+    if (wide_scale <= 1.0f) {
+        return;
+    }
+
+    if (Camera2_InDoorCheck()) {
+        f32 extra = CAMERA2_ROOM_VIEW_HALF_WIDTH * scale * (wide_scale - 1.0f);
+
+        *x_max -= extra;
+        *x_min += extra;
+    } else {
+        PLAYER_ACTOR* player = get_player_actor_withoutCheck(play);
+        f32 inset = CAMERA2_FIELD_VIEW_HALF_WIDTH * scale * wide_scale - CAMERA2_BORDER_VIEW_DEPTH;
+        int block_x;
+        int block_z;
+        f32 block_pos_x;
+        f32 block_pos_z;
+
+        if (inset <= scale * Camera2_BorderSize(play) ||
+            !mFI_Wpos2BlockNum(&block_x, &block_z, player->actor_class.world.position)) {
+            return;
+        }
+
+        mFI_BkNum2WposXZ(&block_pos_x, &block_pos_z, block_x, block_z);
+
+        if (Camera2_IsFieldEdgeBlock(block_x - 1, block_z) && *x_min < block_pos_x + inset) {
+            *x_min = block_pos_x + inset;
+        }
+
+        if (Camera2_IsFieldEdgeBlock(block_x + 1, block_z) && *x_max > block_pos_x + mFI_GetBlockWidth() - inset) {
+            *x_max = block_pos_x + mFI_GetBlockWidth() - inset;
+        }
+    }
+}
+
 static void Camera2_main_Normal_SetEndCenterPos_fromPlayer(GAME_PLAY* play, xyz_t* end_center_pos) {
     PLAYER_ACTOR* player = get_player_actor_withoutCheck(play);
     f32 border_x0;
@@ -1274,6 +1322,7 @@ static void Camera2_main_Normal_SetEndCenterPos_fromPlayer(GAME_PLAY* play, xyz_
     f32 border_z1;
     f32 border_z0;
     f32 scale;
+    f32 fit_width;
     int block_x;
     int block_z;
 
@@ -1325,7 +1374,14 @@ static void Camera2_main_Normal_SetEndCenterPos_fromPlayer(GAME_PLAY* play, xyz_
         end_center_pos->z = z_midpoint + (z_scale * z_left) * 0.25f;
     }
 
-    if (mFI_GetBlockWidth() < scale * 330.0f || border_x0 < border_x1) {
+    Camera2_WideBorderX(play, scale, &border_x0, &border_x1);
+    fit_width = scale * 330.0f;
+
+    if (Camera2_InDoorCheck()) {
+        fit_width *= AC_WideScale();
+    }
+
+    if (mFI_GetBlockWidth() < fit_width || border_x0 < border_x1) {
         end_center_pos->x = (border_x0 + border_x1) * 0.5f;
     } else if (end_center_pos->x > border_x0) {
         end_center_pos->x = border_x0;
