@@ -143,6 +143,7 @@ PortMenu::PortMenu(const std::string& consoleVariable, const std::string& name)
 void PortMenu::OnInit(const nlohmann::json& initArgs) {
     Ship::Menu::OnInit(initArgs);
     AddMenuSettings();
+    AddMenuEnhancements();
     AddMenuShaderSettings();
     AddMenuDevTools();
 

@@ -1,5 +1,6 @@
 #include "m_card.h"
 
+#include "ac_port.h"
 #include "game.h"
 #include "lb_rtc.h"
 #include "libultra/libultra.h"
@@ -163,6 +164,10 @@ extern void mCD_SetResetCode(Private_c* priv) {
 static void mCD_SetResetInfo(Private_c* priv) {
     Common_Set(reset_flag, FALSE);
     if (mCD_CheckResetCode(priv) == FALSE) {
+        if (AC_ResettiDisabled()) {
+            return;
+        }
+
         /* No reset penalty if zurumode 2 is enabled */
         if (!ZURUMODE2_ENABLED()) {
             Common_Set(reset_flag, TRUE);
