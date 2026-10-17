@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
-set(PORT_NAME "bellwood")
+set(PORT_NAME "Bellwood")
 set(PORT_ARCHIVE "${PORT_NAME}.o2r")
 set(GAME_ARCHIVE "ac.o2r")
 
