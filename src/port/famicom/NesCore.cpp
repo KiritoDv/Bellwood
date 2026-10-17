@@ -35,10 +35,81 @@ enum : uint8_t {
 enum Mode : uint8_t { IMP, ACC, IMM, ZP0, ZPX, ZPY, ABS, ABX, ABY, IZX, IZY, REL, IND };
 
 enum Op : uint8_t {
-    ADC, AND, ASL, BCC, BCS, BEQ, BIT, BMI, BNE, BPL, BRK, BVC, BVS, CLC, CLD, CLI, CLV, CMP, CPX, CPY, DEC, DEX, DEY,
-    EOR, INC, INX, INY, JMP, JSR, LDA, LDX, LDY, LSR, NOP, ORA, PHA, PHP, PLA, PLP, ROL, ROR, RTI, RTS, SBC, SEC, SED,
-    SEI, STA, STX, STY, TAX, TAY, TSX, TXA, TXS, TYA, KIL, SLO, RLA, SRE, RRA, SAX, LAX, DCP, ISB, ANC, ALR, ARR, XAA,
-    AXS, AHX, SHY, SHX, TAS, LAS,
+    ADC,
+    AND,
+    ASL,
+    BCC,
+    BCS,
+    BEQ,
+    BIT,
+    BMI,
+    BNE,
+    BPL,
+    BRK,
+    BVC,
+    BVS,
+    CLC,
+    CLD,
+    CLI,
+    CLV,
+    CMP,
+    CPX,
+    CPY,
+    DEC,
+    DEX,
+    DEY,
+    EOR,
+    INC,
+    INX,
+    INY,
+    JMP,
+    JSR,
+    LDA,
+    LDX,
+    LDY,
+    LSR,
+    NOP,
+    ORA,
+    PHA,
+    PHP,
+    PLA,
+    PLP,
+    ROL,
+    ROR,
+    RTI,
+    RTS,
+    SBC,
+    SEC,
+    SED,
+    SEI,
+    STA,
+    STX,
+    STY,
+    TAX,
+    TAY,
+    TSX,
+    TXA,
+    TXS,
+    TYA,
+    KIL,
+    SLO,
+    RLA,
+    SRE,
+    RRA,
+    SAX,
+    LAX,
+    DCP,
+    ISB,
+    ANC,
+    ALR,
+    ARR,
+    XAA,
+    AXS,
+    AHX,
+    SHY,
+    SHX,
+    TAS,
+    LAS,
 };
 
 enum Kind : uint8_t { kRead, kWrite, kRmw, kOther };
@@ -85,12 +156,47 @@ const Mode kModes[256] = {
 
 Kind KindOf(Op op) {
     switch (op) {
-        case ADC: case AND: case BIT: case CMP: case CPX: case CPY: case EOR: case LDA: case LDX: case LDY: case NOP:
-        case ORA: case SBC: case LAX: case ANC: case ALR: case ARR: case XAA: case AXS: case LAS:
+        case ADC:
+        case AND:
+        case BIT:
+        case CMP:
+        case CPX:
+        case CPY:
+        case EOR:
+        case LDA:
+        case LDX:
+        case LDY:
+        case NOP:
+        case ORA:
+        case SBC:
+        case LAX:
+        case ANC:
+        case ALR:
+        case ARR:
+        case XAA:
+        case AXS:
+        case LAS:
             return kRead;
-        case STA: case STX: case STY: case SAX: case AHX: case SHY: case SHX: case TAS:
+        case STA:
+        case STX:
+        case STY:
+        case SAX:
+        case AHX:
+        case SHY:
+        case SHX:
+        case TAS:
             return kWrite;
-        case ASL: case DEC: case INC: case LSR: case ROL: case ROR: case SLO: case RLA: case SRE: case RRA: case DCP:
+        case ASL:
+        case DEC:
+        case INC:
+        case LSR:
+        case ROL:
+        case ROR:
+        case SLO:
+        case RLA:
+        case SRE:
+        case RRA:
+        case DCP:
         case ISB:
             return kRmw;
         default:
@@ -958,8 +1064,8 @@ struct NesCore {
                     if (off < 0 || off > 7) {
                         continue;
                     }
-                    uint8_t pix = (uint8_t)(((lineSpriteLo[i] >> (7 - off)) & 1) |
-                                            (((lineSpriteHi[i] >> (7 - off)) & 1) << 1));
+                    uint8_t pix =
+                        (uint8_t)(((lineSpriteLo[i] >> (7 - off)) & 1) | (((lineSpriteHi[i] >> (7 - off)) & 1) << 1));
                     if (pix == 0) {
                         continue;
                     }

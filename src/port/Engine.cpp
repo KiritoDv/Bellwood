@@ -512,8 +512,8 @@ void GameEngine::LoadResourceFiles() {
 
 void GameEngine::FinishInit() {
     spdlog::set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
-    SPDLOG_INFO("Starting {} version {} (Branch: {} | Commit: {})", PORT_NAME, (char*)gBuildVersion,
-                (char*)gGitBranch, (char*)gGitCommitHash);
+    SPDLOG_INFO("Starting {} version {} (Branch: {} | Commit: {})", PORT_NAME, (char*)gBuildVersion, (char*)gGitBranch,
+                (char*)gGitCommitHash);
 
     auto audio = std::make_shared<Ship::Audio>(
         Ship::AudioSettings{ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 },
@@ -559,15 +559,12 @@ void GameEngine::FinishInit() {
                                     "Light", static_cast<uint32_t>(Fast::ResourceType::Light), 0);
     loader->RegisterResourceFactory(std::make_shared<AC::ResourceFactoryBinaryAssetArrayV0>(), RESOURCE_FORMAT_BINARY,
                                     "AssetArray", static_cast<uint32_t>(AC::ResourceType::AssetArray), 0);
-    loader->RegisterResourceFactory(std::make_shared<AC::ResourceFactoryBinaryGenericArrayV0>(),
-                                    RESOURCE_FORMAT_BINARY, "GenericArray",
-                                    static_cast<uint32_t>(AC::ResourceType::GenericArray), 0);
-    loader->RegisterResourceFactory(std::make_shared<AC::ResourceFactoryBinaryKeyFrameSkelV0>(),
-                                    RESOURCE_FORMAT_BINARY, "KeyFrameSkel",
-                                    static_cast<uint32_t>(AC::ResourceType::KeyFrameSkel), 0);
-    loader->RegisterResourceFactory(std::make_shared<AC::ResourceFactoryBinaryKeyFrameAnimV0>(),
-                                    RESOURCE_FORMAT_BINARY, "KeyFrameAnim",
-                                    static_cast<uint32_t>(AC::ResourceType::KeyFrameAnim), 0);
+    loader->RegisterResourceFactory(std::make_shared<AC::ResourceFactoryBinaryGenericArrayV0>(), RESOURCE_FORMAT_BINARY,
+                                    "GenericArray", static_cast<uint32_t>(AC::ResourceType::GenericArray), 0);
+    loader->RegisterResourceFactory(std::make_shared<AC::ResourceFactoryBinaryKeyFrameSkelV0>(), RESOURCE_FORMAT_BINARY,
+                                    "KeyFrameSkel", static_cast<uint32_t>(AC::ResourceType::KeyFrameSkel), 0);
+    loader->RegisterResourceFactory(std::make_shared<AC::ResourceFactoryBinaryKeyFrameAnimV0>(), RESOURCE_FORMAT_BINARY,
+                                    "KeyFrameAnim", static_cast<uint32_t>(AC::ResourceType::KeyFrameAnim), 0);
 
     loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob",
                                     static_cast<uint32_t>(Ship::ResourceType::Blob), 0);
@@ -623,8 +620,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 
     const std::string gameO2RPath = Ship::Context::LocateFileAcrossAppDirs(GAME_ARCHIVE, PORT_NAME);
     bool found = std::filesystem::exists(gameO2RPath);
-    bool shouldRegen = !VerifyArchiveVersion(gameArchiveVersion) && gameArchiveVersion.major != INT16_MAX &&
-                       !(gameArchiveVersion.major == 0 && gameArchiveVersion.minor == 0 && gameArchiveVersion.patch == 0);
+    bool shouldRegen =
+        !VerifyArchiveVersion(gameArchiveVersion) && gameArchiveVersion.major != INT16_MAX &&
+        !(gameArchiveVersion.major == 0 && gameArchiveVersion.minor == 0 && gameArchiveVersion.patch == 0);
     if (found && IsArchiveGameVersionUnknown(gameO2RPath)) {
         shouldRegen = true;
     }
@@ -649,11 +647,11 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 
     auto startExtraction = [&]() {
         if (!GameExtractor::IsDiscInputAvailable()) {
-            PortGui::RegisterPopup(
-                "Disc Extraction Not Implemented Yet",
-                "This build's Torch has no GameCube disc input yet, so " + std::string(GAME_ARCHIVE) +
-                    " cannot be generated.\nThe port will start without game assets.",
-                "OK", "", [&]() { extractStep = GS_LOAD; });
+            PortGui::RegisterPopup("Disc Extraction Not Implemented Yet",
+                                   "This build's Torch has no GameCube disc input yet, so " +
+                                       std::string(GAME_ARCHIVE) +
+                                       " cannot be generated.\nThe port will start without game assets.",
+                                   "OK", "", [&]() { extractStep = GS_LOAD; });
             promptStep = PS_WAIT;
             return;
         }
@@ -675,8 +673,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 
     if (!found && !ExtractorDataExists(installPath)) {
         PortGui::RegisterPopup("Game Assets Not Found",
-                               std::string(GAME_ARCHIVE) + " was not found and the extractor data (config.yml, "
-                               "assets/ymls) is missing.\nThe port will start without game assets.",
+                               std::string(GAME_ARCHIVE) +
+                                   " was not found and the extractor data (config.yml, "
+                                   "assets/ymls) is missing.\nThe port will start without game assets.",
                                "OK", "", [&]() { extractStep = GS_LOAD; });
         promptStep = PS_WAIT;
     } else if (shouldRegen) {
@@ -739,15 +738,15 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                         GetModuleFileName(NULL, buffer, _countof(buffer));
                         ownPath = std::filesystem::canonical(buffer).parent_path();
                         if (IsSubpath(ownPath, tempPath)) {
-                            PortGui::RegisterPopup(
-                                std::string(PORT_NAME) + " Path Error",
-                                std::string(PORT_NAME) + " is running in a temp folder.\nExtract the .zip and run again.",
-                                "OK", "", [&]() {
-                                    threadPool = nullptr;
-                                    gsFast3dWindow = nullptr;
-                                    context = nullptr;
-                                    exit(0);
-                                });
+                            PortGui::RegisterPopup(std::string(PORT_NAME) + " Path Error",
+                                                   std::string(PORT_NAME) +
+                                                       " is running in a temp folder.\nExtract the .zip and run again.",
+                                                   "OK", "", [&]() {
+                                                       threadPool = nullptr;
+                                                       gsFast3dWindow = nullptr;
+                                                       context = nullptr;
+                                                       exit(0);
+                                                   });
                         } else {
                             windowsStep = WS_PERMS;
                         }
@@ -762,31 +761,31 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                             create_directories(tfolder);
                         } catch (std::filesystem::filesystem_error const& ex) { error = true; }
                         if (tfile == NULL || error) {
-                            PortGui::RegisterPopup(
-                                std::string(PORT_NAME) + " Permissions Error",
-                                std::string(PORT_NAME) + " does not have proper file permissions.\nPlease move it to a "
-                                "folder that does and run again.",
-                                "OK", "", [&]() {
-                                    fclose(tfile);
-                                    PathTestCleanup(tfile);
-                                    threadPool = nullptr;
-                                    gsFast3dWindow = nullptr;
-                                    context = nullptr;
-                                    exit(0);
-                                });
+                            PortGui::RegisterPopup(std::string(PORT_NAME) + " Permissions Error",
+                                                   std::string(PORT_NAME) +
+                                                       " does not have proper file permissions.\nPlease move it to a "
+                                                       "folder that does and run again.",
+                                                   "OK", "", [&]() {
+                                                       fclose(tfile);
+                                                       PathTestCleanup(tfile);
+                                                       threadPool = nullptr;
+                                                       gsFast3dWindow = nullptr;
+                                                       context = nullptr;
+                                                       exit(0);
+                                                   });
                         } else {
                             fclose(tfile);
                             if (!PathTestCleanup(tfile)) {
-                                PortGui::RegisterPopup(
-                                    std::string(PORT_NAME) + " Permissions Error",
-                                    std::string(PORT_NAME) + " does not have proper file permissions.\nPlease move it "
-                                    "to a folder that does and run again.",
-                                    "OK", "", [&]() {
-                                        threadPool = nullptr;
-                                        gsFast3dWindow = nullptr;
-                                        context = nullptr;
-                                        exit(0);
-                                    });
+                                PortGui::RegisterPopup(std::string(PORT_NAME) + " Permissions Error",
+                                                       std::string(PORT_NAME) +
+                                                           " does not have proper file permissions.\nPlease move it "
+                                                           "to a folder that does and run again.",
+                                                       "OK", "", [&]() {
+                                                           threadPool = nullptr;
+                                                           gsFast3dWindow = nullptr;
+                                                           context = nullptr;
+                                                           exit(0);
+                                                       });
                             }
                             windowsStep = WS_ONEDRIVE;
                         }
@@ -796,9 +795,11 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                         if (ownPath.string().find("OneDrive") != std::string::npos) {
                             PortGui::RegisterPopup(
                                 std::string(PORT_NAME) + " Path Error",
-                                std::string(PORT_NAME) + " appears to be in a OneDrive folder, which will cause "
-                                "issues.\nPlease move it to a folder outside of OneDrive, like the root of a\n"
-                                "drive (e.g. \"C:\\Games\\" + PORT_NAME + "\").",
+                                std::string(PORT_NAME) +
+                                    " appears to be in a OneDrive folder, which will cause "
+                                    "issues.\nPlease move it to a folder outside of OneDrive, like the root of a\n"
+                                    "drive (e.g. \"C:\\Games\\" +
+                                    PORT_NAME + "\").",
                                 "OK", "", [&]() {
                                     threadPool = nullptr;
                                     gsFast3dWindow = nullptr;
@@ -822,9 +823,10 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             }
             case ES_EXTRACT_ARGS: {
                 if (args.size() == 0) {
-                    extractStep = std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs(GAME_ARCHIVE, PORT_NAME))
-                                      ? ES_VERIFY
-                                      : ES_EXTRACT;
+                    extractStep =
+                        std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs(GAME_ARCHIVE, PORT_NAME))
+                            ? ES_VERIFY
+                            : ES_EXTRACT;
                     continue;
                 }
                 file = args.at(0);

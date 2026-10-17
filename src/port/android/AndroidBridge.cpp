@@ -65,14 +65,14 @@ JNIEXPORT jstring JNICALL Java_dev_net64_bellwood_GameAssets_nativeLastError(JNI
 }
 
 JNIEXPORT jboolean JNICALL Java_dev_net64_bellwood_GameAssets_nativeIsArchiveCurrent(JNIEnv* env, jobject,
-                                                                                    jstring jArchive) {
+                                                                                     jstring jArchive) {
     return GameEngine_IsGameArchiveCurrent(ToStdString(env, jArchive)) ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jstring JNICALL Java_dev_net64_bellwood_GameAssets_nativeGenerateGameArchive(JNIEnv* env, jobject,
-                                                                                      jstring jDiscPath,
-                                                                                      jstring jSourceDir,
-                                                                                      jstring jDestDir) {
+                                                                                       jstring jDiscPath,
+                                                                                       jstring jSourceDir,
+                                                                                       jstring jDestDir) {
     const std::string discPath = ToStdString(env, jDiscPath);
     const std::string sourceDir = ToStdString(env, jSourceDir);
     const std::string destDir = ToStdString(env, jDestDir);
@@ -94,9 +94,9 @@ JNIEXPORT jstring JNICALL Java_dev_net64_bellwood_GameAssets_nativeGenerateGameA
     std::atomic<size_t> assetCount{ 0 };
     try {
         if (!extractor.GenerateOTRTo(assetCount, sourceDir, destDir)) {
-            extractError = GameExtractor::sLastError.empty() ? "Torch could not extract the disc."
-                                                             : "Torch could not extract the disc: " +
-                                                                   GameExtractor::sLastError;
+            extractError = GameExtractor::sLastError.empty()
+                               ? "Torch could not extract the disc."
+                               : "Torch could not extract the disc: " + GameExtractor::sLastError;
         }
     } catch (const std::exception& error) {
         extractError = std::string("Torch could not extract the disc: ") + error.what();
@@ -115,7 +115,6 @@ JNIEXPORT jstring JNICALL Java_dev_net64_bellwood_GameAssets_nativeGenerateGameA
     __android_log_print(ANDROID_LOG_INFO, kLogTag, "Wrote %s", archive.c_str());
     return nullptr;
 }
-
 }
 
 #endif

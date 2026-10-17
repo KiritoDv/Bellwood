@@ -26,12 +26,12 @@
 #define FAMICOM_NOISE_PATH "famicom/noise"
 
 static const char* const l_rom_paths[FAMICOM_INTERNAL_ROM_NUM] = {
-    "famicom/rom/01_nes_cluclu3.bin",   "famicom/rom/02_usa_balloon.nes",   "famicom/rom/03_nes_donkey1_3.bin",
-    "famicom/rom/04_usa_jr_math.nes",   "famicom/rom/05_pinball_1.nes",     "famicom/rom/06_nes_tennis3.bin",
-    "famicom/rom/07_usa_golf.nes",      "famicom/rom/08_punch_wh.nes",      "famicom/rom/09_usa_baseball_1.nes",
-    "famicom/rom/10_cluclu_1.qd",       "famicom/rom/11_usa_donkey3.nes",   "famicom/rom/12_donkeyjr_1.nes",
-    "famicom/rom/13_soccer.nes",        "famicom/rom/14_exbike.nes",        "famicom/rom/15_usa_wario.nes",
-    "famicom/rom/16_usa_icecl.nes",     "famicom/rom/17_nes_mario1_2.bin",  "famicom/rom/18_smario_0.nes",
+    "famicom/rom/01_nes_cluclu3.bin",  "famicom/rom/02_usa_balloon.nes",  "famicom/rom/03_nes_donkey1_3.bin",
+    "famicom/rom/04_usa_jr_math.nes",  "famicom/rom/05_pinball_1.nes",    "famicom/rom/06_nes_tennis3.bin",
+    "famicom/rom/07_usa_golf.nes",     "famicom/rom/08_punch_wh.nes",     "famicom/rom/09_usa_baseball_1.nes",
+    "famicom/rom/10_cluclu_1.qd",      "famicom/rom/11_usa_donkey3.nes",  "famicom/rom/12_donkeyjr_1.nes",
+    "famicom/rom/13_soccer.nes",       "famicom/rom/14_exbike.nes",       "famicom/rom/15_usa_wario.nes",
+    "famicom/rom/16_usa_icecl.nes",    "famicom/rom/17_nes_mario1_2.bin", "famicom/rom/18_smario_0.nes",
     "famicom/rom/19_usa_zelda1_1.nes",
 };
 
@@ -470,7 +470,8 @@ static Gfx* famicom_draw(void) {
 
     for (i = 0; i < FAMICOM_STRIPS; i++) {
         int line = i * FAMICOM_STRIP_LINES;
-        int rows = FAMICOM_SCREEN_LINES - line < FAMICOM_STRIP_LINES ? FAMICOM_SCREEN_LINES - line : FAMICOM_STRIP_LINES;
+        int rows =
+            FAMICOM_SCREEN_LINES - line < FAMICOM_STRIP_LINES ? FAMICOM_SCREEN_LINES - line : FAMICOM_STRIP_LINES;
         u8* strip = texture + line * NES_SCREEN_WIDTH * sizeof(u16);
 
         gSPInvalidateTexCache(gfx++, strip);
@@ -527,8 +528,7 @@ extern int famicom_internal_data_load(void) {
 
     if (FamicomPort_ReadSave(famicomCommonSave, FAMICOM_SAVE_TOTAL_SIZE) != FAMICOM_SAVE_TOTAL_SIZE ||
         famicom_save_data_check(famicomCommon.save_data_header, -1, famicomCommon.save_data_name) != 0) {
-        famicom_save_data_init(famicomCommon.save_data_header, FAMICOM_SAVE_SINGLE_SIZE,
-                               famicomCommon.save_data_name);
+        famicom_save_data_init(famicomCommon.save_data_header, FAMICOM_SAVE_SINGLE_SIZE, famicomCommon.save_data_name);
     }
 
     return FAMICOM_RESULT_OK;

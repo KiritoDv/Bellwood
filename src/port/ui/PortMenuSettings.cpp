@@ -46,9 +46,9 @@ static const std::unordered_map<int32_t, const char*> textureFilteringMap = {
 };
 
 static const std::unordered_map<int32_t, const char*> frameRateOptions = {
-    { FRAME_RATE_ORIGINAL, "Original" },     { FRAME_RATE_MATCH_REFRESH_RATE, "Match Refresh Rate" },
-    { FRAME_RATE_60, "60 FPS" },             { FRAME_RATE_120, "120 FPS" },
-    { FRAME_RATE_144, "144 FPS" },           { FRAME_RATE_UNCAPPED, "Uncapped" },
+    { FRAME_RATE_ORIGINAL, "Original" }, { FRAME_RATE_MATCH_REFRESH_RATE, "Match Refresh Rate" },
+    { FRAME_RATE_60, "60 FPS" },         { FRAME_RATE_120, "120 FPS" },
+    { FRAME_RATE_144, "144 FPS" },       { FRAME_RATE_UNCAPPED, "Uncapped" },
     { FRAME_RATE_CUSTOM, "Custom" },
 };
 
@@ -322,9 +322,8 @@ void PortMenu::AddMenuSettings() {
     AddWidget(path, "Allow multi-windows", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_ENABLE_MULTI_VIEWPORTS)
         .RaceDisable(false)
-        .PreFunc([](WidgetInfo& info) {
-            info.isHidden = mPortMenu->disabledMap.at(DISABLE_FOR_NO_MULTI_VIEWPORT).active;
-        })
+        .PreFunc(
+            [](WidgetInfo& info) { info.isHidden = mPortMenu->disabledMap.at(DISABLE_FOR_NO_MULTI_VIEWPORT).active; })
         .Options(CheckboxOptions()
                      .Tooltip("Allows multiple windows to be opened at once. Requires a reload to take effect.")
                      .DefaultValue(true));

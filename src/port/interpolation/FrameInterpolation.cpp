@@ -584,8 +584,7 @@ void FrameInterpolation_CameraUpdated(const Vec3f* eye, const Vec3f* at) {
     f32 yaw = atan2f(dx, dz) * kRadToDeg;
     f32 pitch = atan2f(dy, sqrtf(dx * dx + dz * dz)) * kRadToDeg;
     Vec3f eyeVelo = { eye->x - lastEye.x, eye->y - lastEye.y, eye->z - lastEye.z };
-    Vec3f expectedEye = { lastEye.x + lastEyeVelocity.x, lastEye.y + lastEyeVelocity.y,
-                          lastEye.z + lastEyeVelocity.z };
+    Vec3f expectedEye = { lastEye.x + lastEyeVelocity.x, lastEye.y + lastEyeVelocity.y, lastEye.z + lastEyeVelocity.z };
     f32 expectedYaw;
     f32 expectedPitch;
 

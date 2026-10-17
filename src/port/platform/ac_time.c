@@ -42,16 +42,14 @@ static void GetDates(int days, ACCalendarTime* td) {
 
     td->wday = (days + 6) % AC_WEEK_DAY_MAX;
 
-    for (year = days / AC_YEAR_DAY_MAX; days < (n = year * AC_YEAR_DAY_MAX + GetLeapDays(year)); year--) {
-    }
+    for (year = days / AC_YEAR_DAY_MAX; days < (n = year * AC_YEAR_DAY_MAX + GetLeapDays(year)); year--) {}
 
     days -= n;
     td->year = year;
     td->yday = days;
 
     md = IsLeapYear(year) ? sLeapYearDays : sYearDays;
-    for (month = AC_MONTH_MAX; days < md[--month];) {
-    }
+    for (month = AC_MONTH_MAX; days < md[--month];) {}
     td->mon = month;
     td->mday = days - md[month] + 1;
 }
@@ -104,8 +102,7 @@ ACTime AC_CalendarTimeToTicks(const ACCalendarTime* td) {
            (ACTime)AC_SECS_IN_DAY * (GetLeapDays(year) + GetYearDays(year, mon) + td->mday - 1) +
            (ACTime)AC_SECS_IN_HOUR * td->hour + (ACTime)AC_SECS_IN_MIN * td->min + td->sec - (ACTime)0xEB1E1BF80LL;
 
-    return ACSecondsToTicks(secs) + ACMillisecondsToTicks((ACTime)td->msec) +
-           ACMicrosecondsToTicks((ACTime)td->usec);
+    return ACSecondsToTicks(secs) + ACMillisecondsToTicks((ACTime)td->msec) + ACMicrosecondsToTicks((ACTime)td->usec);
 }
 
 ACTime AC_GetTime(void) {

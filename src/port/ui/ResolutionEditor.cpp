@@ -441,13 +441,11 @@ void RegisterResolutionWidgets() {
             info.activeDisables.push_back(DISABLE_FOR_ADVANCED_RESOLUTION_OFF);
         }
     });
-    mPortMenu->AddWidget(path, "Force aspect ratio:", WIDGET_TEXT)
-        .RaceDisable(false)
-        .PreFunc([](WidgetInfo& info) {
-            if (mPortMenu->GetDisabledMap().at(DISABLE_FOR_ADVANCED_RESOLUTION_OFF).active) {
-                info.activeDisables.push_back(DISABLE_FOR_ADVANCED_RESOLUTION_OFF);
-            }
-        });
+    mPortMenu->AddWidget(path, "Force aspect ratio:", WIDGET_TEXT).RaceDisable(false).PreFunc([](WidgetInfo& info) {
+        if (mPortMenu->GetDisabledMap().at(DISABLE_FOR_ADVANCED_RESOLUTION_OFF).active) {
+            info.activeDisables.push_back(DISABLE_FOR_ADVANCED_RESOLUTION_OFF);
+        }
+    });
     mPortMenu->AddWidget(path, "(Select \"Off\" to disable.)", WIDGET_TEXT)
         .RaceDisable(false)
         .PreFunc([](WidgetInfo& info) {

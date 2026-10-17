@@ -241,7 +241,8 @@ void FixEventAreas(const u8* gc, mEv_save_common_data_c& common) {
             continue;
         }
         mEv_area_c& area = common.area[i];
-        const u8* data = gc + offsetof(mEv_save_common_data_c, area) + i * sizeof(mEv_area_c) + offsetof(mEv_area_c, data);
+        const u8* data =
+            gc + offsetof(mEv_save_common_data_c, area) + i * sizeof(mEv_area_c) + offsetof(mEv_area_c, data);
         u8* out = reinterpret_cast<u8*>(area.data);
         memset(out, 0, sizeof(area.data));
         if (!ReadEventArea(area.info.type, area.info.id, data, out)) {

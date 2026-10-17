@@ -173,9 +173,9 @@ struct TownFile {
     }
 
     void ErasePassport(const std::string& name) {
-        passports.erase(std::remove_if(passports.begin(), passports.end(),
-                                       [&](const Passport& p) { return p.name == name; }),
-                        passports.end());
+        passports.erase(
+            std::remove_if(passports.begin(), passports.end(), [&](const Passport& p) { return p.name == name; }),
+            passports.end());
     }
 };
 
@@ -337,8 +337,7 @@ std::shared_ptr<KeepData> NewKeep() {
 }
 
 bool LandValid(const TownFile& f) {
-    return f.hasLand && f.land &&
-           mFRm_CheckSaveData_common(&f.land->save.save_check, f.land->save.land_info.id);
+    return f.hasLand && f.land && mFRm_CheckSaveData_common(&f.land->save.save_check, f.land->save.land_info.id);
 }
 
 bool IsThisLand(const TownFile& f) {
@@ -1574,7 +1573,8 @@ int mCD_EraseBrokenLand_bg(int* slot_out) {
         job.chan = kSlotHome;
         FileState state;
         auto f = LoadSlot(kSlotHome, &state);
-        bool broken = state == FileState::Corrupt || (f != nullptr && f->hasLand && !LandValid(*f) && !f->hasNoLandCode);
+        bool broken =
+            state == FileState::Corrupt || (f != nullptr && f->hasLand && !LandValid(*f) && !f->hasNoLandCode);
         if (!broken) {
             job.result = mCD_TRANS_ERR_NONE;
             return;
@@ -1638,11 +1638,10 @@ int mCD_ErasePassportFile_bg(int slot) {
             return;
         }
         auto file = f->Clone();
-        file->passports.erase(std::remove_if(file->passports.begin(), file->passports.end(),
-                                             [](Passport& p) {
-                                                 return mPr_NullCheckPersonalID(&p.data.priv.player_ID) == TRUE;
-                                             }),
-                              file->passports.end());
+        file->passports.erase(
+            std::remove_if(file->passports.begin(), file->passports.end(),
+                           [](Passport& p) { return mPr_NullCheckPersonalID(&p.data.priv.player_ID) == TRUE; }),
+            file->passports.end());
         job.io = WriteAsync({ MakeWrite(slot, file) });
         job.done = [](bool ok) { sJob.result = ok ? mCD_RESULT_SUCCESS : mCD_RESULT_ERROR; };
     });
@@ -1754,7 +1753,7 @@ int mCD_SaveStation_NextLand_bg(s32* chan) {
         if (next == nullptr || !next->hasLand) {
             job.chan = other;
             job.result = sKeepStartCond == mCD_START_COND_INCOMING_FOREIGNER ? mCD_TRANS_ERR_TRAVEL_DATA_MISSING
-                                                                            : mCD_TRANS_ERR_NO_TOWN_DATA;
+                                                                             : mCD_TRANS_ERR_NO_TOWN_DATA;
             return;
         }
         Save_t& nextSave = next->land->save;
@@ -2017,7 +2016,8 @@ ImportPreview PreviewGameCubeSave(const std::string& path) {
         p.town = SaveGci::DecodeName(save.land_info.name, sizeof(save.land_info.name));
         for (const Private_c& priv : save.private_data) {
             if (priv.exists && mPr_NullCheckPersonalID(const_cast<PersonalID_c*>(&priv.player_ID)) == FALSE) {
-                p.players.push_back(SaveGci::DecodeName(priv.player_ID.player_name, sizeof(priv.player_ID.player_name)));
+                p.players.push_back(
+                    SaveGci::DecodeName(priv.player_ID.player_name, sizeof(priv.player_ID.player_name)));
             }
         }
     }
@@ -2080,8 +2080,7 @@ bool ImportGameCubeSave(const std::string& path, std::string* message) {
     }
     InvalidateSlots();
 
-    std::string town = f->land ? SaveGci::DecodeName(f->land->save.land_info.name,
-                                                     sizeof(f->land->save.land_info.name))
+    std::string town = f->land ? SaveGci::DecodeName(f->land->save.land_info.name, sizeof(f->land->save.land_info.name))
                                : std::string();
     std::ostringstream out;
     if (f->land) {
@@ -2373,8 +2372,9 @@ bool IoSelfTest(std::string* report) {
     if (!mLd_CHECK_LAND_ID(landId)) {
         Save_GetPointer(land_info)->id = mLd_BITMASK | (landId & 0xFF);
     }
-    out << "town id 0x" << std::hex << Save_Get(land_info).id << std::dec << (landId != Save_Get(land_info).id ? " (made valid)" : "")
-        << ", player " << (int)Common_Get(player_no) << "\n";
+    out << "town id 0x" << std::hex << Save_Get(land_info).id << std::dec
+        << (landId != Save_Get(land_info).id ? " (made valid)" : "") << ", player " << (int)Common_Get(player_no)
+        << "\n";
     Save_Set(save_exist, FALSE);
     int chan = -1;
     auto t0 = std::chrono::steady_clock::now();

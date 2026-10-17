@@ -61,9 +61,9 @@ void SetupGuiElements() {
     mConsoleWindow = std::make_shared<Ship::ConsoleWindow>(CVAR_WINDOW("DevConsole"), "Console##Dev", ImVec2(820, 630));
     gui->AddGuiWindow(mConsoleWindow);
 
-    mEventDebuggerWindow = std::make_shared<Ship::EventDebuggerWindow>(
-        ShipCompat::GetConsoleVariables(), ShipCompat::GetWindow(), EventSystemGetEvents(), CVAR_WINDOW("EventDebugger"),
-        "Event Debugger");
+    mEventDebuggerWindow = std::make_shared<Ship::EventDebuggerWindow>(ShipCompat::GetConsoleVariables(),
+                                                                       ShipCompat::GetWindow(), EventSystemGetEvents(),
+                                                                       CVAR_WINDOW("EventDebugger"), "Event Debugger");
     gui->AddGuiWindow(mEventDebuggerWindow);
 
     if (gui->GetGuiWindow("Gfx Debugger") == nullptr) {

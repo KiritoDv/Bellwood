@@ -187,7 +187,7 @@ void PortInputEditorWindow::DrawAnalogPreview(const char* label, ImVec2 stick, f
 #define BUTTON_COLOR_GAMEPAD_PURPLE_HOVERED ImVec4(0.431f, 0.369f, 0.706f, 1.0f)
 
 void PortInputEditorWindow::GetButtonColorsForDeviceType(Ship::PhysicalDeviceType lusIndex, ImVec4& buttonColor,
-                                                              ImVec4& buttonHoveredColor) {
+                                                         ImVec4& buttonHoveredColor) {
     switch (lusIndex) {
         case Ship::PhysicalDeviceType::Keyboard:
             buttonColor = BUTTON_COLOR_KEYBOARD_BEIGE;
@@ -437,7 +437,7 @@ void PortInputEditorWindow::DrawButtonLineEditMappingButton(uint8_t port, N64But
 }
 
 void PortInputEditorWindow::DrawButtonLine(const char* buttonName, uint8_t port, N64ButtonMask bitmask,
-                                                ImVec4 color = CHIP_COLOR_N64_GREY) {
+                                           ImVec4 color = CHIP_COLOR_N64_GREY) {
     ImGui::NewLine();
     ImGui::SameLine(SCALE_IMGUI_SIZE(32.0f));
     DrawInputChip(buttonName, color);
@@ -449,7 +449,7 @@ void PortInputEditorWindow::DrawButtonLine(const char* buttonName, uint8_t port,
 }
 
 void PortInputEditorWindow::DrawStickDirectionLineAddMappingButton(uint8_t port, uint8_t stick,
-                                                                        Ship::Direction direction) {
+                                                                   Ship::Direction direction) {
     ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(1.0f, 0.5f));
     auto popupId = StringHelper::Sprintf("addStickDirectionMappingPopup##%d-%d-%d", port, stick, direction);
     if (ImGui::Button(
@@ -491,7 +491,7 @@ void PortInputEditorWindow::DrawStickDirectionLineAddMappingButton(uint8_t port,
 }
 
 void PortInputEditorWindow::DrawStickDirectionLineEditMappingButton(uint8_t port, uint8_t stick,
-                                                                         Ship::Direction direction, std::string id) {
+                                                                    Ship::Direction direction, std::string id) {
     std::shared_ptr<Ship::ControllerAxisDirectionMapping> mapping = nullptr;
     if (stick == Ship::LEFT) {
         mapping = ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetLeftStick()->GetAxisDirectionMappingById(
@@ -592,7 +592,7 @@ void PortInputEditorWindow::DrawStickDirectionLineEditMappingButton(uint8_t port
 }
 
 void PortInputEditorWindow::DrawStickDirectionLine(const char* axisDirectionName, uint8_t port, uint8_t stick,
-                                                        Ship::Direction direction, ImVec4 color = CHIP_COLOR_N64_GREY) {
+                                                   Ship::Direction direction, ImVec4 color = CHIP_COLOR_N64_GREY) {
     ImGui::NewLine();
     ImGui::SameLine();
     ImGui::BeginDisabled();
@@ -1197,8 +1197,7 @@ void PortInputEditorWindow::addButtonName(N64ButtonMask mask, const char* name) 
 
 // Draw a button mapping setting consisting of a padded label and button dropdown.
 // excludedButtons indicates which buttons are unavailable to choose from.
-void PortInputEditorWindow::DrawMapping(CustomButtonMap& mapping, float labelWidth,
-                                             N64ButtonMask excludedButtons) {
+void PortInputEditorWindow::DrawMapping(CustomButtonMap& mapping, float labelWidth, N64ButtonMask excludedButtons) {
     N64ButtonMask currentButton = CVarGetInteger(mapping.cVarName, mapping.defaultBtn);
 
     const char* preview;

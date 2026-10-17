@@ -147,9 +147,9 @@ class SaveManagerWindow final : public Ship::GuiWindow {
         }
         ImGui::SameLine();
         if (ImGui::Button("New passport file...") && !mSaveDialog) {
-            mSaveDialog = std::make_unique<pfd::save_file>("Passport file",
-                                                           SaveManager::TownDirectory() + "/passport.json",
-                                                           std::vector<std::string>{ "Town saves", "*.json" });
+            mSaveDialog =
+                std::make_unique<pfd::save_file>("Passport file", SaveManager::TownDirectory() + "/passport.json",
+                                                 std::vector<std::string>{ "Town saves", "*.json" });
         }
         ImGui::SameLine();
 #endif
@@ -408,9 +408,9 @@ class SaveManagerWindow final : public Ship::GuiWindow {
 Uint32 sMainWindowId = 0;
 
 int SDLCALL QuitFilter(void* userdata, SDL_Event* event) {
-    bool close = event->type == SDL_QUIT ||
-                 (event->type == SDL_WINDOWEVENT && event->window.event == SDL_WINDOWEVENT_CLOSE &&
-                  (sMainWindowId == 0 || event->window.windowID == sMainWindowId));
+    bool close =
+        event->type == SDL_QUIT || (event->type == SDL_WINDOWEVENT && event->window.event == SDL_WINDOWEVENT_CLOSE &&
+                                    (sMainWindowId == 0 || event->window.windowID == sMainWindowId));
     if (!close) {
         return 1;
     }
@@ -469,13 +469,12 @@ void RegisterCommands() {
                          },
                           "Imports a GameCube town from a .gci, .gcs or memory card image",
                           { { "path", Ship::ArgumentType::TEXT, true } } });
-    console->AddCommand("save_pick_town",
-                        { [](std::shared_ptr<Ship::Console>, std::vector<std::string>, std::string*) {
-                             SaveManager_PickTownFile();
-                             return 0;
-                         },
-                          "Picks the second town file (slot B)",
-                          {} });
+    console->AddCommand("save_pick_town", { [](std::shared_ptr<Ship::Console>, std::vector<std::string>, std::string*) {
+                                               SaveManager_PickTownFile();
+                                               return 0;
+                                           },
+                                            "Picks the second town file (slot B)",
+                                            {} });
 }
 
 bool sQuitTestPushed = false;
