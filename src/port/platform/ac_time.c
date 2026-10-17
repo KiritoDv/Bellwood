@@ -114,7 +114,11 @@ ACTime AC_GetTime(void) {
     ACCalendarTime td;
     time_t t;
 
+#if defined(_WIN32)
     timespec_get(&ts, TIME_UTC);
+#else
+    clock_gettime(CLOCK_REALTIME, &ts);
+#endif
     t = ts.tv_sec;
 #if defined(_WIN32)
     localtime_s(&lt, &t);

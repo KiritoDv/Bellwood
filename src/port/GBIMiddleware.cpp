@@ -7,6 +7,9 @@
 #include <fast/resource/ResourceType.h>
 #include <fast/resource/type/DisplayList.h>
 #include <fast/resource/type/Texture.h>
+#ifdef __EMSCRIPTEN__
+#include <emscripten/heap.h>
+#endif
 
 std::unordered_map<std::string, std::unordered_map<std::string, std::vector<GfxPatch>>> originalGfx;
 
@@ -56,7 +59,11 @@ extern "C" void ResourceMgr_PatchGfxByName(const char* path, const char* patchNa
 }
 
 static bool IsSegmentOrRawAddress(uintptr_t addr) {
+#ifdef __EMSCRIPTEN__
+    return addr == 0 || (addr & 1) != 0 || addr + 8 > emscripten_get_heap_size();
+#else
     return addr == 0 || (addr & 1) != 0 || addr < 0x01000000;
+#endif
 }
 
 static Gfx* LoadDisplayList(const char* path) {

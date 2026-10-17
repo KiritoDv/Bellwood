@@ -148,12 +148,14 @@ class GbaWindow final : public Ship::GuiWindow {
         }
         ImGui::EndDisabled();
         ImGui::SameLine();
+#if !defined(__IOS__) && !defined(__ANDROID__) && !defined(__EMSCRIPTEN__)
         if (ImGui::Button("Browse...") && !mDialog) {
             mDialog = std::make_unique<pfd::open_file>(
                 "Pick an e-Reader card", GbaPort::ECardDirectory(),
                 std::vector<std::string>{ "e-Reader cards", "*.raw *.bin *.dec", "All files", "*" });
         }
         ImGui::SameLine();
+#endif
         if (ImGui::Button("Refresh")) {
             Refresh();
         }

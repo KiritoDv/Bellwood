@@ -9,6 +9,7 @@
 
 #include <SDL.h>
 #include <imgui.h>
+#include <ship/Context.h>
 #include <ship/debug/Console.h>
 #include <ship/window/FileDrop.h>
 #include <ship/window/Window.h>
@@ -24,7 +25,23 @@
 #include <string>
 #include <vector>
 
+#if defined(__IOS__) || defined(__ANDROID__) || defined(__EMSCRIPTEN__)
+#define SAVE_UI_FILE_DIALOGS 0
+#else
+#define SAVE_UI_FILE_DIALOGS 1
+#endif
+
 namespace {
+
+bool IsGameCubeSaveFile(const std::filesystem::path& path) {
+    std::string ext = path.extension().string();
+    std::transform(ext.begin(), ext.end(), ext.begin(), [](unsigned char c) { return (char)std::tolower(c); });
+    return ext == ".gci" || ext == ".gcs" || ext == ".raw" || ext == ".gcp";
+}
+
+std::filesystem::path ImportDirectory() {
+    return Ship::Context::GetPathRelativeToAppDirectory("import");
+}
 
 const char* const kPickerTitle = "Visit another town##SaveManagerPicker";
 const char* const kQuitTitle = "Quit##SaveManagerQuit";
@@ -120,6 +137,7 @@ class SaveManagerWindow final : public Ship::GuiWindow {
         ImGui::SetNextItemWidth(-FLT_MIN);
         ImGui::InputTextWithHint("##path", "Path of a town or passport file", mPath, sizeof(mPath));
 
+#if SAVE_UI_FILE_DIALOGS
         if (ImGui::Button("Browse...") && !mOpenDialog) {
             mOpenDialog = std::make_unique<pfd::open_file>("Pick a town file", SaveManager::TownDirectory(),
                                                            std::vector<std::string>{ "Town saves", "*.json" });
@@ -131,6 +149,7 @@ class SaveManagerWindow final : public Ship::GuiWindow {
                                                            std::vector<std::string>{ "Town saves", "*.json" });
         }
         ImGui::SameLine();
+#endif
         if (ImGui::Button("Refresh")) {
             mEntries = SaveManager::ListTownFiles();
         }
@@ -225,6 +244,34 @@ class SaveManagerWindow final : public Ship::GuiWindow {
         mImportDone = false;
     }
 
+    void DrawImportFolder() {
+        const std::filesystem::path dir = ImportDirectory();
+#ifdef __IOS__
+        ImGui::TextDisabled("Files in Files > On My iPhone > %s > import:", PORT_NAME);
+#else
+        ImGui::TextDisabled("Files in %s:", dir.string().c_str());
+#endif
+        if (ImGui::BeginListBox("##importfiles", ImVec2(-FLT_MIN, 5 * ImGui::GetTextLineHeightWithSpacing()))) {
+            std::error_code ec;
+            bool any = false;
+            for (const auto& entry : std::filesystem::directory_iterator(dir, ec)) {
+                if (!entry.is_regular_file(ec) || !IsGameCubeSaveFile(entry.path())) {
+                    continue;
+                }
+                any = true;
+                const std::string path = entry.path().string();
+                if (ImGui::Selectable(entry.path().filename().string().c_str(), path == mImportPath)) {
+                    std::snprintf(mImportPath, sizeof(mImportPath), "%s", path.c_str());
+                    ReadImport();
+                }
+            }
+            if (!any) {
+                ImGui::TextDisabled("Copy a .gci, .gcs or .raw file into this folder.");
+            }
+            ImGui::EndListBox();
+        }
+    }
+
     void DrawImport() {
         std::string requested;
         if (SaveManager::TakeImportRequest(&requested)) {
@@ -264,12 +311,16 @@ class SaveManagerWindow final : public Ship::GuiWindow {
                                      sizeof(mImportPath), ImGuiInputTextFlags_EnterReturnsTrue)) {
             ReadImport();
         }
+#if SAVE_UI_FILE_DIALOGS
         if (ImGui::Button("Browse...") && !mImportDialog) {
             mImportDialog = std::make_unique<pfd::open_file>(
                 "Pick a GameCube save", "",
                 std::vector<std::string>{ "GameCube saves", "*.gci *.gcs *.raw *.gcp", "All files", "*" });
         }
         ImGui::SameLine();
+#else
+        DrawImportFolder();
+#endif
         if (ImGui::Button("Read")) {
             ReadImport();
         }
@@ -424,9 +475,7 @@ bool OnFileDropped(char* path) {
     if (GbaPort::ScanWaiting()) {
         return false;
     }
-    std::string ext = std::filesystem::path(path).extension().string();
-    std::transform(ext.begin(), ext.end(), ext.begin(), [](unsigned char c) { return (char)std::tolower(c); });
-    if (ext != ".gci" && ext != ".gcs" && ext != ".raw" && ext != ".gcp") {
+    if (!IsGameCubeSaveFile(path)) {
         return false;
     }
     SaveManager::RequestImport(path);
@@ -458,6 +507,10 @@ void InitSaveManagerUi() {
     auto saveWindow = std::make_shared<SaveManagerWindow>(CVAR_WINDOW("SaveManager"), "Save Manager");
     window->GetGui()->AddGuiWindow(saveWindow);
     saveWindow->Show();
+#if !SAVE_UI_FILE_DIALOGS
+    std::error_code ec;
+    std::filesystem::create_directories(ImportDirectory(), ec);
+#endif
     InstallQuitFilter();
     RegisterCommands();
     if (auto drop = ShipCompat::GetFileDropMgr()) {

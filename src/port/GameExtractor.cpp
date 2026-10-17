@@ -18,7 +18,9 @@
 #include <port/Engine.h>
 
 #include "Companion.h"
+#if !defined(__IOS__) && !defined(__ANDROID__) && !defined(__EMSCRIPTEN__)
 #include "portable-file-dialogs.h"
+#endif
 
 // Defined unconditionally (declared in the header for all platforms).
 std::string GameExtractor::sLastError;
@@ -208,7 +210,7 @@ bool GameExtractor::RunStandalone(std::string disc) {
 
 bool GameExtractor::SelectGameFromUI(bool pickFolder) {
     sLastError.clear();
-#if !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__)
+#if !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__) && !defined(__EMSCRIPTEN__)
     if (!pfd::settings::available()) {
         SPDLOG_ERROR("portable-file-dialogs is not available on this system.");
         sLastError = "No file dialog is available. Pass the disc path on the command line instead.";
@@ -289,6 +291,9 @@ bool GameExtractor::RunTorch(std::atomic<size_t>& assetCount, const std::string&
     }
     try {
         Companion::Instance->Init(ExportType::Binary, assetCount, process);
+#ifdef __EMSCRIPTEN__
+        Companion::Instance->Process(assetCount);
+#endif
     } catch (const std::exception& e) {
         sLastError = e.what();
         SPDLOG_ERROR("Failed to process O2R: {}", e.what());

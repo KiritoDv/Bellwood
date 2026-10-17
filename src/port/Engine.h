@@ -69,6 +69,7 @@ class GameEngine {
     static void HandleAudioThread();
     static void StartAudioFrame();
     static void EndAudioFrame();
+    static void EndWebFrame();
     static void AudioExit();
     static void ProcessGfxCommands(Gfx* commands);
     static ImFont *CreateFontWithSize(float size, std::string fontPath);
@@ -80,6 +81,7 @@ class GameEngine {
 };
 
 Fast::Interpreter* GameEngine_GetInterpreter();
+bool GameEngine_IsGameArchiveCurrent(const std::string& path);
 
 extern "C" {
 #endif

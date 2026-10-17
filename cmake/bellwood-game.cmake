@@ -1,6 +1,12 @@
 include(${CMAKE_CURRENT_LIST_DIR}/bellwood-game-sources.cmake)
 
-add_library(acgame OBJECT
+if (CMAKE_GENERATOR STREQUAL "Xcode")
+    set(BELLWOOD_GAME_LIBRARY_TYPE STATIC)
+else()
+    set(BELLWOOD_GAME_LIBRARY_TYPE OBJECT)
+endif()
+
+add_library(acgame ${BELLWOOD_GAME_LIBRARY_TYPE}
     ${BELLWOOD_GAME_SOURCES}
     ${BELLWOOD_DATA_SOURCES}
     src/assets/asset_paths.c
@@ -56,5 +62,9 @@ if (BELLWOOD_ASAN AND NOT MSVC)
     target_compile_options(acgame PRIVATE -fsanitize=address -fno-omit-frame-pointer)
 endif()
 
-target_sources(${PROJECT_NAME} PRIVATE $<TARGET_OBJECTS:acgame>)
+if (BELLWOOD_GAME_LIBRARY_TYPE STREQUAL "STATIC")
+    target_link_libraries(${PROJECT_NAME} PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,acgame>")
+else()
+    target_sources(${PROJECT_NAME} PRIVATE $<TARGET_OBJECTS:acgame>)
+endif()
 add_dependencies(${PROJECT_NAME} acgame)

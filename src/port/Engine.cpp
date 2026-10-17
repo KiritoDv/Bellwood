@@ -68,6 +68,10 @@
 #include <libultraship/bridge/crashhandlerbridge.h>
 #include <libultraship/bridge/gfxdebuggerbridge.h>
 #include <libultraship/bridge/gfxbridge.h>
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#include "port/web/WebUtils.h"
+#endif
 
 #define NATIVE_SCREEN_WIDTH 640
 #define NATIVE_SCREEN_HEIGHT 480
@@ -76,9 +80,18 @@
 
 const float imguiScaleOptionToValue[4] = { 0.75f, 1.0f, 1.5f, 2.0f };
 std::shared_ptr<Fast::Fast3dWindow> gsFast3dWindow;
+#if defined(__IOS__) || defined(__ANDROID__)
+const uint32_t defaultImGuiScale = 3;
+#else
 const uint32_t defaultImGuiScale = 1;
+#endif
+#if defined(__ANDROID__)
+const float initialImGuiScale = 2.0f;
+#else
+const float initialImGuiScale = 1.0f;
+#endif
 int32_t previousImGuiScaleIndex = -1;
-float previousImGuiScale = defaultImGuiScale;
+float previousImGuiScale = initialImGuiScale;
 bool portArchiveVersionMatch = false;
 std::string assets_path;
 static bool sGameArchiveLoaded = false;
@@ -98,6 +111,14 @@ typedef struct {
 } OTRVersion;
 
 GameEngine* GameEngine::Instance;
+
+namespace {
+void WaitForPresentSlot(int fps);
+#ifdef __EMSCRIPTEN__
+constexpr const char* kWebDiscDir = "/tmp/disc";
+bool sWebYielded = false;
+#endif
+} // namespace
 
 // Read the port version from an OTR file
 OTRVersion ReadPortVersionFromOTR(std::string otrPath) {
@@ -165,6 +186,12 @@ static bool IsArchiveGameVersionUnknown(const std::string& otrPath) {
     return raw != 0 && raw != GAME_VERSION_GAFE01_00 && swapped != GAME_VERSION_GAFE01_00;
 }
 
+bool GameEngine_IsGameArchiveCurrent(const std::string& path) {
+    const OTRVersion version = ReadPortVersionFromOTR(path);
+    const bool unversioned = version.major == 0 && version.minor == 0 && version.patch == 0;
+    return (unversioned || VerifyArchiveVersion(version)) && !IsArchiveGameVersionUnknown(path);
+}
+
 static bool ExtractorDataExists(const std::string& installPath) {
     return std::filesystem::exists(installPath + "/config.yml") &&
            std::filesystem::is_directory(installPath + "/assets/ymls");
@@ -222,8 +249,12 @@ GameEngine::GameEngine() {
         exit(1);
     }
 
+#ifdef __EMSCRIPTEN__
+    auto threadPool = std::make_shared<Ship::ThreadPool>(2);
+#else
     auto threadPool =
         std::make_shared<Ship::ThreadPool>(std::max(1, (int32_t)(std::thread::hardware_concurrency() - 3 - 1)));
+#endif
     context->GetChildren().Add(threadPool);
 
     auto resourceManager = std::make_shared<Ship::ResourceManager>(threadPool);
@@ -286,7 +317,7 @@ GameEngine::GameEngine() {
     }
 
     previousImGuiScaleIndex = -1;
-    previousImGuiScale = defaultImGuiScale;
+    previousImGuiScale = initialImGuiScale;
     ScaleImGui();
 }
 
@@ -364,23 +395,39 @@ void GameEngine::LoadResourceFiles() {
         }
 
         if (std::filesystem::is_directory(patches_path)) {
-            for (const auto& p : std::filesystem::recursive_directory_iterator(patches_path)) {
+            std::vector<std::filesystem::path> archives;
+            for (auto it = std::filesystem::recursive_directory_iterator(patches_path);
+                 it != std::filesystem::recursive_directory_iterator(); ++it) {
+                const auto& p = *it;
                 const auto ext = p.path().extension().string();
+                if (p.is_directory() && StringHelper::IEquals(ext, ".disabled")) {
+                    it.disable_recursion_pending();
+                    continue;
+                }
                 if (StringHelper::IEquals(ext, ".otr") || StringHelper::IEquals(ext, ".o2r")) {
-                    ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(p.path().generic_string());
+                    archives.push_back(p.path());
                 }
 
                 if (StringHelper::IEquals(ext, ".zip")) {
                     SPDLOG_WARN("Zip files should be only used for development purposes, not for distribution");
-                    ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(p.path().generic_string());
+                    archives.push_back(p.path());
                 }
             }
+            std::sort(archives.begin(), archives.end());
+            for (const auto& archive : archives) {
+                ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(archive.generic_string());
+            }
 
+            std::vector<std::filesystem::path> folders;
             for (const auto& p : std::filesystem::directory_iterator(patches_path)) {
-                if (p.is_directory()) {
-                    SPDLOG_INFO("Found mod directory: {}", p.path().generic_string());
-                    ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(p.path().generic_string());
+                if (p.is_directory() && !StringHelper::IEquals(p.path().extension().string(), ".disabled")) {
+                    folders.push_back(p.path());
                 }
+            }
+            std::sort(folders.begin(), folders.end());
+            for (const auto& folder : folders) {
+                SPDLOG_INFO("Found mod directory: {}", folder.generic_string());
+                ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(folder.generic_string());
             }
         }
     }
@@ -538,6 +585,10 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             if (extract.Parse(totalExtract, PORT_NAME)) {
                 extract.GenerateOTR(extractCount, PORT_NAME);
             }
+#ifdef __EMSCRIPTEN__
+            std::error_code ec;
+            std::filesystem::remove_all(kWebDiscDir, ec);
+#endif
             extracting = false;
             extractCount = totalExtract = 0;
             args.clear();
@@ -764,6 +815,24 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                         continue;
                     }
                     case PS_PICK: {
+#if defined(__EMSCRIPTEN__)
+                        pickFolder = false;
+                        promptStep = PS_FIRST;
+                        continue;
+#elif defined(__IOS__) || defined(__ANDROID__)
+                        promptStep = PS_WAIT;
+#ifdef __IOS__
+                        const std::string discFolder = "Files > On My iPhone > " + std::string(PORT_NAME);
+#else
+                        const std::string discFolder = Ship::Context::GetAppDirectoryPath(PORT_NAME);
+#endif
+                        PortGui::RegisterPopup(
+                            "Add Your Disc",
+                            "Copy your Animal Crossing disc image (.iso, .gcm, .ciso, .gcz) into\n" + discFolder +
+                                "\nand choose Retry.",
+                            "Retry", "Skip", [&]() { promptStep = PS_LOCAL; }, [&]() { extractStep = GS_LOAD; });
+                        continue;
+#endif
                         promptStep = PS_WAIT;
                         PortGui::RegisterPopup(
                             "Select Game Disc",
@@ -781,6 +850,30 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                         continue;
                     }
                     case PS_FIRST: {
+#ifdef __EMSCRIPTEN__
+                        {
+                            std::string webError;
+                            std::error_code ec;
+                            const std::string archivePath =
+                                Ship::Context::GetPathRelativeToAppDirectory(GAME_ARCHIVE, PORT_NAME);
+                            const auto picked = WebFilePicker_PickDisc(kWebDiscDir, archivePath, webError);
+                            if (picked == WebPickResult::Archive) {
+                                extractStep = ES_VERIFY;
+                            } else if (picked == WebPickResult::Disc && extract.RunStandalone(kWebDiscDir)) {
+                                file = kWebDiscDir;
+                                startExtraction();
+                            } else if (picked == WebPickResult::Cancelled) {
+                                promptStep = PS_FILE_CHECK;
+                            } else {
+                                std::filesystem::remove_all(kWebDiscDir, ec);
+                                promptStep = PS_WAIT;
+                                PortGui::RegisterPopup("Disc Error",
+                                                       webError.empty() ? GameExtractor::sLastError : webError, "OK",
+                                                       "", [&]() { promptStep = PS_FILE_CHECK; });
+                            }
+                        }
+                        continue;
+#endif
                         if (!extract.SelectGameFromUI(pickFolder)) {
                             promptStep = PS_WAIT;
                             if (!GameExtractor::sLastError.empty()) {
@@ -803,6 +896,11 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             case ES_VERIFY: {
                 const bool gameO2RExists =
                     std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs(GAME_ARCHIVE, PORT_NAME));
+#ifdef __EMSCRIPTEN__
+                if (gameO2RExists) {
+                    WebCache_Save();
+                }
+#endif
 
                 if (!gameO2RExists) {
                     if (PortGui::PopupsQueued() == 0) {
@@ -972,6 +1070,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
         gui->EndDraw();
         gsFast3dWindow->EndFrame();
         ImGui::PopStyleColor(2);
+#ifdef __EMSCRIPTEN__
+        WaitForPresentSlot(60);
+#endif
     }
     threadPool = nullptr;
 
@@ -1147,7 +1248,11 @@ namespace {
 using FrameClock = std::chrono::steady_clock;
 
 bool PrecisePacingEnabled() {
+#ifdef __EMSCRIPTEN__
+    return true;
+#else
     return !CVarGetInteger(CVAR_VSYNC_ENABLED, 1) && ShipCompat::GetWindow()->CanDisableVerticalSync();
+#endif
 }
 
 void WaitForPresentSlot(int fps) {
@@ -1160,6 +1265,10 @@ void WaitForPresentSlot(int fps) {
         sDeadline = now;
         sValid = true;
     }
+#ifdef __EMSCRIPTEN__
+    WebFrame_Wait(now < sDeadline ? std::chrono::duration<double, std::milli>(sDeadline - now).count() : 0.0);
+    sWebYielded = true;
+#else
     if (now < sDeadline) {
         if (sDeadline - now > std::chrono::milliseconds(2)) {
             std::this_thread::sleep_until(sDeadline - std::chrono::milliseconds(1));
@@ -1168,6 +1277,7 @@ void WaitForPresentSlot(int fps) {
             std::this_thread::yield();
         }
     }
+#endif
     sDeadline += interval;
 }
 
@@ -1192,6 +1302,15 @@ void GameEngine::HandleAudioThread() {
         audio.processing = false;
         audio.cv_from_thread.notify_one();
     }
+}
+
+void GameEngine::EndWebFrame() {
+#ifdef __EMSCRIPTEN__
+    if (!sWebYielded) {
+        WebFrame_Wait(0.0);
+    }
+    sWebYielded = false;
+#endif
 }
 
 void GameEngine::StartAudioFrame() {
@@ -1338,6 +1457,10 @@ void GameEngine::RunCommandsUncapped(Gfx* Commands, uint32_t originalFps) {
         }
         interpreter->mInterpolationIndex++;
         presented = true;
+#ifdef __EMSCRIPTEN__
+        WebFrame_Wait(0.0);
+        sWebYielded = true;
+#endif
 
         auto after = FrameClock::now();
         double frameSeconds = std::chrono::duration<double>(after - before).count();

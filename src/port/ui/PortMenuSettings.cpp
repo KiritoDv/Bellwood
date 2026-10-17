@@ -149,6 +149,7 @@ void PortMenu::AddMenuSettings() {
                      .Tooltip("Sets the Nintendo Switch CPU performance profile."));
 #endif
 #if not defined(__SWITCH__) and not defined(__WIIU__)
+#if !defined(__IOS__) && !defined(__ANDROID__) && !defined(__EMSCRIPTEN__)
     AddWidget(path, "Open App Files Folder", WIDGET_BUTTON)
         .RaceDisable(false)
         .Callback([](WidgetInfo& info) {
@@ -156,6 +157,7 @@ void PortMenu::AddMenuSettings() {
             SDL_OpenURL(std::string("file:///" + std::filesystem::absolute(filesPath).string()).c_str());
         })
         .Options(ButtonOptions().Tooltip("Opens the folder that contains the save and mods folders, etc."));
+#endif
     AddWidget(path, "Import GameCube Save...", WIDGET_BUTTON)
         .RaceDisable(false)
         .Callback([](WidgetInfo& info) { SaveManager_OpenImport(); })
@@ -169,7 +171,11 @@ void PortMenu::AddMenuSettings() {
         .Options(ComboboxOptions()
                      .ComboMap(imguiScaleOptions)
                      .Tooltip("Changes the scaling of the ImGui menu elements.")
+#if defined(__IOS__) || defined(__ANDROID__)
+                     .DefaultIndex(3)
+#else
                      .DefaultIndex(1)
+#endif
                      .ComponentAlignment(ComponentAlignments::Right)
                      .LabelPosition(LabelPositions::Far))
         .Callback([](WidgetInfo& info) { GameEngine::Instance->ScaleImGui(); });
@@ -504,7 +510,8 @@ void PortMenu::AddMenuSettings() {
         .Options(CheckboxOptions().DefaultValue(true).Tooltip(
             "The Able Sisters' GBA design tool saves your designs as PNG files in the designs folder and loads "
             "them back from there."));
-#if not defined(__SWITCH__) and not defined(__WIIU__)
+#if not defined(__SWITCH__) and not defined(__WIIU__) and !defined(__IOS__) and !defined(__ANDROID__) and \
+    !defined(__EMSCRIPTEN__)
     path.column = SECTION_COLUMN_2;
     for (const char* folder : { "ecards", "designs", "famicom" }) {
         std::string label = std::string("Open ") + folder + " Folder";

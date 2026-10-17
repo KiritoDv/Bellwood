@@ -658,7 +658,7 @@ extern void rgba_t_move(rgba_t* dest, const rgba_t* const src) {
  *
  * @return 0
  */
-extern int none_proc1() {
+extern int none_proc1(void) {
     return 0;
 }
 

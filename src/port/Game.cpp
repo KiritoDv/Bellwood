@@ -15,6 +15,9 @@
 #endif
 
 #include "port/audio/ACAudio.h"
+#ifdef __EMSCRIPTEN__
+#include "port/web/WebUtils.h"
+#endif
 
 extern "C" {
 #include "FrameStub.h"
@@ -67,16 +70,33 @@ int main(int argc, char* argv[]) {
     signal(SIGABRT, PortCrashTrace);
     signal(SIGFPE, PortCrashTrace);
 #endif
+#ifdef __EMSCRIPTEN__
+    WebCache_Mount("/storage");
+    WebCache_Load();
+#endif
     GameEngine::Create(argc, argv);
     FrameStub_Init();
     if (GameEngine::IsGameArchiveLoaded()) {
         AC_BootInit();
         sGameRunning = true;
     }
+#ifdef __EMSCRIPTEN__
+    uint32_t lastWebSync = SDL_GetTicks();
+#endif
     while (WindowIsRunning()) {
         push_frame();
+#ifdef __EMSCRIPTEN__
+        GameEngine::EndWebFrame();
+        if (SDL_GetTicks() - lastWebSync > 5000) {
+            lastWebSync = SDL_GetTicks();
+            WebCache_Save();
+        }
+#endif
     }
     AC_AudioShutdown();
     GameEngine::Instance->Destroy();
+#ifdef __EMSCRIPTEN__
+    WebCache_SaveNoWait();
+#endif
     return 0;
 }

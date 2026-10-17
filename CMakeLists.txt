@@ -11,6 +11,44 @@ include(FetchContent)
 include(cmake/bellwood-cvars.cmake)
 include(cmake/lus-cvars.cmake)
 
+if(IOS)
+    if(NOT DEFINED PLATFORM)
+        set(PLATFORM "OS64")
+    endif()
+    option(IOS_SIGNING "Code sign the iOS app (OFF produces an unsigned bundle for sideloading)" ON)
+    include(cmake/ios.toolchain.cmake)
+    if(DEPLOYMENT_TARGET VERSION_LESS 16.3)
+        message(FATAL_ERROR
+            "iOS deployment target is ${DEPLOYMENT_TARGET}; ${PORT_NAME} needs 16.3 or newer.\n"
+            "Configure with -DCMAKE_TOOLCHAIN_FILE=cmake/ios.bellwood.toolchain.cmake, "
+            "or pass -DDEPLOYMENT_TARGET=16.3 yourself.")
+    endif()
+    add_compile_definitions(
+        PLATFORM_IOS=1
+        __IOS__
+    )
+    if(IOS_SIGNING)
+        set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "$ENV{IOS_DEVELOPMENT_TEAM}")
+    endif()
+    set(BUNDLE_ID "dev.net64.bellwood")
+    set(SIGN_LIBRARY ${IOS_SIGNING})
+    set(PROJECT_ID "${BUNDLE_ID}")
+endif()
+
+if(EMSCRIPTEN)
+    add_compile_definitions(USE_OPENGLES=1)
+    add_compile_options(-pthread -sUSE_SDL=2 -fexceptions)
+    add_link_options(-pthread -sUSE_SDL=2)
+endif()
+
+if(ANDROID)
+    add_compile_definitions(USE_OPENGLES=1)
+endif()
+
+if(ANDROID OR IOS OR EMSCRIPTEN)
+    set(BELLWOOD_CROSS_BUILD TRUE)
+endif()
+
 set(NATO_PHONETIC_ALPHABET
   "Alfa" "Bravo" "Charlie" "Delta" "Echo" "Foxtrot" "Golf" "Hotel"
   "India" "Juliett" "Kilo" "Lima" "Mike" "November" "Oscar" "Papa"
@@ -68,7 +106,9 @@ if(APPLE)
 endif()
 
 # Set the minimum version of CMake and the deployment target for macOS
+if(NOT IOS)
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
+endif()
 
 # Set the C++ standard and enable the MSVC parallel build option
 set(CMAKE_CXX_STANDARD 20 CACHE STRING "The C++ standard to use")
@@ -145,7 +185,7 @@ if(NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
 endif()
 
 # Find necessary libraries
-if (UNIX AND NOT APPLE)
+if (UNIX AND NOT APPLE AND NOT BELLWOOD_CROSS_BUILD)
 find_package(OpenGL REQUIRED)
 endif()
 
@@ -173,6 +213,7 @@ file(GLOB_RECURSE PORT_GAME_C_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} CONFIGU
     "src/port/famicom/*.c"
 )
 list(REMOVE_ITEM ALL_FILES ${PORT_GAME_C_FILES})
+list(FILTER ALL_FILES EXCLUDE REGEX "^src/port/audio/.*\\.(c|cpp)$")
 include(src/port/importer/ac/sources.cmake OPTIONAL)
 if (AC_IMPORTER_SOURCES)
     list(FILTER ALL_FILES EXCLUDE REGEX "^src/port/importer/ac/")
@@ -192,7 +233,42 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
     list(APPEND ALL_FILES Resource.rc)
 endif()
 
-add_executable(${PROJECT_NAME} ${ALL_FILES})
+if(IOS)
+    set(IOS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ios)
+    set(IOS_RESOURCES ${IOS_DIR}/Launch.storyboard ${IOS_DIR}/PoweredBy.png ${IOS_DIR}/Icon.png)
+    add_executable(${PROJECT_NAME} ${ALL_FILES} ${IOS_RESOURCES})
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        MACOSX_BUNDLE TRUE
+        MACOSX_BUNDLE_INFO_PLIST ${IOS_DIR}/plist.in
+        RESOURCE "${IOS_RESOURCES}"
+        XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "${BUNDLE_ID}"
+    )
+    if(IOS_SIGNING)
+        set_target_properties(${PROJECT_NAME} PROPERTIES
+            XCODE_ATTRIBUTE_CODE_SIGN_STYLE "Automatic"
+            XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED "YES"
+            XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "YES"
+            XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "Apple Development"
+        )
+    else()
+        set_target_properties(${PROJECT_NAME} PROPERTIES
+            XCODE_ATTRIBUTE_CODE_SIGN_STYLE "Manual"
+            XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED "NO"
+            XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "NO"
+            XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY ""
+        )
+    endif()
+elseif(ANDROID)
+    add_library(${PROJECT_NAME} SHARED ${ALL_FILES})
+    set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "main")
+else()
+    add_executable(${PROJECT_NAME} ${ALL_FILES})
+endif()
+
+if(EMSCRIPTEN)
+    string(TOLOWER "${PORT_NAME}" PORT_WEB_NAME)
+    set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PORT_WEB_NAME}" SUFFIX ".html")
+endif()
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
     F3DEX_GBI_2
@@ -245,6 +321,76 @@ set(ENABLE_EXP_AUTO_CONFIGURE_CONTROLLERS ON CACHE BOOL "")
 add_compile_definitions(EXCLUDE_MPQ_SUPPORT)
 
 set(GBI_UCODE F3DEX_GBI_2 CACHE STRING "GBI ucode version used to build libultraship" FORCE)
+
+if(EMSCRIPTEN)
+    set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+
+    set(tinyxml2_BUILD_TESTING OFF)
+    FetchContent_Declare(
+        tinyxml2
+        GIT_REPOSITORY https://github.com/leethomason/tinyxml2.git
+        GIT_TAG 11.0.0
+        GIT_SHALLOW TRUE
+        OVERRIDE_FIND_PACKAGE
+    )
+    FetchContent_Declare(
+        nlohmann_json
+        GIT_REPOSITORY https://github.com/nlohmann/json.git
+        GIT_TAG v3.12.0
+        GIT_SHALLOW TRUE
+        OVERRIDE_FIND_PACKAGE
+    )
+    FetchContent_Declare(
+        spdlog
+        GIT_REPOSITORY https://github.com/gabime/spdlog.git
+        GIT_TAG v1.16.0
+        GIT_SHALLOW TRUE
+        OVERRIDE_FIND_PACKAGE
+    )
+
+    file(REMOVE
+        "${CMAKE_FIND_PACKAGE_REDIRECTS_DIR}/zlib-config.cmake"
+        "${CMAKE_FIND_PACKAGE_REDIRECTS_DIR}/zlib-config-version.cmake"
+        "${CMAKE_FIND_PACKAGE_REDIRECTS_DIR}/zlibConfig.cmake"
+        "${CMAKE_FIND_PACKAGE_REDIRECTS_DIR}/zlibConfigVersion.cmake")
+    set(_emsysroot "${EMSCRIPTEN_SYSROOT}")
+    if(NOT _emsysroot)
+        set(_emsysroot "${CMAKE_SYSROOT}")
+    endif()
+    if(NOT _emsysroot)
+        message(FATAL_ERROR "Could not determine the Emscripten sysroot for zlib")
+    endif()
+    set(ZLIB_INCLUDE_DIR "${_emsysroot}/include" CACHE PATH "" FORCE)
+    set(ZLIB_LIBRARY "${_emsysroot}/lib/wasm32-emscripten/libz.a" CACHE FILEPATH "" FORCE)
+
+    set(BUILD_TOOLS OFF)
+    set(BUILD_REGRESS OFF)
+    set(BUILD_EXAMPLES OFF)
+    set(BUILD_DOC OFF)
+    set(BUILD_OSSFUZZ OFF)
+    set(BUILD_SHARED_LIBS OFF)
+    set(ENABLE_BZIP2 OFF)
+    set(ENABLE_LZMA OFF)
+    set(ENABLE_ZSTD OFF)
+    set(ENABLE_COMMONCRYPTO OFF)
+    set(ENABLE_GNUTLS OFF)
+    set(ENABLE_MBEDTLS OFF)
+    set(ENABLE_OPENSSL OFF)
+    FetchContent_Declare(
+        libzip
+        GIT_REPOSITORY https://github.com/nih-at/libzip.git
+        GIT_TAG v1.11.4
+        GIT_SHALLOW TRUE
+        OVERRIDE_FIND_PACKAGE
+    )
+
+    FetchContent_MakeAvailable(tinyxml2 nlohmann_json spdlog libzip)
+endif()
+
+if(BELLWOOD_CROSS_BUILD)
+    set(ENABLE_SCRIPTING OFF CACHE BOOL "" FORCE)
+    set(DISABLE_DLL_LOADER ON CACHE BOOL "" FORCE)
+endif()
 
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
@@ -389,7 +535,7 @@ if(MSVC)
 endif()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
-    if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    if (APPLE)
         target_compile_options(${PROJECT_NAME} PRIVATE
             -Wall -Wextra -Wno-error
             -Wno-return-type
@@ -420,7 +566,9 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
             -pthread
         )
     else()
-      if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
+      if(BELLWOOD_CROSS_BUILD)
+        set(CPU_OPTION)
+      elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
         set(CPU_OPTION -msse2 -mfpmath=sse)
       elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
         set(CPU_OPTION -mcpu=native)
@@ -449,19 +597,28 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
     ${CPU_OPTION}
       )
 
-      target_link_options(${PROJECT_NAME} PRIVATE
-          -pthread
-          -Wl,-export-dynamic
-      )
+      target_link_options(${PROJECT_NAME} PRIVATE -pthread)
+      if(NOT EMSCRIPTEN)
+        target_link_options(${PROJECT_NAME} PRIVATE -Wl,-export-dynamic)
+      endif()
   endif()
 endif()
 
-add_custom_command(
-	TARGET ${PROJECT_NAME} POST_BUILD
-	COMMENT "Copying asset yamls..."
-	COMMAND ${CMAKE_COMMAND} -DSRC_DIR=${CMAKE_SOURCE_DIR} -DDST_DIR=$<TARGET_FILE_DIR:${PROJECT_NAME}>
-	        -P ${CMAKE_SOURCE_DIR}/cmake/copy-extractor-data.cmake
-)
+if(IOS)
+  add_custom_command(
+    TARGET ${PROJECT_NAME} POST_BUILD
+    COMMENT "Bundling config.yml and asset yamls..."
+    COMMAND ${CMAKE_COMMAND} -DSRC_DIR=${CMAKE_SOURCE_DIR} -DDST_DIR=$<TARGET_BUNDLE_CONTENT_DIR:${PROJECT_NAME}>
+            -P ${CMAKE_SOURCE_DIR}/cmake/copy-extractor-data.cmake
+  )
+elseif(NOT ANDROID AND NOT EMSCRIPTEN)
+  add_custom_command(
+    TARGET ${PROJECT_NAME} POST_BUILD
+    COMMENT "Copying asset yamls..."
+    COMMAND ${CMAKE_COMMAND} -DSRC_DIR=${CMAKE_SOURCE_DIR} -DDST_DIR=$<TARGET_FILE_DIR:${PROJECT_NAME}>
+            -P ${CMAKE_SOURCE_DIR}/cmake/copy-extractor-data.cmake
+  )
+endif()
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
   add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
@@ -482,6 +639,14 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
   endif()
 endif()
 
+set(PORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
+set(PORT_O2R_STAGING ${CMAKE_BINARY_DIR}/port-o2r)
+file(GLOB_RECURSE PORT_O2R_INPUTS CONFIGURE_DEPENDS
+    "${CMAKE_SOURCE_DIR}/port/*"
+    "${CMAKE_SOURCE_DIR}/libultraship/src/fast/shaders/*"
+)
+
+if(NOT BELLWOOD_CROSS_BUILD)
 include(ExternalProject)
 ExternalProject_Add(TorchExternal
 	PREFIX TorchExternal
@@ -512,8 +677,6 @@ else()
   set(TORCH_EXECUTABLE ${binary_dir}/torch)
 endif()
 
-set(PORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
-
 set(AC_DISC_PATH "" CACHE FILEPATH "GameCube disc image (.iso/.gcm/.ciso/.gcz) or extracted disc folder used by ExtractAssets")
 if (AC_DISC_PATH)
   add_custom_target(
@@ -533,11 +696,6 @@ else()
   )
 endif()
 
-set(PORT_O2R_STAGING ${CMAKE_BINARY_DIR}/port-o2r)
-file(GLOB_RECURSE PORT_O2R_INPUTS CONFIGURE_DEPENDS
-    "${CMAKE_SOURCE_DIR}/port/*"
-    "${CMAKE_SOURCE_DIR}/libultraship/src/fast/shaders/*"
-)
 add_custom_command(
     OUTPUT "${CMAKE_BINARY_DIR}/${PORT_ARCHIVE}"
     DEPENDS TorchExternal ${PORT_O2R_INPUTS}
@@ -548,8 +706,89 @@ add_custom_command(
     COMMAND ${TORCH_EXECUTABLE} pack "${PORT_O2R_STAGING}" "${CMAKE_BINARY_DIR}/${PORT_ARCHIVE}" o2r -u ${PORT_VERSION_STRING}
     VERBATIM
 )
+else()
+add_custom_command(
+    OUTPUT "${CMAKE_BINARY_DIR}/${PORT_ARCHIVE}"
+    DEPENDS ${PORT_O2R_INPUTS}
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    COMMAND ${CMAKE_COMMAND} -E rm -rf "${PORT_O2R_STAGING}"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/libultraship/src/fast/shaders" "${PORT_O2R_STAGING}/shaders"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/port" "${PORT_O2R_STAGING}"
+    COMMAND ${CMAKE_COMMAND} -E chdir "${PORT_O2R_STAGING}" ${CMAKE_COMMAND} -E tar cf "${CMAKE_BINARY_DIR}/${PORT_ARCHIVE}" --format=zip -- .
+    VERBATIM
+)
+endif()
 add_custom_target(GeneratePortO2R DEPENDS "${CMAKE_BINARY_DIR}/${PORT_ARCHIVE}")
 add_dependencies(${PROJECT_NAME} GeneratePortO2R)
+
+if(IOS)
+  add_custom_command(
+    TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_BINARY_DIR}/${PORT_ARCHIVE}"
+            "$<TARGET_BUNDLE_CONTENT_DIR:${PROJECT_NAME}>/${PORT_ARCHIVE}"
+  )
+endif()
+
+if(ANDROID)
+  FetchContent_GetProperties(libzip)
+  if(libzip_SOURCE_DIR)
+    target_include_directories(${PROJECT_NAME} PRIVATE ${libzip_SOURCE_DIR}/lib ${libzip_BINARY_DIR})
+  endif()
+  target_link_libraries(${PROJECT_NAME} PRIVATE libzip::zip GLESv3 EGL android log)
+endif()
+
+if(EMSCRIPTEN)
+  FetchContent_GetProperties(libzip)
+  if(libzip_SOURCE_DIR)
+    target_include_directories(${PROJECT_NAME} PRIVATE ${libzip_SOURCE_DIR}/lib ${libzip_BINARY_DIR})
+  endif()
+
+  target_link_options(${PROJECT_NAME} PRIVATE
+    -sUSE_SDL=2
+    -sUSE_WEBGL2=1
+    -sMAX_WEBGL_VERSION=2
+    -sMIN_WEBGL_VERSION=2
+    -sFULL_ES3=1
+    -sINITIAL_MEMORY=536870912
+    -sALLOW_MEMORY_GROWTH=1
+    -sEXIT_RUNTIME=1
+    -sSTACK_SIZE=5242880
+    -sPTHREAD_POOL_SIZE=8
+    -sEMULATE_FUNCTION_POINTER_CASTS=1
+    -sBINARYEN_EXTRA_PASSES=--pass-arg=max-func-params@32
+    -sASYNCIFY=1
+    "-sASYNCIFY_REMOVE=@${CMAKE_SOURCE_DIR}/src/port/web/asyncify-remove.txt"
+    -sASYNCIFY_STACK_SIZE=8388608
+    -sASSERTIONS=1
+    -sFORCE_FILESYSTEM=1
+    -sEXPORTED_FUNCTIONS=_main,_malloc,_free
+    -sEXPORTED_RUNTIME_METHODS=FS,ccall,cwrap,UTF8ToString,stringToUTF8
+    -lembind
+    -lidbfs.js
+    "SHELL:--shell-file ${CMAKE_SOURCE_DIR}/src/port/web/shell.html"
+    "SHELL:--preload-file ${CMAKE_SOURCE_DIR}/assets/ymls@/assets/ymls"
+    "SHELL:--preload-file ${CMAKE_SOURCE_DIR}/config.yml@/config.yml"
+    "SHELL:--preload-file ${CMAKE_BINARY_DIR}/${PORT_ARCHIVE}@/${PORT_ARCHIVE}"
+  )
+
+  set(BELLWOOD_WEB_PRELOAD_ARCHIVE "" CACHE FILEPATH "Path to a generated ${GAME_ARCHIVE} to embed in the web build (development only)")
+  if(BELLWOOD_WEB_PRELOAD_ARCHIVE)
+    target_link_options(${PROJECT_NAME} PRIVATE
+      "SHELL:--preload-file ${BELLWOOD_WEB_PRELOAD_ARCHIVE}@/${GAME_ARCHIVE}")
+  endif()
+
+  set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY LINK_DEPENDS
+    "${CMAKE_SOURCE_DIR}/src/port/web/shell.html"
+    "${CMAKE_SOURCE_DIR}/src/port/web/asyncify-remove.txt"
+    "${CMAKE_BINARY_DIR}/${PORT_ARCHIVE}")
+
+  add_custom_command(
+    TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${CMAKE_SOURCE_DIR}/src/port/web/coi-serviceworker.js"
+            "$<TARGET_FILE_DIR:${PROJECT_NAME}>/coi-serviceworker.js"
+  )
+endif()
 
 find_program(CURL NAMES curl DOC "Path to the curl program.  Used to download files.")
 execute_process(COMMAND ${CURL} -sSfL https://raw.githubusercontent.com/gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt -o ${CMAKE_BINARY_DIR}/gamecontrollerdb.txt OUTPUT_VARIABLE RESULT)

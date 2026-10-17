@@ -109,6 +109,36 @@ Requires:
    cmake --build build --target ExtractAssets
    ```
 
+### Android, iOS and Web
+
+**Android** needs the Android SDK with NDK `30.0.15729638`, CMake `3.30.3` and JDK 17 or newer. Gradle drives the native build:
+
+```sh
+android/gradlew -p android assembleRelease
+```
+
+The APK is written to `android/app/build/outputs/apk/release/`. On first launch it asks for your disc image and generates `ac.o2r` on the device. There are no on-screen controls yet, so Android and iOS need a Bluetooth or USB controller.
+
+**iOS** needs Xcode. Add `-DIOS_SIGNING=OFF` for an unsigned build to sideload:
+
+```sh
+cmake -S . -B build-ios -G Xcode -DCMAKE_TOOLCHAIN_FILE=cmake/ios.bellwood.toolchain.cmake -DPLATFORM=OS64
+cmake --build build-ios --config Release --target Bellwood
+```
+
+Copy your disc image into **Files → On My iPhone → Bellwood** and start the app. GameCube saves go in the `import` folder there.
+
+**Web** needs the [Emscripten SDK](https://emscripten.org/docs/getting_started/downloads.html):
+
+```sh
+embuilder build zlib
+emcmake cmake -S . -B build-web -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build build-web --target Bellwood
+python3 -m http.server -d build-web 8080
+```
+
+Open `http://localhost:8080/bellwood.html` and pick your disc image. It is read in the browser, and everything the game writes is kept in the site's storage.
+
 <a href="https://github.com/Kenix3/libultraship/">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./docs/poweredbylus.darkmode.png">
