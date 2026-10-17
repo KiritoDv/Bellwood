@@ -1,127 +1,123 @@
-Animal Crossing  
-[![Build Status]][actions] [![DOL Progress]][Progress] [![REL Progress]][Progress] [![Discord Badge]][discord]
-=============
+# Bellwood
+_An Animal Crossing PC Port_
 
-[<img src="https://decomp.dev/ACreTeam/ac-decomp.svg?w=512&h=256" width="512" height="256">][Progress]
+Lead Developers:
+* [Lywx](https://www.github.com/kiritodv)
 
-[Build Status]: https://github.com/Prakxo/ac-decomp/actions/workflows/build.yml/badge.svg
-[actions]: https://github.com/Prakxo/ac-decomp/actions/workflows/build.yml
-[Progress]: https://decomp.dev/ACreTeam/ac-decomp
-[DOL Progress]: https://decomp.dev/ACReTeam/ac-decomp.svg?mode=shield&measure=code&category=dol&label=DOL
-[REL Progress]: https://decomp.dev/ACReTeam/ac-decomp.svg?mode=shield&measure=code&category=modules&label=REL
-[Discord Badge]: https://img.shields.io/discord/727908905392275526?color=%237289DA&logo=discord&logoColor=%23FFFFFF
-[discord]: https://discord.gg/hKx3FJJgrV
+## Discord
 
-A decompilation of Animal Crossing for the Nintendo GameCube.
+Official Discord: https://discord.com/invite/shipofharkinian
 
-This repository does **not** contain any game assets or assembly whatsoever. An existing copy of the game is required.
+If you're having any trouble after reading through this `README`, feel free ask for help in the Support text channels. Please keep in mind that we do not condone piracy.
 
-Supported versions:
+# Quick Start
 
-- `GAFE01_00`: Rev 0 (USA)
+Bellwood does not include any copyrighted assets. You are required to provide a supported copy of the game.
 
-A decompilation of the original N64 version of the game is being worked on [here](https://github.com/zeldaret/af).
+### 1. Verify your disc dump
+The supported version is **Animal Crossing (USA)**, game ID `GAFE01`, revision 0. Dolphin shows both on the Info tab of the game's Properties.
 
-<!--
-Quick Guides
-============
+The Japanese (`GAFJ01`), European (`GAFP01`) and Australian (`GAFU01`) versions are not supported yet.
 
-- [Dumping Game Files](./docs/extract_game.md)
-- [Ghidra Setup](./docs/ghidra_setup.md)
-- [Generating Decomp Context](./docs/generating_decomp_context.md)
-- [decomp.me Basics](./docs/decomp_me_basics.md)
-- [Ghidra Basics](./docs/ghidra_basics.md)
-- [m2c Basics](./docs/m2c_basics.md)
-- [Decomp Basics](./docs/decomp_basics.md)
--->
+### 2. Verify your disc is in a supported format
+Bellwood reads `.iso`, `.gcm`, `.ciso` and `.gcz` disc images, or a folder extracted from the disc (containing `sys/` and `files/`). If your dump is an `.rvz` or `.wia`, convert it to `.iso` with Dolphin: right-click the game and choose **Convert File...**.
 
-Dependencies
-============
+### 3. Get Bellwood
+There are no releases yet. Build Bellwood yourself by following the [building instructions](#building).
 
-Windows
---------
+### 4. Generating the O2R from the disc and Play!
+* Run `bellwood` (`bellwood.exe` on Windows).
+* On the first launch Bellwood offers to generate `ac.o2r` from your disc. It uses a supported disc placed next to the executable, or asks you to choose a disc image or an extracted disc folder.
+* Extraction runs once; the game starts when it finishes.
 
-On Windows, it's **highly recommended** to use native tooling. WSL or msys2 are **not** required.  
-When running under WSL, [objdiff](#diffing) is unable to get filesystem notifications for automatic rebuilds.
+You can also pass the disc on the command line: `bellwood /path/to/disc.iso`.
 
-- Install [Python](https://www.python.org/downloads/) and add it to `%PATH%`.
-  - Also available from the [Windows Store](https://apps.microsoft.com/store/detail/python-311/9NRWMJP3717K).
-- Download [ninja](https://github.com/ninja-build/ninja/releases) and add it to `%PATH%`.
-  - Quick install via pip: `pip install ninja`
+# Configuration
 
-macOS
-------
+### Default keyboard configuration
+| GameCube | A | B | X | Y | Z | L | R | Start | Control stick | C-stick | D-Pad |
+| - | - | - | - | - | - | - | - | - | - | - | - |
+| Keyboard | X | C | | | Z | E | R | Space | WASD | Arrow keys | TFGH |
 
-- Install [ninja](https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages):
+X and Y have no keyboard keys by default. You can bind them in **Settings → Controls**.
 
-  ```sh
-  brew install ninja
-  ```
+### Other shortcuts
+| Keys | Action |
+| - | - |
+| Esc or F1 | Toggle menu |
+| Ctrl+R (Cmd+R on macOS) | Reset |
+| F11 | Fullscreen |
+| Tab | Toggle Alternate assets |
 
-- Install [wine-crossover](https://github.com/Gcenx/homebrew-wine):
+### Graphics Backends
+Currently, there are four rendering APIs supported: DirectX 11 (Windows), OpenGL (all platforms), Metal (macOS), and Vulkan (only offered when your graphics driver supports it). You can change which API to use in the `Settings` menu, which requires a restart. If you're having an issue with crashing, you can change the API in the `bellwood.cfg.json` file by finding the `"Backend": {` block and changing the `Id` value; the game fills in the matching `Name` on the next launch. The IDs are `1` for `DirectX 11`, `2` for `OpenGL`, `3` for `Metal`, and `4` for `Vulkan`. `DirectX 11` is the default on Windows and `Metal` is the default on macOS.
 
-  ```sh
-  brew install --cask --no-quarantine gcenx/wine/wine-crossover
-  ```
+### Widescreen
+The game fills the whole window at any aspect ratio. **Settings → Graphics → HUD Aspect Ratio** keeps the HUD at the window edges or inside a 4:3, 16:9 or 21:9 area.
 
-After OS upgrades, if macOS complains about `Wine Crossover.app` being unverified, you can unquarantine it using:
+# Saves
+Saves are stored in the `save` folder next to the executable.
 
-```sh
-sudo xattr -rd com.apple.quarantine '/Applications/Wine Crossover.app'
-```
+To bring over a town from a GameCube memory card, use **Settings → General → Import GameCube Save...** on the title screen, or drop the file onto the window. Bellwood accepts `.gci` and `.gcs` saves and raw memory card images (`.raw`, `.gcp`). Passports, NES games and their saves, and gift letters on the card are imported with the town. Your previous save is backed up in `save/backup` first.
 
-Linux
-------
+# Game Boy Advance and e-Reader
+The PC has no GBA link, so the features that used one work with files instead. Each can be turned off in **Settings → Game Boy Advance**, which also has buttons to open the folders.
 
-- Install [ninja](https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages).
-- For non-x86(_64) platforms: Install wine from your package manager.
-  - For x86(_64), [wibo](https://github.com/decompals/wibo), a minimal 32-bit Windows binary wrapper, will be automatically downloaded and used.
+* **Island:** Kapp'n takes you to the island without a GBA.
+* **e-Reader cards:** put card dumps (`.raw` or `.bin`) in the `ecards` folder. When the game asks for a card, choose one from the list, browse for it, or drop it onto the window.
+* **Designs:** the Able Sisters' "Send to GBA" writes your designs as PNG files to the `designs` folder, and "Load from GBA" reads them back.
+* **NES games:** memory card NES games (`.gci`) placed in the `famicom` folder show up in the Disk System.
 
-Building
-========
+# Custom Assets
+Custom assets are packed in `.o2r` or `.otr` files. To use custom assets, place them in the `mods` folder.
 
-- Clone the repository:
+If you're interested in creating and/or packing your own custom asset `.o2r`/`.otr` files, check out the following tools:
+* [**retro - OTR and O2R generator**](https://github.com/HarbourMasters64/retro)
 
-  ```sh
-  git clone --recursive https://github.com/Prakxo/ac-decomp.git
-  ```
+# Development
+### Building
 
-- Update and Initialize submodules:
+Requires:
+* CMake 3.24 or newer
+* A C++20 compiler: Visual Studio 2022 on Windows, Clang (Xcode) on macOS, Clang or GCC on Linux
+* Git
+* SDL2, plus GLEW on macOS (`brew install sdl2 glew`) and the OpenGL development files on Linux. On Windows the libraries are installed automatically through vcpkg.
 
-  ```sh
-  git submodule update --init --recursive
-  ```
+1. Clone this repository with its submodules (Torch and libultraship):
 
-- Copy your game's disc image to `orig/GAFE01_00`.
-  - Supported formats: ISO (GCM), RVZ, WIA, WBFS, CISO, GCZ
+   ```sh
+   git clone --recursive <repository URL>
+   ```
 
-- Configure:
+   If you cloned without `--recursive`, run `git submodule update --init --recursive`.
 
-  ```sh
-  python configure.py
-  ```
+2. Configure and build:
 
-  To use a version other than `GAFE01_00` (USA), specify it with `--version`.
+   ```sh
+   cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+   cmake --build build
+   ```
 
-- Build:
+   The build writes `bellwood` and its `bellwood.o2r` to `build`.
 
-  ```sh
-  ninja
-  ```
+3. Run `build/bellwood` and select your disc on the first launch, as in the [Quick Start](#4-generating-the-o2r-from-the-disc-and-play).
 
-Diffing
-=======
+   To generate `ac.o2r` at build time instead, point the build at your disc and build the `ExtractAssets` target:
 
-Once the initial build succeeds, an `objdiff.json` should exist in the project root.
+   ```sh
+   cmake -S . -B build -DAC_DISC_PATH=/path/to/disc.iso
+   cmake --build build --target ExtractAssets
+   ```
 
-Download the latest release from [encounter/objdiff](https://github.com/encounter/objdiff). Under project settings, set `Project directory`. The configuration should be loaded automatically.
+<a href="https://github.com/Kenix3/libultraship/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/poweredbylus.darkmode.png">
+    <img alt="Powered by libultraship" src="./docs/poweredbylus.lightmode.png">
+  </picture>
+</a>
 
-Select an object from the left sidebar to begin diffing. Changes to the project will rebuild automatically: changes to source files, headers, `configure.py`, `splits.txt` or `symbols.txt`.
+# Special Thanks:
 
-![](assets/objdiff.png)
-
-Credits
-=======
-
-- jamchamb, Cuyler36, NWPlayer123 and fraser125 for past documentation of Animal Crossing.
-- encounter and NWPlayer123 for [dtk-template](https://github.com/encounter/dtk-template) and setting up the current build system.
+* [ACreTeam](https://github.com/ACreTeam/ac-decomp) : for the Animal Crossing decompilation this port is built on.
+* [Kenix3](https://github.com/Kenix3) : for helping with the Engine development that were brought into other ports.
+* [HM64 Team](https://github.com/harbourMasters) : for creating Libultraship and Torch, and helping with various issues.
