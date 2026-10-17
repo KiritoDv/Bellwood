@@ -16,6 +16,9 @@
 #include <ship/window/gui/Gui.h>
 #include <ship/window/gui/GuiWindow.h>
 #include <spdlog/spdlog.h>
+#ifdef __EMSCRIPTEN__
+#include "port/web/WebUtils.h"
+#endif
 
 #include <algorithm>
 #include <cctype>
@@ -290,7 +293,7 @@ class SaveManagerWindow final : public Ship::GuiWindow {
         if (!ImGui::IsPopupOpen(kImportTitle)) {
             ImGui::OpenPopup(kImportTitle);
         }
-        ImGui::SetNextWindowSize(ImVec2(620, 0), ImGuiCond_Appearing);
+        ImGui::SetNextWindowSize(ImVec2(620, 0), ImGuiCond_Always);
         if (!ImGui::BeginPopupModal(kImportTitle, nullptr, ImGuiWindowFlags_NoSavedSettings)) {
             return;
         }
@@ -316,6 +319,12 @@ class SaveManagerWindow final : public Ship::GuiWindow {
             mImportDialog = std::make_unique<pfd::open_file>(
                 "Pick a GameCube save", "",
                 std::vector<std::string>{ "GameCube saves", "*.gci *.gcs *.raw *.gcp", "All files", "*" });
+        }
+        ImGui::SameLine();
+#elif defined(__EMSCRIPTEN__)
+        if (ImGui::Button("Browse...")) {
+            WebFiles_Pick("Choose a GameCube save: a .gci or .gcs file, or a memory card image (.raw).",
+                          ".gci,.gcs,.raw,.gcp");
         }
         ImGui::SameLine();
 #else
@@ -507,7 +516,7 @@ void InitSaveManagerUi() {
     auto saveWindow = std::make_shared<SaveManagerWindow>(CVAR_WINDOW("SaveManager"), "Save Manager");
     window->GetGui()->AddGuiWindow(saveWindow);
     saveWindow->Show();
-#if !SAVE_UI_FILE_DIALOGS
+#if defined(__IOS__) || defined(__ANDROID__)
     std::error_code ec;
     std::filesystem::create_directories(ImportDirectory(), ec);
 #endif

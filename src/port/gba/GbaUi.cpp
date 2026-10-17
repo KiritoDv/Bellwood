@@ -6,6 +6,9 @@
 #include "port/events/Events.h"
 #include "port/portable-file-dialogs.h"
 #include "port/ui/cvar_prefixes.h"
+#ifdef __EMSCRIPTEN__
+#include "port/web/WebUtils.h"
+#endif
 
 #include <imgui.h>
 #include <ship/debug/Console.h>
@@ -93,7 +96,7 @@ class GbaWindow final : public Ship::GuiWindow {
         if (!ImGui::IsPopupOpen(kScanTitle)) {
             ImGui::OpenPopup(kScanTitle);
         }
-        ImGui::SetNextWindowSize(ImVec2(560, 0), ImGuiCond_Appearing);
+        ImGui::SetNextWindowSize(ImVec2(560, 0), ImGuiCond_Always);
         if (!ImGui::BeginPopupModal(kScanTitle, nullptr, ImGuiWindowFlags_NoSavedSettings)) {
             return;
         }
@@ -155,6 +158,11 @@ class GbaWindow final : public Ship::GuiWindow {
                 std::vector<std::string>{ "e-Reader cards", "*.raw *.bin *.dec", "All files", "*" });
         }
         ImGui::SameLine();
+#elif defined(__EMSCRIPTEN__)
+        if (ImGui::Button("Browse...")) {
+            WebFiles_Pick("Choose an e-Reader card: a .raw or .bin dot code, or a decoded card.", ".raw,.bin,.dec");
+        }
+        ImGui::SameLine();
 #endif
         if (ImGui::Button("Refresh")) {
             Refresh();
@@ -178,7 +186,15 @@ bool OnFileDropped(char* path) {
     if (!GbaPort::ScanWaiting()) {
         return false;
     }
+#ifdef __EMSCRIPTEN__
+    std::error_code ec;
+    const fs::path stored = fs::path(GbaPort::ECardDirectory()) / fs::path(path).filename();
+    fs::create_directories(stored.parent_path(), ec);
+    fs::copy_file(path, stored, fs::copy_options::overwrite_existing, ec);
+    sDroppedCard = ec ? std::string(path) : stored.string();
+#else
     sDroppedCard = path;
+#endif
     return true;
 }
 

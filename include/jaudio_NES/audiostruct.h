@@ -12,12 +12,12 @@ extern "C" {
 #endif
 
 typedef struct chnode_ chnode;
-typedef struct link_ link;
+typedef struct link_ nas_link;
 
 /* sizeof(struct link_) == 0x10 */
 struct link_ {
-    /* 0x00 */ link* prev;
-    /* 0x04 */ link* next;
+    /* 0x00 */ nas_link* prev;
+    /* 0x04 */ nas_link* next;
     union {
         /* 0x08 */ s32 numAfter; /* when link is head */
         /* 0x08 */ void* pData;  /* when link is node */
@@ -27,10 +27,10 @@ struct link_ {
 
 /* sizeof(struct chnode_) == 0x40 */
 struct chnode_ {
-    /* 0x00 */ link freeList;
-    /* 0x10 */ link releaseList;
-    /* 0x20 */ link relwaitList;
-    /* 0x30 */ link useList;
+    /* 0x00 */ nas_link freeList;
+    /* 0x10 */ nas_link releaseList;
+    /* 0x20 */ nas_link relwaitList;
+    /* 0x30 */ nas_link useList;
 };
 
 /* forward declared */
@@ -345,7 +345,7 @@ typedef struct playbackch_ {
 
 /* sizeof(channel) == 0x100 */
 struct channel_ {
-    /* 0x00 */ link link;
+    /* 0x00 */ nas_link link;
     /* 0x10 */ driverch driver_ch;
     /* 0x30 */ playbackch playback_ch;
     /* 0xD0 */ commonch common_ch;
@@ -660,7 +660,7 @@ struct note_ {
     /* 0x5C */ wtstr* tuned_sample;
     /* 0x60 */ sub* sub_track;
     /* 0x64 */ macro macro_player;
-    /* 0x80 */ link link;
+    /* 0x80 */ nas_link link;
 };
 
 /* sizeof(Bgloadreq) == 0x14 */
@@ -942,7 +942,7 @@ typedef struct AudioGlobals {
     /* 0x8668 */ sub null_sub_track; /* used for 'null' sub tracks */
     /* 0x8748 */ group* groups_p[AUDIO_GROUP_MAX];
     /* 0x877C */ s32 sample_state_offset;
-    /* 0x8780 */ link note_link;
+    /* 0x8780 */ nas_link note_link;
     /* 0x8790 */ chnode channel_node; /* main chnode */
     /* 0x87D0 */ struct group_ main_group;
     /* 0x8930 */ sub main_sub;

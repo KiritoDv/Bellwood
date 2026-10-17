@@ -1175,6 +1175,17 @@ void GameEngine::Destroy() {
 
 void GameEngine::StartFrame() const {
     using Ship::KbScancode;
+#ifdef __EMSCRIPTEN__
+    static std::string sWebFile;
+    std::string webFile;
+    while (WebFiles_Take(webFile)) {
+        if (auto drop = ShipCompat::GetFileDropMgr()) {
+            sWebFile = webFile;
+            drop->SetDroppedFile(sWebFile.data());
+            drop->CallHandlers();
+        }
+    }
+#endif
     const int32_t dwScancode = ShipCompat::GetWindow()->GetLastScancode();
     ShipCompat::GetWindow()->SetLastScancode(-1);
 

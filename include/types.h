@@ -82,7 +82,7 @@ typedef u32 unknown;
 #define FLAG_OFF(V, F) (((V) & (F)) != 0)
 
 #ifndef ATTRIBUTE_ALIGN
-#if defined(__MWERKS__) || defined(__GNUC__)
+#if defined(__MWERKS__) || defined(__GNUC__) || defined(__clang__)
 #define ATTRIBUTE_ALIGN(num) __attribute__((aligned(num)))
 #elif defined(_MSC_VER)
 #define ATTRIBUTE_ALIGN(num)

@@ -32,6 +32,14 @@ set_target_properties(acgame PROPERTIES C_STANDARD 11 C_EXTENSIONS ON)
 
 if (MSVC)
     target_compile_options(acgame PRIVATE /J /w)
+    if (CMAKE_C_COMPILER_ID STREQUAL "Clang")
+        target_compile_options(acgame PRIVATE
+            /clang:-fwrapv
+            /clang:-fno-strict-aliasing
+            /clang:-Wno-incompatible-pointer-types
+            /clang:-Wno-int-conversion
+        )
+    endif()
 else()
     target_compile_options(acgame PRIVATE
         -funsigned-char

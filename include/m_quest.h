@@ -46,17 +46,25 @@ enum {
     mQst_QUEST_TYPE_NUM = mQst_QUEST_TYPE_NONE
 };
 
+#ifdef _MSC_VER
+#define mQst_BASE_BITS u16
+#define mQst_BASE_ALIGN ATTRIBUTE_ALIGN(4)
+#else
+#define mQst_BASE_BITS u32
+#define mQst_BASE_ALIGN
+#endif
+
 /* sizeof(mQst_base_c) == 0xC */
 typedef struct quest_base_s {
-    /* 0x00 */ u32 quest_type : 2;         /* type, 0 = delivery, 1 = errand, 2 = contest, 3 = none */
-    /* 0x00 */ u32 quest_kind : 6;         /* kind, differs by type */
-    /* 0x01 */ u32 time_limit_enabled : 1; /* when set, the time limit will be utilized */
-    /* 0x01 */ u32 progress : 4;           /* progress towards quest goal */
-    /* 0x01 */ u32 give_reward : 1;        /* player cannot take the item, and will skip quest completion checks */
-    /* 0x01 */ u32 unused : 2;
+    /* 0x00 */ mQst_BASE_BITS quest_type : 2;         /* type, 0 = delivery, 1 = errand, 2 = contest, 3 = none */
+    /* 0x00 */ mQst_BASE_BITS quest_kind : 6;         /* kind, differs by type */
+    /* 0x01 */ mQst_BASE_BITS time_limit_enabled : 1; /* when set, the time limit will be utilized */
+    /* 0x01 */ mQst_BASE_BITS progress : 4;           /* progress towards quest goal */
+    /* 0x01 */ mQst_BASE_BITS give_reward : 1;        /* player cannot take the item, and will skip quest completion checks */
+    /* 0x01 */ mQst_BASE_BITS unused : 2;
 
     /* 0x02 */ lbRTC_time_c time_limit;
-} mQst_base_c;
+} mQst_BASE_ALIGN mQst_base_c;
 
 /* Contest Quest */
 

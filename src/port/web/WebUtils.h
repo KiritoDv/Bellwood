@@ -14,4 +14,8 @@ enum class WebPickResult { Cancelled, Disc, Archive, Failed };
 
 WebPickResult WebFilePicker_PickDisc(const std::string& discDir, const std::string& archivePath, std::string& error);
 
+void WebFiles_Install();
+void WebFiles_Pick(const char* title, const char* accept);
+bool WebFiles_Take(std::string& path);
+
 #endif

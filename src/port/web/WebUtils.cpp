@@ -256,7 +256,110 @@ EM_ASYNC_JS(int, js_pick_disc, (const char* cdiscDir, const char* carchive, char
         return 3;
     }
 });
+EM_JS(void, js_install_file_drop, (), {
+    if (Module.bellwoodFiles) {
+        return;
+    }
+    Module.bellwoodFiles = [];
+    Module.bellwoodFileCount = 0;
+    Module.bellwoodStoreFile = function(file) {
+        return file.arrayBuffer().then(function(buffer) {
+            var dir = '/tmp/web-files/' + (Module.bellwoodFileCount++);
+            FS.mkdirTree(dir);
+            var path = dir + '/' + file.name;
+            FS.writeFile(path, new Uint8Array(buffer));
+            Module.bellwoodFiles.push(path);
+        }).catch(function(e) {
+            console.error('[WebFiles] could not read ' + file.name, e);
+        });
+    };
+    window.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        if (e.dataTransfer) {
+            e.dataTransfer.dropEffect = 'copy';
+        }
+    });
+    window.addEventListener('drop', function(e) {
+        e.preventDefault();
+        var files = e.dataTransfer ? e.dataTransfer.files : null;
+        if (!files) {
+            return;
+        }
+        for (var i = 0; i < files.length; i++) {
+            Module.bellwoodStoreFile(files[i]);
+        }
+    });
+});
+
+EM_JS(void, js_pick_files, (const char* ctitle, const char* caccept), {
+    var title = UTF8ToString(ctitle);
+    var accept = UTF8ToString(caccept);
+    if (document.getElementById('bellwood-file-picker')) {
+        return;
+    }
+    var overlay = document.createElement('div');
+    overlay.id = 'bellwood-file-picker';
+    overlay.style.cssText = 'position:fixed;inset:0;display:flex;align-items:center;justify-content:center;' +
+                            'background:rgba(0,0,0,0.65);z-index:1000;font-family:system-ui,sans-serif;';
+    var panel = document.createElement('div');
+    panel.style.cssText = 'background:#1c1c24;color:#eee;padding:24px 28px;border-radius:12px;text-align:center;' +
+                          'max-width:90vw;box-shadow:0 8px 32px rgba(0,0,0,0.5);';
+    var label = document.createElement('p');
+    label.textContent = title;
+    label.style.cssText = 'margin:0 0 16px 0;font-size:1rem;line-height:1.4;';
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.accept = accept;
+    input.style.display = 'none';
+    var choose = document.createElement('button');
+    choose.textContent = 'Choose File';
+    choose.style.cssText = 'font-size:1rem;padding:8px 18px;margin:0 6px;cursor:pointer;';
+    var cancel = document.createElement('button');
+    cancel.textContent = 'Cancel';
+    cancel.style.cssText = choose.style.cssText;
+    input.addEventListener('change', function(evt) {
+        var file = evt.target.files[0];
+        overlay.remove();
+        if (file) {
+            Module.bellwoodStoreFile(file);
+        }
+    });
+    choose.addEventListener('click', function() { input.click(); });
+    cancel.addEventListener('click', function() { overlay.remove(); });
+    panel.appendChild(label);
+    panel.appendChild(input);
+    panel.appendChild(choose);
+    panel.appendChild(cancel);
+    overlay.appendChild(panel);
+    document.body.appendChild(overlay);
+});
+
+EM_JS(int, js_take_file, (char* buf, int len), {
+    var queue = Module.bellwoodFiles;
+    if (!queue || queue.length == 0) {
+        return 0;
+    }
+    stringToUTF8(queue.shift(), buf, len);
+    return 1;
+});
 // clang-format on
+
+void WebFiles_Install() {
+    js_install_file_drop();
+}
+
+void WebFiles_Pick(const char* title, const char* accept) {
+    js_pick_files(title, accept);
+}
+
+bool WebFiles_Take(std::string& path) {
+    char buf[1024] = {};
+    if (!js_take_file(buf, sizeof(buf))) {
+        return false;
+    }
+    path = buf;
+    return true;
+}
 
 void WebCache_Mount(const char* path) {
     static bool mounted = false;

@@ -73,6 +73,7 @@ int main(int argc, char* argv[]) {
 #ifdef __EMSCRIPTEN__
     WebCache_Mount("/storage");
     WebCache_Load();
+    WebFiles_Install();
 #endif
     GameEngine::Create(argc, argv);
     FrameStub_Init();
