@@ -11,6 +11,7 @@
 #include "m_msg.h"
 #include "m_vibctl.h"
 #include "libultra/libultra.h"
+#include "port/events/Events.h"
 #include "gc_compat.h"
 
 enum {

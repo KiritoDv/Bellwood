@@ -2,6 +2,7 @@
 #include <ship/window/gui/Gui.h>
 #include <ship/window/gui/IconsFontAwesome4.h>
 #include "port/ShipCompat.h"
+#include "port/input/GcButtons.h"
 #include <ship/Context.h>
 #include <libultraship/bridge/consolevariablebridge.h>
 #include <ship/controller/controldevice/controller/mapping/ControllerRumbleMapping.h>
@@ -24,15 +25,18 @@ void PortInputEditorWindow::OnInit(const nlohmann::json& initArgs) {
     mRumbleMappingToTest = nullptr;
     mInputEditorPopupOpen = false;
 
-    mButtonsBitmasks = { BTN_A, BTN_B, BTN_START, BTN_L, BTN_R, BTN_Z, BTN_CUP, BTN_CDOWN, BTN_CLEFT, BTN_CRIGHT };
+    mButtonsBitmasks = { BTN_A, BTN_B, BTN_X,   BTN_Y,     BTN_START, BTN_L,
+                         BTN_R, BTN_Z, BTN_CUP, BTN_CDOWN, BTN_CLEFT, BTN_CRIGHT };
     mDpadBitmasks = { BTN_DUP, BTN_DDOWN, BTN_DLEFT, BTN_DRIGHT };
 
     addButtonName(BTN_A, "A");
     addButtonName(BTN_B, "B");
-    addButtonName(BTN_CUP, "C Up");
-    addButtonName(BTN_CDOWN, "C Down");
-    addButtonName(BTN_CLEFT, "C Left");
-    addButtonName(BTN_CRIGHT, "C Right");
+    addButtonName(BTN_X, "X");
+    addButtonName(BTN_Y, "Y");
+    addButtonName(BTN_CUP, "C-Stick up");
+    addButtonName(BTN_CDOWN, "C-Stick down");
+    addButtonName(BTN_CLEFT, "C-Stick left");
+    addButtonName(BTN_CRIGHT, "C-Stick right");
     addButtonName(BTN_L, "L");
     addButtonName(BTN_Z, "Z");
     addButtonName(BTN_R, "R");
@@ -1315,20 +1319,14 @@ void PortInputEditorWindow::DrawPortTabContents(uint8_t portIndex) {
     ImGui::PushStyleColor(ImGuiCol_HeaderActive, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
 
     if (ImGui::CollapsingHeader("Buttons", NULL, ImGuiTreeNodeFlags_DefaultOpen)) {
-        DrawButtonLine("A", portIndex, BTN_A, CHIP_COLOR_N64_BLUE);
-        DrawButtonLine("B", portIndex, BTN_B, CHIP_COLOR_N64_GREEN);
-        DrawButtonLine("Start", portIndex, BTN_START, CHIP_COLOR_N64_RED);
+        DrawButtonLine("A", portIndex, BTN_A, CHIP_COLOR_N64_GREEN);
+        DrawButtonLine("B", portIndex, BTN_B, CHIP_COLOR_N64_RED);
+        DrawButtonLine("X", portIndex, BTN_X);
+        DrawButtonLine("Y", portIndex, BTN_Y);
+        DrawButtonLine("Start", portIndex, BTN_START);
+        DrawButtonLine("Z", portIndex, BTN_Z, CHIP_COLOR_N64_BLUE);
         DrawButtonLine("L", portIndex, BTN_L);
         DrawButtonLine("R", portIndex, BTN_R);
-        DrawButtonLine("Z", portIndex, BTN_Z);
-        DrawButtonLine(StringHelper::Sprintf("C %s", ICON_FA_ARROW_UP).c_str(), portIndex, BTN_CUP,
-                       CHIP_COLOR_N64_YELLOW);
-        DrawButtonLine(StringHelper::Sprintf("C %s", ICON_FA_ARROW_DOWN).c_str(), portIndex, BTN_CDOWN,
-                       CHIP_COLOR_N64_YELLOW);
-        DrawButtonLine(StringHelper::Sprintf("C %s", ICON_FA_ARROW_LEFT).c_str(), portIndex, BTN_CLEFT,
-                       CHIP_COLOR_N64_YELLOW);
-        DrawButtonLine(StringHelper::Sprintf("C %s", ICON_FA_ARROW_RIGHT).c_str(), portIndex, BTN_CRIGHT,
-                       CHIP_COLOR_N64_YELLOW);
     }
 
     if (ImGui::CollapsingHeader("D-Pad", NULL, ImGuiTreeNodeFlags_DefaultOpen)) {
@@ -1338,11 +1336,22 @@ void PortInputEditorWindow::DrawPortTabContents(uint8_t portIndex) {
         DrawButtonLine(StringHelper::Sprintf("%s##DPad", ICON_FA_ARROW_RIGHT).c_str(), portIndex, BTN_DRIGHT);
     }
 
-    if (ImGui::CollapsingHeader("Analog Stick", NULL, ImGuiTreeNodeFlags_DefaultOpen)) {
+    if (ImGui::CollapsingHeader("Control Stick", NULL, ImGuiTreeNodeFlags_DefaultOpen)) {
         DrawStickSection(portIndex, Ship::LEFT);
     }
 
-    if (ImGui::CollapsingHeader("Additional (\"Right\") Stick")) {
+    if (ImGui::CollapsingHeader("C-Stick", NULL, ImGuiTreeNodeFlags_DefaultOpen)) {
+        DrawButtonLine(StringHelper::Sprintf("%s##CStick", ICON_FA_ARROW_UP).c_str(), portIndex, BTN_CUP,
+                       CHIP_COLOR_N64_YELLOW);
+        DrawButtonLine(StringHelper::Sprintf("%s##CStick", ICON_FA_ARROW_DOWN).c_str(), portIndex, BTN_CDOWN,
+                       CHIP_COLOR_N64_YELLOW);
+        DrawButtonLine(StringHelper::Sprintf("%s##CStick", ICON_FA_ARROW_LEFT).c_str(), portIndex, BTN_CLEFT,
+                       CHIP_COLOR_N64_YELLOW);
+        DrawButtonLine(StringHelper::Sprintf("%s##CStick", ICON_FA_ARROW_RIGHT).c_str(), portIndex, BTN_CRIGHT,
+                       CHIP_COLOR_N64_YELLOW);
+    }
+
+    if (ImGui::CollapsingHeader("C-Stick (analog)")) {
         DrawStickSection(portIndex, Ship::RIGHT, CHIP_COLOR_N64_YELLOW);
     }
 

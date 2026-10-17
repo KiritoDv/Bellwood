@@ -9,6 +9,7 @@
 #include "m_timeIn_ovl.h"
 #include "m_ledit_ovl.h"
 #include "libultra/libultra.h"
+#include "port/events/Events.h"
 #include "m_bgm.h"
 #include "m_soncho.h"
 
@@ -47,6 +48,7 @@ enum {
     aNGD_ACTION_SITDOWN2,
     aNGD_ACTION_LAST_TALK_END_WAIT,
     aNGD_ACTION_SCENE_CHANGE_WAIT,
+    aNGD_ACTION_SKIP_TALK_START_WAIT,
 
     aNGD_ACTION_NUM
 };
@@ -125,6 +127,15 @@ static void aNGD_actor_ct(ACTOR* actorx, GAME* game) {
     /* Turn on echo for sound effects */
     sAdo_TrgSeEcho(TRUE);
     sAdo_LevSeEcho(TRUE);
+
+    CALL_EVENT(TrainRideStart, TRUE);
+    guide->skip_talk = TrainRideStart_.Event.Cancelled;
+    if (guide->skip_talk) {
+        Common_Set(sunlight_flag, TRUE);
+        sAdo_TrgSeEcho(FALSE);
+        sAdo_LevSeEcho(FALSE);
+        aNGD_setupAction(guide, play, aNGD_ACTION_SKIP_TALK_START_WAIT);
+    }
 }
 
 static void aNGD_actor_save(ACTOR* actorx, GAME* game) {

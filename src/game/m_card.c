@@ -1,6 +1,7 @@
 #include "m_card.h"
 
 #include "ac_port.h"
+#include "port/events/Events.h"
 #include "game.h"
 #include "lb_rtc.h"
 #include "libultra/libultra.h"
@@ -164,7 +165,8 @@ extern void mCD_SetResetCode(Private_c* priv) {
 static void mCD_SetResetInfo(Private_c* priv) {
     Common_Set(reset_flag, FALSE);
     if (mCD_CheckResetCode(priv) == FALSE) {
-        if (AC_ResettiDisabled()) {
+        CALL_EVENT(ResetDetected, priv);
+        if (ResetDetected_.Event.Cancelled) {
             return;
         }
 

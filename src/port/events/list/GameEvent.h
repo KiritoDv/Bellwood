@@ -37,6 +37,18 @@ DEFINE_EVENT(FamicomStart,
     int16_t* romId;  // mutable Famicom ROM id
 );
 
+// New game
+
+// Fires when K.K. starts his welcome on a new game. Cancellable.
+// Cancel — the welcome and the sound setup talk are skipped and the game starts straight away.
+DEFINE_EVENT(NewGameWelcome);
+
+// Fires when Rover starts the train ride conversation. Cancellable.
+// Cancel — Rover starts at the name question and the train arrives right after the last answer.
+DEFINE_EVENT(TrainRideStart,
+    bool newTown;  // true for a new town, false for a new resident in an existing town
+);
+
 // Messages
 
 // Fires before a message is read from the message table.

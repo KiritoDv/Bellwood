@@ -22,6 +22,8 @@
 #include "port/ui/Notification.h"
 #include "port/events/Events.h"
 #include "port/console/DevConsole.h"
+#include "port/input/GcButtons.h"
+#include <libultraship/controller/controldevice/controller/mapping/ControllerDefaultMappings.h>
 #include <fast/Fast3dWindow.h>
 #include <fast/interpreter.h>
 #include <SDL2/SDL.h>
@@ -197,6 +199,26 @@ static bool ExtractorDataExists(const std::string& installPath) {
            std::filesystem::is_directory(installPath + "/assets/ymls");
 }
 
+static void AddMissingGcButtonMappings(IEvent*) {
+    static bool sDone = false;
+    auto controlDeck = ShipCompat::GetControlDeck();
+    if (sDone || controlDeck == nullptr || !controlDeck->IsInitialized()) {
+        return;
+    }
+    sDone = true;
+
+    auto controller = controlDeck->GetControllerByPort(0);
+    auto x = controller->GetButton(BTN_X);
+    auto y = controller->GetButton(BTN_Y);
+    if (x == nullptr || y == nullptr || !x->GetAllButtonMappings().empty() || !y->GetAllButtonMappings().empty()) {
+        return;
+    }
+    for (auto button : { x, y }) {
+        button->AddDefaultMappings(Ship::PhysicalDeviceType::Keyboard);
+        button->AddDefaultMappings(Ship::PhysicalDeviceType::SDLGamepad);
+    }
+}
+
 GameEngine::GameEngine() {
     this->context = Ship::Context::CreateInstance(PORT_NAME, PORT_NAME);
     this->context->Init();
@@ -261,7 +283,61 @@ GameEngine::GameEngine() {
     context->GetChildren().Add(resourceManager);
     ResourceSetResourceManager(resourceManager);
 
-    auto controlDeck = std::make_shared<LUS::ControlDeck>(std::vector<CONTROLLERBUTTONS_T>{ 0x0040, 0x0080 },
+    auto controllerDefaults = std::make_shared<LUS::ControllerDefaultMappings>(
+        std::unordered_map<CONTROLLERBUTTONS_T, std::unordered_set<Ship::KbScancode>>{
+            { BTN_A, { Ship::KbScancode::LUS_KB_X } },
+            { BTN_B, { Ship::KbScancode::LUS_KB_C } },
+            { BTN_X, { Ship::KbScancode::LUS_KB_V } },
+            { BTN_Y, { Ship::KbScancode::LUS_KB_Q } },
+            { BTN_L, { Ship::KbScancode::LUS_KB_E } },
+            { BTN_R, { Ship::KbScancode::LUS_KB_R } },
+            { BTN_Z, { Ship::KbScancode::LUS_KB_Z } },
+            { BTN_START, { Ship::KbScancode::LUS_KB_SPACE } },
+            { BTN_CUP, { Ship::KbScancode::LUS_KB_ARROWKEY_UP } },
+            { BTN_CDOWN, { Ship::KbScancode::LUS_KB_ARROWKEY_DOWN } },
+            { BTN_CLEFT, { Ship::KbScancode::LUS_KB_ARROWKEY_LEFT } },
+            { BTN_CRIGHT, { Ship::KbScancode::LUS_KB_ARROWKEY_RIGHT } },
+            { BTN_DUP, { Ship::KbScancode::LUS_KB_T } },
+            { BTN_DDOWN, { Ship::KbScancode::LUS_KB_G } },
+            { BTN_DLEFT, { Ship::KbScancode::LUS_KB_F } },
+            { BTN_DRIGHT, { Ship::KbScancode::LUS_KB_H } },
+        },
+        std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, Ship::KbScancode>>>{},
+        std::unordered_map<CONTROLLERBUTTONS_T, std::unordered_set<SDL_GameControllerButton>>{
+            { BTN_A, { SDL_CONTROLLER_BUTTON_A } },
+            { BTN_B, { SDL_CONTROLLER_BUTTON_B } },
+            { BTN_X, { SDL_CONTROLLER_BUTTON_X } },
+            { BTN_Y, { SDL_CONTROLLER_BUTTON_Y } },
+            { BTN_L, { SDL_CONTROLLER_BUTTON_LEFTSHOULDER } },
+            { BTN_START, { SDL_CONTROLLER_BUTTON_START } },
+            { BTN_DUP, { SDL_CONTROLLER_BUTTON_DPAD_UP } },
+            { BTN_DDOWN, { SDL_CONTROLLER_BUTTON_DPAD_DOWN } },
+            { BTN_DLEFT, { SDL_CONTROLLER_BUTTON_DPAD_LEFT } },
+            { BTN_DRIGHT, { SDL_CONTROLLER_BUTTON_DPAD_RIGHT } },
+        },
+        std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, SDL_GameControllerButton>>>{},
+        std::unordered_map<CONTROLLERBUTTONS_T, std::vector<std::pair<SDL_GameControllerAxis, int32_t>>>{},
+        std::unordered_map<Ship::StickIndex,
+                           std::vector<std::pair<Ship::Direction, std::pair<SDL_GameControllerAxis, int32_t>>>>{});
+    auto controlDeck = std::make_shared<LUS::ControlDeck>(std::vector<CONTROLLERBUTTONS_T>{}, controllerDefaults,
+                                                          std::unordered_map<CONTROLLERBUTTONS_T, std::string>{
+                                                              { BTN_A, "A" },
+                                                              { BTN_B, "B" },
+                                                              { BTN_X, "X" },
+                                                              { BTN_Y, "Y" },
+                                                              { BTN_L, "L" },
+                                                              { BTN_R, "R" },
+                                                              { BTN_Z, "Z" },
+                                                              { BTN_START, "Start" },
+                                                              { BTN_CLEFT, "CLeft" },
+                                                              { BTN_CRIGHT, "CRight" },
+                                                              { BTN_CUP, "CUp" },
+                                                              { BTN_CDOWN, "CDown" },
+                                                              { BTN_DLEFT, "DLeft" },
+                                                              { BTN_DRIGHT, "DRight" },
+                                                              { BTN_DUP, "DUp" },
+                                                              { BTN_DDOWN, "DDown" },
+                                                          },
                                                           gsFast3dWindow, consoleVariables);
     context->GetChildren().Add(controlDeck);
     ControllerSetControlDeck(controlDeck);
@@ -300,6 +376,7 @@ GameEngine::GameEngine() {
     context->GetChildren().Add(events);
     EventSystemSetEvents(events);
     PortEvents_Init();
+    REGISTER_LISTENER(GameLoopTick, EVENT_PRIORITY_NORMAL, AddMissingGcButtonMappings);
 
     PortGui::SetupMenu();
 

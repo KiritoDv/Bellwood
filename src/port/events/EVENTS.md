@@ -218,6 +218,21 @@ Fires before a Famicom (NES) game is launched from furniture. Write `*romId` to 
 
 ---
 
+### `NewGameWelcome` _(cancellable)_
+Fires when K.K. starts his welcome on a new game.
+**Cancel**: the welcome and the sound setup talk are skipped and the game starts straight away; sound and voice settings keep their defaults.
+
+---
+
+### `TrainRideStart` _(cancellable)_
+```c
+bool newTown;
+```
+Fires when Rover starts the train ride conversation. `newTown` is false for a new resident joining an existing town.
+**Cancel**: Rover starts at the name question and the train arrives right after the last answer.
+
+---
+
 ### `MessageLoad`
 ```c
 int32_t* msgNo;
@@ -333,6 +348,15 @@ Fires after the town has been written to disk. `mode` is the game's save mode; `
 const char* path;
 ```
 Fires after a GameCube memory card save has been imported.
+
+---
+
+### `ResetDetected` _(cancellable)_
+```c
+struct private_s* player;
+```
+Fires when the town loads and the player last quit or reset without saving.
+**Cancel**: Mr. Resetti does not visit and the reset is not counted.
 
 ---
 

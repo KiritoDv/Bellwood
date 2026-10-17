@@ -59,7 +59,6 @@ f32 AC_WideScale(void);
 u32 AC_RenderSizeKey(void);
 int AC_WideCount(f32* carry);
 
-int AC_ResettiDisabled(void);
 
 int AC_GbaIslandWithoutGba(void);
 int AC_GbaLinkAvailable(void);

@@ -9,6 +9,7 @@
 #include "m_timeIn_ovl.h"
 #include "m_ledit_ovl.h"
 #include "libultra/libultra.h"
+#include "port/events/Events.h"
 #include "m_bgm.h"
 #include "m_soncho.h"
 
@@ -42,6 +43,7 @@ enum {
     aNG2_ACTION_SITDOWN2,
     aNG2_ACTION_LAST_TALK_END_WAIT,
     aNG2_ACTION_SCENE_CHANGE_WAIT,
+    aNG2_ACTION_SKIP_TALK_START_WAIT,
 
     aNG2_ACTION_NUM
 };
@@ -109,7 +111,9 @@ static void aNG2_actor_ct(ACTOR* actorx, GAME* game) {
         player->actor_class.state_bitfield |= ACTOR_STATE_INVISIBLE;
     }
 
-    aNG2_setupAction(guide2, play, aNG2_ACTION_ENTER);
+    CALL_EVENT(TrainRideStart, FALSE);
+    guide2->skip_talk = TrainRideStart_.Event.Cancelled;
+    aNG2_setupAction(guide2, play, guide2->skip_talk ? aNG2_ACTION_SKIP_TALK_START_WAIT : aNG2_ACTION_ENTER);
 
     /* Play train noises sfx repeatedly */
     sAdo_SysLevStart(NA_SE_TRAIN_RIDE);

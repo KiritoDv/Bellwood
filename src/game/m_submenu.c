@@ -344,6 +344,8 @@ static void mSM_move_PREWait(Submenu* submenu) {
     }
 }
 
+static int l_mSM_opened_menu_type = mSM_OVL_NONE;
+
 static void mSM_move_LINKWait(Submenu* submenu) {
     Submenu_Item_c* item;
     mSM_dlftbl_c* dlftbl = &SubmenuArea_dlftbl[mSM_DLF_SUBMENU_OVL];
@@ -359,6 +361,7 @@ static void mSM_move_LINKWait(Submenu* submenu) {
         submenu->draw_proc = (SUBMENU_GAME_PROC)&none_proc1;
         submenu->process_status = mSM_PROCESS_PLAY;
         submenu->open_flag = TRUE;
+        l_mSM_opened_menu_type = submenu->menu_type;
         CALL_EVENT(SubmenuOpened, submenu->menu_type);
         submenu->after_mode = 7;
         submenu->unk_164 = 0;
@@ -393,7 +396,7 @@ static void mSM_move_Play(Submenu* submenu) {
 static void mSM_move_End(Submenu* submenu) {
     mSM_dlftbl_c* dlftbl = &SubmenuArea_dlftbl[mSM_DLF_SUBMENU_OVL];
     GAME_PLAY* play = (GAME_PLAY*)gamePT;
-    int type = submenu->menu_type;
+    int type = l_mSM_opened_menu_type;
 
     (*submenu->move_proc)(submenu);
     submenu->process_status = mSM_PROCESS_WAIT;

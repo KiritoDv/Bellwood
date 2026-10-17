@@ -27,6 +27,8 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(SceneUnloaded);
     REGISTER_EVENT(PlayUpdate);
     REGISTER_EVENT(FamicomStart);
+    REGISTER_EVENT(NewGameWelcome);
+    REGISTER_EVENT(TrainRideStart);
     REGISTER_EVENT(MessageLoad);
     REGISTER_EVENT(MessageLoaded);
     REGISTER_EVENT(MessageOpened);
@@ -41,6 +43,7 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(SaveLoaded);
     REGISTER_EVENT(SaveWritten);
     REGISTER_EVENT(SaveImported);
+    REGISTER_EVENT(ResetDetected);
 
     REGISTER_EVENT(PlayBgmEvent);
     REGISTER_EVENT(StopBgmEvent);

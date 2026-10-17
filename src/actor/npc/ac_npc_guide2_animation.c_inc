@@ -35,6 +35,7 @@ static void aNG2_set_animation(NPC_GUIDE2_ACTOR* guide2, int action) {
         { aNPC_ANIM_SITDOWN_D1, TRUE },
         { aNPC_ANIM_SITDOWN_WAIT_D1, TRUE },
         { aNPC_ANIM_SITDOWN_WAIT_D1, FALSE },
+        { aNPC_ANIM_SITDOWN_WAIT_D1, TRUE },
     };
     // clang-format on
 

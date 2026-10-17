@@ -27,7 +27,7 @@ static void aNPS_think_main_proc(NPC_ACTOR* nactorx, GAME_PLAY* play) {
         }
     } else {
         if (p_sel->strum_timer == 0) {
-            if (aNPS_setup_game_start(play) == TRUE) {
+            if (play->fb_wipe_mode == WIPE_MODE_NONE && aNPS_setup_game_start(play) == TRUE) {
                 p_sel->strum_timer = -1;
                 play->fade_color_value.c.a = 255;
             }
@@ -71,6 +71,12 @@ static void aNPS_schedule_init_proc(NPC_ACTOR* nactorx, GAME_PLAY* play) {
     nactorx->talk_info.default_animation = aNPC_ANIM_4HAKU_E1;
     p_sel->strum_timer = 440;
     p_sel->bgm_stop_timer = -1;
+    CALL_EVENT(NewGameWelcome);
+    if (NewGameWelcome_.Event.Cancelled) {
+        p_sel->talk_end_flag = TRUE;
+        p_sel->strum_timer = 70;
+        p_sel->bgm_stop_timer = 0;
+    }
 
     CLIP(npc_clip)->think_proc(nactorx, play, aNPC_THINK_IN_BLOCK, 0);
 }
