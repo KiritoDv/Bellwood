@@ -102,8 +102,8 @@ extern void sMath_RotateY(xyz_t* v, f32 y);
 extern void sMath_RotateX(xyz_t* v, f32 x);
 extern void sMath_RotateZ(xyz_t* v, f32 z);
 
-extern xyz_t ZeroVec;
-extern s_xyz ZeroSVec;
+extern_s xyz_t ZeroVec;
+extern_s s_xyz ZeroSVec;
 
 #ifdef __cplusplus
 }

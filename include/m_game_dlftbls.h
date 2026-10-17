@@ -30,8 +30,8 @@ typedef struct {
 } Game_dlftbl;
 typedef Game_dlftbl DLFTBL_GAME;
 
-extern unsigned int game_dlftbls_num;
-extern DLFTBL_GAME game_dlftbls[];
+extern_s unsigned int game_dlftbls_num;
+extern_s DLFTBL_GAME game_dlftbls[];
 
 #ifdef __cplusplus
 }

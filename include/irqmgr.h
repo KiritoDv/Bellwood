@@ -41,11 +41,11 @@ typedef struct {
 extern void irqmgr_AddClient(irqmgr_client_t* client, OSMesgQueue* msgqueue);
 /* @unused extern void irqmgr_RemoveClient(irqmgr_client_t* client) */
 
-extern volatile int ResetStatus;
-extern volatile OSTime ResetTime;
-extern volatile OSTime RetraceTime;
-extern volatile int RetraceCount;
-extern irqmgr_t irqmgr_class;
+extern_s volatile int ResetStatus;
+extern_s volatile OSTime ResetTime;
+extern_s volatile OSTime RetraceTime;
+extern_s volatile int RetraceCount;
+extern_s irqmgr_t irqmgr_class;
 
 #ifdef __cplusplus
 };

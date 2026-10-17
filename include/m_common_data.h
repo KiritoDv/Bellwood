@@ -333,7 +333,7 @@ typedef struct common_data_s {
     /* 0x02DBF0 */ u8 pad[16];
 } common_data_t;
 
-extern common_data_t common_data;
+extern_s common_data_t common_data;
 
 #define Common_Get(name) (common_data.name)
 #define Common_GetPointer(name) (&common_data.name)

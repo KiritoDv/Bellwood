@@ -86,9 +86,9 @@ extern void mTM_rtcTime_limit_check();
 extern void mTM_time();
 extern void mTM_time_init();
 
-extern const lbRTC_time_c mTM_rtcTime_clear_code;
-extern const lbRTC_ymd_c mTM_rtcTime_ymd_clear_code;
-extern const lbRTC_time_c mTM_rtcTime_default_code;
+extern_s const lbRTC_time_c mTM_rtcTime_clear_code;
+extern_s const lbRTC_ymd_c mTM_rtcTime_ymd_clear_code;
+extern_s const lbRTC_time_c mTM_rtcTime_default_code;
 
 #define mTM_IsTimeCleared(time) (lbRTC_IsEqualTime((time), &mTM_rtcTime_clear_code, lbRTC_CHECK_ALL) == TRUE)
 #define mTM_AreTimesEqual(t0, t1) (lbRTC_IsEqualTime(t0, t1, lbRTC_CHECK_ALL))

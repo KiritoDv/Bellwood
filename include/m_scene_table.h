@@ -102,7 +102,7 @@ enum scene_table {
 
 #define mSc_IS_SCENE_MUSEUM_ROOM(scene) ((scene) >= SCENE_MUSEUM_ENTRANCE && (scene) <= SCENE_MUSEUM_ROOM_FISH)
 
-extern Scene_data_status_c scene_data_status[SCENE_NUM];
+extern_s Scene_data_status_c scene_data_status[SCENE_NUM];
 
 #ifdef __cplusplus
 }

@@ -163,6 +163,8 @@ jobs:
           Move-Item build/x64/Release/assets Bellwood-windows/
           Get-ChildItem build/x64/Release/*.pdb | Move-Item -Destination Bellwood-windows/debug/
           Get-ChildItem build/x64/Release/*.dll | Copy-Item -Destination Bellwood-windows/
+          if (-not (Test-Path build/x64/Release/.tcc/lib/Bellwood.def)) { throw "TCC runtime was not staged; mods would not compile" }
+          Copy-Item build/x64/Release/.tcc Bellwood-windows/.tcc -Recurse
           Copy-Item README.md Bellwood-windows/readme.txt
           if (-not (Test-Path Bellwood-windows/shaderc_shared.dll)) {
             $shaderc = Get-ChildItem "$env:VULKAN_SDK/Bin/shaderc_shared.dll" -ErrorAction SilentlyContinue
@@ -176,6 +178,7 @@ jobs:
         with:
           name: Bellwood-windows
           path: Bellwood-windows
+          include-hidden-files: true
 
   defender-scan:
     name: Windows Defender scan

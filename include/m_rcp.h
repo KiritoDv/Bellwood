@@ -45,7 +45,7 @@ extern Gfx* gfx_gSPScisTextureRectangle1(Gfx* gfx, int xl, int yl, int xh, int y
                                          int dtdy);
 
 extern Gfx RSP_RDP_clear_data[];
-extern int fbdemo_mode;
+extern_s int fbdemo_mode;
 
 #ifdef __cplusplus
 }

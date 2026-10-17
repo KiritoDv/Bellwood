@@ -48,8 +48,8 @@ typedef struct mail_check_password_s {
   u8 str1[PLAYER_NAME_LEN];
 } mMpswd_password_c;
 
-extern u32 pswd_famicom_list_max;
-extern u16 pswd_famicom_list[];
+extern_s u32 pswd_famicom_list_max;
+extern_s u16 pswd_famicom_list[];
 
 extern void mMpswd_make_password(
   u8* password_buf,

@@ -9,10 +9,10 @@ extern "C" {
 
 extern void HotResetIplMenu();
 
-extern void* boot_copyDate;
+extern_s void* boot_copyDate;
 
 #if VERSION == VER_GAFU01_00
-extern u8 SoftResetEnable;
+extern_s u8 SoftResetEnable;
 #endif
 
 #ifdef __cplusplus

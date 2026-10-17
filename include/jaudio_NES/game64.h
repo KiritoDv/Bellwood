@@ -79,8 +79,8 @@ extern void Na_kazagurumaLevel(f32 kazagurumaSpeed);
 //     return vprintf(msg, marker);
 // }
 
-extern u8 sou_now_bgm_handle;
-extern u8 sou_chime_status;
+extern_s u8 sou_now_bgm_handle;
+extern_s u8 sou_chime_status;
 
 #ifdef __cplusplus
 }

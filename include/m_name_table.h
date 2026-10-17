@@ -184,10 +184,10 @@ typedef struct offset_table_s {
 #define NOT_SECRET_MD_NUM 52
 #define UMBRELLA_NUM 32
 
-extern s16 move_obj_profile_table[];
-extern s16 actor_profile_table[];
-extern s16 props_profile_table[];
-extern u8 npc_looks_table[];
+extern_s s16 move_obj_profile_table[];
+extern_s s16 actor_profile_table[];
+extern_s s16 props_profile_table[];
+extern_s u8 npc_looks_table[];
 
 extern int mNT_get_itemTableNo(mActor_name_t item);
 extern mActor_name_t mNT_FishIdx2FishItemNo(int idx);

@@ -25,7 +25,7 @@ extern "C" {
 #define USHT_MAX ((f32)USHT_MAX_S)
 
 #if VERSION >= VER_GAFU01_00
-extern u32 __float_max[];
+extern_s u32 __float_max[];
 #define FLT_MAX (*(float*)__float_max)
 #else
 #define FLT_MAX (3.4028235e+38f)

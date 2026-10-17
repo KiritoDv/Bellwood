@@ -31,6 +31,6 @@ extern Debug_display* Debug_Display_new(f32 posX, f32 posY, f32 posZ, s16 rotX, 
                                         f32 scaleY, f32 scaleZ, u8 r, u8 g, u8 b, u8 alpha, s16 shape, GRAPH* graph);
 extern void Debug_Display_output(GAME_PLAY* play);
 
-extern Debug_display* debug_display;
+extern_s Debug_display* debug_display;
 
 #endif

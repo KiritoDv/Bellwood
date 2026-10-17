@@ -52,7 +52,7 @@ typedef struct dynamic_s {
     u16 end_magic;
 } dynamic_t;
 
-extern dynamic_t sys_dynamic;
+extern_s dynamic_t sys_dynamic;
 
 #define SYSDYNAMIC_OPEN() \
 do { \

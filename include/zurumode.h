@@ -16,7 +16,7 @@ typedef struct zuru_keycheck {
   u8 zurumode_enabled;
 } zuru_keycheck;
 
-extern s32 zurumode_flag;
+extern_s s32 zurumode_flag;
 
 extern void zurumode_cleanup(void);
 extern void zurumode_init(void);

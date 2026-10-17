@@ -28,4 +28,10 @@
     
 #define ASSERT(cond) ASSERTLINE(__LINE__, cond)
 
+#if defined(_WIN32) && defined(__DLL__)
+#define extern_s extern __declspec(dllimport)
+#else
+#define extern_s extern
+#endif
+
 #endif // _H_MACROS_

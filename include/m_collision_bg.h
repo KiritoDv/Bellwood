@@ -156,7 +156,7 @@ enum {
     mCoBG_BLOCK_BGCHECK_MODE_NUM
 };
 
-extern int mCoBG_block_bgcheck_mode;
+extern_s int mCoBG_block_bgcheck_mode;
 
 /* sizeof(mCoBG_CollisionData_c) == 4*/
 typedef struct collision_bg_data_s {

@@ -76,6 +76,8 @@ Always unregister listeners in `MOD_EXIT`. Mods are unloaded and rebuilt when "R
 
 Game headers from `include/` can be included directly, for example `m_common_data.h` for `Common_Get(...)` and `m_private.h` for player data.
 
+On Windows a mod can only read or write a game variable whose declaration uses `extern_s` (it becomes `__declspec(dllimport)` when TCC builds a mod). The core runtime globals such as `common_data`, `gamePT`, `graph_class` and `padmgr_class` already do. To use another one, change its `extern` to `extern_s` in the game header. Functions don't need this.
+
 ### Settings and menu
 
 - `port/api/cvar.h`: `CVarGetInteger`, `CVarSetInteger` and the rest of the console variable API.

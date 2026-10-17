@@ -182,7 +182,7 @@ typedef struct mco_work_s {
     ClObj_c* colliders[10];
 } McoWork;
 
-extern McoWork mco_work;
+extern_s McoWork mco_work;
 
 typedef void (*CollisionOCFunction)(GAME*, CollisionCheck_c*, ClObj_c*, ClObj_c*);
 typedef int (*CollisionOCClear)(GAME*, ClObj_c*);

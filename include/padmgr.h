@@ -86,7 +86,7 @@ typedef struct {
     /* 0x044A */ Rumble_t rumble;
 } padmgr;
 
-extern padmgr padmgr_class;
+extern_s padmgr padmgr_class;
 
 extern int padmgr_isConnectedController(int pad);
 extern void padmgr_force_stop_ON();

@@ -264,9 +264,9 @@ extern void graph_dt(GRAPH* graph);
 #define GRAPH_ALLOC_TYPE(graph, type, num) (GRAPH_ALLOC(graph, sizeof(type) * (num)))
 
 #if VERSION != VER_GAFU01_00
-extern u8 SoftResetEnable;
+extern_s u8 SoftResetEnable;
 #endif
-extern GRAPH graph_class;
+extern_s GRAPH graph_class;
 
 #ifdef __cplusplus
 };

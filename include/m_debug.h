@@ -69,7 +69,7 @@ typedef struct debug_mode_s {
   s16 r[DEBUG_REG_SIZE * DEBUG_REG_GROUP * DEBUG_REG_MAX];
 } Debug_mode;
 
-extern Debug_mode* debug_mode;
+extern_s Debug_mode* debug_mode;
 
 #define REGADDR(reg, idx) (debug_mode->r[DEBUG_REG_SIZE * DEBUG_REG_GROUP * DEBUG_REG_##reg + (idx)])
 

@@ -213,7 +213,7 @@ typedef struct shop_s {
 } Shop_c;
 
 #define mSP_GC_FAMICOM_TABLE_CNT 8 // update this if the # of items in mSP_gc_famicom_table is changed
-extern mActor_name_t mSP_gc_famicom_table[];
+extern_s mActor_name_t mSP_gc_famicom_table[];
 
 extern int mSP_CollectCheck(mActor_name_t item);
 extern void mSP_SelectRandomItem_New(GAME* game, mActor_name_t* goods_table, int goods_count, mActor_name_t* goods_exist_table, int goods_exist_count, int category, int list_type, int uncollected_only);

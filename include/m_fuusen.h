@@ -18,7 +18,7 @@ enum {
   Balloon_STATE_NUM
 };
 
-extern int fuusen_DEBUG_mode_flag;
+extern_s int fuusen_DEBUG_mode_flag;
 
 extern void Balloon_init(GAME_PLAY*);
 extern void Balloon_make_fuusen(GAME_PLAY* play);

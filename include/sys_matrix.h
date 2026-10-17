@@ -13,8 +13,8 @@ extern "C" {
 #define MTX_LOAD 0 // load into new matrix
 #define MTX_MULT 1 // multiply into existing matrix
 
-extern MtxF MtxF_clear;
-extern Mtx Mtx_clear;
+extern_s MtxF MtxF_clear;
+extern_s Mtx Mtx_clear;
 
 extern void new_Matrix(GAME* game);
 extern void Matrix_push();

@@ -76,13 +76,13 @@ extern void game_goto_next_game_play(GAME* game);
 extern void game_goto_next_game_famicom_emu(GAME* game);
 #endif
 
-extern GAME* gamePT;
+extern_s GAME* gamePT;
 
-extern GAME* game_class_p;
-extern u8 game_GameFrame;
-extern float game_GameFrameF;
-extern float game_GameFrame_2F;
-extern float game_GameFrame__1F;
+extern_s GAME* game_class_p;
+extern_s u8 game_GameFrame;
+extern_s float game_GameFrameF;
+extern_s float game_GameFrame_2F;
+extern_s float game_GameFrame__1F;
 
 #ifdef __cplusplus
 };

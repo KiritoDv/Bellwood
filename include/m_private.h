@@ -332,7 +332,7 @@ extern void mPr_RenewalMapInfo(mPr_map_info_c* map_info, int max, mLd_land_info_
 extern void mPr_RandomSetPlayerData_title_demo();
 extern void mPr_PrintMapInfo_debug(gfxprint_t* gfxprint);
 
-extern Private_c g_foreigner_private;
+extern_s Private_c g_foreigner_private;
 
 #ifdef __cplusplus
 }

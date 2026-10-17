@@ -14,8 +14,8 @@ extern "C" {
 #define SCREEN_WIDTH_F ((f32)SCREEN_WIDTH)
 #define SCREEN_HEIGHT_F ((f32)SCREEN_HEIGHT)
 
-extern int ScreenWidth;
-extern int ScreenHeight;
+extern_s int ScreenWidth;
+extern_s int ScreenHeight;
 
 extern u8 SegmentBaseAddress[0x40];
 

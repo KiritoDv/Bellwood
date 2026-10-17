@@ -21,8 +21,8 @@ typedef struct actor_dlftbl_s {
     /* 0x1F */ s8 unk2;       // unused in AC
 } ACTOR_DLFTBL;
 
-extern int actor_dlftbls_num;
-extern ACTOR_DLFTBL actor_dlftbls[];
+extern_s int actor_dlftbls_num;
+extern_s ACTOR_DLFTBL actor_dlftbls[];
 
 extern void actor_dlftbls_init();
 extern void actor_dlftbls_cleanup();

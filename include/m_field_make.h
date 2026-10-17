@@ -323,15 +323,15 @@ enum {
     mFM_BG_TEX_NUM
 };
 
-extern u8* g_block_type_p;
-extern int* g_block_kind_p;
+extern_s u8* g_block_type_p;
+extern_s int* g_block_kind_p;
 
-extern mFM_fdinfo_c* g_fdinfo;
-extern int l_bg_disp_num;
-extern int l_bg_disp_size;
+extern_s mFM_fdinfo_c* g_fdinfo;
+extern_s int l_bg_disp_num;
+extern_s int l_bg_disp_size;
 
-extern mFM_bg_data_c data_bgd[];
-extern int data_bgd_number;
+extern_s mFM_bg_data_c data_bgd[];
+extern_s int data_bgd_number;
 
 extern void mFM_GetPolicePos(int* bx, int* bz, int* ut_x, int* ut_z);
 extern void mFM_DecideBgTexIdx(u8* bg_tex_idx);
