@@ -810,9 +810,9 @@ void ClearCardPrivateTable() {
 }
 
 void ClearNpcLists() {
-    bzero(Common_Get(npclist), sizeof(Common_Get(npclist)));
-    bzero(Common_Get(island_npclist), sizeof(Common_Get(island_npclist)));
-    bzero(Common_Get(npc_schedule), sizeof(Common_Get(npc_schedule)));
+    memset(Common_Get(npclist), 0, sizeof(Common_Get(npclist)));
+    memset(Common_Get(island_npclist), 0, sizeof(Common_Get(island_npclist)));
+    memset(Common_Get(npc_schedule), 0, sizeof(Common_Get(npc_schedule)));
 }
 
 void SaveFamicom() {
@@ -1277,7 +1277,7 @@ void mCD_LoadLand(void) {
     if (f != nullptr) {
         int version = f->land ? f->land->save.save_check.version : 0;
         if (LandValid(*f) && (version == 6 || version == 5)) {
-            bcopy(f->land.get(), Common_GetPointer(save), sizeof(Save));
+            memcpy(Common_GetPointer(save), f->land.get(), sizeof(Save));
             Common_Set(copy_protect, Save_Get(copy_protect));
             hasTown = true;
             if (f->hasOthers) {
@@ -1301,7 +1301,7 @@ void mCD_LoadLand(void) {
 
     if (mFRm_CheckSaveData_common(Save_GetPointer(save_check), Save_Get(land_info).id) &&
         Save_Get(save_check).version == 5) {
-        bcopy(&Save_Get(save_check).time, Save_GetPointer(saved_auto_nwrite_time), sizeof(lbRTC_time_c));
+        memcpy(Save_GetPointer(saved_auto_nwrite_time), &Save_Get(save_check).time, sizeof(lbRTC_time_c));
     }
     CALL_EVENT(SaveLoaded, hasTown);
 }
@@ -1679,7 +1679,7 @@ int mCD_GetCardPrivateNameCopy(u8* dst, int idx) {
     if (dst == NULL || idx < 0 || idx >= kCardPrivateMax) {
         return FALSE;
     }
-    bcopy(sCardPrivateTable[idx].pid.player_name, dst, sizeof(sCardPrivateTable[idx].pid.player_name));
+    memcpy(dst, sCardPrivateTable[idx].pid.player_name, sizeof(sCardPrivateTable[idx].pid.player_name));
     return TRUE;
 }
 
@@ -2404,7 +2404,7 @@ bool IoSelfTest(std::string* report) {
 
     auto saved = SealedCommonSave();
     SaveJson_ClearPadding(SAVEJSON_SAVE, &saved->save);
-    bzero(Common_GetPointer(save), sizeof(Save));
+    memset(Common_GetPointer(save), 0, sizeof(Save));
     InvalidateSlots();
     t0 = std::chrono::steady_clock::now();
     mCD_LoadLand();
@@ -2478,7 +2478,7 @@ bool IoSelfTest(std::string* report) {
             memset(priv->player_ID.player_name, 'A', sizeof(priv->player_ID.player_name));
             priv->player_ID.player_id = 0xF001;
         }
-        bcopy(Save_Get(land_info).name, priv->player_ID.land_name, sizeof(priv->player_ID.land_name));
+        memcpy(priv->player_ID.land_name, Save_Get(land_info).name, sizeof(priv->player_ID.land_name));
         priv->player_ID.land_id = Save_Get(land_info).id;
         priv->exists = TRUE;
         Common_Set(now_private, priv);
