@@ -5,6 +5,7 @@
 #include "libultra/gu.h"
 #include "libultra/libultra.h"
 #include "m_rcp.h"
+#include "ac_port.h"
 #include "assets/data/model/ef_wipe1.h"
 #include "assets/data/model/ef_wipe2.h"
 #include "assets/data/model/ef_wipe3.h"
@@ -67,7 +68,7 @@ void fbdemo_triforce_draw(fbdemo_triforce* this, Gfx** gfxP) {
   gSPPerspNormalize(gfx++, this->normal);
   gSPMatrix(gfx++, &this->lookatmtx, G_MTX_MUL | G_MTX_PROJECTION);
   t = gfxalloc(&gfx, 0x40);
-  guScale((Mtx*)t, 0.019f, 0.019f, 1.0f);
+  guScale((Mtx*)t, 0.019f * AC_WideScale(), 0.019f, 1.0f);
 
   gSPMatrix(gfx++, t, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 

@@ -3,6 +3,7 @@
 #include "irqmgr.h"
 #include "sys_vimgr.h"
 #include "m_rcp.h"
+#include "ac_port.h"
 
 static void prenmi_move(GAME_PRENMI* prenmi) {    
   if (ResetStatus == IRQ_RESET_DELAY || prenmi->timer == 0) {
@@ -41,7 +42,8 @@ static void prenmi_draw(GAME_PRENMI* prenmi) {
 
   // adjust size
   y_pos = (1.0f - (timer / (f32)PRENMI_TIMER)) * -15.0f + 127.0f;
-  gfx = gfx_gSPTextureRectangle1(gfx, 0, (u32)(y_pos * 4.0f), 0x500, (u32)((y_pos + 1.0f) * 4.0f), 0, 0, 0, 0, 0);
+  gSPWideTextureRectangle(gfx++, OTRGetRectDimensionFromLeftEdge(0.0f) * 4, (u32)(y_pos * 4.0f) << 1,
+                          OTRGetRectDimensionFromRightEdge(0.0f) * 4, (u32)((y_pos + 1.0f) * 4.0f) << 1, 0, 0, 0, 0, 0);
   
   gDPPipeSync(gfx++);
   SET_POLY_OPA_DISP(gfx);

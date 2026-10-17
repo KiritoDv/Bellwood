@@ -2,6 +2,7 @@
 
 #include "main.h"
 #include "m_common_data.h"
+#include "ac_port.h"
 #include "m_rcp.h"
 #include "m_field_info.h"
 #include "m_malloc.h"
@@ -31,6 +32,8 @@ static int aWeatherSnow_DecideMakeSnowCount(ACTOR* actor, GAME* game) {
     return (game->frame_counter & 1);
 }
 
+static f32 aWeatherSnow_make_carry;
+
 static void aWeatherSnow_make(ACTOR* actor, GAME* game) {
     WEATHER_ACTOR* weather = (WEATHER_ACTOR*)actor;
     GAME_PLAY* play = (GAME_PLAY*)game;
@@ -39,28 +42,33 @@ static void aWeatherSnow_make(ACTOR* actor, GAME* game) {
     f32 x, z;
     xyz_t pos = weather->pos;
     f32 y = 230.0f + pos.y;
-    int count = Common_Get(clip.weather_clip)->get_priv_num(actor);
+    int count;
     xyz_t base = { 0.0f, 0.0f, 0.0f };
     xyz_t mod_pos;
+    f32 half_width = 100.0f * AC_WideScale();
+    int make_num;
 
     if (aWeatherSnow_DecideMakeSnowCount(actor, game) != 0) {
-        base.y = -0.5f + (RANDOM_F(-2.0f));
-        if (count != -1) {
-            x = -100.0f + (RANDOM_F(200.0f));
-            z = -200.0f + (RANDOM_F(380.0f));
+        for (make_num = AC_WideCount(&aWeatherSnow_make_carry); make_num > 0; make_num--) {
+            count = Common_Get(clip.weather_clip)->get_priv_num(actor);
+            base.y = -0.5f + (RANDOM_F(-2.0f));
+            if (count != -1) {
+                x = -half_width + (RANDOM_F(2.0f * half_width));
+                z = -200.0f + (RANDOM_F(380.0f));
 
-            mod_pos = pos;
+                mod_pos = pos;
 
-            mod_pos.x += x;
-            mod_pos.z += z;
-            mod_pos.y = y;
+                mod_pos.x += x;
+                mod_pos.z += z;
+                mod_pos.y = y;
 
-            priv = Common_Get(clip.weather_clip)->get_priv(2, 280, &mod_pos, &base, actor, count);
-            if (priv != NULL) {
-                aWeatherSnow_ct(priv, game);
-                priv->work[0] = 0;
-                priv->work[1] = 156.5f + (RANDOM_F(260.5));
-                priv->currentY = y;
+                priv = Common_Get(clip.weather_clip)->get_priv(2, 280, &mod_pos, &base, actor, count);
+                if (priv != NULL) {
+                    aWeatherSnow_ct(priv, game);
+                    priv->work[0] = 0;
+                    priv->work[1] = 156.5f + (RANDOM_F(260.5));
+                    priv->currentY = y;
+                }
             }
         }
     }
@@ -77,10 +85,10 @@ static int aWeatherSnow_CheckSnowBorder(aWeather_Priv* priv, GAME_PLAY* play) {
         wtemp = weather->pos.x;
         ptemp = priv->pos.x;
 
-        if (ptemp < (-100.0f + wtemp)) {
+        if (ptemp < (-100.0f * AC_WideScale() + wtemp)) {
             ret |= 2;
         }
-        if (ptemp > (100.0f + wtemp)) {
+        if (ptemp > (100.0f * AC_WideScale() + wtemp)) {
             ret |= 8;
         }
         wtemp = weather->pos.z;
@@ -104,10 +112,10 @@ static void aWeatherSnow_CheckSnowScroll(aWeather_Priv* priv, GAME_PLAY* play) {
     if (border != 0) {
         FrameInterpolation_ResetObject(priv);
         if ((border >> 1) & 1) {
-            priv->pos.x += 200.0f;
+            priv->pos.x += 200.0f * AC_WideScale();
         }
         if ((border >> 3) & 1) {
-            priv->pos.x -= 200.0f;
+            priv->pos.x -= 200.0f * AC_WideScale();
         }
         if ((border >> 2) & 1) {
             priv->pos.z -= 380.0f;
@@ -180,7 +188,8 @@ void aWeatherSnow_draw(aWeather_Priv* priv, GAME* game) {
 
     Game_play_Projection_Trans(play, &pos, &screen_pos);
 
-    if ((0.0f <= screen_pos.x) && (screen_pos.x < SCREEN_WIDTH_F) && (0.0f <= screen_pos.y) &&
+    if ((OTRGetDimensionFromLeftEdge(0.0f) / 2.0f <= screen_pos.x) &&
+        (screen_pos.x < OTRGetDimensionFromRightEdge(0.0f) / 2.0f) && (0.0f <= screen_pos.y) &&
         (screen_pos.y < SCREEN_HEIGHT_F)) {
 
         work = GRAPH_ALLOC_TYPE(game->graph, Mtx, 1);

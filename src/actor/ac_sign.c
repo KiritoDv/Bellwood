@@ -1,6 +1,7 @@
 #include "ac_sign.h"
 
 #include "m_common_data.h"
+#include "ac_port.h"
 #include "m_debug.h"
 #include "m_skin_matrix.h"
 #include "libultra/libultra.h"
@@ -92,7 +93,7 @@ static int aSIGN_no_cull_check(GAME_PLAY* play, int bz, int bx, int ut_z, int ut
     if (clip_pos.z > -max_dist) {
         f32 inv_w = (w < 1.0f) ? 1.0f : (1.0f / w);
 
-        if (inv_w * (fabsf(clip_pos.x) - max_dist) < 1.0f && inv_w * (fabsf(clip_pos.y) - max_dist) < 1.0f) {
+        if (inv_w * (fabsf(clip_pos.x) - max_dist) < AC_WideScale() && inv_w * (fabsf(clip_pos.y) - max_dist) < 1.0f) {
             return TRUE;
         }
     }

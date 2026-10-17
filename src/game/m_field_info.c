@@ -9,6 +9,7 @@
 #include "m_player_lib.h"
 #include "m_bg_type.h"
 #include "m_fg_type.h"
+#include "ac_port.h"
 
 static mCoBG_Collision_u l_edge_ut = { { 0, 31, 31, 31, 31, 31, mCoBG_ATTRIBUTE_GRASS0 } };
 
@@ -1051,12 +1052,19 @@ static void mFI_WhereisInBlock(u8* pos_bitfield, xyz_t wpos) {
 
     mFI_WpostoLposInBK(&lpos, wpos);
 
-    if (lpos.x >= 0.0f) {
-        for (i = 0; i < 3; i++) {
-            if (lpos.x < l_barea.area[i]) {
-                pos_bitfield[0] |= (1 << i);
-                break;
-            }
+    if (lpos.x >= 0.0f && lpos.x < l_barea.area[2]) {
+        f32 reach = l_barea.area[0] * AC_WideScale();
+
+        if (lpos.x < reach) {
+            pos_bitfield[0] |= (1 << 0);
+        }
+
+        if (lpos.x >= l_barea.area[2] - reach) {
+            pos_bitfield[0] |= (1 << 2);
+        }
+
+        if ((pos_bitfield[0] & ((1 << 0) | (1 << 2))) == 0) {
+            pos_bitfield[0] |= (1 << 1);
         }
     }
 
@@ -1098,11 +1106,11 @@ extern void mFI_BGDisplayListRefresh(xyz_t wpos) {
     nearest_bx = bx - 1;
     if ((where_bitfield & 1) != 0 && mFI_BlockCheck(nearest_bx, bz)) {
         mFI_BGDispMake(&disp_bitfield, nearest_bx, bz);
-    } else {
-        nearest_bx = bx + 1;
-        if (((where_bitfield >> 2) & 1) != 0 && mFI_BlockCheck(nearest_bx, bz)) {
-            mFI_BGDispMake(&disp_bitfield, nearest_bx, bz);
-        }
+    }
+
+    nearest_bx = bx + 1;
+    if (((where_bitfield >> 2) & 1) != 0 && mFI_BlockCheck(nearest_bx, bz)) {
+        mFI_BGDispMake(&disp_bitfield, nearest_bx, bz);
     }
 
     nearest_bz = bz - 1;
@@ -1112,11 +1120,11 @@ extern void mFI_BGDisplayListRefresh(xyz_t wpos) {
         nearest_bx = bx - 1;
         if ((where_bitfield & 1) != 0 && mFI_BlockCheck(nearest_bx, nearest_bz)) {
             mFI_BGDispMake(&disp_bitfield, nearest_bx, nearest_bz); /* display acre above and to the left */
-        } else {
-            nearest_bx = bx + 1;
-            if (((where_bitfield >> 2) & 1) != 0 && mFI_BlockCheck(nearest_bx, nearest_bz)) {
-                mFI_BGDispMake(&disp_bitfield, nearest_bx, nearest_bz); /* display acre above and to the right */
-            }
+        }
+
+        nearest_bx = bx + 1;
+        if (((where_bitfield >> 2) & 1) != 0 && mFI_BlockCheck(nearest_bx, nearest_bz)) {
+            mFI_BGDispMake(&disp_bitfield, nearest_bx, nearest_bz); /* display acre above and to the right */
         }
     } else {
         nearest_bz = bz + 1;
@@ -1127,11 +1135,11 @@ extern void mFI_BGDisplayListRefresh(xyz_t wpos) {
             nearest_bx = bx - 1;
             if ((where_bitfield & 1) != 0 && mFI_BlockCheck(nearest_bx, nearest_bz)) {
                 mFI_BGDispMake(&disp_bitfield, nearest_bx, nearest_bz); /* display acre below and to the left */
-            } else {
-                nearest_bx = bx + 1;
-                if (((where_bitfield >> 2) & 1) != 0 && mFI_BlockCheck(nearest_bx, nearest_bz)) {
-                    mFI_BGDispMake(&disp_bitfield, nearest_bx, nearest_bz); /* display acre below and to the right */
-                }
+            }
+
+            nearest_bx = bx + 1;
+            if (((where_bitfield >> 2) & 1) != 0 && mFI_BlockCheck(nearest_bx, nearest_bz)) {
+                mFI_BGDispMake(&disp_bitfield, nearest_bx, nearest_bz); /* display acre below and to the right */
             }
         }
     }
@@ -1486,6 +1494,7 @@ extern int mFI_GetItemTable_NoReset(mFI_item_table_c* item_table, xyz_t wpos) {
     u8 _num = 0;
     u8 _bitfield = 0;
     u8 clear_tree_cut_bitfield = 0;
+    u8 filled_bitfield = 0;
     int bx;
     int bz;
     int block_x_tbl[mFM_VISIBLE_BLOCK_NUM];
@@ -1510,12 +1519,15 @@ extern int mFI_GetItemTable_NoReset(mFI_item_table_c* item_table, xyz_t wpos) {
                 t_no = table_no[j];
 
                 if (bg_disp->block_x == bx_near) {
-                    mFI_SetBlockTable(&item_table->block_info_tbl[t_no], bx_near, bz);
-                    _num++;
-                    _bitfield |= (1 << i);
+                    if (((filled_bitfield >> t_no) & 1) == 0) {
+                        mFI_SetBlockTable(&item_table->block_info_tbl[t_no], bx_near, bz);
+                        _num++;
+                        _bitfield |= (1 << i);
+                        filled_bitfield |= (1 << t_no);
 
-                    if ((Common_Get(remove_cut_tree_info_bitfield) >> i) & 1) {
-                        clear_tree_cut_bitfield |= (1 << t_no);
+                        if ((Common_Get(remove_cut_tree_info_bitfield) >> i) & 1) {
+                            clear_tree_cut_bitfield |= (1 << t_no);
+                        }
                     }
 
                     break;

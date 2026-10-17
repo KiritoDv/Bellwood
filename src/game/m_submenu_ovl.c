@@ -7,6 +7,7 @@
 #include "libultra/libultra.h"
 #include "sys_matrix.h"
 #include "ac_port.h"
+#include "main.h"
 #include "m_inventory_ovl.h"
 #include "m_hboard_ovl.h"
 #include "m_timeIn_ovl.h"
@@ -347,14 +348,15 @@ static void mSM_set_dl_item(GRAPH* graph, f32 x, f32 y, f32 scale, mSM_inventory
     scale_factor = (int)((1.0f / scale) * 1365.333333333f);
 
     /* Draw 2D rectangle with icon texture */
-    if (x < 320.0f) {
+    if (x < OTRGetDimensionFromRightEdge(0.0f) / 2.0f) {
         f32 mod = scale * 24.0f;
 
         rect_xh = x + mod;
         rect_yh = y + mod;
 
-        POLY_OPA_DISP = gfx_gSPScisTextureRectangle1(POLY_OPA_DISP, x * 4.0f, y * 4.0f, rect_xh * 4.0f, rect_yh * 4.0f,
-                                                     G_TX_RENDERTILE, 0, 0, scale_factor, scale_factor);
+        gSPWideTextureRectangle(POLY_OPA_DISP++, (int)(x * 4.0f) * 2, (int)(y * 4.0f) * 2, (int)(rect_xh * 4.0f) * 2,
+                                (int)(rect_yh * 4.0f) * 2, G_TX_RENDERTILE, 0, 0, scale_factor >> 1,
+                                scale_factor >> 1);
     }
 
     if (draw_mark) {
@@ -377,15 +379,15 @@ static void mSM_set_dl_item(GRAPH* graph, f32 x, f32 y, f32 scale, mSM_inventory
         gDPSetCombineMode(POLY_OPA_DISP++, G_CC_BLENDPEDECALA, G_CC_BLENDPEDECALA);
 
         /* Draw 2D rectangle with mark texture */
-        if (x < 320.0f) {
+        if (x < OTRGetDimensionFromRightEdge(0.0f) / 2.0f) {
             f32 mod = scale * 24.0f;
 
             rect_xh = x + mod;
             rect_yh = y + mod;
 
-            POLY_OPA_DISP =
-                gfx_gSPScisTextureRectangle1(POLY_OPA_DISP, x * 4.0f, y * 4.0f, rect_xh * 4.0f, rect_yh * 4.0f,
-                                             G_TX_RENDERTILE, 0, 0, scale_factor, scale_factor);
+            gSPWideTextureRectangle(POLY_OPA_DISP++, (int)(x * 4.0f) * 2, (int)(y * 4.0f) * 2,
+                                    (int)(rect_xh * 4.0f) * 2, (int)(rect_yh * 4.0f) * 2, G_TX_RENDERTILE, 0, 0,
+                                    scale_factor >> 1, scale_factor >> 1);
         }
     }
 
@@ -1603,6 +1605,18 @@ static void mSM_set_new_seg(Submenu* submenu) {
     submenu->current_menu_type = type;
 }
 
+static f32 mSM_wide_slide_x(f32 x) {
+    f32 extra = OTRGetDimensionFromRightEdge(0.0f) / 2.0f - SCREEN_WIDTH_F;
+
+    if (x > 0.0f) {
+        return x + extra;
+    } else if (x < 0.0f) {
+        return x - extra;
+    }
+
+    return x;
+}
+
 typedef struct submenu_ovl_start_data_s {
     f32 pos_x;
     f32 pos_y;
@@ -1668,6 +1682,8 @@ static void mSM_set_new_start_data(Submenu* submenu) {
     if (type == mSM_OVL_NEEDLEWORK && submenu->param0 == 2) {
         menu->position[0] = -300.0f;
     }
+
+    menu->position[0] = mSM_wide_slide_x(menu->position[0]);
 }
 
 static void mSM_move_chg_base(mSM_MenuInfo_c* menu_info, int mv_dir) {
@@ -1819,6 +1835,7 @@ static void mSM_move_Move(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
     int move_dir = menu_info->move_drt;
     int idx = move_dir >> 2;
     mSM_move_data_c* data_p = &move_data[move_dir & 1];
+    f32 target_pos = data_p->target_pos;
     f32 dir;
     int res;
 
@@ -1828,8 +1845,12 @@ static void mSM_move_Move(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
         dir = 1.0f;
     }
 
+    if (idx == 0) {
+        target_pos = mSM_wide_slide_x(target_pos);
+    }
+
     res = mSM_move_menu(&menu_info->position[idx], &menu_info->speed[idx], &menu_info->move_flag, data_p->speed_mult,
-                        data_p->start_pos * dir, data_p->target_pos * dir, data_p->check_mult * dir);
+                        data_p->start_pos * dir, target_pos * dir, data_p->check_mult * dir);
     if (res == TRUE) {
         menu_info->proc_status = menu_info->next_proc_status;
     }

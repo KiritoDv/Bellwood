@@ -87,6 +87,7 @@
 #include "assets/data/model/obj_museum5_kusa3.h"
 #include "assets/data/model/obj_suisou1.h"
 #include "assets/data/model/obj_suisou1_evw_anime.h"
+#include "ac_port.h"
 
 // extern data
 // clang-format off
@@ -1009,7 +1010,9 @@ void Museum_Fish_Actor_draw(ACTOR* actorx, GAME* game) {
 BOOL mfish_cull_check(GAME* game, xyz_t* worldPos, f32 x, f32 y, f32 _y) {
     xyz_t screenPos;
     Game_play_Projection_Trans((GAME_PLAY*)game, worldPos, &screenPos);
-    if ((-x < screenPos.x) && (screenPos.x < x + 320) && (-y < screenPos.y) && (screenPos.y < _y + 240)) {
+    if ((OTRGetDimensionFromLeftEdge(0.0f) / 2.0f - x < screenPos.x) &&
+        (screenPos.x < x + OTRGetDimensionFromRightEdge(0.0f) / 2.0f) && (-y < screenPos.y) &&
+        (screenPos.y < _y + 240)) {
         return TRUE;
     }
     return FALSE;

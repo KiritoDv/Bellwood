@@ -3,6 +3,7 @@
 #include "libultra/gu.h"
 #include "libultra/libultra.h"
 #include "m_common_data.h"
+#include "ac_port.h"
 
 Gfx fbdemo_fade_gfx_init[] = {
     gsDPPipeSync(),
@@ -58,7 +59,8 @@ void fbdemo_fade_draw(fbdemo_fade* this, Gfx** gfxP) {
     gSPDisplayList(gfx++, fbdemo_fade_gfx_init);
     gDPSetPrimColor(gfx++, 0, 0, this->color.r, this->color.g, this->color.b,
                     this->color.a);
-    gDPFillRectangle(gfx++, 0, 0, N64_SCREEN_WIDTH * 2, N64_SCREEN_HEIGHT * 2);
+    gDPFillWideRectangle(gfx++, OTRGetRectDimensionFromLeftEdge(0.0f), 0, OTRGetRectDimensionFromRightEdge(0.0f),
+                         N64_SCREEN_HEIGHT * 2);
     gDPPipeSync(gfx++);
     *gfxP = gfx;
   }

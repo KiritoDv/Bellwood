@@ -1450,6 +1450,20 @@ extern "C" float GameEngine_GetAspectRatio() {
     return interpreter->mCurDimensions.aspect_ratio;
 }
 
+extern "C" float AC_WideScale(void) {
+    auto interpreter = GameEngine_GetInterpreter();
+    float scale = (OTRGetDimensionFromRightEdge(0.0f) - OTRGetDimensionFromLeftEdge(0.0f)) /
+                  (float)interpreter->mNativeDimensions.width;
+    return scale > 1.0f ? scale : 1.0f;
+}
+
+extern "C" int AC_WideCount(float* carry) {
+    float total = *carry + AC_WideScale();
+    int count = (int)total;
+    *carry = total - (float)count;
+    return count;
+}
+
 extern "C" uint32_t GameEngine_GetGameVersion() {
     return ResolveGameVersion();
 }

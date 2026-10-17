@@ -2,6 +2,7 @@
 
 #include "m_actor_shadow.h"
 #include "m_common_data.h"
+#include "ac_port.h"
 #include "m_debug_display.h"
 #include "m_fuusen.h"
 #include "m_play.h"
@@ -114,7 +115,9 @@ static void aFSN_moving(ACTOR* actorx, GAME* game) {
 
   Game_play_Projection_Trans(play, &actorx->world.position, &screen_pos);
 
-  if (-40.0f > screen_pos.x || screen_pos.x > 360.0f || -40.0f > screen_pos.y || screen_pos.y > 280.0f) {
+  if (OTRGetDimensionFromLeftEdge(0.0f) / 2.0f - 40.0f > screen_pos.x ||
+      screen_pos.x > OTRGetDimensionFromRightEdge(0.0f) / 2.0f + 40.0f || -40.0f > screen_pos.y ||
+      screen_pos.y > 280.0f) {
     return;
   }
 

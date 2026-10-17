@@ -1131,7 +1131,7 @@ extern void mFM_FieldInit(GAME_PLAY* play) {
     int scene = Save_Get(scene_no);
 
     mFM_LoadBGCommonTex(TRUE, Save_Get(bg_tex_idx));
-    if (bg_disp_num > mFM_VISIBLE_BLOCK_NUM) {
+    if (bg_disp_num >= mFM_NATIVE_VISIBLE_BLOCK_NUM) {
         bg_disp_num = mFM_VISIBLE_BLOCK_NUM;
     }
 

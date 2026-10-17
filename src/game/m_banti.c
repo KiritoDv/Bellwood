@@ -7,6 +7,8 @@
 #include "sys_matrix.h"
 #include "m_font.h"
 #include "m_common_data.h"
+#include "main.h"
+#include "ac_port.h"
 #include "assets/data/model/cKF_ba_r_clk_hiniti.h"
 #include "assets/data/model/cKF_ba_r_clk_jikan.h"
 #include "assets/data/model/clk_hiniti.h"
@@ -78,7 +80,8 @@ static void banti_chk_disp_left(GAME_PLAY* play) {
     Game_play_Projection_Trans(play, &get_player_actor_withoutCheck(play)->actor_class.world.position,
                                &player_pos_screen);
 
-    if (player_pos_screen.x >= 180.0f && player_pos_screen.y >= 150.0f) {
+    if (player_pos_screen.x >= 180.0f + OTRGetDimensionFromRightEdgeOverride(0.0f) / 2.0f - SCREEN_WIDTH_F &&
+        player_pos_screen.y >= 150.0f) {
         if (banti.move_left == FALSE) {
             banti.move_left = TRUE;
             banti.move_timer = 0.0f;
@@ -501,7 +504,9 @@ extern void banti_draw(GAME_PLAY* play) {
         Matrix_scale(16.0f, 16.0f, 16.0f, MTX_LOAD);
 
         if (banti.disp_left == TRUE) {
-            Matrix_translate(-184.0f, 0.0f, 0.0f, MTX_MULT);
+            Matrix_translate(OTRGetDimensionFromLeftEdgeOverride(0.0f) / 2.0f - 184.0f, 0.0f, 0.0f, MTX_MULT);
+        } else {
+            Matrix_translate(OTRGetDimensionFromRightEdgeOverride(0.0f) / 2.0f - SCREEN_WIDTH_F, 0.0f, 0.0f, MTX_MULT);
         }
 
         {

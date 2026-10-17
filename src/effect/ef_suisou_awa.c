@@ -1,6 +1,7 @@
 #include "ef_effect_control.h"
 
 #include "m_common_data.h"
+#include "ac_port.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
 #include "main.h"
@@ -118,7 +119,9 @@ static void eSuisou_Awa_dw(eEC_Effect_c* effect, GAME* game) {
     s16 scale_angle = effect->effect_specific[2];
 
     Game_play_Projection_Trans(play, &effect->position, &screen_pos);
-    if (0.0f < screen_pos.x && screen_pos.x < SCREEN_WIDTH && 0.0f < screen_pos.y && screen_pos.y < SCREEN_HEIGHT) {
+    if (OTRGetDimensionFromLeftEdge(0.0f) / 2.0f < screen_pos.x &&
+        screen_pos.x < OTRGetDimensionFromRightEdge(0.0f) / 2.0f && 0.0f < screen_pos.y &&
+        screen_pos.y < SCREEN_HEIGHT) {
         OPEN_DISP(game->graph);
 
         pos = effect->position;

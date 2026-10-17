@@ -13,6 +13,9 @@
 #include "m_player_lib.h"
 #include "m_event.h"
 #include "libultra/libultra.h"
+#include "ac_port.h"
+
+#define aWEATHER_PRIV_MAX 255
 
 static void Weather_Actor_ct(ACTOR* actor, GAME* game);
 static void Weather_Actor_dt(ACTOR* actor, GAME* game);
@@ -112,8 +115,13 @@ static int aWeather_GetWeatherPrvNum(ACTOR* actor) {
     WEATHER_ACTOR* weather = (WEATHER_ACTOR*)actor;
     aWeather_Priv* priv = weather->priv;
     int i;
+    int limit = (int)(100.0f * AC_WideScale() + 0.5f);
 
-    for (i = 0; i < 100; i++) {
+    if (limit > aWEATHER_PRIV_MAX) {
+        limit = aWEATHER_PRIV_MAX;
+    }
+
+    for (i = 0; i < limit; i++) {
         if (priv->use == 0) {
             return i;
         }
@@ -140,7 +148,7 @@ static aWeather_Priv* aWeather_GetWeatherPrv(u8 status, s16 timer, xyz_t* pos, x
     WEATHER_ACTOR* weather = (WEATHER_ACTOR*)actor;
     aWeather_Priv* priv = weather->priv;
 
-    if ((id != -1) && (id < 100)) {
+    if ((id != -1) && (id < aWEATHER_PRIV_MAX)) {
         if (priv[id].use == 0) {
             FrameInterpolation_ResetObject(&priv[id]);
             priv[id].use = 1;
@@ -323,9 +331,9 @@ static void aWeather_SecureWeatherPrivateWork(ACTOR* actorx) {
     WEATHER_ACTOR* weather = (WEATHER_ACTOR*)actorx;
     int i;
 
-    weather->priv = zelda_malloc(sizeof(aWeather_Priv) * 100);
+    weather->priv = zelda_malloc(sizeof(aWeather_Priv) * aWEATHER_PRIV_MAX);
     if (weather->priv != NULL) {
-        for (i = 0; i < 100; i++) {
+        for (i = 0; i < aWEATHER_PRIV_MAX; i++) {
             bzero(&weather->priv[i], sizeof(aWeather_Priv));
         }
     }
@@ -488,7 +496,7 @@ static void aWeather_DrawWeatherPrv(ACTOR* actor, GAME* game) {
             weather->current_profile->set(game);
         }
         if (weather->current_profile->draw != NULL) {
-            for (i = 0; i < 100; i++, priv++) {
+            for (i = 0; i < aWEATHER_PRIV_MAX; i++, priv++) {
                 if (priv->use != 0) {
                     FrameInterpolation_RecordOpenChild(priv, FrameInterpolation_GetObjectEpoch(priv));
                     weather->current_profile->draw(priv, game);
@@ -524,7 +532,7 @@ static void aWeather_MoveWeatherPrv(ACTOR* actorx, GAME* game) {
 
     if ((weather->current_profile != NULL) && (priv != NULL) && (weather->current_profile->move != NULL)) {
 
-        for (i = 0; i < 100; i++, priv++) {
+        for (i = 0; i < aWEATHER_PRIV_MAX; i++, priv++) {
             if (priv->use != 0) {
                 weather->current_profile->move(priv, game);
                 if (priv->timer != -100) {
@@ -546,7 +554,7 @@ static int aWeather_CountWeatherPrivate(ACTOR* actorx) {
 
     count = 0;
 
-    for (i = 0; i < 100; i++) {
+    for (i = 0; i < aWEATHER_PRIV_MAX; i++) {
 
         if (priv->use != 0) {
             count++;

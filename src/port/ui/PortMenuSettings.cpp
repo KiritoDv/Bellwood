@@ -52,6 +52,16 @@ static const std::unordered_map<int32_t, const char*> frameRateOptions = {
     { FRAME_RATE_CUSTOM, "Custom" },
 };
 
+static const std::unordered_map<int32_t, const char*> hudAspectRatioOptions = {
+    { 0, "Screen Edges" },
+    { 1, "Original (4:3)" },
+    { 2, "Widescreen (16:9)" },
+    { 3, "Ultrawide (21:9)" },
+};
+
+static const int32_t hudAspectRatioX[] = { 0, 4, 16, 21 };
+static const int32_t hudAspectRatioY[] = { 0, 3, 9, 9 };
+
 static const std::unordered_map<int32_t, const char*> notificationPosition = {
     { 0, "Top Left" }, { 1, "Top Right" }, { 2, "Bottom Left" }, { 3, "Bottom Right" }, { 4, "Hidden" },
 };
@@ -319,6 +329,24 @@ void PortMenu::AddMenuSettings() {
                      .Tooltip("Sets the applied Texture Filtering.")
                      .ComboMap(textureFilteringMap)
                      .DefaultIndex(Fast::FILTER_LINEAR));
+    AddWidget(path, "HUD Aspect Ratio", WIDGET_CVAR_COMBOBOX)
+        .CVar("gHUDAspectRatio.Preset")
+        .RaceDisable(false)
+        .Callback([](WidgetInfo& info) {
+            int32_t preset = CVarGetInteger("gHUDAspectRatio.Preset", 0);
+            if (preset < 0 || preset > 3) {
+                preset = 0;
+            }
+            CVarSetInteger("gHUDAspectRatio.Enabled", preset != 0);
+            CVarSetInteger("gHUDAspectRatio.X", hudAspectRatioX[preset]);
+            CVarSetInteger("gHUDAspectRatio.Y", hudAspectRatioY[preset]);
+            ShipCompat::GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
+        })
+        .Options(ComboboxOptions()
+                     .Tooltip("Where the HUD (the clock) sits on a widescreen window.\nScreen Edges: at the edges "
+                              "of the window.\nThe other options keep it inside an area of that shape, centred.")
+                     .ComboMap(hudAspectRatioOptions)
+                     .DefaultIndex(0));
 
     path.column = SECTION_COLUMN_2;
     AddWidget(path, "Advanced Graphics Options", WIDGET_SEPARATOR_TEXT);

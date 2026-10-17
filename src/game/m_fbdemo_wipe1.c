@@ -4,6 +4,7 @@
 #include "libultra/libultra.h"
 #include "m_common_data.h"
 #include "m_rcp.h"
+#include "ac_port.h"
 #include "assets/game/m_fbdemo_wipe1.h"
 
 fbdemo_wipe1* fbdemo_wipe1_init(fbdemo_wipe1* this) {
@@ -32,11 +33,16 @@ void fbdemo_wipe1_draw(fbdemo_wipe1* this, Gfx** gfxP) {
   Mtx* modelView;
   int pad[4];
   Gfx* texScroll;
+  f32 wide_scale = AC_WideScale() / 2.7f;
+
+  if (wide_scale < 1.0f) {
+    wide_scale = 1.0f;
+  }
 
   modelView = this->modelView[this->frame];
   this->frame ^= 1;
 
-  guScale(&modelView[0], 0.56f, 0.56f, 1.0f);
+  guScale(&modelView[0], 0.56f * wide_scale, 0.56f, 1.0f);
   guRotate(&modelView[1], 0.0f, 0.0f, 0.0f, 1.0f);
   guTranslate(&modelView[2], 0.0f, 0.0f, 0.0f);
   gDPPipeSync(gfx++);

@@ -408,7 +408,8 @@ extern void DisplayList_initialize(GRAPH* graph, u8 clear_r, u8 clear_g, u8 clea
         gDPSetRenderMode(NOW_POLY_OPA_DISP++, G_RM_NOOP, G_RM_NOOP2);
         gDPSetFillColor(NOW_POLY_OPA_DISP++, (GPACK_RGBA5551(clear_r, clear_g, clear_b, 1) << 16) |
                                                  GPACK_RGBA5551(clear_r, clear_g, clear_b, 1));
-        gDPFillRectangle(NOW_POLY_OPA_DISP++, 0, 0, 639, 479);
+        gDPFillWideRectangle(NOW_POLY_OPA_DISP++, OTRGetRectDimensionFromLeftEdge(0.0f), 0,
+                             OTRGetRectDimensionFromRightEdge(0.0f), 479);
         gDPPipeSync(NOW_POLY_OPA_DISP++);
     }
 
@@ -418,24 +419,20 @@ extern void DisplayList_initialize(GRAPH* graph, u8 clear_r, u8 clear_g, u8 clea
 }
 
 extern void fade_rgba8888_draw(Gfx** gfxp, u32 alpha) {
-    static Gfx fade_gfx[6] = {
+    static Gfx fade_gfx[4] = {
         gsDPPipeSync(),
         gsDPSetOtherMode(G_AD_DISABLE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE |
                              G_TD_CLAMP | G_TP_NONE | G_CYC_1CYCLE | G_PM_1PRIMITIVE,
                          G_AC_NONE | G_ZS_PIXEL | G_RM_CLD_SURF | G_RM_CLD_SURF2),
         gsDPSetCombineMode(G_CC_PRIMITIVE, G_CC_PRIMITIVE),
-        gsDPFillRectangle(0, 0, 640, 480),
-        gsDPPipeSync(),
         gsSPEndDisplayList(),
     };
 
-    static Gfx fill_gfx[5] = {
+    static Gfx fill_gfx[3] = {
         gsDPPipeSync(),
         gsDPSetOtherMode(G_AD_DISABLE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE |
                              G_TD_CLAMP | G_TP_NONE | G_CYC_FILL | G_PM_1PRIMITIVE,
                          G_AC_NONE | G_ZS_PIXEL | G_RM_NOOP | G_RM_NOOP2),
-        gsDPFillRectangle(0, 0, 639, 479),
-        gsDPPipeSync(),
         gsSPEndDisplayList(),
     };
 
@@ -449,14 +446,20 @@ extern void fade_rgba8888_draw(Gfx** gfxp, u32 alpha) {
         u32 f = c | ((c & 0xFFFF) << 16);
 
         gfx = *gfxp;
-        gDPSetFillColor(gfx, f);
-        gSPDisplayList(gfx + 1, fill_gfx);
-        *gfxp = gfx + 2;
+        gDPSetFillColor(gfx++, f);
+        gSPDisplayList(gfx++, fill_gfx);
+        gDPFillWideRectangle(gfx++, OTRGetRectDimensionFromLeftEdge(0.0f), 0, OTRGetRectDimensionFromRightEdge(0.0f),
+                             479);
+        gDPPipeSync(gfx++);
+        *gfxp = gfx;
     } else if ((alpha & 0xFF) != 0) {
         gfx = *gfxp;
-        gDPSetColor(gfx, G_SETPRIMCOLOR, alpha);
-        gSPDisplayList(gfx + 1, fade_gfx);
-        *gfxp = gfx + 2;
+        gDPSetColor(gfx++, G_SETPRIMCOLOR, alpha);
+        gSPDisplayList(gfx++, fade_gfx);
+        gDPFillWideRectangle(gfx++, OTRGetRectDimensionFromLeftEdge(0.0f), 0, OTRGetRectDimensionFromRightEdge(0.0f),
+                             480);
+        gDPPipeSync(gfx++);
+        *gfxp = gfx;
     }
 }
 

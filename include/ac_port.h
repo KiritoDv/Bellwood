@@ -46,6 +46,18 @@ void AC_DebugPrint(int x, int y, int show_count, const char* fmt, ...);
 f32 AC_PadGetSubStickValue(void);
 s16 AC_PadGetSubStickAngle(void);
 
+f32 OTRGetDimensionFromLeftEdge(f32 v);
+f32 OTRGetDimensionFromRightEdge(f32 v);
+s16 OTRGetRectDimensionFromLeftEdge(f32 v);
+s16 OTRGetRectDimensionFromRightEdge(f32 v);
+f32 OTRGetDimensionFromLeftEdgeOverride(f32 v);
+f32 OTRGetDimensionFromRightEdgeOverride(f32 v);
+s16 OTRGetRectDimensionFromLeftEdgeOverride(f32 v);
+s16 OTRGetRectDimensionFromRightEdgeOverride(f32 v);
+
+f32 AC_WideScale(void);
+int AC_WideCount(f32* carry);
+
 int AC_GbaIslandWithoutGba(void);
 int AC_GbaLinkAvailable(void);
 int AC_EReaderConnect(void);

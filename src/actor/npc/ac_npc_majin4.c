@@ -10,6 +10,7 @@
 #include "m_bgm.h"
 #include "m_house.h"
 #include "m_rcp.h"
+#include "ac_port.h"
 
 enum {
     aMJN4_THINK_START_WAIT,
@@ -150,7 +151,9 @@ static void aMJN4_prenmi_draw(NPC_MAJIN4_ACTOR* actor, GAME* game) {
                 line_y = (time / 500000.0f) * -15.0f + 127.0f;
                 gDPSetPrimColor(gfx++, 0, 0, 255, 255, 255, alpha);
                 
-                gfx = gfx_gSPTextureRectangle1(gfx, 0, (u32)(line_y * 4), 320 << G_TEXTURE_IMAGE_FRAC, (u32)((line_y + 1) * 4), G_TX_RENDERTILE, 0, 0, 0, 0);
+                gSPWideTextureRectangle(gfx++, OTRGetRectDimensionFromLeftEdge(0.0f) * 4, (u32)(line_y * 4) << 1,
+                                        OTRGetRectDimensionFromRightEdge(0.0f) * 4, (u32)((line_y + 1) * 4) << 1,
+                                        G_TX_RENDERTILE, 0, 0, 0, 0);
                 gDPPipeSync(gfx++);   
             }
 

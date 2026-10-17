@@ -1,6 +1,7 @@
 #include "ac_weather_rain.h"
 
 #include "m_common_data.h"
+#include "ac_port.h"
 #include "m_rcp.h"
 #include "m_field_info.h"
 #include "m_malloc.h"
@@ -38,6 +39,8 @@ static int aWeatherRain_DecideMakeRainCount(ACTOR* actor) {
     }
 }
 
+static f32 aWeatherRain_make_carry;
+
 static void aWeatherRain_make(ACTOR* actor, GAME* game) {
     aWeather_Priv* priv;
     xyz_t pos;
@@ -50,15 +53,20 @@ static void aWeatherRain_make(ACTOR* actor, GAME* game) {
     WEATHER_ACTOR* weather = (WEATHER_ACTOR*)actor;
 
     f32 x, y, z;
+    f32 half_width = 130.0f * AC_WideScale();
+    int level_count;
 
-    count = aWeatherRain_DecideMakeRainCount(actor);
+    count = 0;
+    for (level_count = aWeatherRain_DecideMakeRainCount(actor); level_count > 0; level_count--) {
+        count += AC_WideCount(&aWeatherRain_make_carry);
+    }
     pos = weather->pos;
 
     for (i = 0; i < count; i++) {
 
         priv_num = Common_Get(clip.weather_clip)->get_priv_num(&weather->actor_class);
         if (priv_num != -1) {
-            x = -130.0f + (RANDOM_F(260.0f));
+            x = -half_width + (RANDOM_F(2.0f * half_width));
             z = -200.0f + (RANDOM_F(360.0f));
 
             pos_mod = pos;
