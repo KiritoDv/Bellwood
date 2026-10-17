@@ -6,6 +6,9 @@
 #include <chrono>
 #include <cstring>
 #include <thread>
+#ifdef __EMSCRIPTEN__
+#include "port/web/WebUtils.h"
+#endif
 
 extern "C" {
 #include "gc_compat.h"
@@ -83,7 +86,11 @@ void VIWaitForRetrace(void) {
     if (sNextField <= now || sNextField - now > kField) {
         sNextField = now + kField;
     }
+#ifdef __EMSCRIPTEN__
+    WebFrame_Wait(std::chrono::duration<double, std::milli>(sNextField - now).count());
+#else
     std::this_thread::sleep_until(sNextField);
+#endif
     sNextField += kField;
 }
 

@@ -29,6 +29,7 @@ using Clock = std::chrono::steady_clock;
 constexpr int kSampleRate = 32000;
 constexpr auto kIdleWait = std::chrono::milliseconds(4);
 constexpr int kClockLeadFrames = 4;
+constexpr auto kPlayerStallGrace = std::chrono::milliseconds(250);
 
 struct AudioThreadState {
     std::thread thread;
@@ -111,9 +112,18 @@ void AudioThreadMain() {
         }
 
         for (int i = 0; i < maxFrames; i++) {
+            bool submit = pacedByPlayer;
             if (pacedByPlayer) {
-                if (AudioPlayerBuffered() >= AudioPlayerGetDesiredBuffered()) {
-                    break;
+                if (AudioPlayerBuffered() < AudioPlayerGetDesiredBuffered()) {
+                    clockBase = Clock::now();
+                    clockFrames = 0;
+                } else {
+                    const auto stalled =
+                        std::chrono::duration<double>(Clock::now() - clockBase - kPlayerStallGrace).count();
+                    if (stalled <= 0.0 || clockFrames >= (int64_t)(stalled * kSampleRate / NA_PORT_FRAME_SAMPLES)) {
+                        break;
+                    }
+                    submit = false;
                 }
             } else {
                 const auto elapsed = std::chrono::duration<double>(Clock::now() - clockBase).count();
@@ -123,7 +133,7 @@ void AudioThreadMain() {
                 }
             }
 
-            RenderFrame(frame, pacedByPlayer);
+            RenderFrame(frame, submit);
             clockFrames++;
         }
 
