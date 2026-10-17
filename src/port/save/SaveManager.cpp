@@ -55,7 +55,7 @@ namespace fs = std::filesystem;
 
 namespace {
 
-constexpr const char* kFormatName = "acport-save";
+constexpr const char* kFormatName = "bellwood-save";
 constexpr int kFormatVersion = 1;
 constexpr const char* kHomeFile = "town.json";
 constexpr const char* kTownDir = "towns";
@@ -2301,7 +2301,7 @@ void Tick() {
     SPDLOG_INFO("save self-test {}:\n{}{}", ok ? "passed" : "FAILED", json, io);
 
     if (mode == 2) {
-        fs::path dir = fs::temp_directory_path() / ("acport-save-quittest-" + std::to_string(std::time(nullptr)));
+        fs::path dir = fs::temp_directory_path() / ("bellwood-save-quittest-" + std::to_string(std::time(nullptr)));
         std::error_code ec;
         fs::create_directories(dir, ec);
         sSaveDirOverride = dir;
@@ -2352,7 +2352,7 @@ bool IoSelfTest(std::string* report) {
     }
     u8 softReset = SoftResetEnable;
     bool session = sSessionActive;
-    fs::path dir = fs::temp_directory_path() / ("acport-save-selftest-" + std::to_string(std::time(nullptr)));
+    fs::path dir = fs::temp_directory_path() / ("bellwood-save-selftest-" + std::to_string(std::time(nullptr)));
     std::error_code ec;
     fs::create_directories(dir, ec);
     sSaveDirOverride = dir;

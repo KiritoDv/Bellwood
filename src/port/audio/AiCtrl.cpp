@@ -1,5 +1,3 @@
-#ifdef ACPORT_AUDIO
-
 extern "C" {
 #include "jaudio_NES/aictrl.h"
 #include "jaudio_NES/rate.h"
@@ -107,5 +105,3 @@ extern "C" void Jac_MixExtTrack(s16* dac, s32 nSamples) {
             break;
     }
 }
-
-#endif

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
-set(PORT_NAME "acport")
+set(PORT_NAME "bellwood")
 set(PORT_ARCHIVE "${PORT_NAME}.o2r")
 set(GAME_ARCHIVE "ac.o2r")
 
@@ -8,7 +8,7 @@ set(GAME_ARCHIVE "ac.o2r")
 project(${PORT_NAME} VERSION 0.1.0 LANGUAGES C CXX)
 include(FetchContent)
 
-include(cmake/acport-cvars.cmake)
+include(cmake/bellwood-cvars.cmake)
 include(cmake/lus-cvars.cmake)
 
 set(NATO_PHONETIC_ALPHABET
@@ -178,7 +178,6 @@ if (AC_IMPORTER_SOURCES)
     list(FILTER ALL_FILES EXCLUDE REGEX "^src/port/importer/ac/")
     list(APPEND ALL_FILES ${AC_IMPORTER_SOURCES})
 endif()
-list(REMOVE_ITEM PORT_GAME_C_FILES src/port/stubs/AudioStub.c)
 
 # Create source groups that match the real file directory paths
 foreach(source IN LISTS ALL_FILES)
@@ -259,18 +258,13 @@ add_subdirectory(libultraship ${CMAKE_BINARY_DIR}/libultraship)
 add_dependencies(${PROJECT_NAME} libultraship)
 target_link_libraries(${PROJECT_NAME} PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,libultraship>")
 
-option(ACPORT_ASAN "Build the port and the game with AddressSanitizer" OFF)
-option(ACPORT_AUDIO "Build the Neos audio driver (jaudio_NES) instead of the audio stub" ON)
+option(BELLWOOD_ASAN "Build the port and the game with AddressSanitizer" OFF)
 
-include(cmake/acport-game.cmake)
+include(cmake/bellwood-game.cmake)
 target_sources(acgame PRIVATE ${PORT_GAME_C_FILES})
-if (ACPORT_AUDIO)
-    include(cmake/acport-audio.cmake OPTIONAL)
-else()
-    target_sources(acgame PRIVATE src/port/stubs/AudioStub.c)
-endif()
+include(cmake/bellwood-audio.cmake)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
-if (ACPORT_ASAN AND NOT MSVC)
+if (BELLWOOD_ASAN AND NOT MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE -fsanitize=address -fno-omit-frame-pointer)
     target_link_options(${PROJECT_NAME} PRIVATE -fsanitize=address)
 endif()

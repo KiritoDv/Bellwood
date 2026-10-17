@@ -11,9 +11,7 @@
 #include "port/importer/GenericArrayFactory.h"
 #include "port/importer/RawTextureFactory.h"
 #include "port/importer/KeyFrameFactory.h"
-#ifdef ACPORT_AUDIO
 #include "port/audio/ACAudio.h"
-#endif
 #if __has_include("port/importer/ac/AcImporters.h")
 #include "port/importer/ac/AcImporters.h"
 #define AC_HAS_IMPORTERS 1
@@ -182,8 +180,13 @@ GameEngine::GameEngine() {
     context->GetChildren().Add(logger);
     logger->Init();
 
-    auto config = std::make_shared<Ship::Config>(
-        Ship::Context::GetPathRelativeToAppDirectory(std::string(PORT_NAME) + ".cfg.json"), nullptr);
+    const std::string configPath = Ship::Context::GetPathRelativeToAppDirectory(std::string(PORT_NAME) + ".cfg.json");
+    const std::string legacyConfigPath = Ship::Context::GetPathRelativeToAppDirectory("acport.cfg.json");
+    std::error_code configError;
+    if (!fs::exists(configPath, configError) && fs::exists(legacyConfigPath, configError)) {
+        fs::rename(legacyConfigPath, configPath, configError);
+    }
+    auto config = std::make_shared<Ship::Config>(configPath, nullptr);
     context->GetChildren().Add(config);
 
     auto consoleVariables = std::make_shared<Ship::ConsoleVariable>(config);
@@ -451,9 +454,7 @@ void GameEngine::FinishInit() {
     ShipCompat::GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
 
     Instance->AudioInit();
-#ifdef ACPORT_AUDIO
     AC_AudioInit();
-#endif
     PortGui::SetupGuiElements();
     DevConsole_Init();
     ShipInit::InitAll();

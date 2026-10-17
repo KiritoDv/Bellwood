@@ -15,9 +15,7 @@
 #include "m_land.h"
 #include "ac_port.h"
 #include "gc_compat.h"
-#ifdef ACPORT_AUDIO
 #include "jaudio_NES/game64.h"
-#endif
 
 #include <stdlib.h>
 
@@ -30,18 +28,14 @@ static OSMesg serialMsgBuf;
 static OSMesgQueue l_serialMsgQ;
 static u8* l_game_heap;
 
-#ifdef ACPORT_AUDIO
 static void audioFatalCallback(void) {
     OSReport("audio: fatal error reported by Neos\n");
 }
-#endif
 
 void AC_BootInit(void) {
     __osInitialize_common();
 
-#ifdef ACPORT_AUDIO
     Na_InitAudio_PC(audioFatalCallback);
-#endif
 
     l_game_heap = (u8*)malloc(AC_GAME_HEAP_SIZE);
     MallocInit(l_game_heap, AC_GAME_HEAP_SIZE);

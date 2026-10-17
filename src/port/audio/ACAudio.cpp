@@ -1,5 +1,3 @@
-#ifdef ACPORT_AUDIO
-
 #include "ACAudio.h"
 #include "NeosGlue.h"
 #include "importers/NeosAudioResources.h"
@@ -181,5 +179,3 @@ extern "C" void AC_AudioShutdown(void) {
     }
     NaPort_Shutdown();
 }
-
-#endif

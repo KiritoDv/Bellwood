@@ -1,5 +1,3 @@
-#ifdef ACPORT_AUDIO
-
 #include "port/audio/NeosGlue.h"
 
 #include "jaudio_NES/aictrl.h"
@@ -109,5 +107,3 @@ void NaPort_SetVolumes(float music, float sfx) {
 void NaPort_Shutdown(void) {
     sNeosReady = FALSE;
 }
-
-#endif

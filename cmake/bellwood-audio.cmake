@@ -1,4 +1,4 @@
-set(ACPORT_AUDIO_NEOS_SOURCES
+set(BELLWOOD_AUDIO_NEOS_SOURCES
     src/static/jaudio_NES/internal/astest.c
     src/static/jaudio_NES/internal/audioconst.c
     src/static/jaudio_NES/internal/audiotable.c
@@ -16,7 +16,7 @@ set(ACPORT_AUDIO_NEOS_SOURCES
     src/static/jaudio_NES/internal/track.c
 )
 
-set(ACPORT_AUDIO_GAME_SOURCES
+set(BELLWOOD_AUDIO_GAME_SOURCES
     src/static/jaudio_NES/game/audioheaders.c
     src/static/jaudio_NES/game/dummyprobe.c
     src/static/jaudio_NES/game/emusound.c
@@ -28,32 +28,27 @@ set(ACPORT_AUDIO_GAME_SOURCES
     src/static/jaudio_NES/game/staff.c
 )
 
-set(ACPORT_AUDIO_GLUE_SOURCES
+set(BELLWOOD_AUDIO_GLUE_SOURCES
     src/port/audio/NeosGlue.c
 )
 
-set(ACPORT_AUDIO_PORT_SOURCES
+set(BELLWOOD_AUDIO_PORT_SOURCES
     src/port/audio/ACAudio.cpp
     src/port/audio/AiCtrl.cpp
     src/port/audio/NeosResources.cpp
     src/port/audio/importers/NeosAudioResources.cpp
 )
 
-get_target_property(ACPORT_AUDIO_EXISTING_SOURCES ${PROJECT_NAME} SOURCES)
-list(FILTER ACPORT_AUDIO_EXISTING_SOURCES EXCLUDE REGEX "(^|/)src/port/audio/.*\\.(c|cpp)$")
-set_property(TARGET ${PROJECT_NAME} PROPERTY SOURCES ${ACPORT_AUDIO_EXISTING_SOURCES})
+get_target_property(BELLWOOD_AUDIO_EXISTING_SOURCES ${PROJECT_NAME} SOURCES)
+list(FILTER BELLWOOD_AUDIO_EXISTING_SOURCES EXCLUDE REGEX "(^|/)src/port/audio/.*\\.(c|cpp)$")
+set_property(TARGET ${PROJECT_NAME} PROPERTY SOURCES ${BELLWOOD_AUDIO_EXISTING_SOURCES})
 
-get_target_property(ACPORT_AUDIO_GAME_EXISTING_SOURCES acgame SOURCES)
-list(FILTER ACPORT_AUDIO_GAME_EXISTING_SOURCES EXCLUDE REGEX "(^|/)src/port/stubs/AiMixStub\\.c$")
-set_property(TARGET acgame PROPERTY SOURCES ${ACPORT_AUDIO_GAME_EXISTING_SOURCES})
-
-target_sources(acgame PRIVATE ${ACPORT_AUDIO_NEOS_SOURCES} ${ACPORT_AUDIO_GAME_SOURCES} ${ACPORT_AUDIO_GLUE_SOURCES})
-target_compile_definitions(acgame PRIVATE ACPORT_AUDIO=1)
+target_sources(acgame PRIVATE ${BELLWOOD_AUDIO_NEOS_SOURCES} ${BELLWOOD_AUDIO_GAME_SOURCES} ${BELLWOOD_AUDIO_GLUE_SOURCES})
 if (NOT MSVC)
-    set_source_files_properties(${ACPORT_AUDIO_NEOS_SOURCES} PROPERTIES COMPILE_OPTIONS "-fsigned-char")
+    set_source_files_properties(${BELLWOOD_AUDIO_NEOS_SOURCES} PROPERTIES COMPILE_OPTIONS "-fsigned-char")
 endif()
 
-add_library(acaudio OBJECT ${ACPORT_AUDIO_PORT_SOURCES})
+add_library(acaudio OBJECT ${BELLWOOD_AUDIO_PORT_SOURCES})
 target_include_directories(acaudio BEFORE PRIVATE
     ${CMAKE_SOURCE_DIR}/include
     ${CMAKE_SOURCE_DIR}/src
@@ -62,16 +57,15 @@ target_include_directories(acaudio BEFORE PRIVATE
     ${CMAKE_SOURCE_DIR}/libultraship/include/libultraship
 )
 target_link_libraries(acaudio PRIVATE libultraship)
-target_compile_definitions(acaudio PRIVATE ACPORT_AUDIO=1 F3DEX_GBI_2 TARGET_PC VERSION=VER_GAFE01_00 SPDLOG_ACTIVE_LEVEL=0)
+target_compile_definitions(acaudio PRIVATE F3DEX_GBI_2 TARGET_PC VERSION=VER_GAFE01_00 SPDLOG_ACTIVE_LEVEL=0)
 if (MSVC)
     target_compile_options(acaudio PRIVATE /w)
 else()
     target_compile_options(acaudio PRIVATE -Wno-zero-length-array -Wno-c99-extensions)
-    if (ACPORT_ASAN)
+    if (BELLWOOD_ASAN)
         target_compile_options(acaudio PRIVATE -fsanitize=address -fno-omit-frame-pointer)
     endif()
 endif()
 
 target_sources(${PROJECT_NAME} PRIVATE $<TARGET_OBJECTS:acaudio>)
-target_compile_definitions(${PROJECT_NAME} PRIVATE ACPORT_AUDIO=1)
 add_dependencies(${PROJECT_NAME} acaudio)

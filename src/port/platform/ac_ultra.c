@@ -9,7 +9,7 @@
 
 #define AC_GRAPH_THREAD_ID 4
 
-static char l_copy_date[] = "acport " __DATE__ " " __TIME__;
+static char l_copy_date[] = "bellwood " __DATE__ " " __TIME__;
 
 void* boot_copyDate = l_copy_date;
 

@@ -14,9 +14,7 @@
 #include <CoreFoundation/CoreFoundation.h>
 #endif
 
-#ifdef ACPORT_AUDIO
 #include "port/audio/ACAudio.h"
-#endif
 
 extern "C" {
 #include "FrameStub.h"
@@ -32,9 +30,7 @@ void push_frame() {
     GameEngine::Instance->StartFrame();
     if (sGameRunning) {
         sGameRunning = AC_RunFrame() != 0;
-#ifdef ACPORT_AUDIO
         AC_AudioFrame(game_GameFrame);
-#endif
     } else {
         FrameStub_Run();
     }
@@ -80,9 +76,7 @@ int main(int argc, char* argv[]) {
     while (WindowIsRunning()) {
         push_frame();
     }
-#ifdef ACPORT_AUDIO
     AC_AudioShutdown();
-#endif
     GameEngine::Instance->Destroy();
     return 0;
 }

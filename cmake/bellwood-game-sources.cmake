@@ -1,4 +1,4 @@
-set(ACPORT_GAME_SOURCES
+set(BELLWOOD_GAME_SOURCES
     src/static/libu64/debug.c
     src/static/libu64/gfxprint.c
     src/static/libu64/gfxprint_data.c
@@ -592,7 +592,7 @@ set(ACPORT_GAME_SOURCES
     src/system/sys_vimgr.c
 )
 
-set(ACPORT_DATA_SOURCES
+set(BELLWOOD_DATA_SOURCES
     src/data/combi/data_combi.c
     src/data/field/bg/acre/bg_data.c
     src/data/field/field_data.c

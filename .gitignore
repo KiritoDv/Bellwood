@@ -40,7 +40,7 @@ compile_commands.json
 temp/
 
 # PC port build output
-/acport.o2r
+/bellwood.o2r
 /ac.o2r
 /properties.h
 /src/port/build.c
@@ -54,7 +54,7 @@ temp/
 *.ciso
 *.gcz
 *.rvz
-/acport.cfg.json
+/bellwood.cfg.json
 /imgui.ini
 /logs/
 /save/

@@ -1,5 +1,3 @@
-#ifdef ACPORT_AUDIO
-
 #include "importers/NeosAudioResources.h"
 
 #include <bridge/resourcebridge.h>
@@ -159,5 +157,3 @@ extern "C" BOOL NaPort_WaitQueues(u32 timeout_ms) {
 extern "C" void NaPort_SignalQueues(void) {
     sQueueSignal.notify_all();
 }
-
-#endif

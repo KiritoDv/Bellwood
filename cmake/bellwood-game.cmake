@@ -1,8 +1,8 @@
-include(${CMAKE_CURRENT_LIST_DIR}/acport-game-sources.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/bellwood-game-sources.cmake)
 
 add_library(acgame OBJECT
-    ${ACPORT_GAME_SOURCES}
-    ${ACPORT_DATA_SOURCES}
+    ${BELLWOOD_GAME_SOURCES}
+    ${BELLWOOD_DATA_SOURCES}
     src/assets/asset_paths.c
 )
 
@@ -52,7 +52,7 @@ else()
     )
 endif()
 
-if (ACPORT_ASAN AND NOT MSVC)
+if (BELLWOOD_ASAN AND NOT MSVC)
     target_compile_options(acgame PRIVATE -fsanitize=address -fno-omit-frame-pointer)
 endif()
 

@@ -1,5 +1,3 @@
-#ifdef ACPORT_AUDIO
-
 #include "NeosAudioResources.h"
 
 #include <bridge/resourcebridge.h>
@@ -365,5 +363,3 @@ void RegisterImporters() {
 }
 
 } // namespace NeosAudio
-
-#endif
