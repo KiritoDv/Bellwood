@@ -3,6 +3,7 @@
 #include "port/Engine.h"
 #include "Notification.h"
 #include "PortInputEditorWindow.h"
+#include "TouchControls.h"
 #include "PortModals.h"
 #include "UIWidgets.hpp"
 #include "port/build.h"
@@ -420,6 +421,31 @@ void PortMenu::AddMenuSettings() {
         .WindowName("Configure Controller")
         .HideInSearch(true)
         .Options(WindowButtonOptions().Tooltip("Enables the separate Bindings Window."));
+
+    AddWidget(path, "Touch Controls", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Enable Touch Controls", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_TOUCH("Enabled"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Shows an on-screen GameCube controller for touch screens.\nOn desktop "
+                                           "the mouse can drive it for testing."));
+    AddWidget(path, "Touch Controls Scale", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar(CVAR_TOUCH("Scale"))
+        .RaceDisable(false)
+        .Options(FloatSliderOptions().Min(0.5f).Max(2.0f).DefaultValue(1.0f).Tooltip(
+            "Size of the on-screen buttons and sticks."));
+    AddWidget(path, "Touch Controls Opacity", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar(CVAR_TOUCH("Opacity"))
+        .RaceDisable(false)
+        .Options(FloatSliderOptions().Min(0.1f).Max(1.0f).DefaultValue(0.8f).IsPercentage().Tooltip(
+            "Opacity of the on-screen controls."));
+    AddWidget(path, "Edit Touch Layout", WIDGET_BUTTON)
+        .Options(ButtonOptions().Tooltip("Closes the menu and lets you drag the on-screen controls to new "
+                                         "positions.\nTap Done to save or Reset to restore the default layout."))
+        .Callback([](WidgetInfo& info) {
+            CVarSetInteger(CVAR_TOUCH("Enabled"), 1);
+            CVarSetInteger(CVAR_TOUCH("EditMode"), 1);
+            ShipCompat::GetWindow()->GetGui()->GetMenu()->Hide();
+        });
 
     // Input Viewer
     path.sidebarName = "Input Viewer";

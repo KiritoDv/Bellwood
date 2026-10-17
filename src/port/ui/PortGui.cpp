@@ -11,6 +11,7 @@
 
 #include "Notification.h"
 #include "PortInputEditorWindow.h"
+#include "TouchControls.h"
 
 #include <ship/window/gui/ConsoleWindow.h>
 #include <ship/window/gui/EventDebuggerWindow.h>
@@ -29,6 +30,7 @@ std::shared_ptr<Notification::Window> mNotificationWindow;
 std::shared_ptr<InputViewer> mInputViewer;
 std::shared_ptr<InputViewerSettingsWindow> mInputViewerSettings;
 std::shared_ptr<PortModalWindow> mModalWindow;
+std::shared_ptr<TouchControlsOverlay> mTouchControlsOverlay;
 std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
 std::shared_ptr<Ship::EventDebuggerWindow> mEventDebuggerWindow;
 std::shared_ptr<LUS::GfxDebuggerWindow> mGfxDebuggerWindow;
@@ -92,6 +94,10 @@ void SetupGuiElements() {
                                                                        "Input Viewer Settings", ImVec2(500, 525));
     gui->AddGuiWindow(mInputViewerSettings);
 
+    mTouchControlsOverlay = std::make_shared<TouchControlsOverlay>(CVAR_WINDOW("TouchControls"), "##TouchControls");
+    gui->AddGuiWindow(mTouchControlsOverlay);
+    mTouchControlsOverlay->Show();
+
 #ifdef PORT_HAS_SHADER_SETTINGS
     mShaderSettingsWindow = std::make_shared<Ship::ShaderSettingsWindow>(CVAR_WINDOW("ShaderSettings"),
                                                                          "Shader Settings", ImVec2(420, 520));
@@ -109,6 +115,7 @@ void Destroy() {
     mNotificationWindow = nullptr;
     mInputViewer = nullptr;
     mInputViewerSettings = nullptr;
+    mTouchControlsOverlay = nullptr;
     mConsoleWindow = nullptr;
 #ifdef PORT_HAS_SHADER_SETTINGS
     mShaderSettingsWindow = nullptr;
