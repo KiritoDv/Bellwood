@@ -53,10 +53,12 @@ class GameEngine {
     std::shared_ptr<Ship::Context> context;
 
     std::vector<AllocationEntry> memoryPool;
+    int totalScripts = 0;
 
     GameEngine();
     static void Create(int argc, char* argv[]);
     void LoadResourceFiles();
+    void LoadScripts();
     void RunExtract(int argc, char* argv[]);
     void AudioInit();
     void FinishInit();

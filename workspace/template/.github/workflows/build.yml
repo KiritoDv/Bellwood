@@ -1,0 +1,47 @@
+name: Build Mod
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Bellwood
+        uses: actions/checkout@v4
+        with:
+          repository: 'Net64DD/Bellwood'
+          ref: 'develop'
+          path: 'Bellwood'
+
+      - name: Checkout libultraship
+        run: git -C Bellwood submodule update --init --depth 1 libultraship
+
+      - name: Checkout Mod
+        uses: actions/checkout@v4
+        with:
+          path: 'Bellwood/workspace/mod-source'
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip cmake
+          python3 -m pip install Pillow cryptography --break-system-packages
+
+      - name: Build Mod
+        run: |
+          cd Bellwood/workspace/mod-source
+          cmake -B build -S .
+          cmake --build build --target package_mod
+
+      - name: Upload Mod
+        uses: actions/upload-artifact@v4
+        with:
+          name: mod
+          path: Bellwood/workspace/mod-source/*.o2r
+          retention-days: 7

@@ -1,0 +1,49 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/../../",
+                "${workspaceFolder}/../../include",
+                "${workspaceFolder}/../../src",
+                "${workspaceFolder}/../../libultraship/include",
+                "${workspaceFolder}/../../libultraship/include/libultraship"
+            ],
+            "defines": ["F3DEX_GBI_2", "TARGET_PC", "VERSION=VER_GAFE01_00", "_LANGUAGE_C"],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "intelliSenseMode": "macos-clang-arm64"
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/../../",
+                "${workspaceFolder}/../../include",
+                "${workspaceFolder}/../../src",
+                "${workspaceFolder}/../../libultraship/include",
+                "${workspaceFolder}/../../libultraship/include/libultraship"
+            ],
+            "defines": ["F3DEX_GBI_2", "TARGET_PC", "VERSION=VER_GAFE01_00", "_LANGUAGE_C"],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "intelliSenseMode": "linux-clang-x64"
+        },
+        {
+            "name": "Windows",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/../../",
+                "${workspaceFolder}/../../include",
+                "${workspaceFolder}/../../src",
+                "${workspaceFolder}/../../libultraship/include",
+                "${workspaceFolder}/../../libultraship/include/libultraship"
+            ],
+            "defines": ["F3DEX_GBI_2", "TARGET_PC", "VERSION=VER_GAFE01_00", "_LANGUAGE_C"],
+            "cStandard": "c11",
+            "intelliSenseMode": "windows-msvc-x64"
+        }
+    ],
+    "version": 4
+}

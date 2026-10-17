@@ -22,6 +22,22 @@
 #endif
 #include <libultraship/window/gui/GfxDebuggerWindow.h>
 
+#ifdef ENABLE_SCRIPTING
+void C_RunGuiDrawCallbacks();
+
+class ModGuiCallbackWindow : public Ship::GuiWindow {
+  public:
+    using GuiWindow::GuiWindow;
+    void UpdateElement() override {
+    }
+    void DrawElement() override {
+    }
+    void Draw() override {
+        C_RunGuiDrawCallbacks();
+    }
+};
+#endif
+
 namespace PortGui {
 // MARK: - Delegates
 std::shared_ptr<Ship::GuiWindow> mInputEditorWindow;
@@ -31,6 +47,9 @@ std::shared_ptr<InputViewer> mInputViewer;
 std::shared_ptr<InputViewerSettingsWindow> mInputViewerSettings;
 std::shared_ptr<PortModalWindow> mModalWindow;
 std::shared_ptr<TouchControlsOverlay> mTouchControlsOverlay;
+#ifdef ENABLE_SCRIPTING
+std::shared_ptr<ModGuiCallbackWindow> mModGuiCallbackWindow;
+#endif
 std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
 std::shared_ptr<Ship::EventDebuggerWindow> mEventDebuggerWindow;
 std::shared_ptr<LUS::GfxDebuggerWindow> mGfxDebuggerWindow;
@@ -98,6 +117,12 @@ void SetupGuiElements() {
     gui->AddGuiWindow(mTouchControlsOverlay);
     mTouchControlsOverlay->Show();
 
+#ifdef ENABLE_SCRIPTING
+    mModGuiCallbackWindow = std::make_shared<ModGuiCallbackWindow>(CVAR_WINDOW("ModGuiCallbacks"), "##ModGui");
+    gui->AddGuiWindow(mModGuiCallbackWindow);
+    mModGuiCallbackWindow->Show();
+#endif
+
 #ifdef PORT_HAS_SHADER_SETTINGS
     mShaderSettingsWindow = std::make_shared<Ship::ShaderSettingsWindow>(CVAR_WINDOW("ShaderSettings"),
                                                                          "Shader Settings", ImVec2(420, 520));
@@ -116,6 +141,9 @@ void Destroy() {
     mInputViewer = nullptr;
     mInputViewerSettings = nullptr;
     mTouchControlsOverlay = nullptr;
+#ifdef ENABLE_SCRIPTING
+    mModGuiCallbackWindow = nullptr;
+#endif
     mConsoleWindow = nullptr;
 #ifdef PORT_HAS_SHADER_SETTINGS
     mShaderSettingsWindow = nullptr;

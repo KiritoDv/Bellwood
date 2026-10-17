@@ -34,7 +34,11 @@
 #include <algorithm>
 #include <chrono>
 #include <cmath>
+#include <mutex>
 #include <thread>
+#if defined(ENABLE_SCRIPTING) && defined(__linux__)
+#include <dlfcn.h>
+#endif
 
 #include <fast/resource/ResourceType.h>
 #include <ship/window/gui/Fonts.h>
@@ -70,6 +74,12 @@
 #include <libultraship/bridge/crashhandlerbridge.h>
 #include <libultraship/bridge/gfxdebuggerbridge.h>
 #include <libultraship/bridge/gfxbridge.h>
+#ifdef ENABLE_SCRIPTING
+#include <libultraship/bridge/scriptingbridge.h>
+#include <ship/resource/archive/Archive.h>
+#include <ship/scripting/ScriptLoader.h>
+#include <ship/security/Keystore.h>
+#endif
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
 #include "port/web/WebUtils.h"
@@ -279,7 +289,13 @@ GameEngine::GameEngine() {
 #endif
     context->GetChildren().Add(threadPool);
 
+#ifdef ENABLE_SCRIPTING
+    auto keystore = std::make_shared<Ship::Keystore>(config);
+    context->GetChildren().Add(keystore);
+    auto resourceManager = std::make_shared<Ship::ResourceManager>(threadPool, keystore);
+#else
     auto resourceManager = std::make_shared<Ship::ResourceManager>(threadPool);
+#endif
     context->GetChildren().Add(resourceManager);
     ResourceSetResourceManager(resourceManager);
 
@@ -353,6 +369,38 @@ GameEngine::GameEngine() {
     context->GetChildren().Add(console);
     console->Init();
 
+#ifdef ENABLE_SCRIPTING
+    resourceManager->GetArchiveManager()->SetUntrustedArchiveHandler(
+        [](Ship::Archive& archive, Ship::KeystoreEntry& key) {
+            const auto info = archive.GetManifest();
+
+            std::string message = "A mod from an unknown author was found.\n\n";
+            message += "Mod: " + info.Name + "\n";
+            message += "Author: " + info.Author + "\n\n";
+            message += "Mods can run code on your computer. Trust this author and load the mod?";
+
+            const SDL_MessageBoxButtonData buttons[] = {
+                { SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "Yes" },
+                { SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT, 0, "No" },
+            };
+            const SDL_MessageBoxData messageBox = {
+                SDL_MESSAGEBOX_WARNING,
+                nullptr,
+                "Untrusted Mod Author",
+                message.c_str(),
+                SDL_arraysize(buttons),
+                buttons,
+                nullptr,
+            };
+
+            int buttonId = 0;
+            if (SDL_ShowMessageBox(&messageBox, &buttonId) < 0) {
+                return false;
+            }
+            return buttonId == 1;
+        });
+#endif
+
     auto crashHandler = std::make_shared<Ship::CrashHandler>();
     context->GetChildren().Add(crashHandler);
     CrashHandlerSetComponent(crashHandler);
@@ -405,6 +453,7 @@ typedef enum ExtractSteps {
     ES_EXTRACT,
     ES_VERIFY,
     GS_LOAD,
+    GS_COMPILE,
 } ExtractSteps;
 
 static bool sGameArchiveFailed = false;
@@ -457,7 +506,81 @@ void CheckAndCreateModFolder() {
     }
 }
 
+static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
+#ifdef ENABLE_SCRIPTING
+    if (ShipCompat::GetScriptLoader() != nullptr) {
+        return;
+    }
+
+    constexpr int kCodeVersion = 1;
+    const std::unordered_map<std::string, std::string> defines = {
+        { "F3DEX_GBI_2", "1" }, { "TARGET_PC", "1" },   { "VERSION", "VER_GAFE01_00" }, { "DEBUG", "0" },
+        { "NDEBUG", "1" },      { "_LANGUAGE_C", "1" }, { "_USE_MATH_DEFINES", "1" },
+    };
+#ifdef _WIN32
+    const std::string buildOptions = "-g -rdynamic -funsigned-char -std=c11";
+#else
+    const std::string buildOptions = "-rdynamic -funsigned-char -std=c11";
+#endif
+
+#ifdef _WIN32
+    const std::string tccBase = Ship::Context::GetAppBundlePath() + "/.tcc";
+    const std::vector<std::string> includePaths = {
+        tccBase + "/include",     tccBase + "/include/tcc",     tccBase + "/include/winapi",
+        tccBase + "/include/sys", tccBase + "/include/sec_api",
+    };
+    const std::vector<std::string> libraries = { PORT_NAME };
+#else
+    std::string tccBase = Ship::Context::GetPathRelativeToAppDirectory(".tcc");
+    if (!std::filesystem::exists(tccBase)) {
+        tccBase = Ship::Context::GetAppBundlePath() + "/.tcc";
+    }
+    std::vector<std::string> includePaths = { tccBase + "/include" };
+#ifdef __APPLE__
+    if (FILE* fp = popen("xcrun --show-sdk-path 2>/dev/null", "r")) {
+        char buf[4096] = {};
+        if (fgets(buf, sizeof(buf), fp)) {
+            std::string sdkPath(buf);
+            sdkPath.erase(sdkPath.find_last_not_of("\n\r \t") + 1);
+            if (!sdkPath.empty()) {
+                includePaths.push_back(sdkPath + "/usr/include");
+            }
+        }
+        pclose(fp);
+    }
+#endif
+#if defined(__linux__)
+    {
+        const auto libcStub = std::filesystem::path(tccBase) / "lib" / "libc.so";
+        std::error_code ec;
+        const bool stale = std::filesystem::is_symlink(libcStub) && !std::filesystem::exists(libcStub, ec);
+        if (!std::filesystem::exists(libcStub, ec) || stale) {
+            Dl_info info = {};
+            void* libcFunc = dlsym(RTLD_DEFAULT, "printf");
+            if (libcFunc != nullptr && dladdr(libcFunc, &info) && info.dli_fname != nullptr && *info.dli_fname) {
+                std::filesystem::remove(libcStub, ec);
+                std::filesystem::create_symlink(info.dli_fname, libcStub, ec);
+                if (ec) {
+                    SPDLOG_WARN("ScriptLoader: failed to create libc.so symlink: {}", ec.message());
+                }
+            }
+        }
+    }
+#endif
+    const std::vector<std::string> libraries = {};
+#endif
+    const std::vector<std::string> libraryPaths = { tccBase + "/lib" };
+
+    auto scriptLoader = std::make_shared<Ship::ScriptLoader>(defines, kCodeVersion, buildOptions, includePaths,
+                                                             libraryPaths, libraries, ShipCompat::GetResourceManager());
+    context->GetChildren().Add(scriptLoader);
+    ScriptSetLoader(scriptLoader);
+#endif
+}
+
 void GameEngine::LoadResourceFiles() {
+    SetupScriptLoader(context);
+
     std::string gamePath = Ship::Context::LocateFileAcrossAppDirs(GAME_ARCHIVE, PORT_NAME);
     if (std::filesystem::exists(gamePath)) {
         sGameArchiveFailed = ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(gamePath) == nullptr;
@@ -508,6 +631,74 @@ void GameEngine::LoadResourceFiles() {
             }
         }
     }
+
+#ifdef ENABLE_SCRIPTING
+    totalScripts = 0;
+    const auto loadedArchives = ShipCompat::GetResourceManager()->GetArchiveManager()->GetArchives();
+    for (const auto& archive : *loadedArchives) {
+        const auto& info = archive->GetManifest();
+        if (!info.Main.empty() || !info.Binaries.empty()) {
+            totalScripts++;
+        }
+    }
+#endif
+}
+
+#ifdef ENABLE_SCRIPTING
+static std::vector<std::string> CompileScripts(const std::function<void(const std::string&)>& onStart,
+                                               const std::function<void()>& onFinish) {
+    std::vector<std::string> errors;
+    auto scripts = ShipCompat::GetScriptLoader();
+    if (scripts == nullptr) {
+        return errors;
+    }
+    const auto archives = ShipCompat::GetResourceManager()->GetArchiveManager()->GetArchives();
+    for (const auto& archive : *archives) {
+        const auto& info = archive->GetManifest();
+        if (info.Main.empty() && info.Binaries.empty()) {
+            continue;
+        }
+        if (onStart) {
+            onStart(info.Name);
+        }
+        try {
+            scripts->Compile(archive);
+        } catch (const std::exception& e) {
+            SPDLOG_ERROR("Failed to build {}: {}", info.Name, e.what());
+            errors.push_back(info.Name + ": " + e.what());
+        }
+        if (onFinish) {
+            onFinish();
+        }
+    }
+    return errors;
+}
+#endif
+
+void GameEngine::LoadScripts() {
+#ifdef ENABLE_SCRIPTING
+    auto scripts = ShipCompat::GetScriptLoader();
+    if (scripts == nullptr) {
+        return;
+    }
+    Notification::Emit({ .message = "Loading mods...", .remainingTime = 3.0f, .mute = true });
+    for (const auto& error : CompileScripts(nullptr, nullptr)) {
+        Notification::Emit({ .message = "Failed to build " + error,
+                             .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
+                             .remainingTime = 8.0f,
+                             .mute = true });
+    }
+    try {
+        scripts->LoadAll();
+        Notification::Emit({ .message = "Finished loading mods", .remainingTime = 4.0f, .mute = true });
+    } catch (const std::exception& e) {
+        SPDLOG_ERROR("Failed to load mods: {}", e.what());
+        Notification::Emit({ .message = "Failed to load some mods, check the logs for details.",
+                             .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
+                             .remainingTime = 8.0f,
+                             .mute = true });
+    }
+#endif
 }
 
 void GameEngine::FinishInit() {
@@ -579,6 +770,16 @@ void GameEngine::FinishInit() {
     PortGui::SetupGuiElements();
     DevConsole_Init();
     ShipInit::InitAll();
+#ifdef ENABLE_SCRIPTING
+    if (PortGui::mPortMenu != nullptr) {
+        PortGui::mPortMenu->AddModMenu();
+    }
+    if (auto scripts = ShipCompat::GetScriptLoader()) {
+        try {
+            scripts->LoadAll();
+        } catch (const std::exception& e) { SPDLOG_ERROR("Failed to load mods: {}", e.what()); }
+    }
+#endif
     CALL_EVENT(EngineReady);
 
     if (!sGameArchiveLoaded) {
@@ -592,6 +793,12 @@ void GameEngine::FinishInit() {
 
 void GameEngine::RunExtract(int argc, char* argv[]) {
     bool extractDone = false;
+    std::atomic<bool> compileDone = false;
+    std::atomic<size_t> compileCount{ 0 };
+    std::mutex compileMutex;
+    std::string compileName;
+    std::string compileError;
+    bool compileErrorDismissed = false;
     ExtractSteps extractStep = ES_PORT_ARCHIVE;
     WindowsSteps windowsStep = WS_TEMP;
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow());
@@ -706,7 +913,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             }
             goto render;
         }
-        if (extractDone) {
+        if (extractDone && (compileError.empty() || compileErrorDismissed)) {
             break;
         }
         if (PortGui::PopupsQueued() > 0 || extracting || showDiscPicker) {
@@ -1013,8 +1220,35 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             }
             case GS_LOAD: {
                 LoadResourceFiles();
+#ifdef ENABLE_SCRIPTING
+                if (totalScripts > 0) {
+                    threadPool->submit_task([&]() -> void {
+                        const auto errors = CompileScripts(
+                            [&](const std::string& name) {
+                                std::lock_guard<std::mutex> lock(compileMutex);
+                                compileName = name;
+                            },
+                            [&]() { compileCount++; });
+                        {
+                            std::lock_guard<std::mutex> lock(compileMutex);
+                            for (const auto& error : errors) {
+                                compileError += (compileError.empty() ? "" : "\n\n") + error;
+                            }
+                        }
+                        compileDone = true;
+                    });
+                    extractStep = GS_COMPILE;
+                    continue;
+                }
+#endif
                 extractDone = true;
                 continue;
+            }
+            case GS_COMPILE: {
+                if (compileDone) {
+                    extractDone = true;
+                }
+                break;
             }
             default:
                 break;
@@ -1140,6 +1374,56 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     counting ? fmt::format("{:.0f}%", progress) : (std::string) "Reading disc, please wait...";
                 ImGui::ProgressBar(counting ? progress / 100.0f : -1.0f * (float)ImGui::GetTime(),
                                    ImVec2(600.0f, 50.0f), overlay.c_str());
+                ImGui::EndPopup();
+            }
+            ImGui::PopStyleColor(3);
+            ImGui::PopStyleVar(2);
+        }
+
+        std::string modName;
+        std::string modError;
+        {
+            std::lock_guard<std::mutex> lock(compileMutex);
+            modName = compileName;
+            modError = compileError;
+        }
+        const bool modsPopup =
+            extractStep == GS_COMPILE && (!extractDone || (!modError.empty() && !compileErrorDismissed));
+        if (modsPopup && !ImGui::IsPopupOpen("Loading Mods")) {
+            ImGui::OpenPopup("Loading Mods");
+        }
+        if (modsPopup) {
+            ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3.0f);
+            ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(10.0f, 8.0f));
+            auto color = UIWidgets::ColorValues.at(THEME_COLOR);
+            ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(color.x, color.y, color.z, 0.6f));
+            ImGui::PushStyleColor(ImGuiCol_PlotHistogram, ImVec4(color.x, color.y, color.z, 1.0f));
+            ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.0f, 0.0f, 0.0f, 0.3f));
+            if (ImGui::BeginPopupModal("Loading Mods", NULL,
+                                       ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoResize |
+                                           ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar |
+                                           ImGuiWindowFlags_NoSavedSettings)) {
+                const size_t built = compileCount;
+                const float progress = totalScripts > 0 ? std::min(1.0f, (float)built / (float)totalScripts) : 0.0f;
+                if (modError.empty()) {
+                    ImGui::Text("Building %s...", modName.empty() ? "mods" : modName.c_str());
+                } else {
+                    ImGui::TextColored(ImVec4(1.0f, 0.4f, 0.4f, 1.0f), "Some mods failed to build:");
+                }
+                const std::string overlay = fmt::format("{}/{}", built, totalScripts);
+                ImGui::ProgressBar(progress, ImVec2(600.0f, 50.0f), overlay.c_str());
+                if (!modError.empty()) {
+                    ImGui::Spacing();
+                    ImGui::BeginChild("##modError", ImVec2(600.0f, 110.0f), ImGuiChildFlags_Borders);
+                    ImGui::PushTextWrapPos(0.0f);
+                    ImGui::TextUnformatted(modError.c_str());
+                    ImGui::PopTextWrapPos();
+                    ImGui::EndChild();
+                    if (extractDone && ImGui::Button("Continue", ImVec2(600.0f, 0.0f))) {
+                        compileErrorDismissed = true;
+                        ImGui::CloseCurrentPopup();
+                    }
+                }
                 ImGui::EndPopup();
             }
             ImGui::PopStyleColor(3);

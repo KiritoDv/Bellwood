@@ -24,8 +24,14 @@ class PortMenu : public Ship::Menu {
     void AddMenuEnhancements();
     void AddMenuDevTools();
     void AddMenuShaderSettings();
+#ifdef ENABLE_SCRIPTING
+    void AddModMenu();
+#endif
 
   private:
+#ifdef ENABLE_SCRIPTING
+    bool mModMenuAdded = false;
+#endif
     char mGitCommitHashTruncated[8];
     bool mIsTaggedVersion;
 };
