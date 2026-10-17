@@ -1,0 +1,8 @@
+[submodule "Torch"]
+	path = Torch
+	url = https://github.com/HarbourMasters/Torch
+	branch = gamecube-input
+[submodule "libultraship"]
+	path = libultraship
+	url = https://github.com/KiritoDv/libultraship.git
+	branch = ac/f3dex2-ac
