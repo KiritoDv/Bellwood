@@ -1,6 +1,6 @@
 #include "m_npc.h"
 #include "port/api/cloth.h"
-#include "port/api/villager.h"
+#include "port/api/structure.h"
 
 #include "m_font.h"
 #include "m_name_table.h"
@@ -2929,6 +2929,15 @@ extern void mNpc_SetNpcinfo(ACTOR* actor, s8 npc_info_idx) {
 static void mNpc_AddNpc_inNpcRoom(mFM_move_actor_c* move_actor, int move_actor_idx, u8 bx, u8 bz) {
     u32 owner_id = Common_Get(house_owner_name);
     mActor_name_t id = owner_id;
+    u8 ut_x = 4;
+    u8 ut_z = 7;
+
+    if (C_IsCustomStructure(owner_id)) {
+        id = C_HouseRoomResident(owner_id);
+        owner_id = id;
+        ut_x = C_HouseRoomEntry(Common_Get(house_owner_name), FALSE) / mFI_UT_WORLDSIZE_X;
+        ut_z = C_HouseRoomEntry(Common_Get(house_owner_name), TRUE) / mFI_UT_WORLDSIZE_Z - 1;
+    }
 
     if (id != RSV_NO) {
         if (id != EMPTY_NO && mEvNM_CheckJointEvent(owner_id) != TRUE) {
@@ -2936,8 +2945,8 @@ static void mNpc_AddNpc_inNpcRoom(mFM_move_actor_c* move_actor, int move_actor_i
 
             if (idx != -1) {
                 move_actor->name_id = id;
-                move_actor->ut_x = 4;
-                move_actor->ut_z = 7;
+                move_actor->ut_x = ut_x;
+                move_actor->ut_z = ut_z;
                 move_actor->npc_info_idx = idx;
                 move_actor->arg = -1;
                 mFI_SetMoveActorBitData_ON(move_actor_idx, bx, bz);
@@ -3020,6 +3029,9 @@ extern void mNpc_RenewalNpcRoom(s16* wall_floor) {
                 floor = island_floor;
             }
         }
+    } else if (mFI_GET_TYPE(field_id) == mFI_FIELD_NPCROOM0 && C_IsCustomStructure(owner_id)) {
+        wall = (u8)C_HouseRoomInterior(owner_id, TRUE);
+        floor = (u8)C_HouseRoomInterior(owner_id, FALSE);
     } else if (mFI_GET_TYPE(field_id) == mFI_FIELD_NPCROOM0 && owner_id != EMPTY_NO && owner_id != RSV_NO) {
         int idx = mNpc_SearchAnimalinfo(Save_Get(animals), owner_id, ANIMAL_NUM_MAX);
         mNpc_NpcList_c* npclist;
@@ -5058,7 +5070,9 @@ extern int mNpc_GetNpcFloorNo() {
 
     if (mFI_GET_TYPE(field_id) == mFI_FIELD_NPCROOM0) {
 
-        if (owner_name != EMPTY_NO && owner_name != RSV_NO) {
+        if (C_IsCustomStructure(owner_name)) {
+            floor_no = C_HouseRoomInterior(owner_name, FALSE);
+        } else if (owner_name != EMPTY_NO && owner_name != RSV_NO) {
             int idx = mNpc_SearchAnimalinfo(Save_Get(animals), owner_name, ANIMAL_NUM_MAX);
 
             floor_no = Common_Get(npclist[idx]).house_data.floor_id;
@@ -5075,7 +5089,9 @@ extern int mNpc_GetNpcWallNo() {
 
     if (mFI_GET_TYPE(field_id) == mFI_FIELD_NPCROOM0) {
 
-        if (owner_name != EMPTY_NO && owner_name != RSV_NO) {
+        if (C_IsCustomStructure(owner_name)) {
+            wall_no = C_HouseRoomInterior(owner_name, TRUE);
+        } else if (owner_name != EMPTY_NO && owner_name != RSV_NO) {
             int idx = mNpc_SearchAnimalinfo(Save_Get(animals), owner_name, ANIMAL_NUM_MAX);
 
             wall_no = Common_Get(npclist[idx]).house_data.wall_id;

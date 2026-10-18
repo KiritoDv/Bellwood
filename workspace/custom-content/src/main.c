@@ -9,6 +9,7 @@
 #include "port/api/item.h"
 #include "port/api/message.h"
 #include "port/api/shop.h"
+#include "port/api/structure.h"
 #include "port/api/villager.h"
 #include "port/api/ui.h"
 #include "port/events/Events.h"
@@ -17,6 +18,7 @@
 #include "graph.h"
 #include "m_common_data.h"
 #include "m_controller.h"
+#include "m_field_info.h"
 #include "m_demo.h"
 #include "m_huusui_room.h"
 #include "m_item_name.h"
@@ -269,6 +271,13 @@ C_ASSET(sRunAnimation, "data/npc/npc_1_run1/cKF_ba_r_npc_1_run1");
 static const u8 sBoltModel[] = { #asset "models/bolt.gltf" NPC_MODEL };
 static const u8 sBoltWalk[] = { #asset "models/bolt.gltf" NPC_ANIM };
 
+static const u8 sKioskModel[] = { #asset "models/kiosk.gltf" MODEL };
+static const u8 sKioskGlass[] = { #asset "models/kiosk.gltf" MODEL_XLU };
+static const u8 sKioskWinterModel[] = { #asset "models/kiosk_winter.gltf" MODEL };
+static const u8 sWorkshopModel[] = { #asset "models/workshop.gltf" MODEL };
+static const u8 sWorkshopRoomModel[] = { #asset "models/workshop_room.gltf" ROOM_MODEL };
+static const u8 sWorkshopRoomGlass[] = { #asset "models/workshop_room.gltf" ROOM_MODEL_XLU };
+
 static const void* sDogEyes[C_VILLAGER_EYES] = {
     sDogEye1, sDogEye2, sDogEye3, sDogEye4, sDogEye5, sDogEye6, sDogEye7, sDogEye8,
 };
@@ -286,6 +295,13 @@ static const u8 sMintPalette[] = {
 
 static C_VillagerDef sMintDef;
 static C_VillagerDef sBoltDef;
+
+static mActor_name_t sKioskRoom[C_ROOM_SIZE];
+static mActor_name_t sWorkshopRoom[C_ROOM_SIZE];
+static C_StructureRoomDef sKioskRoomDef;
+static C_StructureRoomDef sWorkshopRoomDef;
+static C_StructureDef sKioskDef;
+static C_StructureDef sWorkshopDef;
 static const void* sBoltAnimations[aNPC_ANIM_NUM];
 
 static C_ClothDef sTeeDef = {
@@ -303,23 +319,71 @@ static mActor_name_t sDragonfly = EMPTY_NO;
 static mActor_name_t sTee = EMPTY_NO;
 static mActor_name_t sMint = EMPTY_NO;
 static mActor_name_t sBolt = EMPTY_NO;
+static mActor_name_t sKiosk = EMPTY_NO;
+static mActor_name_t sWorkshop = EMPTY_NO;
 static ListenerID sPlayUpdateListener;
 static int sSpawnRequested = FALSE;
+static mActor_name_t sBuildRequest = EMPTY_NO;
+static int sRemoveRequested = FALSE;
+
+static void BuildNearPlayer(mActor_name_t item, ACTOR* player) {
+    int block_x;
+    int block_z;
+    int player_x;
+    int player_z;
+    int best = -1;
+    int best_distance = 0;
+    int x;
+    int z;
+
+    if (C_FindPlacedStructure(item, NULL, NULL, NULL, NULL) ||
+        !mFI_Wpos2BkandUtNuminBlock(&block_x, &block_z, &player_x, &player_z, player->world.position)) {
+        return;
+    }
+    for (z = 0; z < UT_Z_NUM; z++) {
+        for (x = 0; x < UT_X_NUM; x++) {
+            int distance = (x - player_x) * (x - player_x) + (z + 2 - player_z) * (z + 2 - player_z);
+
+            if ((best < 0 || distance < best_distance) && C_CanPlaceStructure(item, block_x, block_z, x, z)) {
+                best = z * UT_X_NUM + x;
+                best_distance = distance;
+            }
+        }
+    }
+    if (best >= 0) {
+        C_PlaceStructure(item, block_x, block_z, best % UT_X_NUM, best / UT_X_NUM);
+    }
+}
+
+static void RemoveStructure(mActor_name_t item) {
+    int block_x;
+    int block_z;
+    int ut_x;
+    int ut_z;
+
+    if (C_FindPlacedStructure(item, &block_x, &block_z, &ut_x, &ut_z)) {
+        C_RemoveStructure(block_x, block_z, ut_x, ut_z);
+    }
+}
 
 static void OnPlayUpdate(IEvent* event) {
     PlayUpdate* update = (PlayUpdate*)event;
-    ACTOR* player;
+    ACTOR* player = GET_PLAYER_ACTOR_ACTOR(update->play);
 
-    if (!sSpawnRequested) {
-        return;
-    }
-    sSpawnRequested = FALSE;
-
-    player = GET_PLAYER_ACTOR_ACTOR(update->play);
-    if (player != NULL) {
+    if (sSpawnRequested && player != NULL) {
         C_SpawnActor(sSpinner, player->world.position.x, player->world.position.y, player->world.position.z + 60.0f, 0,
                      0);
     }
+    if (sBuildRequest != EMPTY_NO && player != NULL) {
+        BuildNearPlayer(sBuildRequest, player);
+    }
+    if (sRemoveRequested) {
+        RemoveStructure(sKiosk);
+        RemoveStructure(sWorkshop);
+    }
+    sSpawnRequested = FALSE;
+    sBuildRequest = EMPTY_NO;
+    sRemoveRequested = FALSE;
 }
 
 static void OnSpawnPressed(void) {
@@ -481,6 +545,77 @@ static void OnRestockPressed(void) {
     C_RestockShop();
 }
 
+static void OnBuildKioskPressed(void) {
+    sBuildRequest = sKiosk;
+}
+
+static void OnBuildWorkshopPressed(void) {
+    sBuildRequest = sWorkshop;
+}
+
+static void OnRemoveStructuresPressed(void) {
+    sRemoveRequested = TRUE;
+}
+
+static void SetupRoomWalls(mActor_name_t* room, int width, int depth) {
+    int x;
+    int z;
+
+    for (z = 0; z < 16; z++) {
+        for (x = 0; x < 16; x++) {
+            int inside = x < width && z < depth;
+            int wall = inside && (x == 0 || x == width - 1 || z == 0 || z == depth - 1);
+
+            room[z * 16 + x] = wall ? RSV_WALL_NO : RSV_NO;
+        }
+    }
+    room[(depth - 1) * 16 + width / 2 - 1] = RSV_NO;
+    room[(depth - 1) * 16 + width / 2] = RSV_NO;
+    room[depth * 16 + width / 2 - 1] = EXIT_DOOR;
+    room[depth * 16 + width / 2] = EXIT_DOOR;
+}
+
+static void SetupStructures(void) {
+    SetupRoomWalls(sKioskRoom, 8, 8);
+    sKioskRoom[1 * 16 + 2] = sModTable;
+    sKioskRoom[1 * 16 + 5] = sModTable;
+    sKioskRoom[1 * 16 + 4] = FTR_START(FTR_NOG_TRI_CLOCK01);
+    sKioskRoom[4 * 16 + 1] = FTR_START(FTR_NOG_TRI_CHAIR01) + 1;
+    sKioskRoom[4 * 16 + 6] = FTR_START(FTR_NOG_TRI_CHAIR01) + 3;
+    sKioskRoomDef.layout = sKioskRoom;
+    sKioskRoomDef.wallpaper = sWallpaper;
+    sKioskRoomDef.carpet = sCarpet;
+
+    sKioskDef.id = "example.kiosk";
+    sKioskDef.name = "Kiosk";
+    sKioskDef.model = sKioskModel;
+    sKioskDef.model_xlu = sKioskGlass;
+    sKioskDef.winter_model = sKioskWinterModel;
+    sKioskDef.width = 3;
+    sKioskDef.depth = 2;
+    sKioskDef.room = &sKioskRoomDef;
+
+    SetupRoomWalls(sWorkshopRoom, 10, 9);
+    sWorkshopRoom[1 * 16 + 1] = RSV_WALL_NO;
+    sWorkshopRoom[1 * 16 + 2] = RSV_WALL_NO;
+    sWorkshopRoom[1 * 16 + 3] = RSV_WALL_NO;
+    sWorkshopRoom[2 * 16 + 7] = sModNes;
+    sWorkshopRoomDef.layout = sWorkshopRoom;
+    sWorkshopRoomDef.model = sWorkshopRoomModel;
+    sWorkshopRoomDef.model_xlu = sWorkshopRoomGlass;
+    sWorkshopRoomDef.width = 10;
+    sWorkshopRoomDef.depth = 9;
+    sWorkshopRoomDef.resident = sBolt;
+
+    sWorkshopDef.id = "example.workshop";
+    sWorkshopDef.name = "Workshop";
+    sWorkshopDef.model = sWorkshopModel;
+    sWorkshopDef.width = 3;
+    sWorkshopDef.depth = 3;
+    sWorkshopDef.door_x = 1;
+    sWorkshopDef.room = &sWorkshopRoomDef;
+}
+
 static void SetupUI(void) {
     C_WidgetConfig spawn = { 0 };
     C_WidgetConfig give = { 0 };
@@ -492,6 +627,9 @@ static void SetupUI(void) {
     C_WidgetConfig mint = { 0 };
     C_WidgetConfig bolt = { 0 };
     C_WidgetConfig restock = { 0 };
+    C_WidgetConfig kiosk = { 0 };
+    C_WidgetConfig workshop = { 0 };
+    C_WidgetConfig remove = { 0 };
 
     spawn.type = C_WIDGET_BUTTON;
     spawn.callback = OnSpawnPressed;
@@ -534,6 +672,18 @@ static void SetupUI(void) {
     restock.opts.generic.tooltip =
         "Rolls Nook's stock again. The mod table, carpet, wallpaper and tee are each on sale half of the days.";
 
+    kiosk.type = C_WIDGET_BUTTON;
+    kiosk.callback = OnBuildKioskPressed;
+    kiosk.opts.generic.tooltip = "Builds the kiosk next to you. Walk into its door to visit the room inside.";
+
+    workshop.type = C_WIDGET_BUTTON;
+    workshop.callback = OnBuildWorkshopPressed;
+    workshop.opts.generic.tooltip = "Builds the workshop next to you. Its room has its own model and size.";
+
+    remove.type = C_WIDGET_BUTTON;
+    remove.callback = OnRemoveStructuresPressed;
+    remove.opts.generic.tooltip = "Removes the kiosk and the workshop from the town.";
+
     C_AddSidebarEntry("Custom Content", 1);
     C_AddWidget("Custom Content", 1, "Spawn Spinner", &spawn);
     C_AddWidget("Custom Content", 1, "Give Mod Table", &give);
@@ -545,6 +695,9 @@ static void SetupUI(void) {
     C_AddWidget("Custom Content", 1, "Invite Mint", &mint);
     C_AddWidget("Custom Content", 1, "Invite Bolt", &bolt);
     C_AddWidget("Custom Content", 1, "Restock Shop", &restock);
+    C_AddWidget("Custom Content", 1, "Build Kiosk", &kiosk);
+    C_AddWidget("Custom Content", 1, "Build Workshop", &workshop);
+    C_AddWidget("Custom Content", 1, "Remove Structures", &remove);
 }
 
 MOD_INIT() {
@@ -565,6 +718,9 @@ MOD_INIT() {
     sMint = C_RegisterVillager(&sMintDef);
     SetupBolt();
     sBolt = C_RegisterVillager(&sBoltDef);
+    SetupStructures();
+    sKiosk = C_RegisterStructure(&sKioskDef);
+    sWorkshop = C_RegisterStructure(&sWorkshopDef);
     C_AddShopStock(sModTable, 50);
     C_AddShopStock(sCarpet, 50);
     C_AddShopStock(sWallpaper, 50);
@@ -580,6 +736,8 @@ MOD_EXIT() {
     C_RemoveShopStock(sCarpet);
     C_RemoveShopStock(sWallpaper);
     C_RemoveShopStock(sTee);
+    C_UnregisterStructure(sWorkshop);
+    C_UnregisterStructure(sKiosk);
     C_UnregisterVillager(sBolt);
     C_UnregisterVillager(sMint);
     C_UnregisterCloth(sTee);

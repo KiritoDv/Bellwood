@@ -1,6 +1,6 @@
 # Custom Content Example
 
-Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM), a new item (a "lucky gem" that breaks into 1,000 Bells when used), a new carpet, wallpaper and shirt, a new fish and insect (a "rainbow koi" in the river and a "mod dragonfly" from May to October), and two new villagers (Mint, a peppy green dog who wears the mod tee, and Bolt, a lazy robot with a model and walk of his own) to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu. The mod table, carpet, wallpaper and tee are also on sale at Nook's on half of the days, and everything shows up in the catalog once you own it. The gem, koi and dragonfly icons, the carpet, the wallpaper and the tee are drawn from the PNGs in `src/textures`.
+Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM), a new item (a "lucky gem" that breaks into 1,000 Bells when used), a new carpet, wallpaper and shirt, a new fish and insect (a "rainbow koi" in the river and a "mod dragonfly" from May to October), two new villagers (Mint, a peppy green dog who wears the mod tee, and Bolt, a lazy robot with a model and walk of his own), and two buildings you can put in town and walk into (a kiosk with a furnished room, and a workshop whose room has a model and size of its own) to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu. The mod table, carpet, wallpaper and tee are also on sale at Nook's on half of the days, and everything shows up in the catalog once you own it. The gem, koi and dragonfly icons, the carpet, the wallpaper and the tee are drawn from the PNGs in `src/textures`, and Bolt and the buildings from the glTF models in `src/models`.
 
 Build and install it like the template:
 
@@ -355,6 +355,81 @@ Custom fish and insects are caught with the rod or the net, show their catch tex
 - Villagers don't ask for custom ones in trades, and Chip's fishing tourney only judges the bass.
 
 `FishSpawnList` and `InsectSpawnList` in `src/port/events/EVENTS.md` show the full lists of candidates and let a mod change them.
+
+## Structures (`port/api/structure.h`)
+
+```c
+static const u8 sKioskModel[] = { #asset "models/kiosk.gltf" MODEL };
+static const u8 sKioskGlass[] = { #asset "models/kiosk.gltf" MODEL_XLU };
+static const u8 sKioskWinterModel[] = { #asset "models/kiosk_winter.gltf" MODEL };
+
+sKioskRoomDef.layout = sKioskRoom;
+sKioskRoomDef.wallpaper = sWallpaper;
+sKioskRoomDef.carpet = sCarpet;
+
+sKioskDef.id = "example.kiosk";
+sKioskDef.name = "Kiosk";
+sKioskDef.model = sKioskModel;
+sKioskDef.model_xlu = sKioskGlass;
+sKioskDef.winter_model = sKioskWinterModel;
+sKioskDef.width = 3;
+sKioskDef.depth = 2;
+sKioskDef.room = &sKioskRoomDef;
+sKiosk = C_RegisterStructure(&sKioskDef);
+
+C_PlaceStructure(sKiosk, block_x, block_z, ut_x, ut_z);
+```
+
+A structure is a building or landmark on the town map, like the game's houses, shops and statues. Its item number goes into the town's map, so it stays where it was placed: the town saves it and spawns it whenever its acre is near, and on wide windows it is there before you cross into its acre, like the built-in buildings.
+
+The tile that holds the item number is the anchor, the middle of the structure's front row. The footprint covers `width` tiles centred on the anchor (an even width reaches one tile further east) and `depth` rows from the anchor back to the north. The footprint is raised so nobody walks into it, and nothing can be dropped or grow there. A structure with a room has its door in the front row, in the anchor's column or `door_x` columns east (negative: west) of it: walking into it from the tile in front opens the room, and that tile is kept free too.
+
+A structure with a `name` is listed on the town map, in the panel of the acre it stands in, with a marker where it stands. An acre lists up to four rows, its villagers first; the acre of the players' houses and acres that show a shop, the police station or another of the game's buildings don't list it.
+
+| Field | Description |
+|---|---|
+| `id` | Unique key. The item number assigned to it is stored in `custom_structures.json` next to the game. Never reuse an id for a different structure. |
+| `name` | Shown on the town map, up to 8 characters. NULL keeps it off the map. |
+| `model`, `model_xlu` | Display lists of the structure, opaque and translucent, drawn with their origin at the centre of the anchor tile on the ground. `#asset "file.gltf" MODEL` and `MODEL_XLU` make them from a glTF file (see below). `model_xlu` can be NULL. |
+| `winter_model`, `winter_model_xlu` | Models used in winter, for a snowy roof. NULL keeps `model` or `model_xlu`. |
+| `width`, `depth` | Footprint in tiles, 1 to 9 each. |
+| `door_x` | Column of the door in the front row, counted from the anchor: 0 for the anchor's, 1 for the next one east, -1 west. It must be inside the footprint. |
+| `room` | The room behind the door, a `C_StructureRoomDef`. NULL if it can't be entered. |
+
+The room is a villager house room: the game's 8x8 room with walls, wallpaper and carpet, or a room with a model of your own.
+
+| Field | Description |
+|---|---|
+| `layout`, `layout_top` | 16x16 item numbers like a villager's room: the furniture on the floor and the items on top of it. `RSV_WALL_NO` marks walls, `RSV_NO` free floor, and `EXIT_DOOR` the tiles the player leaves through, below the gap in the front wall. Custom furniture works. NULL `layout` is an empty room with walls around it and the exit in the middle of the front wall; NULL `layout_top` has nothing on top. |
+| `wallpaper`, `carpet` | Wallpaper and carpet items, built-in or custom. `EMPTY_NO` for the first of each. |
+| `model`, `model_xlu` | Room model drawn instead of the walls and floor, from `#asset "file.gltf" ROOM_MODEL` and `ROOM_MODEL_XLU`. NULL for the game's room. |
+| `width`, `depth` | Room size in tiles with a model, walls included: up to 16 across and 15 deep. 0 for 8. The camera follows the player in rooms larger than the screen. |
+| `resident` | A villager (built-in or custom) found in the room while they live in town, standing by the door when you come in. `EMPTY_NO` for nobody. |
+
+The player comes in through the gap in the front wall: the `EXIT_DOOR` tiles of the front-most row that has any are the way out, and the player appears in the row above them, in the middle of the gap. `layout = NULL` makes a two-tile gap in the middle of the front wall, like the game's rooms; a gap of two tiles means walking out near its middle, so make it wider (more open wall tiles with `EXIT_DOOR` below) for an easier exit. A layout without any `EXIT_DOOR` gets the middle exit added. A room with a model takes its collision from the layout: inside `width` x `depth`, every tile is floor except the `RSV_WALL_NO` ones, so walls and solid parts of the model (the workshop's workbench) are marked in the layout. The room's light comes on at night like a villager's.
+
+| Function | Description |
+|---|---|
+| `mActor_name_t C_RegisterStructure(const C_StructureDef* def)` | Returns the structure's item number (0x5900 to 0x5FFF), or `EMPTY_NO`. |
+| `void C_UnregisterStructure(mActor_name_t item)` | Call it in `MOD_EXIT`. Where it stands the town keeps its place, empty, until it is registered again. |
+| `int C_CanPlaceStructure(mActor_name_t item, int block_x, int block_z, int ut_x, int ut_z)` | Whether it fits with its anchor on tile `ut_x`, `ut_z` (0 to 15) of acre `block_x` (1 to 5), `block_z` (1 to 6): the footprint and the door tile are empty, flat grass or soil inside that acre, and the player isn't standing there. Only in town. |
+| `int C_PlaceStructure(...)` | Places it there if it fits. In the player's acre it appears right away. |
+| `int C_PlaceStructureAt(mActor_name_t item, float x, float z)` | Same, with the anchor on the tile under a world position. |
+| `int C_RemoveStructure(int block_x, int block_z, int ut_x, int ut_z)` | Removes the structure anchored there and frees its tiles. |
+| `int C_FindPlacedStructure(mActor_name_t item, int* block_x, int* block_z, int* ut_x, int* ut_z)` | Finds where a structure stands. Any of the pointers can be NULL. |
+
+The example's **Build Kiosk** and **Build Workshop** buttons place them on the free spot nearest to the tiles in front of you (see `BuildNearPlayer` in `main.c`), and **Remove Structures** takes both away. The kiosk has glass windows and a snowy roof in winter, and its room is the game's room with the mod carpet and wallpaper and two mod tables. The workshop's door is in its east column, and its room is 10x9 tiles with its own floor, walls, workbench and glass window, the mod NES, and Bolt at work once he lives in town (**Invite Bolt**).
+
+### Structure and room models
+
+`#asset "file.gltf" MODEL` and `ROOM_MODEL` turn a glTF file into a display list when the mod is built (Pillow is required). Every mesh in the file is used, in world units: a tile is 40 units across, y is up and z points south, towards the camera.
+
+- A structure's origin is the centre of its anchor tile on the ground. Its front wall, with the door, faces south at z = 20, and nothing may lie farther than 327 units from the origin.
+- A room's origin is its north-west corner at floor height: tile (x, z) of the layout covers x to x + 40 and z to z + 40. The game's rooms have no front wall, so the camera sees in. Nothing may lie farther than 2047 units from the origin.
+- Each material's base colour texture becomes a CI4 texture of up to 64x64 texels with its own 16 colours, repeating across the UVs; a material without a texture gets its base colour. Lighting comes from the vertex normals.
+- Materials with `alphaMode` `BLEND` are translucent: `MODEL_XLU` and `ROOM_MODEL_XLU` make a display list of just those, drawn after the opaque ones with the material's base colour alpha, and `MODEL` and `ROOM_MODEL` leave them out. Use both declarations on the same file.
+
+`tools/npc_model.py static` and `room` (with `--xlu` for the translucent part) are the converters the build runs, and `tools/make_structures.py` in this folder builds the example's models from boxes.
 
 ## NES games (`port/api/famicom.h`)
 

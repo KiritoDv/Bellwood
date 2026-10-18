@@ -72,6 +72,7 @@ set(BELLWOOD_GAME_SOURCES
     src/actor/ac_cottage.c
     src/actor/ac_count02.c
     src/actor/ac_countdown.c
+    src/actor/ac_custom_structure.c
     src/actor/ac_depart.c
     src/actor/ac_douzou.c
     src/actor/ac_dummy.c

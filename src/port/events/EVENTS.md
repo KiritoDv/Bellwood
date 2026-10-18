@@ -247,6 +247,27 @@ Fires whenever the game needs data for a villager id from `C_VILLAGER_FIRST` (0x
 
 ---
 
+## Structure Events
+
+### `StructureLookup`
+```c
+uint16_t item;
+const struct C_StructureDef_s* definition;
+int16_t profile;
+const uint16_t* room;
+const uint16_t* roomTop;
+const uint32_t* roomCollision;
+int16_t wall;
+int16_t floor;
+const uint8_t* name;
+uint16_t resident;
+int16_t entryX;
+int16_t entryZ;
+```
+Fires whenever the game needs data for a structure item from `C_STRUCTURE_FIRST` (0x5900) to `C_STRUCTURE_LAST` (0x5FFF): when the town spawns it, every frame it updates and draws, and while its room is built and played. Set `definition` to the structure that owns the item and `profile` to the actor profile that draws it. Set `name` to its name for the town map (8 bytes in the game's encoding, or NULL to leave it off). For a structure with a room, set `room` and `roomTop` to its 16x16 layouts, `wall` and `floor` to the wallpaper and carpet indices, `roomCollision` to 16x16 collision units when the room has its own model (NULL keeps the villager house room's), `resident` to the villager found in it, and `entryX` and `entryZ` to where the player appears, in world units. Structures registered through `port/api/structure.h` are answered here; an item that isn't answered stays in the town's map but nothing is spawned for it.
+
+---
+
 ## Shop Events
 
 ### `ShopStockGenerated`

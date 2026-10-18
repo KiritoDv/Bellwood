@@ -3,8 +3,13 @@
     npc_model.py rig <ac.o2r> <species> <out.gltf>     reference rig and meshes of a built-in species
     npc_model.py model <in.gltf> <out dir> <name>      skeleton, meshes and textures for a villager
     npc_model.py anim <in.gltf> <out file> [animation] [--once]
+    npc_model.py static <in.gltf> <out dir> <name> [--xlu]  one display list and textures for a structure or prop
+    npc_model.py room <in.gltf> <out dir> <name> [--xlu]    the same for a room
 
 A villager model uses the villager rig: 26 joints named as in JOINT_NAMES, bones along +X, 100 units per metre.
+A static model is authored in world units, a tile is 40 units. A structure's origin is the anchor tile's centre on
+the ground and nothing may lie farther than 327 units from it. A room's origin is the north-west corner of the room at
+floor height, x to the east and z to the south, and nothing may lie farther than 2047 units from it.
 """
 
 import base64
@@ -33,6 +38,9 @@ DEFAULT_TRANSLATIONS = [
     (0, 0, 0), (1200, 0, 0),
 ]
 ROOT_ROTATION_Z = 90.0
+MODEL_UNITS_PER_WORLD_UNIT = 100.0
+ROOM_UNITS_PER_WORLD_UNIT = 16.0
+MODEL_MAX_TEXELS = 64 * 64
 
 SEGMENT_EYE = 0x08
 SEGMENT_MOUTH = 0x09
@@ -345,14 +353,16 @@ def palette_block(path: str, slot: int) -> bytes:
     return bytes(out)
 
 
-def display_list_header(path: str) -> bytes:
+def display_list_header(path: str, translucent: bool = False) -> bytes:
+    """Fogged, lit and textured; translucent lists blend with alpha = texel alpha * primitive alpha and don't write
+    depth."""
     out = bytearray(struct.pack("<B", UCODE_F3DEX2_AC) + b"\xff" * 7)
     out += gfx(0, 0)
     out += gfx(G_MARKER << 24, 0xBEEFBEEF) + gfx_hash(path)
     out += gfx(0xD7000002, 0)
     out += gfx(0xD9000000, 0x00230405)
-    out += gfx(0xE200001C, 0xC8112078)
-    out += gfx(0xFC127E60, 0xFFFFF3F8)
+    out += gfx(0xE200001C, 0xC81049D8 if translucent else 0xC8112078)
+    out += gfx(0xFC127E60, 0xFF0FF3FF if translucent else 0xFFFFF3F8)
     out += gfx(0xFA000080, 0xFFFFFFFF)
     return bytes(out)
 
@@ -399,13 +409,16 @@ def triangle_commands(local_tris: List[Tuple[int, int, int]]) -> bytes:
 # Model conversion
 
 class Material:
-    def __init__(self, name: str, kind: str, width: int, height: int, texture_path: str = "", palette_path: str = ""):
+    def __init__(self, name: str, kind: str, width: int, height: int, texture_path: str = "", palette_path: str = "",
+                 blend: bool = False, alpha: float = 1.0):
         self.name = name
         self.kind = kind
         self.width = width
         self.height = height
         self.texture_path = texture_path
         self.palette_path = palette_path
+        self.blend = blend
+        self.alpha = alpha
 
 
 def material_kind(name: str) -> str:
@@ -415,6 +428,157 @@ def material_kind(name: str) -> str:
     if lowered.startswith("mouth"):
         return "mouth"
     return "texture"
+
+
+def convert_material(g: Gltf, mat: dict, mname: str, out_dir: str, name: str, resource_prefix: str, max_texels: int,
+                     log=print) -> Material:
+    """Writes the material's base colour as a CI4 texture and palette. Returns the material."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import merge  # noqa: E402
+    from PIL import Image
+    from io import BytesIO
+
+    safe = "".join(c if c.isalnum() else "_" for c in mname)
+    tex_file = f"{name}.{safe}.ci4"
+    pal_file = f"{name}.{safe}.ci4_pal"
+    pbr = mat.get("pbrMetallicRoughness", {})
+    png = None
+    if "baseColorTexture" in pbr:
+        texture = g.json["textures"][pbr["baseColorTexture"]["index"]]
+        png = g.image_bytes(texture["source"])
+    if png is not None:
+        img = Image.open(BytesIO(png)).convert("RGBA")
+    else:
+        color = pbr.get("baseColorFactor", [1, 1, 1, 1])
+        img = Image.new("RGBA", (8, 8), tuple(int(c * 255) for c in color))
+    w, h = img.size
+    w2 = 1 << max(3, min(6, int(round(math.log2(max(1, w))))))
+    h2 = 1 << max(3, min(6, int(round(math.log2(max(1, h))))))
+    while w2 * h2 > max_texels:
+        if w2 >= h2:
+            w2 >>= 1
+        else:
+            h2 >>= 1
+    if (w2, h2) != (w, h):
+        log(f"npc_model: resizing texture of {mname} from {w}x{h} to {w2}x{h2}")
+        img = img.resize((w2, h2), Image.NEAREST)
+    buf = BytesIO()
+    img.save(buf, format="PNG")
+    key = f"{g.path}:{mname}"
+    merge._palette_cache.pop((key, 16), None)
+    with open(os.path.join(out_dir, tex_file), "wb") as f:
+        f.write(merge.convert_png_asset(buf.getvalue(), key, "CI4"))
+    with open(os.path.join(out_dir, pal_file), "wb") as f:
+        f.write(merge.convert_png_asset(buf.getvalue(), key, "CI4_PAL"))
+    return Material(mname, "texture", w2, h2, resource_prefix + tex_file, resource_prefix + pal_file,
+                    mat.get("alphaMode") == "BLEND", pbr.get("baseColorFactor", [1, 1, 1, 1])[3])
+
+
+def write_material_triangles(out: bytearray, material: Material, tris: List[Tuple[int, int, int]], vtx_path: str) -> None:
+    if material.blend:
+        out += gfx(0xFA000080, 0xFFFFFF00 | clamp(material.alpha * 255, 0, 255))
+    if material.kind == "eye":
+        out += texture_block_ci4(32, 16, PALETTE_VILLAGER, False, False, segment_image(SEGMENT_EYE, 1))
+    elif material.kind == "mouth":
+        out += texture_block_ci4(32, 16, PALETTE_VILLAGER, False, False, segment_image(SEGMENT_MOUTH, 1))
+    else:
+        out += palette_block(material.palette_path, PALETTE_MODEL)
+        out += texture_block_ci4(material.width, material.height, PALETTE_MODEL, True, True,
+                                 hashed_image(material.texture_path, 2, 2))
+    for cache_vertices, local_tris in triangle_batches(tris):
+        runs = []
+        start = 0
+        while start < len(cache_vertices):
+            end = start + 1
+            while end < len(cache_vertices) and cache_vertices[end] == cache_vertices[end - 1] + 1:
+                end += 1
+            runs.append((start, end))
+            start = end
+        for s, e in runs:
+            out += vertex_load(vtx_path, s, e - s, cache_vertices[s])
+        out += triangle_commands(local_tris)
+
+
+def convert_static_model(gltf_path: str, out_dir: str, name: str, resource_prefix: str, log=print,
+                         units_per_world: float = MODEL_UNITS_PER_WORLD_UNIT, translucent: bool = False) -> str:
+    """Writes <name>.dl, <name>.vtx and textures into out_dir for a model without a rig, authored in world units (a
+    tile is 40 units). Structures are drawn at the actor scale 0.01 (100 model units per world unit), rooms at 1/16.
+    The list holds the opaque materials, or with translucent the ones whose alphaMode is BLEND (<name>.xlu.dl).
+    Returns the display list path."""
+    g = Gltf(gltf_path)
+    nodes = g.json.get("nodes", [])
+    globals_, parents = g.node_globals()
+    os.makedirs(out_dir, exist_ok=True)
+    materials: Dict[int, Material] = {}
+    for mi, mat in enumerate(g.json.get("materials", [])):
+        mname = mat.get("name", f"material{mi}")
+        materials[mi] = convert_material(g, mat, mname, out_dir, name, resource_prefix, MODEL_MAX_TEXELS, log)
+    if not materials:
+        materials[-1] = Material("default", "texture", 8, 8)
+
+    vertices: List[tuple] = []
+    vertex_index: Dict[tuple, int] = {}
+    per_material: Dict[int, List[Tuple[int, int, int]]] = {}
+    clipped = 0
+    for ni, node in enumerate(nodes):
+        if "mesh" not in node:
+            continue
+        mesh = g.json["meshes"][node["mesh"]]
+        mesh_matrix = globals_[ni]
+        for prim in mesh.get("primitives", []):
+            attrs = prim["attributes"]
+            positions = g.accessor(attrs["POSITION"])
+            normals = g.accessor(attrs["NORMAL"]) if "NORMAL" in attrs else [[0, 1, 0]] * len(positions)
+            uvs = g.accessor(attrs["TEXCOORD_0"]) if "TEXCOORD_0" in attrs else [[0, 0]] * len(positions)
+            indices = g.accessor(prim["indices"]) if "indices" in prim else list(range(len(positions)))
+            mi = prim.get("material", -1)
+            material = materials.get(mi, materials[next(iter(materials))])
+            if material.blend != translucent:
+                continue
+            remap: Dict[int, int] = {}
+            for vi, pos in enumerate(positions):
+                world = mat_apply(mesh_matrix, pos)
+                nrm = mat_apply(mesh_matrix, normals[vi], 0.0)
+                nlen = math.sqrt(sum(c * c for c in nrm)) or 1.0
+                nrm = [c / nlen for c in nrm]
+                scaled = [c * units_per_world for c in world]
+                if any(c < -32768 or c > 32767 for c in scaled):
+                    clipped += 1
+                s = clamp(uvs[vi][0] * material.width * 32, -32768, 32767)
+                t = clamp(uvs[vi][1] * material.height * 32, -32768, 32767)
+                vertex = (clamp(scaled[0], -32768, 32767), clamp(scaled[1], -32768, 32767),
+                          clamp(scaled[2], -32768, 32767), s, t,
+                          clamp(nrm[0] * 127, -128, 127), clamp(nrm[1] * 127, -128, 127),
+                          clamp(nrm[2] * 127, -128, 127), 255)
+                key = (mi, vertex)
+                if key not in vertex_index:
+                    vertices.append(vertex)
+                    vertex_index[key] = len(vertices) - 1
+                remap[vi] = vertex_index[key]
+            for k in range(0, len(indices) - 2, 3):
+                a, b, c = indices[k], indices[k + 1], indices[k + 2]
+                per_material.setdefault(mi, []).append((remap[a], remap[b], remap[c]))
+    if clipped:
+        log(f"npc_model: {clipped} vertices of {name} lie farther than {int(32767 / units_per_world)} units from the "
+            f"origin and were clamped")
+
+    if translucent and not per_material:
+        log(f"npc_model: {name} has no material with alphaMode BLEND, its translucent list is empty")
+
+    suffix = ".xlu" if translucent else ""
+    vtx_file = f"{name}{suffix}.vtx"
+    write_vertices(os.path.join(out_dir, vtx_file), vertices)
+    vtx_path = resource_prefix + vtx_file
+    dl_file = f"{name}{suffix}.dl"
+    dl_path = resource_prefix + dl_file
+    out = bytearray(display_list_header(dl_path, translucent))
+    for mi, tris in per_material.items():
+        write_material_triangles(out, materials.get(mi, materials[next(iter(materials))]), tris, vtx_path)
+    out += gfx(0xDF << 24, 0)
+    with open(os.path.join(out_dir, dl_file), "wb") as f:
+        f.write(otr_header(RESOURCE_DISPLAY_LIST) + bytes(out))
+    log(f"npc_model: {len(vertices)} vertices, {len(per_material)} materials")
+    return dl_path
 
 
 def convert_model(gltf_path: str, out_dir: str, name: str, resource_prefix: str, log=print) -> str:
@@ -457,41 +621,7 @@ def convert_model(gltf_path: str, out_dir: str, name: str, resource_prefix: str,
         if kind == "eye" or kind == "mouth":
             materials[mi] = Material(mname, kind, 32, 16)
             continue
-        safe = "".join(c if c.isalnum() else "_" for c in mname)
-        tex_file = f"{name}.{safe}.ci4"
-        pal_file = f"{name}.{safe}.ci4_pal"
-        pbr = mat.get("pbrMetallicRoughness", {})
-        png = None
-        if "baseColorTexture" in pbr:
-            texture = g.json["textures"][pbr["baseColorTexture"]["index"]]
-            png = g.image_bytes(texture["source"])
-        from PIL import Image
-        from io import BytesIO
-        if png is not None:
-            img = Image.open(BytesIO(png)).convert("RGBA")
-        else:
-            color = pbr.get("baseColorFactor", [1, 1, 1, 1])
-            img = Image.new("RGBA", (8, 8), tuple(int(c * 255) for c in color))
-        w, h = img.size
-        w2 = 1 << max(3, min(6, int(round(math.log2(max(1, w))))))
-        h2 = 1 << max(3, min(6, int(round(math.log2(max(1, h))))))
-        while w2 * h2 > 64 * 32:
-            if w2 >= h2:
-                w2 >>= 1
-            else:
-                h2 >>= 1
-        if (w2, h2) != (w, h):
-            log(f"npc_model: resizing texture of {mname} from {w}x{h} to {w2}x{h2}")
-            img = img.resize((w2, h2), Image.NEAREST)
-        buf = BytesIO()
-        img.save(buf, format="PNG")
-        key = f"{gltf_path}:{mname}"
-        merge._palette_cache.pop((key, 16), None)
-        with open(os.path.join(out_dir, tex_file), "wb") as f:
-            f.write(merge.convert_png_asset(buf.getvalue(), key, "CI4"))
-        with open(os.path.join(out_dir, pal_file), "wb") as f:
-            f.write(merge.convert_png_asset(buf.getvalue(), key, "CI4_PAL"))
-        materials[mi] = Material(mname, kind, w2, h2, resource_prefix + tex_file, resource_prefix + pal_file)
+        materials[mi] = convert_material(g, mat, mname, out_dir, name, resource_prefix, 64 * 32, log)
     if not materials:
         materials[-1] = Material("default", "texture", 8, 8)
 
@@ -573,27 +703,7 @@ def convert_model(gltf_path: str, out_dir: str, name: str, resource_prefix: str,
         dl_path = resource_prefix + dl_file
         out = bytearray(display_list_header(dl_path))
         for mi, tris in by_material.items():
-            material = materials.get(mi, materials[next(iter(materials))])
-            if material.kind == "eye":
-                out += texture_block_ci4(32, 16, PALETTE_VILLAGER, False, False, segment_image(SEGMENT_EYE, 1))
-            elif material.kind == "mouth":
-                out += texture_block_ci4(32, 16, PALETTE_VILLAGER, False, False, segment_image(SEGMENT_MOUTH, 1))
-            else:
-                out += palette_block(material.palette_path, PALETTE_MODEL)
-                out += texture_block_ci4(material.width, material.height, PALETTE_MODEL, True, True,
-                                         hashed_image(material.texture_path, 2, 2))
-            for cache_vertices, local_tris in triangle_batches(tris):
-                runs = []
-                start = 0
-                while start < len(cache_vertices):
-                    end = start + 1
-                    while end < len(cache_vertices) and cache_vertices[end] == cache_vertices[end - 1] + 1:
-                        end += 1
-                    runs.append((start, end))
-                    start = end
-                for s, e in runs:
-                    out += vertex_load(vtx_path, s, e - s, cache_vertices[s])
-                out += triangle_commands(local_tris)
+            write_material_triangles(out, materials.get(mi, materials[next(iter(materials))]), tris, vtx_path)
         out += gfx(0xDF << 24, 0)
         with open(os.path.join(out_dir, dl_file), "wb") as f:
             f.write(otr_header(RESOURCE_DISPLAY_LIST) + bytes(out))
@@ -1025,6 +1135,10 @@ def main(argv: List[str]) -> int:
         return 0
     if len(argv) >= 5 and argv[1] == "model":
         print(convert_model(argv[2], argv[3], argv[4], ""))
+        return 0
+    if len(argv) >= 5 and argv[1] in ("static", "room"):
+        units = ROOM_UNITS_PER_WORLD_UNIT if argv[1] == "room" else MODEL_UNITS_PER_WORLD_UNIT
+        print(convert_static_model(argv[2], argv[3], argv[4], "", units_per_world=units, translucent="--xlu" in argv))
         return 0
     if len(argv) >= 4 and argv[1] == "anim":
         name = argv[4] if len(argv) > 4 and not argv[4].startswith("--") else None

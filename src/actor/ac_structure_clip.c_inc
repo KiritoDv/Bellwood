@@ -110,6 +110,11 @@ static STRUCTURE_ACTOR* aSTR_setupActor_proc(GAME* game, mActor_name_t structure
     if (structure_name < NPC_HOUSE_END || C_IsVillagerHouse(structure_name)) {
         mNpc_SearchAnimalinfo(Save_Get(animals), NPC_HOUSE_ID_TO_NPC_ID(structure_name), ANIMAL_NUM_MAX);
         profile = mAc_PROFILE_HOUSE;
+    } else if (C_IsCustomStructure(structure_name)) {
+        profile = C_StructureProfile(structure_name);
+        if (profile < 0) {
+            return NULL;
+        }
     } else if (structure_name >= HOUSE0 && structure_name < SHOP0) {
         int idx = structure_name - STRUCTURE_START;
         profile = setupInfo_table[idx].profile;

@@ -1,4 +1,5 @@
 #include "m_field_info.h"
+#include "port/api/structure.h"
 
 #include "m_scene_table.h"
 #include "m_random_field.h"
@@ -148,7 +149,9 @@ extern f32 mFI_GetBlockWidth() {
         }
 
         case mFI_FIELD_NPCROOM0: {
-            return mFI_BK_WORLDSIZE_X_F / 2.0f;
+            int width = C_HouseRoomSize(house_owner_name, FALSE);
+
+            return width != 0 ? width * mFI_UT_WORLDSIZE_X_F : mFI_BK_WORLDSIZE_X_F / 2.0f;
         }
 
         case mFI_FIELD_PLAYER0_ROOM: {
@@ -223,7 +226,9 @@ extern f32 mFI_GetBlockHeight() {
         }
 
         case mFI_FIELD_NPCROOM0: {
-            return mFI_BK_WORLDSIZE_X_F / 2.0f;
+            int depth = C_HouseRoomSize(house_owner_name, TRUE);
+
+            return depth != 0 ? depth * mFI_UT_WORLDSIZE_Z_F : mFI_BK_WORLDSIZE_X_F / 2.0f;
         }
 
         case mFI_FIELD_PLAYER0_ROOM: {

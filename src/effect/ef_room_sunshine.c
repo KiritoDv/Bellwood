@@ -1,6 +1,9 @@
 #include "ef_room_sunshine.h"
 
 #include "m_common_data.h"
+#include "m_field_info.h"
+#include "m_scene_table.h"
+#include "port/api/structure.h"
 #include "m_name_table.h"
 #include "m_debug.h"
 #include "m_collision_bg.h"
@@ -34,6 +37,17 @@ static void Ef_Room_Sunshine_actor_ct(ACTOR* actor, GAME* game) {
     xyz_t pos3;
 
     sunshine->unk_174 = 0;
+
+    if (Save_Get(scene_no) == SCENE_NPC_HOUSE && C_HouseRoomSize(Common_Get(house_owner_name), FALSE) != 0) {
+        int width = C_HouseRoomSize(Common_Get(house_owner_name), FALSE);
+        int depth = C_HouseRoomSize(Common_Get(house_owner_name), TRUE);
+
+        if (sunshine->actor_class.actor_specific == 3) {
+            sunshine->actor_class.world.position.x = (width - 1) * mFI_UT_WORLDSIZE_X_F + 2.0f;
+        }
+
+        sunshine->actor_class.world.position.z = depth * mFI_UT_WORLDSIZE_HALF_Z_F;
+    }
 
     if (sunshine->actor_class.actor_specific == 0) {
         sunshine->actor_class.mv_proc = Ef_Room_SunshineL_actor_move;

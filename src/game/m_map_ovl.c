@@ -1,4 +1,5 @@
 #include "m_map_ovl.h"
+#include "port/api/structure.h"
 
 #include "audio.h"
 #include "m_random_field.h"
@@ -737,6 +738,72 @@ static void mMP_set_field_data(mMP_Ovl_c* map_ovl) {
     }
 }
 
+#define mMP_SEX_STRUCTURE -2
+
+static mMP_ResidentInfo_c l_mmp_structure_info[FG_BLOCK_TOTAL_NUM * mMP_RESIDENTS_PER_BLOCK_MAX];
+
+static void mMP_add_structure(mMP_Ovl_c* map_ovl, mMP_ResidentInfo_c** info_p, int bx, int bz, mActor_name_t item,
+                              int ut_x, int ut_z) {
+    mMP_LabelInfo_c* label_info = &map_ovl->label_info[bz - 1][bx - 1];
+    const u8* name = C_StructureName(item);
+    mMP_ResidentInfo_c* info = *info_p;
+
+    if (name == NULL || info >= l_mmp_structure_info + ARRAY_COUNT(l_mmp_structure_info) ||
+        label_info->label_cnt >= mMP_RESIDENTS_PER_BLOCK_MAX ||
+        (label_info->label_cnt > 0 && label_info->label_no != mMP_LABEL_NPC)) {
+        return;
+    }
+
+    mem_copy(info->name, (u8*)name, PLAYER_NAME_LEN);
+    info->sex = mMP_SEX_STRUCTURE;
+    info->house_layer = 0;
+    info->house_idx = (ut_z * 3 / UT_Z_NUM) * 3 + ut_x * 3 / UT_X_NUM;
+
+    if (label_info->label_cnt <= 0) {
+        label_info->label_cnt = 0;
+        label_info->label_no = mMP_LABEL_NPC;
+    }
+
+    label_info->residents[label_info->label_cnt] = info;
+    label_info->label_cnt++;
+    (*info_p)++;
+}
+
+static void mMP_set_structure_data(mMP_Ovl_c* map_ovl) {
+    mMP_ResidentInfo_c* info = l_mmp_structure_info;
+    GAME_PLAY* play = (GAME_PLAY*)gamePT;
+    ACTOR* actor;
+    int bx;
+    int bz;
+    int ut_x;
+    int ut_z;
+    int i;
+
+    for (bz = 1; bz <= FG_BLOCK_Z_NUM; bz++) {
+        for (bx = 1; bx <= FG_BLOCK_X_NUM; bx++) {
+            mActor_name_t* items = Save_Get(fg[bz - 1][bx - 1]).items[0];
+
+            for (i = 0; i < UT_X_NUM * UT_Z_NUM; i++) {
+                if (C_IsCustomStructure(items[i])) {
+                    mMP_add_structure(map_ovl, &info, bx, bz, items[i], i % UT_X_NUM, i / UT_X_NUM);
+                }
+            }
+        }
+    }
+
+    if (mFI_GET_TYPE(mFI_GetFieldId()) != mFI_FIELD_FG) {
+        return;
+    }
+
+    for (actor = play->actor_info.list[ACTOR_PART_ITEM].actor; actor != NULL; actor = actor->next_actor) {
+        if (C_IsCustomStructure(actor->npc_id) && actor->dw_proc != NULL &&
+            mFI_Wpos2BkandUtNuminBlock(&bx, &bz, &ut_x, &ut_z, actor->home.position) && bx >= 1 &&
+            bx <= FG_BLOCK_X_NUM && bz >= 1 && bz <= FG_BLOCK_Z_NUM) {
+            mMP_add_structure(map_ovl, &info, bx, bz, actor->npc_id, ut_x, ut_z);
+        }
+    }
+}
+
 static void mMP_set_init_data(mMP_Ovl_c* map_ovl, mSM_MenuInfo_c* menu_info) {
     mMP_LabelInfo_c* label_info = (mMP_LabelInfo_c*)map_ovl->label_info;
     PLAYER_ACTOR* player = get_player_actor_withoutCheck((GAME_PLAY*)gamePT);
@@ -775,6 +842,7 @@ static void mMP_set_init_data(mMP_Ovl_c* map_ovl, mSM_MenuInfo_c* menu_info) {
 
     mMP_set_house_data(map_ovl, menu_info);
     mMP_set_field_data(map_ovl);
+    mMP_set_structure_data(map_ovl);
 
     map_ovl->land_name_str_len = mMl_strlen(Save_Get(land_info.name), LAND_NAME_SIZE, CHAR_SPACE);
 }
@@ -1038,7 +1106,11 @@ static void mMP_set_label_dl(GAME* game, mMP_LabelInfo_c* label_info, f32 xpos, 
                             scale_x = 0.75f;
                         }
 
-                        if (resident_p[0]->sex != -1) {
+                        if (resident_p[0]->sex == mMP_SEX_STRUCTURE) {
+                            mFont_SetLineStrings(game, resident_p[0]->name, PLAYER_NAME_LEN, base_x + word->ofs_x,
+                                                 base_y - word->ofs_y, 120, 95, 205, 255, FALSE, TRUE, scale_x, 0.75f,
+                                                 mFont_MODE_POLY);
+                        } else if (resident_p[0]->sex != -1) {
                             mFont_SetLineStrings(game, resident_p[0]->name, PLAYER_NAME_LEN, base_x + word->ofs_x,
                                                  base_y - word->ofs_y, 255, 75, 40, 255, FALSE, TRUE, scale_x, 0.75f,
                                                  mFont_MODE_POLY);

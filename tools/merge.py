@@ -407,7 +407,7 @@ def write_header(resource_type: int, version: int) -> bytes:
     return header_data
 
 ASSET_FORMATS = ('RGBA32', 'RGBA16', 'CI4', 'CI8', 'I4', 'I8', 'IA4', 'IA8', 'IA16', 'CI4_PAL', 'CI8_PAL',
-                 'NPC_MODEL', 'NPC_ANIM')
+                 'NPC_MODEL', 'NPC_ANIM', 'MODEL', 'MODEL_XLU', 'ROOM_MODEL', 'ROOM_MODEL_XLU')
 
 _palette_cache = {}
 
@@ -585,7 +585,7 @@ def amalgamate(file_path, include_dirs, processed, out_file, assets_dir):
                     target_path = potential_path
                     break
 
-            if target_path and fmt in ('NPC_MODEL', 'NPC_ANIM'):
+            if target_path and fmt in ('NPC_MODEL', 'NPC_ANIM', 'MODEL', 'MODEL_XLU', 'ROOM_MODEL', 'ROOM_MODEL_XLU'):
                 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
                 import npc_model
                 stem = os.path.splitext(target_name)[0]
@@ -596,6 +596,14 @@ def amalgamate(file_path, include_dirs, processed, out_file, assets_dir):
                         resource_name = stem + '.skeleton'
                         if out_dir is not None:
                             resource_name = npc_model.convert_model(target_path, out_dir, os.path.basename(stem), prefix)
+                    elif fmt in ('MODEL', 'MODEL_XLU', 'ROOM_MODEL', 'ROOM_MODEL_XLU'):
+                        translucent = fmt.endswith('_XLU')
+                        resource_name = stem + ('.xlu.dl' if translucent else '.dl')
+                        units = npc_model.ROOM_UNITS_PER_WORLD_UNIT if fmt.startswith('ROOM') else npc_model.MODEL_UNITS_PER_WORLD_UNIT
+                        if out_dir is not None:
+                            resource_name = npc_model.convert_static_model(target_path, out_dir, os.path.basename(stem),
+                                                                           prefix, units_per_world=units,
+                                                                           translucent=translucent)
                     else:
                         resource_name = stem + '.anim'
                         if out_dir is not None:

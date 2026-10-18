@@ -6,6 +6,7 @@
 #include "GBA2/gba2.h"
 #include "ac_port.h"
 #include "ac_structure.h"
+#include "port/api/structure.h"
 
 #define aBC_WIDE_STRUCTURE_RESERVE 4
 
@@ -223,7 +224,7 @@ static void aBC_setupActor(BIRTH_CONTROL_ACTOR* birth_control, GAME_PLAY* play) 
         }
 
         case NAME_TYPE_STRUCT:
-          if (Common_Get(clip).structure_clip != NULL) {
+          if (Common_Get(clip).structure_clip != NULL && (!C_IsCustomStructure(*item_p) || C_FindStructure(*item_p) != NULL)) {
             STRUCTURE_ACTOR* actor = (*Common_Get(clip).structure_clip->setup_actor_proc)((GAME*)play, *item_p, -1, base_x + aBC_pos_table[ut_x], base_z + aBC_pos_table[ut_z]);
             setup_actor_flag |= actor == NULL;
           }
@@ -299,7 +300,7 @@ static void aBC_setupWideStructures(GAME_PLAY* play) {
 
     for (ut_z = 0; ut_z < UT_Z_NUM; ut_z++) {
       for (ut_x = 0; ut_x < UT_X_NUM; ut_x++) {
-        if (ITEM_NAME_GET_TYPE(*item_p) == NAME_TYPE_STRUCT) {
+        if (ITEM_NAME_GET_TYPE(*item_p) == NAME_TYPE_STRUCT && (!C_IsCustomStructure(*item_p) || C_FindStructure(*item_p) != NULL)) {
           if (aBC_free_structure_slots() <= aBC_WIDE_STRUCTURE_RESERVE) {
             return;
           }
