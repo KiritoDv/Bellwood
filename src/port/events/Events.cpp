@@ -36,6 +36,7 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(NewGameWelcome);
     REGISTER_EVENT(TrainRideStart);
     REGISTER_EVENT(MessageLoad);
+    REGISTER_EVENT(MessageLookup);
     REGISTER_EVENT(MessageLoaded);
     REGISTER_EVENT(MessageOpened);
     REGISTER_EVENT(MessageClosed);

@@ -11,7 +11,7 @@
 
 typedef struct C_FurnitureDef_s {
     const char* id;       // stable unique key, e.g. "mymod.lamp", keeps the same item numbers across sessions
-    const char* name;     // shown in game, up to 16 characters
+    const char* name;     // shown in game, up to 16 characters (UTF-8)
     uint8_t article;      // mIN_ARTICLE_*
     uint32_t price;       // in Bells
     uint8_t set_type;     // aFTR_SET_TYPE_*: normal, surface (other furniture can sit on it) or on surface

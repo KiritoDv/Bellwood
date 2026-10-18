@@ -516,12 +516,7 @@ extern void mIN_copy_name_str(u8* dst, mActor_name_t item) {
                 const C_ItemDef* custom = C_FindItem(item_no);
 
                 if (custom != NULL) {
-                    const char* name = custom->name != NULL ? custom->name : "";
-                    int i;
-
-                    for (i = 0; i < mIN_ITEM_NAME_LEN; i++) {
-                        dst[i] = *name != '\0' ? (u8)*name++ : CHAR_SPACE;
-                    }
+                    mem_copy(dst, (u8*)custom->name, mIN_ITEM_NAME_LEN);
                     break;
                 }
 
@@ -542,11 +537,11 @@ extern void mIN_copy_name_str(u8* dst, mActor_name_t item) {
 
                 if (ftr_idx >= FTR_NUM) {
                     const C_FurnitureDef* furniture = C_FindFurniture(ftr_idx);
-                    const char* name = furniture != NULL && furniture->name != NULL ? furniture->name : "";
-                    int i;
 
-                    for (i = 0; i < mIN_ITEM_NAME_LEN; i++) {
-                        dst[i] = *name != '\0' ? (u8)*name++ : CHAR_SPACE;
+                    if (furniture != NULL) {
+                        mem_copy(dst, (u8*)furniture->name, mIN_ITEM_NAME_LEN);
+                    } else {
+                        mem_clear(dst, mIN_ITEM_NAME_LEN, CHAR_SPACE);
                     }
                     break;
                 }

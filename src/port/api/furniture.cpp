@@ -1,6 +1,7 @@
 #ifdef ENABLE_SCRIPTING
 
 #include "port/ShipInit.hpp"
+#include "port/api/GameText.hpp"
 #include "port/api/StableIds.hpp"
 #include "port/events/Events.h"
 
@@ -65,7 +66,8 @@ extern "C" mActor_name_t C_RegisterFurniture(const C_FurnitureDef* def) {
     CustomFurniture& furniture = sFurniture[index - kFirstIndex];
     furniture.used = true;
     furniture.id = def->id;
-    furniture.name = def->name != nullptr ? std::string(def->name).substr(0, C_FURNITURE_NAME_LEN) : "";
+    furniture.name = GameText_Encode(def->name != nullptr ? def->name : "", false);
+    furniture.name.resize(C_FURNITURE_NAME_LEN, ' ');
     furniture.def = *def;
     furniture.def.id = furniture.id.c_str();
     furniture.def.name = furniture.name.c_str();

@@ -15,3 +15,6 @@ BW_API void C_UnregisterActor(int16_t profile);
 BW_API ACTOR* C_SpawnActor(int16_t profile, float x, float y, float z, int16_t angle_y, int16_t arg);
 // The scene being played, or NULL outside of gameplay.
 BW_API GAME_PLAY* C_GetPlay(void);
+// Starts a conversation with the player showing the message (see port/api/message.h). Call it when the player presses
+// A next to the actor, like the game's signs do. Returns FALSE if one is already running.
+BW_API int C_ActorSpeak(ACTOR* actor, int32_t msg_no);

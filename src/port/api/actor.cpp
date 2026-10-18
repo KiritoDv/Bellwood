@@ -6,6 +6,8 @@
 #define this this_
 extern "C" {
 #include "port/api/actor.h"
+#include "m_camera2.h"
+#include "m_demo.h"
 #include "m_name_table.h"
 }
 #undef this
@@ -24,6 +26,15 @@ struct CustomActor {
 
 std::array<CustomActor, kMaxCustomActors> sActors;
 GAME_PLAY* sPlay = nullptr;
+int32_t sSpeakMessage = 0;
+
+void SetSpeakInfo(ACTOR* actor) {
+    mDemo_Set_msg_num(sSpeakMessage);
+    mDemo_Set_talk_display_name(FALSE);
+    mDemo_Set_ListenAble();
+    mDemo_Set_camera(CAMERA2_PROCESS_NORMAL);
+    mDemo_Set_use_zoom_sound(TRUE);
+}
 
 CustomActor* FindActor(int16_t profile) {
     const int slot = profile - mAc_PROFILE_NUM;
@@ -105,6 +116,14 @@ extern "C" ACTOR* C_SpawnActor(int16_t profile, float x, float y, float z, int16
 
 extern "C" GAME_PLAY* C_GetPlay(void) {
     return sPlay;
+}
+
+extern "C" int C_ActorSpeak(ACTOR* actor, int32_t msg_no) {
+    if (actor == nullptr || mDemo_Get_talk_actor() != nullptr) {
+        return FALSE;
+    }
+    sSpeakMessage = msg_no;
+    return mDemo_Request(mDemo_TYPE_SPEAK, actor, &SetSpeakInfo);
 }
 
 #endif

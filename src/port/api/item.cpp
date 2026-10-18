@@ -1,6 +1,7 @@
 #ifdef ENABLE_SCRIPTING
 
 #include "port/ShipInit.hpp"
+#include "port/api/GameText.hpp"
 #include "port/api/StableIds.hpp"
 #include "port/events/Events.h"
 
@@ -78,7 +79,8 @@ extern "C" mActor_name_t C_RegisterItem(const C_ItemDef* def) {
     CustomItem& item = sItems[number - C_ITEM_FIRST];
     item.used = true;
     item.id = def->id;
-    item.name = def->name != nullptr ? std::string(def->name).substr(0, C_ITEM_NAME_LEN) : "";
+    item.name = GameText_Encode(def->name != nullptr ? def->name : "", false);
+    item.name.resize(C_ITEM_NAME_LEN, ' ');
     item.def = *def;
     item.def.id = item.id.c_str();
     item.def.name = item.name.c_str();

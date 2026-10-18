@@ -85,6 +85,12 @@ On Windows a mod can only read or write a game variable whose declaration uses `
 
 Use `port/api/cvar.h` instead of `libultraship/bridge/consolevariablebridge.h`. The libultraship colour types conflict with the game's.
 
+Widget tooltips and CVar names are kept as pointers, so pass string literals.
+
+### Custom actors, dialogue, furniture and items
+
+`port/api/actor.h`, `port/api/message.h`, `port/api/furniture.h` and `port/api/item.h` register new actors, messages, furniture and items. See `workspace/custom-content` for a working example and the full reference.
+
 ## Notes
 
 - Everything from all source files ends up in one translation unit per file. Mark helpers `static` so they don't collide with the game or other mods.

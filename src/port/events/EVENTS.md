@@ -281,6 +281,16 @@ Fires before a message is read from the message table. Write `*msgNo` to load a 
 
 ---
 
+### `MessageLookup`
+```c
+int32_t msgNo;
+const uint8_t* text;
+uint32_t size;
+```
+Fires when a message number in the custom range (`C_MESSAGE_FIRST` to `C_MESSAGE_LAST`, 0x4000-0x7FFF) is loaded. Set `text` and `size` to the encoded message, which must end with an end code. Messages registered through `port/api/message.h` are answered here. `MessageLoaded` still fires afterwards.
+
+---
+
 ### `MessageLoaded`
 ```c
 int32_t msgNo;

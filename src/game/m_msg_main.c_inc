@@ -317,14 +317,48 @@ static int mMsg_Count_MsgData(u8* data) {
     return i;
 }
 
+static int mMsg_CheckMsgNo(int index) {
+    return (index >= 0 && index < MSG_MAX) || (index >= C_MESSAGE_FIRST && index <= C_MESSAGE_LAST);
+}
+
+static void mMsg_SetLoadedMsgData(mMsg_Data_c* msg_data, int index, u32 size, int cut) {
+    CALL_EVENT(MessageLoaded, index, msg_data->text_buf.data, size, sizeof(msg_data->text_buf.data));
+    msg_data->msg_no = index;
+    msg_data->data_loaded = TRUE;
+    msg_data->msg_len = mMsg_Count_MsgData(msg_data->text_buf.data);
+    msg_data->cut = cut;
+}
+
+static int mMsg_LoadCustomMsgData(mMsg_Data_c* msg_data, int index, int cut) {
+    u32 size;
+
+    CALL_EVENT(MessageLookup, index, NULL, 0);
+    if (MessageLookup_.text == NULL || MessageLookup_.size == 0) {
+        msg_data->data_loaded = FALSE;
+        return FALSE;
+    }
+
+    size = MessageLookup_.size;
+    if (size > sizeof(msg_data->text_buf.data)) {
+        size = sizeof(msg_data->text_buf.data);
+    }
+    mem_copy(msg_data->text_buf.data, (u8*)MessageLookup_.text, size);
+    mMsg_SetLoadedMsgData(msg_data, index, size, cut);
+    return TRUE;
+}
+
 static int mMsg_LoadMsgData(mMsg_Data_c* msg_data, int index, int cut) {
     {
         int requested = index;
 
         CALL_EVENT(MessageLoad, &index);
-        if (index < 0 || index >= MSG_MAX) {
+        if (!mMsg_CheckMsgNo(index)) {
             index = requested;
         }
+    }
+
+    if (msg_data != NULL && index >= MSG_MAX) {
+        return mMsg_LoadCustomMsgData(msg_data, index, cut);
     }
 
     if (msg_data != NULL) {
@@ -354,11 +388,7 @@ static int mMsg_LoadMsgData(mMsg_Data_c* msg_data, int index, int cut) {
                 *dst_p++ = *src_p++;
             }
 
-            CALL_EVENT(MessageLoaded, index, msg_data->text_buf.data, size, sizeof(msg_data->text_buf.data));
-            msg_data->msg_no = index;
-            msg_data->data_loaded = TRUE;
-            msg_data->msg_len = mMsg_Count_MsgData(msg_data->text_buf.data);
-            msg_data->cut = cut;
+            mMsg_SetLoadedMsgData(msg_data, index, size, cut);
             return TRUE;
         }
     }
@@ -368,7 +398,7 @@ static int mMsg_LoadMsgData(mMsg_Data_c* msg_data, int index, int cut) {
 }
 
 extern int mMsg_ChangeMsgData(mMsg_Window_c* msg_p, int index) {
-    if (index >= 0 && index < MSG_MAX && mMsg_LoadMsgData(msg_p->msg_data, index, FALSE)) {
+    if (mMsg_CheckMsgNo(index) && mMsg_LoadMsgData(msg_p->msg_data, index, FALSE)) {
         msg_p->end_text_cursor_idx = 0;
         mMsg_Clear_CursolIndex(msg_p);
         mMsg_SetTimer(msg_p, 20.0f);

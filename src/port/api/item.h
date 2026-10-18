@@ -12,7 +12,7 @@
 
 typedef struct C_ItemDef_s {
     const char* id;       // stable unique key, e.g. "mymod.gem", keeps the same item number across sessions
-    const char* name;     // shown in game, up to 16 characters
+    const char* name;     // shown in game, up to 16 characters (UTF-8)
     uint8_t article;      // mIN_ARTICLE_*
     uint32_t price;       // in Bells, 0 means Nook takes it for free
     uint8_t shape;        // mNT_ITEM_TYPE_*: model used on the ground and in the player's hand

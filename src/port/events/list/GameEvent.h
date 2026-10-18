@@ -57,6 +57,14 @@ DEFINE_EVENT(MessageLoad,
     int32_t* msgNo;  // mutable message number
 );
 
+// Fires when a message number in the custom message range is loaded.
+// Set text and size to the encoded message, ending with an end code.
+DEFINE_EVENT(MessageLookup,
+    int32_t msgNo;
+    const uint8_t* text;  // set by the listener that owns the message
+    uint32_t size;        // size of text in bytes
+);
+
 // Fires after a message is copied into the text buffer, before its length is measured.
 // Rewrite text in place to change what is shown; keep it terminated with an end code.
 DEFINE_EVENT(MessageLoaded,
