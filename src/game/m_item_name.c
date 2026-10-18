@@ -9,6 +9,7 @@
 #include "ac_asset.h"
 #include "port/api/furniture.h"
 #include "port/api/interior.h"
+#include "port/api/creature.h"
 #include "port/api/item.h"
 
 static u8 itemArt_Paper[PAPER_NUM] = {
@@ -516,6 +517,7 @@ extern void mIN_copy_name_str(u8* dst, mActor_name_t item) {
             case NAME_TYPE_ITEM1: {
                 const C_ItemDef* custom = C_FindItem(item_no);
                 const C_InteriorDef* interior = C_FindInterior(item_no);
+                const C_CreatureDef* creature = C_FindCreature(item_no);
 
                 if (custom != NULL) {
                     mem_copy(dst, (u8*)custom->name, mIN_ITEM_NAME_LEN);
@@ -523,6 +525,10 @@ extern void mIN_copy_name_str(u8* dst, mActor_name_t item) {
                 }
                 if (interior != NULL) {
                     mem_copy(dst, (u8*)interior->name, mIN_ITEM_NAME_LEN);
+                    break;
+                }
+                if (creature != NULL) {
+                    mem_copy(dst, (u8*)creature->name, mIN_ITEM_NAME_LEN);
                     break;
                 }
 
@@ -607,12 +613,16 @@ extern int mIN_get_item_article(mActor_name_t item) {
         case NAME_TYPE_ITEM1: {
             const C_ItemDef* custom = C_FindItem(item_no);
             const C_InteriorDef* interior = C_FindInterior(item_no);
+            const C_CreatureDef* creature = C_FindCreature(item_no);
 
             if (custom != NULL) {
                 return custom->article;
             }
             if (interior != NULL) {
                 return interior->article;
+            }
+            if (creature != NULL) {
+                return creature->article;
             }
             if (mNT_check_unknown(item_no)) {
                 return mIN_ARTICLE_NONE;

@@ -1,4 +1,5 @@
 #include "port/api/item.h"
+#include "port/api/creature.h"
 
 enum aNSC_action {
     aNSC_ACTION_EMPTY,
@@ -674,6 +675,9 @@ static void aNSC_set_buy_sum_str(mActor_name_t item, u32 p2) {
         case NAME_TYPE_ITEM1:
             if (C_FindItem((mActor_name_t)item) != NULL || mNT_check_unknown((mActor_name_t)item)) {
                 str_no = p2 + tani_string_num[aNSC_TANNI_STR_00];
+            } else if (C_FindCreature((mActor_name_t)item) != NULL) {
+                str_no = p2 + tani_string_num[aNSC_item_tanni_type[ITEM_NAME_GET_CAT((mActor_name_t)item)]
+                                                                  [C_FindCreature((mActor_name_t)item)->base]];
             } else {
                 str_no = p2 + tani_string_num[aNSC_item_tanni_type[ITEM_NAME_GET_CAT((mActor_name_t)item)]
                                                                   [ITEM_NAME_GET_INDEX(item)]];

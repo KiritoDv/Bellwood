@@ -31,6 +31,7 @@
 #include "assets/data/model/sen_qitem.h"
 #include "assets/data/model/sen_win.h"
 #include "port/api/item.h"
+#include "port/api/creature.h"
 
 static void mTG_mark_main_CLR(Submenu* submenu, const mSM_MenuInfo_c* menu_info);
 
@@ -4891,8 +4892,9 @@ static void mTG_insect_release_sub(mActor_name_t item, int gold_scoop) {
     if (ITEM_IS_WISP(item)) {
         mPlib_request_main_release_creature_insect_from_submenu(aINS_INSECT_TYPE_SPIRIT, gold_scoop);
     } else {
-        mPlib_request_main_release_creature_insect_from_submenu(ITEM_IS_INSECT(item) ? item - ITM_INSECT_START : 0,
-                                                                gold_scoop);
+        mPlib_request_main_release_creature_insect_from_submenu(
+            (ITEM_IS_INSECT(item) || C_FindInsect(item - ITM_INSECT_START) != NULL) ? item - ITM_INSECT_START : 0,
+            gold_scoop);
     }
 }
 

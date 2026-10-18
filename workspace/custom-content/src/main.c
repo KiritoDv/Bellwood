@@ -1,6 +1,7 @@
 #include "mod.h"
 
 #include "port/api/actor.h"
+#include "port/api/creature.h"
 #include "port/api/famicom.h"
 #include "port/api/furniture.h"
 #include "port/api/interior.h"
@@ -9,6 +10,8 @@
 #include "port/api/shop.h"
 #include "port/api/ui.h"
 #include "port/events/Events.h"
+#include "ac_set_ovl_gyoei.h"
+#include "ac_set_ovl_insect.h"
 #include "graph.h"
 #include "m_common_data.h"
 #include "m_controller.h"
@@ -37,6 +40,10 @@ static const u8 sCarpetTexture[] = { #asset "textures/mod_carpet.png" CI4 };
 static const u8 sCarpetPalette[] = { #asset "textures/mod_carpet.png" CI4_PAL };
 static const u8 sWallpaperTexture[] = { #asset "textures/mod_wallpaper.png" CI4 };
 static const u8 sWallpaperPalette[] = { #asset "textures/mod_wallpaper.png" CI4_PAL };
+static const u8 sKoiIcon[] = { #asset "textures/rainbow_koi.png" CI4 };
+static const u8 sKoiPalette[] = { #asset "textures/rainbow_koi.png" CI4_PAL };
+static const u8 sDragonflyIcon[] = { #asset "textures/mod_dragonfly.png" CI4 };
+static const u8 sDragonflyPalette[] = { #asset "textures/mod_dragonfly.png" CI4_PAL };
 
 typedef struct {
     ACTOR actor_class;
@@ -201,12 +208,48 @@ static C_InteriorDef sWallpaperDef = {
     "example.mod_wallpaper", "mod wallpaper", mIN_ARTICLE_A, 1500, sWallpaperTexture, sWallpaperPalette,
 };
 
+static C_CreatureDef sKoiDef = {
+    "example.rainbow_koi",
+    "rainbow koi",
+    mIN_ARTICLE_A,
+    3000,
+    aGYO_TYPE_KOI,
+    aSOG_SPAWN_AREA_RIVER,
+    10,
+    0,
+    0,
+    FALSE,
+    "I caught a rainbow koi!\nIt shimmers in every colour!",
+    sKoiIcon,
+    sKoiPalette,
+    NULL,
+};
+
+static C_CreatureDef sDragonflyDef = {
+    "example.mod_dragonfly",
+    "mod dragonfly",
+    mIN_ARTICLE_A,
+    800,
+    aINS_INSECT_TYPE_DARNER_DRAGONFLY,
+    aSOI_SPAWN_AREA_FLYING,
+    10,
+    0x3F0,
+    0x7FF00,
+    FALSE,
+    NULL,
+    sDragonflyIcon,
+    sDragonflyPalette,
+    NULL,
+};
+
 static s16 sSpinner = -1;
 static mActor_name_t sModTable = EMPTY_NO;
 static mActor_name_t sGem = EMPTY_NO;
 static mActor_name_t sModNes = EMPTY_NO;
 static mActor_name_t sCarpet = EMPTY_NO;
 static mActor_name_t sWallpaper = EMPTY_NO;
+static mActor_name_t sKoi = EMPTY_NO;
+static mActor_name_t sDragonfly = EMPTY_NO;
 static ListenerID sPlayUpdateListener;
 static int sSpawnRequested = FALSE;
 
@@ -260,6 +303,18 @@ static void OnGiveInteriorPressed(void) {
     }
 }
 
+static void OnGiveCreaturesPressed(void) {
+    if (Common_Get(now_private) == NULL) {
+        return;
+    }
+    if (sKoi != EMPTY_NO) {
+        mPr_SetFreePossessionItem(Common_Get(now_private), sKoi, mPr_ITEM_COND_NORMAL);
+    }
+    if (sDragonfly != EMPTY_NO) {
+        mPr_SetFreePossessionItem(Common_Get(now_private), sDragonfly, mPr_ITEM_COND_NORMAL);
+    }
+}
+
 static void OnRestockPressed(void) {
     C_RestockShop();
 }
@@ -270,6 +325,7 @@ static void SetupUI(void) {
     C_WidgetConfig gem = { 0 };
     C_WidgetConfig nes = { 0 };
     C_WidgetConfig interior = { 0 };
+    C_WidgetConfig creatures = { 0 };
     C_WidgetConfig restock = { 0 };
 
     spawn.type = C_WIDGET_BUTTON;
@@ -292,6 +348,10 @@ static void SetupUI(void) {
     interior.callback = OnGiveInteriorPressed;
     interior.opts.generic.tooltip = "Puts the mod carpet and mod wallpaper in your pockets. Use them in your house.";
 
+    creatures.type = C_WIDGET_BUTTON;
+    creatures.callback = OnGiveCreaturesPressed;
+    creatures.opts.generic.tooltip = "Puts a rainbow koi and a mod dragonfly in your pockets. Both can also be caught.";
+
     restock.type = C_WIDGET_BUTTON;
     restock.callback = OnRestockPressed;
     restock.opts.generic.tooltip =
@@ -303,6 +363,7 @@ static void SetupUI(void) {
     C_AddWidget("Custom Content", 1, "Give Lucky Gem", &gem);
     C_AddWidget("Custom Content", 1, "Give Mod NES", &nes);
     C_AddWidget("Custom Content", 1, "Give Mod Carpet and Wallpaper", &interior);
+    C_AddWidget("Custom Content", 1, "Give Mod Fish and Insect", &creatures);
     C_AddWidget("Custom Content", 1, "Restock Shop", &restock);
 }
 
@@ -317,6 +378,8 @@ MOD_INIT() {
     sModNes = C_RegisterFurniture(&sModNesDef);
     sCarpet = C_RegisterCarpet(&sCarpetDef);
     sWallpaper = C_RegisterWallpaper(&sWallpaperDef);
+    sKoi = C_RegisterFish(&sKoiDef);
+    sDragonfly = C_RegisterInsect(&sDragonflyDef);
     C_AddShopStock(sModTable, 50);
     C_AddShopStock(sCarpet, 50);
     C_AddShopStock(sWallpaper, 50);
@@ -331,6 +394,8 @@ MOD_EXIT() {
     C_RemoveShopStock(sCarpet);
     C_RemoveShopStock(sWallpaper);
     C_UnregisterWallpaper(sWallpaper);
+    C_UnregisterInsect(sDragonfly);
+    C_UnregisterFish(sKoi);
     C_UnregisterCarpet(sCarpet);
     C_UnregisterFurniture(sModNes);
     C_UnregisterFamicomGame(sColorDemo);

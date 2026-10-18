@@ -90,7 +90,12 @@ static void aINS_actor_draw_sub(GRAPH* graph, aINS_INSECT_ACTOR* insect, GAME* g
     }
 
     /* draw insect model */
-    gSPDisplayList(gfx++, aINS_displayList[insect->type][draw_type]);
+    if (insect->custom_type != 0 && C_FindInsect(insect->custom_type) != NULL &&
+        C_FindInsect(insect->custom_type)->model != NULL) {
+        gSPDisplayList(gfx++, C_FindInsect(insect->custom_type)->model[draw_type]);
+    } else {
+        gSPDisplayList(gfx++, aINS_displayList[insect->type][draw_type]);
+    }
 
     SET_POLY_XLU_DISP(gfx);
     CLOSE_DISP(graph);

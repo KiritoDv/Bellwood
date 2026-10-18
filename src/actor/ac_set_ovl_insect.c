@@ -1,4 +1,5 @@
 #include "ac_set_ovl_insect.h"
+#include "port/api/creature.h"
 #include "m_field_info.h"
 #include "m_field_make.h"
 #include "m_random_field_h.h"
@@ -1361,6 +1362,13 @@ static int aSOI_ins_renew_check_range_table(SET_MANAGER* set_manager, aSOI_insec
   return renew;
 }
 
+static void aSOI_ins_add_custom_range_info(aSOI_insect_keep_c* keep, int island) {
+  int32_t count = keep->info_num;
+
+  CALL_EVENT(InsectSpawnList, (uint8_t)island, keep->spawn_info, &count, aSetMgr_INSECT_SPAWN_INFO_COUNT);
+  keep->info_num = (u8)count;
+}
+
 static void aSOI_ins_make_range_data(SET_MANAGER* set_manager) {
   aSOI_insect_keep_c* keep = &set_manager->keep.insect_keep;
   int day_term;
@@ -1382,6 +1390,7 @@ static void aSOI_ins_make_range_data(SET_MANAGER* set_manager) {
       }
 
       aSOI_ins_add_range_info(keep->spawn_info + keep->info_num, &keep->info_num);
+      aSOI_ins_add_custom_range_info(keep, FALSE);
       aSOI_ins_renewal_time(keep);
       break;
     }
@@ -1395,6 +1404,7 @@ static void aSOI_ins_make_range_data(SET_MANAGER* set_manager) {
       
       aSOI_ins_make_insect_island_range_data(keep, day_term);
       aSOI_ins_add_range_info(keep->spawn_info + keep->info_num, &keep->info_num);
+      aSOI_ins_add_custom_range_info(keep, TRUE);
       aSOI_ins_renewal_time(keep);
       break;
     }
@@ -2091,7 +2101,7 @@ static int aSOI_ins_make(aSOI_set_data_c* set_data, aSetMgr_player_pos_c* player
   int res = FALSE;
 
   if (set_data->should_spawn == TRUE && Common_Get(clip).insect_clip->make_insect_proc != NULL && Common_Get(clip).insect_clip->make_ant_proc != NULL) {
-    aSOI_insect_birth_sum_c* birth_sum = l_insect_birth_sum + set_data->type;
+    aSOI_insect_birth_sum_c* birth_sum = l_insect_birth_sum + C_InsectBase(set_data->type);
     int birth_num = birth_sum->min_birth_count + (int)(fqrand() * (f32)birth_sum->additional_range);
 
     while (birth_num != 0) {

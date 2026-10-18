@@ -1,4 +1,5 @@
 #include "ac_insect.h"
+#include "port/api/creature.h"
 
 #include "m_name_table.h"
 #include "m_common_data.h"

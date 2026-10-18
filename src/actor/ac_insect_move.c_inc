@@ -381,6 +381,9 @@ static void aINS_actor_move(ACTOR* actorx, GAME* game) {
                 aINS_calc_life_time(insect);
                 aINS_calc_alpha_time(insect);
                 (*actorx->mv_proc)(actorx, game);
+                if (insect->custom_type != 0) {
+                    insect->item = ITM_INSECT_START + insect->custom_type;
+                }
                 Actor_world_to_eye(actorx, 0.0f);
                 aINS_set_catch_range(actorx);
             }

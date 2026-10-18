@@ -180,6 +180,44 @@ Fires whenever the game needs data for a floor index from `C_CARPET_FIRST` or a 
 
 ---
 
+## Creature Events
+
+### `CreatureLookup`
+```c
+uint8_t insect;
+int32_t index;
+int32_t furniture;
+const struct C_CreatureDef_s* definition;
+int32_t foundIndex;
+int32_t foundFurniture;
+int32_t catchMessage;
+```
+Fires whenever the game needs data for a fish or insect from index `C_CREATURE_FIRST` (0x2D) up to 255: its name, price, icon, the built-in fish or insect it behaves like, its catch message and its placed version. It is looked up either by `index` (the low byte of the item number, with `insect` telling fish from insects) or, with `index` at -1, by the `furniture` index of its placed version; then the listener also sets `insect`. Set `definition`, `foundIndex`, `foundFurniture` and `catchMessage` for the creature that owns it. Fish and insects registered through `port/api/creature.h` are answered here.
+
+---
+
+### `FishSpawnList`
+```c
+int32_t water;
+struct gyoei_spawn_info_weight_f_s* entries;
+int32_t* count;
+int32_t capacity;
+```
+Fires every time the game picks a fish for an acre, after it lists the fish that can appear there. `water` is one of `aSOG_RANGE_PROC_*` (river, sea, offing, pond, fishing tourney, island). `entries` are `aSOG_gyoei_spawn_info_weight_f_c` with a fish type, an `aSOG_SPAWN_AREA_*` and a weight; append to them and increase `*count`, up to `capacity`. Fish registered through `port/api/creature.h` are added here.
+
+---
+
+### `InsectSpawnList`
+```c
+uint8_t island;
+struct insect_spawn_info_f_s* entries;
+int32_t* count;
+int32_t capacity;
+```
+Fires when the game rebuilds the list of insects that can appear, which happens when the time of day moves to its next period (six a day). `entries` are `aSOI_insect_spawn_info_f_c` with an insect type, an `aSOI_SPAWN_AREA_*` and a weight; append to them and increase `*count`, up to `capacity`. Insects registered through `port/api/creature.h` are added here.
+
+---
+
 ## Shop Events
 
 ### `ShopStockGenerated`

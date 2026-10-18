@@ -2783,6 +2783,11 @@ static mMkRm_ftr_info_c mMkRm_GetFtrInfo(int ftr_idx) {
         } else if (furniture->set_type == aFTR_SET_TYPE_ON_SURFACE) {
             info.surface_type = mMkRm_SURFACE_TYPE_PLACEABLE;
         }
+        if (furniture->profile.interaction_type & aFTR_INTERACTION_FISH) {
+            info.birth_type = mRmTp_BIRTH_TYPE_FTR_FISH;
+        } else if (furniture->profile.interaction_type & aFTR_INTERACTION_INSECT) {
+            info.birth_type = mRmTp_BIRTH_TYPE_FTR_INSECT;
+        }
     }
 
     return info;

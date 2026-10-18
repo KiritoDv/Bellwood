@@ -1,4 +1,5 @@
 #include "ac_gyoei.h"
+#include "port/api/creature.h"
 
 #include "m_common_data.h"
 #include "m_actor_shadow.h"

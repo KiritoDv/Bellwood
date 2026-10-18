@@ -11,6 +11,7 @@
 #include "list/FurnitureEvent.h"
 #include "list/ItemEvent.h"
 #include "list/InteriorEvent.h"
+#include "list/CreatureEvent.h"
 #include "list/ShopEvent.h"
 #include "list/PlayerEvent.h"
 #include "list/GameEvent.h"

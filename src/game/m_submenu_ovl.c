@@ -83,6 +83,7 @@
 #include "assets/data/model/inv_mwin_unknown.h"
 #include "assets/data/model/inv_mwin_yashi.h"
 #include "port/api/item.h"
+#include "port/api/creature.h"
 
 static Submenu_Overlay_c ovl_base;
 
@@ -972,6 +973,7 @@ static void mSM_draw_item(GRAPH* graph, f32 pos_x, f32 pos_y, f32 scale, mActor_
     mSM_inventory_icon_info_c* icon;
     mSM_inventory_icon_info_c custom_icon;
     const C_ItemDef* custom_item;
+    const C_CreatureDef* creature;
     u16* palette;
     rgba_t color;
     int category = -1;
@@ -1004,6 +1006,14 @@ static void mSM_draw_item(GRAPH* graph, f32 pos_x, f32 pos_y, f32 scale, mActor_
                 icon = &custom_icon;
             } else {
                 icon = &item_tex_data_table[ITEM1_CAT_ETC][ITEM_NAME_GET_INDEX(ITM_QST_ORGANIZER)];
+            }
+        } else if ((creature = C_FindCreature(item)) != NULL) {
+            if (creature->icon_tex != NULL && creature->icon_pal != NULL) {
+                custom_icon.pal = (u16*)creature->icon_pal;
+                custom_icon.tex = (u8*)creature->icon_tex;
+                icon = &custom_icon;
+            } else {
+                icon = &item_tex_data_table[ITEM_NAME_GET_CAT(item)][creature->base];
             }
         } else if (mNT_check_unknown(item) == TRUE) {
             icon = &unknown_tex_data;

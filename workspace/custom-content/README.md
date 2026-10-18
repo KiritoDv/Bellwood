@@ -1,6 +1,6 @@
 # Custom Content Example
 
-Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM), a new item (a "lucky gem" that breaks into 1,000 Bells when used) and a new carpet and wallpaper to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu. The mod table, carpet and wallpaper are also on sale at Nook's on half of the days, and everything shows up in the catalog once you own it. The gem icon, carpet and wallpaper are drawn from the PNGs in `src/textures`.
+Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM), a new item (a "lucky gem" that breaks into 1,000 Bells when used), a new carpet and wallpaper, and a new fish and insect (a "rainbow koi" in the river and a "mod dragonfly" from May to October) to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu. The mod table, carpet and wallpaper are also on sale at Nook's on half of the days, and everything shows up in the catalog once you own it. The gem, koi and dragonfly icons, the carpet and the wallpaper are drawn from the PNGs in `src/textures`.
 
 Build and install it like the template:
 
@@ -206,6 +206,53 @@ sTiles = C_RegisterCarpet(&sTilesDef);
 | `void C_UnregisterCarpet(mActor_name_t item)`, `void C_UnregisterWallpaper(mActor_name_t item)` | Call them in `MOD_EXIT`. |
 
 Custom carpets and wallpapers work like the built-in ones: the player uses them from the pockets in their house or island cottage, and the one they replace goes back into the pockets. They count as common designs at the Happy Room Academy, and walking on a custom carpet sounds like walking on a design from the Able Sisters. If a room uses a carpet or wallpaper whose mod isn't loaded, it shows the default floor or wall until the mod is back, without losing it.
+
+## Fish and insects (`port/api/creature.h`)
+
+```c
+#include "ac_gyoei.h"            // aGYO_TYPE_*
+#include "ac_set_ovl_gyoei.h"    // aSOG_SPAWN_AREA_*
+
+static const u8 sKoiIcon[] = { #asset "textures/koi.png" CI4 };
+static const u8 sKoiPalette[] = { #asset "textures/koi.png" CI4_PAL };
+
+static C_CreatureDef sKoiDef = {
+    "mymod.rainbow_koi", "rainbow koi", mIN_ARTICLE_A, 3000,
+    aGYO_TYPE_KOI, aSOG_SPAWN_AREA_RIVER, 10, 0, 0, FALSE,
+    "I caught a rainbow koi!", sKoiIcon, sKoiPalette, NULL,
+};
+
+sKoi = C_RegisterFish(&sKoiDef);
+```
+
+A custom fish or insect is built on one of the 40 built-in ones, its `base`. It moves, flees, bites or sings like the base, has the base's size and shadow, and is kept at home in the base's aquarium or cage. Everything else comes from the definition.
+
+| Field | Description |
+|---|---|
+| `id` | Unique key. The item number assigned to it is stored in `custom_fish.json` or `custom_insects.json` next to the game. Never reuse an id for a different creature. |
+| `name`, `article` | Name shown in game, up to 16 characters, and its `mIN_ARTICLE_*`. |
+| `price` | Value in Bells. Nook pays a quarter of it, like for the built-in ones. |
+| `base` | `aGYO_TYPE_*` from `ac_gyoei.h` for fish, `aINS_INSECT_TYPE_*` from `ac_insect_h.h` for insects. |
+| `place` | Where it appears. Fish: `aSOG_SPAWN_AREA_RIVER`, `_POOL` (river pools), `_WATERFALL`, `_POND`, `_SEA`, `_RIVER_MOUTH` or `_OFFING`, from `ac_set_ovl_gyoei.h`. Insects: `aSOI_SPAWN_AREA_*` from `ac_set_ovl_insect.h`, such as `_ON_TREE`, `_ON_FLOWER`, `_FLYING`, `_ON_GROUND`, `_UNDER_ROCK` or `_ON_WATER`. Pick a place the base can live in, since the base decides how it behaves there: a cicada needs a tree. |
+| `weight` | How often it is picked against the other candidates. Common built-in fish and insects use about 10 to 30, rare ones 1 to 3. 0 means it never appears by itself. |
+| `months` | Bit 0 is January and bit 11 December. 0 for all year. |
+| `hours` | Bit 0 is midnight and bit 23 11 PM. 0 for all day. The game rebuilds its insect list six times a day, so for insects the hours apply from the next of those changes (4 AM, 8 AM, 4 PM, 5 PM, 7 PM and 11 PM). |
+| `island` | Also appears on the island. |
+| `catch_text` | Shown when it is caught; dialogue tags work (see [Dialogue](#dialogue-portapimessageh)). NULL for "I caught a *name*!". |
+| `icon_tex`, `icon_pal` | 32x32 CI4 pocket icon and its 16 colour palette. NULL for the base's icon. |
+| `model` | Optional display lists that replace the base's model, in the same number and order. Fish have three, one per animation frame. Most insects have four (two frames, two parts each); the mole cricket has two and the bagworm and spider six. NULL for the base's model. |
+
+| Function | Description |
+|---|---|
+| `mActor_name_t C_RegisterFish(const C_CreatureDef* def)`, `C_RegisterInsect` | Returns the item number, or `EMPTY_NO`. Up to 211 custom fish and 211 custom insects fit. |
+| `void C_UnregisterFish(mActor_name_t item)`, `C_UnregisterInsect` | Call them in `MOD_EXIT`. |
+
+Custom fish and insects are caught with the rod or the net, show their catch text, go into the pockets, can be released, sold to Nook, or placed at home, where they show as the base's aquarium or cage and count as fish or insects at the Happy Room Academy. Some things stay with the 40 built-in ones:
+- Blathers hands custom ones back instead of taking them for the museum.
+- The fish and insect pages in the pockets, the golden net and rod, and "caught them all" only count the built-in ones.
+- Villagers don't ask for custom ones in trades, and Chip's fishing tourney only judges the bass.
+
+`FishSpawnList` and `InsectSpawnList` in `src/port/events/EVENTS.md` show the full lists of candidates and let a mod change them.
 
 ## NES games (`port/api/famicom.h`)
 

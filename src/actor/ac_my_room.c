@@ -229,6 +229,16 @@ static aFTR_PROFILE* aMR_GetFurnitureProfile(u16 ftr_no) {
     return &iam_dummy;
 }
 
+extern aFTR_PROFILE* aMR_GetBuiltInFurniture(int ftr_no, u8* set_type) {
+    if (ftr_no < 0 || ftr_no >= FTR_NUM) {
+        return NULL;
+    }
+    if (set_type != NULL) {
+        *set_type = aMR_layer_set_info[ftr_no];
+    }
+    return furniture_quality[ftr_no];
+}
+
 static u8 aMR_GetLayerSetType(u16 ftr_no) {
     if (ftr_no < FTR_NUM) {
         return aMR_layer_set_info[ftr_no];

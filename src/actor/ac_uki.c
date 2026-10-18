@@ -1,4 +1,5 @@
 #include "ac_uki.h"
+#include "port/api/creature.h"
 
 #include "m_play.h"
 #include "m_name_table.h"

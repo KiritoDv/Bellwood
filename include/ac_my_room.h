@@ -294,6 +294,7 @@ extern aMR_contact_info_c* aMR_GetContactInfoLayer1(void);
 extern FTR_ACTOR* aMR_GetParentFactor(FTR_ACTOR* ftr_actor, ACTOR* my_room_actorx);
 extern s16 aMR_GetParentAngleOffset(FTR_ACTOR* ftr_actor, ACTOR* my_room_actorx);
 extern void aMR_SetSurprise(ACTOR* my_room_actor, s16 rot);
+extern aFTR_PROFILE* aMR_GetBuiltInFurniture(int ftr_no, u8* set_type);
 extern void aMR_RadioCommonMove(FTR_ACTOR* ftr_actor, ACTOR* my_room_actorx);
 extern void aMR_SaveWaltzTempo2(void);
 extern u8 aMR_GetAlphaEdge(u16 ftr_name);

@@ -1,4 +1,5 @@
 #include "ac_gyo_release.h"
+#include "port/api/creature.h"
 
 #include "ac_gyoei.h"
 #include "m_name_table.h"
@@ -55,7 +56,7 @@ static void aGYR_actor_ct(ACTOR* actorx, GAME* game) {
     ((GYOEI_ACTOR*)gyo_release->gyoei_actor_p)->segment_type[gyo_release->segment] = gyo_release->gyo_type;
     actorx->drawn = TRUE;
     actorx->shape_info.draw_shadow = TRUE;
-    gyo_release->size_type = gyoei_type[gyo_release->gyo_type].size;
+    gyo_release->size_type = gyoei_type[C_FishBase(gyo_release->gyo_type)].size;
     actorx->scale.x = 0.0126f;
     actorx->scale.y = 0.0126f;
     actorx->scale.z = 0.0126f;
@@ -113,13 +114,13 @@ static int aGYR_anime_frame(GYO_RELEASE_ACTOR* gyo_release) {
     int next_frame;
 
     cur_frame++;
-    if (aGYR_anime_ptn[gyo_release->gyo_type] == 1) {
+    if (aGYR_anime_ptn[C_FishBase(gyo_release->gyo_type)] == 1) {
         if (cur_frame >= ARRAY_COUNT(aGYR_frame_ptn1)) {
             cur_frame = 0;
         }
 
         next_frame = aGYR_frame_ptn1[cur_frame];
-    } else if (aGYR_anime_ptn[gyo_release->gyo_type] == 2) {
+    } else if (aGYR_anime_ptn[C_FishBase(gyo_release->gyo_type)] == 2) {
         if (cur_frame >= ARRAY_COUNT(aGYR_frame_ptn2)) {
             cur_frame = 0;
         }
@@ -193,7 +194,7 @@ static void aGYR_Shadow_size(ACTOR* actorx) {
         ofs_y = 0.0f;
     }
 
-    if (gyo_release->gyo_type == aGYO_TYPE_EEL) {
+    if (C_FishBase(gyo_release->gyo_type) == aGYO_TYPE_EEL) {
         correction_x = 9.0f;
         correction_z = 3.5f;
     } else {
@@ -288,7 +289,8 @@ static void aGYR_move_sub(ACTOR* actorx, GAME* game) {
         }
 
         chase_s(&gyo_release->angle_y_add, 180, 32);
-        if (gyo_release->gyo_type == aGYO_TYPE_LOACH || gyo_release->gyo_type == aGYO_TYPE_EEL) {
+        if (C_FishBase(gyo_release->gyo_type) == aGYO_TYPE_LOACH ||
+            C_FishBase(gyo_release->gyo_type) == aGYO_TYPE_EEL) {
             gyo_release->angle_y = 0;
         } else {
             gyo_release->angle_y = DEG2SHORT_ANGLE2(30.0f * sin_s(DEG2SHORT_ANGLE2(gyo_release->angle_y_add)));
@@ -338,7 +340,7 @@ static void aGYR_actor_draw(ACTOR* actorx, GAME* game) {
     } else {
         frame = aGYR_anime_frame(gyo_release);
     }
-    gSPDisplayList(NEXT_POLY_OPA_DISP, ((Gfx**)aGYO_displayList[gyo_release->gyo_type])[(int)(frame * 0.5f)]);
+    gSPDisplayList(NEXT_POLY_OPA_DISP, aGYO_GetDisplayList(gyo_release->gyo_type)[(int)(frame * 0.5f)]);
 
     CLOSE_DISP(graph);
 
