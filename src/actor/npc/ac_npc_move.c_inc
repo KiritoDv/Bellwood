@@ -226,7 +226,7 @@ static u8 aNPC_entranceCheck_sub(xyz_t* pos_p) {
         pos.z -= mFI_UT_WORLDSIZE_Z_F;
         fg_p = mFI_GetUnitFG(pos);
 
-        if (fg_p != NULL && (ITEM_IS_DUMMY_NPC_HOUSE(*fg_p) || ITEM_IS_NPC_HOUSE(*fg_p) || *fg_p == COTTAGE_NPC ||
+        if (fg_p != NULL && (C_IsVillagerHouseDummy(*fg_p) || C_IsVillagerHouse(*fg_p) || *fg_p == COTTAGE_NPC ||
                              *fg_p == DUMMY_COTTAGE_NPC)) {
             break;
         }

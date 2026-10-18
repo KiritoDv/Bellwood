@@ -247,7 +247,7 @@ static int aHUS_check_player(HOUSE_ACTOR* house, GAME_PLAY* play) {
     }
 
     name = house->actor_class.npc_id;
-    name = name - NPC_HOUSE_START + DUMMY_NPC_HOUSE_000;
+    name = C_VillagerHouseDummy(name);
     if ((mActor_name_t)player->item_in_front == name && chkTrigger(BUTTON_A)) {
         if ((mEv_CheckFirstJob() == TRUE || mEv_check_status(mEv_EVENT_HALLOWEEN, mEv_STATUS_ACTIVE)) == TRUE) {
             house->arg3 = 0;
@@ -479,7 +479,7 @@ static void aHUS_actor_init(ACTOR* actorx, GAME* game) {
     mActor_name_t name;
 
     name = actorx->npc_id;
-    name = name - NPC_HOUSE_START + DUMMY_NPC_HOUSE_000;
+    name = C_VillagerHouseDummy(name);
     mFI_SetFG_common(name, actorx->home.position, FALSE);
     aHUS_actor_move(actorx, game);
     actorx->mv_proc = &aHUS_actor_move;

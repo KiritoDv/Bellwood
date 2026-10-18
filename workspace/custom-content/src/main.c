@@ -9,6 +9,7 @@
 #include "port/api/item.h"
 #include "port/api/message.h"
 #include "port/api/shop.h"
+#include "port/api/villager.h"
 #include "port/api/ui.h"
 #include "port/events/Events.h"
 #include "ac_set_ovl_gyoei.h"
@@ -19,6 +20,7 @@
 #include "m_demo.h"
 #include "m_huusui_room.h"
 #include "m_item_name.h"
+#include "m_npc.h"
 #include "m_player_lib.h"
 #include "m_private.h"
 #include "m_rcp.h"
@@ -245,6 +247,15 @@ static C_CreatureDef sDragonflyDef = {
     NULL,
 };
 
+static const u8 sMintPalette[] = {
+    0x00, 0x01, 0x35, 0x19, 0x4D, 0xDD, 0x6E, 0xA3, 0x97, 0x6B, 0xF7, 0x6D, 0x12, 0x09, 0x23, 0x8F,
+    0x35, 0x19, 0xA9, 0x0B, 0xE2, 0x11, 0x65, 0x5F, 0xCF, 0x75, 0xFD, 0x29, 0xF4, 0x21, 0xEB, 0x5B,
+};
+
+static C_VillagerDef sMintDef = {
+    "example.mint", "Mint", "minty", NPC_BOB, mNpc_LOOKS_KO_GIRL, EMPTY_NO, NULL, sMintPalette, 0, 2, 3, -1, -1, FALSE,
+};
+
 static C_ClothDef sTeeDef = {
     "example.mod_tee", "mod tee", mIN_ARTICLE_A, 1200, sTeeTexture, sTeePalette,
 };
@@ -258,6 +269,7 @@ static mActor_name_t sWallpaper = EMPTY_NO;
 static mActor_name_t sKoi = EMPTY_NO;
 static mActor_name_t sDragonfly = EMPTY_NO;
 static mActor_name_t sTee = EMPTY_NO;
+static mActor_name_t sMint = EMPTY_NO;
 static ListenerID sPlayUpdateListener;
 static int sSpawnRequested = FALSE;
 
@@ -329,6 +341,22 @@ static void OnGiveTeePressed(void) {
     }
 }
 
+static void OnInviteMintPressed(void) {
+    Private_c* priv = Common_Get(now_private);
+    int i;
+
+    if (sMint == EMPTY_NO || priv == NULL) {
+        return;
+    }
+    for (i = 0; i < ANIMAL_NUM_MAX; i++) {
+        mActor_name_t npc_id = Save_Get(animals[i]).id.npc_id;
+
+        if (ITEM_NAME_GET_TYPE(npc_id) == NAME_TYPE_NPC && npc_id != sMint && C_ReplaceVillager(npc_id, sMint)) {
+            break;
+        }
+    }
+}
+
 static void OnRestockPressed(void) {
     C_RestockShop();
 }
@@ -341,6 +369,7 @@ static void SetupUI(void) {
     C_WidgetConfig interior = { 0 };
     C_WidgetConfig creatures = { 0 };
     C_WidgetConfig tee = { 0 };
+    C_WidgetConfig mint = { 0 };
     C_WidgetConfig restock = { 0 };
 
     spawn.type = C_WIDGET_BUTTON;
@@ -371,6 +400,10 @@ static void SetupUI(void) {
     tee.callback = OnGiveTeePressed;
     tee.opts.generic.tooltip = "Puts a mod tee in your pockets. Drag it onto your character to wear it.";
 
+    mint.type = C_WIDGET_BUTTON;
+    mint.callback = OnInviteMintPressed;
+    mint.opts.generic.tooltip = "Mint moves into the first villager's house. Leave the town and come back to see it.";
+
     restock.type = C_WIDGET_BUTTON;
     restock.callback = OnRestockPressed;
     restock.opts.generic.tooltip =
@@ -384,6 +417,7 @@ static void SetupUI(void) {
     C_AddWidget("Custom Content", 1, "Give Mod Carpet and Wallpaper", &interior);
     C_AddWidget("Custom Content", 1, "Give Mod Fish and Insect", &creatures);
     C_AddWidget("Custom Content", 1, "Give Mod Tee", &tee);
+    C_AddWidget("Custom Content", 1, "Invite Mint", &mint);
     C_AddWidget("Custom Content", 1, "Restock Shop", &restock);
 }
 
@@ -401,6 +435,8 @@ MOD_INIT() {
     sKoi = C_RegisterFish(&sKoiDef);
     sDragonfly = C_RegisterInsect(&sDragonflyDef);
     sTee = C_RegisterCloth(&sTeeDef);
+    sMintDef.cloth = sTee;
+    sMint = C_RegisterVillager(&sMintDef);
     C_AddShopStock(sModTable, 50);
     C_AddShopStock(sCarpet, 50);
     C_AddShopStock(sWallpaper, 50);
@@ -416,6 +452,7 @@ MOD_EXIT() {
     C_RemoveShopStock(sCarpet);
     C_RemoveShopStock(sWallpaper);
     C_RemoveShopStock(sTee);
+    C_UnregisterVillager(sMint);
     C_UnregisterCloth(sTee);
     C_UnregisterWallpaper(sWallpaper);
     C_UnregisterInsect(sDragonfly);

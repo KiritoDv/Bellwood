@@ -1,4 +1,5 @@
 #include "m_player_lib.h"
+#include "port/api/villager.h"
 #include "port/api/creature.h"
 #include "port/events/Events.h"
 

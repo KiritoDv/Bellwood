@@ -232,6 +232,19 @@ Fires whenever the game needs data for a shirt in the custom clothing range, `C_
 
 ---
 
+## Villager Events
+
+### `VillagerLookup`
+```c
+uint16_t npcId;
+const struct C_VillagerDef_s* definition;
+const uint8_t* name;
+const uint8_t* catchphrase;
+```
+Fires whenever the game needs data for a villager id from `C_VILLAGER_FIRST` (0xE0EE) to `C_VILLAGER_LAST` (0xE0FE): personality, name, catchphrase, model, house and the move-in rules. Set `definition` to the villager that owns the id, and `name` and `catchphrase` to `ANIMAL_NAME_LEN` and `ANIMAL_CATCHPHRASE_LEN` bytes in the game's text encoding. Villagers registered through `port/api/villager.h` are answered here; a town villager whose id isn't answered shows as the base villager Bob.
+
+---
+
 ## Shop Events
 
 ### `ShopStockGenerated`

@@ -6776,7 +6776,7 @@ static int Player_actor_Check_NecessaryDoorKnock(ACTOR* actorx) {
                     return TRUE;
                 }
             }
-        } else if (ITEM_IS_NPC_HOUSE(item) || ITEM_IS_ISLAND_NPC_HOUSE(item)) {
+        } else if (C_IsVillagerHouse(item) || ITEM_IS_ISLAND_NPC_HOUSE(item)) {
             return TRUE;
         }
     }

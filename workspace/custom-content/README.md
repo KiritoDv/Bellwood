@@ -1,6 +1,6 @@
 # Custom Content Example
 
-Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM), a new item (a "lucky gem" that breaks into 1,000 Bells when used), a new carpet, wallpaper and shirt, and a new fish and insect (a "rainbow koi" in the river and a "mod dragonfly" from May to October) to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu. The mod table, carpet, wallpaper and tee are also on sale at Nook's on half of the days, and everything shows up in the catalog once you own it. The gem, koi and dragonfly icons, the carpet, the wallpaper and the tee are drawn from the PNGs in `src/textures`.
+Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM), a new item (a "lucky gem" that breaks into 1,000 Bells when used), a new carpet, wallpaper and shirt, a new fish and insect (a "rainbow koi" in the river and a "mod dragonfly" from May to October), and a new villager (Mint, a peppy green cat who wears the mod tee) to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu. The mod table, carpet, wallpaper and tee are also on sale at Nook's on half of the days, and everything shows up in the catalog once you own it. The gem, koi and dragonfly icons, the carpet, the wallpaper and the tee are drawn from the PNGs in `src/textures`.
 
 Build and install it like the template:
 
@@ -234,6 +234,41 @@ sTee = C_RegisterCloth(&sTeeDef);
 | `void C_UnregisterCloth(mActor_name_t item)` | Call it in `MOD_EXIT`. |
 
 The game's clothing numbers are all taken, so custom shirts use the free end of the diary category (0x2B10 to 0x2BFF) and the game treats them as clothing everywhere: the player wears them from the pockets or the inventory background, Nook sells them on a mannequin and lets the player try them on, they can be placed at home on a mannequin, listed and ordered in the catalog, and given or mailed to villagers, who wear them. Villagers don't pick custom shirts on their own, and quests and Blanca only use the built-in ones.
+
+## Villagers (`port/api/villager.h`)
+
+```c
+static C_VillagerDef sMintDef = {
+    "mymod.mint", "Mint", "minty", NPC_BOB, mNpc_LOOKS_KO_GIRL, EMPTY_NO, NULL, sMintPalette, 0, 2, 3, -1, -1, FALSE,
+};
+
+sMint = C_RegisterVillager(&sMintDef);
+```
+
+A custom villager is built on one of the 236 built-in villagers, its `base`: it uses the base's species, model, animations and room layout, and everything below can be changed. Dialogue in this game depends on the personality, so a custom villager talks like the other villagers of its personality, with its own name and catchphrase.
+
+| Field | Description |
+|---|---|
+| `id` | Unique key. The villager id assigned to it is stored in `custom_villagers.json` next to the game. Never reuse an id for a different villager. |
+| `name` | Name shown in game, up to 8 characters. |
+| `catchphrase` | Added to the end of sentences, up to 10 characters. Villagers can still change it over time, like built-in ones. |
+| `base` | `NPC_*` id of the built-in villager it is built on, from `m_name_table.h`. |
+| `looks` | Personality, `mNpc_LOOKS_*` from `m_npc_personal_id.h`: normal, peppy, lazy, jock, cranky or snooty. It also decides whether it is a boy or a girl. |
+| `cloth` | Shirt worn when moving in, built-in or custom. `EMPTY_NO` for the base's. |
+| `texture` | Body texture replacing the base's, in the same size and format (for example the 2048x1 CI4 strip of most villagers). NULL for the base's. Raw arrays must be 2-byte aligned, like `C_ASSET` and `#asset` paths. |
+| `palette` | 16 colour palette replacing the base's, as an asset or raw big-endian RGBA5551 bytes. Swapping only the palette recolours the base. NULL for the base's. |
+| `voice` | Voice number, 0 for the base's. |
+| `house_type`, `house_palette` | House shape and colours, 0 to 4 each, -1 for the base's. |
+| `wall`, `floor` | Wallpaper and carpet of its room, 0 to 66, -1 for the base's. |
+| `starter` | Can be one of the first villagers of a new town. Otherwise it only moves in later. |
+
+| Function | Description |
+|---|---|
+| `mActor_name_t C_RegisterVillager(const C_VillagerDef* def)` | Returns the villager id, or `EMPTY_NO`. Up to 17 custom villagers fit. |
+| `void C_UnregisterVillager(mActor_name_t npc_id)` | Call it in `MOD_EXIT`. A town it lives in shows it as the base villager Bob until it is registered again. |
+| `int C_ReplaceVillager(mActor_name_t old_npc_id, mActor_name_t new_npc_id)` | Moves a villager, built-in or custom, into the house of a town villager in place of them, as if they had just moved in. The town shows it the next time it loads. |
+
+Custom villagers move in like built-in ones: when a house is free, the game picks among the villagers of the needed personality that haven't lived in town yet, custom ones included. They walk around, talk, have a house you can visit, wear and get given clothes, and write letters. The island and e-Reader cards only use built-in villagers.
 
 ## Fish and insects (`port/api/creature.h`)
 

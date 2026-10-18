@@ -1,4 +1,5 @@
 #include "m_all_grow.h"
+#include "port/api/villager.h"
 
 #include "libultra/libultra.h"
 #include "m_common_data.h"
@@ -1326,7 +1327,7 @@ static void mAGrw_SetCarpBlockInfo(mAGrw_CarpBlockInfo_c* block_info, mActor_nam
             block_info->signboard_count++;
         } else if (*items == KOINOBORI_WINDSOCK) {
             block_info->carp_already_exists = TRUE;
-        } else if (*items >= NPC_HOUSE_START && *items < NPC_HOUSE_END) {
+        } else if (C_IsVillagerHouse(*items)) {
             block_info->villager_house_in_block = TRUE;
         }
 
@@ -2069,8 +2070,8 @@ static int mAGrw_CheckCancel22(mActor_name_t item) {
 
 static int mAGrw_CheckCancel36(mActor_name_t item) {
     if (ITEM_NAME_GET_TYPE(item) == NAME_TYPE_STRUCT) {
-        if ((item >= SIGN00 && item <= SIGN20) || (item >= NPC_HOUSE_START && item <= NPC_HOUSE_END) ||
-            (item == KAMAKURA) || (item == POLICE_STATION) || (item == TENT)) {
+        if ((item >= SIGN00 && item <= SIGN20) || C_IsVillagerHouse(item) || (item == KAMAKURA) ||
+            (item == POLICE_STATION) || (item == TENT)) {
             return TRUE;
         }
     }
@@ -2080,8 +2081,7 @@ static int mAGrw_CheckCancel36(mActor_name_t item) {
 
 static int mAGrw_CheckHide36(mActor_name_t item) {
     if (ITEM_NAME_GET_TYPE(item) == NAME_TYPE_STRUCT) {
-        if ((item >= NPC_HOUSE_START && item <= NPC_HOUSE_END) || (item == KAMAKURA) || (item == POLICE_STATION) ||
-            (item == TENT)) {
+        if (C_IsVillagerHouse(item) || (item == KAMAKURA) || (item == POLICE_STATION) || (item == TENT)) {
             return TRUE;
         }
     }

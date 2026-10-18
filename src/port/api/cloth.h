@@ -12,13 +12,13 @@
 #define C_CLOTH_NAME_LEN 16
 
 typedef struct C_ClothDef_s {
-    const char* id;          // stable unique key, e.g. "mymod.stripes", keeps the same item number across sessions
-    const char* name;        // shown in game, up to 16 characters (UTF-8)
-    uint8_t article;         // mIN_ARTICLE_*
-    uint32_t price;          // in Bells
-    const void* texture;     // 32x32 CI4 shirt texture, laid out like the built-in shirts
-    const void* palette;     // 16 colour palette for the texture
-    uint8_t not_for_sale;    // shows "Not for Sale" in the catalog
+    const char* id;       // stable unique key, e.g. "mymod.stripes", keeps the same item number across sessions
+    const char* name;     // shown in game, up to 16 characters (UTF-8)
+    uint8_t article;      // mIN_ARTICLE_*
+    uint32_t price;       // in Bells
+    const void* texture;  // 32x32 CI4 shirt texture, laid out like the built-in shirts
+    const void* palette;  // 16 colour palette for the texture
+    uint8_t not_for_sale; // shows "Not for Sale" in the catalog
 } C_ClothDef;
 
 // Registers a shirt. Returns its item number, or EMPTY_NO.
