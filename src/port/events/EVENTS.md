@@ -72,6 +72,15 @@ Fires after the controllers are read, before the game sees the new input. Write 
 
 ## Actor Events
 
+### `ActorProfileLookup`
+```c
+int16_t profile;
+struct actor_dlftbl_s* table;
+```
+Fires when an actor is spawned with a profile number past the built-in table. Set `table` to the profile's table entry to make the spawn succeed. Custom actors registered through `port/api/actor.h` are answered here.
+
+---
+
 ### `ActorSpawn` _(cancellable)_
 ```c
 int16_t* profile;
@@ -80,7 +89,7 @@ int16_t* rot;    // x, y, z
 uint16_t* name;
 int16_t* arg;
 ```
-Fires before an actor is allocated. Write through the pointers to spawn something else or somewhere else; an out of range profile is ignored.
+Fires before an actor is allocated. Write through the pointers to spawn something else or somewhere else; a profile that doesn't exist is ignored.
 **Cancel**: the actor is not created and the spawn returns `NULL`.
 
 ---
@@ -116,6 +125,17 @@ Fires every frame before an actor is drawn.
 struct actor_s* actor;
 ```
 Fires when an actor is destroyed, before its save and destructor functions run.
+
+---
+
+## Furniture Events
+
+### `FurnitureLookup`
+```c
+int32_t index;
+const struct C_FurnitureDef_s* furniture;
+```
+Fires whenever the game needs data for a furniture index past the built-in table (model, size, name, price and so on). Set `furniture` to the definition that owns the index. Custom furniture registered through `port/api/furniture.h` is answered here; unanswered indices draw as the placeholder and show as unknown items.
 
 ---
 

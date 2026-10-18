@@ -7,6 +7,7 @@
 #include "m_font.h"
 #include "assets/data/item/item_name.h"
 #include "ac_asset.h"
+#include "port/api/furniture.h"
 
 static u8 itemArt_Paper[PAPER_NUM] = {
     mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE,
@@ -524,6 +525,19 @@ extern void mIN_copy_name_str(u8* dst, mActor_name_t item) {
             }
 
             case NAME_TYPE_FTR1: {
+                int ftr_idx = mRmTp_FtrItemNo2FtrIdx(item_no);
+
+                if (ftr_idx >= FTR_NUM) {
+                    const C_FurnitureDef* furniture = C_FindFurniture(ftr_idx);
+                    const char* name = furniture != NULL && furniture->name != NULL ? furniture->name : "";
+                    int i;
+
+                    for (i = 0; i < mIN_ITEM_NAME_LEN; i++) {
+                        dst[i] = *name != '\0' ? (u8)*name++ : CHAR_SPACE;
+                    }
+                    break;
+                }
+
                 mIN_dma_itemName(item_name, ftrName2_table, ((item_no / 4) & 0x3FF) * mIN_ITEM_NAME_LEN);
                 mem_copy(dst, item_name, mIN_ITEM_NAME_LEN);
                 break;
@@ -586,6 +600,12 @@ extern int mIN_get_item_article(mActor_name_t item) {
             int ftr_idx = mRmTp_FtrItemNo2FtrIdx(item_no);
             if (ftr_idx < FTR_NUM) {
                 return ftrArt[ftr_idx];
+            } else {
+                const C_FurnitureDef* furniture = C_FindFurniture(ftr_idx);
+
+                if (furniture != NULL) {
+                    return furniture->article;
+                }
             }
             return mIN_ARTICLE_NONE;
         }

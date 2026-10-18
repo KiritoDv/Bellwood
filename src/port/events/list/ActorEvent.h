@@ -3,8 +3,16 @@
 #include <stdint.h>
 
 struct actor_s;
+struct actor_dlftbl_s;
 
 // Actor lifecycle
+
+// Fires when an actor is spawned with a profile number past the built-in table.
+// Set table to the profile's table entry to make the spawn succeed.
+DEFINE_EVENT(ActorProfileLookup,
+    int16_t profile;               // requested profile number
+    struct actor_dlftbl_s* table;  // set by the listener that owns the profile
+);
 
 // Fires before an actor is allocated. Cancellable.
 // Write through the pointers to spawn something else or somewhere else.

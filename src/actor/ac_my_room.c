@@ -20,6 +20,7 @@
 #include "m_rcp.h"
 #include "assets/data/model/furniture_stop.h"
 #include "ac_port.h"
+#include "port/api/furniture.h"
 
 enum {
     aMR_ICON_LEAF,
@@ -143,7 +144,7 @@ typedef struct my_room_work_s {
 } aMR_work_c;
 
 static aMR_work_c l_aMR_work;
-static u8 l_bank_index_table[FTR_NUM];
+static u8 l_bank_index_table[mRmTp_FTR_INDEX_MAX];
 static u8* l_bank_address_table[aMR_FTR_BANK_NUM];
 
 // clang-format off
@@ -218,10 +219,28 @@ static aFTR_PROFILE* aMR_GetFurnitureProfile(u16 ftr_no) {
             return furniture_quality[ftr_no];
         }
     } else {
-        return &iam_dummy;
+        const C_FurnitureDef* furniture = C_FindFurniture(ftr_no);
+
+        if (furniture != NULL) {
+            return (aFTR_PROFILE*)&furniture->profile;
+        }
     }
 
     return &iam_dummy;
+}
+
+static u8 aMR_GetLayerSetType(u16 ftr_no) {
+    if (ftr_no < FTR_NUM) {
+        return aMR_layer_set_info[ftr_no];
+    } else {
+        const C_FurnitureDef* furniture = C_FindFurniture(ftr_no);
+
+        if (furniture != NULL) {
+            return furniture->set_type;
+        }
+    }
+
+    return aFTR_SET_TYPE_NORMAL;
 }
 
 static int aMR_GetItemCountInFurniture(FTR_ACTOR* ftr_actor) {
@@ -609,7 +628,7 @@ static int aMR_SearchFurnitureBankVacancy(void) {
     int i;
     int count = 0;
 
-    for (i = 0; i < FTR_NUM; i++) {
+    for (i = 0; i < mRmTp_FTR_INDEX_MAX; i++) {
         if (aMR_CheckFurnitureBankExist(i)) {
             count++;
         }
@@ -629,7 +648,7 @@ static int aMR_SearchFreeFurnitureBankIdx(void) {
         int j;
         int count = 0;
 
-        for (j = 0; j < FTR_NUM; j++) {
+        for (j = 0; j < mRmTp_FTR_INDEX_MAX; j++) {
             if (l_bank_index_table[j] == i) {
                 count++;
             }
@@ -1019,7 +1038,7 @@ static int aMR_RegistMoveBg(FTR_ACTOR* ftr_actor, aFTR_PROFILE* profile) {
         mFI_CheckShop() == TRUE || mFI_GetFieldId() == mFI_FIELD_ROOM_BROKER_SHOP) {
         f32 height;
 
-        if (aMR_layer_set_info[ftr_actor->name] == aFTR_SET_TYPE_SURFACE) {
+        if (aMR_GetLayerSetType(ftr_actor->name) == aFTR_SET_TYPE_SURFACE) {
             height = profile->height;
         } else {
             height = 100.0f;
@@ -1362,7 +1381,7 @@ static void aMR_InitFurnitureActorExistTable(void) {
 static void aMR_InitFurnitureBankTable(void) {
     int i;
 
-    for (i = 0; i < FTR_NUM; i++) {
+    for (i = 0; i < mRmTp_FTR_INDEX_MAX; i++) {
         l_bank_index_table[i] = 255;
     }
 }
@@ -2027,7 +2046,7 @@ static void My_Room_Actor_dt(ACTOR* actorx, GAME* game) {
 static void aMR_RedmaFtrBank(void) {
     int i;
 
-    for (i = 0; i < FTR_NUM; i++) {
+    for (i = 0; i < mRmTp_FTR_INDEX_MAX; i++) {
         if (l_bank_index_table[i] != 255) {
             u8* bank_addr = aMR_BankNo2BankAddress(l_bank_index_table[i]);
             mActor_name_t item = mRmTp_FtrIdx2FtrItemNo(i, mRmTp_DIRECT_SOUTH);

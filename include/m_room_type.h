@@ -94,6 +94,8 @@ typedef struct room_type_place_info_one_s {
 
 // #define FTR_NUM 1266
 
+#define mRmTp_FTR_INDEX_MAX 0x800
+
 #define FTR_GET_ROTATION(f) ((f)&3)
 #define FTR_IDX_2_NO(f) ((f) >> 2)
 #define FTR_NO_2_IDX(f) ((f) << 2)

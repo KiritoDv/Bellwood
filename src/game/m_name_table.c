@@ -3,6 +3,7 @@
 #include "m_actor.h"
 #include "m_npc_personal_id.h"
 #include "m_common_data.h"
+#include "port/api/furniture.h"
 
 s16 move_obj_profile_table[] = {
     mAc_PROFILE_AIRPLANE,        mAc_PROFILE_BALL,         mAc_PROFILE_MY_ROOM,      mAc_PROFILE_MBG,
@@ -422,7 +423,7 @@ extern int mNT_check_unknown(mActor_name_t item_no) {
         case NAME_TYPE_FTR1: {
             int FtrIdx = mRmTp_FtrItemNo2FtrIdx(item_no);
 
-            if (FtrIdx < 0 || FtrIdx >= FTR_NUM) {
+            if (FtrIdx < 0 || (FtrIdx >= FTR_NUM && C_FindFurniture(FtrIdx) == NULL)) {
                 res = TRUE;
             }
 

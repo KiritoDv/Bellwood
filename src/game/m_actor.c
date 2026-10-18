@@ -698,6 +698,15 @@ typedef struct overlay_struct {
     const char* actor_name;
 } mAc_overlay_info_c;
 
+static ACTOR_DLFTBL* Actor_get_dlftbl(s16 profile_no) {
+    if (profile_no >= 0 && profile_no < mAc_PROFILE_NUM) {
+        return actor_dlftbls + profile_no;
+    }
+
+    CALL_EVENT(ActorProfileLookup, profile_no, NULL);
+    return ActorProfileLookup_.table;
+}
+
 extern ACTOR* Actor_info_make_actor(Actor_info* actor_info, GAME* game, s16 profile_no, f32 x, f32 y, f32 z, s16 rot_x,
                                     s16 rot_y, s16 rot_z, s8 block_x, s8 block_z, s16 move_actor_list_idx,
                                     mActor_name_t name_id, s16 arg, s8 npc_info_idx, int data_bank_idx) {
@@ -717,8 +726,10 @@ extern ACTOR* Actor_info_make_actor(Actor_info* actor_info, GAME* game, s16 prof
         if (ActorSpawn_.Event.Cancelled) {
             return NULL;
         }
-        if (profile_no < 0 || profile_no >= mAc_PROFILE_NUM) {
+        dlftbl = Actor_get_dlftbl(profile_no);
+        if ((dlftbl == NULL || dlftbl->profile == NULL) && profile_no != requested) {
             profile_no = requested;
+            dlftbl = Actor_get_dlftbl(profile_no);
         }
         x = pos[0];
         y = pos[1];
@@ -727,7 +738,9 @@ extern ACTOR* Actor_info_make_actor(Actor_info* actor_info, GAME* game, s16 prof
         rot_y = rot[1];
         rot_z = rot[2];
     }
-    dlftbl = actor_dlftbls + profile_no;
+    if (dlftbl == NULL || dlftbl->profile == NULL) {
+        return NULL;
+    }
     overlay_info.actor_name = "";
     if (actor_info->total_num > mAc_MAX_ACTORS) {
         return NULL;

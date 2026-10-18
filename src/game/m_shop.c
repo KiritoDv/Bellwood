@@ -11,6 +11,7 @@
 #include "m_name_table.h"
 #include "m_room_type.h"
 #include "m_fg_type.h"
+#include "port/api/furniture.h"
 
 extern mActor_name_t* mSP_ftr_list[];
 extern mActor_name_t* mSP_binsen_list[];
@@ -721,6 +722,14 @@ extern u32 mSP_ItemNo2ItemPrice(mActor_name_t item_no) {
                 if (ftr_idx < mSP_CountPriceTableElement(price_list_p)) {
                     price = price_list_p[ftr_idx];
                     return price;
+                }
+
+                if (ftr_idx >= FTR_NUM) {
+                    const C_FurnitureDef* furniture = C_FindFurniture(ftr_idx);
+
+                    if (furniture != NULL) {
+                        return furniture->price;
+                    }
                 }
 
                 return 0;

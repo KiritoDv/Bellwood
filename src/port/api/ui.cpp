@@ -77,13 +77,13 @@ extern "C" void C_AddWidget(const char* sidebar, int column, const char* label, 
         widget.WindowName(config->window_name);
     }
     if (config->callback != nullptr) {
-        widget.Callback([config](WidgetInfo&) { config->callback(); });
+        widget.Callback([callback = config->callback](WidgetInfo&) { callback(); });
     }
     if (config->pre_func != nullptr) {
-        widget.PreFunc([config](WidgetInfo&) { config->pre_func(); });
+        widget.PreFunc([preFunc = config->pre_func](WidgetInfo&) { preFunc(); });
     }
     if (config->post_func != nullptr) {
-        widget.PostFunc([config](WidgetInfo&) { config->post_func(); });
+        widget.PostFunc([postFunc = config->post_func](WidgetInfo&) { postFunc(); });
     }
 
     switch (config->type) {

@@ -10,11 +10,14 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(GameReset);
     REGISTER_EVENT(ControllerRead);
 
+    REGISTER_EVENT(ActorProfileLookup);
     REGISTER_EVENT(ActorSpawn);
     REGISTER_EVENT(ActorInit);
     REGISTER_EVENT(ActorUpdate);
     REGISTER_EVENT(ActorDraw);
     REGISTER_EVENT(ActorDestroy);
+
+    REGISTER_EVENT(FurnitureLookup);
 
     REGISTER_EVENT(PlayerStateRequest);
     REGISTER_EVENT(PlayerStateChanged);
