@@ -580,10 +580,14 @@ extern void mPr_SetItemCollectBit(mActor_name_t item) {
             Common_Get(now_private)->paper_collected_bitfield[idx >> 5] |= (1 << (idx & 31));
         } else if (category == ITEM1_CAT_CARPET) {
             int idx = ftr_item_no - ITM_CARPET_START;
-            Common_Get(now_private)->carpet_collected_bitfield[idx >> 5] |= (1 << (idx & 31));
+            if (idx < CARPET_NUM) {
+                Common_Get(now_private)->carpet_collected_bitfield[idx >> 5] |= (1 << (idx & 31));
+            }
         } else if (category == ITEM1_CAT_WALL) {
             int idx = ftr_item_no - ITM_WALL_START;
-            Common_Get(now_private)->wall_collected_bitfield[idx >> 5] |= (1 << (idx & 31));
+            if (idx < WALL_NUM) {
+                Common_Get(now_private)->wall_collected_bitfield[idx >> 5] |= (1 << (idx & 31));
+            }
         } else if (category == ITEM1_CAT_MINIDISK) {
             mActor_name_t idx =
                 ftr_item_no - ITM_MINIDISK_START; // why is this one u16, probably mActor_name_t type or something?

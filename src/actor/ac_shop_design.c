@@ -2,6 +2,7 @@
 
 #include "m_common_data.h"
 #include "m_name_table.h"
+#include "port/api/interior.h"
 
 static void Shop_Design_Actor_ct(ACTOR* actorx, GAME* game);
 static void Shop_Design_Actor_dt(ACTOR* actorx, GAME* game);
@@ -49,7 +50,7 @@ static mActor_name_t aSD_ItemName2ReservePointName(mActor_name_t item) {
         return RSV_SHOP_PAPER;
     }
 
-    if (item >= ITM_CARPET_START && item <= (ITM_CARPET_END - 4)) {
+    if ((item >= ITM_CARPET_START && item <= (ITM_CARPET_END - 4)) || C_FindCarpet(item) != NULL) {
         return RSV_SHOP_CARPET;
     }
 
@@ -57,7 +58,7 @@ static mActor_name_t aSD_ItemName2ReservePointName(mActor_name_t item) {
         return RSV_SHOP_CARPET;
     }
 
-    if (item >= ITM_WALL_START && item <= (ITM_WALL_END - 4)) {
+    if ((item >= ITM_WALL_START && item <= (ITM_WALL_END - 4)) || C_FindWallpaper(item) != NULL) {
         return RSV_SHOP_WALL;
     }
 
@@ -329,6 +330,7 @@ static mActor_name_t aSD_UnitNum2ItemNo(int ux, int uz) {
         (item >= ITM_PAPER_START && item <= ITM_PAPER_END) ||
         (item >= ITM_CARPET_START && item <= ITM_CARPET_END - 4) ||
         (item >= ITM_WALL_START && item <= ITM_WALL_END - 4) ||
+        C_FindInterior(item) != NULL ||
         (item >= ITM_CLOTH_START && item <= ITM_CLOTH_END) ||
         (item >= ITM_TOOL_START && item <= ITM_TOOL_END) ||
         (item >= ITM_SAPLING && item <= ITM_CEDAR_SAPLING) ||
@@ -396,11 +398,11 @@ static int aSD_ReportGoodsSales(int ux, int uz) {
             }
         }
 
-        if (item >= ITM_CARPET_START && item <= (ITM_CARPET_END - 4)) {
+        if ((item >= ITM_CARPET_START && item <= (ITM_CARPET_END - 4)) || C_FindCarpet(item) != NULL) {
             rsv_item = RSV_SHOP_SOLD_CARPET;
         }
 
-        if (item >= ITM_WALL_START && item <= (ITM_WALL_END - 4)) {
+        if ((item >= ITM_WALL_START && item <= (ITM_WALL_END - 4)) || C_FindWallpaper(item) != NULL) {
             rsv_item = RSV_SHOP_SOLD_WALL;
         }
 

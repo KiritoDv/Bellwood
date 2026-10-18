@@ -14,6 +14,7 @@
 #include "m_common_data.h"
 #include "m_malloc.h"
 #include "port/api/furniture.h"
+#include "port/api/interior.h"
 #include "port/api/item.h"
 
 enum {
@@ -362,6 +363,8 @@ static void mCL_paper_init(mCL_Item_c* item, mActor_name_t item_no) {
 }
 
 static void mCL_wall_init(mCL_Item_c* item, mActor_name_t item_no) {
+    const C_InteriorDef* custom = C_FindWallpaper(item_no);
+
     item->gfx_type = mCL_DRAW_TYPE_WALL;
     item->profile = NULL;
     item->ftr_actor.name = (item_no - ITM_WALL_START);
@@ -370,9 +373,11 @@ static void mCL_wall_init(mCL_Item_c* item, mActor_name_t item_no) {
     item->seg_ofs = (item_no - ITM_WALL_START) * (mNW_PALETTE_SIZE + 0x1000);
 
     mRmTp_CopyWallData(item->seg1, item_no - ITM_WALL_START);
-    if (mSP_SearchItemCategoryPriority(item_no, mSP_KIND_WALLPAPER, mSP_LISTTYPE_COMMON, NULL) ||
-        mSP_SearchItemCategoryPriority(item_no, mSP_KIND_WALLPAPER, mSP_LISTTYPE_UNCOMMON, NULL) ||
-        mSP_SearchItemCategoryPriority(item_no, mSP_KIND_WALLPAPER, mSP_LISTTYPE_RARE, NULL)) {
+    if (custom != NULL) {
+        item->price = custom->not_for_sale ? 0 : custom->price;
+    } else if (mSP_SearchItemCategoryPriority(item_no, mSP_KIND_WALLPAPER, mSP_LISTTYPE_COMMON, NULL) ||
+               mSP_SearchItemCategoryPriority(item_no, mSP_KIND_WALLPAPER, mSP_LISTTYPE_UNCOMMON, NULL) ||
+               mSP_SearchItemCategoryPriority(item_no, mSP_KIND_WALLPAPER, mSP_LISTTYPE_RARE, NULL)) {
         item->price = mSP_ItemNo2ItemPrice(item_no);
     } else {
         item->price = 0;
@@ -380,6 +385,8 @@ static void mCL_wall_init(mCL_Item_c* item, mActor_name_t item_no) {
 }
 
 static void mCL_carpet_init(mCL_Item_c* item, mActor_name_t item_no) {
+    const C_InteriorDef* custom = C_FindCarpet(item_no);
+
     item->gfx_type = mCL_DRAW_TYPE_CARPET;
     item->profile = NULL;
     item->ftr_actor.name = (item_no - ITM_CARPET_START);
@@ -388,9 +395,11 @@ static void mCL_carpet_init(mCL_Item_c* item, mActor_name_t item_no) {
     item->seg_ofs = (item_no - ITM_CARPET_START) * (mNW_PALETTE_SIZE + 0x2000);
 
     mRmTp_CopyFloorData(item->seg1, item_no - ITM_CARPET_START);
-    if (mSP_SearchItemCategoryPriority(item_no, mSP_KIND_CARPET, mSP_LISTTYPE_COMMON, NULL) ||
-        mSP_SearchItemCategoryPriority(item_no, mSP_KIND_CARPET, mSP_LISTTYPE_UNCOMMON, NULL) ||
-        mSP_SearchItemCategoryPriority(item_no, mSP_KIND_CARPET, mSP_LISTTYPE_RARE, NULL)) {
+    if (custom != NULL) {
+        item->price = custom->not_for_sale ? 0 : custom->price;
+    } else if (mSP_SearchItemCategoryPriority(item_no, mSP_KIND_CARPET, mSP_LISTTYPE_COMMON, NULL) ||
+               mSP_SearchItemCategoryPriority(item_no, mSP_KIND_CARPET, mSP_LISTTYPE_UNCOMMON, NULL) ||
+               mSP_SearchItemCategoryPriority(item_no, mSP_KIND_CARPET, mSP_LISTTYPE_RARE, NULL)) {
         item->price = mSP_ItemNo2ItemPrice(item_no);
     } else {
         item->price = 0;

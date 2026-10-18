@@ -167,6 +167,19 @@ Fires when "Use" is picked for a custom item in the pockets. The pocket menu is 
 
 ---
 
+## Interior Events
+
+### `InteriorLookup`
+```c
+int32_t index;
+uint8_t wall;
+const struct C_InteriorDef_s* definition;
+const uint8_t* data;
+```
+Fires whenever the game needs data for a floor index from `C_CARPET_FIRST` or a wall index from `C_WALLPAPER_FIRST` up to 255 (texture, name, price), in rooms, the catalog, the pockets and Nook's shop. The index is also the low byte of the item number. `wall` is `TRUE` for a wallpaper. Set `definition` to the carpet or wallpaper that owns the index, and `data` to its 16 colour RGBA5551 palette followed by its 64x64 CI4 tiles, four for a floor and two for a wall. Carpets and wallpapers registered through `port/api/interior.h` are answered here; unanswered indices show the default floor or wall and unknown items.
+
+---
+
 ## Shop Events
 
 ### `ShopStockGenerated`
@@ -178,7 +191,7 @@ int32_t furnitureCount;
 uint16_t* rareItem;
 int32_t shopLevel;
 ```
-Fires after Nook rolls the shop's stock, on a new day and when the shop is upgraded. It doesn't fire on raffle days. Write to `items` or `*rareItem` to change what is for sale. The first `furnitureCount` slots hold furniture; replace those with other furniture, since each kind of item has its own display spots in the shop. `rareItem` is `NULL` when the shop level has no rare item. `shopLevel` goes from 0 (Nook's Cranny) to 3 (Nookington's). `C_AddShopStock` from `port/api/shop.h` is handled here.
+Fires after Nook rolls the shop's stock, on a new day and when the shop is upgraded. It doesn't fire on raffle days. Write to `items` or `*rareItem` to change what is for sale. The first `furnitureCount` slots hold furniture. Replace items with ones of the same kind, since each kind has its own display spots in the shop. `rareItem` is `NULL` when the shop level has no rare item. `shopLevel` goes from 0 (Nook's Cranny) to 3 (Nookington's). `C_AddShopStock` from `port/api/shop.h` is handled here.
 
 ---
 
@@ -189,7 +202,7 @@ uint16_t* items;
 int32_t* count;
 int32_t capacity;
 ```
-Fires for every catalog page while the catalog opens, after the built-in entries the player has collected are listed. `page` is one of `mCL_MENU_*` from `m_catalog_ovl.h`. Append item numbers to `items` and increase `*count` to list more entries, up to `capacity`. Entries are drawn by item type: furniture with its model, wallpaper, carpet, stationery and music with their usual previews, and custom items with their icon. Collected custom furniture is added to the furniture page and collected custom items to the items page here. Extra entries don't count toward completing a page.
+Fires for every catalog page while the catalog opens, after the built-in entries the player has collected are listed. `page` is one of `mCL_MENU_*` from `m_catalog_ovl.h`. Append item numbers to `items` and increase `*count` to list more entries, up to `capacity`. Entries are drawn by item type: furniture with its model, wallpaper, carpet, stationery and music with their usual previews, and custom items with their icon. Collected custom furniture, carpets, wallpapers and items are added to their pages here. Extra entries don't count toward completing a page.
 
 ---
 

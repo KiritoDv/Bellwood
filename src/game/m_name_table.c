@@ -4,6 +4,7 @@
 #include "m_npc_personal_id.h"
 #include "m_common_data.h"
 #include "port/api/furniture.h"
+#include "port/api/interior.h"
 #include "port/api/item.h"
 
 s16 move_obj_profile_table[] = {
@@ -197,6 +198,12 @@ extern int mNT_get_itemTableNo(mActor_name_t item) {
 
             if (custom != NULL) {
                 return custom->shape;
+            }
+            if (C_FindCarpet(item) != NULL) {
+                return mNT_ITEM_TYPE_CARPET;
+            }
+            if (C_FindWallpaper(item) != NULL) {
+                return mNT_ITEM_TYPE_WALL;
             }
             if (mNT_check_unknown(item)) {
                 return mNT_ITEM_TYPE_ETC;
@@ -423,7 +430,8 @@ extern int mNT_check_unknown(mActor_name_t item_no) {
         case NAME_TYPE_ITEM1: {
             int category = ITEM_NAME_GET_CAT(item_no);
 
-            if (index < 0 || (index >= item1_kinds[category] && C_FindItem(item_no) == NULL)) {
+            if (index < 0 ||
+                (index >= item1_kinds[category] && C_FindItem(item_no) == NULL && C_FindInterior(item_no) == NULL)) {
                 res = TRUE;
             }
             break;

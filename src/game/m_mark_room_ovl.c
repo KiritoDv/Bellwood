@@ -9,6 +9,7 @@
 #include "m_string.h"
 #include "m_house.h"
 #include "port/api/furniture.h"
+#include "port/api/interior.h"
 
 typedef struct series_info_s {
     u8 type;
@@ -3472,12 +3473,16 @@ static void mMkRm_EvaluateBasePoint(int* points, mActor_name_t** layer_ut_info, 
 
     if (FLOOR_IS_MY_ORIG(floor_num)) {
         base_points += mMkRm_birth_point_table[mRmTp_BIRTH_TYPE_MY_ORIGINAL];
+    } else if (floor_num >= C_CARPET_FIRST) {
+        base_points += mMkRm_birth_point_table[mRmTp_BIRTH_TYPE_GRP_A];
     } else {
         base_points += mMkRm_birth_point_table[mMkRm_floor_from[floor_num]];
     }
 
     if (WALL_IS_MY_ORIG(wall_num)) {
         base_points += mMkRm_birth_point_table[mRmTp_BIRTH_TYPE_MY_ORIGINAL];
+    } else if (wall_num >= C_WALLPAPER_FIRST) {
+        base_points += mMkRm_birth_point_table[mRmTp_BIRTH_TYPE_GRP_A];
     } else {
         base_points += mMkRm_birth_point_table[mMkRm_wall_from[wall_num]];
     }

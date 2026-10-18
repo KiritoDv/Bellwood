@@ -5,8 +5,8 @@
 #include "api.h"
 #include "m_name_table.h"
 
-// Adds a furniture item to the shop's furniture rotation. chance is the percentage of days it is on sale.
-// Returns FALSE when item is not furniture.
+// Adds furniture, a carpet or a wallpaper to the shop's rotation. chance is the percentage of days it is on sale.
+// Returns FALSE for any other kind of item.
 BW_API int C_AddShopStock(mActor_name_t item, int chance);
 // Removes an item added with C_AddShopStock. Copies already on sale stay until the next restock.
 BW_API void C_RemoveShopStock(mActor_name_t item);

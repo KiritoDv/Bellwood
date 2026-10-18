@@ -21,7 +21,7 @@ The build merges every `.c` file in `src/` together with the Bellwood and libult
 
 The template expects to live inside a Bellwood checkout, in `workspace/<your-mod>`, with the `libultraship` submodule initialized.
 
-Requirements: CMake 3.10+, Python 3. Pillow is only needed for `.png` assets referenced with `#asset`.
+Requirements: CMake 3.10+, Python 3. Pillow is only needed for `.png` assets referenced with `#asset`. `#asset "file.png" CI4` and the other N64 formats are described in `workspace/custom-content`.
 
 ```sh
 cmake -B build -S .
@@ -87,9 +87,9 @@ Use `port/api/cvar.h` instead of `libultraship/bridge/consolevariablebridge.h`. 
 
 Widget tooltips and CVar names are kept as pointers, so pass string literals.
 
-### Custom actors, dialogue, furniture, items, NES games and the shop
+### Custom actors, dialogue, furniture, items, carpets, wallpapers, NES games and the shop
 
-`port/api/actor.h`, `port/api/message.h`, `port/api/furniture.h`, `port/api/item.h` and `port/api/famicom.h` register new actors, messages, furniture, items and NES games, and `port/api/shop.h` puts them in Nook's stock and the catalog. See `workspace/custom-content` for a working example and the full reference.
+`port/api/actor.h`, `port/api/message.h`, `port/api/furniture.h`, `port/api/item.h`, `port/api/interior.h` and `port/api/famicom.h` register new actors, messages, furniture, items, carpets, wallpapers and NES games, and `port/api/shop.h` puts them in Nook's stock and the catalog. See `workspace/custom-content` for a working example and the full reference.
 
 ## Notes
 

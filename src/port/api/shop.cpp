@@ -9,6 +9,7 @@ extern "C" {
 #include "port/api/shop.h"
 #include "port/api/actor.h"
 #include "port/api/furniture.h"
+#include "port/api/interior.h"
 #include "port/api/item.h"
 #include "m_catalog_ovl.h"
 #include "m_common_data.h"
@@ -58,8 +59,30 @@ const char* CustomId(mActor_name_t item) {
         const C_FurnitureDef* furniture = C_FindFurniture(index);
         return furniture != nullptr ? furniture->id : nullptr;
     }
+    if (const C_InteriorDef* interior = C_FindInterior(item)) {
+        return interior->id;
+    }
     const C_ItemDef* custom = C_FindItem(item);
     return custom != nullptr ? custom->id : nullptr;
+}
+
+int StockKind(mActor_name_t item) {
+    if (ITEM_IS_FTR(item)) {
+        return -1;
+    }
+    if (ITEM_NAME_GET_TYPE(item) == NAME_TYPE_ITEM1 &&
+        (ITEM_NAME_GET_CAT(item) == ITEM1_CAT_CARPET || ITEM_NAME_GET_CAT(item) == ITEM1_CAT_WALL)) {
+        return ITEM_NAME_GET_CAT(item);
+    }
+    return -2;
+}
+
+bool IsCustom(mActor_name_t item) {
+    if (ITEM_IS_FTR(item)) {
+        return mRmTp_FtrItemNo2FtrIdx(item) >= FTR_NUM;
+    }
+    return ITEM_NAME_GET_INDEX(item) >=
+           (ITEM_NAME_GET_CAT(item) == ITEM1_CAT_CARPET ? C_CARPET_FIRST : C_WALLPAPER_FIRST);
 }
 
 bool HasPlayer() {
@@ -138,23 +161,41 @@ void Collect(mActor_name_t item) {
     }
 }
 
-void FillStock(ShopStockGenerated* stock) {
+std::vector<int> StockSlots(const ShopStockGenerated* stock, int kind) {
     std::vector<int> slots;
-    for (int i = 0; i < stock->furnitureCount; i++) {
-        slots.push_back(i);
+    if (kind == -1) {
+        for (int i = 0; i < stock->furnitureCount; i++) {
+            slots.push_back(i);
+        }
+        return slots;
     }
+    for (int i = stock->furnitureCount; i < stock->count; i++) {
+        if (StockKind(stock->items[i]) == kind) {
+            slots.push_back(i);
+        }
+    }
+    return slots;
+}
+
+void FillStock(ShopStockGenerated* stock) {
+    std::map<int, std::vector<int>> free;
     std::vector<ShopStock> entries = sStock;
     for (size_t i = entries.size(); i > 1; i--) {
         std::swap(entries[i - 1], entries[RANDOM((int)i)]);
     }
     for (const ShopStock& entry : entries) {
+        const int kind = StockKind(entry.item);
+        if (!free.contains(kind)) {
+            free[kind] = StockSlots(stock, kind);
+        }
+        std::vector<int>& slots = free[kind];
         if (slots.empty()) {
-            break;
+            continue;
         }
         if (RANDOM(100) >= entry.chance) {
             continue;
         }
-        if (mRmTp_FtrItemNo2FtrIdx(entry.item) >= FTR_NUM && CustomId(entry.item) == nullptr) {
+        if (IsCustom(entry.item) && CustomId(entry.item) == nullptr) {
             continue;
         }
         if (std::find(stock->items, stock->items + stock->count, entry.item) != stock->items + stock->count ||
@@ -174,7 +215,8 @@ void AddCatalogEntry(CatalogPageBuild* page, mActor_name_t item) {
 }
 
 void FillCatalogPage(CatalogPageBuild* page) {
-    if (page->page != mCL_MENU_FTR && page->page != mCL_MENU_UMBRELLA) {
+    if (page->page != mCL_MENU_FTR && page->page != mCL_MENU_UMBRELLA && page->page != mCL_MENU_CARPET &&
+        page->page != mCL_MENU_WALL) {
         return;
     }
     const std::set<std::string>* collected = PlayerCollection();
@@ -186,6 +228,14 @@ void FillCatalogPage(CatalogPageBuild* page) {
             const C_FurnitureDef* furniture = C_FindFurniture(index);
             if (furniture != nullptr && collected->contains(furniture->id)) {
                 AddCatalogEntry(page, mRmTp_FtrIdx2FtrItemNo(index, mRmTp_DIRECT_SOUTH));
+            }
+        }
+    } else if (page->page == mCL_MENU_CARPET || page->page == mCL_MENU_WALL) {
+        const bool wall = page->page == mCL_MENU_WALL;
+        for (int index = wall ? C_WALLPAPER_FIRST : C_CARPET_FIRST; index <= C_INTERIOR_LAST; index++) {
+            const C_InteriorDef* interior = C_FindInteriorIndex(index, wall);
+            if (interior != nullptr && collected->contains(interior->id)) {
+                AddCatalogEntry(page, (mActor_name_t)((wall ? ITM_WALL_START : ITM_CARPET_START) + index));
             }
         }
     } else {
@@ -212,10 +262,12 @@ RegisterShipInitFunc sInitShopApi(InitShopApi);
 } // namespace
 
 extern "C" int C_AddShopStock(mActor_name_t item, int chance) {
-    if (!ITEM_IS_FTR(item)) {
+    if (StockKind(item) == -2) {
         return FALSE;
     }
-    item = SouthFacing(item);
+    if (ITEM_IS_FTR(item)) {
+        item = SouthFacing(item);
+    }
     chance = std::clamp(chance, 0, 100);
     for (ShopStock& entry : sStock) {
         if (entry.item == item) {

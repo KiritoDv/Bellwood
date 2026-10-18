@@ -3,6 +3,7 @@
 #include "port/api/actor.h"
 #include "port/api/famicom.h"
 #include "port/api/furniture.h"
+#include "port/api/interior.h"
 #include "port/api/item.h"
 #include "port/api/message.h"
 #include "port/api/shop.h"
@@ -24,13 +25,18 @@ C_ASSET(sSpinnerModel, "data/model/obj_e_ghog/obj_e_ghog_model");
 C_ASSET(sSpinnerModelT, "data/model/obj_e_ghog/obj_e_ghog_modelT");
 C_ASSET(sTableModel, "data/model/int_ari_table01/int_ari_table01_01_model");
 C_ASSET(sTableModelT, "data/model/int_ari_table01/int_ari_table01_01T_model");
-C_ASSET(sGemIcon, "data/model/inv_mwin13/inv_mwin_sango_tex");
-C_ASSET(sGemPalette, "data/model/inv_mwin13/inv_mwin_sango_pal");
 C_ASSET(sNesModel, "data/model/int_tak_nes01/int_tak_nes01_on_model");
 C_ASSET(sNesModelT, "data/model/int_tak_nes01/int_tak_nes01_onT_model");
 C_ASSET(sNesGameModel, "data/model/int_tak_nes01/int_tak_nes01_game_on_model");
 C_ASSET(sNesTexture, "data/model/int_tak_nes01/int_tak_nes_ds_tex_rgb_i4");
 C_ASSET(sNesPalette, "data/model/int_tak_nes01/int_tak_nes_cl_pal");
+
+static const u8 sGemIcon[] = { #asset "textures/lucky_gem.png" CI4 };
+static const u8 sGemPalette[] = { #asset "textures/lucky_gem.png" CI4_PAL };
+static const u8 sCarpetTexture[] = { #asset "textures/mod_carpet.png" CI4 };
+static const u8 sCarpetPalette[] = { #asset "textures/mod_carpet.png" CI4_PAL };
+static const u8 sWallpaperTexture[] = { #asset "textures/mod_wallpaper.png" CI4 };
+static const u8 sWallpaperPalette[] = { #asset "textures/mod_wallpaper.png" CI4_PAL };
 
 typedef struct {
     ACTOR actor_class;
@@ -187,10 +193,20 @@ static C_FurnitureDef sModNesDef = {
     TRUE,
 };
 
+static C_InteriorDef sCarpetDef = {
+    "example.mod_carpet", "mod carpet", mIN_ARTICLE_A, 1800, sCarpetTexture, sCarpetPalette,
+};
+
+static C_InteriorDef sWallpaperDef = {
+    "example.mod_wallpaper", "mod wallpaper", mIN_ARTICLE_A, 1500, sWallpaperTexture, sWallpaperPalette,
+};
+
 static s16 sSpinner = -1;
 static mActor_name_t sModTable = EMPTY_NO;
 static mActor_name_t sGem = EMPTY_NO;
 static mActor_name_t sModNes = EMPTY_NO;
+static mActor_name_t sCarpet = EMPTY_NO;
+static mActor_name_t sWallpaper = EMPTY_NO;
 static ListenerID sPlayUpdateListener;
 static int sSpawnRequested = FALSE;
 
@@ -232,6 +248,18 @@ static void OnGiveNesPressed(void) {
     }
 }
 
+static void OnGiveInteriorPressed(void) {
+    if (Common_Get(now_private) == NULL) {
+        return;
+    }
+    if (sCarpet != EMPTY_NO) {
+        mPr_SetFreePossessionItem(Common_Get(now_private), sCarpet, mPr_ITEM_COND_NORMAL);
+    }
+    if (sWallpaper != EMPTY_NO) {
+        mPr_SetFreePossessionItem(Common_Get(now_private), sWallpaper, mPr_ITEM_COND_NORMAL);
+    }
+}
+
 static void OnRestockPressed(void) {
     C_RestockShop();
 }
@@ -241,6 +269,7 @@ static void SetupUI(void) {
     C_WidgetConfig give = { 0 };
     C_WidgetConfig gem = { 0 };
     C_WidgetConfig nes = { 0 };
+    C_WidgetConfig interior = { 0 };
     C_WidgetConfig restock = { 0 };
 
     spawn.type = C_WIDGET_BUTTON;
@@ -259,15 +288,21 @@ static void SetupUI(void) {
     nes.callback = OnGiveNesPressed;
     nes.opts.generic.tooltip = "Puts an NES that plays a small demo in your pockets.";
 
+    interior.type = C_WIDGET_BUTTON;
+    interior.callback = OnGiveInteriorPressed;
+    interior.opts.generic.tooltip = "Puts the mod carpet and mod wallpaper in your pockets. Use them in your house.";
+
     restock.type = C_WIDGET_BUTTON;
     restock.callback = OnRestockPressed;
-    restock.opts.generic.tooltip = "Rolls Nook's stock again. The mod table is on sale half of the days.";
+    restock.opts.generic.tooltip =
+        "Rolls Nook's stock again. The mod table, carpet and wallpaper are each on sale half of the days.";
 
     C_AddSidebarEntry("Custom Content", 1);
     C_AddWidget("Custom Content", 1, "Spawn Spinner", &spawn);
     C_AddWidget("Custom Content", 1, "Give Mod Table", &give);
     C_AddWidget("Custom Content", 1, "Give Lucky Gem", &gem);
     C_AddWidget("Custom Content", 1, "Give Mod NES", &nes);
+    C_AddWidget("Custom Content", 1, "Give Mod Carpet and Wallpaper", &interior);
     C_AddWidget("Custom Content", 1, "Restock Shop", &restock);
 }
 
@@ -280,7 +315,11 @@ MOD_INIT() {
     BuildColorDemo();
     sColorDemo = C_RegisterFamicomGame("example.color_demo", sColorDemoRom, sizeof(sColorDemoRom));
     sModNes = C_RegisterFurniture(&sModNesDef);
+    sCarpet = C_RegisterCarpet(&sCarpetDef);
+    sWallpaper = C_RegisterWallpaper(&sWallpaperDef);
     C_AddShopStock(sModTable, 50);
+    C_AddShopStock(sCarpet, 50);
+    C_AddShopStock(sWallpaper, 50);
     sPlayUpdateListener = REGISTER_LISTENER(PlayUpdate, EVENT_PRIORITY_NORMAL, OnPlayUpdate);
     SetupUI();
 }
@@ -289,6 +328,10 @@ MOD_EXIT() {
     C_RemoveSidebarEntry("Custom Content");
     UNREGISTER_LISTENER(PlayUpdate, sPlayUpdateListener);
     C_RemoveShopStock(sModTable);
+    C_RemoveShopStock(sCarpet);
+    C_RemoveShopStock(sWallpaper);
+    C_UnregisterWallpaper(sWallpaper);
+    C_UnregisterCarpet(sCarpet);
     C_UnregisterFurniture(sModNes);
     C_UnregisterFamicomGame(sColorDemo);
     C_UnregisterItem(sGem);

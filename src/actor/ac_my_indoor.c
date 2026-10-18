@@ -7,6 +7,7 @@
 #include "m_common_data.h"
 #include "m_rcp.h"
 #include "m_mark_room.h"
+#include "port/api/interior.h"
 #include "sys_matrix.h"
 #include "assets/data/model/obj_myhome_step_down.h"
 #include "assets/data/model/obj_myhome_step_up.h"
@@ -287,11 +288,13 @@ static s16 aMR_GetSceneRoomKind(void) {
 }
 
 static void aMI_CheckFloorWallIndex(s16* wall_idx, s16* floor_idx) {
-    if (!(*floor_idx >= 0 && *floor_idx < FLOOR_ETC_START) && !FLOOR_IS_MY_ORIG(*floor_idx)) {
+    if (!(*floor_idx >= 0 && *floor_idx < FLOOR_ETC_START) && !FLOOR_IS_MY_ORIG(*floor_idx) &&
+        !(*floor_idx >= C_CARPET_FIRST && *floor_idx <= C_INTERIOR_LAST)) {
         *floor_idx = 0;
     }
 
-    if (!(*wall_idx >= 0 && *wall_idx < WALL_ETC_START) && !WALL_IS_MY_ORIG(*wall_idx)) {
+    if (!(*wall_idx >= 0 && *wall_idx < WALL_ETC_START) && !WALL_IS_MY_ORIG(*wall_idx) &&
+        !(*wall_idx >= C_WALLPAPER_FIRST && *wall_idx <= C_INTERIOR_LAST)) {
         *wall_idx = 0;
     }
 }
@@ -769,7 +772,7 @@ static mActor_name_t aMI_ChangeCarpet(mActor_name_t item) {
     }
 
     if (Common_Get(clip).my_indoor_clip != NULL &&
-        (item >= ITM_CARPET00 && item < (ITM_CARPET00 + FLOOR_PLAYER_ROOM_END))) {
+        ((item >= ITM_CARPET00 && item < (ITM_CARPET00 + FLOOR_PLAYER_ROOM_END)) || C_FindCarpet(item) != NULL)) {
         MY_INDOOR_ACTOR* my_indoor = Common_Get(clip).my_indoor_clip->my_indoor_actor_p;
 
         if (my_indoor != NULL && my_indoor->floor_reserve.reserve_flag == FALSE) {
@@ -820,7 +823,8 @@ static mActor_name_t aMI_ChangeWall(mActor_name_t item) {
     if (Common_Get(clip).my_indoor_clip != NULL) {
         MY_INDOOR_ACTOR* my_indoor = Common_Get(clip).my_indoor_clip->my_indoor_actor_p;
 
-        if (my_indoor != NULL && (item >= ITM_WALL00 && item < (ITM_WALL00 + WALL_ETC_END)) &&
+        if (my_indoor != NULL &&
+            ((item >= ITM_WALL00 && item < (ITM_WALL00 + WALL_ETC_END)) || C_FindWallpaper(item) != NULL) &&
             my_indoor->wall_reserve.reserve_flag == FALSE) {
             old_wall = ITM_WALL00 + my_indoor->wall_num;
             my_indoor->wall_reserve.reserve_flag = TRUE;

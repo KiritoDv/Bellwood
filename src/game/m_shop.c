@@ -12,6 +12,7 @@
 #include "m_room_type.h"
 #include "m_fg_type.h"
 #include "port/api/furniture.h"
+#include "port/api/interior.h"
 #include "port/api/item.h"
 
 extern mActor_name_t* mSP_ftr_list[];
@@ -238,14 +239,18 @@ extern int mSP_CollectCheck(mActor_name_t item) {
                 }
 
                 case ITEM1_CAT_WALL: {
-                    bitfield = Common_Get(now_private)->wall_collected_bitfield;
                     idx = ftr_item - ITM_WALL_START;
+                    if (idx < WALL_NUM) {
+                        bitfield = Common_Get(now_private)->wall_collected_bitfield;
+                    }
                     break;
                 }
 
                 case ITEM1_CAT_CARPET: {
-                    bitfield = Common_Get(now_private)->carpet_collected_bitfield;
                     idx = ftr_item - ITM_CARPET_START;
+                    if (idx < CARPET_NUM) {
+                        bitfield = Common_Get(now_private)->carpet_collected_bitfield;
+                    }
                     break;
                 }
 
@@ -676,9 +681,13 @@ extern u32 mSP_ItemNo2ItemPrice(mActor_name_t item_no) {
         case NAME_TYPE_ITEM1: {
             u16** price_list_pp = l_price_info[ITEM_NAME_GET_CAT(item_no)];
             const C_ItemDef* custom = C_FindItem(item_no);
+            const C_InteriorDef* interior = C_FindInterior(item_no);
 
             if (custom != NULL) {
                 return custom->price;
+            }
+            if (interior != NULL) {
+                return interior->price;
             }
 
             if (price_list_pp != NULL && &price != NULL) {

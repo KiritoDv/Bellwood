@@ -1,6 +1,6 @@
 # Custom Content Example
 
-Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM) and a new item (a "lucky gem" that breaks into 1,000 Bells when used) to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu. The mod table is also on sale at Nook's on half of the days, and everything shows up in the catalog once you own it.
+Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM), a new item (a "lucky gem" that breaks into 1,000 Bells when used) and a new carpet and wallpaper to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu. The mod table, carpet and wallpaper are also on sale at Nook's on half of the days, and everything shows up in the catalog once you own it. The gem icon, carpet and wallpaper are drawn from the PNGs in `src/textures`.
 
 Build and install it like the template:
 
@@ -145,7 +145,7 @@ static C_ItemDef sGemDef = {
 | `article` | `mIN_ARTICLE_*`. |
 | `price` | Price in Bells. 0 means Nook takes it for free. |
 | `shape` | `mNT_ITEM_TYPE_*`, the model used when the item lies on the ground or is in the player's hand (for example `mNT_ITEM_TYPE_BAG`, `_BOX`, `_PRESENT`, `_SHELLA`). 0 uses the generic one. |
-| `icon_tex`, `icon_pal` | Inventory icon: a 32x32 CI4 texture and its 16 colour palette. Use the game's own icons through `C_ASSET` (the `inv_mwin_*_tex` / `inv_mwin_*_pal` assets). NULL uses a default icon. |
+| `icon_tex`, `icon_pal` | Inventory icon: a 32x32 CI4 texture and its 16 colour palette. Use your own PNG through `#asset` with `CI4` and `CI4_PAL` (see [Textures](#textures)), or the game's own icons through `C_ASSET` (the `inv_mwin_*_tex` / `inv_mwin_*_pal` assets). NULL uses a default icon. |
 | `on_use` | Optional. Adds "Use" to the pocket menu; called with the item and its pocket slot after the menu closes. |
 | `not_for_sale` | Optional. The catalog shows "Not for Sale" and it can't be ordered. |
 
@@ -164,17 +164,48 @@ C_AddShopStock(sTable, 50);   // on sale on about half of the days
 
 | Function | Description |
 |---|---|
-| `int C_AddShopStock(mActor_name_t item, int chance)` | Puts a furniture item, custom or built-in, in Nook's furniture rotation. `chance` is the percentage of days it is on sale; it takes the place of one of the day's regular pieces. Returns `FALSE` for anything that isn't furniture. |
+| `int C_AddShopStock(mActor_name_t item, int chance)` | Puts furniture, a carpet or a wallpaper, custom or built-in, in Nook's rotation. `chance` is the percentage of days it is on sale; it takes the place of one of the day's regular items of the same kind. Returns `FALSE` for any other kind of item. |
 | `void C_RemoveShopStock(mActor_name_t item)` | Call it in `MOD_EXIT`. Copies already on sale stay until the next restock. |
 | `int C_RestockShop(void)` | Rolls the stock again, as on a new day. Returns `FALSE` while the player is inside a shop, or before a game is loaded. |
 | `void C_AddToCatalog(mActor_name_t item)` | Adds an item to the current player's catalog as if they had owned it. |
 | `int C_IsInCatalog(mActor_name_t item)` | Whether the item is in the current player's catalog. |
 
-Stock is rolled when Nook restocks, so a newly added item shows up from the next day or after `C_RestockShop`. Only furniture can go on the shop floor: each display spot draws its own models, and custom items have none.
+Stock is rolled when Nook restocks, so a newly added item shows up from the next day or after `C_RestockShop`. Only furniture, carpets and wallpapers can go on the shop floor: each display spot draws its own models, and custom items have none. Nook shows a custom carpet or wallpaper on the shop's floor or wall when the player asks to see it, like the built-in ones.
 
-Custom furniture the player has owned is listed at the end of the catalog's Furniture page, and custom items at the end of the Items page. Both can be ordered at their `price` and arrive by mail the next day, like built-in orders. Which custom pieces each player has owned is kept in `custom_collection.json` next to the game, by town and player, since the save file has no room for them. Entries whose mod isn't loaded are hidden until it is.
+Custom furniture the player has owned is listed at the end of the catalog's Furniture page, custom carpets and wallpapers at the end of their own pages, and custom items at the end of the Items page. All of them can be ordered at their `price` and arrive by mail the next day, like built-in orders. Which custom pieces each player has owned is kept in `custom_collection.json` next to the game, by town and player, since the save file has no room for them. Entries whose mod isn't loaded are hidden until it is.
 
 `ShopStockGenerated` and `CatalogPageBuild` in `src/port/events/EVENTS.md` give full control over the stock and the catalog pages when the functions above aren't enough.
+
+## Carpets and wallpapers (`port/api/interior.h`)
+
+```c
+static const u8 sTilesTexture[] = { #asset "textures/tiles.png" CI4 };
+static const u8 sTilesPalette[] = { #asset "textures/tiles.png" CI4_PAL };
+
+static C_InteriorDef sTilesDef = {
+    "mymod.tiles", "tiled floor", mIN_ARTICLE_A, 1800, sTilesTexture, sTilesPalette,
+};
+
+sTiles = C_RegisterCarpet(&sTilesDef);
+```
+
+| Field | Description |
+|---|---|
+| `id` | Unique key. The item number assigned to it is stored in `custom_carpets.json` or `custom_wallpapers.json` next to the game, so rooms keep the right floor and wall across sessions. Never reuse an id for a different design. |
+| `name` | Name shown in game, up to 16 characters. |
+| `article` | `mIN_ARTICLE_*`. |
+| `price` | Price in Bells. |
+| `texture` | A 16 colour (CI4) texture. A carpet is 128x128 and holds the top-left quarter of the room's floor: the top-left 64x64 is the corner, the top-right 64x64 repeats along the top and bottom edges, the bottom-left 64x64 along the left and right edges, and the bottom-right 64x64 fills the middle. A wallpaper is 64x128, repeated along the wall. A single 64x64 texture is also accepted and used for every part. Raw arrays must be the full size. |
+| `palette` | Its 16 colour palette. |
+| `not_for_sale` | Optional. The catalog shows "Not for Sale" and it can't be ordered. |
+
+| Function | Description |
+|---|---|
+| `mActor_name_t C_RegisterCarpet(const C_InteriorDef* def)` | Returns the item number, or `EMPTY_NO` if the texture can't be loaded. Up to 161 custom carpets fit. |
+| `mActor_name_t C_RegisterWallpaper(const C_InteriorDef* def)` | Returns the item number, or `EMPTY_NO`. Up to 176 custom wallpapers fit. |
+| `void C_UnregisterCarpet(mActor_name_t item)`, `void C_UnregisterWallpaper(mActor_name_t item)` | Call them in `MOD_EXIT`. |
+
+Custom carpets and wallpapers work like the built-in ones: the player uses them from the pockets in their house or island cottage, and the one they replace goes back into the pockets. They count as common designs at the Happy Room Academy, and walking on a custom carpet sounds like walking on a design from the Able Sisters. If a room uses a carpet or wallpaper whose mod isn't loaded, it shows the default floor or wall until the mod is back, without losing it.
 
 ## NES games (`port/api/famicom.h`)
 
@@ -218,3 +249,23 @@ Quit a game with L, R and Z, like the built-in ones.
 ## Assets
 
 `C_ASSET(name, path)` declares a game asset by its path inside the game archive, so it can be used as a `Gfx*`, texture or palette. The paths match the `*_PATH` macros in the game's `include/assets` headers.
+
+### Textures
+
+`#asset` turns a PNG next to the source file into a texture in the game's own formats when the mod is built (Pillow is required):
+
+```c
+static const u8 sIcon[] = { #asset "textures/icon.png" CI4 };
+static const u8 sIconPalette[] = { #asset "textures/icon.png" CI4_PAL };
+```
+
+| Format | Use |
+|---|---|
+| (none) or `RGBA32` | Full colour, decoded when the game loads it. |
+| `RGBA16` | 5 bits per channel and 1 bit of alpha. |
+| `CI4`, `CI8` | 16 or 256 colours from a palette. Item icons, carpets and wallpapers are `CI4`. |
+| `CI4_PAL`, `CI8_PAL` | The palette for the same PNG's `CI4` or `CI8` texture. |
+| `I4`, `I8` | Greyscale. |
+| `IA4`, `IA8`, `IA16` | Greyscale with alpha. |
+
+For `CI4` and `CI8`, a PNG that already has a palette of up to 16 or 256 colours keeps those colours in their order. Any other PNG is reduced to 16 or 256 colours, with transparent pixels on colour 0. Colours are stored with 5 bits per channel, so they can shift slightly.

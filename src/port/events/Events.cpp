@@ -23,6 +23,8 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(ItemCollected);
     REGISTER_EVENT(ItemUse);
 
+    REGISTER_EVENT(InteriorLookup);
+
     REGISTER_EVENT(ShopStockGenerated);
     REGISTER_EVENT(CatalogPageBuild);
 
