@@ -1,4 +1,5 @@
 #include "m_cporiginal_ovl.h"
+#include "port/api/cloth.h"
 
 #include "m_submenu_ovl.h"
 #include "m_common_data.h"
@@ -284,7 +285,7 @@ static void mCO_move_Wait(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
                 mCD_save_data_main_to_aram(cporiginal_ovl->card_original, mCD_KEEP_ORIGINAL_SIZE, mCD_ARAM_DATA_ORIGINAL);
                 submenu->overlay->move_chg_base_proc(menu_info, mSM_MOVE_OUT_RIGHT);
 
-                if (Now_Private->cloth.idx >= (CLOTH_NUM + 1)) {
+                if (Now_Private->cloth.idx >= (CLOTH_NUM + 1) && Now_Private->cloth.idx < C_CLOTH_TEX_FIRST) {
                     if (cporiginal_ovl->cloth_org_no != 255 && cporiginal_ovl->cloth_org_idx != 255) {
                         int idx = cporiginal_ovl->cloth_org_no;
                         int player_idx;
@@ -725,7 +726,7 @@ static void mCO_cporiginal_ovl_init(Submenu* submenu) {
     cporiginal_ovl->cloth_org_no = 255;
     cporiginal_ovl->up_folder = 0;
 
-    if (Now_Private->cloth.idx >= (CLOTH_NUM + 1)) {
+    if (Now_Private->cloth.idx >= (CLOTH_NUM + 1) && Now_Private->cloth.idx < C_CLOTH_TEX_FIRST) {
         int cloth_idx = Now_Private->cloth.idx - (CLOTH_NUM + 1);
         
         cporiginal_ovl->cloth_org_no = cloth_idx;

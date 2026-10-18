@@ -1,6 +1,6 @@
 # Custom Content Example
 
-Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM), a new item (a "lucky gem" that breaks into 1,000 Bells when used), a new carpet and wallpaper, and a new fish and insect (a "rainbow koi" in the river and a "mod dragonfly" from May to October) to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu. The mod table, carpet and wallpaper are also on sale at Nook's on half of the days, and everything shows up in the catalog once you own it. The gem, koi and dragonfly icons, the carpet and the wallpaper are drawn from the PNGs in `src/textures`.
+Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM), a new item (a "lucky gem" that breaks into 1,000 Bells when used), a new carpet, wallpaper and shirt, and a new fish and insect (a "rainbow koi" in the river and a "mod dragonfly" from May to October) to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu. The mod table, carpet, wallpaper and tee are also on sale at Nook's on half of the days, and everything shows up in the catalog once you own it. The gem, koi and dragonfly icons, the carpet, the wallpaper and the tee are drawn from the PNGs in `src/textures`.
 
 Build and install it like the template:
 
@@ -164,15 +164,15 @@ C_AddShopStock(sTable, 50);   // on sale on about half of the days
 
 | Function | Description |
 |---|---|
-| `int C_AddShopStock(mActor_name_t item, int chance)` | Puts furniture, a carpet or a wallpaper, custom or built-in, in Nook's rotation. `chance` is the percentage of days it is on sale; it takes the place of one of the day's regular items of the same kind. Returns `FALSE` for any other kind of item. |
+| `int C_AddShopStock(mActor_name_t item, int chance)` | Puts furniture, a carpet, a wallpaper or a shirt, custom or built-in, in Nook's rotation. `chance` is the percentage of days it is on sale; it takes the place of one of the day's regular items of the same kind. Returns `FALSE` for any other kind of item. |
 | `void C_RemoveShopStock(mActor_name_t item)` | Call it in `MOD_EXIT`. Copies already on sale stay until the next restock. |
 | `int C_RestockShop(void)` | Rolls the stock again, as on a new day. Returns `FALSE` while the player is inside a shop, or before a game is loaded. |
 | `void C_AddToCatalog(mActor_name_t item)` | Adds an item to the current player's catalog as if they had owned it. |
 | `int C_IsInCatalog(mActor_name_t item)` | Whether the item is in the current player's catalog. |
 
-Stock is rolled when Nook restocks, so a newly added item shows up from the next day or after `C_RestockShop`. Only furniture, carpets and wallpapers can go on the shop floor: each display spot draws its own models, and custom items have none. Nook shows a custom carpet or wallpaper on the shop's floor or wall when the player asks to see it, like the built-in ones.
+Stock is rolled when Nook restocks, so a newly added item shows up from the next day or after `C_RestockShop`. Only furniture, carpets, wallpapers and shirts can go on the shop floor: each display spot draws its own models, and custom items have none. Nook shows a custom carpet or wallpaper on the shop's floor or wall when the player asks to see it, like the built-in ones.
 
-Custom furniture the player has owned is listed at the end of the catalog's Furniture page, custom carpets and wallpapers at the end of their own pages, and custom items at the end of the Items page. All of them can be ordered at their `price` and arrive by mail the next day, like built-in orders. Which custom pieces each player has owned is kept in `custom_collection.json` next to the game, by town and player, since the save file has no room for them. Entries whose mod isn't loaded are hidden until it is.
+Custom furniture the player has owned is listed at the end of the catalog's Furniture page, custom carpets, wallpapers and shirts at the end of their own pages, and custom items at the end of the Items page. All of them can be ordered at their `price` and arrive by mail the next day, like built-in orders. Which custom pieces each player has owned is kept in `custom_collection.json` next to the game, by town and player, since the save file has no room for them. Entries whose mod isn't loaded are hidden until it is.
 
 `ShopStockGenerated` and `CatalogPageBuild` in `src/port/events/EVENTS.md` give full control over the stock and the catalog pages when the functions above aren't enough.
 
@@ -206,6 +206,34 @@ sTiles = C_RegisterCarpet(&sTilesDef);
 | `void C_UnregisterCarpet(mActor_name_t item)`, `void C_UnregisterWallpaper(mActor_name_t item)` | Call them in `MOD_EXIT`. |
 
 Custom carpets and wallpapers work like the built-in ones: the player uses them from the pockets in their house or island cottage, and the one they replace goes back into the pockets. They count as common designs at the Happy Room Academy, and walking on a custom carpet sounds like walking on a design from the Able Sisters. If a room uses a carpet or wallpaper whose mod isn't loaded, it shows the default floor or wall until the mod is back, without losing it.
+
+## Clothes (`port/api/cloth.h`)
+
+```c
+static const u8 sTeeTexture[] = { #asset "textures/tee.png" CI4 };
+static const u8 sTeePalette[] = { #asset "textures/tee.png" CI4_PAL };
+
+static C_ClothDef sTeeDef = {
+    "mymod.tee", "striped tee", mIN_ARTICLE_A, 1200, sTeeTexture, sTeePalette,
+};
+
+sTee = C_RegisterCloth(&sTeeDef);
+```
+
+| Field | Description |
+|---|---|
+| `id` | Unique key. The item number assigned to it is stored in `custom_clothes.json` next to the game. Never reuse an id for a different shirt. |
+| `name`, `article` | Name shown in game, up to 16 characters, and its `mIN_ARTICLE_*`. |
+| `price` | Price in Bells. |
+| `texture`, `palette` | A 32x32 CI4 texture and its 16 colour palette, laid out like an Able Sisters design: the texture wraps around the body, with the chest in the middle. |
+| `not_for_sale` | Optional. The catalog shows "Not for Sale" and it can't be ordered. |
+
+| Function | Description |
+|---|---|
+| `mActor_name_t C_RegisterCloth(const C_ClothDef* def)` | Returns the item number, or `EMPTY_NO`. Up to 240 custom shirts fit. |
+| `void C_UnregisterCloth(mActor_name_t item)` | Call it in `MOD_EXIT`. |
+
+The game's clothing numbers are all taken, so custom shirts use the free end of the diary category (0x2B10 to 0x2BFF) and the game treats them as clothing everywhere: the player wears them from the pockets or the inventory background, Nook sells them on a mannequin and lets the player try them on, they can be placed at home on a mannequin, listed and ordered in the catalog, and given or mailed to villagers, who wear them. Villagers don't pick custom shirts on their own, and quests and Blanca only use the built-in ones.
 
 ## Fish and insects (`port/api/creature.h`)
 

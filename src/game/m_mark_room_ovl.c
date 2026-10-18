@@ -2787,6 +2787,8 @@ static mMkRm_ftr_info_c mMkRm_GetFtrInfo(int ftr_idx) {
             info.birth_type = mRmTp_BIRTH_TYPE_FTR_FISH;
         } else if (furniture->profile.interaction_type & aFTR_INTERACTION_INSECT) {
             info.birth_type = mRmTp_BIRTH_TYPE_FTR_INSECT;
+        } else if (furniture->profile.interaction_type & aFTR_INTERACTION_MANNEKIN) {
+            info.birth_type = mRmTp_BIRTH_TYPE_FTR_CLOTH;
         }
     }
 

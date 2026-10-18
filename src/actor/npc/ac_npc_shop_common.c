@@ -1,5 +1,7 @@
 #include "port/api/item.h"
 #include "port/api/creature.h"
+#include "port/api/cloth.h"
+#include "port/api/interior.h"
 
 enum aNSC_action {
     aNSC_ACTION_EMPTY,
@@ -417,7 +419,7 @@ static void aNSC_sell_camera(NPC_SHOP_COMMON_ACTOR* shop_common, GAME_PLAY* play
                 aNSC_set_sell_camera(shop_common, play);
                 break;
             case NAME_TYPE_ITEM1:
-                switch (ITEM_NAME_GET_CAT(shop_common->sell_item)) {
+                switch (C_ItemCategory(shop_common->sell_item)) {
                     case ITEM1_CAT_CLOTH:
                         break;
                     case ITEM1_CAT_TOOL:
@@ -675,6 +677,10 @@ static void aNSC_set_buy_sum_str(mActor_name_t item, u32 p2) {
         case NAME_TYPE_ITEM1:
             if (C_FindItem((mActor_name_t)item) != NULL || mNT_check_unknown((mActor_name_t)item)) {
                 str_no = p2 + tani_string_num[aNSC_TANNI_STR_00];
+            } else if (C_FindCloth((mActor_name_t)item) != NULL) {
+                str_no = p2 + tani_string_num[aNSC_item_tanni_type[ITEM1_CAT_CLOTH][0]];
+            } else if (C_FindInterior((mActor_name_t)item) != NULL) {
+                str_no = p2 + tani_string_num[aNSC_item_tanni_type[ITEM_NAME_GET_CAT((mActor_name_t)item)][0]];
             } else if (C_FindCreature((mActor_name_t)item) != NULL) {
                 str_no = p2 + tani_string_num[aNSC_item_tanni_type[ITEM_NAME_GET_CAT((mActor_name_t)item)]
                                                                   [C_FindCreature((mActor_name_t)item)->base]];
@@ -961,7 +967,7 @@ static int aNSC_check_item_with_ticket(mActor_name_t item) {
         case NAME_TYPE_FTR1:
             return TRUE;
         case NAME_TYPE_ITEM1:
-            switch (ITEM_NAME_GET_CAT(item)) {
+            switch (C_ItemCategory(item)) {
                 case ITEM1_CAT_CLOTH:
                 case ITEM1_CAT_WALL:
                 case ITEM1_CAT_CARPET:
@@ -1143,7 +1149,7 @@ static void aNSC_message_ctrl_force_talk_start_normal_day(NPC_SHOP_COMMON_ACTOR*
         int next_act_idx = aNSC_ACTION_SELL_CHECK_BEFORE;
 
         if (ITEM_NAME_GET_TYPE(sell_item) == NAME_TYPE_ITEM1) {
-            switch (ITEM_NAME_GET_CAT(sell_item)) {
+            switch (C_ItemCategory(sell_item)) {
                 case ITEM1_CAT_CLOTH:
                 case ITEM1_CAT_CARPET:
                 case ITEM1_CAT_WALL:
@@ -1197,7 +1203,7 @@ static void aNSC_message_ctrl_talk_request_normal_day(NPC_SHOP_COMMON_ACTOR* sho
                     req_proc = aNSC_set_talk_info_sell_item;
                     break;
                 case NAME_TYPE_ITEM1:
-                    switch (ITEM_NAME_GET_CAT(fg_item)) {
+                    switch (C_ItemCategory(fg_item)) {
                         case ITEM1_CAT_CARPET:
                         case ITEM1_CAT_WALL:
                             req_proc = aNSC_set_talk_info_show_item;
@@ -1344,7 +1350,7 @@ static int aNSC_message_ctrl(NPC_SHOP_COMMON_ACTOR* shop_common, GAME_PLAY* play
                             if (item != EMPTY_NO) {
                                 action = aNSC_ACTION_SELL_CHECK_BEFORE;
                                 if (ITEM_NAME_GET_TYPE(item) == NAME_TYPE_ITEM1) {
-                                    switch (ITEM_NAME_GET_CAT(item)) {
+                                    switch (C_ItemCategory(item)) {
                                         case ITEM1_CAT_CLOTH:
                                         case ITEM1_CAT_CARPET:
                                         case ITEM1_CAT_WALL:
@@ -1414,7 +1420,7 @@ static int aNSC_message_ctrl(NPC_SHOP_COMMON_ACTOR* shop_common, GAME_PLAY* play
                                     sell_proc = aNSC_set_talk_info_sell_item;
                                     break;
                                 case NAME_TYPE_ITEM1:
-                                    switch (ITEM_NAME_GET_CAT(item)) {
+                                    switch (C_ItemCategory(item)) {
                                         case ITEM1_CAT_CARPET:
                                         case ITEM1_CAT_WALL:
                                             sell_proc = aNSC_set_talk_info_show_item;
@@ -2399,7 +2405,7 @@ static void aNSC_sell_check(NPC_SHOP_COMMON_ACTOR* shop_common, GAME_PLAY* play)
                 break;
         }
         if (action != -1) {
-            if (shop_common->is_selling == TRUE && ITEM_NAME_GET_CAT(shop_common->sell_item) == ITEM1_CAT_CLOTH) {
+            if (shop_common->is_selling == TRUE && C_ItemCategory(shop_common->sell_item) == ITEM1_CAT_CLOTH) {
                 shop_common->next_action = action;
                 action = aNSC_ACTION_CHG_CLOTH_START_WAIT;
                 shop_common->change_cloth = shop_common->player_cloth;
@@ -2497,7 +2503,7 @@ static void aNSC_show_item_check(NPC_SHOP_COMMON_ACTOR* shop_common, GAME_PLAY* 
         int msg_no = aNSC_MSG_WAIT;
         switch (mChoice_Get_ChoseNum(mChoice_Get_base_window_p())) {
             case mChoice_CHOICE0:
-                switch (ITEM_NAME_GET_CAT(item)) {
+                switch (C_ItemCategory(item)) {
                     case ITEM1_CAT_WALL:
                         CLIP(shop_indoor_clip)->change_wall_proc(item);
                         msg_no = aNSC_MSG_SHOW_CARPET_OFFER;
@@ -2524,7 +2530,7 @@ static void aNSC_show_item_check(NPC_SHOP_COMMON_ACTOR* shop_common, GAME_PLAY* 
                 shop_common->is_selling = TRUE;
                 break;
             case mChoice_CHOICE1:
-                switch (ITEM_NAME_GET_CAT(item)) {
+                switch (C_ItemCategory(item)) {
                     case ITEM1_CAT_CARPET:
                     case ITEM1_CAT_WALL:
                         msg_no = aNSC_MSG_SHOW_CARPET_DECLINE;
@@ -2559,7 +2565,7 @@ static void aNSC_chg_cloth_start_wait(NPC_SHOP_COMMON_ACTOR* shop_common, GAME_P
         mActor_name_t item = shop_common->change_cloth;
         if (item != RSV_CLOTH) {
             mPlib_request_main_change_cloth_forNPC_type1((GAME*)play, item,
-                                                         ITEM_IS_CLOTH(item) ? item - ITM_CLOTH_START : FALSE, TRUE);
+                                                         C_IsCloth(item) ? C_ClothTexIdx(item) : FALSE, TRUE);
         } else {
             mPlib_request_main_change_cloth_forNPC_type1((GAME*)play, 1 - 0x1e1, Now_Private->cloth.idx, TRUE);
         }
@@ -3040,7 +3046,7 @@ static void aNSC_sell_check_before_init(NPC_SHOP_COMMON_ACTOR* shop_common, GAME
 static void aNSC_sell_answer0_init(NPC_SHOP_COMMON_ACTOR* shop_common, GAME_PLAY* play) {
     mDemo_Set_OrderValue(mDemo_ORDER_NPC0, 0x9, 0x0);
     if (shop_common->is_selling == TRUE) {
-        switch (ITEM_NAME_GET_CAT(shop_common->sell_item)) {
+        switch (C_ItemCategory(shop_common->sell_item)) {
             case ITEM1_CAT_CARPET:
             case ITEM1_CAT_WALL:
                 if (CLIP(shop_indoor_clip) != NULL) {

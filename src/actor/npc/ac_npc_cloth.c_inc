@@ -5,7 +5,7 @@ static void aNPC_dma_cloth_data(ACTOR* actorx) {
 
     for (i = 0; i < aNPC_CTRL_CLOTH_NUM; i++) {
         if (cloth->cloth_item != EMPTY_NO && cloth->dma_flag == TRUE) {
-            if (ITEM_IS_NPC_CLOTH(cloth->cloth_item) == FALSE) {
+            if (C_IsNpcCloth(cloth->cloth_item) == FALSE) {
                 cloth->cloth_item = ITM_CLOTH000;
             }
 
@@ -23,13 +23,13 @@ static void aNPC_dma_cloth_data(ACTOR* actorx) {
 static u32 aNPC_getP_cloth_tex_rom(aNPC_cloth_c* cloth) {
     u32 addr = JW_GetAramAddress(RESOURCE_TEX_BOY);
     
-    return addr + (ITEM_IS_CLOTH(cloth->cloth_item) ? (cloth->cloth_item - ITM_CLOTH000) : 0) * aNPC_CLOTH_TEX_SIZE;
+    return addr + C_ClothTexIdx(cloth->cloth_item) * aNPC_CLOTH_TEX_SIZE;
 }
 
 static u32 aNPC_getP_cloth_pal_rom(aNPC_cloth_c* cloth) {
     u32 addr = JW_GetAramAddress(RESOURCE_PALLET_BOY);
     
-    return addr + (ITEM_IS_CLOTH(cloth->cloth_item) ? (cloth->cloth_item - ITM_CLOTH000) : 0) * aNPC_CLOTH_PAL_SIZE;
+    return addr + C_ClothTexIdx(cloth->cloth_item) * aNPC_CLOTH_PAL_SIZE;
 }
 
 static void aNPC_dma_cloth_tex_data_fg(aNPC_cloth_c* cloth) {
@@ -49,7 +49,7 @@ static void aNPC_dma_cloth_data_fg(void) {
 
     for (i = 0; i < aNPC_CTRL_CLOTH_NUM; i++) {
         if (cloth->cloth_item != EMPTY_NO && cloth->dma_flag == TRUE) {
-            if (!ITEM_IS_NPC_CLOTH(cloth->cloth_item)) {
+            if (!C_IsNpcCloth(cloth->cloth_item)) {
                 cloth->cloth_item = ITM_CLOTH000;
             }
 
@@ -255,7 +255,7 @@ static int aNPC_change_cloth_data(NPC_ACTOR* nactorx) {
     mActor_name_t cloth = nactorx->draw.cloth_no;
     int ret = FALSE;
 
-    if (ITEM_IS_NPC_CLOTH(cloth) == FALSE) {
+    if (C_IsNpcCloth(cloth) == FALSE) {
         cloth = ITM_CLOTH000;
         nactorx->draw.cloth_no = ITM_CLOTH000;
     }

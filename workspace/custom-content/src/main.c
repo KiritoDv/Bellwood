@@ -1,6 +1,7 @@
 #include "mod.h"
 
 #include "port/api/actor.h"
+#include "port/api/cloth.h"
 #include "port/api/creature.h"
 #include "port/api/famicom.h"
 #include "port/api/furniture.h"
@@ -44,6 +45,8 @@ static const u8 sKoiIcon[] = { #asset "textures/rainbow_koi.png" CI4 };
 static const u8 sKoiPalette[] = { #asset "textures/rainbow_koi.png" CI4_PAL };
 static const u8 sDragonflyIcon[] = { #asset "textures/mod_dragonfly.png" CI4 };
 static const u8 sDragonflyPalette[] = { #asset "textures/mod_dragonfly.png" CI4_PAL };
+static const u8 sTeeTexture[] = { #asset "textures/mod_tee.png" CI4 };
+static const u8 sTeePalette[] = { #asset "textures/mod_tee.png" CI4_PAL };
 
 typedef struct {
     ACTOR actor_class;
@@ -242,6 +245,10 @@ static C_CreatureDef sDragonflyDef = {
     NULL,
 };
 
+static C_ClothDef sTeeDef = {
+    "example.mod_tee", "mod tee", mIN_ARTICLE_A, 1200, sTeeTexture, sTeePalette,
+};
+
 static s16 sSpinner = -1;
 static mActor_name_t sModTable = EMPTY_NO;
 static mActor_name_t sGem = EMPTY_NO;
@@ -250,6 +257,7 @@ static mActor_name_t sCarpet = EMPTY_NO;
 static mActor_name_t sWallpaper = EMPTY_NO;
 static mActor_name_t sKoi = EMPTY_NO;
 static mActor_name_t sDragonfly = EMPTY_NO;
+static mActor_name_t sTee = EMPTY_NO;
 static ListenerID sPlayUpdateListener;
 static int sSpawnRequested = FALSE;
 
@@ -315,6 +323,12 @@ static void OnGiveCreaturesPressed(void) {
     }
 }
 
+static void OnGiveTeePressed(void) {
+    if (sTee != EMPTY_NO && Common_Get(now_private) != NULL) {
+        mPr_SetFreePossessionItem(Common_Get(now_private), sTee, mPr_ITEM_COND_NORMAL);
+    }
+}
+
 static void OnRestockPressed(void) {
     C_RestockShop();
 }
@@ -326,6 +340,7 @@ static void SetupUI(void) {
     C_WidgetConfig nes = { 0 };
     C_WidgetConfig interior = { 0 };
     C_WidgetConfig creatures = { 0 };
+    C_WidgetConfig tee = { 0 };
     C_WidgetConfig restock = { 0 };
 
     spawn.type = C_WIDGET_BUTTON;
@@ -352,10 +367,14 @@ static void SetupUI(void) {
     creatures.callback = OnGiveCreaturesPressed;
     creatures.opts.generic.tooltip = "Puts a rainbow koi and a mod dragonfly in your pockets. Both can also be caught.";
 
+    tee.type = C_WIDGET_BUTTON;
+    tee.callback = OnGiveTeePressed;
+    tee.opts.generic.tooltip = "Puts a mod tee in your pockets. Drag it onto your character to wear it.";
+
     restock.type = C_WIDGET_BUTTON;
     restock.callback = OnRestockPressed;
     restock.opts.generic.tooltip =
-        "Rolls Nook's stock again. The mod table, carpet and wallpaper are each on sale half of the days.";
+        "Rolls Nook's stock again. The mod table, carpet, wallpaper and tee are each on sale half of the days.";
 
     C_AddSidebarEntry("Custom Content", 1);
     C_AddWidget("Custom Content", 1, "Spawn Spinner", &spawn);
@@ -364,6 +383,7 @@ static void SetupUI(void) {
     C_AddWidget("Custom Content", 1, "Give Mod NES", &nes);
     C_AddWidget("Custom Content", 1, "Give Mod Carpet and Wallpaper", &interior);
     C_AddWidget("Custom Content", 1, "Give Mod Fish and Insect", &creatures);
+    C_AddWidget("Custom Content", 1, "Give Mod Tee", &tee);
     C_AddWidget("Custom Content", 1, "Restock Shop", &restock);
 }
 
@@ -380,9 +400,11 @@ MOD_INIT() {
     sWallpaper = C_RegisterWallpaper(&sWallpaperDef);
     sKoi = C_RegisterFish(&sKoiDef);
     sDragonfly = C_RegisterInsect(&sDragonflyDef);
+    sTee = C_RegisterCloth(&sTeeDef);
     C_AddShopStock(sModTable, 50);
     C_AddShopStock(sCarpet, 50);
     C_AddShopStock(sWallpaper, 50);
+    C_AddShopStock(sTee, 50);
     sPlayUpdateListener = REGISTER_LISTENER(PlayUpdate, EVENT_PRIORITY_NORMAL, OnPlayUpdate);
     SetupUI();
 }
@@ -393,6 +415,8 @@ MOD_EXIT() {
     C_RemoveShopStock(sModTable);
     C_RemoveShopStock(sCarpet);
     C_RemoveShopStock(sWallpaper);
+    C_RemoveShopStock(sTee);
+    C_UnregisterCloth(sTee);
     C_UnregisterWallpaper(sWallpaper);
     C_UnregisterInsect(sDragonfly);
     C_UnregisterFish(sKoi);

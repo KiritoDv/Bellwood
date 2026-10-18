@@ -218,6 +218,20 @@ Fires when the game rebuilds the list of insects that can appear, which happens 
 
 ---
 
+## Clothing Events
+
+### `ClothLookup`
+```c
+uint16_t item;
+int32_t furniture;
+const struct C_ClothDef_s* definition;
+uint16_t foundItem;
+int32_t foundFurniture;
+```
+Fires whenever the game needs data for a shirt in the custom clothing range, `C_CLOTH_FIRST` (0x2B10) to `C_CLOTH_LAST` (0x2BFF): its name, price, and the mannequin that shows it in a room, the catalog or Nook's shop. It is looked up either by `item` or, with `item` at `EMPTY_NO`, by the `furniture` index of its mannequin. Set `definition`, `foundItem` and `foundFurniture` for the shirt that owns it. Shirts registered through `port/api/cloth.h` are answered here. Their textures live at texture index 264 and up, after the built-in shirts and the 8 Able Sisters designs, where the player, villagers and mannequins read them.
+
+---
+
 ## Shop Events
 
 ### `ShopStockGenerated`

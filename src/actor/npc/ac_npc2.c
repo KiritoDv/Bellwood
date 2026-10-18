@@ -1,5 +1,6 @@
 #define aNPC_NPC2
 #include "ac_npc2.h"
+#include "port/api/cloth.h"
 #include "ac_port.h"
 #include "ac_npc.h"
 

@@ -10,6 +10,7 @@ extern "C" {
 #include "port/api/actor.h"
 #include "port/api/furniture.h"
 #include "port/api/interior.h"
+#include "port/api/cloth.h"
 #include "port/api/item.h"
 #include "m_catalog_ovl.h"
 #include "m_common_data.h"
@@ -62,6 +63,9 @@ const char* CustomId(mActor_name_t item) {
     if (const C_InteriorDef* interior = C_FindInterior(item)) {
         return interior->id;
     }
+    if (const C_ClothDef* cloth = C_FindCloth(item)) {
+        return cloth->id;
+    }
     const C_ItemDef* custom = C_FindItem(item);
     return custom != nullptr ? custom->id : nullptr;
 }
@@ -69,6 +73,9 @@ const char* CustomId(mActor_name_t item) {
 int StockKind(mActor_name_t item) {
     if (ITEM_IS_FTR(item)) {
         return -1;
+    }
+    if (C_IsCloth(item)) {
+        return ITEM1_CAT_CLOTH;
     }
     if (ITEM_NAME_GET_TYPE(item) == NAME_TYPE_ITEM1 &&
         (ITEM_NAME_GET_CAT(item) == ITEM1_CAT_CARPET || ITEM_NAME_GET_CAT(item) == ITEM1_CAT_WALL)) {
@@ -80,6 +87,9 @@ int StockKind(mActor_name_t item) {
 bool IsCustom(mActor_name_t item) {
     if (ITEM_IS_FTR(item)) {
         return mRmTp_FtrItemNo2FtrIdx(item) >= FTR_NUM;
+    }
+    if (item >= C_CLOTH_FIRST && item <= C_CLOTH_LAST) {
+        return true;
     }
     return ITEM_NAME_GET_INDEX(item) >=
            (ITEM_NAME_GET_CAT(item) == ITEM1_CAT_CARPET ? C_CARPET_FIRST : C_WALLPAPER_FIRST);
@@ -216,7 +226,7 @@ void AddCatalogEntry(CatalogPageBuild* page, mActor_name_t item) {
 
 void FillCatalogPage(CatalogPageBuild* page) {
     if (page->page != mCL_MENU_FTR && page->page != mCL_MENU_UMBRELLA && page->page != mCL_MENU_CARPET &&
-        page->page != mCL_MENU_WALL) {
+        page->page != mCL_MENU_WALL && page->page != mCL_MENU_CLOTH) {
         return;
     }
     const std::set<std::string>* collected = PlayerCollection();
@@ -228,6 +238,13 @@ void FillCatalogPage(CatalogPageBuild* page) {
             const C_FurnitureDef* furniture = C_FindFurniture(index);
             if (furniture != nullptr && collected->contains(furniture->id)) {
                 AddCatalogEntry(page, mRmTp_FtrIdx2FtrItemNo(index, mRmTp_DIRECT_SOUTH));
+            }
+        }
+    } else if (page->page == mCL_MENU_CLOTH) {
+        for (int item = C_CLOTH_FIRST; item <= C_CLOTH_LAST; item++) {
+            const C_ClothDef* cloth = C_FindCloth((mActor_name_t)item);
+            if (cloth != nullptr && collected->contains(cloth->id)) {
+                AddCatalogEntry(page, C_ClothFurniture((mActor_name_t)item));
             }
         }
     } else if (page->page == mCL_MENU_CARPET || page->page == mCL_MENU_WALL) {

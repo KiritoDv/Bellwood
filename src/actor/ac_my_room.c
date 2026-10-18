@@ -21,6 +21,7 @@
 #include "assets/data/model/furniture_stop.h"
 #include "ac_port.h"
 #include "port/api/furniture.h"
+#include "port/api/cloth.h"
 
 enum {
     aMR_ICON_LEAF,
@@ -313,7 +314,8 @@ static int aMR_ItemNo2IconNo(mActor_name_t item_no) {
         }
 
         if ((item_no >= FTR_CLOTH_START && item_no <= FTR_CLOTH_END) ||
-            (item_no >= FTR_CLOTH_START && item_no <= FTR_CLOTH_MYMANNIQUIN_END)) {
+            (item_no >= FTR_CLOTH_START && item_no <= FTR_CLOTH_MYMANNIQUIN_END) ||
+            C_FurnitureCloth(mRmTp_FtrItemNo2FtrIdx(item_no)) != EMPTY_NO) {
             return aMR_ICON_CLOTH;
         }
 

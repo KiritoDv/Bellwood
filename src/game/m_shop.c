@@ -14,6 +14,7 @@
 #include "port/api/furniture.h"
 #include "port/api/interior.h"
 #include "port/api/creature.h"
+#include "port/api/cloth.h"
 #include "port/api/item.h"
 
 extern mActor_name_t* mSP_ftr_list[];
@@ -684,9 +685,13 @@ extern u32 mSP_ItemNo2ItemPrice(mActor_name_t item_no) {
             const C_ItemDef* custom = C_FindItem(item_no);
             const C_InteriorDef* interior = C_FindInterior(item_no);
             const C_CreatureDef* creature = C_FindCreature(item_no);
+            const C_ClothDef* cloth = C_FindCloth(item_no);
 
             if (custom != NULL) {
                 return custom->price;
+            }
+            if (cloth != NULL) {
+                return cloth->price;
             }
             if (interior != NULL) {
                 return interior->price;

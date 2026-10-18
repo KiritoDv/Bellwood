@@ -13,6 +13,7 @@
 #include "m_player_lib.h"
 #include "port/api/interior.h"
 #include "port/api/creature.h"
+#include "port/api/cloth.h"
 
 typedef struct ftr_place_data_s {
     u8 exist;
@@ -1916,9 +1917,13 @@ extern int mRmTp_GetWallIdx() {
 
 extern mActor_name_t mRmTp_Item1ItemNo2FtrItemNo_AtPlayerRoom(mActor_name_t item1_no, int no_convert_tools) {
     mActor_name_t creature_ftr = C_CreatureFurniture(item1_no);
+    mActor_name_t cloth_ftr = C_ClothFurniture(item1_no);
 
     if (creature_ftr != EMPTY_NO) {
         return creature_ftr;
+    }
+    if (cloth_ftr != EMPTY_NO) {
+        return cloth_ftr;
     }
     if (item1_no >= ITM_CLOTH_START && item1_no < ITM_CLOTH_END) {
         int is_valid = item1_no >= ITM_CLOTH_START && item1_no < ITM_CLOTH_END; // this is some kind of macro for sure
@@ -1963,9 +1968,13 @@ extern mActor_name_t mRmTp_Item1ItemNo2FtrItemNo_AtPlayerRoom(mActor_name_t item
 extern mActor_name_t mRmTp_FtrItemNo2Item1ItemNo(mActor_name_t ftr_no, int no_convert_tools) {
     int ftr_idx;
     mActor_name_t creature = ITEM_IS_FTR(ftr_no) ? C_FurnitureCreature(mRmTp_FtrItemNo2FtrIdx(ftr_no)) : EMPTY_NO;
+    mActor_name_t cloth = ITEM_IS_FTR(ftr_no) ? C_FurnitureCloth(mRmTp_FtrItemNo2FtrIdx(ftr_no)) : EMPTY_NO;
 
     if (creature != EMPTY_NO) {
         return creature;
+    }
+    if (cloth != EMPTY_NO) {
+        return cloth;
     }
     if (ftr_no >= FTR_CLOTH_START && ftr_no <= FTR_CLOTH_END) {
         int is_valid = ftr_no >= FTR_CLOTH_START && ftr_no <= FTR_CLOTH_END; // this is some kind of macro for sure

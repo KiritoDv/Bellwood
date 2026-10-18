@@ -1,4 +1,5 @@
 #include "ac_npc.h"
+#include "port/api/cloth.h"
 #include "ac_port.h"
 
 #include "libultra/libultra.h"

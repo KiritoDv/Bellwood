@@ -32,6 +32,7 @@
 #include "assets/data/model/sen_win.h"
 #include "port/api/item.h"
 #include "port/api/creature.h"
+#include "port/api/cloth.h"
 
 static void mTG_mark_main_CLR(Submenu* submenu, const mSM_MenuInfo_c* menu_info);
 
@@ -4408,7 +4409,7 @@ static int mTG_mark_main_sub(Submenu* submenu, int menu_type, int param, int tab
                  (mark_type != mTG_MARK_TYPE_INV_PLAYERROOM_ITEM ||
                   ((mark_type == mTG_MARK_TYPE_INV_PLAYERROOM_ITEM && type != NAME_TYPE_FTR0 &&
                     type != NAME_TYPE_FTR1) &&
-                   (!ITEM_IS_UMBRELLA2(item) && !ITEM_IS_CLOTH(item)))) &&
+                   (!ITEM_IS_UMBRELLA2(item) && !C_IsCloth(item)))) &&
                  (mEv_CheckFirstJob() == FALSE || mark_type == mTG_MARK_TYPE_INV_PLAYERROOM_ITEM ||
                   type != NAME_TYPE_ITEM1 || category != ITEM1_CAT_PLANT))) {
                 return TRUE;
@@ -4770,7 +4771,7 @@ static void mTG_take_proc(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
         if (menu_info->data3 == 1) {
             submenu->after_mode = aHOI_REQUEST_PUTAWAY;
         } else if (ITEM_NAME_GET_TYPE(item_p->item) == NAME_TYPE_ITEM1) {
-            int category = ITEM_NAME_GET_CAT(item_p->item);
+            int category = C_ItemCategory(item_p->item);
 
             if (category == ITEM1_CAT_FRUIT || category == ITEM1_CAT_FISH) {
                 submenu->after_mode = aHOI_REQUEST_EAT;
@@ -5990,7 +5991,7 @@ static int mTG_move_cursol_base_lower(mTG_tag_c* tag) {
 }
 
 static int mTG_move_check_hand_item_on_player(mActor_name_t item) {
-    int category = ITEM_NAME_GET_CAT(item);
+    int category = C_ItemCategory(item);
 
     return (ITEM_NAME_GET_TYPE(item) == NAME_TYPE_ITEM1 &&
             (category == ITEM1_CAT_CLOTH || category == ITEM1_CAT_FRUIT || category == ITEM1_CAT_TOOL ||
@@ -6009,7 +6010,7 @@ static int mTG_move_check_hand_item(Submenu* submenu, int table) {
             return TRUE;
         }
     } else {
-        int category = ITEM_NAME_GET_CAT(hand_ovl->info.item);
+        int category = C_ItemCategory(hand_ovl->info.item);
 
         if (table == mTG_TABLE_MONEY) {
             if (category == ITEM1_CAT_MONEY) {
@@ -7228,7 +7229,7 @@ static void mTG_hand_drop_item(Submenu* submenu, mTG_tag_c* tag) {
         }
 
         if (table == mTG_TABLE_PLAYER) {
-            category = ITEM_NAME_GET_CAT(hand_ovl->info.item);
+            category = C_ItemCategory(hand_ovl->info.item);
             switch (category) {
                 case ITEM1_CAT_TOOL:
                     submenu->overlay->segment.change_player_main_anime_idx = mIV_ANIM_CATCH;

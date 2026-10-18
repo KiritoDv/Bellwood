@@ -10,6 +10,7 @@
 #include "port/api/furniture.h"
 #include "port/api/interior.h"
 #include "port/api/creature.h"
+#include "port/api/cloth.h"
 #include "port/api/item.h"
 
 static u8 itemArt_Paper[PAPER_NUM] = {
@@ -518,9 +519,14 @@ extern void mIN_copy_name_str(u8* dst, mActor_name_t item) {
                 const C_ItemDef* custom = C_FindItem(item_no);
                 const C_InteriorDef* interior = C_FindInterior(item_no);
                 const C_CreatureDef* creature = C_FindCreature(item_no);
+                const C_ClothDef* cloth = C_FindCloth(item_no);
 
                 if (custom != NULL) {
                     mem_copy(dst, (u8*)custom->name, mIN_ITEM_NAME_LEN);
+                    break;
+                }
+                if (cloth != NULL) {
+                    mem_copy(dst, (u8*)cloth->name, mIN_ITEM_NAME_LEN);
                     break;
                 }
                 if (interior != NULL) {
@@ -614,9 +620,13 @@ extern int mIN_get_item_article(mActor_name_t item) {
             const C_ItemDef* custom = C_FindItem(item_no);
             const C_InteriorDef* interior = C_FindInterior(item_no);
             const C_CreatureDef* creature = C_FindCreature(item_no);
+            const C_ClothDef* cloth = C_FindCloth(item_no);
 
             if (custom != NULL) {
                 return custom->article;
+            }
+            if (cloth != NULL) {
+                return cloth->article;
             }
             if (interior != NULL) {
                 return interior->article;

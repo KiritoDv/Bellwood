@@ -15,6 +15,7 @@
 #include "m_malloc.h"
 #include "port/api/furniture.h"
 #include "port/api/interior.h"
+#include "port/api/cloth.h"
 #include "port/api/item.h"
 
 enum {
@@ -267,6 +268,13 @@ static void mCL_furniture_init(mCL_Item_c* item, mActor_name_t item_no) {
         item->scale = 1.0f;
         ftr_actor->position.y = -7.0f;
         item->price = 0;
+    } else if (C_FurnitureCloth(mRmTp_FtrItemNo2FtrIdx(item_no)) != EMPTY_NO) {
+        const C_ClothDef* cloth = C_FindCloth(C_FurnitureCloth(mRmTp_FtrItemNo2FtrIdx(item_no)));
+
+        item->pos_y = 38.0f;
+        item->scale = 1.0f;
+        ftr_actor->position.y = -4.0f;
+        item->price = (cloth != NULL && !cloth->not_for_sale) ? cloth->price : 0;
     } else if (item_no >= FTR_CLOTH_START && item_no <= FTR_CLOTH_END) {
         mActor_name_t cloth_item;
 

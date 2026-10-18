@@ -14,6 +14,7 @@
 #include "m_rcp.h"
 #include "assets/data/model/cKF_bs_r_hnd.h"
 #include "assets/data/model/inv_item.h"
+#include "port/api/cloth.h"
 
 static mHD_Ovl_c hand_ovl_data;
 
@@ -477,7 +478,7 @@ static void mHD_drop_mail(Submenu* submenu, Mail_c* mail) {
 
 static void mHD_change_iv_back_segment(void) {
     GAME_PLAY* play = (GAME_PLAY*)gamePT;
-    int idx = ITEM_IS_CLOTH(Now_Private->backgound_texture) ? (Now_Private->backgound_texture - ITM_CLOTH_START) : 0;
+    int idx = C_ClothTexIdx(Now_Private->backgound_texture);
 
     play->submenu_ground_idx ^= 1;
     mPlib_Load_PlayerTexAndPallet(play->submenu_ground_tex[play->submenu_ground_idx],
@@ -511,7 +512,7 @@ static void mHD_open_end_proc_item_type3(Submenu* submenu, int idx, int table) {
     mActor_name_t item = hand_ovl->info.item;
     int category = ITEM_NAME_GET_CAT(item);
 
-    if (item == RSV_CLOTH || ITEM_IS_CLOTH(item)) {
+    if (item == RSV_CLOTH || C_IsCloth(item)) {
         if (cKF_FrameControl_passCheck_now(&submenu->overlay->inventory_ovl->player_main_keyframe.frame_control,
                                            36.0f)) {
             cloth_p = &Now_Private->cloth;
@@ -520,7 +521,7 @@ static void mHD_open_end_proc_item_type3(Submenu* submenu, int idx, int table) {
             if (cloth_p->item == RSV_CLOTH) {
                 cloth_idx = 0x100 + mNW_get_image_no(submenu, submenu->overlay->tag_ovl->get_table_idx_proc(tag));
             } else {
-                cloth_idx = ITEM_IS_CLOTH(cloth_p->item) ? (cloth_p->item - ITM_CLOTH_START) : 0;
+                cloth_idx = C_ClothTexIdx(cloth_p->item);
             }
 
             cloth_p->idx = cloth_idx;
@@ -765,7 +766,7 @@ static void mHD_sasu2_move(Submenu* submenu) {
     mTG_tag_c* tag = &submenu->overlay->tag_ovl->tags[0];
     int category = ITEM_NAME_GET_CAT(hand_ovl->info.item);
 
-    if (hand_ovl->info.item == RSV_CLOTH || ITEM_IS_CLOTH(hand_ovl->info.item)) {
+    if (hand_ovl->info.item == RSV_CLOTH || C_IsCloth(hand_ovl->info.item)) {
         if (cKF_FrameControl_passCheck_now(&submenu->overlay->inventory_ovl->player_main_keyframe.frame_control,
                                            36.0f)) {
             mPr_cloth_c* cloth_p = &Now_Private->cloth;
@@ -775,7 +776,7 @@ static void mHD_sasu2_move(Submenu* submenu) {
             if (cloth_p->item == RSV_CLOTH) {
                 cloth_idx = 0x100 + mNW_get_image_no(submenu, submenu->overlay->tag_ovl->get_table_idx_proc(tag));
             } else {
-                cloth_idx = ITEM_IS_CLOTH(cloth_p->item) ? (cloth_p->item - ITM_CLOTH_START) : 0;
+                cloth_idx = C_ClothTexIdx(cloth_p->item);
             }
 
             cloth_p->idx = cloth_idx;

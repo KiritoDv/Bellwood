@@ -1,13 +1,11 @@
 #ifdef ENABLE_SCRIPTING
 
-#include "port/ShipCompat.h"
 #include "port/ShipInit.hpp"
 #include "port/api/GameText.hpp"
 #include "port/api/StableIds.hpp"
+#include "port/api/TextureData.hpp"
 #include "port/events/Events.h"
 
-#include <fast/resource/type/Texture.h>
-#include <ship/resource/ResourceManager.h>
 #include <spdlog/spdlog.h>
 
 #define this this_
@@ -52,46 +50,6 @@ CustomInterior* Find(int index, bool wall) {
     return entry.used ? &entry : nullptr;
 }
 
-std::shared_ptr<Fast::Texture> LoadTexture(const void* asset) {
-    std::string path = (const char*)asset;
-    path = path.substr(7);
-    auto texture = std::dynamic_pointer_cast<Fast::Texture>(ShipCompat::GetResourceManager()->LoadResource(path, true));
-    if (texture == nullptr) {
-        SPDLOG_ERROR("Interior: {} is not a texture", path);
-    }
-    return texture;
-}
-
-bool IsAsset(const void* data) {
-    return strncmp((const char*)data, "__OTR__", 7) == 0;
-}
-
-bool ReadPalette(const void* palette, uint8_t* out) {
-    if (!IsAsset(palette)) {
-        memcpy(out, palette, kPaletteSize);
-        return true;
-    }
-    auto texture = LoadTexture(palette);
-    if (texture == nullptr) {
-        return false;
-    }
-    if (texture->Type == Fast::TextureType::RGBA32bpp) {
-        for (size_t i = 0; i < 16 && i * 4 + 3 < texture->ImageDataSize; i++) {
-            const uint8_t* c = texture->ImageData + i * 4;
-            const uint16_t color = ((c[0] >> 3) << 11) | ((c[1] >> 3) << 6) | ((c[2] >> 3) << 1) | (c[3] >= 0x80);
-            out[i * 2] = (uint8_t)(color >> 8);
-            out[i * 2 + 1] = (uint8_t)color;
-        }
-        return true;
-    }
-    if (texture->Type != Fast::TextureType::RGBA16bpp || texture->ImageDataSize < kPaletteSize) {
-        SPDLOG_ERROR("Interior: the palette must have 16 RGBA16 colours");
-        return false;
-    }
-    memcpy(out, texture->ImageData, kPaletteSize);
-    return true;
-}
-
 bool ReadTiles(const void* image, int columns, int rows, uint8_t* out) {
     const int tiles = columns * rows;
     const uint8_t* pixels = (const uint8_t*)image;
@@ -99,8 +57,8 @@ bool ReadTiles(const void* image, int columns, int rows, uint8_t* out) {
     int width = kTileWidth * columns;
     int height = kTileWidth * rows;
 
-    if (IsAsset(image)) {
-        texture = LoadTexture(image);
+    if (TextureData::IsAsset(image)) {
+        texture = TextureData::Load(image);
         if (texture == nullptr) {
             return false;
         }
@@ -142,7 +100,7 @@ mActor_name_t Register(const C_InteriorDef* def, bool wall) {
     const int columns = wall ? 1 : 2;
     const int rows = 2;
     std::vector<uint8_t> data(kPaletteSize + kTileSize * (wall ? kWallTiles : kCarpetTiles));
-    if (!ReadPalette(def->palette, data.data()) ||
+    if (!TextureData::ReadPalette16(def->palette, data.data()) ||
         !ReadTiles(def->texture, columns, rows, data.data() + kPaletteSize)) {
         SPDLOG_ERROR("Interior: could not load {}", def->id);
         return EMPTY_NO;

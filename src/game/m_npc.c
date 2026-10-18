@@ -1,4 +1,5 @@
 #include "m_npc.h"
+#include "port/api/cloth.h"
 
 #include "m_font.h"
 #include "m_name_table.h"
@@ -1300,7 +1301,7 @@ static int mNpc_SetPresentCloth(Animal_c* animal, PersonalID_c* player_id, mActo
     int res = FALSE;
 
     if (animal != NULL && player_id != NULL && ITEM_NAME_GET_TYPE(cloth) == NAME_TYPE_ITEM1 &&
-        ITEM_NAME_GET_CAT(cloth) == ITEM1_CAT_CLOTH && !mNpc_CheckFreeAnimalPersonalID(&animal->id) &&
+        C_ItemCategory(cloth) == ITEM1_CAT_CLOTH && !mNpc_CheckFreeAnimalPersonalID(&animal->id) &&
         !mPr_NullCheckPersonalID(player_id)) {
         int memory_idx = mNpc_GetAnimalMemoryIdx(player_id, animal->memories, ANIMAL_MEMORY_NUM);
 
@@ -2029,7 +2030,7 @@ extern void mNpc_ChangePresentCloth() {
 
         if (mNpc_CheckFreeAnimalPersonalID(&animal->id) == FALSE && present_cloth != EMPTY_NO &&
             ITEM_NAME_GET_TYPE(present_cloth) == NAME_TYPE_ITEM1 &&
-            ITEM_NAME_GET_CAT(present_cloth) == ITEM1_CAT_CLOTH) {
+            C_ItemCategory(present_cloth) == ITEM1_CAT_CLOTH) {
             memory = animal->memories;
 
             for (j = 0; j < ANIMAL_MEMORY_NUM; j++) {
@@ -2107,7 +2108,8 @@ extern int mNpc_RegistEventNpc(mActor_name_t event_id, mActor_name_t texture_id,
         mNpc_EventNpc_c* event_npc = Common_GetPointer(event_npc[free_idx]);
 
         if (cloth_id != EMPTY_NO) {
-            int valid = (cloth_id == RSV_CLOTH) || (cloth_id >= ITM_CLOTH_START && cloth_id < ITM_CLOTH_END);
+            int valid = (cloth_id == RSV_CLOTH) || (cloth_id >= ITM_CLOTH_START && cloth_id < ITM_CLOTH_END) ||
+                        C_FindCloth(cloth_id) != NULL;
 
             if (valid == FALSE) {
                 cloth_id = ITM_CLOTH000;
@@ -2183,7 +2185,8 @@ extern int mNpc_RegistMaskNpc(mActor_name_t mask_id, mActor_name_t npc_id, mActo
         mNpc_MaskNpc_c* mask_npc = Common_GetPointer(mask_npc[free_idx]);
 
         if (cloth_id != EMPTY_NO) {
-            int valid = (cloth_id == RSV_CLOTH) || (cloth_id >= ITM_CLOTH_START && cloth_id < ITM_CLOTH_END);
+            int valid = (cloth_id == RSV_CLOTH) || (cloth_id >= ITM_CLOTH_START && cloth_id < ITM_CLOTH_END) ||
+                        C_FindCloth(cloth_id) != NULL;
 
             if (valid == FALSE) {
                 cloth_id = ITM_CLOTH000;
@@ -4544,7 +4547,8 @@ extern int mNpc_RegistMaskNpc_summercamp(mActor_name_t mask_id, mActor_name_t np
         mNpc_MaskNpc_c* mask_npc = Common_GetPointer(mask_npc[free_mask_idx]);
 
         if (cloth_id != EMPTY_NO) {
-            int valid_cloth = (cloth_id == RSV_CLOTH) || (cloth_id >= ITM_CLOTH_START && cloth_id < ITM_CLOTH_END);
+            int valid_cloth =
+                (cloth_id == RSV_CLOTH) || (cloth_id >= ITM_CLOTH_START && cloth_id < ITM_CLOTH_END) || C_FindCloth(cloth_id) != NULL;
 
             if (valid_cloth == FALSE) {
                 cloth_id = ITM_CLOTH_START;

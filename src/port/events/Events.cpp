@@ -27,6 +27,7 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(CreatureLookup);
     REGISTER_EVENT(FishSpawnList);
     REGISTER_EVENT(InsectSpawnList);
+    REGISTER_EVENT(ClothLookup);
 
     REGISTER_EVENT(ShopStockGenerated);
     REGISTER_EVENT(CatalogPageBuild);

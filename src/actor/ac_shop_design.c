@@ -3,6 +3,7 @@
 #include "m_common_data.h"
 #include "m_name_table.h"
 #include "port/api/interior.h"
+#include "port/api/cloth.h"
 
 static void Shop_Design_Actor_ct(ACTOR* actorx, GAME* game);
 static void Shop_Design_Actor_dt(ACTOR* actorx, GAME* game);
@@ -66,7 +67,7 @@ static mActor_name_t aSD_ItemName2ReservePointName(mActor_name_t item) {
         return RSV_SHOP_WALL;
     }
 
-    if (item >= ITM_CLOTH_START && item <= ITM_CLOTH_END) {
+    if ((item >= ITM_CLOTH_START && item <= ITM_CLOTH_END) || C_FindCloth(item) != NULL) {
         return RSV_SHOP_CLOTH;
     }
 
@@ -332,6 +333,7 @@ static mActor_name_t aSD_UnitNum2ItemNo(int ux, int uz) {
         (item >= ITM_WALL_START && item <= ITM_WALL_END - 4) ||
         C_FindInterior(item) != NULL ||
         (item >= ITM_CLOTH_START && item <= ITM_CLOTH_END) ||
+        C_FindCloth(item) != NULL ||
         (item >= ITM_TOOL_START && item <= ITM_TOOL_END) ||
         (item >= ITM_SAPLING && item <= ITM_CEDAR_SAPLING) ||
         (item >= ITM_WHITE_PANSY_BAG && item <= ITM_YELLOW_TULIP_BAG) ||
@@ -380,7 +382,7 @@ static int aSD_ReportGoodsSales(int ux, int uz) {
                 mFI_UtNumtoFGSet_common(RSV_SHOP_SOLD_PLANT, ux, uz, FALSE);
                 return FALSE;
             }
-        } else if (item >= ITM_CLOTH_START && item <= ITM_CLOTH_END) {
+        } else if ((item >= ITM_CLOTH_START && item <= ITM_CLOTH_END) || C_FindCloth(item) != NULL) {
             mSP_ShopSaleReport(item, shop_design->goods_list, shop_design->goods_list_max, RSV_SHOP_SOLD_CLOTH);
             Common_Get(clip).shop_manekin_clip->change2naked_manekin_proc(ux, uz);
             mFI_UtNumtoFGSet_common(RSV_NO, ux, uz, FALSE);

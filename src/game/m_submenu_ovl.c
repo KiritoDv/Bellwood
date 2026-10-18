@@ -84,6 +84,7 @@
 #include "assets/data/model/inv_mwin_yashi.h"
 #include "port/api/item.h"
 #include "port/api/creature.h"
+#include "port/api/cloth.h"
 
 static Submenu_Overlay_c ovl_base;
 
@@ -1022,7 +1023,7 @@ static void mSM_draw_item(GRAPH* graph, f32 pos_x, f32 pos_y, f32 scale, mActor_
         } else {
             int groupNo = mSM_get_groupNo(item);
 
-            category = ITEM_NAME_GET_CAT(item);
+            category = C_ItemCategory(item);
             switch (category) {
                 case ITEM1_CAT_HUKUBUKURO:
                     icon = &item_tex_data_table[category][anim_frame];
