@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 import argparse
 import struct
 from enum import Enum
@@ -405,7 +406,8 @@ def write_header(resource_type: int, version: int) -> bytes:
 
     return header_data
 
-ASSET_FORMATS = ('RGBA32', 'RGBA16', 'CI4', 'CI8', 'I4', 'I8', 'IA4', 'IA8', 'IA16', 'CI4_PAL', 'CI8_PAL')
+ASSET_FORMATS = ('RGBA32', 'RGBA16', 'CI4', 'CI8', 'I4', 'I8', 'IA4', 'IA8', 'IA16', 'CI4_PAL', 'CI8_PAL',
+                 'NPC_MODEL', 'NPC_ANIM')
 
 _palette_cache = {}
 
@@ -582,6 +584,27 @@ def amalgamate(file_path, include_dirs, processed, out_file, assets_dir):
                 if os.path.exists(potential_path):
                     target_path = potential_path
                     break
+
+            if target_path and fmt in ('NPC_MODEL', 'NPC_ANIM'):
+                sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+                import npc_model
+                stem = os.path.splitext(target_name)[0]
+                prefix = os.path.dirname(stem) + '/' if os.path.dirname(stem) else ''
+                out_dir = os.path.join(assets_dir, os.path.dirname(stem)) if assets_dir else None
+                try:
+                    if fmt == 'NPC_MODEL':
+                        resource_name = stem + '.skeleton'
+                        if out_dir is not None:
+                            resource_name = npc_model.convert_model(target_path, out_dir, os.path.basename(stem), prefix)
+                    else:
+                        resource_name = stem + '.anim'
+                        if out_dir is not None:
+                            os.makedirs(out_dir, exist_ok=True)
+                            npc_model.convert_animation(target_path, os.path.join(assets_dir, resource_name))
+                    return f'static const char {var_name}[] __attribute__((aligned(2))) = "__OTR__{resource_name}";'
+                except Exception as e:
+                    print(f"Warning: Failed to convert {target_name}: {e}")
+                    return f"/* ERROR: Failed to convert {target_name}: {e} */"
 
             if target_path:
                 try:

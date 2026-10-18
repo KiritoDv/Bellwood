@@ -1,6 +1,6 @@
 # Custom Content Example
 
-Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM), a new item (a "lucky gem" that breaks into 1,000 Bells when used), a new carpet, wallpaper and shirt, a new fish and insect (a "rainbow koi" in the river and a "mod dragonfly" from May to October), and a new villager (Mint, a peppy green cat who wears the mod tee) to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu. The mod table, carpet, wallpaper and tee are also on sale at Nook's on half of the days, and everything shows up in the catalog once you own it. The gem, koi and dragonfly icons, the carpet, the wallpaper and the tee are drawn from the PNGs in `src/textures`.
+Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM), a new item (a "lucky gem" that breaks into 1,000 Bells when used), a new carpet, wallpaper and shirt, a new fish and insect (a "rainbow koi" in the river and a "mod dragonfly" from May to October), and two new villagers (Mint, a peppy green dog who wears the mod tee, and Bolt, a lazy robot with a model and walk of his own) to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu. The mod table, carpet, wallpaper and tee are also on sale at Nook's on half of the days, and everything shows up in the catalog once you own it. The gem, koi and dragonfly icons, the carpet, the wallpaper and the tee are drawn from the PNGs in `src/textures`.
 
 Build and install it like the template:
 
@@ -238,14 +238,23 @@ The game's clothing numbers are all taken, so custom shirts use the free end of 
 ## Villagers (`port/api/villager.h`)
 
 ```c
-static C_VillagerDef sMintDef = {
-    "mymod.mint", "Mint", "minty", NPC_BOB, mNpc_LOOKS_KO_GIRL, EMPTY_NO, NULL, sMintPalette, 0, 2, 3, -1, -1, FALSE,
-};
+static C_VillagerDef sMintDef;
 
+sMintDef.id = "mymod.mint";
+sMintDef.name = "Mint";
+sMintDef.catchphrase = "minty";
+sMintDef.base = NPC_BOB;
+sMintDef.looks = mNpc_LOOKS_KO_GIRL;
+sMintDef.palette = sMintPalette;
+sMintDef.house_type = 2;
+sMintDef.house_palette = 3;
+sMintDef.wallpaper = EMPTY_NO;
+sMintDef.carpet = EMPTY_NO;
+sMintDef.talk_type = -1;
 sMint = C_RegisterVillager(&sMintDef);
 ```
 
-A custom villager is built on one of the 236 built-in villagers, its `base`: it uses the base's species, model, animations and room layout, and everything below can be changed. Dialogue in this game depends on the personality, so a custom villager talks like the other villagers of its personality, with its own name and catchphrase.
+A custom villager starts from one of the 236 built-in villagers, its `base`: the base's species model, animations, house and room layout, and everything below can be changed, down to the model itself. Dialogue in this game depends on the personality, so a custom villager talks like the other villagers of its personality, with its own name and catchphrase.
 
 | Field | Description |
 |---|---|
@@ -259,14 +268,44 @@ A custom villager is built on one of the 236 built-in villagers, its `base`: it 
 | `palette` | 16 colour palette replacing the base's, as an asset or raw big-endian RGBA5551 bytes. Swapping only the palette recolours the base. NULL for the base's. |
 | `voice` | Voice number, 0 for the base's. |
 | `house_type`, `house_palette` | House shape and colours, 0 to 4 each, -1 for the base's. |
-| `wall`, `floor` | Wallpaper and carpet of its room, 0 to 66, -1 for the base's. |
+| `wallpaper`, `carpet` | Wallpaper and carpet of its room, built-in or custom items, `EMPTY_NO` for the base's. |
 | `starter` | Can be one of the first villagers of a new town. Otherwise it only moves in later. |
+| `room`, `room_top` | Its own room layout: two 16x16 grids of item numbers, the furniture on the floor and the items on top of it. The room is the top-left 8x8: `RSV_WALL_NO` along the edges, `RSV_NO` for empty floor, the door gap at (3,7) and (4,7) with `EXIT_DOOR` below it at (3,8) and (4,8). Custom furniture works. NULL for the base's. |
+| `skeleton` | A model replacing the base's: a `cKF_Skeleton_R_c` from the game or the mod archive (`C_ASSET`). It must use the villager rig, 26 joints in the same order as every built-in villager, so the shared animations, held items and accessories work on it. NULL for the base's. |
+| `eyes`, `mouths` | 8 eye and 6 mouth textures in the model's format. NULL for the base's. |
+| `scale`, `eye_height`, `col_radius`, `col_height` | Model scale (most villagers use 0.0095), height of the eyes, and the collision cylinder. 0 for the base's. |
+| `talk_type`, `mouth_anim` | Whether the mouth moves when talking (0 no, 1 or 2 the two styles) and which of the two mouth animations plays (1 or 2). -1 and 0 for the base's. |
+| `animations` | `aNPC_ANIM_NUM` entries (from `ac_npc_anim_def.h`) of `aNPC_Animation_c`, each replacing one of the shared animations for this villager, NULL entries keep the base's. The example makes Mint run instead of walking with `sMintAnimations[aNPC_ANIM_WALK1] = sRunAnimation`. NULL for the base's. |
 
 | Function | Description |
 |---|---|
 | `mActor_name_t C_RegisterVillager(const C_VillagerDef* def)` | Returns the villager id, or `EMPTY_NO`. Up to 17 custom villagers fit. |
 | `void C_UnregisterVillager(mActor_name_t npc_id)` | Call it in `MOD_EXIT`. A town it lives in shows it as the base villager Bob until it is registered again. |
 | `int C_ReplaceVillager(mActor_name_t old_npc_id, mActor_name_t new_npc_id)` | Moves a villager, built-in or custom, into the house of a town villager in place of them, as if they had just moved in. The town shows it the next time it loads. |
+
+The example turns Mint into a green dog: the dog species' skeleton, texture, eyes and mouths from the game's own assets, with a recoloured palette, in a room of her own with two mod tables and the mod carpet and wallpaper.
+
+### Models and animations of your own
+
+```c
+static const u8 sBoltModel[] = { #asset "models/bolt.gltf" NPC_MODEL };
+static const u8 sBoltWalk[] = { #asset "models/bolt.gltf" NPC_ANIM };
+
+sBoltAnimations[aNPC_ANIM_WALK1] = sBoltWalk;
+sBoltDef.skeleton = sBoltModel;
+sBoltDef.animations = sBoltAnimations;
+```
+
+`#asset "file.gltf" NPC_MODEL` turns a glTF model into a villager model when the mod is built (Pillow is required), and `#asset "file.gltf" NPC_ANIM` turns the file's first animation into a villager animation (`tools/npc_model.py anim` can pick one by name). The model becomes a skeleton, a mesh per joint and a CI4 texture per material, all inside the mod archive, and the villager draws with them and with the base's eyes and mouths.
+
+A model must use the villager rig:
+- 26 joints named `root`, `pelvis`, `hip_l`, `leg_l`, `foot_l`, `toe_l`, `hip_r`, `leg_r`, `foot_r`, `toe_r`, `tail_base`, `tail_1`, `tail_2`, `chest`, `shoulder_l`, `arm_l`, `hand_l`, `shoulder_r`, `arm_r`, `hand_r`, `hand_r_end`, `neck`, `neck_2`, `neck_end`, `head` and `head_end`, parented as in the built-in villagers, with bones along +X and no rotation in the rest pose; a parent node above `root` may carry the 90° turn that stands the rig up.
+- 1 unit in the file is 1 mm in the game (a villager is about 1.5 units tall), and the joint positions come from the file.
+- Meshes are skinned to the joints (each vertex follows its heaviest joint) or parented under a joint; up to 64x32 texels per texture, reduced to 16 colours. A material named `eye` or `mouth` shows the villager's animated eyes or mouth instead of a texture of its own.
+
+`python3 tools/npc_model.py rig <ac.o2r> <species> rig.gltf` writes a reference rig with the meshes and textures of a built-in species (`cat_1`, `dog_1`, ...) from your own extracted game archive, to start from in Blender; `tools/npc_model.py model` and `anim` are the converters the build runs. `tools/make_bolt.py` in this folder builds the example's robot from boxes, with a walk that swings his arms and legs.
+
+Animations are keyed per frame at 30 frames a second from the glTF's rotation (and `root` translation) channels, in the game's rotation order, so they play on any villager with the rig. Eye and mouth sequences and footstep sounds aren't carried over.
 
 Custom villagers move in like built-in ones: when a house is free, the game picks among the villagers of the needed personality that haven't lived in town yet, custom ones included. They walk around, talk, have a house you can visit, wear and get given clothes, and write letters. The island and e-Reader cards only use built-in villagers.
 

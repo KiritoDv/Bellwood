@@ -1,4 +1,5 @@
 #include "m_field_make.h"
+#include "port/api/villager.h"
 
 #include "m_island.h"
 #include "m_name_table.h"
@@ -337,6 +338,8 @@ static void mFM_SetFG(mFM_fg_info_c* fg_info, mFM_fg_data_c* data, mActor_name_t
                 items_p[(8 << 4) | 3] = EXIT_DOOR;
                 items_p[(8 << 4) | 4] = EXIT_DOOR;
             }
+        } else if (scene == SCENE_NPC_HOUSE && C_VillagerRoom(Common_Get(house_owner_name), 0) != NULL) {
+            mFM_FgUtDataSet(fg_info->items_p, (mActor_name_t*)C_VillagerRoom(Common_Get(house_owner_name), 0));
         } else {
             mFM_FgUtDataSet(fg_info->items_p, data->items[0]);
         }
@@ -372,7 +375,9 @@ static void mFM_SetFG2(mActor_name_t* items_p, mFM_fg_data_c** data, mActor_name
                 secondary_idx = 0;
             }
 
-            if (data[secondary_idx] != NULL) {
+            if (C_VillagerRoom(house_owner_name, 1) != NULL) {
+                mFM_FgUtDataSet(items_p, (mActor_name_t*)C_VillagerRoom(house_owner_name, 1));
+            } else if (data[secondary_idx] != NULL) {
                 mFM_FgUtDataSet(items_p, data[secondary_idx]->items[0]);
             }
         }

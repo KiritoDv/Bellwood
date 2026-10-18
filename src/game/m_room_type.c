@@ -1832,8 +1832,11 @@ extern int mRmTp_GetFloorIdx() {
     } else {
         switch (Save_Get(scene_no)) {
             case SCENE_NPC_HOUSE:
-            case SCENE_COTTAGE_NPC:
-                return mNpc_GetNpcFloorNo();
+            case SCENE_COTTAGE_NPC: {
+                int floor = mNpc_GetNpcFloorNo();
+
+                return floor >= C_CARPET_FIRST ? FLOOR_ORIGINAL_SE : floor;
+            }
             case SCENE_SHOP0:
                 mRmTp_PrintFloorIndex("FLOOR_SHOP1");
                 return FLOOR_SHOP1;

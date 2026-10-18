@@ -130,8 +130,47 @@ static void aNPC_set_anime_se_info(NPC_ACTOR* nactorx, aNPC_Animation_c* anim) {
     }
 }
 
+static aNPC_anim_info_c* aNPC_get_anime_info(NPC_ACTOR* nactorx, int seqNo, aNPC_anim_info_c* custom_info) {
+    const C_VillagerDef* custom = C_FindVillager(nactorx->npc_info.npc_name);
+
+    if (custom != NULL && custom->animations != NULL && seqNo >= 0 && seqNo < aNPC_ANIM_NUM &&
+        custom->animations[seqNo] != NULL) {
+        custom_info->anim_p = (aNPC_Animation_c*)custom->animations[seqNo];
+        custom_info->anim_idx = aNPC_animeTable[seqNo].anim_idx;
+        return custom_info;
+    }
+
+    return &aNPC_animeTable[seqNo];
+}
+
+static int aNPC_get_mouth_anime(NPC_ACTOR* nactorx) {
+    const C_VillagerDef* custom = C_FindVillager(nactorx->npc_info.npc_name);
+
+    if (custom != NULL && custom->mouth_anim == 1) {
+        return aNPC_ANIM_KUTIPAKU1;
+    }
+    if (custom != NULL && custom->mouth_anim == 2) {
+        return aNPC_ANIM_KUTIPAKU2;
+    }
+
+    switch (nactorx->draw.shape_bank) {
+        case ACTOR_OBJ_BANK_286:
+        case ACTOR_OBJ_BANK_191:
+        case ACTOR_OBJ_BANK_148:
+        case ACTOR_OBJ_BANK_107:
+        case ACTOR_OBJ_BANK_253:
+        case ACTOR_OBJ_BANK_330:
+        case ACTOR_OBJ_BANK_291:
+        case ACTOR_OBJ_BANK_401:
+            return aNPC_ANIM_KUTIPAKU2;
+        default:
+            return aNPC_ANIM_KUTIPAKU1;
+    }
+}
+
 static void aNPC_Animation_init(ACTOR* actorx, int seqNo, int talk_flag) {
     NPC_ACTOR* nactorx = (NPC_ACTOR*)actorx;
+    aNPC_anim_info_c custom_info[3];
     aNPC_anim_info_c* info_main;
     aNPC_anim_info_c* info_sub0;
     aNPC_anim_info_c* info_sub1;
@@ -146,32 +185,19 @@ static void aNPC_Animation_init(ACTOR* actorx, int seqNo, int talk_flag) {
 
     seqNo = aNPC_check_talk_anime(nactorx, seqNo);
     aNPC_set_frame_sub_speed(nactorx, seqNo);
-    info_main = &aNPC_animeTable[seqNo];
+    info_main = aNPC_get_anime_info(nactorx, seqNo, &custom_info[0]);
 
     if (nactorx->draw.sub_anim_type == aNPC_SUB_ANIM_NONE) {
         info_sub0 = info_main;
     } else {
-        info_sub0 = &aNPC_animeTable[aNPC_sub_animeSeqNoTable[nactorx->draw.sub_anim_type]];
+        info_sub0 = aNPC_get_anime_info(nactorx, aNPC_sub_animeSeqNoTable[nactorx->draw.sub_anim_type],
+                                        &custom_info[1]);
     }
 
     if (nactorx->talk_info.type == 0) {
         info_sub1 = info_main;
     } else {
-        switch (nactorx->draw.shape_bank) {
-            case ACTOR_OBJ_BANK_286:
-            case ACTOR_OBJ_BANK_191:
-            case ACTOR_OBJ_BANK_148:
-            case ACTOR_OBJ_BANK_107:
-            case ACTOR_OBJ_BANK_253:
-            case ACTOR_OBJ_BANK_330:
-            case ACTOR_OBJ_BANK_291:
-            case ACTOR_OBJ_BANK_401:
-                info_sub1 = &aNPC_animeTable[aNPC_ANIM_KUTIPAKU2];
-                break;
-            default:
-                info_sub1 = &aNPC_animeTable[aNPC_ANIM_KUTIPAKU1];
-                break;
-        }
+        info_sub1 = aNPC_get_anime_info(nactorx, aNPC_get_mouth_anime(nactorx), &custom_info[2]);
     }
 
     main_anim = (aNPC_Animation_c*)LOAD_ASSET(info_main->anim_p);

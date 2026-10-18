@@ -2874,11 +2874,11 @@ extern void mNpc_SetNpcList(mNpc_NpcList_c* npclist, Animal_c* animal, int count
                 if (villager->house_palette >= 0) {
                     npclist->house_data.palette = villager->house_palette;
                 }
-                if (villager->wall >= 0) {
-                    npclist->house_data.wall_id = villager->wall;
+                if (villager->wallpaper != EMPTY_NO) {
+                    npclist->house_data.wall_id = (u8)(villager->wallpaper - ITM_WALL_START);
                 }
-                if (villager->floor >= 0) {
-                    npclist->house_data.floor_id = villager->floor;
+                if (villager->carpet != EMPTY_NO) {
+                    npclist->house_data.floor_id = (u8)(villager->carpet - ITM_CARPET_START);
                 }
             }
         }
@@ -3133,6 +3133,12 @@ static int mNpc_CheckSelectFurniture(mActor_name_t item) {
     return res;
 }
 
+static mActor_name_t* mNpc_GetNpcRoomItems(mFM_fg_data_c** fg_data_table, int data_idx, mActor_name_t npc_id) {
+    const mActor_name_t* room = C_VillagerRoom(npc_id, 0);
+
+    return room != NULL ? (mActor_name_t*)room : fg_data_table[data_idx]->items[0];
+}
+
 static mActor_name_t mNpc_DecideNpcFurniture(mFM_fg_data_c** fg_data_table, mNpc_NpcList_c* npclist, int fg_base_id) {
     int data_idx = npclist->house_data.main_layer_id - fg_base_id;
     mActor_name_t* fg_items;
@@ -3144,7 +3150,7 @@ static mActor_name_t mNpc_DecideNpcFurniture(mFM_fg_data_c** fg_data_table, mNpc
         data_idx = 0;
     }
 
-    fg_items = fg_data_table[data_idx]->items[0];
+    fg_items = mNpc_GetNpcRoomItems(fg_data_table, data_idx, npclist->name);
 
     for (ut_z = 0; ut_z < 10; ut_z++) {
         for (ut_x = 0; ut_x < 10; ut_x++) {
@@ -3161,7 +3167,7 @@ static mActor_name_t mNpc_DecideNpcFurniture(mFM_fg_data_c** fg_data_table, mNpc
     if (num != 0) {
         num = RANDOM(num);
 
-        fg_items = fg_data_table[data_idx]->items[0];
+        fg_items = mNpc_GetNpcRoomItems(fg_data_table, data_idx, npclist->name);
         for (ut_z = 0; ut_z < 10; ut_z++) {
             for (ut_x = 0; ut_x < 10; ut_x++) {
                 if (ITEM_IS_FTR(*fg_items) && mNpc_CheckSelectFurniture(*fg_items) == TRUE) {

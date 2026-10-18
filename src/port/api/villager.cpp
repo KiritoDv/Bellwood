@@ -11,7 +11,9 @@
 #define this this_
 extern "C" {
 #include "port/api/villager.h"
+#include "ac_npc_anim_def.h"
 #include "m_common_data.h"
+#include "m_field_make.h"
 #include "m_npc.h"
 extern mNpc_Default_Data_c npc_def_list[];
 }
@@ -20,6 +22,7 @@ extern mNpc_Default_Data_c npc_def_list[];
 #include <array>
 #include <cstring>
 #include <string>
+#include <vector>
 
 namespace {
 
@@ -31,6 +34,11 @@ struct CustomVillager {
     std::string name;
     std::string catchphrase;
     alignas(8) uint8_t palette[TextureData::kPaletteSize];
+    std::vector<mActor_name_t> room;
+    std::vector<mActor_name_t> roomTop;
+    std::vector<const void*> eyes;
+    std::vector<const void*> mouths;
+    std::vector<const void*> animations;
     C_VillagerDef def{};
 };
 
@@ -58,6 +66,24 @@ bool IsKnownVillager(mActor_name_t npc_id) {
     return Find(npc_id) != nullptr;
 }
 
+const void* const* CopyPointers(std::vector<const void*>& out, const void* const* in, size_t count) {
+    out.clear();
+    if (in == nullptr) {
+        return nullptr;
+    }
+    out.assign(in, in + count);
+    return out.data();
+}
+
+const mActor_name_t* CopyRoom(std::vector<mActor_name_t>& out, const mActor_name_t* in) {
+    out.clear();
+    if (in == nullptr) {
+        return nullptr;
+    }
+    out.assign(in, in + C_VILLAGER_ROOM_SIZE);
+    return out.data();
+}
+
 void InitVillagerApi() {
     REGISTER_LISTENER(VillagerLookup, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         auto* lookup = reinterpret_cast<VillagerLookup*>(event);
@@ -65,6 +91,8 @@ void InitVillagerApi() {
             lookup->definition = &villager->def;
             lookup->name = (const uint8_t*)villager->name.data();
             lookup->catchphrase = (const uint8_t*)villager->catchphrase.data();
+            lookup->room = villager->def.room;
+            lookup->roomTop = villager->def.room_top;
         }
     });
 }
@@ -79,6 +107,13 @@ extern "C" mActor_name_t C_RegisterVillager(const C_VillagerDef* def) {
     }
     if (def->base < NPC_START || def->base >= NPC_START + NPC_NUM || def->looks >= mNpc_LOOKS_NUM) {
         SPDLOG_ERROR("Villager {}: base must be a built-in villager and looks a mNpc_LOOKS_* value", def->id);
+        return EMPTY_NO;
+    }
+    if ((def->wallpaper != EMPTY_NO && !ITEM_IS_WALL(def->wallpaper) &&
+         ITEM_NAME_GET_CAT(def->wallpaper) != ITEM1_CAT_WALL) ||
+        (def->carpet != EMPTY_NO && !ITEM_IS_CARPET(def->carpet) &&
+         ITEM_NAME_GET_CAT(def->carpet) != ITEM1_CAT_CARPET)) {
+        SPDLOG_ERROR("Villager {}: wallpaper and carpet must be wallpaper and carpet items", def->id);
         return EMPTY_NO;
     }
     uint8_t palette[TextureData::kPaletteSize];
@@ -103,6 +138,11 @@ extern "C" mActor_name_t C_RegisterVillager(const C_VillagerDef* def) {
         memcpy(villager.palette, palette, sizeof(palette));
         villager.def.palette = villager.palette;
     }
+    villager.def.room = CopyRoom(villager.room, def->room);
+    villager.def.room_top = CopyRoom(villager.roomTop, def->room_top);
+    villager.def.eyes = CopyPointers(villager.eyes, def->eyes, C_VILLAGER_EYES);
+    villager.def.mouths = CopyPointers(villager.mouths, def->mouths, C_VILLAGER_MOUTHS);
+    villager.def.animations = CopyPointers(villager.animations, def->animations, aNPC_ANIM_NUM);
     mNpc_ClearCacheName();
     return (mActor_name_t)npc_id;
 }

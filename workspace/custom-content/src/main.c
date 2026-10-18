@@ -21,6 +21,7 @@
 #include "m_huusui_room.h"
 #include "m_item_name.h"
 #include "m_npc.h"
+#include "ac_npc_anim_def.h"
 #include "m_player_lib.h"
 #include "m_private.h"
 #include "m_rcp.h"
@@ -247,14 +248,45 @@ static C_CreatureDef sDragonflyDef = {
     NULL,
 };
 
+C_ASSET(sDogSkeleton, "data/npc/model/mdl/dog_1/cKF_bs_r_dog_1");
+C_ASSET(sDogTexture, "data/npc/model/tex/dog_1/dog_1_tmem_txt");
+C_ASSET(sDogEye1, "data/npc/model/tex/dog_1/dog_1_eye1_TA_tex_txt");
+C_ASSET(sDogEye2, "data/npc/model/tex/dog_1/dog_1_eye2_TA_tex_txt");
+C_ASSET(sDogEye3, "data/npc/model/tex/dog_1/dog_1_eye3_TA_tex_txt");
+C_ASSET(sDogEye4, "data/npc/model/tex/dog_1/dog_1_eye4_TA_tex_txt");
+C_ASSET(sDogEye5, "data/npc/model/tex/dog_1/dog_1_eye5_TA_tex_txt");
+C_ASSET(sDogEye6, "data/npc/model/tex/dog_1/dog_1_eye6_TA_tex_txt");
+C_ASSET(sDogEye7, "data/npc/model/tex/dog_1/dog_1_eye7_TA_tex_txt");
+C_ASSET(sDogEye8, "data/npc/model/tex/dog_1/dog_1_eye8_TA_tex_txt");
+C_ASSET(sDogMouth1, "data/npc/model/tex/dog_1/dog_1_mouth1_TA_tex_txt");
+C_ASSET(sDogMouth2, "data/npc/model/tex/dog_1/dog_1_mouth2_TA_tex_txt");
+C_ASSET(sDogMouth3, "data/npc/model/tex/dog_1/dog_1_mouth3_TA_tex_txt");
+C_ASSET(sDogMouth4, "data/npc/model/tex/dog_1/dog_1_mouth4_TA_tex_txt");
+C_ASSET(sDogMouth5, "data/npc/model/tex/dog_1/dog_1_mouth5_TA_tex_txt");
+C_ASSET(sDogMouth6, "data/npc/model/tex/dog_1/dog_1_mouth6_TA_tex_txt");
+C_ASSET(sRunAnimation, "data/npc/npc_1_run1/cKF_ba_r_npc_1_run1");
+
+static const u8 sBoltModel[] = { #asset "models/bolt.gltf" NPC_MODEL };
+static const u8 sBoltWalk[] = { #asset "models/bolt.gltf" NPC_ANIM };
+
+static const void* sDogEyes[C_VILLAGER_EYES] = {
+    sDogEye1, sDogEye2, sDogEye3, sDogEye4, sDogEye5, sDogEye6, sDogEye7, sDogEye8,
+};
+static const void* sDogMouths[C_VILLAGER_MOUTHS] = {
+    sDogMouth1, sDogMouth2, sDogMouth3, sDogMouth4, sDogMouth5, sDogMouth6,
+};
+static const void* sMintAnimations[aNPC_ANIM_NUM];
+static mActor_name_t sMintRoom[C_VILLAGER_ROOM_SIZE];
+static mActor_name_t sMintRoomTop[C_VILLAGER_ROOM_SIZE];
+
 static const u8 sMintPalette[] = {
-    0x00, 0x01, 0x35, 0x19, 0x4D, 0xDD, 0x6E, 0xA3, 0x97, 0x6B, 0xF7, 0x6D, 0x12, 0x09, 0x23, 0x8F,
-    0x35, 0x19, 0xA9, 0x0B, 0xE2, 0x11, 0x65, 0x5F, 0xCF, 0x75, 0xFD, 0x29, 0xF4, 0x21, 0xEB, 0x5B,
+    0x66, 0xA9, 0x7E, 0xED, 0xB7, 0xB5, 0xD2, 0x11, 0xFB, 0x9D, 0x90, 0x03, 0x1B, 0x13, 0x34, 0x9B,
+    0xFF, 0xFF, 0xBD, 0x69, 0x59, 0xCD, 0x41, 0x09, 0x82, 0x89, 0xBB, 0x45, 0x62, 0x93, 0x20, 0x81,
 };
 
-static C_VillagerDef sMintDef = {
-    "example.mint", "Mint", "minty", NPC_BOB, mNpc_LOOKS_KO_GIRL, EMPTY_NO, NULL, sMintPalette, 0, 2, 3, -1, -1, FALSE,
-};
+static C_VillagerDef sMintDef;
+static C_VillagerDef sBoltDef;
+static const void* sBoltAnimations[aNPC_ANIM_NUM];
 
 static C_ClothDef sTeeDef = {
     "example.mod_tee", "mod tee", mIN_ARTICLE_A, 1200, sTeeTexture, sTeePalette,
@@ -270,6 +302,7 @@ static mActor_name_t sKoi = EMPTY_NO;
 static mActor_name_t sDragonfly = EMPTY_NO;
 static mActor_name_t sTee = EMPTY_NO;
 static mActor_name_t sMint = EMPTY_NO;
+static mActor_name_t sBolt = EMPTY_NO;
 static ListenerID sPlayUpdateListener;
 static int sSpawnRequested = FALSE;
 
@@ -341,20 +374,107 @@ static void OnGiveTeePressed(void) {
     }
 }
 
-static void OnInviteMintPressed(void) {
-    Private_c* priv = Common_Get(now_private);
+static void SetupMintRoom(mActor_name_t table) {
+    int x;
+    int z;
+
+    for (z = 0; z < 16; z++) {
+        for (x = 0; x < 16; x++) {
+            int inside = x < 8 && z < 8;
+            int wall = inside && (x == 0 || x == 7 || z == 0 || z == 7);
+
+            sMintRoom[z * 16 + x] = wall ? RSV_WALL_NO : RSV_NO;
+            sMintRoomTop[z * 16 + x] = RSV_NO;
+        }
+    }
+    sMintRoom[7 * 16 + 3] = RSV_NO;
+    sMintRoom[7 * 16 + 4] = RSV_NO;
+    sMintRoom[8 * 16 + 3] = EXIT_DOOR;
+    sMintRoom[8 * 16 + 4] = EXIT_DOOR;
+
+    sMintRoom[1 * 16 + 1] = table;
+    sMintRoom[1 * 16 + 3] = FTR_START(FTR_NOG_TRI_CLOCK01);
+    sMintRoom[1 * 16 + 4] = FTR_START(FTR_NOG_TRI_AUDIO01);
+    sMintRoom[1 * 16 + 6] = table;
+    sMintRoom[3 * 16 + 1] = FTR_START(FTR_NOG_TRI_BED01) + 3;
+    sMintRoom[4 * 16 + 6] = FTR_START(FTR_NOG_TRI_SOFA01) + 3;
+    sMintRoom[6 * 16 + 1] = FTR_START(FTR_NOG_TRI_CHAIR01);
+    sMintRoom[6 * 16 + 6] = FTR_START(FTR_KOB_NCUBE);
+    sMintRoomTop[1 * 16 + 4] = ITM_MINIDISK28;
+    sMintRoomTop[1 * 16 + 6] = ITM_MINIDISK28;
+}
+
+static void SetupMint(void) {
+    SetupMintRoom(sModTable);
+    sMintAnimations[aNPC_ANIM_WALK1] = sRunAnimation;
+
+    sMintDef.id = "example.mint";
+    sMintDef.name = "Mint";
+    sMintDef.catchphrase = "minty";
+    sMintDef.base = NPC_BOB;
+    sMintDef.looks = mNpc_LOOKS_KO_GIRL;
+    sMintDef.cloth = sTee;
+    sMintDef.texture = sDogTexture;
+    sMintDef.palette = sMintPalette;
+    sMintDef.house_type = 2;
+    sMintDef.house_palette = 3;
+    sMintDef.wallpaper = sWallpaper;
+    sMintDef.carpet = sCarpet;
+    sMintDef.room = sMintRoom;
+    sMintDef.room_top = sMintRoomTop;
+    sMintDef.skeleton = sDogSkeleton;
+    sMintDef.eyes = sDogEyes;
+    sMintDef.mouths = sDogMouths;
+    sMintDef.eye_height = 37;
+    sMintDef.col_radius = 20;
+    sMintDef.col_height = 45;
+    sMintDef.talk_type = -1;
+    sMintDef.animations = sMintAnimations;
+}
+
+static void SetupBolt(void) {
+    sBoltAnimations[aNPC_ANIM_WALK1] = sBoltWalk;
+
+    sBoltDef.id = "example.bolt";
+    sBoltDef.name = "Bolt";
+    sBoltDef.catchphrase = "beep";
+    sBoltDef.base = NPC_BOB;
+    sBoltDef.looks = mNpc_LOOKS_BOY;
+    sBoltDef.cloth = EMPTY_NO;
+    sBoltDef.house_type = 4;
+    sBoltDef.house_palette = 0;
+    sBoltDef.wallpaper = EMPTY_NO;
+    sBoltDef.carpet = EMPTY_NO;
+    sBoltDef.skeleton = sBoltModel;
+    sBoltDef.eye_height = 45;
+    sBoltDef.col_radius = 24;
+    sBoltDef.col_height = 50;
+    sBoltDef.talk_type = 0;
+    sBoltDef.animations = sBoltAnimations;
+}
+
+static void InviteVillager(mActor_name_t npc_id) {
     int i;
 
-    if (sMint == EMPTY_NO || priv == NULL) {
+    if (npc_id == EMPTY_NO || Common_Get(now_private) == NULL) {
         return;
     }
     for (i = 0; i < ANIMAL_NUM_MAX; i++) {
-        mActor_name_t npc_id = Save_Get(animals[i]).id.npc_id;
+        mActor_name_t resident = Save_Get(animals[i]).id.npc_id;
 
-        if (ITEM_NAME_GET_TYPE(npc_id) == NAME_TYPE_NPC && npc_id != sMint && C_ReplaceVillager(npc_id, sMint)) {
+        if (ITEM_NAME_GET_TYPE(resident) == NAME_TYPE_NPC && !C_IsCustomVillager(resident) &&
+            C_ReplaceVillager(resident, npc_id)) {
             break;
         }
     }
+}
+
+static void OnInviteBoltPressed(void) {
+    InviteVillager(sBolt);
+}
+
+static void OnInviteMintPressed(void) {
+    InviteVillager(sMint);
 }
 
 static void OnRestockPressed(void) {
@@ -370,6 +490,7 @@ static void SetupUI(void) {
     C_WidgetConfig creatures = { 0 };
     C_WidgetConfig tee = { 0 };
     C_WidgetConfig mint = { 0 };
+    C_WidgetConfig bolt = { 0 };
     C_WidgetConfig restock = { 0 };
 
     spawn.type = C_WIDGET_BUTTON;
@@ -404,6 +525,10 @@ static void SetupUI(void) {
     mint.callback = OnInviteMintPressed;
     mint.opts.generic.tooltip = "Mint moves into the first villager's house. Leave the town and come back to see it.";
 
+    bolt.type = C_WIDGET_BUTTON;
+    bolt.callback = OnInviteBoltPressed;
+    bolt.opts.generic.tooltip = "Bolt, a robot with his own model and walk, moves into a built-in villager's house.";
+
     restock.type = C_WIDGET_BUTTON;
     restock.callback = OnRestockPressed;
     restock.opts.generic.tooltip =
@@ -418,6 +543,7 @@ static void SetupUI(void) {
     C_AddWidget("Custom Content", 1, "Give Mod Fish and Insect", &creatures);
     C_AddWidget("Custom Content", 1, "Give Mod Tee", &tee);
     C_AddWidget("Custom Content", 1, "Invite Mint", &mint);
+    C_AddWidget("Custom Content", 1, "Invite Bolt", &bolt);
     C_AddWidget("Custom Content", 1, "Restock Shop", &restock);
 }
 
@@ -435,8 +561,10 @@ MOD_INIT() {
     sKoi = C_RegisterFish(&sKoiDef);
     sDragonfly = C_RegisterInsect(&sDragonflyDef);
     sTee = C_RegisterCloth(&sTeeDef);
-    sMintDef.cloth = sTee;
+    SetupMint();
     sMint = C_RegisterVillager(&sMintDef);
+    SetupBolt();
+    sBolt = C_RegisterVillager(&sBoltDef);
     C_AddShopStock(sModTable, 50);
     C_AddShopStock(sCarpet, 50);
     C_AddShopStock(sWallpaper, 50);
@@ -452,6 +580,7 @@ MOD_EXIT() {
     C_RemoveShopStock(sCarpet);
     C_RemoveShopStock(sWallpaper);
     C_RemoveShopStock(sTee);
+    C_UnregisterVillager(sBolt);
     C_UnregisterVillager(sMint);
     C_UnregisterCloth(sTee);
     C_UnregisterWallpaper(sWallpaper);

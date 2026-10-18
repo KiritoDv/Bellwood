@@ -21,7 +21,7 @@ The build merges every `.c` file in `src/` together with the Bellwood and libult
 
 The template expects to live inside a Bellwood checkout, in `workspace/<your-mod>`, with the `libultraship` submodule initialized.
 
-Requirements: CMake 3.10+, Python 3. Pillow is only needed for `.png` assets referenced with `#asset`. `#asset "file.png" CI4` and the other N64 formats are described in `workspace/custom-content`.
+Requirements: CMake 3.10+, Python 3. Pillow is only needed for `.png` and `.gltf` assets referenced with `#asset`. `#asset "file.png" CI4`, the other N64 formats and the `NPC_MODEL` / `NPC_ANIM` glTF conversions are described in `workspace/custom-content`.
 
 ```sh
 cmake -B build -S .

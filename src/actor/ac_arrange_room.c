@@ -1,4 +1,5 @@
 #include "ac_arrange_room.h"
+#include "port/api/interior.h"
 #include "m_common_data.h"
 #include "m_malloc.h"
 #include "m_rcp.h"
@@ -60,13 +61,13 @@ static void Arrange_Room_Actor_ct(ACTOR* actor, GAME* game) {
 
     if (floor_num < 0) {
         floor_num = 0;
-    } else if (floor_num > 0x42) {
+    } else if (floor_num > 0x42 && C_FindInteriorIndex(floor_num, FALSE) == NULL) {
         floor_num = 0x42;
     }
 
     if (wall_num < 0) {
         wall_num = 0;
-    } else if (wall_num > 0x42) {
+    } else if (wall_num > 0x42 && C_FindInteriorIndex(wall_num, TRUE) == NULL) {
         wall_num = 0x42;
     }
 
