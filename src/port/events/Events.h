@@ -28,6 +28,7 @@ extern "C" {
 
 void PortEvents_Init(void);
 void PortEvents_WatchReset(void);
+void PortEvents_WatchTownReset(void);
 void PortEvents_Watch(struct game_play_s* play);
 
 #ifdef __cplusplus

@@ -117,6 +117,9 @@ static void Player_actor_Pull_net_demo_ct(ACTOR* actor) {
         if (type != 0) {
             player->item_net_has_catch = TRUE;
         }
+        if (type == 0 && idx != aINS_INSECT_TYPE_SPIRIT) {
+            CALL_EVENT(InsectCaught, ((aINS_INSECT_ACTOR*)label)->item);
+        }
         if (type == 0 && ((aINS_INSECT_ACTOR*)label)->custom_type != 0) {
             msg_no = C_CreatureCatchMessage(((aINS_INSECT_ACTOR*)label)->item);
         } else if (idx == aINS_INSECT_TYPE_SPIRIT) {

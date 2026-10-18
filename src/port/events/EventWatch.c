@@ -6,6 +6,9 @@
 #include "m_play.h"
 #include "m_player_lib.h"
 #include "m_private.h"
+#include "m_house.h"
+#include "m_mail.h"
+#include "m_npc.h"
 
 static struct {
     int valid;
@@ -71,6 +74,83 @@ static void PortEvents_WatchAcre(GAME_PLAY* play) {
     }
 }
 
+static struct {
+    int valid;
+    u16 land_id;
+    mActor_name_t animals[ANIMAL_NUM_MAX];
+    u8 mail[PLAYER_NUM][HOME_MAILBOX_SIZE];
+    u32 loan[PLAYER_NUM];
+    s8 house_size[PLAYER_NUM];
+} l_town;
+
+static int PortEvents_HouseOwner(mHm_hs_c* house) {
+    return mPr_NullCheckPersonalID(&house->ownerID) ? -1 : mPr_GetPrivateIdx(&house->ownerID);
+}
+
+static void PortEvents_TownSnapshot(int fire) {
+    int i;
+    int slot;
+
+    for (i = 0; i < ANIMAL_NUM_MAX; i++) {
+        Animal_c* animal = Save_GetPointer(animals[i]);
+        mActor_name_t npc_id = mNpc_CheckFreeAnimalInfo(animal) ? EMPTY_NO : animal->id.npc_id;
+
+        if (npc_id != l_town.animals[i]) {
+            mActor_name_t prev = l_town.animals[i];
+
+            l_town.animals[i] = npc_id;
+            if (fire && prev != EMPTY_NO) {
+                CALL_EVENT(VillagerMovedOut, prev, i);
+            }
+            if (fire && npc_id != EMPTY_NO) {
+                CALL_EVENT(VillagerMovedIn, npc_id, i);
+            }
+        }
+    }
+
+    for (i = 0; i < PLAYER_NUM; i++) {
+        mHm_hs_c* house = Save_GetPointer(homes[i]);
+        int player = PortEvents_HouseOwner(house);
+        Private_c* priv = Save_GetPointer(private_data[i]);
+        s8 size = house->size_info.size;
+
+        for (slot = 0; slot < HOME_MAILBOX_SIZE; slot++) {
+            u8 used = !mMl_check_not_used_mail(&house->mailbox[slot]);
+
+            if (used != l_town.mail[i][slot]) {
+                l_town.mail[i][slot] = used;
+                if (fire && used && player >= 0) {
+                    CALL_EVENT(LetterReceived, player, slot);
+                }
+            }
+        }
+
+        if (size != l_town.house_size[i]) {
+            s8 prev = l_town.house_size[i];
+
+            l_town.house_size[i] = size;
+            if (fire && player >= 0) {
+                CALL_EVENT(HouseSizeChanged, player, prev, size);
+            }
+        }
+
+        if (!mPr_NullCheckPersonalID(&priv->player_ID) && priv->inventory.loan != l_town.loan[i]) {
+            u32 prev = l_town.loan[i];
+
+            l_town.loan[i] = priv->inventory.loan;
+            if (fire) {
+                CALL_EVENT(LoanChanged, i, prev, priv->inventory.loan);
+            }
+        }
+    }
+}
+
+extern void PortEvents_WatchTownReset(void) {
+    l_town.valid = TRUE;
+    l_town.land_id = Save_Get(land_info).id;
+    PortEvents_TownSnapshot(FALSE);
+}
+
 extern void PortEvents_WatchReset(void) {
     Private_c* priv = Common_Get(now_private);
 
@@ -100,4 +180,12 @@ extern void PortEvents_Watch(GAME_PLAY* play) {
 
     PortEvents_WatchWeather();
     PortEvents_WatchAcre(play);
+
+    if (Save_Get(save_exist) || priv != NULL) {
+        if (!l_town.valid || l_town.land_id != Save_Get(land_info).id) {
+            PortEvents_WatchTownReset();
+        } else {
+            PortEvents_TownSnapshot(TRUE);
+        }
+    }
 }

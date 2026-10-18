@@ -1324,6 +1324,7 @@ void mCD_LoadLand(void) {
     Common_Set(save_error_type, cond);
     Common_Set(memcard_slot, kSlotHome);
     SaveMods::LoadTown(hasTown ? f->ship : SaveJson::object());
+    PortEvents_WatchTownReset();
 
     if (mFRm_CheckSaveData_common(Save_GetPointer(save_check), Save_Get(land_info).id) &&
         Save_Get(save_check).version == 5) {

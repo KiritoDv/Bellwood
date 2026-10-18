@@ -20,6 +20,7 @@
 #include "audio/GameAudio.h"
 #include "port/ui/cvar_prefixes.h"
 #include "port/ui/Notification.h"
+#include "port/ModList.h"
 #include "port/events/Events.h"
 #include "port/console/DevConsole.h"
 #include "port/input/GcButtons.h"
@@ -644,6 +645,8 @@ void GameEngine::LoadResourceFiles() {
         }
     }
 
+    ModList::Apply();
+
 #ifdef ENABLE_SCRIPTING
     totalScripts = 0;
     const auto loadedArchives = ShipCompat::GetResourceManager()->GetArchiveManager()->GetArchives();
@@ -664,6 +667,7 @@ static std::vector<std::string> CompileScripts(const std::function<void(const st
     if (scripts == nullptr) {
         return errors;
     }
+    ModList::ClearStatus();
     const auto archives = ShipCompat::GetResourceManager()->GetArchiveManager()->GetArchives();
     for (const auto& archive : *archives) {
         const auto& info = archive->GetManifest();
@@ -678,6 +682,7 @@ static std::vector<std::string> CompileScripts(const std::function<void(const st
         } catch (const std::exception& e) {
             SPDLOG_ERROR("Failed to build {}: {}", info.Name, e.what());
             errors.push_back(info.Name + ": " + e.what());
+            ModList::SetStatus(info.Name, std::string("Failed to build: ") + e.what(), true);
         }
         if (onFinish) {
             onFinish();
@@ -686,7 +691,21 @@ static std::vector<std::string> CompileScripts(const std::function<void(const st
     return errors;
 }
 
-static void NotifyLoadErrors(const std::shared_ptr<Ship::ScriptLoader>& scripts) {
+static void ReportLoad(const std::shared_ptr<Ship::ScriptLoader>& scripts) {
+    for (const auto& error : scripts->GetLoadErrors()) {
+        for (auto& entry : ModList::Entries()) {
+            const std::string& name = entry.archive->GetManifest().Name;
+            if (error.rfind(name + ": ", 0) == 0) {
+                entry.status = "Skipped: " + error.substr(name.size() + 2);
+                entry.failed = true;
+            }
+        }
+    }
+    for (auto& entry : ModList::Entries()) {
+        if (entry.enabled && entry.status.empty()) {
+            entry.status = "Loaded";
+        }
+    }
     for (const auto& error : scripts->GetLoadErrors()) {
         Notification::Emit({ .message = "Skipped " + error,
                              .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
@@ -711,7 +730,7 @@ void GameEngine::LoadScripts() {
     }
     try {
         scripts->LoadAll();
-        NotifyLoadErrors(scripts);
+        ReportLoad(scripts);
         Notification::Emit({ .message = "Finished loading mods", .remainingTime = 4.0f, .mute = true });
     } catch (const std::exception& e) {
         SPDLOG_ERROR("Failed to load mods: {}", e.what());
@@ -799,7 +818,7 @@ void GameEngine::FinishInit() {
     if (auto scripts = ShipCompat::GetScriptLoader()) {
         try {
             scripts->LoadAll();
-            NotifyLoadErrors(scripts);
+            ReportLoad(scripts);
         } catch (const std::exception& e) { SPDLOG_ERROR("Failed to load mods: {}", e.what()); }
     }
 #endif

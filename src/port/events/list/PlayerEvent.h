@@ -43,3 +43,46 @@ DEFINE_EVENT(PlayerAcreChanged,
     int32_t x;
     int32_t z;
 );
+
+// Fires when the player catches a fish with the rod, as the catch is shown.
+DEFINE_EVENT(FishCaught,
+    uint16_t item;  // fish item number, built-in or custom
+);
+
+// Fires when the player catches an insect with the net, as the catch is shown.
+DEFINE_EVENT(InsectCaught,
+    uint16_t item;  // insect item number, built-in or custom
+);
+
+// Fires when the player digs a hole with the shovel.
+DEFINE_EVENT(PlayerDig,
+    const float* pos;  // world position of the hole, x/y/z
+    uint16_t item;     // item dug up, EMPTY_NO for none
+);
+
+// Fires when the player starts shaking a tree.
+DEFINE_EVENT(PlayerShakeTree,
+    uint16_t tree;  // tree item on the tile
+    int32_t utX;    // tile, in town units
+    int32_t utZ;
+);
+
+// Fires when a letter lands in a player's mailbox.
+DEFINE_EVENT(LetterReceived,
+    int32_t player;  // player of the town, 0-3
+    int32_t slot;    // mailbox slot, 0-9
+);
+
+// Fires when a player's loan changes: a payment, or a new loan for a bigger house.
+DEFINE_EVENT(LoanChanged,
+    int32_t player;
+    uint32_t previous;
+    uint32_t loan;
+);
+
+// Fires when a player's house changes size.
+DEFINE_EVENT(HouseSizeChanged,
+    int32_t player;
+    int32_t previous;  // mHm_HOMESIZE_*
+    int32_t size;
+);

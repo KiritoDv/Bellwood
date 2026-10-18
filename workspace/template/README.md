@@ -19,7 +19,7 @@ The build merges every `.c` file in `src/` together with the Bellwood and libult
 
 ## Building
 
-The template expects to live inside a Bellwood checkout, in `workspace/<your-mod>`, with the `libultraship` submodule initialized.
+The template expects to live inside a Bellwood checkout, in `workspace/<your-mod>`, with the `libultraship` submodule initialized, or inside the mod SDK. The SDK is a zip with the same layout that holds only what mods are built against: the headers, the mod tools, this template and `workspace/custom-content`. `cmake --build build --target mod_sdk` in a Bellwood checkout writes it as `bellwood-mod-sdk-code<code version>-api<API version>.zip`.
 
 Requirements: CMake 3.10+, Python 3. Pillow is only needed for `.png` and `.gltf` assets referenced with `#asset`. `#asset "file.png" CI4`, the other N64 formats and the `NPC_MODEL` / `NPC_ANIM` glTF conversions are described in `workspace/custom-content`.
 
@@ -83,7 +83,11 @@ On Windows a mod can only read or write a game variable whose declaration uses `
 
 Use `port/api/cvar.h` instead of `libultraship/bridge/consolevariablebridge.h`. The libultraship colour types conflict with the game's.
 
-Widget tooltips and CVar names are kept as pointers, so pass string literals.
+Widget tooltips and CVar names are kept as pointers, so pass string literals. Keep the mod's settings under its own prefix, `gMods.<mod>.`; `C_MOD_CVAR("mymod", "Speed")` spells it out.
+
+### The Mods menu
+
+**Mods > Installed** lists every mod with a manifest, enabled or not, with its state: loaded, failed to build (with the compiler's error), skipped (with the reason, e.g. a missing dependency) or disabled. Each mod has an **Enabled** switch and a **Priority**. Mods with a higher priority are mounted later, so their files replace those of mods before them, and their code initializes later; dependencies always initialize first. Both take effect when Bellwood restarts; a disabled mod is not mounted at all, so neither its files nor its code load.
 
 ### Custom actors, dialogue, furniture, items, carpets, wallpapers, clothes, fish, insects, villagers, NES games and the shop
 

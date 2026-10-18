@@ -2,6 +2,7 @@
 
 #include "PortMenu.h"
 #include "port/Engine.h"
+#include "port/ModList.h"
 #include "port/ShipCompat.h"
 
 #include <ship/resource/archive/Archive.h>
@@ -11,6 +12,8 @@
 #include <ship/utils/StringHelper.h>
 #include <ship/window/gui/IconsFontAwesome4.h>
 #include <SDL2/SDL.h>
+
+#include <algorithm>
 
 namespace PortGui {
 
@@ -37,12 +40,9 @@ void PortMenu::AddModMenu() {
     const auto keys = keystore != nullptr ? keystore->GetAllKeys() : std::vector<Ship::KeystoreEntry>{};
     bool any = false;
 
-    const auto archives = ShipCompat::GetResourceManager()->GetArchiveManager()->GetArchives();
-    for (const auto& archive : *archives) {
+    for (const ModList::Entry& entry : ModList::Entries()) {
+        const auto& archive = entry.archive;
         const auto& info = archive->GetManifest();
-        if (info.Name.empty()) {
-            continue;
-        }
         any = true;
 
         std::string title = info.Name;
@@ -59,6 +59,34 @@ void PortMenu::AddModMenu() {
             metadata += "  |  License: " + info.License;
         }
         AddWidget(path, metadata, WIDGET_TEXT).Options(TextOptions{});
+
+        const std::string name = info.Name;
+        AddWidget(path, "##Settings_" + name, WIDGET_CUSTOM)
+            .CustomFunction([name](WidgetInfo&) {
+                const auto& entries = ModList::Entries();
+                const auto it = std::find_if(entries.begin(), entries.end(), [&](const ModList::Entry& e) {
+                    return e.archive->GetManifest().Name == name;
+                });
+                if (it != entries.end() && !it->status.empty()) {
+                    ImGui::TextColored(it->failed ? ImVec4(1.0f, 0.4f, 0.4f, 1.0f) : ImVec4(0.5f, 0.9f, 0.5f, 1.0f),
+                                       "%s", it->status.c_str());
+                }
+                bool enabled = ModList::IsEnabled(name);
+                if (ImGui::Checkbox(("Enabled##" + name).c_str(), &enabled)) {
+                    ModList::SetEnabled(name, enabled);
+                }
+                ImGui::SameLine();
+                int priority = ModList::Priority(name);
+                ImGui::SetNextItemWidth(120.0f);
+                if (ImGui::InputInt(("Priority##" + name).c_str(), &priority)) {
+                    ModList::SetPriority(name, priority);
+                }
+                if (it != entries.end() && (enabled != it->enabled || priority != it->priority)) {
+                    ImGui::TextDisabled("Takes effect when Bellwood restarts.");
+                }
+            })
+            .Options(WidgetOptions().Tooltip("Mods with a higher priority load later: their files replace those of "
+                                             "mods loaded before them, and their code initializes after."));
 
         if (archive->IsSigned()) {
             Ship::KeyOrigin origin = Ship::KeyOrigin::User;

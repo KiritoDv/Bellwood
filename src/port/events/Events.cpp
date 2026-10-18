@@ -35,6 +35,10 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(InsectSpawnList);
     REGISTER_EVENT(ClothLookup);
     REGISTER_EVENT(VillagerLookup);
+    REGISTER_EVENT(VillagerMovedIn);
+    REGISTER_EVENT(VillagerMovedOut);
+    REGISTER_EVENT(NpcTalkRequest);
+    REGISTER_EVENT(NpcTalkStart);
     REGISTER_EVENT(StructureLookup);
 
     REGISTER_EVENT(ShopStockGenerated);
@@ -45,6 +49,13 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(PlayerMoneyChanged);
     REGISTER_EVENT(PlayerInventoryChanged);
     REGISTER_EVENT(PlayerAcreChanged);
+    REGISTER_EVENT(FishCaught);
+    REGISTER_EVENT(InsectCaught);
+    REGISTER_EVENT(PlayerDig);
+    REGISTER_EVENT(PlayerShakeTree);
+    REGISTER_EVENT(LetterReceived);
+    REGISTER_EVENT(LoanChanged);
+    REGISTER_EVENT(HouseSizeChanged);
 
     REGISTER_EVENT(SceneChangeRequest);
     REGISTER_EVENT(SceneLoaded);

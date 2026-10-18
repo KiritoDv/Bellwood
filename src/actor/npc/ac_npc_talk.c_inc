@@ -508,6 +508,10 @@ static void aNPC_check_feel_demoCode(ACTOR* actorx) {
 static void aNPC_setup_talk_start(NPC_ACTOR* nactorx, GAME* game) {
     ACTOR* playerx = GET_PLAYER_ACTOR_GAME_ACTOR(game);
 
+    {
+        CALL_EVENT(NpcTalkStart, &nactorx->actor_class, nactorx->actor_class.npc_id);
+    }
+
     nactorx->palActor = playerx;
     if (nactorx->talk_info.turn == aNPC_TALK_TURN_NORMAL) {
         aNPC_set_dst_pos(nactorx, playerx->world.position.x, playerx->world.position.z);
@@ -648,7 +652,8 @@ static void aNPC_talk_request_check(ACTOR* actorx, GAME* game) {
     if ((nactorx->condition_info.demo_flg & aNPC_COND_DEMO_SKIP_TALK_CHECK) == 0 &&
         nactorx->condition_info.talk_condition == aNPC_TALK_TYPE_NONE && !nactorx->condition_info.hide_flg) {
         if (mEv_CheckTitleDemo() == mEv_TITLEDEMO_NONE || mEv_CheckTitleDemo() == mEv_TITLEDEMO_STAFFROLL) {
-            if (nactorx->action.idx != aNPC_ACT_TALK) {
+            CALL_EVENT(NpcTalkRequest, actorx, actorx->npc_id);
+            if (nactorx->action.idx != aNPC_ACT_TALK && !NpcTalkRequest_.Event.Cancelled) {
 #ifndef aNPC_NPC2
                 if (ITEM_NAME_GET_TYPE(actorx->npc_id) == NAME_TYPE_SPNPC &&
                     (nactorx->npc_info.animal == NULL || nactorx->npc_info.animal->mood != mNpc_FEEL_PITFALL)) {

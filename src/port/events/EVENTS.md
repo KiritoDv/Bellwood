@@ -301,6 +301,42 @@ Fires whenever the game needs data for a villager id from `C_VILLAGER_FIRST` (0x
 
 ---
 
+### `VillagerMovedIn` _(polled)_
+```c
+uint16_t npcId;
+int32_t slot;
+```
+Fires when a villager starts living in town: a new one moving in, one arriving from another town, or one swapped in with `C_ReplaceVillager`. `slot` is its index in the town's villager list.
+
+---
+
+### `VillagerMovedOut` _(polled)_
+```c
+uint16_t npcId;
+int32_t slot;
+```
+Fires when a villager stops living in town.
+
+---
+
+### `NpcTalkRequest` _(cancellable)_
+```c
+struct actor_s* npc;
+uint16_t npcId;
+```
+Fires every frame an NPC is ready to be talked to. Cancel to keep the player from talking to it.
+
+---
+
+### `NpcTalkStart`
+```c
+struct actor_s* npc;
+uint16_t npcId;
+```
+Fires when the player starts talking to an NPC.
+
+---
+
 ## Structure Events
 
 ### `StructureLookup`
@@ -398,6 +434,70 @@ int32_t x;
 int32_t z;
 ```
 Fires when the player walks into another acre of an outdoor field. After a scene load the previous acre is `-1, -1`.
+
+---
+
+### `FishCaught`
+```c
+uint16_t item;
+```
+Fires when the player catches a fish with the rod, as the catch is shown. Built-in and custom fish.
+
+---
+
+### `InsectCaught`
+```c
+uint16_t item;
+```
+Fires when the player catches an insect with the net, as the catch is shown. Built-in and custom insects; not the spirits.
+
+---
+
+### `PlayerDig`
+```c
+const float* pos;
+uint16_t item;
+```
+Fires when the player digs a hole with the shovel. `item` is what came out of the ground, `EMPTY_NO` for nothing.
+
+---
+
+### `PlayerShakeTree`
+```c
+uint16_t tree;
+int32_t utX;
+int32_t utZ;
+```
+Fires when the player starts shaking a tree. `utX` and `utZ` are the tile in town units.
+
+---
+
+### `LetterReceived` _(polled)_
+```c
+int32_t player;
+int32_t slot;
+```
+Fires when a letter lands in the mailbox of player 0-3: from the post office, a villager, the game or a mod.
+
+---
+
+### `LoanChanged` _(polled)_
+```c
+int32_t player;
+uint32_t previous;
+uint32_t loan;
+```
+Fires when a player's loan changes: a payment at the post office, or a new loan for a bigger house.
+
+---
+
+### `HouseSizeChanged` _(polled)_
+```c
+int32_t player;
+int32_t previous;
+int32_t size;
+```
+Fires when a player's house changes size (`mHm_HOMESIZE_*`).
 
 ---
 

@@ -880,3 +880,15 @@ endif()
 set(CPACK_PROJECT_CONFIG_FILE ${CMAKE_BINARY_DIR}/configure-packaging.cmake)
 configure_file(${CMAKE_SOURCE_DIR}/cmake/configure-packaging.cmake ${CPACK_PROJECT_CONFIG_FILE} @ONLY)
 include(cmake/packaging.cmake)
+
+if(NOT BELLWOOD_CROSS_BUILD)
+    find_package(libzip REQUIRED)
+    add_executable(make_mod_sdk EXCLUDE_FROM_ALL tools/make_mod_sdk.cpp)
+    target_compile_features(make_mod_sdk PRIVATE cxx_std_17)
+    target_link_libraries(make_mod_sdk PRIVATE libzip::zip)
+    add_custom_target(mod_sdk
+        COMMAND make_mod_sdk ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR}
+        DEPENDS make_mod_sdk
+        VERBATIM
+    )
+endif()
