@@ -38,6 +38,9 @@ BW_API mActor_name_t C_RegisterInsectSized(const C_CreatureDef* def, uint32_t si
 BW_API void C_UnregisterFish(mActor_name_t item);
 // Unregisters an insect. Caught copies show as unknown until it is registered again.
 BW_API void C_UnregisterInsect(mActor_name_t item);
+// Who gave a fish or insect, built-in or custom, to the museum: 0 for nobody yet, 1 to 4 for a player of the town, 5
+// for a player who was removed. -1 when the item isn't a fish or insect.
+BW_API int C_GetMuseumDonator(mActor_name_t item);
 
 static inline const C_CreatureDef* C_FindCreatureIndex(int index, int insect) {
     if (index < C_CREATURE_FIRST || index > C_CREATURE_LAST) {

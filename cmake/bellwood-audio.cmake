@@ -35,6 +35,7 @@ set(BELLWOOD_AUDIO_GLUE_SOURCES
 set(BELLWOOD_AUDIO_PORT_SOURCES
     src/port/audio/ACAudio.cpp
     src/port/audio/AiCtrl.cpp
+    src/port/audio/ModSound.cpp
     src/port/audio/NeosResources.cpp
     src/port/audio/importers/NeosAudioResources.cpp
 )

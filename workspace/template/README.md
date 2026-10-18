@@ -70,7 +70,7 @@ Cancellable events (for example `ResetDetected`, `TrainRideStart`, `FamicomStart
 
 ### Game state
 
-`port/api/player.h` and `port/api/town.h` cover the common cases (pockets, wallet, player position, scene, date and time, the town's villagers) with functions that keep their signatures across versions. `port/api/savedata.h` keeps values of the mod's own in the town's save file. See `workspace/custom-content` for both.
+`port/api/player.h` and `port/api/town.h` cover the common cases (pockets, wallet, player position, scene, date and time, the town's villagers) with functions that keep their signatures across versions. `port/api/savedata.h` keeps values of the mod's own in the town's save file. `port/api/sound.h` plays sounds and music from the mod's archive, `port/api/mail.h` sends letters, and `port/api/visitor.h` brings characters to town on a schedule. See `workspace/custom-content` for both.
 
 Game headers from `include/` can be included directly, for example `m_common_data.h` for `Common_Get(...)` and `m_private.h` for player data.
 

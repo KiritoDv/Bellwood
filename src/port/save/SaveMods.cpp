@@ -66,6 +66,7 @@ constexpr size_t kNameCount = 0x10000;
 
 SaveJson sTownData = SaveJson::object();
 SaveJson sTownIds = SaveJson::object();
+SaveJson sTownMuseum = SaveJson::object();
 std::map<std::string, std::set<std::string>> sCollections;
 
 // Item names a save stores a number of the category as.
@@ -461,8 +462,10 @@ std::string SaveMods::PlayerKey(const PersonalID_c& pid) {
 void SaveMods::LoadTown(const SaveJson& ship) {
     const SaveJson* data = FindMods(ship, "data");
     const SaveJson* ids = FindMods(ship, "ids");
+    const SaveJson* museum = FindMods(ship, "museum");
     sTownData = data != nullptr ? *data : SaveJson::object();
     sTownIds = ids != nullptr ? *ids : SaveJson::object();
+    sTownMuseum = museum != nullptr ? *museum : SaveJson::object();
 }
 
 void SaveMods::CheckMissing() {
@@ -505,8 +508,13 @@ void SaveMods::CheckMissing() {
 
 void SaveMods::StoreTown(SaveJson& ship) {
     PutMods(ship, "data", sTownData);
+    PutMods(ship, "museum", sTownMuseum);
 }
 
 SaveJson& SaveMods::TownData() {
     return sTownData;
+}
+
+SaveJson& SaveMods::Museum() {
+    return sTownMuseum;
 }

@@ -96,6 +96,20 @@ DEFINE_EVENT(MessageClosed,
     int32_t msgNo;
 );
 
+// Fires when the player picks one of the choices a message offers.
+DEFINE_EVENT(ChoiceSelected,
+    int32_t msgNo;  // message showing the choices
+    int choice;     // 0 for the first choice
+);
+
+// Fires when a choice text past the game's own is loaded for a SETSELSTR control code.
+// Set text and size to the encoded text, up to 16 bytes.
+DEFINE_EVENT(ChoiceStringLookup,
+    int32_t strNo;
+    const uint8_t* text;  // set by the listener that owns the choice text
+    uint32_t size;        // size of text in bytes
+);
+
 // Menus
 
 // Fires when the game asks for a menu (inventory, map, letters, shops, ...).

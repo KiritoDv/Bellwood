@@ -9,7 +9,7 @@
 
 // Mod content in town files, kept under shipSaveData.mods. "ids" maps the content ids used in the file to the numbers
 // the file stores, per kind of content. "data" holds the values mods keep for the town. "collection" lists the custom
-// content each player in the file has owned, for the catalog.
+// content each player in the file has owned, for the catalog. "museum" records who donated custom content.
 namespace SaveMods {
 
 // Renumbers the custom content of a file read from disk to this install's numbers. Returns true if anything changed.
@@ -35,5 +35,7 @@ void StoreTown(SaveJson& ship);
 
 // Mod data of the town in play.
 SaveJson& TownData();
+// Donors of custom museum content in the town in play, by kind of content and id.
+SaveJson& Museum();
 
 } // namespace SaveMods

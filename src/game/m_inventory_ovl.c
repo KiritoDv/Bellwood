@@ -1,6 +1,7 @@
 #include "m_inventory_ovl.h"
 
 #include "m_player_lib.h"
+#include "port/api/item.h"
 #include "ac_set_ovl_gyoei.h"
 #include "ac_set_ovl_insect.h"
 #include "m_room_type.h"
@@ -208,7 +209,7 @@ static s16 mIV_get_player_item_anime_id(void) {
         res = mIV_ITEM_KIND_AXE_USE_7;
     } else if (item >= ITM_ROD && item <= ITM_ROD) {
         res = mIV_ITEM_KIND_ROD;
-    } else if (item >= ITM_UMBRELLA_START && item <= ITM_MY_ORG_UMBRELLA7) {
+    } else if ((item >= ITM_UMBRELLA_START && item <= ITM_MY_ORG_UMBRELLA7) || C_IsCustomUmbrella(item)) {
         res = mIV_ITEM_KIND_UMBRELLA;
     } else if (item >= ITM_SHOVEL && item <= ITM_SHOVEL) {
         res = mIV_ITEM_KIND_SHOVEL;

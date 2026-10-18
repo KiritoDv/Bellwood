@@ -84,6 +84,20 @@ An end code is added when the text doesn't finish with one. Each message holds u
 | `void C_ResetMessage(int32_t msg_no)` | Restores a built-in message changed with `C_SetMessage`. |
 | `int C_EncodeText(const char* text, uint8_t* out, int capacity)` | Encodes text into the game's character set, for example for `mMsg_SET_FREE_STR`. |
 
+A question offers 2 to 4 choices and goes on to the message picked. The podium asks one:
+
+```c
+static const char* const answers[] = { "Spin faster!", "Just saying hi" };
+int32_t next[2] = { C_RegisterMessage("Wheee!"), C_RegisterMessage("Come back any time!") };
+sGreeting = C_RegisterQuestion("What brings you here?", answers, next, 2);
+```
+
+| Function | Description |
+|---|---|
+| `int32_t C_RegisterQuestion(const char* text, const char* const* choices, const int32_t* next_msgs, int count)` | Returns the message number, or -1. Picking choice *i* goes on to `next_msgs[i]`, or ends the conversation for -1. |
+| `int32_t C_RegisterChoice(const char* text)`, `void C_UnregisterChoice(int32_t choice_no)` | A choice text of up to 16 characters, for writing the tags by hand: `<<SETSELSTR2 [40 00 40 01]>><<BTN>><<OPENCHOICE>><<SETNEXTMSG0 [40 05]>><<SETNEXTMSG1 [40 06]>><<FORCENEXT>>`, as the game's own messages do. |
+| `int C_GetLastChoice(void)` | The choice picked last, from 0. The `ChoiceSelected` event reports each pick with the message it was made in. |
+
 Custom furniture and item names use the same encoding, so they can contain accented letters too.
 
 ## Custom furniture (`port/api/furniture.h`)
@@ -148,6 +162,7 @@ static C_ItemDef sGemDef = {
 | `icon_tex`, `icon_pal` | Inventory icon: a 32x32 CI4 texture and its 16 colour palette. Use your own PNG through `#asset` with `CI4` and `CI4_PAL` (see [Textures](#textures)), or the game's own icons through `C_ASSET` (the `inv_mwin_*_tex` / `inv_mwin_*_pal` assets). NULL uses a default icon. |
 | `on_use` | Optional. Adds "Use" to the pocket menu; called with the item and its pocket slot after the menu closes. |
 | `not_for_sale` | Optional. The catalog shows "Not for Sale" and it can't be ordered. |
+| `umbrella_tex`, `umbrella_pal` | Optional. A 32x32 CI4 canopy laid out like an Able Sisters umbrella design, and its palette. The item becomes an umbrella the player can equip and open in the rain, like the example's tee umbrella. |
 
 | Function | Description |
 |---|---|
@@ -348,9 +363,10 @@ A custom fish or insect is built on one of the 40 built-in ones, its `base`. It 
 |---|---|
 | `mActor_name_t C_RegisterFish(const C_CreatureDef* def)`, `C_RegisterInsect` | Returns the item number, or `EMPTY_NO`. Up to 211 custom fish and 211 custom insects fit. |
 | `void C_UnregisterFish(mActor_name_t item)`, `C_UnregisterInsect` | Caught copies show as unknown until it is registered again. |
+| `int C_GetMuseumDonator(mActor_name_t item)` | Who gave a fish or insect, built-in or custom, to the museum: 0 for nobody yet, 1 to 4 for a player, 5 for a player who left. |
 
-Custom fish and insects are caught with the rod or the net, show their catch text, go into the pockets, can be released, sold to Nook, or placed at home, where they show as the base's aquarium or cage and count as fish or insects at the Happy Room Academy. Some things stay with the 40 built-in ones:
-- Blathers hands custom ones back instead of taking them for the museum.
+Custom fish and insects are caught with the rod or the net, show their catch text, go into the pockets, can be released, sold to Nook, or placed at home, where they show as the base's aquarium or cage and count as fish or insects at the Happy Room Academy. Blathers takes them for the museum and talks about them like their base; who gave each one is kept in the town file. Some things stay with the 40 built-in ones:
+- The museum's tanks and cases only show the built-in ones.
 - The fish and insect pages in the pockets, the golden net and rod, and "caught them all" only count the built-in ones.
 - Villagers don't ask for custom ones in trades, and Chip's fishing tourney only judges the bass.
 
@@ -465,6 +481,82 @@ The example's "mod NES" draws the game's own NES model and plays a tiny demo ROM
 `id` names the game's save file (`save/famicom/Bellwood_<id>.bin`), so keep it the same between versions of the mod. Games with the battery flag in their iNES header keep their 8 KB battery RAM there. ROM numbers are handed out in load order, so look them up at startup rather than hard-coding them. The `FamicomStart` event can also redirect any of the game's own NES furniture to a registered ROM.
 
 Quit a game with L, R and Z, like the built-in ones.
+
+## Visitors (`port/api/visitor.h`)
+
+A visitor is a character with a villager's look who doesn't live in town, like the game's own guests. It uses the look's model, name, voice and personality; a custom villager gives a visitor a look and name of its own. Bolt visits the example's town every afternoon:
+
+```c
+C_VisitorDef def = { 0 };
+def.look = sBolt;
+def.schedule = C_VISITOR_WALK_WANDER;
+def.talk_msg = C_RegisterMessage("Beep boop!");
+sBoltVisitor = C_RegisterVisitor(&def);
+
+C_VisitDef visit = { 0 };
+visit.hours = 0x00FFF000;   // noon to midnight, in a different acre each day
+C_ScheduleVisitor(sBoltVisitor, &visit);
+```
+
+| Field | Description |
+|---|---|
+| `look` | Villager id, built-in or custom. |
+| `cloth` | Shirt, built-in or custom, `EMPTY_NO` for the look's. |
+| `schedule` | `C_VISITOR_STAND`, `C_VISITOR_WANDER` (looks around its spot) or `C_VISITOR_WALK_WANDER` (walks around the acre). |
+| `talk_msg` | Message shown when the player talks to it. |
+| `on_talk` | Optional. Called when the player talks to it; returns the message to show, so it can change with the day or a question's answer. |
+
+| Function | Description |
+|---|---|
+| `mActor_name_t C_RegisterVisitor(const C_VisitorDef* def)` | Returns the visitor's name (0xDF00-0xDF3F), or `EMPTY_NO`. Up to 64 visitors. |
+| `void C_UnregisterVisitor(mActor_name_t visitor)` | Also removes it from the scene. |
+| `int C_SpawnVisitor(mActor_name_t visitor, int block_x, int block_z, int ut_x, int ut_z)` | Puts it at a tile of an acre now. It appears once its clothes are loaded, a few frames later, and leaves with the acre. |
+| `ACTOR* C_FindVisitor(mActor_name_t visitor)`, `void C_RemoveVisitor(mActor_name_t visitor)` | |
+| `int C_ScheduleVisitor(mActor_name_t visitor, const C_VisitDef* visit)` | Makes it come to town by itself at the times `visit` allows: `months`, `days` of the month, `weekdays` and `hours` as bit masks, 0 for any. It stands in acre `block_x`, `block_z`, or a different acre each day when they are 0, on tile `ut_x`, `ut_z` or a free one when they are -1. It is there whenever the player walks into that acre at those times. |
+| `void C_UnscheduleVisitor(mActor_name_t visitor)`, `int C_GetVisitorAcre(mActor_name_t visitor, int* block_x, int* block_z)` | Where a scheduled visitor is now, `FALSE` when it isn't visiting. |
+
+## Letters (`port/api/mail.h`)
+
+```c
+C_LetterDef letter = { 0 };
+letter.header = "Dear \n,";
+letter.body = "Thanks for trying the example!";
+letter.footer = "The mod team";
+letter.sender = "Mod Team";
+letter.present = sGem;
+C_SendLetter(&letter, -1);
+```
+
+| Field | Description |
+|---|---|
+| `header` | Up to 24 characters. The recipient's name goes where it has a `\n`, or after it. |
+| `body`, `footer` | Up to 192 and 32 characters. Dialogue tags work. |
+| `sender` | Name shown as the sender, up to 8 characters. |
+| `present` | Item attached, `EMPTY_NO` for none. |
+| `paper` | `ITM_PAPER*` stationery, `EMPTY_NO` for the first design. |
+
+`int C_SendLetter(const C_LetterDef* def, int player)` puts it in the mailbox of player 0 to 3, or -1 for the one playing. When the mailbox is full the post office keeps it for the next delivery. Returns `FALSE` when it can't be sent.
+
+## Sound and music (`port/api/sound.h`)
+
+Sounds are WAV, MP3 or FLAC files in the mod's `assets/` folder. They are decoded when registered and mixed into the game's output at 32 kHz, following the music and sound effect volume settings.
+
+```c
+sChime = C_RegisterSound("sound/chime.wav");
+sTheme = C_RegisterSound("sound/theme.mp3");
+C_PlaySound(sChime, 1.0f, 0.0f);
+C_ReplaceBgm(BGM_FIELD_00, sTheme, 0);   // loops from the start
+```
+
+| Function | Description |
+|---|---|
+| `int C_RegisterSound(const char* path)`, `C_RegisterSoundData(data, size)` | Returns a sound number, or -1. |
+| `void C_UnregisterSound(int sound)`, `uint32_t C_SoundLength(int sound)` | Length in samples at 32 kHz. |
+| `int C_PlaySound(int sound, float volume, float pan)` | A sound effect, volume 0 to 1 and pan -1 to 1. Returns a voice. `C_StopSound`, `C_IsSoundPlaying` take it. |
+| `void C_PlayMusic(int sound, int32_t loop_start)`, `C_StopMusic` | Music of the mod's own; the game's music is silent while it plays. `loop_start` is the sample it jumps back to at the end, -1 to play once. |
+| `void C_ReplaceBgm(uint8_t bgm, int sound, int32_t loop_start)` | Plays the sound whenever the game starts that background music, until the game stops or changes it. -1 gives the game's music back. |
+
+Sounds stay decoded in memory, about 7.5 MB per minute.
 
 ## Town data (`port/api/savedata.h`)
 

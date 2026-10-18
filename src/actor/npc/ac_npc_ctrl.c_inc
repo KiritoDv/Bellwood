@@ -499,7 +499,15 @@ static int aNPC_setupActor_proc(GAME_PLAY* play, mActor_name_t name, s8 idx, int
                     }
                     break;
             }
-            profile = event_npc_profile_table[name - SP_NPC_START];
+            if (name - SP_NPC_START < ARRAY_COUNT(event_npc_profile_table)) {
+                profile = event_npc_profile_table[name - SP_NPC_START];
+            } else {
+                CALL_EVENT(NpcProfileLookup, name, -1);
+                if (NpcProfileLookup_.profile < 0) {
+                    return FALSE;
+                }
+                profile = NpcProfileLookup_.profile;
+            }
             break;
         case NAME_TYPE_NPC:
             profile = mAc_PROFILE_NORMAL_NPC;

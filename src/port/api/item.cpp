@@ -5,6 +5,7 @@
 #include "port/api/ModOwner.hpp"
 #include "port/api/SizedDef.hpp"
 #include "port/api/StableIds.hpp"
+#include "port/api/TextureData.hpp"
 #include "port/events/Events.h"
 
 #define this this_
@@ -15,6 +16,7 @@ extern "C" {
 
 #include <array>
 #include <string>
+#include <vector>
 
 namespace {
 
@@ -26,6 +28,8 @@ struct CustomItem {
     std::string name;
     std::string owner;
     C_ItemDef def{};
+    std::vector<uint8_t> umbrellaTex;
+    std::vector<uint8_t> umbrellaPal;
 };
 
 std::array<CustomItem, kCustomCount> sItems;
@@ -85,6 +89,17 @@ extern "C" mActor_name_t C_RegisterItemSized(const C_ItemDef* item_def, uint32_t
     if (def == nullptr || def->id == nullptr || def->id[0] == '\0') {
         return EMPTY_NO;
     }
+    std::vector<uint8_t> umbrellaTex;
+    std::vector<uint8_t> umbrellaPal;
+    if (def->umbrella_tex != nullptr && def->umbrella_pal != nullptr) {
+        umbrellaTex.resize(32 * 32 / 2);
+        umbrellaPal.resize(TextureData::kPaletteSize);
+        if (!TextureData::ReadCI4(def->umbrella_tex, 32, 32, umbrellaTex.data()) ||
+            !TextureData::ReadPalette16(def->umbrella_pal, umbrellaPal.data())) {
+            SPDLOG_ERROR("Item {}: could not load the umbrella texture", def->id);
+            return EMPTY_NO;
+        }
+    }
     const std::string owner = ModOwner::Current();
     const int number = sNumbers.Register(def->id, owner);
     if (number < 0) {
@@ -100,6 +115,10 @@ extern "C" mActor_name_t C_RegisterItemSized(const C_ItemDef* item_def, uint32_t
     item.def.id = item.id.c_str();
     item.def.name = item.name.c_str();
     item.def.shape = CheckShape(def->shape);
+    item.umbrellaTex = std::move(umbrellaTex);
+    item.umbrellaPal = std::move(umbrellaPal);
+    item.def.umbrella_tex = item.umbrellaTex.empty() ? nullptr : item.umbrellaTex.data();
+    item.def.umbrella_pal = item.umbrellaPal.empty() ? nullptr : item.umbrellaPal.data();
     return (mActor_name_t)number;
 }
 

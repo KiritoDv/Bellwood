@@ -560,6 +560,16 @@ extern void mChoice_Load_ChoseStringFromRom(mChoice_c* choice, u8* str, int str_
             /* Process any control codes */
             mChoice_Change_ControlCode(str, mChoice_CHOICE_STRING_LEN, actor);
         }
+    } else if (str_no >= mChoice_SELECT_STR_NUM) {
+        CALL_EVENT(ChoiceStringLookup, str_no, NULL, 0);
+        if (ChoiceStringLookup_.text != NULL) {
+            int max = ChoiceStringLookup_.size < mChoice_CHOICE_STRING_LEN ? ChoiceStringLookup_.size
+                                                                            : mChoice_CHOICE_STRING_LEN;
+
+            mem_clear(str, mChoice_CHOICE_STRING_LEN, CHAR_SPACE);
+            bcopy(ChoiceStringLookup_.text, str, max);
+            mChoice_Change_ControlCode(str, mChoice_CHOICE_STRING_LEN, actor);
+        }
     }
 }
 

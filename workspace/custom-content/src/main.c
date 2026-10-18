@@ -7,12 +7,14 @@
 #include "port/api/furniture.h"
 #include "port/api/interior.h"
 #include "port/api/item.h"
+#include "port/api/mail.h"
 #include "port/api/message.h"
 #include "port/api/player.h"
 #include "port/api/shop.h"
 #include "port/api/structure.h"
 #include "port/api/town.h"
 #include "port/api/villager.h"
+#include "port/api/visitor.h"
 #include "port/api/ui.h"
 #include "port/events/Events.h"
 #include "ac_set_ovl_gyoei.h"
@@ -379,6 +381,16 @@ static void OnPlayUpdate(IEvent* event) {
     sRemoveRequested = FALSE;
 }
 
+static void SetupGreeting(void) {
+    static const char* const answers[] = { "Spin faster!", "Just saying hi" };
+    int32_t next[2];
+
+    next[0] = C_RegisterMessage("Wheee! This is as fast\nas I go!");
+    next[1] = C_RegisterMessage("Come back and talk to me\nany time!");
+    sGreeting = C_RegisterQuestion("Hi, <<STR_PLAYERNAME>>!\nI'm a podium from a mod.\nWhat brings you here?", answers,
+                                   next, 2);
+}
+
 static void OnSpawnPressed(void) {
     sSpawnRequested = TRUE;
 }
@@ -413,6 +425,40 @@ static void OnGiveCreaturesPressed(void) {
 
 static void OnGiveTeePressed(void) {
     Give(sTee);
+}
+
+static mActor_name_t sUmbrella = EMPTY_NO;
+static mActor_name_t sBoltVisitor = EMPTY_NO;
+
+static void OnGiveUmbrellaPressed(void) {
+    Give(sUmbrella);
+}
+
+static void SetupUmbrella(void) {
+    static C_ItemDef def;
+
+    def.id = "example.tee_umbrella";
+    def.name = "tee umbrella";
+    def.article = mIN_ARTICLE_A;
+    def.price = 1200;
+    def.shape = mNT_ITEM_TYPE_TOOL;
+    def.umbrella_tex = sTeeTexture;
+    def.umbrella_pal = sTeePalette;
+    sUmbrella = C_RegisterItem(&def);
+}
+
+static void SetupBoltVisitor(void) {
+    C_VisitorDef def = { 0 };
+    C_VisitDef visit = { 0 };
+
+    def.look = sBolt;
+    def.cloth = EMPTY_NO;
+    def.schedule = C_VISITOR_WALK_WANDER;
+    def.talk_msg = C_RegisterMessage("Beep boop! I visit a different\nacre every afternoon.");
+    sBoltVisitor = C_RegisterVisitor(&def);
+
+    visit.hours = 0x00FFF000;
+    C_ScheduleVisitor(sBoltVisitor, &visit);
 }
 
 static void SetupMintRoom(mActor_name_t table) {
@@ -522,6 +568,18 @@ static void OnRestockPressed(void) {
     C_RestockShop();
 }
 
+static void OnSendLetterPressed(void) {
+    C_LetterDef letter = { 0 };
+
+    letter.header = "Dear \n,";
+    letter.body = "Thanks for trying the custom\ncontent example! Here is a\nlucky gem for your trouble.";
+    letter.footer = "The mod team";
+    letter.sender = "Mod Team";
+    letter.present = sGem;
+    letter.paper = EMPTY_NO;
+    C_SendLetter(&letter, -1);
+}
+
 static void OnBuildKioskPressed(void) {
     sBuildRequest = sKiosk;
 }
@@ -603,6 +661,8 @@ static void SetupUI(void) {
     C_WidgetConfig tee = { 0 };
     C_WidgetConfig mint = { 0 };
     C_WidgetConfig bolt = { 0 };
+    C_WidgetConfig letter = { 0 };
+    C_WidgetConfig umbrella = { 0 };
     C_WidgetConfig restock = { 0 };
     C_WidgetConfig kiosk = { 0 };
     C_WidgetConfig workshop = { 0 };
@@ -644,6 +704,14 @@ static void SetupUI(void) {
     bolt.callback = OnInviteBoltPressed;
     bolt.opts.generic.tooltip = "Bolt, a robot with his own model and walk, moves into a built-in villager's house.";
 
+    umbrella.type = C_WIDGET_BUTTON;
+    umbrella.callback = OnGiveUmbrellaPressed;
+    umbrella.opts.generic.tooltip = "An umbrella with the mod tee's pattern. Equip it and it opens in the rain.";
+
+    letter.type = C_WIDGET_BUTTON;
+    letter.callback = OnSendLetterPressed;
+    letter.opts.generic.tooltip = "Puts a letter with a lucky gem in your mailbox.";
+
     restock.type = C_WIDGET_BUTTON;
     restock.callback = OnRestockPressed;
     restock.opts.generic.tooltip =
@@ -671,6 +739,8 @@ static void SetupUI(void) {
     C_AddWidget("Custom Content", 1, "Give Mod Tee", &tee);
     C_AddWidget("Custom Content", 1, "Invite Mint", &mint);
     C_AddWidget("Custom Content", 1, "Invite Bolt", &bolt);
+    C_AddWidget("Custom Content", 1, "Give Tee Umbrella", &umbrella);
+    C_AddWidget("Custom Content", 1, "Send Letter", &letter);
     C_AddWidget("Custom Content", 1, "Restock Shop", &restock);
     C_AddWidget("Custom Content", 1, "Build Kiosk", &kiosk);
     C_AddWidget("Custom Content", 1, "Build Workshop", &workshop);
@@ -678,8 +748,7 @@ static void SetupUI(void) {
 }
 
 MOD_INIT() {
-    sGreeting = C_RegisterMessage("Hi, <<STR_PLAYERNAME>>!\nI'm a podium from a mod.<<BTN>>\n"
-                                  "<<MSGCLEAR>>Come back and talk to me\nany time!");
+    SetupGreeting();
     sSpinner = C_RegisterActor(&sSpinnerProfile);
     sModTable = C_RegisterFurniture(&sModTableDef);
     sGem = C_RegisterItem(&sGemDef);
@@ -695,6 +764,8 @@ MOD_INIT() {
     sMint = C_RegisterVillager(&sMintDef);
     SetupBolt();
     sBolt = C_RegisterVillager(&sBoltDef);
+    SetupBoltVisitor();
+    SetupUmbrella();
     SetupStructures();
     sKiosk = C_RegisterStructure(&sKioskDef);
     sWorkshop = C_RegisterStructure(&sWorkshopDef);

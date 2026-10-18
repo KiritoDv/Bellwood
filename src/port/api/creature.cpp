@@ -7,6 +7,7 @@
 #include "port/api/SizedDef.hpp"
 #include "port/api/StableIds.hpp"
 #include "port/events/Events.h"
+#include "port/save/SaveMods.h"
 
 #include <spdlog/spdlog.h>
 
@@ -21,6 +22,7 @@ extern "C" {
 #include "m_common_data.h"
 #include "m_huusui_room.h"
 #include "m_item_name.h"
+#include "m_museum_display.h"
 #include "m_room_type.h"
 }
 #undef this
@@ -150,6 +152,33 @@ void AddInsects(InsectSpawnList* list) {
 
 void Release(const std::string& mod, bool insect);
 
+CustomCreature* FindItem(mActor_name_t item, bool* insect) {
+    if (ITEM_NAME_GET_TYPE(item) != NAME_TYPE_ITEM1) {
+        return nullptr;
+    }
+    const int category = ITEM_NAME_GET_CAT(item);
+    if (category != ITEM1_CAT_FISH && category != ITEM1_CAT_INSECT) {
+        return nullptr;
+    }
+    *insect = category == ITEM1_CAT_INSECT;
+    return Find(ITEM_NAME_GET_INDEX(item), *insect);
+}
+
+SaveJson& Donators(bool insect) {
+    SaveJson& museum = SaveMods::Museum();
+    const char* key = insect ? "insects" : "fish";
+    if (!museum.contains(key) || !museum[key].is_object()) {
+        museum[key] = SaveJson::object();
+    }
+    return museum[key];
+}
+
+int Donator(const CustomCreature& creature, bool insect) {
+    const SaveJson& donators = Donators(insect);
+    auto it = donators.find(creature.id);
+    return it != donators.end() && it->is_number_integer() ? it->get<int>() : mMmd_DONATOR_NONE;
+}
+
 void InitCreatureApi() {
     REGISTER_LISTENER(CreatureLookup, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         auto* lookup = reinterpret_cast<CreatureLookup*>(event);
@@ -173,6 +202,32 @@ void InitCreatureApi() {
                       [](IEvent* event) { AddFish(reinterpret_cast<FishSpawnList*>(event)); });
     REGISTER_LISTENER(InsectSpawnList, EVENT_PRIORITY_NORMAL,
                       [](IEvent* event) { AddInsects(reinterpret_cast<InsectSpawnList*>(event)); });
+    REGISTER_LISTENER(MuseumDonatorLookup, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        auto* lookup = reinterpret_cast<MuseumDonatorLookup*>(event);
+        bool insect;
+        if (CustomCreature* creature = FindItem(lookup->item, &insect)) {
+            lookup->donator = Donator(*creature, insect);
+        }
+    });
+    REGISTER_LISTENER(MuseumDonate, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        auto* donate = reinterpret_cast<MuseumDonate*>(event);
+        bool insect;
+        CustomCreature* creature = FindItem(donate->item, &insect);
+        if (creature != nullptr && !mMmd_IS_DONATED(Donator(*creature, insect))) {
+            Donators(insect)[creature->id] = donate->donator;
+            donate->accepted = true;
+        }
+    });
+    REGISTER_LISTENER(MuseumDonatorRemoved, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        const int donator = reinterpret_cast<MuseumDonatorRemoved*>(event)->donator;
+        for (bool insect : { false, true }) {
+            for (auto& [id, value] : Donators(insect).items()) {
+                if (value.is_number_integer() && value.get<int>() == donator) {
+                    value = mMmd_DONATOR_DELETED_PLAYER;
+                }
+            }
+        }
+    });
     ModOwner::AddReleaser([](const std::string& mod) {
         Release(mod, false);
         Release(mod, true);
@@ -280,6 +335,20 @@ extern "C" void C_UnregisterFish(mActor_name_t item) {
 
 extern "C" void C_UnregisterInsect(mActor_name_t item) {
     Unregister(item, true);
+}
+
+extern "C" int C_GetMuseumDonator(mActor_name_t item) {
+    bool insect;
+    if (CustomCreature* creature = FindItem(item, &insect)) {
+        return Donator(*creature, insect);
+    }
+    if (ITEM_IS_FISH(item)) {
+        return mMmd_FishInfo(item - ITM_FISH_START);
+    }
+    if (ITEM_IS_INSECT(item)) {
+        return mMmd_InsectInfo(item - ITM_INSECT_START);
+    }
+    return -1;
 }
 
 #endif

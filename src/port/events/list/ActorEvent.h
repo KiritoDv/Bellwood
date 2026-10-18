@@ -17,6 +17,25 @@ DEFINE_EVENT(ActorProfileLookup,
 // Fires before an actor is allocated. Cancellable.
 // Write through the pointers to spawn something else or somewhere else.
 // Cancel — the actor is not created and the spawn returns NULL.
+// Fires when an NPC is set up whose special NPC name the game has no actor for. Set profile to spawn it.
+DEFINE_EVENT(NpcProfileLookup,
+    uint16_t name;
+    int16_t profile;  // set by the listener that owns the name, -1 leaves it unspawned
+);
+
+// Fires when the game looks for the stand-in data of a special NPC name it has no mask NPC for.
+// Set mask to a mNpc_MaskNpc_c to give the name a villager's look.
+DEFINE_EVENT(MaskNpcLookup,
+    uint16_t name;
+    void* mask;
+);
+
+// Fires when the player talks to an NPC spawned through port/api/visitor.h. Set msgNo to the message to show.
+DEFINE_EVENT(CustomNpcTalk,
+    struct actor_s* actor;
+    int32_t msgNo;
+);
+
 DEFINE_EVENT(ActorSpawn,
     int16_t* profile;  // mutable actor profile number
     float* pos;        // mutable world position, x/y/z

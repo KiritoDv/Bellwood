@@ -11,6 +11,9 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(ControllerRead);
 
     REGISTER_EVENT(ActorProfileLookup);
+    REGISTER_EVENT(NpcProfileLookup);
+    REGISTER_EVENT(MaskNpcLookup);
+    REGISTER_EVENT(CustomNpcTalk);
     REGISTER_EVENT(ActorSpawn);
     REGISTER_EVENT(ActorInit);
     REGISTER_EVENT(ActorUpdate);
@@ -22,6 +25,9 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(ItemLookup);
     REGISTER_EVENT(ItemCollected);
     REGISTER_EVENT(ItemUse);
+    REGISTER_EVENT(MuseumDonatorLookup);
+    REGISTER_EVENT(MuseumDonate);
+    REGISTER_EVENT(MuseumDonatorRemoved);
 
     REGISTER_EVENT(InteriorLookup);
     REGISTER_EVENT(CreatureLookup);
@@ -53,6 +59,8 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(MessageLoaded);
     REGISTER_EVENT(MessageOpened);
     REGISTER_EVENT(MessageClosed);
+    REGISTER_EVENT(ChoiceSelected);
+    REGISTER_EVENT(ChoiceStringLookup);
     REGISTER_EVENT(SubmenuOpen);
     REGISTER_EVENT(SubmenuOpened);
     REGISTER_EVENT(SubmenuClosed);

@@ -6,6 +6,7 @@
 #include "m_common_data.h"
 #include "m_font.h"
 #include "m_msg.h"
+#include "port/events/Events.h"
 #include "sys_matrix.h"
 
 typedef void (*mChoice_MAIN_PROC)(mChoice_c*, GAME*);

@@ -2256,6 +2256,11 @@ extern mNpc_MaskNpc_c* mNpc_GetSameMaskNpc(mActor_name_t mask_id) {
         mask_npc++;
     }
 
+    if (ITEM_NAME_GET_TYPE(mask_id) == NAME_TYPE_SPNPC) {
+        CALL_EVENT(MaskNpcLookup, mask_id, NULL);
+        return (mNpc_MaskNpc_c*)MaskNpcLookup_.mask;
+    }
+
     return NULL;
 }
 

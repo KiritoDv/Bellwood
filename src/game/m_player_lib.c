@@ -1,5 +1,6 @@
 #include "ac_asset.h"
 #include "port/api/cloth.h"
+#include "port/api/item.h"
 #include "m_player_lib.h"
 #include "ac_port.h"
 
@@ -1356,7 +1357,7 @@ extern s8 mPlib_Get_ItemNoToItemKind(mActor_name_t itemNo) {
         case ITM_LEAF_FAN:
             return mPlayer_ITEM_KIND_LEAF_FAN;
         default:
-            return -1;
+            return C_IsCustomUmbrella(itemNo) ? mPlayer_ITEM_KIND_ORG_UMBRELLA00 : -1;
     }
 }
 

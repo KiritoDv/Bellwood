@@ -1,4 +1,5 @@
 #include "ACAudio.h"
+#include "ModSound.h"
 #include "NeosGlue.h"
 #include "importers/NeosAudioResources.h"
 
@@ -65,8 +66,11 @@ void SubmitFrame(int16_t* stereo) {
 }
 
 void RenderFrame(int16_t* frame, bool submit) {
-    NaPort_SetVolumes(VolumeSetting("gSettings.Volume.Music"), VolumeSetting("gSettings.Volume.SFX"));
+    const float music = VolumeSetting("gSettings.Volume.Music");
+    const float sfx = VolumeSetting("gSettings.Volume.SFX");
+    NaPort_SetVolumes(ModSound::MusicActive() ? 0.0f : music, sfx);
     NaPort_RenderFrame(frame);
+    ModSound::Mix(frame, NA_PORT_FRAME_SAMPLES, music, sfx);
 
     if (submit) {
         SubmitFrame(frame);

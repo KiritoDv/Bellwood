@@ -490,6 +490,8 @@ set(BUILD_GAMECUBE ON CACHE BOOL "Build with GameCube disc input support")
 set(BUILD_AC ON CACHE BOOL "Build with Animal Crossing support")
 add_subdirectory(Torch)
 list(APPEND ADDITIONAL_LIBRARY_DEPENDENCIES torch)
+FetchContent_GetProperties(dr_libs)
+target_include_directories(acaudio PRIVATE ${dr_libs_SOURCE_DIR})
 
 file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/Torch/CMakeLists.txt" TORCH_HAS_GAMECUBE_INPUT REGEX "GAMECUBE_SUPPORT")
 if(BUILD_GAMECUBE AND TORCH_HAS_GAMECUBE_INPUT)

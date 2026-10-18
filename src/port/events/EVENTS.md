@@ -81,6 +81,33 @@ Fires when an actor is spawned with a profile number past the built-in table. Se
 
 ---
 
+### `NpcProfileLookup`
+```c
+uint16_t name;
+int16_t profile;
+```
+Fires when an NPC is set up whose special NPC name the game has no actor for. Set `profile` to spawn it; left at -1 it isn't spawned. Visitors from `port/api/visitor.h` answer here.
+
+---
+
+### `MaskNpcLookup`
+```c
+uint16_t name;
+void* mask;
+```
+Fires when the game looks for the stand-in of a special NPC name and has no mask NPC registered for it. Set `mask` to a `mNpc_MaskNpc_c` to give the name a villager's look, as the game does for its own guests.
+
+---
+
+### `CustomNpcTalk`
+```c
+struct actor_s* actor;
+int32_t msgNo;
+```
+Fires when the player talks to an NPC spawned through `port/api/visitor.h`. Set `msgNo` to the message to show.
+
+---
+
 ### `ActorSpawn` _(cancellable)_
 ```c
 int16_t* profile;
@@ -164,6 +191,33 @@ uint16_t item;
 int32_t slot;
 ```
 Fires when "Use" is picked for a custom item in the pockets. The pocket menu is already closing. Items registered through `port/api/item.h` with an `on_use` callback get it called from here.
+
+---
+
+### `MuseumDonatorLookup`
+```c
+uint16_t item;
+int donator;
+```
+Fires when the museum checks an item outside its own fossils, art, fish and insects. A listener that owns the item sets `donator`: 0 when nobody donated it yet, 1 to 4 for the player who did, 5 for a player who was removed. Left at -1, the museum doesn't take the item. Custom fish and insects answer here.
+
+---
+
+### `MuseumDonate`
+```c
+uint16_t item;
+int donator;
+bool accepted;
+```
+Fires when a player donates an item the museum doesn't know. Set `accepted` when the donation is recorded.
+
+---
+
+### `MuseumDonatorRemoved`
+```c
+int donator;
+```
+Fires when a player is removed from the town, after the museum marks their own donations as from a removed player.
 
 ---
 
@@ -464,6 +518,25 @@ Fires when a dialogue window starts opening. `speaker` may be `NULL`.
 int32_t msgNo;
 ```
 Fires when a dialogue window starts closing.
+
+---
+
+### `ChoiceSelected`
+```c
+int32_t msgNo;  // message showing the choices
+int choice;     // 0 for the first choice
+```
+Fires when the player picks one of the choices a message offers.
+
+---
+
+### `ChoiceStringLookup`
+```c
+int32_t strNo;
+const uint8_t* text;  // set by the listener that owns the choice text
+uint32_t size;        // size of text in bytes
+```
+Fires when a choice text past the game's own is loaded for a SETSELSTR control code. Set text and size to the encoded text, up to 16 bytes.
 
 ---
 

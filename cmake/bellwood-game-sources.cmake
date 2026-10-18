@@ -200,6 +200,7 @@ set(BELLWOOD_GAME_SOURCES
     src/actor/ac_yatai.c
     src/actor/npc/ac_countdown_npc0.c
     src/actor/npc/ac_countdown_npc1.c
+    src/actor/npc/ac_custom_npc.c
     src/actor/npc/ac_go_home_npc.c
     src/actor/npc/ac_groundhog_npc0.c
     src/actor/npc/ac_halloween_npc.c
