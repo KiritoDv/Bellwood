@@ -150,12 +150,46 @@ Fires whenever the game needs data for an item in the custom item range, `C_ITEM
 
 ---
 
+### `ItemCollected`
+```c
+uint16_t item;
+```
+Fires whenever the player gets an item and the game records it for the catalog: when it lands in the pockets unwrapped, when clothes are worn, when wallpaper or carpet is applied, and so on. It fires for every item, built-in or custom, except fish and insects. Custom furniture and custom items are recorded per player from here and listed in the catalog.
+
+---
+
 ### `ItemUse`
 ```c
 uint16_t item;
 int32_t slot;
 ```
 Fires when "Use" is picked for a custom item in the pockets. The pocket menu is already closing. Items registered through `port/api/item.h` with an `on_use` callback get it called from here.
+
+---
+
+## Shop Events
+
+### `ShopStockGenerated`
+```c
+uint16_t* items;
+int32_t count;
+int32_t capacity;
+int32_t furnitureCount;
+uint16_t* rareItem;
+int32_t shopLevel;
+```
+Fires after Nook rolls the shop's stock, on a new day and when the shop is upgraded. It doesn't fire on raffle days. Write to `items` or `*rareItem` to change what is for sale. The first `furnitureCount` slots hold furniture; replace those with other furniture, since each kind of item has its own display spots in the shop. `rareItem` is `NULL` when the shop level has no rare item. `shopLevel` goes from 0 (Nook's Cranny) to 3 (Nookington's). `C_AddShopStock` from `port/api/shop.h` is handled here.
+
+---
+
+### `CatalogPageBuild`
+```c
+int32_t page;
+uint16_t* items;
+int32_t* count;
+int32_t capacity;
+```
+Fires for every catalog page while the catalog opens, after the built-in entries the player has collected are listed. `page` is one of `mCL_MENU_*` from `m_catalog_ovl.h`. Append item numbers to `items` and increase `*count` to list more entries, up to `capacity`. Entries are drawn by item type: furniture with its model, wallpaper, carpet, stationery and music with their usual previews, and custom items with their icon. Collected custom furniture is added to the furniture page and collected custom items to the items page here. Extra entries don't count toward completing a page.
 
 ---
 

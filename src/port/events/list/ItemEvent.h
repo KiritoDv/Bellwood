@@ -13,6 +13,11 @@ DEFINE_EVENT(ItemLookup,
     const struct C_ItemDef_s* definition;   // set by the listener that owns the item
 );
 
+// Fires whenever the player obtains an item and the game records it as collected for the catalog.
+DEFINE_EVENT(ItemCollected,
+    uint16_t item;  // item number
+);
+
 // Fires when "Use" is picked for a custom item in the pockets. The pocket menu is already closing.
 DEFINE_EVENT(ItemUse,
     uint16_t item;  // item number

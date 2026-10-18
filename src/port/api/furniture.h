@@ -19,6 +19,7 @@ typedef struct C_FurnitureDef_s {
     uint8_t has_face;     // counts as facing a direction for the Happy Room Academy
     uint8_t is_lucky;     // counts as a lucky item for the Happy Room Academy
     aFTR_PROFILE profile; // models, size and callbacks, same as the built-in furniture
+    uint8_t not_for_sale; // shows "Not for Sale" in the catalog
 } C_FurnitureDef;
 
 // Registers a furniture item. Returns its south-facing item number (the other facings follow it), or EMPTY_NO.

@@ -222,8 +222,10 @@ extern int mSP_CollectCheck(mActor_name_t item) {
     switch (ITEM_NAME_GET_TYPE(ftr_item)) {
         case NAME_TYPE_FTR0:
         case NAME_TYPE_FTR1: {
-            bitfield = Common_Get(now_private)->furniture_collected_bitfield;
             idx = mRmTp_FtrItemNo2FtrIdx(ftr_item);
+            if (idx < FTR_NUM) {
+                bitfield = Common_Get(now_private)->furniture_collected_bitfield;
+            }
             break;
         }
 
@@ -1054,6 +1056,9 @@ static void mSP_MakeGoodsList(GAME* game) {
             mSP_SelectTool(shop_items, &count, tool_count, shop_level & 3);
             mSP_SelectPlant(shop_items, &count, flower_count, sapling_count, shop_level & 3);
         }
+
+        CALL_EVENT(ShopStockGenerated, shop_items, count, mSP_GOODS_COUNT, goods_count[mSP_GOODS_TYPE_FTR],
+                   goods_count[mSP_GOODS_TYPE_RARE_FTR] != 0 ? &shop->rare_item : NULL, shop_level);
     }
 }
 

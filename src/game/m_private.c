@@ -17,6 +17,7 @@
 #include "m_submenu.h"
 #include "m_room_type.h"
 #include "m_common_data.h"
+#include "port/events/Events.h"
 
 static Mail_c l_mpr_mail;
 Private_c g_foreigner_private;
@@ -559,6 +560,8 @@ extern void mPr_SetItemCollectBit(mActor_name_t item) {
         (ftr_item_no >= FTR_INSECT_START && ftr_item_no <= FTR_INSECT_END)) {
         return;
     }
+
+    CALL_EVENT(ItemCollected, item);
 
     item_type = ITEM_NAME_GET_TYPE(ftr_item_no);
 

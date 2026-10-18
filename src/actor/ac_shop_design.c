@@ -170,7 +170,7 @@ static void aSD_MakeGoodsFg(mActor_name_t* goods_p, int count) {
     int i;
 
     for (i = 0; i < count; i++) {
-        if (goods_p[i] != EMPTY_NO) {
+        if (goods_p[i] != EMPTY_NO && mNT_check_unknown(goods_p[i]) == FALSE) {
             mActor_name_t reserve_name = aSD_ItemName2ReservePointName(goods_p[i]);
 
             if (reserve_name != EMPTY_NO) {
@@ -182,7 +182,7 @@ static void aSD_MakeGoodsFg(mActor_name_t* goods_p, int count) {
 
 /* Mispelling of 'rare' */
 static void aSD_MakeReaGoodsFg(mActor_name_t item) {
-    if (item != EMPTY_NO) {
+    if (item != EMPTY_NO && mNT_check_unknown(item) == FALSE) {
         mSP_SetGoods2ReservedPoint(item, RSV_SHOP_RARE);
     }
 }

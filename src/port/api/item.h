@@ -19,6 +19,7 @@ typedef struct C_ItemDef_s {
     const void* icon_tex; // 32x32 CI4 inventory icon, NULL for the default one
     const void* icon_pal; // 16 colour palette for the icon
     void (*on_use)(mActor_name_t item, int slot); // adds "Use" to the pocket menu
+    uint8_t not_for_sale; // shows "Not for Sale" in the catalog
 } C_ItemDef;
 
 // Registers an item. Returns its item number, or EMPTY_NO.

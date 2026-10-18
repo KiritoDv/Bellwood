@@ -20,7 +20,11 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(FurnitureLookup);
 
     REGISTER_EVENT(ItemLookup);
+    REGISTER_EVENT(ItemCollected);
     REGISTER_EVENT(ItemUse);
+
+    REGISTER_EVENT(ShopStockGenerated);
+    REGISTER_EVENT(CatalogPageBuild);
 
     REGISTER_EVENT(PlayerStateRequest);
     REGISTER_EVENT(PlayerStateChanged);

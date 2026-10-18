@@ -5,6 +5,7 @@
 #include "port/api/furniture.h"
 #include "port/api/item.h"
 #include "port/api/message.h"
+#include "port/api/shop.h"
 #include "port/api/ui.h"
 #include "port/events/Events.h"
 #include "graph.h"
@@ -183,6 +184,7 @@ static C_FurnitureDef sModNesDef = {
     FALSE,
     { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 18.0f, 0.01f, aFTR_SHAPE_TYPEA, mCoBG_FTR_TYPEA, 0, 0, 0,
       aFTR_INTERACTION_FAMICOM, &sModNesFuncs },
+    TRUE,
 };
 
 static s16 sSpinner = -1;
@@ -230,11 +232,16 @@ static void OnGiveNesPressed(void) {
     }
 }
 
+static void OnRestockPressed(void) {
+    C_RestockShop();
+}
+
 static void SetupUI(void) {
     C_WidgetConfig spawn = { 0 };
     C_WidgetConfig give = { 0 };
     C_WidgetConfig gem = { 0 };
     C_WidgetConfig nes = { 0 };
+    C_WidgetConfig restock = { 0 };
 
     spawn.type = C_WIDGET_BUTTON;
     spawn.callback = OnSpawnPressed;
@@ -252,11 +259,16 @@ static void SetupUI(void) {
     nes.callback = OnGiveNesPressed;
     nes.opts.generic.tooltip = "Puts an NES that plays a small demo in your pockets.";
 
+    restock.type = C_WIDGET_BUTTON;
+    restock.callback = OnRestockPressed;
+    restock.opts.generic.tooltip = "Rolls Nook's stock again. The mod table is on sale half of the days.";
+
     C_AddSidebarEntry("Custom Content", 1);
     C_AddWidget("Custom Content", 1, "Spawn Spinner", &spawn);
     C_AddWidget("Custom Content", 1, "Give Mod Table", &give);
     C_AddWidget("Custom Content", 1, "Give Lucky Gem", &gem);
     C_AddWidget("Custom Content", 1, "Give Mod NES", &nes);
+    C_AddWidget("Custom Content", 1, "Restock Shop", &restock);
 }
 
 MOD_INIT() {
@@ -268,6 +280,7 @@ MOD_INIT() {
     BuildColorDemo();
     sColorDemo = C_RegisterFamicomGame("example.color_demo", sColorDemoRom, sizeof(sColorDemoRom));
     sModNes = C_RegisterFurniture(&sModNesDef);
+    C_AddShopStock(sModTable, 50);
     sPlayUpdateListener = REGISTER_LISTENER(PlayUpdate, EVENT_PRIORITY_NORMAL, OnPlayUpdate);
     SetupUI();
 }
@@ -275,6 +288,7 @@ MOD_INIT() {
 MOD_EXIT() {
     C_RemoveSidebarEntry("Custom Content");
     UNREGISTER_LISTENER(PlayUpdate, sPlayUpdateListener);
+    C_RemoveShopStock(sModTable);
     C_UnregisterFurniture(sModNes);
     C_UnregisterFamicomGame(sColorDemo);
     C_UnregisterItem(sGem);

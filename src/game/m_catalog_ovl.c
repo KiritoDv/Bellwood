@@ -13,6 +13,8 @@
 #include "m_font.h"
 #include "m_common_data.h"
 #include "m_malloc.h"
+#include "port/api/furniture.h"
+#include "port/api/item.h"
 
 enum {
     mCL_DRAW_TYPE_FTR,
@@ -20,6 +22,7 @@ enum {
     mCL_DRAW_TYPE_WALL,
     mCL_DRAW_TYPE_CARPET,
     mCL_DRAW_TYPE_MUSIC,
+    mCL_DRAW_TYPE_ICON,
 
     mCL_DRAW_TYPE_NONE,
     mCL_DRAW_TYPE_NUM = mCL_DRAW_TYPE_NONE
@@ -58,6 +61,7 @@ typedef struct {
 #include "assets/data/model/clg_tagu.h"
 #include "assets/data/model/clg_win1.h"
 #include "assets/data/model/mCL_lat_letter.h"
+#include "assets/data/model/inv_item.h"
 #include "assets/data/model/mCL_rom_myhome1_wall.h"
 
 #define mCL_ITEM_INFO(list) \
@@ -139,7 +143,15 @@ static mCL_win_data_c mCL_win_data[] = {
 static u8 not_sell[12] = "Not for Sale";
 
 static void mCL_dma_furniture_program(mCL_Item_c* item) {
-    item->profile = furniture_quality[item->ftr_actor.name];
+    int ftr_idx = item->ftr_actor.name;
+
+    if (ftr_idx < FTR_NUM) {
+        item->profile = furniture_quality[ftr_idx];
+    } else {
+        const C_FurnitureDef* custom = C_FindFurniture(ftr_idx);
+
+        item->profile = custom != NULL ? (aFTR_PROFILE*)&custom->profile : &iam_dummy;
+    }
 }
 
 static void mCL_dma_furniture_bank(mCL_Item_c* item, mActor_name_t item_no) {
@@ -315,13 +327,17 @@ static void mCL_furniture_init(mCL_Item_c* item, mActor_name_t item_no) {
             item->scale = furniture_draw_data[0].scale;
         }
 
-        if (mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_COMMON, NULL) ||
-            mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_UNCOMMON, NULL) ||
-            mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_RARE, NULL) ||
-            mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_TRAIN, NULL) ||
-            mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_EVENT, NULL) ||
-            mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_LOTTERY, NULL) ||
-            mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_EVENTPRESENTCHUMON, NULL)) {
+        if (ftr_actor->name >= FTR_NUM) {
+            const C_FurnitureDef* custom = C_FindFurniture(ftr_actor->name);
+
+            item->price = (custom != NULL && !custom->not_for_sale) ? custom->price : 0;
+        } else if (mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_COMMON, NULL) ||
+                   mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_UNCOMMON, NULL) ||
+                   mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_RARE, NULL) ||
+                   mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_TRAIN, NULL) ||
+                   mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_EVENT, NULL) ||
+                   mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_LOTTERY, NULL) ||
+                   mSP_SearchItemCategoryPriority(item_no, mSP_KIND_FURNITURE, mSP_LISTTYPE_EVENTPRESENTCHUMON, NULL)) {
             item->price = mSP_ItemNo2ItemPrice(item_no);
         } else {
             item->price = 0;
@@ -391,6 +407,12 @@ static void mCL_music_init(mCL_Item_c* item, mActor_name_t item_no) {
     item->ftr_actor.name = (item_no - ITM_MINIDISK_START);
 }
 
+static void mCL_custom_item_init(mCL_Item_c* item, const C_ItemDef* custom) {
+    item->gfx_type = mCL_DRAW_TYPE_ICON;
+    item->profile = NULL;
+    item->price = custom->not_for_sale ? 0 : custom->price;
+}
+
 static void mCL_item_data_set(Submenu* submenu, int page_no) {
     mCL_Ovl_c* catalog_ovl = submenu->overlay->catalog_ovl;
     mCL_Menu_c* page = &catalog_ovl->menu_data[page_no];
@@ -420,6 +442,8 @@ static void mCL_item_data_set(Submenu* submenu, int page_no) {
             mCL_carpet_init(item, item_no);
         } else if (cat == ITEM1_CAT_MINIDISK) {
             mCL_music_init(item, item_no);
+        } else if (C_FindItem(item_no) != NULL) {
+            mCL_custom_item_init(item, C_FindItem(item_no));
         } else {
             item->gfx_type = mCL_DRAW_TYPE_NONE;
             item->price = 0;
@@ -844,6 +868,13 @@ static void mCL_item_draw(Submenu* submenu, mSM_MenuInfo_c* menu_info, GAME* gam
 
         CLOSE_DISP(graph);
         Matrix_pull();
+    } else if (item->gfx_type == mCL_DRAW_TYPE_ICON) {
+        OPEN_DISP(graph);
+        gSPDisplayList(NEXT_POLY_OPA_DISP, inv_item_mode);
+        CLOSE_DISP(graph);
+
+        submenu->overlay->draw_item_proc(graph, pos_x - 85.0f, pos_y + 10.0f, 2.0f, item->item_no, FALSE, TRUE, 0,
+                                         FALSE, FALSE);
     } else if (item->gfx_type != mCL_DRAW_TYPE_NONE) {
         Gfx* gfx;
 
@@ -1316,6 +1347,12 @@ static void mCL_catalog_ovl_init(Submenu* submenu) {
     item_info = mCL_item_idx_data;
     menu = catalog_ovl->menu_data;
     for (j = 0; j < mCL_MENU_NUM; j++) {
+        int listed = menu->item_count;
+        int32_t count = listed;
+
+        CALL_EVENT(CatalogPageBuild, j, menu->item_list, &count, mCL_MENU_ITEM_MAX);
+        menu->item_count = MIN(count, mCL_MENU_ITEM_MAX);
+
         item_list = menu->item_list;
         item_name = (u8*)menu->item_name;
         catalog_ovl->page_order[j] = j;
@@ -1325,7 +1362,7 @@ static void mCL_catalog_ovl_init(Submenu* submenu) {
             item_name += mIN_ITEM_NAME_LEN;
         }
 
-        if (menu->item_count == item_info->list_size) {
+        if (listed == item_info->list_size) {
             menu->completed_flag = TRUE;
         } else {
             menu->completed_flag = FALSE;

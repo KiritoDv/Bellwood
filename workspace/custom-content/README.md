@@ -1,6 +1,6 @@
 # Custom Content Example
 
-Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM) and a new item (a "lucky gem" that breaks into 1,000 Bells when used) to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu.
+Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM) and a new item (a "lucky gem" that breaks into 1,000 Bells when used) to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu. The mod table is also on sale at Nook's on half of the days, and everything shows up in the catalog once you own it.
 
 Build and install it like the template:
 
@@ -110,6 +110,7 @@ static C_FurnitureDef sTableDef = {
 | `set_type` | `aFTR_SET_TYPE_NORMAL`, `_SURFACE` (other furniture can sit on it) or `_ON_SURFACE` (it can sit on a surface). |
 | `huusui_type`, `has_face`, `is_lucky` | Feng shui colour and Happy Room Academy flags. |
 | `profile` | Models (`opaque0/1`, `translucent0/1`), `texture`/`palette`, `rig`, `height`, `scale`, `shape` (`aFTR_SHAPE_TYPEA` 1x1, `_TYPEB_*` 2x1, `_TYPEC` 2x2), `move_bg_type` (matching `mCoBG_FTR_TYPE*`), contact and interaction flags and the callback table. |
+| `not_for_sale` | Optional. The catalog shows "Not for Sale" and it can't be ordered. |
 
 | Function | Description |
 |---|---|
@@ -118,7 +119,7 @@ static C_FurnitureDef sTableDef = {
 
 Give the item to the player with the game's own `mPr_SetFreePossessionItem(Common_Get(now_private), item, mPr_ITEM_COND_NORMAL)`.
 
-The game reads a custom piece's model, size, name, article, price, Happy Room Academy and feng shui data from its definition. It doesn't appear in shop stock or the catalog. If a save holds furniture whose mod isn't installed, it draws as the placeholder and shows as an unknown item.
+The game reads a custom piece's model, size, name, article, price, Happy Room Academy and feng shui data from its definition. It shows up in the catalog once the player owns it, and can be added to Nook's stock (see [Shop and catalog](#shop-and-catalog-portapishoph)). If a save holds furniture whose mod isn't installed, it draws as the placeholder and shows as an unknown item.
 
 ## Custom items (`port/api/item.h`)
 
@@ -146,13 +147,34 @@ static C_ItemDef sGemDef = {
 | `shape` | `mNT_ITEM_TYPE_*`, the model used when the item lies on the ground or is in the player's hand (for example `mNT_ITEM_TYPE_BAG`, `_BOX`, `_PRESENT`, `_SHELLA`). 0 uses the generic one. |
 | `icon_tex`, `icon_pal` | Inventory icon: a 32x32 CI4 texture and its 16 colour palette. Use the game's own icons through `C_ASSET` (the `inv_mwin_*_tex` / `inv_mwin_*_pal` assets). NULL uses a default icon. |
 | `on_use` | Optional. Adds "Use" to the pocket menu; called with the item and its pocket slot after the menu closes. |
+| `not_for_sale` | Optional. The catalog shows "Not for Sale" and it can't be ordered. |
 
 | Function | Description |
 |---|---|
 | `mActor_name_t C_RegisterItem(const C_ItemDef* def)` | Returns the item number, or `EMPTY_NO`. Up to 207 custom items fit (`C_ITEM_FIRST` to `C_ITEM_LAST`). |
 | `void C_UnregisterItem(mActor_name_t item)` | Call it in `MOD_EXIT`. Copies in the pockets or on the ground show as unknown until the mod is loaded again. |
 
-Indoors, custom items only offer Grab and Use, since rooms have no model to show them on the floor. Outdoors, items with `on_use` offer Grab, Use, Drop and Quit; items without it get the regular item menu. They don't appear in shops, quests or the catalog.
+Indoors, custom items only offer Grab and Use, since rooms have no model to show them on the floor. Outdoors, items with `on_use` offer Grab, Use, Drop and Quit; items without it get the regular item menu. They don't appear in quests or on the shop floor, but once the player owns one it is listed on the catalog's Items page and can be ordered.
+
+## Shop and catalog (`port/api/shop.h`)
+
+```c
+C_AddShopStock(sTable, 50);   // on sale on about half of the days
+```
+
+| Function | Description |
+|---|---|
+| `int C_AddShopStock(mActor_name_t item, int chance)` | Puts a furniture item, custom or built-in, in Nook's furniture rotation. `chance` is the percentage of days it is on sale; it takes the place of one of the day's regular pieces. Returns `FALSE` for anything that isn't furniture. |
+| `void C_RemoveShopStock(mActor_name_t item)` | Call it in `MOD_EXIT`. Copies already on sale stay until the next restock. |
+| `int C_RestockShop(void)` | Rolls the stock again, as on a new day. Returns `FALSE` while the player is inside a shop, or before a game is loaded. |
+| `void C_AddToCatalog(mActor_name_t item)` | Adds an item to the current player's catalog as if they had owned it. |
+| `int C_IsInCatalog(mActor_name_t item)` | Whether the item is in the current player's catalog. |
+
+Stock is rolled when Nook restocks, so a newly added item shows up from the next day or after `C_RestockShop`. Only furniture can go on the shop floor: each display spot draws its own models, and custom items have none.
+
+Custom furniture the player has owned is listed at the end of the catalog's Furniture page, and custom items at the end of the Items page. Both can be ordered at their `price` and arrive by mail the next day, like built-in orders. Which custom pieces each player has owned is kept in `custom_collection.json` next to the game, by town and player, since the save file has no room for them. Entries whose mod isn't loaded are hidden until it is.
+
+`ShopStockGenerated` and `CatalogPageBuild` in `src/port/events/EVENTS.md` give full control over the stock and the catalog pages when the functions above aren't enough.
 
 ## NES games (`port/api/famicom.h`)
 
