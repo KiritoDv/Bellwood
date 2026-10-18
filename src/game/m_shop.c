@@ -12,6 +12,7 @@
 #include "m_room_type.h"
 #include "m_fg_type.h"
 #include "port/api/furniture.h"
+#include "port/api/item.h"
 
 extern mActor_name_t* mSP_ftr_list[];
 extern mActor_name_t* mSP_binsen_list[];
@@ -672,6 +673,11 @@ extern u32 mSP_ItemNo2ItemPrice(mActor_name_t item_no) {
     switch (ITEM_NAME_GET_TYPE(item_no)) {
         case NAME_TYPE_ITEM1: {
             u16** price_list_pp = l_price_info[ITEM_NAME_GET_CAT(item_no)];
+            const C_ItemDef* custom = C_FindItem(item_no);
+
+            if (custom != NULL) {
+                return custom->price;
+            }
 
             if (price_list_pp != NULL && &price != NULL) {
                 u16* price_list_p = *price_list_pp;

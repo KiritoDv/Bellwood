@@ -139,6 +139,26 @@ Fires whenever the game needs data for a furniture index past the built-in table
 
 ---
 
+## Item Events
+
+### `ItemLookup`
+```c
+uint16_t item;
+const struct C_ItemDef_s* definition;
+```
+Fires whenever the game needs data for an item in the custom item range, `C_ITEM_FIRST` to `C_ITEM_LAST` (name, price, icon, ground model, pocket menu). Set `definition` to the definition that owns the item. Custom items registered through `port/api/item.h` are answered here; unanswered items show as unknown.
+
+---
+
+### `ItemUse`
+```c
+uint16_t item;
+int32_t slot;
+```
+Fires when "Use" is picked for a custom item in the pockets. The pocket menu is already closing. Items registered through `port/api/item.h` with an `on_use` callback get it called from here.
+
+---
+
 ## Player Events
 
 ### `PlayerStateRequest` _(cancellable)_

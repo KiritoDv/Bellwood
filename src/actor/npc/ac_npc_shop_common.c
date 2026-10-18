@@ -1,3 +1,5 @@
+#include "port/api/item.h"
+
 enum aNSC_action {
     aNSC_ACTION_EMPTY,
     aNSC_ACTION_SAY_HELLO_APPROACH,
@@ -670,8 +672,12 @@ static void aNSC_set_buy_sum_str(mActor_name_t item, u32 p2) {
 
     switch (ITEM_NAME_GET_TYPE(item)) {
         case NAME_TYPE_ITEM1:
-            str_no = p2 + tani_string_num[aNSC_item_tanni_type[ITEM_NAME_GET_CAT((mActor_name_t)item)]
-                                                              [ITEM_NAME_GET_INDEX(item)]];
+            if (C_FindItem((mActor_name_t)item) != NULL || mNT_check_unknown((mActor_name_t)item)) {
+                str_no = p2 + tani_string_num[aNSC_TANNI_STR_00];
+            } else {
+                str_no = p2 + tani_string_num[aNSC_item_tanni_type[ITEM_NAME_GET_CAT((mActor_name_t)item)]
+                                                                  [ITEM_NAME_GET_INDEX(item)]];
+            }
             str_no -= 1;
             break;
         case NAME_TYPE_FTR0:

@@ -9,6 +9,7 @@
 #include "list/EngineEvent.h"
 #include "list/ActorEvent.h"
 #include "list/FurnitureEvent.h"
+#include "list/ItemEvent.h"
 #include "list/PlayerEvent.h"
 #include "list/GameEvent.h"
 #include "list/SaveEvent.h"

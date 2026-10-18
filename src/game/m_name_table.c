@@ -4,6 +4,7 @@
 #include "m_npc_personal_id.h"
 #include "m_common_data.h"
 #include "port/api/furniture.h"
+#include "port/api/item.h"
 
 s16 move_obj_profile_table[] = {
     mAc_PROFILE_AIRPLANE,        mAc_PROFILE_BALL,         mAc_PROFILE_MY_ROOM,      mAc_PROFILE_MBG,
@@ -192,6 +193,14 @@ extern int mNT_get_itemTableNo(mActor_name_t item) {
         case NAME_TYPE_ITEM1: {
             int category = ITEM_NAME_GET_CAT((mActor_name_t)item);
             int idx = ITEM_NAME_GET_INDEX((mActor_name_t)item);
+            const C_ItemDef* custom = C_FindItem(item);
+
+            if (custom != NULL) {
+                return custom->shape;
+            }
+            if (mNT_check_unknown(item)) {
+                return mNT_ITEM_TYPE_ETC;
+            }
 
             return item1_tableNo[category][idx];
         }
@@ -414,7 +423,7 @@ extern int mNT_check_unknown(mActor_name_t item_no) {
         case NAME_TYPE_ITEM1: {
             int category = ITEM_NAME_GET_CAT(item_no);
 
-            if (index < 0 || index >= item1_kinds[category]) {
+            if (index < 0 || (index >= item1_kinds[category] && C_FindItem(item_no) == NULL)) {
                 res = TRUE;
             }
             break;

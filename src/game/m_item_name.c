@@ -8,6 +8,7 @@
 #include "assets/data/item/item_name.h"
 #include "ac_asset.h"
 #include "port/api/furniture.h"
+#include "port/api/item.h"
 
 static u8 itemArt_Paper[PAPER_NUM] = {
     mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE,
@@ -512,6 +513,18 @@ extern void mIN_copy_name_str(u8* dst, mActor_name_t item) {
     } else {
         switch (ITEM_NAME_GET_TYPE(item_no)) {
             case NAME_TYPE_ITEM1: {
+                const C_ItemDef* custom = C_FindItem(item_no);
+
+                if (custom != NULL) {
+                    const char* name = custom->name != NULL ? custom->name : "";
+                    int i;
+
+                    for (i = 0; i < mIN_ITEM_NAME_LEN; i++) {
+                        dst[i] = *name != '\0' ? (u8)*name++ : CHAR_SPACE;
+                    }
+                    break;
+                }
+
                 mIN_dma_itemName(item_name, itemName_table[ITEM_NAME_GET_CAT(item_no)],
                                  ITEM_NAME_GET_INDEX(item_no) * mIN_ITEM_NAME_LEN);
                 mem_copy(dst, item_name, mIN_ITEM_NAME_LEN);
@@ -591,6 +604,14 @@ extern int mIN_get_item_article(mActor_name_t item) {
 
     switch (ITEM_NAME_GET_TYPE(item_no)) {
         case NAME_TYPE_ITEM1: {
+            const C_ItemDef* custom = C_FindItem(item_no);
+
+            if (custom != NULL) {
+                return custom->article;
+            }
+            if (mNT_check_unknown(item_no)) {
+                return mIN_ARTICLE_NONE;
+            }
             article = itemArt_table[ITEM_NAME_GET_CAT(item_no)][index];
             break;
         }
