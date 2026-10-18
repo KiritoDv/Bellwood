@@ -87,9 +87,9 @@ Use `port/api/cvar.h` instead of `libultraship/bridge/consolevariablebridge.h`. 
 
 Widget tooltips and CVar names are kept as pointers, so pass string literals.
 
-### Custom actors, dialogue, furniture and items
+### Custom actors, dialogue, furniture, items and NES games
 
-`port/api/actor.h`, `port/api/message.h`, `port/api/furniture.h` and `port/api/item.h` register new actors, messages, furniture and items. See `workspace/custom-content` for a working example and the full reference.
+`port/api/actor.h`, `port/api/message.h`, `port/api/furniture.h`, `port/api/item.h` and `port/api/famicom.h` register new actors, messages, furniture, items and NES games. See `workspace/custom-content` for a working example and the full reference.
 
 ## Notes
 

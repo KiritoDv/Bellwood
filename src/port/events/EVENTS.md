@@ -253,8 +253,21 @@ Fires once per play frame, before actors and the field update.
 ```c
 int16_t* romId;
 ```
-Fires before a Famicom (NES) game is launched from furniture. Write `*romId` to launch a different game.
+Fires before a Famicom (NES) game is launched from furniture. Write `*romId` to launch a different game, including one registered through `port/api/famicom.h`.
 **Cancel**: nothing is launched.
+
+---
+
+### `FamicomRomLookup`
+```c
+int32_t romId;
+const uint8_t* rom;
+uint32_t size;
+const uint8_t* tags;
+uint32_t tagsSize;
+const char* saveName;
+```
+Fires when a ROM id in the custom range (`C_FAMICOM_FIRST` to `C_FAMICOM_LAST`, 64-127) is started. Set `rom`, `size` and `saveName` to run the game; its save data is kept in `save/famicom/<saveName>.bin`. `tags` describes what to save, in the game's NES tag format. Games registered through `port/api/famicom.h` are answered here.
 
 ---
 

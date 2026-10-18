@@ -33,6 +33,7 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(SceneUnloaded);
     REGISTER_EVENT(PlayUpdate);
     REGISTER_EVENT(FamicomStart);
+    REGISTER_EVENT(FamicomRomLookup);
     REGISTER_EVENT(NewGameWelcome);
     REGISTER_EVENT(TrainRideStart);
     REGISTER_EVENT(MessageLoad);

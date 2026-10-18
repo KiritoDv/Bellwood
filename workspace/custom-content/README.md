@@ -1,6 +1,6 @@
 # Custom Content Example
 
-Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), a new piece of furniture (a "mod table") and a new item (a "lucky gem" that breaks into 1,000 Bells when used) to Bellwood. All three can be triggered from **Mods > Custom Content** in the menu.
+Adds a custom actor (a spinning Groundhog Day podium that greets you when you press A next to it), new furniture (a "mod table" and a "mod NES" that plays a small demo ROM) and a new item (a "lucky gem" that breaks into 1,000 Bells when used) to Bellwood. All of them can be triggered from **Mods > Custom Content** in the menu.
 
 Build and install it like the template:
 
@@ -153,6 +153,45 @@ static C_ItemDef sGemDef = {
 | `void C_UnregisterItem(mActor_name_t item)` | Call it in `MOD_EXIT`. Copies in the pockets or on the ground show as unknown until the mod is loaded again. |
 
 Indoors, custom items only offer Grab and Use, since rooms have no model to show them on the floor. Outdoors, items with `on_use` offer Grab, Use, Drop and Quit; items without it get the regular item menu. They don't appear in shops, quests or the catalog.
+
+## NES games (`port/api/famicom.h`)
+
+Register an iNES (`.nes`) ROM and you get a ROM number that the game's emulator can run. Put the file in the mod's `assets/` folder and register it by its path in the archive, or pass the bytes directly:
+
+```c
+static int sMyGame;
+
+MOD_INIT() {
+    sMyGame = C_RegisterFamicomGameFile("mymod.game", "famicom/mygame.nes");
+}
+
+MOD_EXIT() {
+    C_UnregisterFamicomGame(sMyGame);
+}
+```
+
+To play it, make a custom furniture piece that calls `C_FamicomFurnitureMove` from its move callback and sets `aFTR_INTERACTION_FAMICOM` in its profile. Switching it on asks the usual "Would you like to play...?" question, using the furniture's name:
+
+```c
+static void MyNes_mv(FTR_ACTOR* ftr_actor, ACTOR* my_room, GAME* game, u8* data) {
+    C_FamicomFurnitureMove(ftr_actor, my_room, game, sMyGame);
+}
+
+static aFTR_vtable_c sMyNesFuncs = { NULL, &MyNes_mv, &MyNes_dw, NULL, NULL };
+```
+
+The example's "mod NES" draws the game's own NES model and plays a tiny demo ROM built in `main.c`, which changes the screen colour when A is pressed.
+
+| Function | Description |
+|---|---|
+| `int C_RegisterFamicomGame(const char* id, const uint8_t* rom, uint32_t size)` | Copies the ROM and returns its number (64-127), or -1. |
+| `int C_RegisterFamicomGameFile(const char* id, const char* path)` | Same, reading the ROM from a file in a mod archive. |
+| `void C_UnregisterFamicomGame(int rom_no)` | Call it in `MOD_EXIT`. |
+| `void C_FamicomFurnitureMove(FTR_ACTOR* ftr_actor, ACTOR* my_room, GAME* game, int rom_no)` | Makes a furniture piece an NES that plays `rom_no`. |
+
+`id` names the game's save file (`save/famicom/Bellwood_<id>.bin`), so keep it the same between versions of the mod. Games with the battery flag in their iNES header keep their 8 KB battery RAM there. ROM numbers are handed out in load order, so look them up at startup rather than hard-coding them. The `FamicomStart` event can also redirect any of the game's own NES furniture to a registered ROM.
+
+Quit a game with L, R and Z, like the built-in ones.
 
 ## Assets
 
