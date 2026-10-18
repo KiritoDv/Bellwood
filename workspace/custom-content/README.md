@@ -11,6 +11,10 @@ cmake --build build --target package_mod
 
 Copy `CustomContent.o2r` into Bellwood's `mods/` folder.
 
+Everything a mod registers with these APIs is unregistered when it unloads, after its `MOD_EXIT` and before its code is freed, so `MOD_EXIT` doesn't need to undo `MOD_INIT`. The `C_Unregister*` functions are for taking content away while the mod runs. The same goes for its event listeners, menu entries and GUI callbacks, and for anything registered from its actor and furniture callbacks. Furniture placed in the room being shown is destroyed with the old code and constructed again with the new one when the mod reloads.
+
+The numbers given to content ids are kept next to the game in `custom_<kind>.json`, and in each town file under the ids it uses. When a town saved by another install loads, or one whose `custom_*.json` files were deleted, its content is renumbered to match. A town that uses content no loaded mod registers shows a warning naming the mods.
+
 ## Custom actors (`port/api/actor.h`)
 
 Define an `ACTOR_PROFILE` the same way the game's actors do and register it in `MOD_INIT`. You get back a profile number past the built-in ones.
@@ -26,16 +30,12 @@ static s16 sMyActor;
 MOD_INIT() {
     sMyActor = C_RegisterActor(&sMyProfile);
 }
-
-MOD_EXIT() {
-    C_UnregisterActor(sMyActor);
-}
 ```
 
 | Function | Description |
 |---|---|
 | `int16_t C_RegisterActor(const ACTOR_PROFILE* profile)` | Copies the profile and returns its new profile number, or -1. Up to 64 custom actors can be registered. |
-| `void C_UnregisterActor(int16_t profile)` | Runs the destructor of every live actor using the profile, deletes them and frees the number. Always call it in `MOD_EXIT`, the actor code is unloaded right after. |
+| `void C_UnregisterActor(int16_t profile)` | Runs the destructor of every live actor using the profile, deletes them and frees the number. |
 | `ACTOR* C_SpawnActor(int16_t profile, float x, float y, float z, int16_t angle_y, int16_t arg)` | Spawns any actor, built-in or custom, in the current scene. Returns NULL outside of gameplay. |
 | `GAME_PLAY* C_GetPlay(void)` | The scene being played, or NULL. |
 | `int C_ActorSpeak(ACTOR* actor, int32_t msg_no)` | Starts a conversation with the player showing a message. Call it when the player presses A next to the actor, like the game's signs do. |
@@ -79,9 +79,9 @@ An end code is added when the text doesn't finish with one. Each message holds u
 | Function | Description |
 |---|---|
 | `int32_t C_RegisterMessage(const char* text)` | Returns a new message number (0x4000-0x7FFF), or -1. |
-| `void C_UnregisterMessage(int32_t msg_no)` | Call it in `MOD_EXIT`. |
+| `void C_UnregisterMessage(int32_t msg_no)` | Frees a message number. |
 | `void C_SetMessage(int32_t msg_no, const char* text)` | Replaces the text of any message, including the game's own. |
-| `void C_ResetMessage(int32_t msg_no)` | Restores a built-in message changed with `C_SetMessage`. Call it in `MOD_EXIT`. |
+| `void C_ResetMessage(int32_t msg_no)` | Restores a built-in message changed with `C_SetMessage`. |
 | `int C_EncodeText(const char* text, uint8_t* out, int capacity)` | Encodes text into the game's character set, for example for `mMsg_SET_FREE_STR`. |
 
 Custom furniture and item names use the same encoding, so they can contain accented letters too.
@@ -103,7 +103,7 @@ static C_FurnitureDef sTableDef = {
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The item number assigned to it is stored in `custom_furniture.json` next to the game, so saved rooms keep the right furniture across sessions. Never reuse an id for a different piece. |
+| `id` | Unique key. The item number assigned to it is stored in `custom_furniture.json` next to the game and in the town files that use it, so saved rooms keep the right furniture across sessions. Never reuse an id for a different piece. |
 | `name` | Name shown in game, up to 16 characters. |
 | `article` | `mIN_ARTICLE_*`, used in sentences like "You got a my table". |
 | `price` | Price in Bells. |
@@ -115,7 +115,7 @@ static C_FurnitureDef sTableDef = {
 | Function | Description |
 |---|---|
 | `mActor_name_t C_RegisterFurniture(const C_FurnitureDef* def)` | Returns the south-facing item number. The east, north and west facings are the next three numbers. |
-| `void C_UnregisterFurniture(mActor_name_t item)` | Call it in `MOD_EXIT`. Placed copies draw as the placeholder until the mod is loaded again. |
+| `void C_UnregisterFurniture(mActor_name_t item)` | Placed copies draw as the placeholder until it is registered again. |
 
 Give the item to the player with the game's own `mPr_SetFreePossessionItem(Common_Get(now_private), item, mPr_ITEM_COND_NORMAL)`.
 
@@ -140,7 +140,7 @@ static C_ItemDef sGemDef = {
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The item number assigned to it is stored in `custom_items.json` next to the game. Never reuse an id for a different item. |
+| `id` | Unique key. The item number assigned to it is stored in `custom_items.json` next to the game and in the town files that use it. Never reuse an id for a different item. |
 | `name` | Name shown in game, up to 16 characters. |
 | `article` | `mIN_ARTICLE_*`. |
 | `price` | Price in Bells. 0 means Nook takes it for free. |
@@ -152,7 +152,7 @@ static C_ItemDef sGemDef = {
 | Function | Description |
 |---|---|
 | `mActor_name_t C_RegisterItem(const C_ItemDef* def)` | Returns the item number, or `EMPTY_NO`. Up to 207 custom items fit (`C_ITEM_FIRST` to `C_ITEM_LAST`). |
-| `void C_UnregisterItem(mActor_name_t item)` | Call it in `MOD_EXIT`. Copies in the pockets or on the ground show as unknown until the mod is loaded again. |
+| `void C_UnregisterItem(mActor_name_t item)` | Copies in the pockets or on the ground show as unknown until it is registered again. |
 
 Indoors, custom items only offer Grab and Use, since rooms have no model to show them on the floor. Outdoors, items with `on_use` offer Grab, Use, Drop and Quit; items without it get the regular item menu. They don't appear in quests or on the shop floor, but once the player owns one it is listed on the catalog's Items page and can be ordered.
 
@@ -165,14 +165,14 @@ C_AddShopStock(sTable, 50);   // on sale on about half of the days
 | Function | Description |
 |---|---|
 | `int C_AddShopStock(mActor_name_t item, int chance)` | Puts furniture, a carpet, a wallpaper or a shirt, custom or built-in, in Nook's rotation. `chance` is the percentage of days it is on sale; it takes the place of one of the day's regular items of the same kind. Returns `FALSE` for any other kind of item. |
-| `void C_RemoveShopStock(mActor_name_t item)` | Call it in `MOD_EXIT`. Copies already on sale stay until the next restock. |
+| `void C_RemoveShopStock(mActor_name_t item)` | Takes an item out of the rotation. Copies already on sale stay until the next restock. |
 | `int C_RestockShop(void)` | Rolls the stock again, as on a new day. Returns `FALSE` while the player is inside a shop, or before a game is loaded. |
 | `void C_AddToCatalog(mActor_name_t item)` | Adds an item to the current player's catalog as if they had owned it. |
 | `int C_IsInCatalog(mActor_name_t item)` | Whether the item is in the current player's catalog. |
 
 Stock is rolled when Nook restocks, so a newly added item shows up from the next day or after `C_RestockShop`. Only furniture, carpets, wallpapers and shirts can go on the shop floor: each display spot draws its own models, and custom items have none. Nook shows a custom carpet or wallpaper on the shop's floor or wall when the player asks to see it, like the built-in ones.
 
-Custom furniture the player has owned is listed at the end of the catalog's Furniture page, custom carpets, wallpapers and shirts at the end of their own pages, and custom items at the end of the Items page. All of them can be ordered at their `price` and arrive by mail the next day, like built-in orders. Which custom pieces each player has owned is kept in `custom_collection.json` next to the game, by town and player, since the save file has no room for them. Entries whose mod isn't loaded are hidden until it is.
+Custom furniture the player has owned is listed at the end of the catalog's Furniture page, custom carpets, wallpapers and shirts at the end of their own pages, and custom items at the end of the Items page. All of them can be ordered at their `price` and arrive by mail the next day, like built-in orders. Which custom pieces each player has owned is kept in the town file, next to the player, and travels with them in their passport. Entries from the older `custom_collection.json` next to the game are read once and saved into the towns from then on. Entries whose mod isn't loaded are hidden until it is.
 
 `ShopStockGenerated` and `CatalogPageBuild` in `src/port/events/EVENTS.md` give full control over the stock and the catalog pages when the functions above aren't enough.
 
@@ -191,7 +191,7 @@ sTiles = C_RegisterCarpet(&sTilesDef);
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The item number assigned to it is stored in `custom_carpets.json` or `custom_wallpapers.json` next to the game, so rooms keep the right floor and wall across sessions. Never reuse an id for a different design. |
+| `id` | Unique key. The item number assigned to it is stored in `custom_carpets.json` or `custom_wallpapers.json` next to the game and in the town files that use it, so rooms keep the right floor and wall across sessions. Never reuse an id for a different design. |
 | `name` | Name shown in game, up to 16 characters. |
 | `article` | `mIN_ARTICLE_*`. |
 | `price` | Price in Bells. |
@@ -203,7 +203,7 @@ sTiles = C_RegisterCarpet(&sTilesDef);
 |---|---|
 | `mActor_name_t C_RegisterCarpet(const C_InteriorDef* def)` | Returns the item number, or `EMPTY_NO` if the texture can't be loaded. Up to 161 custom carpets fit. |
 | `mActor_name_t C_RegisterWallpaper(const C_InteriorDef* def)` | Returns the item number, or `EMPTY_NO`. Up to 176 custom wallpapers fit. |
-| `void C_UnregisterCarpet(mActor_name_t item)`, `void C_UnregisterWallpaper(mActor_name_t item)` | Call them in `MOD_EXIT`. |
+| `void C_UnregisterCarpet(mActor_name_t item)`, `void C_UnregisterWallpaper(mActor_name_t item)` | Rooms using it show the default floor or wall until it is registered again. |
 
 Custom carpets and wallpapers work like the built-in ones: the player uses them from the pockets in their house or island cottage, and the one they replace goes back into the pockets. They count as common designs at the Happy Room Academy, and walking on a custom carpet sounds like walking on a design from the Able Sisters. If a room uses a carpet or wallpaper whose mod isn't loaded, it shows the default floor or wall until the mod is back, without losing it.
 
@@ -222,7 +222,7 @@ sTee = C_RegisterCloth(&sTeeDef);
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The item number assigned to it is stored in `custom_clothes.json` next to the game. Never reuse an id for a different shirt. |
+| `id` | Unique key. The item number assigned to it is stored in `custom_clothes.json` next to the game and in the town files that use it. Never reuse an id for a different shirt. |
 | `name`, `article` | Name shown in game, up to 16 characters, and its `mIN_ARTICLE_*`. |
 | `price` | Price in Bells. |
 | `texture`, `palette` | A 32x32 CI4 texture and its 16 colour palette, laid out like an Able Sisters design: the texture wraps around the body, with the chest in the middle. |
@@ -231,7 +231,7 @@ sTee = C_RegisterCloth(&sTeeDef);
 | Function | Description |
 |---|---|
 | `mActor_name_t C_RegisterCloth(const C_ClothDef* def)` | Returns the item number, or `EMPTY_NO`. Up to 240 custom shirts fit. |
-| `void C_UnregisterCloth(mActor_name_t item)` | Call it in `MOD_EXIT`. |
+| `void C_UnregisterCloth(mActor_name_t item)` | Copies in the pockets show as unknown until it is registered again. |
 
 The game's clothing numbers are all taken, so custom shirts use the free end of the diary category (0x2B10 to 0x2BFF) and the game treats them as clothing everywhere: the player wears them from the pockets or the inventory background, Nook sells them on a mannequin and lets the player try them on, they can be placed at home on a mannequin, listed and ordered in the catalog, and given or mailed to villagers, who wear them. Villagers don't pick custom shirts on their own, and quests and Blanca only use the built-in ones.
 
@@ -258,7 +258,7 @@ A custom villager starts from one of the 236 built-in villagers, its `base`: the
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The villager id assigned to it is stored in `custom_villagers.json` next to the game. Never reuse an id for a different villager. |
+| `id` | Unique key. The villager id assigned to it is stored in `custom_villagers.json` next to the game and in the town files that use it. Never reuse an id for a different villager. |
 | `name` | Name shown in game, up to 8 characters. |
 | `catchphrase` | Added to the end of sentences, up to 10 characters. Villagers can still change it over time, like built-in ones. |
 | `base` | `NPC_*` id of the built-in villager it is built on, from `m_name_table.h`. |
@@ -280,7 +280,7 @@ A custom villager starts from one of the 236 built-in villagers, its `base`: the
 | Function | Description |
 |---|---|
 | `mActor_name_t C_RegisterVillager(const C_VillagerDef* def)` | Returns the villager id, or `EMPTY_NO`. Up to 17 custom villagers fit. |
-| `void C_UnregisterVillager(mActor_name_t npc_id)` | Call it in `MOD_EXIT`. A town it lives in shows it as the base villager Bob until it is registered again. |
+| `void C_UnregisterVillager(mActor_name_t npc_id)` | A town it lives in shows it as the base villager Bob until it is registered again. |
 | `int C_ReplaceVillager(mActor_name_t old_npc_id, mActor_name_t new_npc_id)` | Moves a villager, built-in or custom, into the house of a town villager in place of them, as if they had just moved in. The town shows it the next time it loads. |
 
 The example turns Mint into a green dog: the dog species' skeleton, texture, eyes and mouths from the game's own assets, with a recoloured palette, in a room of her own with two mod tables and the mod carpet and wallpaper.
@@ -331,7 +331,7 @@ A custom fish or insect is built on one of the 40 built-in ones, its `base`. It 
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The item number assigned to it is stored in `custom_fish.json` or `custom_insects.json` next to the game. Never reuse an id for a different creature. |
+| `id` | Unique key. The item number assigned to it is stored in `custom_fish.json` or `custom_insects.json` next to the game and in the town files that use it. Never reuse an id for a different creature. |
 | `name`, `article` | Name shown in game, up to 16 characters, and its `mIN_ARTICLE_*`. |
 | `price` | Value in Bells. Nook pays a quarter of it, like for the built-in ones. |
 | `base` | `aGYO_TYPE_*` from `ac_gyoei.h` for fish, `aINS_INSECT_TYPE_*` from `ac_insect_h.h` for insects. |
@@ -347,7 +347,7 @@ A custom fish or insect is built on one of the 40 built-in ones, its `base`. It 
 | Function | Description |
 |---|---|
 | `mActor_name_t C_RegisterFish(const C_CreatureDef* def)`, `C_RegisterInsect` | Returns the item number, or `EMPTY_NO`. Up to 211 custom fish and 211 custom insects fit. |
-| `void C_UnregisterFish(mActor_name_t item)`, `C_UnregisterInsect` | Call them in `MOD_EXIT`. |
+| `void C_UnregisterFish(mActor_name_t item)`, `C_UnregisterInsect` | Caught copies show as unknown until it is registered again. |
 
 Custom fish and insects are caught with the rod or the net, show their catch text, go into the pockets, can be released, sold to Nook, or placed at home, where they show as the base's aquarium or cage and count as fish or insects at the Happy Room Academy. Some things stay with the 40 built-in ones:
 - Blathers hands custom ones back instead of taking them for the museum.
@@ -388,7 +388,7 @@ A structure with a `name` is listed on the town map, in the panel of the acre it
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The item number assigned to it is stored in `custom_structures.json` next to the game. Never reuse an id for a different structure. |
+| `id` | Unique key. The item number assigned to it is stored in `custom_structures.json` next to the game and in the town files that use it. Never reuse an id for a different structure. |
 | `name` | Shown on the town map, up to 8 characters. NULL keeps it off the map. |
 | `model`, `model_xlu` | Display lists of the structure, opaque and translucent, drawn with their origin at the centre of the anchor tile on the ground. `#asset "file.gltf" MODEL` and `MODEL_XLU` make them from a glTF file (see below). `model_xlu` can be NULL. |
 | `winter_model`, `winter_model_xlu` | Models used in winter, for a snowy roof. NULL keeps `model` or `model_xlu`. |
@@ -411,7 +411,7 @@ The player comes in through the gap in the front wall: the `EXIT_DOOR` tiles of 
 | Function | Description |
 |---|---|
 | `mActor_name_t C_RegisterStructure(const C_StructureDef* def)` | Returns the structure's item number (0x5900 to 0x5FFF), or `EMPTY_NO`. |
-| `void C_UnregisterStructure(mActor_name_t item)` | Call it in `MOD_EXIT`. Where it stands the town keeps its place, empty, until it is registered again. |
+| `void C_UnregisterStructure(mActor_name_t item)` | Where it stands the town keeps its place, empty, until it is registered again. |
 | `int C_CanPlaceStructure(mActor_name_t item, int block_x, int block_z, int ut_x, int ut_z)` | Whether it fits with its anchor on tile `ut_x`, `ut_z` (0 to 15) of acre `block_x` (1 to 5), `block_z` (1 to 6): the footprint and the door tile are empty, flat grass or soil inside that acre, and the player isn't standing there. Only in town. |
 | `int C_PlaceStructure(...)` | Places it there if it fits. In the player's acre it appears right away. |
 | `int C_PlaceStructureAt(mActor_name_t item, float x, float z)` | Same, with the anchor on the tile under a world position. |
@@ -441,10 +441,6 @@ static int sMyGame;
 MOD_INIT() {
     sMyGame = C_RegisterFamicomGameFile("mymod.game", "famicom/mygame.nes");
 }
-
-MOD_EXIT() {
-    C_UnregisterFamicomGame(sMyGame);
-}
 ```
 
 To play it, make a custom furniture piece that calls `C_FamicomFurnitureMove` from its move callback and sets `aFTR_INTERACTION_FAMICOM` in its profile. Switching it on asks the usual "Would you like to play...?" question, using the furniture's name:
@@ -463,12 +459,47 @@ The example's "mod NES" draws the game's own NES model and plays a tiny demo ROM
 |---|---|
 | `int C_RegisterFamicomGame(const char* id, const uint8_t* rom, uint32_t size)` | Copies the ROM and returns its number (64-127), or -1. |
 | `int C_RegisterFamicomGameFile(const char* id, const char* path)` | Same, reading the ROM from a file in a mod archive. |
-| `void C_UnregisterFamicomGame(int rom_no)` | Call it in `MOD_EXIT`. |
+| `void C_UnregisterFamicomGame(int rom_no)` | Frees the ROM number. |
 | `void C_FamicomFurnitureMove(FTR_ACTOR* ftr_actor, ACTOR* my_room, GAME* game, int rom_no)` | Makes a furniture piece an NES that plays `rom_no`. |
 
 `id` names the game's save file (`save/famicom/Bellwood_<id>.bin`), so keep it the same between versions of the mod. Games with the battery flag in their iNES header keep their 8 KB battery RAM there. ROM numbers are handed out in load order, so look them up at startup rather than hard-coding them. The `FamicomStart` event can also redirect any of the game's own NES furniture to a registered ROM.
 
 Quit a game with L, R and Z, like the built-in ones.
+
+## Town data (`port/api/savedata.h`)
+
+Values a mod keeps for a town go in the town's save file, under keys of the mod's own, like ids. The town's values are read before the `SaveLoaded` event fires and written whenever the game saves the town; a new town starts with none.
+
+```c
+static void OnSaveLoaded(IEvent* event) {
+    C_SaveDataSetInt("mymod.visits", C_SaveDataGetInt("mymod.visits", 0) + 1);
+}
+```
+
+| Function | Description |
+|---|---|
+| `int C_SaveDataHas(const char* key)`, `void C_SaveDataRemove(const char* key)` | Checks for or removes a value. |
+| `int32_t C_SaveDataGetInt(const char* key, int32_t defaultValue)`, `C_SaveDataSetInt` | Whole numbers. |
+| `float C_SaveDataGetFloat(const char* key, float defaultValue)`, `C_SaveDataSetFloat` | Decimal numbers. |
+| `const char* C_SaveDataGetString(const char* key, const char* defaultValue)`, `C_SaveDataSetString` | UTF-8 text. The string stays valid until the key is set again or another town loads. |
+| `uint32_t C_SaveDataGetBytes(const char* key, void* out, uint32_t capacity)`, `C_SaveDataSetBytes` | Raw bytes. Get copies up to `capacity` bytes and returns the stored size. |
+
+## Player and town (`port/api/player.h`, `port/api/town.h`)
+
+Mods can call the game's own functions and read its data directly, but those follow the decompilation and can change. These keep their signatures across versions.
+
+| Function | Description |
+|---|---|
+| `ACTOR* C_GetPlayer(void)` | The player's actor, or NULL outside of gameplay. |
+| `int C_GetPlayerPosition(float* x, float* y, float* z)` | Returns `FALSE` outside of gameplay. |
+| `int C_GiveItem(mActor_name_t item)` | Puts the item in the first free pocket and returns the pocket, or -1 when the pockets are full. |
+| `int C_TakeItem(mActor_name_t item)` | Takes one out of the pockets. Returns `FALSE` when the player doesn't carry it. |
+| `int C_CountItem(mActor_name_t item)` | How many the player carries. |
+| `uint32_t C_GetWallet(void)`, `void C_SetWallet(uint32_t bells)` | Bells in the wallet, up to 99,999. |
+| `int C_GetScene(void)` | The `SCENE_*` being played, or -1. |
+| `int C_InTown(void)` | `TRUE` when the player is outside in town. |
+| `void C_GetTime(C_Time* time)` | The game's date and time. |
+| `int C_GetTownVillagers(mActor_name_t* ids, int capacity)` | Writes the ids of the villagers living in town and returns how many live there. |
 
 ## Assets
 

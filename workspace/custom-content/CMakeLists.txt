@@ -89,8 +89,11 @@ set(OUTPUT_MANIFEST ${OUTPUT_DIR}/manifest.json)
 add_custom_command(
     OUTPUT ${OUTPUT_MANIFEST}
     COMMAND ${CMAKE_COMMAND} -E make_directory ${OUTPUT_DIR}
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${MANIFEST_FILE} ${OUTPUT_MANIFEST}
-    DEPENDS ${MANIFEST_FILE}
+    COMMAND Python3::Interpreter ${PARENT_DIR}/tools/mod_manifest.py
+            --api ${PARENT_DIR}/src/port/api/api.h
+            --src ${MANIFEST_FILE}
+            --out ${OUTPUT_MANIFEST}
+    DEPENDS ${MANIFEST_FILE} ${PARENT_DIR}/src/port/api/api.h ${PARENT_DIR}/tools/mod_manifest.py
     VERBATIM
 )
 list(APPEND COPY_OUTPUTS ${OUTPUT_MANIFEST})

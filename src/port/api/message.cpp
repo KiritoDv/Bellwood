@@ -2,6 +2,7 @@
 
 #include "port/ShipInit.hpp"
 #include "port/api/GameText.hpp"
+#include "port/api/ModOwner.hpp"
 #include "port/events/Events.h"
 
 #define this this_
@@ -22,6 +23,19 @@ namespace {
 
 std::unordered_map<int32_t, std::string> sMessages;
 std::unordered_map<int32_t, std::string> sOverrides;
+std::unordered_map<int32_t, std::string> sMessageOwners;
+std::unordered_map<int32_t, std::string> sOverrideOwners;
+
+void ReleaseOwned(std::unordered_map<int32_t, std::string>& texts, std::unordered_map<int32_t, std::string>& owners,
+                  const std::string& mod) {
+    std::erase_if(owners, [&](const auto& entry) {
+        if (entry.second != mod) {
+            return false;
+        }
+        texts.erase(entry.first);
+        return true;
+    });
+}
 
 bool IsCustom(int32_t msg_no) {
     return msg_no >= C_MESSAGE_FIRST && msg_no <= C_MESSAGE_LAST;
@@ -71,6 +85,10 @@ void InitMessageApi() {
             memcpy(loaded->text, it->second.data(), size);
         }
     });
+    ModOwner::AddReleaser([](const std::string& mod) {
+        ReleaseOwned(sMessages, sMessageOwners, mod);
+        ReleaseOwned(sOverrides, sOverrideOwners, mod);
+    });
 }
 
 RegisterShipInitFunc sInitMessageApi(InitMessageApi);
@@ -81,6 +99,7 @@ extern "C" int32_t C_RegisterMessage(const char* text) {
     for (int32_t msg_no = C_MESSAGE_FIRST; msg_no <= C_MESSAGE_LAST; msg_no++) {
         if (!sMessages.contains(msg_no)) {
             sMessages[msg_no] = EncodeMessage(text);
+            sMessageOwners[msg_no] = ModOwner::Current();
             return msg_no;
         }
     }
@@ -89,6 +108,7 @@ extern "C" int32_t C_RegisterMessage(const char* text) {
 
 extern "C" void C_UnregisterMessage(int32_t msg_no) {
     sMessages.erase(msg_no);
+    sMessageOwners.erase(msg_no);
 }
 
 extern "C" void C_SetMessage(int32_t msg_no, const char* text) {
@@ -98,11 +118,13 @@ extern "C" void C_SetMessage(int32_t msg_no, const char* text) {
         }
     } else if (msg_no >= 0 && msg_no < MSG_MAX) {
         sOverrides[msg_no] = EncodeMessage(text);
+        sOverrideOwners[msg_no] = ModOwner::Current();
     }
 }
 
 extern "C" void C_ResetMessage(int32_t msg_no) {
     sOverrides.erase(msg_no);
+    sOverrideOwners.erase(msg_no);
 }
 
 extern "C" int C_EncodeText(const char* text, uint8_t* out, int capacity) {

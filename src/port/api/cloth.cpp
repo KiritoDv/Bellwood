@@ -2,6 +2,8 @@
 
 #include "port/ShipInit.hpp"
 #include "port/api/GameText.hpp"
+#include "port/api/ModOwner.hpp"
+#include "port/api/SizedDef.hpp"
 #include "port/api/StableIds.hpp"
 #include "port/api/TextureData.hpp"
 #include "port/events/Events.h"
@@ -35,6 +37,7 @@ struct CustomCloth {
     bool used = false;
     std::string id;
     std::string name;
+    std::string owner;
     C_ClothDef def{};
     mActor_name_t furnitureItem = EMPTY_NO;
     int furniture = -1;
@@ -42,7 +45,7 @@ struct CustomCloth {
 
 std::array<CustomCloth, kCount> sClothes;
 std::unordered_map<int, int> sByFurniture;
-StableIds sIds("custom_clothes.json", C_CLOTH_FIRST, C_CLOTH_LAST);
+StableIds sIds("clothes", C_CLOTH_FIRST, C_CLOTH_LAST);
 aFTR_vtable_c sMannequinFuncs{};
 
 CustomCloth* Find(int item) {
@@ -73,6 +76,13 @@ void InitClothApi() {
             lookup->foundFurniture = cloth->furniture;
         }
     });
+    ModOwner::AddReleaser([](const std::string& mod) {
+        for (int slot = 0; slot < kCount; slot++) {
+            if (sClothes[slot].used && sClothes[slot].owner == mod) {
+                C_UnregisterCloth((mActor_name_t)(C_CLOTH_FIRST + slot));
+            }
+        }
+    });
 }
 
 RegisterShipInitFunc sInitClothApi(InitClothApi);
@@ -85,6 +95,7 @@ extern "C" void C_UnregisterCloth(mActor_name_t item) {
         return;
     }
     cloth->used = false;
+    sIds.Unregister(item);
     sByFurniture.erase(cloth->furniture);
     if (cloth->furnitureItem != EMPTY_NO) {
         C_UnregisterFurniture(cloth->furnitureItem);
@@ -93,7 +104,9 @@ extern "C" void C_UnregisterCloth(mActor_name_t item) {
     cloth->furniture = -1;
 }
 
-extern "C" mActor_name_t C_RegisterCloth(const C_ClothDef* def) {
+extern "C" mActor_name_t C_RegisterClothSized(const C_ClothDef* cloth_def, uint32_t size) {
+    const SizedDef<C_ClothDef> sized(cloth_def, size);
+    const C_ClothDef* def = sized.get();
     if (def == nullptr || def->id == nullptr || def->id[0] == '\0' || def->texture == nullptr ||
         def->palette == nullptr) {
         return EMPTY_NO;
@@ -104,12 +117,14 @@ extern "C" mActor_name_t C_RegisterCloth(const C_ClothDef* def) {
         SPDLOG_ERROR("Cloth: could not load {}", def->id);
         return EMPTY_NO;
     }
+    const std::string owner = ModOwner::Current();
     const int number = sIds.Get(def->id);
     if (number < 0) {
         return EMPTY_NO;
     }
     const mActor_name_t item = (mActor_name_t)number;
     C_UnregisterCloth(item);
+    sIds.Register(def->id, owner);
 
     const uint32_t texIdx = C_CLOTH_TEX_FIRST + (number - C_CLOTH_FIRST);
     AC_AramWriteRecord(RESOURCE_TEX_BOY, texIdx * kTexSize, texture, kTexSize);
@@ -122,6 +137,7 @@ extern "C" mActor_name_t C_RegisterCloth(const C_ClothDef* def) {
     cloth.def = *def;
     cloth.def.id = cloth.id.c_str();
     cloth.def.name = cloth.name.c_str();
+    cloth.owner = owner;
     cloth.used = true;
 
     u8 set_type = aFTR_SET_TYPE_NORMAL;

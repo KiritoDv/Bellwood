@@ -2,6 +2,8 @@
 
 #include "port/ShipInit.hpp"
 #include "port/api/GameText.hpp"
+#include "port/api/ModOwner.hpp"
+#include "port/api/SizedDef.hpp"
 #include "port/api/StableIds.hpp"
 #include "port/events/Events.h"
 
@@ -22,11 +24,12 @@ struct CustomItem {
     bool used = false;
     std::string id;
     std::string name;
+    std::string owner;
     C_ItemDef def{};
 };
 
 std::array<CustomItem, kCustomCount> sItems;
-StableIds sNumbers("custom_items.json", C_ITEM_FIRST, C_ITEM_LAST);
+StableIds sNumbers("items", C_ITEM_FIRST, C_ITEM_LAST);
 
 CustomItem* FindItem(int item) {
     const int slot = item - C_ITEM_FIRST;
@@ -59,7 +62,15 @@ void InitItemApi() {
         auto* use = reinterpret_cast<ItemUse*>(event);
         CustomItem* item = FindItem(use->item);
         if (item != nullptr && item->def.on_use != nullptr) {
+            ModOwner::Scope scope(item->owner);
             item->def.on_use(use->item, use->slot);
+        }
+    });
+    ModOwner::AddReleaser([](const std::string& mod) {
+        for (int slot = 0; slot < kCustomCount; slot++) {
+            if (sItems[slot].used && sItems[slot].owner == mod) {
+                C_UnregisterItem((mActor_name_t)(C_ITEM_FIRST + slot));
+            }
         }
     });
 }
@@ -68,17 +79,21 @@ RegisterShipInitFunc sInitItemApi(InitItemApi);
 
 } // namespace
 
-extern "C" mActor_name_t C_RegisterItem(const C_ItemDef* def) {
+extern "C" mActor_name_t C_RegisterItemSized(const C_ItemDef* item_def, uint32_t size) {
+    const SizedDef<C_ItemDef> sized(item_def, size);
+    const C_ItemDef* def = sized.get();
     if (def == nullptr || def->id == nullptr || def->id[0] == '\0') {
         return EMPTY_NO;
     }
-    const int number = sNumbers.Get(def->id);
+    const std::string owner = ModOwner::Current();
+    const int number = sNumbers.Register(def->id, owner);
     if (number < 0) {
         return EMPTY_NO;
     }
     CustomItem& item = sItems[number - C_ITEM_FIRST];
     item.used = true;
     item.id = def->id;
+    item.owner = owner;
     item.name = GameText_Encode(def->name != nullptr ? def->name : "", false);
     item.name.resize(C_ITEM_NAME_LEN, ' ');
     item.def = *def;
@@ -91,6 +106,7 @@ extern "C" mActor_name_t C_RegisterItem(const C_ItemDef* def) {
 extern "C" void C_UnregisterItem(mActor_name_t item) {
     if (CustomItem* custom = FindItem(item)) {
         custom->used = false;
+        sNumbers.Unregister(item);
     }
 }
 

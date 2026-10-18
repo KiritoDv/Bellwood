@@ -44,7 +44,8 @@ typedef struct C_StructureDef_s {
 } C_StructureDef;
 
 // Registers a structure. Returns its item number, or EMPTY_NO.
-BW_API mActor_name_t C_RegisterStructure(const C_StructureDef* def);
+#define C_RegisterStructure(def) C_RegisterStructureSized((def), sizeof(*(def)), sizeof(C_StructureRoomDef))
+BW_API mActor_name_t C_RegisterStructureSized(const C_StructureDef* def, uint32_t size, uint32_t room_size);
 // Unregisters a structure. Where it stands the town keeps its place, empty, until it is registered again.
 BW_API void C_UnregisterStructure(mActor_name_t item);
 // Whether the structure fits with its anchor at the tile: the footprint and the tile in front of the door are empty,

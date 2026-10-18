@@ -2,6 +2,8 @@
 
 #include "port/ShipCompat.h"
 #include "port/ShipInit.hpp"
+#include "port/api/ModOwner.hpp"
+#include "port/save/SaveMods.h"
 #include "port/events/Events.h"
 
 #define this this_
@@ -27,7 +29,6 @@ extern "C" {
 #include <nlohmann/json.hpp>
 
 #include <algorithm>
-#include <cstdio>
 #include <fstream>
 #include <map>
 #include <set>
@@ -41,11 +42,11 @@ constexpr const char* kCollectionFile = "custom_collection.json";
 struct ShopStock {
     mActor_name_t item;
     int chance;
+    std::string owner;
 };
 
 std::vector<ShopStock> sStock;
-std::map<std::string, std::set<std::string>> sCollection;
-bool sCollectionLoaded = false;
+bool sLegacyCollectionRead = false;
 
 mActor_name_t SouthFacing(mActor_name_t item) {
     return mRmTp_FtrIdx2FtrItemNo(mRmTp_FtrItemNo2FtrIdx(item), mRmTp_DIRECT_SOUTH);
@@ -101,31 +102,20 @@ bool HasPlayer() {
 }
 
 std::string PlayerKey() {
-    if (!HasPlayer()) {
-        return {};
-    }
-    const PersonalID_c& pid = Common_Get(now_private)->player_ID;
-    char key[16];
-    snprintf(key, sizeof(key), "%04X-%04X", pid.land_id, pid.player_id);
-    return key;
+    return HasPlayer() ? SaveMods::PlayerKey(Common_Get(now_private)->player_ID) : std::string();
 }
 
-std::string CollectionPath() {
-    return Ship::Context::GetPathRelativeToAppDirectory(kCollectionFile);
-}
-
-void LoadCollection() {
-    if (sCollectionLoaded) {
+void ReadLegacyCollection() {
+    if (sLegacyCollectionRead) {
         return;
     }
-    sCollectionLoaded = true;
-    std::ifstream in(CollectionPath());
+    sLegacyCollectionRead = true;
+    std::ifstream in(Ship::Context::GetPathRelativeToAppDirectory(kCollectionFile));
     if (!in) {
         return;
     }
     const auto json = nlohmann::json::parse(in, nullptr, false);
     if (!json.is_object()) {
-        SPDLOG_WARN("{} is not valid, custom catalog entries are reset", kCollectionFile);
         return;
     }
     for (const auto& [player, ids] : json.items()) {
@@ -134,19 +124,10 @@ void LoadCollection() {
         }
         for (const auto& id : ids) {
             if (id.is_string()) {
-                sCollection[player].insert(id.get<std::string>());
+                SaveMods::Collections()[player].insert(id.get<std::string>());
             }
         }
     }
-}
-
-void SaveCollection() {
-    nlohmann::json json = nlohmann::json::object();
-    for (const auto& [player, ids] : sCollection) {
-        json[player] = ids;
-    }
-    std::ofstream out(CollectionPath(), std::ios::trunc);
-    out << json.dump(2);
 }
 
 const std::set<std::string>* PlayerCollection() {
@@ -154,9 +135,9 @@ const std::set<std::string>* PlayerCollection() {
     if (key.empty()) {
         return nullptr;
     }
-    LoadCollection();
-    auto it = sCollection.find(key);
-    return it != sCollection.end() ? &it->second : nullptr;
+    ReadLegacyCollection();
+    auto it = SaveMods::Collections().find(key);
+    return it != SaveMods::Collections().end() ? &it->second : nullptr;
 }
 
 void Collect(mActor_name_t item) {
@@ -165,10 +146,8 @@ void Collect(mActor_name_t item) {
     if (id == nullptr || key.empty()) {
         return;
     }
-    LoadCollection();
-    if (sCollection[key].insert(id).second) {
-        SaveCollection();
-    }
+    ReadLegacyCollection();
+    SaveMods::Collections()[key].insert(id);
 }
 
 std::vector<int> StockSlots(const ShopStockGenerated* stock, int kind) {
@@ -272,6 +251,9 @@ void InitShopApi() {
                       [](IEvent* event) { FillCatalogPage(reinterpret_cast<CatalogPageBuild*>(event)); });
     REGISTER_LISTENER(ItemCollected, EVENT_PRIORITY_NORMAL,
                       [](IEvent* event) { Collect(reinterpret_cast<ItemCollected*>(event)->item); });
+    ModOwner::AddReleaser([](const std::string& mod) {
+        std::erase_if(sStock, [&](const ShopStock& entry) { return entry.owner == mod; });
+    });
 }
 
 RegisterShipInitFunc sInitShopApi(InitShopApi);
@@ -292,7 +274,7 @@ extern "C" int C_AddShopStock(mActor_name_t item, int chance) {
             return TRUE;
         }
     }
-    sStock.push_back({ item, chance });
+    sStock.push_back({ item, chance, ModOwner::Current() });
     return TRUE;
 }
 

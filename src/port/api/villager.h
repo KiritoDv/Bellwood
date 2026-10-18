@@ -45,7 +45,8 @@ typedef struct C_VillagerDef_s {
 } C_VillagerDef;
 
 // Registers a villager. Returns its villager id, or EMPTY_NO.
-BW_API mActor_name_t C_RegisterVillager(const C_VillagerDef* def);
+#define C_RegisterVillager(def) C_RegisterVillagerSized((def), sizeof(*(def)))
+BW_API mActor_name_t C_RegisterVillagerSized(const C_VillagerDef* def, uint32_t size);
 // Unregisters a villager. A town it lives in shows it as its base until it is registered again.
 BW_API void C_UnregisterVillager(mActor_name_t npc_id);
 // Replaces the town villager old_npc_id with new_npc_id, in the same house, as if they had just moved in.

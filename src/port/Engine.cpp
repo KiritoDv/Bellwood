@@ -79,6 +79,8 @@
 #include <ship/resource/archive/Archive.h>
 #include <ship/scripting/ScriptLoader.h>
 #include <ship/security/Keystore.h>
+#include "port/api/ModOwner.hpp"
+#include "port/api/api.h"
 #endif
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
@@ -512,7 +514,6 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
         return;
     }
 
-    constexpr int kCodeVersion = 1;
     const std::unordered_map<std::string, std::string> defines = {
         { "F3DEX_GBI_2", "1" }, { "TARGET_PC", "1" },   { "VERSION", "VER_GAFE01_00" }, { "DEBUG", "0" },
         { "NDEBUG", "1" },      { "_LANGUAGE_C", "1" }, { "_USE_MATH_DEFINES", "1" },
@@ -571,8 +572,19 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
 #endif
     const std::vector<std::string> libraryPaths = { tccBase + "/lib" };
 
-    auto scriptLoader = std::make_shared<Ship::ScriptLoader>(defines, kCodeVersion, buildOptions, includePaths,
+    auto scriptLoader = std::make_shared<Ship::ScriptLoader>(defines, BW_CODE_VERSION, buildOptions, includePaths,
                                                              libraryPaths, libraries, ShipCompat::GetResourceManager());
+    scriptLoader->SetApiVersion(BW_API_VERSION);
+    scriptLoader->SetEntryHook(
+        [](const std::string& name, const std::string& symbol, Ship::Scripting::LibraryFunc_t entry) {
+            if (entry != nullptr) {
+                ModOwner::Scope scope(name);
+                entry();
+            }
+            if (symbol == "ModExit") {
+                ModOwner::Release(name);
+            }
+        });
     context->GetChildren().Add(scriptLoader);
     ScriptSetLoader(scriptLoader);
 #endif
@@ -673,6 +685,15 @@ static std::vector<std::string> CompileScripts(const std::function<void(const st
     }
     return errors;
 }
+
+static void NotifyLoadErrors(const std::shared_ptr<Ship::ScriptLoader>& scripts) {
+    for (const auto& error : scripts->GetLoadErrors()) {
+        Notification::Emit({ .message = "Skipped " + error,
+                             .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
+                             .remainingTime = 8.0f,
+                             .mute = true });
+    }
+}
 #endif
 
 void GameEngine::LoadScripts() {
@@ -690,6 +711,7 @@ void GameEngine::LoadScripts() {
     }
     try {
         scripts->LoadAll();
+        NotifyLoadErrors(scripts);
         Notification::Emit({ .message = "Finished loading mods", .remainingTime = 4.0f, .mute = true });
     } catch (const std::exception& e) {
         SPDLOG_ERROR("Failed to load mods: {}", e.what());
@@ -777,6 +799,7 @@ void GameEngine::FinishInit() {
     if (auto scripts = ShipCompat::GetScriptLoader()) {
         try {
             scripts->LoadAll();
+            NotifyLoadErrors(scripts);
         } catch (const std::exception& e) { SPDLOG_ERROR("Failed to load mods: {}", e.what()); }
     }
 #endif

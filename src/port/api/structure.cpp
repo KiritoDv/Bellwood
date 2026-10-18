@@ -2,6 +2,8 @@
 
 #include "port/ShipInit.hpp"
 #include "port/api/GameText.hpp"
+#include "port/api/ModOwner.hpp"
+#include "port/api/SizedDef.hpp"
 #include "port/api/StableIds.hpp"
 #include "port/events/Events.h"
 
@@ -38,6 +40,7 @@ struct CustomStructure {
     bool used = false;
     std::string id;
     std::string name;
+    std::string owner;
     C_StructureDef def{};
     C_StructureRoomDef room{};
     std::vector<mActor_name_t> layout;
@@ -50,7 +53,7 @@ struct CustomStructure {
 };
 
 std::array<CustomStructure, kCount> sStructures;
-StableIds sIds("custom_structures.json", C_STRUCTURE_FIRST, C_STRUCTURE_LAST);
+StableIds sIds("structures", C_STRUCTURE_FIRST, C_STRUCTURE_LAST);
 int16_t sProfile = -1;
 
 CustomStructure* Find(int item) {
@@ -280,16 +283,27 @@ void InitStructureApi() {
             }
         }
     });
+    ModOwner::AddReleaser([](const std::string& mod) {
+        for (int slot = 0; slot < kCount; slot++) {
+            if (sStructures[slot].used && sStructures[slot].owner == mod) {
+                C_UnregisterStructure((mActor_name_t)(C_STRUCTURE_FIRST + slot));
+            }
+        }
+    });
 }
 
 RegisterShipInitFunc sInitStructureApi(InitStructureApi);
 
 } // namespace
 
-extern "C" mActor_name_t C_RegisterStructure(const C_StructureDef* def) {
+extern "C" mActor_name_t C_RegisterStructureSized(const C_StructureDef* structure_def, uint32_t size,
+                                                  uint32_t room_size) {
+    const SizedDef<C_StructureDef> sized(structure_def, size);
+    const C_StructureDef* def = sized.get();
     if (def == nullptr || def->id == nullptr || def->id[0] == '\0') {
         return EMPTY_NO;
     }
+    const SizedDef<C_StructureRoomDef> sizedRoom(def->room, room_size);
     if (def->width < 1 || def->width > C_STRUCTURE_MAX_SIZE || def->depth < 1 || def->depth > C_STRUCTURE_MAX_SIZE) {
         SPDLOG_ERROR("Structure {}: width and depth must be 1 to {} tiles", def->id, C_STRUCTURE_MAX_SIZE);
         return EMPTY_NO;
@@ -300,7 +314,7 @@ extern "C" mActor_name_t C_RegisterStructure(const C_StructureDef* def) {
         return EMPTY_NO;
     }
     if (def->room != nullptr) {
-        const C_StructureRoomDef& room = *def->room;
+        const C_StructureRoomDef& room = *sizedRoom.get();
         if (RoomWidth(room) < 3 || RoomWidth(room) > C_ROOM_MAX_WIDTH || RoomDepth(room) < 3 ||
             RoomDepth(room) > C_ROOM_MAX_DEPTH) {
             SPDLOG_ERROR("Structure {}: the room must be 3 to {} tiles wide and 3 to {} deep", def->id,
@@ -315,19 +329,21 @@ extern "C" mActor_name_t C_RegisterStructure(const C_StructureDef* def) {
             return EMPTY_NO;
         }
     }
-    const int item = sIds.Get(def->id);
+    const std::string owner = ModOwner::Current();
+    const int item = sIds.Register(def->id, owner);
     if (item < 0) {
         return EMPTY_NO;
     }
     CustomStructure& structure = sStructures[item - C_STRUCTURE_FIRST];
     structure.used = true;
     structure.id = def->id;
+    structure.owner = owner;
     structure.name = GameText_Encode(def->name != nullptr ? def->name : "", false);
     structure.name.resize(PLAYER_NAME_LEN, ' ');
     structure.def = *def;
     structure.def.id = structure.id.c_str();
     if (def->room != nullptr) {
-        structure.room = *def->room;
+        structure.room = *sizedRoom.get();
         structure.def.room = &structure.room;
         BuildLayout(structure);
         structure.room.layout = structure.layout.data();
@@ -363,6 +379,7 @@ extern "C" void C_UnregisterStructure(mActor_name_t item) {
         }
     }
     structure->used = false;
+    sIds.Unregister(item);
 }
 
 extern "C" int C_CanPlaceStructure(mActor_name_t item, int block_x, int block_z, int ut_x, int ut_z) {

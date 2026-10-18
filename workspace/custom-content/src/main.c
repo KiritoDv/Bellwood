@@ -8,8 +8,10 @@
 #include "port/api/interior.h"
 #include "port/api/item.h"
 #include "port/api/message.h"
+#include "port/api/player.h"
 #include "port/api/shop.h"
 #include "port/api/structure.h"
+#include "port/api/town.h"
 #include "port/api/villager.h"
 #include "port/api/ui.h"
 #include "port/events/Events.h"
@@ -135,16 +137,8 @@ static C_FurnitureDef sModTableDef = {
 };
 
 static void Gem_use(mActor_name_t item, int slot) {
-    Private_c* priv = Common_Get(now_private);
-
-    if (priv == NULL) {
-        return;
-    }
-    priv->inventory.wallet += 1000;
-    if (priv->inventory.wallet > mPr_WALLET_MAX) {
-        priv->inventory.wallet = mPr_WALLET_MAX;
-    }
-    mPr_SetPossessionItem(priv, slot, EMPTY_NO, mPr_ITEM_COND_NORMAL);
+    C_SetWallet(C_GetWallet() + 1000);
+    C_TakeItem(item);
 }
 
 static C_ItemDef sGemDef = {
@@ -321,7 +315,6 @@ static mActor_name_t sMint = EMPTY_NO;
 static mActor_name_t sBolt = EMPTY_NO;
 static mActor_name_t sKiosk = EMPTY_NO;
 static mActor_name_t sWorkshop = EMPTY_NO;
-static ListenerID sPlayUpdateListener;
 static int sSpawnRequested = FALSE;
 static mActor_name_t sBuildRequest = EMPTY_NO;
 static int sRemoveRequested = FALSE;
@@ -390,52 +383,36 @@ static void OnSpawnPressed(void) {
     sSpawnRequested = TRUE;
 }
 
-static void OnGivePressed(void) {
-    if (sModTable != EMPTY_NO && Common_Get(now_private) != NULL) {
-        mPr_SetFreePossessionItem(Common_Get(now_private), sModTable, mPr_ITEM_COND_NORMAL);
+static void Give(mActor_name_t item) {
+    if (item != EMPTY_NO) {
+        C_GiveItem(item);
     }
+}
+
+static void OnGivePressed(void) {
+    Give(sModTable);
 }
 
 static void OnGiveGemPressed(void) {
-    if (sGem != EMPTY_NO && Common_Get(now_private) != NULL) {
-        mPr_SetFreePossessionItem(Common_Get(now_private), sGem, mPr_ITEM_COND_NORMAL);
-    }
+    Give(sGem);
 }
 
 static void OnGiveNesPressed(void) {
-    if (sModNes != EMPTY_NO && Common_Get(now_private) != NULL) {
-        mPr_SetFreePossessionItem(Common_Get(now_private), sModNes, mPr_ITEM_COND_NORMAL);
-    }
+    Give(sModNes);
 }
 
 static void OnGiveInteriorPressed(void) {
-    if (Common_Get(now_private) == NULL) {
-        return;
-    }
-    if (sCarpet != EMPTY_NO) {
-        mPr_SetFreePossessionItem(Common_Get(now_private), sCarpet, mPr_ITEM_COND_NORMAL);
-    }
-    if (sWallpaper != EMPTY_NO) {
-        mPr_SetFreePossessionItem(Common_Get(now_private), sWallpaper, mPr_ITEM_COND_NORMAL);
-    }
+    Give(sCarpet);
+    Give(sWallpaper);
 }
 
 static void OnGiveCreaturesPressed(void) {
-    if (Common_Get(now_private) == NULL) {
-        return;
-    }
-    if (sKoi != EMPTY_NO) {
-        mPr_SetFreePossessionItem(Common_Get(now_private), sKoi, mPr_ITEM_COND_NORMAL);
-    }
-    if (sDragonfly != EMPTY_NO) {
-        mPr_SetFreePossessionItem(Common_Get(now_private), sDragonfly, mPr_ITEM_COND_NORMAL);
-    }
+    Give(sKoi);
+    Give(sDragonfly);
 }
 
 static void OnGiveTeePressed(void) {
-    if (sTee != EMPTY_NO && Common_Get(now_private) != NULL) {
-        mPr_SetFreePossessionItem(Common_Get(now_private), sTee, mPr_ITEM_COND_NORMAL);
-    }
+    Give(sTee);
 }
 
 static void SetupMintRoom(mActor_name_t table) {
@@ -518,16 +495,16 @@ static void SetupBolt(void) {
 }
 
 static void InviteVillager(mActor_name_t npc_id) {
+    mActor_name_t residents[ANIMAL_NUM_MAX];
+    int count;
     int i;
 
-    if (npc_id == EMPTY_NO || Common_Get(now_private) == NULL) {
+    if (npc_id == EMPTY_NO || C_GetPlayer() == NULL) {
         return;
     }
-    for (i = 0; i < ANIMAL_NUM_MAX; i++) {
-        mActor_name_t resident = Save_Get(animals[i]).id.npc_id;
-
-        if (ITEM_NAME_GET_TYPE(resident) == NAME_TYPE_NPC && !C_IsCustomVillager(resident) &&
-            C_ReplaceVillager(resident, npc_id)) {
+    count = C_GetTownVillagers(residents, ANIMAL_NUM_MAX);
+    for (i = 0; i < count && i < ANIMAL_NUM_MAX; i++) {
+        if (!C_IsCustomVillager(residents[i]) && C_ReplaceVillager(residents[i], npc_id)) {
             break;
         }
     }
@@ -725,30 +702,6 @@ MOD_INIT() {
     C_AddShopStock(sCarpet, 50);
     C_AddShopStock(sWallpaper, 50);
     C_AddShopStock(sTee, 50);
-    sPlayUpdateListener = REGISTER_LISTENER(PlayUpdate, EVENT_PRIORITY_NORMAL, OnPlayUpdate);
+    REGISTER_LISTENER(PlayUpdate, EVENT_PRIORITY_NORMAL, OnPlayUpdate);
     SetupUI();
-}
-
-MOD_EXIT() {
-    C_RemoveSidebarEntry("Custom Content");
-    UNREGISTER_LISTENER(PlayUpdate, sPlayUpdateListener);
-    C_RemoveShopStock(sModTable);
-    C_RemoveShopStock(sCarpet);
-    C_RemoveShopStock(sWallpaper);
-    C_RemoveShopStock(sTee);
-    C_UnregisterStructure(sWorkshop);
-    C_UnregisterStructure(sKiosk);
-    C_UnregisterVillager(sBolt);
-    C_UnregisterVillager(sMint);
-    C_UnregisterCloth(sTee);
-    C_UnregisterWallpaper(sWallpaper);
-    C_UnregisterInsect(sDragonfly);
-    C_UnregisterFish(sKoi);
-    C_UnregisterCarpet(sCarpet);
-    C_UnregisterFurniture(sModNes);
-    C_UnregisterFamicomGame(sColorDemo);
-    C_UnregisterItem(sGem);
-    C_UnregisterFurniture(sModTable);
-    C_UnregisterActor(sSpinner);
-    C_UnregisterMessage(sGreeting);
 }

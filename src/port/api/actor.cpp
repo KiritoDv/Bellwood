@@ -1,6 +1,7 @@
 #ifdef ENABLE_SCRIPTING
 
 #include "port/ShipInit.hpp"
+#include "port/api/ModOwner.hpp"
 #include "port/events/Events.h"
 
 #define this this_
@@ -13,6 +14,7 @@ extern "C" {
 #undef this
 
 #include <array>
+#include <string>
 
 namespace {
 
@@ -20,6 +22,8 @@ constexpr int kMaxCustomActors = 64;
 
 struct CustomActor {
     bool used = false;
+    std::string owner;
+    ACTOR_PROFILE procs{};
     ACTOR_PROFILE profile{};
     ACTOR_DLFTBL table{};
 };
@@ -42,6 +46,20 @@ CustomActor* FindActor(int16_t profile) {
         return nullptr;
     }
     return &sActors[slot];
+}
+
+template <mActor_proc ACTOR_PROFILE::*Proc> void CallProc(ACTOR* actor, GAME* game) {
+    CustomActor* custom = FindActor(actor->id);
+    if (custom != nullptr && custom->procs.*Proc != nullptr) {
+        ModOwner::Scope scope(custom->owner);
+        (custom->procs.*Proc)(actor, game);
+    }
+}
+
+template <mActor_proc ACTOR_PROFILE::*Proc> void WrapProc(CustomActor& actor) {
+    if (actor.procs.*Proc != nullptr) {
+        actor.profile.*Proc = &CallProc<Proc>;
+    }
 }
 
 void DestroyInstances(int16_t profile) {
@@ -74,6 +92,13 @@ void InitActorApi() {
     REGISTER_LISTENER(SceneLoaded, EVENT_PRIORITY_HIGH,
                       [](IEvent* event) { sPlay = reinterpret_cast<SceneLoaded*>(event)->play; });
     REGISTER_LISTENER(SceneUnloaded, EVENT_PRIORITY_LOW, [](IEvent* event) { sPlay = nullptr; });
+    ModOwner::AddReleaser([](const std::string& mod) {
+        for (int slot = 0; slot < kMaxCustomActors; slot++) {
+            if (sActors[slot].used && sActors[slot].owner == mod) {
+                C_UnregisterActor((int16_t)(mAc_PROFILE_NUM + slot));
+            }
+        }
+    });
 }
 
 RegisterShipInitFunc sInitActorApi(InitActorApi);
@@ -90,8 +115,15 @@ extern "C" int16_t C_RegisterActor(const ACTOR_PROFILE* profile) {
             continue;
         }
         actor.used = true;
+        actor.owner = ModOwner::Current();
+        actor.procs = *profile;
         actor.profile = *profile;
         actor.profile.id = (s16)(mAc_PROFILE_NUM + slot);
+        WrapProc<&ACTOR_PROFILE::ct_proc>(actor);
+        WrapProc<&ACTOR_PROFILE::dt_proc>(actor);
+        WrapProc<&ACTOR_PROFILE::mv_proc>(actor);
+        WrapProc<&ACTOR_PROFILE::dw_proc>(actor);
+        WrapProc<&ACTOR_PROFILE::sv_proc>(actor);
         actor.table = {};
         actor.table.profile = &actor.profile;
         return actor.profile.id;

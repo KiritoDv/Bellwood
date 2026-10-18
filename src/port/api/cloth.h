@@ -22,7 +22,8 @@ typedef struct C_ClothDef_s {
 } C_ClothDef;
 
 // Registers a shirt. Returns its item number, or EMPTY_NO.
-BW_API mActor_name_t C_RegisterCloth(const C_ClothDef* def);
+#define C_RegisterCloth(def) C_RegisterClothSized((def), sizeof(*(def)))
+BW_API mActor_name_t C_RegisterClothSized(const C_ClothDef* def, uint32_t size);
 // Unregisters a shirt. Copies in the pockets show as unknown until it is registered again.
 BW_API void C_UnregisterCloth(mActor_name_t item);
 

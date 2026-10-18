@@ -103,7 +103,10 @@ typedef struct {
 } C_WidgetConfig;
 
 BW_API void C_AddSidebarEntry(const char* label, int column);
-BW_API void C_AddWidget(const char* sidebar, int column, const char* label, C_WidgetConfig* config);
+#define C_AddWidget(sidebar, column, label, config) \
+    C_AddWidgetSized((sidebar), (column), (label), (config), sizeof(*(config)))
+BW_API void C_AddWidgetSized(const char* sidebar, int column, const char* label, C_WidgetConfig* config,
+                             uint32_t size);
 BW_API void C_RemoveSidebarEntry(const char* sidebarName);
 
 typedef void (*C_GuiDrawFunc)(void);

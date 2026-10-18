@@ -22,9 +22,11 @@ typedef struct C_InteriorDef_s {
 } C_InteriorDef;
 
 // Registers a carpet. Returns its item number, or EMPTY_NO.
-BW_API mActor_name_t C_RegisterCarpet(const C_InteriorDef* def);
+#define C_RegisterCarpet(def) C_RegisterCarpetSized((def), sizeof(*(def)))
+BW_API mActor_name_t C_RegisterCarpetSized(const C_InteriorDef* def, uint32_t size);
 // Registers a wallpaper. Returns its item number, or EMPTY_NO.
-BW_API mActor_name_t C_RegisterWallpaper(const C_InteriorDef* def);
+#define C_RegisterWallpaper(def) C_RegisterWallpaperSized((def), sizeof(*(def)))
+BW_API mActor_name_t C_RegisterWallpaperSized(const C_InteriorDef* def, uint32_t size);
 // Unregisters a carpet. Rooms using it show the default floor until it is registered again.
 BW_API void C_UnregisterCarpet(mActor_name_t item);
 // Unregisters a wallpaper. Rooms using it show the default wall until it is registered again.

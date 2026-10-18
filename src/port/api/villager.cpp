@@ -2,6 +2,8 @@
 
 #include "port/ShipInit.hpp"
 #include "port/api/GameText.hpp"
+#include "port/api/ModOwner.hpp"
+#include "port/api/SizedDef.hpp"
 #include "port/api/StableIds.hpp"
 #include "port/api/TextureData.hpp"
 #include "port/events/Events.h"
@@ -33,6 +35,7 @@ struct CustomVillager {
     std::string id;
     std::string name;
     std::string catchphrase;
+    std::string owner;
     alignas(8) uint8_t palette[TextureData::kPaletteSize];
     std::vector<mActor_name_t> room;
     std::vector<mActor_name_t> roomTop;
@@ -43,7 +46,7 @@ struct CustomVillager {
 };
 
 std::array<CustomVillager, kCount> sVillagers;
-StableIds sIds("custom_villagers.json", C_VILLAGER_FIRST, C_VILLAGER_LAST);
+StableIds sIds("villagers", C_VILLAGER_FIRST, C_VILLAGER_LAST);
 
 CustomVillager* Find(int npc_id) {
     const int slot = npc_id - C_VILLAGER_FIRST;
@@ -95,13 +98,22 @@ void InitVillagerApi() {
             lookup->roomTop = villager->def.room_top;
         }
     });
+    ModOwner::AddReleaser([](const std::string& mod) {
+        for (int slot = 0; slot < kCount; slot++) {
+            if (sVillagers[slot].used && sVillagers[slot].owner == mod) {
+                C_UnregisterVillager((mActor_name_t)(C_VILLAGER_FIRST + slot));
+            }
+        }
+    });
 }
 
 RegisterShipInitFunc sInitVillagerApi(InitVillagerApi);
 
 } // namespace
 
-extern "C" mActor_name_t C_RegisterVillager(const C_VillagerDef* def) {
+extern "C" mActor_name_t C_RegisterVillagerSized(const C_VillagerDef* villager_def, uint32_t size) {
+    const SizedDef<C_VillagerDef> sized(villager_def, size);
+    const C_VillagerDef* def = sized.get();
     if (def == nullptr || def->id == nullptr || def->id[0] == '\0') {
         return EMPTY_NO;
     }
@@ -121,13 +133,15 @@ extern "C" mActor_name_t C_RegisterVillager(const C_VillagerDef* def) {
         SPDLOG_ERROR("Villager {}: could not load the palette", def->id);
         return EMPTY_NO;
     }
-    const int npc_id = sIds.Get(def->id);
+    const std::string owner = ModOwner::Current();
+    const int npc_id = sIds.Register(def->id, owner);
     if (npc_id < 0) {
         return EMPTY_NO;
     }
     CustomVillager& villager = sVillagers[npc_id - C_VILLAGER_FIRST];
     villager.used = true;
     villager.id = def->id;
+    villager.owner = owner;
     villager.name = Encode(def->name, ANIMAL_NAME_LEN);
     villager.catchphrase = Encode(def->catchphrase, ANIMAL_CATCHPHRASE_LEN);
     villager.def = *def;
@@ -150,6 +164,7 @@ extern "C" mActor_name_t C_RegisterVillager(const C_VillagerDef* def) {
 extern "C" void C_UnregisterVillager(mActor_name_t npc_id) {
     if (CustomVillager* villager = Find(npc_id)) {
         villager->used = false;
+        sIds.Unregister(npc_id);
         mNpc_ClearCacheName();
     }
 }

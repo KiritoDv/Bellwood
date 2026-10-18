@@ -2,6 +2,7 @@
 #include "port/save/SaveGci.h"
 #include "port/save/SaveGifts.h"
 #include "port/save/SaveJson.h"
+#include "port/save/SaveMods.h"
 
 #include <ship/Api.h>
 #include <ship/Context.h>
@@ -452,6 +453,23 @@ void FromJson(const SaveJson& j, TownFile& f) {
             f.passports.push_back(std::move(p));
         }
     }
+
+    std::vector<mCD_foreigner_c*> foreigners;
+    for (auto& p : f.passports) {
+        foreigners.push_back(&p.data);
+    }
+    SaveMods::ReadCollections(f.ship);
+    if (SaveMods::Remap(f.ship, f.land ? &f.land->save : nullptr, f.others ? &f.others->Mail() : nullptr, foreigners)) {
+        if (f.land) {
+            SealSaveChecksum(f.land.get());
+        }
+        if (f.others) {
+            SealBlock(f.others->mail, sizeof(f.others->mail));
+        }
+        for (auto* foreigner : foreigners) {
+            SealForeigner(foreigner);
+        }
+    }
 }
 
 bool ParseFile(const fs::path& path, TownFile& out) {
@@ -708,6 +726,13 @@ struct PendingWrite {
 };
 
 PendingWrite MakeWrite(int slot, std::shared_ptr<TownFile> file) {
+    std::vector<const mCD_foreigner_c*> passports;
+    for (const auto& p : file->passports) {
+        passports.push_back(&p.data);
+    }
+    const Save_t* land = file->hasLand && file->land ? &file->land->save : nullptr;
+    SaveMods::WriteIds(file->ship, land, file->hasOthers && file->others ? &file->others->Mail() : nullptr, passports);
+    SaveMods::WriteCollections(file->ship, land, passports);
     return { SlotPath(slot), slot == kSlotHome && RawMirrorEnabled(), std::move(file) };
 }
 
@@ -971,6 +996,7 @@ int PrepareSaveHome(int mode, SaveHomeContext& ctx) {
     ctx.file = SlotFileForWrite(ctx.slot);
     ctx.file->land = SealedCommonSave();
     ctx.file->hasLand = true;
+    SaveMods::StoreTown(ctx.file->ship);
     ctx.file->others = OthersFromAram();
     ctx.file->hasOthers = true;
     ctx.file->hasNoLandCode = false;
@@ -1297,12 +1323,14 @@ void mCD_LoadLand(void) {
 
     Common_Set(save_error_type, cond);
     Common_Set(memcard_slot, kSlotHome);
+    SaveMods::LoadTown(hasTown ? f->ship : SaveJson::object());
 
     if (mFRm_CheckSaveData_common(Save_GetPointer(save_check), Save_Get(land_info).id) &&
         Save_Get(save_check).version == 5) {
         memcpy(Save_GetPointer(saved_auto_nwrite_time), &Save_Get(save_check).time, sizeof(lbRTC_time_c));
     }
     CALL_EVENT(SaveLoaded, hasTown);
+    SaveMods::CheckMissing();
 }
 
 void mCD_ReCheckLoadLand(GAME_PLAY* play) {
@@ -1489,6 +1517,7 @@ int mCD_InitGameStart_bg(int player_no, int card_private_idx, int start_cond, s3
         auto file = SlotFileForWrite(slot);
         file->land = SealedCommonSave();
         file->hasLand = true;
+        SaveMods::StoreTown(file->ship);
         std::vector<PendingWrite> writes = { MakeWrite(slot, file) };
         int other = slot ^ 1;
         if (passportMode != 0 && !SlotPath(other).empty()) {
@@ -1539,6 +1568,7 @@ int mCD_SaveErasePlayer_bg(int* mounted_chan) {
         auto file = SlotFileForWrite(slot);
         file->land = SealedCommonSave();
         file->hasLand = true;
+        SaveMods::StoreTown(file->ship);
         job.io = WriteAsync({ MakeWrite(slot, file) });
         job.done = [](bool ok) { sJob.result = ok ? mCD_TRANS_ERR_NONE : mCD_TRANS_ERR_IOERROR; };
     });
@@ -1786,6 +1816,7 @@ int mCD_SaveStation_NextLand_bg(s32* chan) {
         auto file = SlotFileForWrite(slot);
         file->land = SealedCommonSave();
         file->hasLand = true;
+        SaveMods::StoreTown(file->ship);
         file->others = OthersFromAram();
         file->hasOthers = true;
         job.io = WriteAsync({ MakeWrite(slot, file) });
@@ -1880,6 +1911,7 @@ int mCD_SaveStation_Passport_bg(s32* chan) {
         auto home = SlotFileForWrite(slot);
         home->land = SealedCommonSave();
         home->hasLand = true;
+        SaveMods::StoreTown(home->ship);
         home->others = OthersFromAram();
         home->hasOthers = true;
         job.io = WriteAsync({ MakeWrite(other, passportFile), MakeWrite(slot, home) }, 2);

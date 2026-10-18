@@ -23,7 +23,8 @@ typedef struct C_FurnitureDef_s {
 } C_FurnitureDef;
 
 // Registers a furniture item. Returns its south-facing item number (the other facings follow it), or EMPTY_NO.
-BW_API mActor_name_t C_RegisterFurniture(const C_FurnitureDef* def);
+#define C_RegisterFurniture(def) C_RegisterFurnitureSized((def), sizeof(*(def)))
+BW_API mActor_name_t C_RegisterFurnitureSized(const C_FurnitureDef* def, uint32_t size);
 // Unregisters a furniture item. Placed copies draw as the placeholder until it is registered again.
 BW_API void C_UnregisterFurniture(mActor_name_t item);
 

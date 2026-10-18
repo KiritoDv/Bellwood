@@ -2,6 +2,8 @@
 
 #include "port/ShipInit.hpp"
 #include "port/api/GameText.hpp"
+#include "port/api/ModOwner.hpp"
+#include "port/api/SizedDef.hpp"
 #include "port/api/StableIds.hpp"
 #include "port/api/TextureData.hpp"
 #include "port/events/Events.h"
@@ -31,14 +33,15 @@ struct CustomInterior {
     bool used = false;
     std::string id;
     std::string name;
+    std::string owner;
     C_InteriorDef def{};
     std::vector<uint8_t> data;
 };
 
 std::array<CustomInterior, C_INTERIOR_LAST + 1 - C_CARPET_FIRST> sCarpets;
 std::array<CustomInterior, C_INTERIOR_LAST + 1 - C_WALLPAPER_FIRST> sWallpapers;
-StableIds sCarpetIds("custom_carpets.json", C_CARPET_FIRST, C_INTERIOR_LAST);
-StableIds sWallpaperIds("custom_wallpapers.json", C_WALLPAPER_FIRST, C_INTERIOR_LAST);
+StableIds sCarpetIds("carpets", C_CARPET_FIRST, C_INTERIOR_LAST);
+StableIds sWallpaperIds("wallpapers", C_WALLPAPER_FIRST, C_INTERIOR_LAST);
 
 CustomInterior* Find(int index, bool wall) {
     const int slot = index - (wall ? C_WALLPAPER_FIRST : C_CARPET_FIRST);
@@ -105,13 +108,15 @@ mActor_name_t Register(const C_InteriorDef* def, bool wall) {
         SPDLOG_ERROR("Interior: could not load {}", def->id);
         return EMPTY_NO;
     }
-    const int index = (wall ? sWallpaperIds : sCarpetIds).Get(def->id);
+    const std::string owner = ModOwner::Current();
+    const int index = (wall ? sWallpaperIds : sCarpetIds).Register(def->id, owner);
     if (index < 0) {
         return EMPTY_NO;
     }
     CustomInterior& entry = wall ? sWallpapers[index - C_WALLPAPER_FIRST] : sCarpets[index - C_CARPET_FIRST];
     entry.used = true;
     entry.id = def->id;
+    entry.owner = owner;
     entry.name = GameText_Encode(def->name != nullptr ? def->name : "", false);
     entry.name.resize(C_INTERIOR_NAME_LEN, ' ');
     entry.def = *def;
@@ -128,6 +133,17 @@ void Unregister(mActor_name_t item, bool wall) {
     }
     if (CustomInterior* entry = Find(ITEM_NAME_GET_INDEX(item), wall)) {
         entry->used = false;
+        (wall ? sWallpaperIds : sCarpetIds).Unregister(ITEM_NAME_GET_INDEX(item));
+    }
+}
+
+void Release(const std::string& mod, bool wall) {
+    const int first = wall ? C_WALLPAPER_FIRST : C_CARPET_FIRST;
+    for (int index = first; index <= C_INTERIOR_LAST; index++) {
+        CustomInterior* entry = Find(index, wall);
+        if (entry != nullptr && entry->owner == mod) {
+            Unregister((mActor_name_t)((wall ? ITM_WALL_START : ITM_CARPET_START) + index), wall);
+        }
     }
 }
 
@@ -139,18 +155,22 @@ void InitInteriorApi() {
             lookup->data = entry->data.data();
         }
     });
+    ModOwner::AddReleaser([](const std::string& mod) {
+        Release(mod, false);
+        Release(mod, true);
+    });
 }
 
 RegisterShipInitFunc sInitInteriorApi(InitInteriorApi);
 
 } // namespace
 
-extern "C" mActor_name_t C_RegisterCarpet(const C_InteriorDef* def) {
-    return Register(def, false);
+extern "C" mActor_name_t C_RegisterCarpetSized(const C_InteriorDef* def, uint32_t size) {
+    return Register(SizedDef<C_InteriorDef>(def, size).get(), false);
 }
 
-extern "C" mActor_name_t C_RegisterWallpaper(const C_InteriorDef* def) {
-    return Register(def, true);
+extern "C" mActor_name_t C_RegisterWallpaperSized(const C_InteriorDef* def, uint32_t size) {
+    return Register(SizedDef<C_InteriorDef>(def, size).get(), true);
 }
 
 extern "C" void C_UnregisterCarpet(mActor_name_t item) {

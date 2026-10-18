@@ -2,6 +2,7 @@
 
 #include "port/ShipCompat.h"
 #include "port/ShipInit.hpp"
+#include "port/api/ModOwner.hpp"
 #include "port/events/Events.h"
 
 #define this this_
@@ -29,6 +30,7 @@ constexpr size_t kMaxSaveName = 32;
 
 struct CustomGame {
     bool used = false;
+    std::string owner;
     std::string saveName;
     std::vector<uint8_t> rom;
     std::vector<uint8_t> tags;
@@ -65,6 +67,7 @@ int Register(const char* id, std::vector<uint8_t> rom) {
             continue;
         }
         game.used = true;
+        game.owner = ModOwner::Current();
         game.saveName = MakeSaveName(id);
         game.tags = MakeTags(rom);
         game.rom = std::move(rom);
@@ -86,6 +89,13 @@ void InitFamicomApi() {
         lookup->tags = game.tags.data();
         lookup->tagsSize = (uint32_t)game.tags.size();
         lookup->saveName = game.saveName.c_str();
+    });
+    ModOwner::AddReleaser([](const std::string& mod) {
+        for (CustomGame& game : sGames) {
+            if (game.used && game.owner == mod) {
+                game = {};
+            }
+        }
     });
 }
 

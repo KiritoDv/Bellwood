@@ -23,7 +23,8 @@ typedef struct C_ItemDef_s {
 } C_ItemDef;
 
 // Registers an item. Returns its item number, or EMPTY_NO.
-BW_API mActor_name_t C_RegisterItem(const C_ItemDef* def);
+#define C_RegisterItem(def) C_RegisterItemSized((def), sizeof(*(def)))
+BW_API mActor_name_t C_RegisterItemSized(const C_ItemDef* def, uint32_t size);
 // Unregisters an item. Copies in the pockets or on the ground show as unknown until it is registered again.
 BW_API void C_UnregisterItem(mActor_name_t item);
 

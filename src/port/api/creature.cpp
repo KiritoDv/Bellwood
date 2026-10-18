@@ -3,6 +3,8 @@
 #include "port/ShipCompat.h"
 #include "port/ShipInit.hpp"
 #include "port/api/GameText.hpp"
+#include "port/api/ModOwner.hpp"
+#include "port/api/SizedDef.hpp"
 #include "port/api/StableIds.hpp"
 #include "port/events/Events.h"
 
@@ -36,6 +38,7 @@ struct CustomCreature {
     bool used = false;
     std::string id;
     std::string name;
+    std::string owner;
     C_CreatureDef def{};
     mActor_name_t furnitureItem = EMPTY_NO;
     int furniture = -1;
@@ -45,8 +48,8 @@ struct CustomCreature {
 std::array<CustomCreature, kCount> sFish;
 std::array<CustomCreature, kCount> sInsects;
 std::unordered_map<int, std::pair<bool, int>> sByFurniture;
-StableIds sFishIds("custom_fish.json", C_CREATURE_FIRST, C_CREATURE_LAST);
-StableIds sInsectIds("custom_insects.json", C_CREATURE_FIRST, C_CREATURE_LAST);
+StableIds sFishIds("fish", C_CREATURE_FIRST, C_CREATURE_LAST);
+StableIds sInsectIds("insects", C_CREATURE_FIRST, C_CREATURE_LAST);
 
 std::array<CustomCreature, kCount>& Table(bool insect) {
     return insect ? sInsects : sFish;
@@ -145,6 +148,8 @@ void AddInsects(InsectSpawnList* list) {
     }
 }
 
+void Release(const std::string& mod, bool insect);
+
 void InitCreatureApi() {
     REGISTER_LISTENER(CreatureLookup, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         auto* lookup = reinterpret_cast<CreatureLookup*>(event);
@@ -168,6 +173,10 @@ void InitCreatureApi() {
                       [](IEvent* event) { AddFish(reinterpret_cast<FishSpawnList*>(event)); });
     REGISTER_LISTENER(InsectSpawnList, EVENT_PRIORITY_NORMAL,
                       [](IEvent* event) { AddInsects(reinterpret_cast<InsectSpawnList*>(event)); });
+    ModOwner::AddReleaser([](const std::string& mod) {
+        Release(mod, false);
+        Release(mod, true);
+    });
 }
 
 RegisterShipInitFunc sInitCreatureApi(InitCreatureApi);
@@ -182,6 +191,7 @@ void Unregister(mActor_name_t item, bool insect) {
         return;
     }
     creature->used = false;
+    (insect ? sInsectIds : sFishIds).Unregister(ITEM_NAME_GET_INDEX(item));
     sByFurniture.erase(creature->furniture);
     if (creature->furnitureItem != EMPTY_NO) {
         C_UnregisterFurniture(creature->furnitureItem);
@@ -202,15 +212,19 @@ mActor_name_t Register(const C_CreatureDef* def, bool insect) {
         SPDLOG_ERROR("Creature {}: base must be one of the 40 built-in {}", def->id, insect ? "insects" : "fish");
         return EMPTY_NO;
     }
-    const int index = (insect ? sInsectIds : sFishIds).Get(def->id);
+    StableIds& ids = insect ? sInsectIds : sFishIds;
+    const std::string owner = ModOwner::Current();
+    const int index = ids.Get(def->id);
     if (index < 0) {
         return EMPTY_NO;
     }
     const mActor_name_t item = (mActor_name_t)((insect ? ITM_INSECT_START : ITM_FISH_START) + index);
     Unregister(item, insect);
+    ids.Register(def->id, owner);
 
     CustomCreature& creature = Table(insect)[index - C_CREATURE_FIRST];
     creature.id = def->id;
+    creature.owner = owner;
     creature.name = GameText_Encode(def->name != nullptr ? def->name : "", false);
     creature.name.resize(C_CREATURE_NAME_LEN, ' ');
     creature.def = *def;
@@ -241,14 +255,23 @@ mActor_name_t Register(const C_CreatureDef* def, bool insect) {
     return item;
 }
 
-} // namespace
-
-extern "C" mActor_name_t C_RegisterFish(const C_CreatureDef* def) {
-    return Register(def, false);
+void Release(const std::string& mod, bool insect) {
+    for (int slot = 0; slot < kCount; slot++) {
+        const CustomCreature& creature = Table(insect)[slot];
+        if (creature.used && creature.owner == mod) {
+            Unregister((mActor_name_t)((insect ? ITM_INSECT_START : ITM_FISH_START) + C_CREATURE_FIRST + slot), insect);
+        }
+    }
 }
 
-extern "C" mActor_name_t C_RegisterInsect(const C_CreatureDef* def) {
-    return Register(def, true);
+} // namespace
+
+extern "C" mActor_name_t C_RegisterFishSized(const C_CreatureDef* def, uint32_t size) {
+    return Register(SizedDef<C_CreatureDef>(def, size).get(), false);
+}
+
+extern "C" mActor_name_t C_RegisterInsectSized(const C_CreatureDef* def, uint32_t size) {
+    return Register(SizedDef<C_CreatureDef>(def, size).get(), true);
 }
 
 extern "C" void C_UnregisterFish(mActor_name_t item) {

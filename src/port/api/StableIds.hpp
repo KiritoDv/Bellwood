@@ -8,33 +8,100 @@
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
+// Gives each content id a number in [first, last] and keeps it in custom_<key>.json, so the number stays the same
+// across sessions. Save files store the same table under the key.
 class StableIds {
   public:
-    StableIds(const char* file, int first, int last) : mFile(file), mFirst(first), mLast(last) {
+    StableIds(const char* key, int first, int last)
+        : mKey(key), mFile(std::string("custom_") + key + ".json"), mFirst(first), mLast(last) {
+        All().push_back(this);
     }
 
-    int Get(const std::string& id) {
+    // Number of a registered id. owner is the mod registering it.
+    int Register(const std::string& id, const std::string& owner) {
+        const int number = Get(id);
+        if (number < 0) {
+            return -1;
+        }
+        mActive.insert(number);
+        if (!owner.empty() && mIds[id].owner != owner) {
+            mIds[id].owner = owner;
+            Save();
+        }
+        return number;
+    }
+
+    void Unregister(int number) {
+        mActive.erase(number);
+    }
+
+    bool IsActive(int number) const {
+        return mActive.contains(number);
+    }
+
+    // Number of the id, giving it a free one the first time, preferred when that one is free. -1 when the range is
+    // full.
+    int Get(const std::string& id, int preferred = -1, const std::string& owner = {}) {
         Load();
         if (auto it = mIds.find(id); it != mIds.end()) {
-            return it->second;
+            return it->second.number;
         }
-        std::unordered_set<int> taken;
-        for (const auto& [key, number] : mIds) {
-            taken.insert(number);
-        }
-        for (int number = mFirst; number <= mLast; number++) {
-            if (!taken.contains(number)) {
-                mIds[id] = number;
-                Save();
-                return number;
+        int number = preferred >= mFirst && preferred <= mLast && !mById.contains(preferred) ? preferred : -1;
+        for (int candidate = mFirst; number < 0 && candidate <= mLast; candidate++) {
+            if (!mById.contains(candidate)) {
+                number = candidate;
             }
         }
-        SPDLOG_ERROR("{}: no numbers left for {}", mFile, id);
-        return -1;
+        if (number < 0) {
+            SPDLOG_ERROR("{}: no numbers left for {}", mFile, id);
+            return -1;
+        }
+        mIds[id] = { number, owner };
+        mById[number] = id;
+        Save();
+        return number;
+    }
+
+    // Id given the number, or nullptr.
+    const std::string* IdOf(int number) {
+        Load();
+        auto it = mById.find(number);
+        return it != mById.end() ? &it->second : nullptr;
+    }
+
+    // Mod that last registered the id, empty when unknown.
+    std::string Owner(const std::string& id) {
+        Load();
+        auto it = mIds.find(id);
+        return it != mIds.end() ? it->second.owner : std::string();
+    }
+
+    const std::string& Key() const {
+        return mKey;
+    }
+
+    static std::vector<StableIds*>& All() {
+        static std::vector<StableIds*> all;
+        return all;
+    }
+
+    static StableIds* ForKey(const std::string& key) {
+        for (StableIds* ids : All()) {
+            if (ids->mKey == key) {
+                return ids;
+            }
+        }
+        return nullptr;
     }
 
   private:
+    struct Entry {
+        int number = -1;
+        std::string owner;
+    };
+
     std::string Path() const {
         return Ship::Context::GetPathRelativeToAppDirectory(mFile);
     }
@@ -53,25 +120,36 @@ class StableIds {
             SPDLOG_WARN("{} is not valid, mod content will get new numbers", mFile);
             return;
         }
-        for (const auto& [id, number] : json.items()) {
-            if (number.is_number_integer() && number.get<int>() >= mFirst && number.get<int>() <= mLast) {
-                mIds[id] = number.get<int>();
+        for (const auto& [id, value] : json.items()) {
+            Entry entry;
+            if (value.is_number_integer()) {
+                entry.number = value.get<int>();
+            } else if (value.is_object()) {
+                entry.number = value.value("number", -1);
+                entry.owner = value.value("mod", std::string());
+            }
+            if (entry.number >= mFirst && entry.number <= mLast && !mById.contains(entry.number)) {
+                mById[entry.number] = id;
+                mIds[id] = std::move(entry);
             }
         }
     }
 
     void Save() const {
         nlohmann::json json = nlohmann::json::object();
-        for (const auto& [id, number] : mIds) {
-            json[id] = number;
+        for (const auto& [id, entry] : mIds) {
+            json[id] = { { "number", entry.number }, { "mod", entry.owner } };
         }
         std::ofstream out(Path(), std::ios::trunc);
         out << json.dump(2);
     }
 
+    std::string mKey;
     std::string mFile;
     int mFirst;
     int mLast;
     bool mLoaded = false;
-    std::unordered_map<std::string, int> mIds;
+    std::unordered_map<std::string, Entry> mIds;
+    std::unordered_map<int, std::string> mById;
+    std::unordered_set<int> mActive;
 };

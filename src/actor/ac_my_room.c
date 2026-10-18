@@ -1873,10 +1873,12 @@ static void aMR_FreeHeapArea(ACTOR* actorx) {
 
     if (l_aMR_work.ftr_actor_list != NULL) {
         zelda_free(l_aMR_work.ftr_actor_list);
+        l_aMR_work.ftr_actor_list = NULL;
     }
 
     if (l_aMR_work.used_list != NULL) {
         zelda_free(l_aMR_work.used_list);
+        l_aMR_work.used_list = NULL;
     }
 
     aMR_FreeMallocBank(actorx);
@@ -1940,6 +1942,56 @@ static void aMR_AllFurnitureDestruct(ACTOR* actorx, GAME* game) {
             used++;
             ftr_actor++;
         }
+    }
+}
+
+static int aMR_RoomFurnitureExist(void) {
+    return aMR_CLIP != NULL && aMR_CLIP->my_room_actor_p != NULL && l_aMR_work.ftr_actor_list != NULL &&
+           l_aMR_work.used_list != NULL;
+}
+
+extern void aMR_DestructFurniture(int ftr_no) {
+    FTR_ACTOR* ftr_actor = l_aMR_work.ftr_actor_list;
+    u8* used = l_aMR_work.used_list;
+    aFTR_PROFILE* profile;
+    int i;
+
+    if (!aMR_RoomFurnitureExist()) {
+        return;
+    }
+    profile = aMR_GetFurnitureProfile(ftr_no);
+    if (profile->vtable == NULL || profile->vtable->dt_proc == NULL) {
+        return;
+    }
+    for (i = 0; i < l_aMR_work.list_size; i++, used++, ftr_actor++) {
+        if (*used && ftr_actor->name == ftr_no) {
+            profile->vtable->dt_proc(ftr_actor, aMR_FtrNo2BankAddress(ftr_actor->name));
+        }
+    }
+}
+
+extern void aMR_ConstructFurniture(int ftr_no) {
+    FTR_ACTOR* ftr_actor = l_aMR_work.ftr_actor_list;
+    u8* used = l_aMR_work.used_list;
+    aFTR_PROFILE* profile;
+    u8* bank;
+    int loaded = FALSE;
+    int i;
+
+    if (!aMR_RoomFurnitureExist()) {
+        return;
+    }
+    profile = aMR_GetFurnitureProfile(ftr_no);
+    bank = aMR_FtrNo2BankAddress(ftr_no);
+    for (i = 0; i < l_aMR_work.list_size; i++, used++, ftr_actor++) {
+        if (!*used || ftr_actor->name != ftr_no) {
+            continue;
+        }
+        if (!loaded && bank != NULL && profile->vtable != NULL && profile->vtable->dma_proc != NULL) {
+            profile->vtable->dma_proc(mRmTp_FtrIdx2FtrItemNo(ftr_no, mRmTp_DIRECT_SOUTH), bank);
+            loaded = TRUE;
+        }
+        aMR_SystemAnimeCt_UniqueCt(ftr_actor, profile);
     }
 }
 

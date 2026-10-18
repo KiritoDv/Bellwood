@@ -29,9 +29,11 @@ typedef struct C_CreatureDef_s {
 } C_CreatureDef;
 
 // Registers a fish. Returns its item number, or EMPTY_NO.
-BW_API mActor_name_t C_RegisterFish(const C_CreatureDef* def);
+#define C_RegisterFish(def) C_RegisterFishSized((def), sizeof(*(def)))
+BW_API mActor_name_t C_RegisterFishSized(const C_CreatureDef* def, uint32_t size);
 // Registers an insect. Returns its item number, or EMPTY_NO.
-BW_API mActor_name_t C_RegisterInsect(const C_CreatureDef* def);
+#define C_RegisterInsect(def) C_RegisterInsectSized((def), sizeof(*(def)))
+BW_API mActor_name_t C_RegisterInsectSized(const C_CreatureDef* def, uint32_t size);
 // Unregisters a fish. Caught copies show as unknown until it is registered again.
 BW_API void C_UnregisterFish(mActor_name_t item);
 // Unregisters an insect. Caught copies show as unknown until it is registered again.
