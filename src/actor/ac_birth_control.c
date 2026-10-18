@@ -68,19 +68,54 @@ static int aBC_wide_neighbor_block(GAME_PLAY* play, int bx, int bz) {
   return AC_WideScale() > 1.0f && bz == play->block_table.block_z && (bx == now_bx - 1 || bx == now_bx + 1);
 }
 
-static int aBC_keep_wide_structure(GAME_PLAY* play, ACTOR* actor) {
+static int aBC_count_block_structures(mActor_name_t* item_p) {
+  int count = 0;
+  int i;
+
+  for (i = 0; i < UT_X_NUM * UT_Z_NUM; i++) {
+    if (ITEM_NAME_GET_TYPE(*item_p) == NAME_TYPE_STRUCT) {
+      count++;
+    }
+
+    item_p++;
+  }
+
+  return count;
+}
+
+static void aBC_adoptWideStructures(GAME_PLAY* play) {
+  ACTOR* actor = play->actor_info.list[ACTOR_PART_ITEM].actor;
+  s8 now_bx = play->block_table.block_x;
+  s8 now_bz = play->block_table.block_z;
+  int spare = aBC_free_structure_slots() - aBC_count_block_structures(play->block_table.items);
   int bx;
   int bz;
 
-  if (ITEM_NAME_GET_TYPE(actor->npc_id) != NAME_TYPE_STRUCT || aBC_free_structure_slots() < aBC_WIDE_STRUCTURE_RESERVE) {
-    return FALSE;
+  if (AC_WideScale() <= 1.0f) {
+    return;
   }
 
-  if (mFI_Wpos2BlockNum(&bx, &bz, actor->home.position) == FALSE) {
-    return FALSE;
-  }
+  while (actor != NULL) {
+    if (actor->mv_proc != NULL && ITEM_NAME_GET_TYPE(actor->npc_id) == NAME_TYPE_STRUCT &&
+        mFI_Wpos2BlockNum(&bx, &bz, actor->home.position) == TRUE) {
+      if (bx == now_bx && bz == now_bz) {
+        actor->block_x = now_bx;
+        actor->block_z = now_bz;
+      }
+      else if (aBC_wide_neighbor_block(play, bx, bz)) {
+        if (spare >= 0) {
+          actor->block_x = now_bx;
+          actor->block_z = now_bz;
+        }
+        else {
+          Actor_delete(actor);
+          spare++;
+        }
+      }
+    }
 
-  return aBC_wide_neighbor_block(play, bx, bz);
+    actor = actor->next_actor;
+  }
 }
 
 static void aBC_deleteActor_part(GAME_PLAY* play, int part) {
@@ -106,16 +141,14 @@ static void aBC_deleteActor_part(GAME_PLAY* play, int part) {
       (check_bx >= 0 && check_bx != last_bx && check_bx != now_bx) &&
       (check_bz >= 0 && check_bz != last_bz && check_bz != now_bz)
     ) {
-      if (part == ACTOR_PART_ITEM && aBC_keep_wide_structure(play, actor)) {
-        actor->block_x = now_bx;
-        actor->block_z = now_bz;
-      }
-      else {
-        Actor_delete(actor);
-      }
+      Actor_delete(actor);
     }
 
     actor = actor->next_actor;
+  }
+
+  if (part == ACTOR_PART_ITEM) {
+    aBC_adoptWideStructures(play);
   }
 }
 
