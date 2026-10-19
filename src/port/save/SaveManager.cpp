@@ -25,6 +25,8 @@
 #include <thread>
 #include <vector>
 
+#include <zip.h>
+
 #include "port/ShipCompat.h"
 #include "port/events/Events.h"
 #include "port/ui/cvar_prefixes.h"
@@ -723,6 +725,7 @@ struct PendingWrite {
     fs::path path;
     bool mirror;
     std::shared_ptr<TownFile> file;
+    int slot;
 };
 
 PendingWrite MakeWrite(int slot, std::shared_ptr<TownFile> file) {
@@ -733,7 +736,7 @@ PendingWrite MakeWrite(int slot, std::shared_ptr<TownFile> file) {
     const Save_t* land = file->hasLand && file->land ? &file->land->save : nullptr;
     SaveMods::WriteIds(file->ship, land, file->hasOthers && file->others ? &file->others->Mail() : nullptr, passports);
     SaveMods::WriteCollections(file->ship, land, passports);
-    return { SlotPath(slot), slot == kSlotHome && RawMirrorEnabled(), std::move(file) };
+    return { SlotPath(slot), slot == kSlotHome && RawMirrorEnabled(), std::move(file), slot };
 }
 
 bool DoWrite(const PendingWrite& w) {
@@ -852,9 +855,18 @@ void LoadFamicom() {
 }
 
 std::future<bool> WriteAsync(std::vector<PendingWrite> writes, size_t required = 1) {
-    return std::async(std::launch::async, [writes = std::move(writes), required]() {
+    // Asked on the game thread; a write a listener cancels counts as done.
+    std::vector<bool> skip(writes.size(), false);
+    for (size_t i = 0; i < writes.size(); i++) {
+        CALL_EVENT(SaveRequest, writes[i].slot, writes[i].file->hasLand);
+        skip[i] = SaveRequest_.Event.Cancelled;
+        if (skip[i]) {
+            SPDLOG_INFO("save: a mod kept slot {} from being written", writes[i].slot);
+        }
+    }
+    return std::async(std::launch::async, [writes = std::move(writes), skip = std::move(skip), required]() {
         for (size_t i = 0; i < writes.size(); i++) {
-            if (!DoWrite(writes[i]) && i < required) {
+            if (!skip[i] && !DoWrite(writes[i]) && i < required) {
                 return false;
             }
         }
@@ -2000,7 +2012,136 @@ void SaveManager_SetTownFile(const char* path) {
 
 } // extern "C"
 
+namespace {
+
+constexpr const char* kPackedEntry = "town.json";
+constexpr zip_uint64_t kPackedMax = 16 * 1024 * 1024;
+
+std::string sVisitPrevOther;
+bool sVisiting = false;
+
+fs::path VisitPath() {
+    return SaveDir() / "visit" / "town.json";
+}
+
+// One deflated entry in an in-memory zip: libzip is already linked everywhere the game runs.
+std::vector<uint8_t> Pack(const std::string& text) {
+    zip_error_t error;
+    zip_error_init(&error);
+    zip_source_t* out = zip_source_buffer_create(nullptr, 0, 0, &error);
+    zip_t* archive = out != nullptr ? zip_open_from_source(out, ZIP_TRUNCATE, &error) : nullptr;
+    std::vector<uint8_t> packed;
+    if (archive == nullptr) {
+        zip_source_free(out);
+        zip_error_fini(&error);
+        return packed;
+    }
+    zip_source_keep(out);
+    zip_source_t* entry = zip_source_buffer(archive, text.data(), text.size(), 0);
+    const zip_int64_t index = entry != nullptr ? zip_file_add(archive, kPackedEntry, entry, ZIP_FL_OVERWRITE) : -1;
+    if (index < 0) {
+        zip_source_free(entry);
+        zip_discard(archive);
+    } else {
+        zip_set_file_compression(archive, (zip_uint64_t)index, ZIP_CM_DEFLATE, 9);
+        if (zip_close(archive) == 0 && zip_source_open(out) == 0) {
+            zip_source_seek(out, 0, SEEK_END);
+            const zip_int64_t size = zip_source_tell(out);
+            zip_source_seek(out, 0, SEEK_SET);
+            if (size > 0) {
+                packed.resize((size_t)size);
+                zip_source_read(out, packed.data(), (zip_uint64_t)size);
+            }
+            zip_source_close(out);
+        } else {
+            zip_discard(archive);
+        }
+    }
+    zip_source_free(out);
+    zip_error_fini(&error);
+    return packed;
+}
+
+bool Unpack(const std::vector<uint8_t>& packed, std::string& text) {
+    zip_error_t error;
+    zip_error_init(&error);
+    zip_source_t* in = zip_source_buffer_create(packed.data(), packed.size(), 0, &error);
+    zip_t* archive = in != nullptr ? zip_open_from_source(in, ZIP_RDONLY, &error) : nullptr;
+    zip_error_fini(&error);
+    if (archive == nullptr) {
+        zip_source_free(in);
+        return false;
+    }
+    zip_stat_t stat;
+    zip_file_t* file = nullptr;
+    bool ok = zip_stat(archive, kPackedEntry, 0, &stat) == 0 && (stat.valid & ZIP_STAT_SIZE) &&
+              stat.size <= kPackedMax && (file = zip_fopen(archive, kPackedEntry, 0)) != nullptr;
+    if (ok) {
+        text.resize((size_t)stat.size);
+        ok = zip_fread(file, text.data(), stat.size) == (zip_int64_t)stat.size;
+        zip_fclose(file);
+    }
+    zip_close(archive);
+    return ok;
+}
+
+} // namespace
+
 namespace SaveManager {
+
+std::vector<uint8_t> ExportTown() {
+    auto f = LoadSlot(kSlotHome);
+    if (f == nullptr || !LandValid(*f)) {
+        return {};
+    }
+    return Pack(ToJson(*f).dump());
+}
+
+bool VisitTown(const std::vector<uint8_t>& packed) {
+    std::string text;
+    if (!Unpack(packed, text)) {
+        SPDLOG_WARN("save: the town to visit isn't a packed town file");
+        return false;
+    }
+    TownFile f;
+    try {
+        FromJson(SaveJson::parse(text), f);
+    } catch (const std::exception& e) {
+        SPDLOG_WARN("save: the town to visit can't be read: {}", e.what());
+        return false;
+    }
+    auto home = LoadSlot(kSlotHome);
+    if (!LandValid(f) ||
+        (home != nullptr && LandValid(*home) && home->land->save.land_info.id == f.land->save.land_info.id)) {
+        SPDLOG_WARN("save: the town to visit is broken or is this town");
+        return false;
+    }
+    if (!WriteFile(VisitPath(), f)) {
+        return false;
+    }
+    if (!sVisiting) {
+        sVisitPrevOther = sOtherPath;
+        sVisiting = true;
+    }
+    sOtherPath = VisitPath().string();
+    InvalidateSlots();
+    return true;
+}
+
+bool EndVisit() {
+    if (!sVisiting || IsVisitor()) {
+        return false;
+    }
+    sOtherPath = sVisitPrevOther;
+    sVisitPrevOther.clear();
+    sVisiting = false;
+    InvalidateSlots();
+    return true;
+}
+
+bool IsVisitor() {
+    return Common_Get(player_no) == mPr_FOREIGNER;
+}
 
 void CloseTownPicker(bool picked) {
     sPicking = false;

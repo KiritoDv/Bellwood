@@ -112,3 +112,63 @@ BW_API void C_RemoveSidebarEntry(const char* sidebarName);
 typedef void (*C_GuiDrawFunc)(void);
 BW_API void C_AddGuiDraw(C_GuiDrawFunc callback);
 BW_API void C_RemoveGuiDraw(C_GuiDrawFunc callback);
+
+// Drawing with Dear ImGui, from a C_AddGuiDraw callback only. Positions and sizes are in the window's pixels and
+// colors are 0xRRGGBBAA. Every C_GuiBegin needs a C_GuiEnd, whatever it returned; a callback that leaves one open
+// has it closed for it.
+
+enum {
+    C_GUI_NO_TITLE = 1 << 0,
+    C_GUI_NO_RESIZE = 1 << 1,
+    C_GUI_NO_MOVE = 1 << 2,
+    C_GUI_NO_BACKGROUND = 1 << 3,
+    C_GUI_AUTO_RESIZE = 1 << 4,
+    C_GUI_NO_INPUT = 1 << 5,
+    C_GUI_NO_SCROLLBAR = 1 << 6,
+    C_GUI_NO_FOCUS = 1 << 7,
+};
+
+// A window. open, when not NULL, gets a close button and turns FALSE when it is pressed. Returns FALSE while the
+// window is collapsed or hidden: skip its contents, but still call C_GuiEnd.
+BW_API int C_GuiBegin(const char* title, int* open, int flags);
+BW_API void C_GuiEnd(void);
+// For the next C_GuiBegin. always TRUE sets it every frame, FALSE only the first time the window appears.
+BW_API void C_GuiSetNextWindowPos(float x, float y, int always);
+BW_API void C_GuiSetNextWindowSize(float width, float height, int always);
+// A scrolling area inside a window; 0 for a size fills the space left.
+BW_API int C_GuiBeginChild(const char* id, float width, float height, int border);
+BW_API void C_GuiEndChild(void);
+
+BW_API void C_GuiText(const char* text);
+BW_API void C_GuiTextColored(uint32_t color, const char* text);
+BW_API void C_GuiTextWrapped(const char* text);
+// TRUE on the frame it is clicked.
+BW_API int C_GuiButton(const char* label);
+// Edits buffer, of size bytes. Returns TRUE when the text changed, or with submit_on_enter when Enter is pressed.
+BW_API int C_GuiInputText(const char* label, char* buffer, uint32_t size, int submit_on_enter);
+// The following return TRUE when the value changed.
+BW_API int C_GuiCheckbox(const char* label, int* value);
+BW_API int C_GuiSliderInt(const char* label, int* value, int min, int max);
+BW_API int C_GuiSliderFloat(const char* label, float* value, float min, float max);
+BW_API void C_GuiSameLine(void);
+BW_API void C_GuiSeparator(void);
+BW_API void C_GuiSpacing(void);
+// Gives the keyboard to the next widget.
+BW_API void C_GuiFocusNext(void);
+// Scrolls the current window or child to its end, e.g. after adding a chat line.
+BW_API void C_GuiScrollToBottom(void);
+// Tells apart widgets with the same label, e.g. one per player.
+BW_API void C_GuiPushId(const char* id);
+BW_API void C_GuiPopId(void);
+
+// Drawn on top of the game and every window.
+BW_API void C_GuiDrawText(float x, float y, uint32_t color, const char* text);
+BW_API void C_GuiDrawRect(float x0, float y0, float x1, float y1, uint32_t color, float rounding, int filled);
+BW_API void C_GuiTextSize(const char* text, float* width, float* height);
+BW_API void C_GuiDisplaySize(float* width, float* height);
+// TRUE while a text box has the keyboard, so the mod can ignore its own key shortcuts.
+BW_API int C_GuiWantsKeyboard(void);
+
+// Where a point in the game world shows on screen, in the same pixels as the drawing above, e.g. for a name over a
+// character. FALSE outside gameplay or when the point is behind the camera.
+BW_API int C_WorldToScreen(float x, float y, float z, float* screen_x, float* screen_y);

@@ -34,9 +34,8 @@ extern "C" void C_RegisterRelayChannelSized(const char* channel_id, const C_Rela
     relayDef.modVersion = OnlineApi::Clamp(sized.get()->mod_version, 32);
     relayDef.owner = ModOwner::Current();
     const C_RelayCallback callback = sized.get()->on_message;
-    relayDef.onMessage = [callback](const std::string& id, const char* data, uint32_t length) {
-        callback(id.c_str(), data, length);
-    };
+    relayDef.onMessage = [callback](const std::string& id, const std::string& sender, const char* data,
+                                    uint32_t length) { callback(id.c_str(), sender.c_str(), data, length); };
     Relay::RegisterChannel(channel_id, std::move(relayDef));
 }
 

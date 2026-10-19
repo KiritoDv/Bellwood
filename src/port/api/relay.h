@@ -11,8 +11,9 @@
 #define C_RELAY_ID_MAX 128
 #define C_RELAY_SEND_MAX (64 * 1024)
 
-// Runs on the game thread for every message on the channel.
-typedef void (*C_RelayCallback)(const char* channel_id, const char* data, uint32_t size);
+// Runs on the game thread for every message on the channel. sender_key_hex is the sending player's key, proven to
+// Satella, or "" when the sender has none.
+typedef void (*C_RelayCallback)(const char* channel_id, const char* sender_key_hex, const char* data, uint32_t size);
 
 typedef struct C_RelayChannelDef_s {
     const char* mod_name;        // shown in the permission prompt

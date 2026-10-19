@@ -9,6 +9,9 @@
 #include "port/ui/PortGui.hpp"
 #include "port/ui/UIWidgets.hpp"
 
+#include <imgui.h>
+#include <imgui_internal.h>
+
 #include <algorithm>
 #include <string>
 #include <unordered_map>
@@ -93,7 +96,10 @@ RegisterShipInitFunc sInitUiApi(InitUiApi);
 void C_RunGuiDrawCallbacks() {
     for (const GuiDraw& draw : sGuiDrawCallbacks) {
         ModOwner::Scope scope(draw.owner);
+        ImGuiErrorRecoveryState state;
+        ImGui::ErrorRecoveryStoreState(&state);
         draw.callback();
+        ImGui::ErrorRecoveryTryToRecoverState(&state);
     }
 }
 

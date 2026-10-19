@@ -38,21 +38,25 @@ struct ChannelState {
 std::mutex sMtx;
 std::unordered_map<std::string, ChannelState> sChannels;
 
-void Deliver(const std::string& channelId, const std::string& body) {
+// A push names the channel as it is on the wire, with the versions.
+void Deliver(const std::string& wireId, const std::string& senderHex, const std::string& body) {
     Relay::MessageCallback callback;
+    std::string channelId;
     std::string owner;
     {
         std::lock_guard<std::mutex> lock(sMtx);
-        const auto it = sChannels.find(channelId);
-        if (it == sChannels.end() || it->second.released) {
-            return;
+        for (const auto& [id, state] : sChannels) {
+            if (!state.released && VersionedChannelId(id, state.def.modVersion) == wireId) {
+                channelId = id;
+                callback = state.def.onMessage;
+                owner = state.def.owner;
+                break;
+            }
         }
-        callback = it->second.def.onMessage;
-        owner = it->second.def.owner;
     }
     if (callback) {
         ModOwner::Scope scope(owner);
-        callback(channelId, body.data(), static_cast<uint32_t>(body.size()));
+        callback(channelId, senderHex, body.data(), static_cast<uint32_t>(body.size()));
     }
 }
 
@@ -77,13 +81,6 @@ class RelaySubscriptionPacket : public Satella::IPacket {
         } else {
             SPDLOG_INFO("Relay: subscribed to '{}'", mChannelId);
         }
-    }
-
-    void OnPush(int16_t status, uint8_t packetType, const std::string& body) override {
-        if (status != 200 || packetType != 0x03) {
-            return;
-        }
-        Satella::Client::Instance().RunOnGameThread([id = mChannelId, body] { Deliver(id, body); });
     }
 
   private:
@@ -179,8 +176,7 @@ bool Send(const std::string& channelId, const char* data, uint32_t size) {
             modVersion = it->second.def.modVersion;
         }
     }
-    Satella::Client::Instance().SendRaw("/v1/relay/" + VersionedChannelId(channelId, modVersion) + "/send", data,
-                                        size);
+    Satella::Client::Instance().SendRaw("/v1/relay/" + VersionedChannelId(channelId, modVersion) + "/send", data, size);
     return true;
 }
 
@@ -203,6 +199,11 @@ void RequestPermission(const std::string& channelId) {
 
 static RegisterShipInitFunc sRelayInit([] {
     ModOwner::AddReleaser(ReleaseMod);
+    Satella::Client::Instance().AddPushHandler([](const Satella::Push& push) {
+        if (push.kind == Satella::PushKind::Relay) {
+            Satella::Client::Instance().RunOnGameThread([push] { Deliver(push.name, push.senderHex, push.payload); });
+        }
+    });
     REGISTER_LISTENER(EngineReady, EVENT_PRIORITY_NORMAL, OnEngineReady);
 });
 

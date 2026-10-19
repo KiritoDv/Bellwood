@@ -8,7 +8,7 @@ import sys
 
 HEADERS = ["api", "actor", "message", "furniture", "item", "interior", "cloth", "creature", "villager", "visitor",
            "structure", "famicom", "shop", "mail", "sound", "player", "town", "savedata", "cvar", "ui", "permissions",
-           "relay", "player_store", "channel_store"]
+           "online", "relay", "room", "player_store", "channel_store", "visit"]
 
 
 def join_comment(lines):

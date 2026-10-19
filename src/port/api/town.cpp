@@ -1,7 +1,9 @@
 #ifdef ENABLE_SCRIPTING
 
+#include "port/api/ModOwner.hpp"
 #include "port/events/Events.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include "port/ShipInit.hpp"
 
 #define this this_
 extern "C" {
@@ -16,6 +18,37 @@ extern "C" {
 
 #include <algorithm>
 #include <cstring>
+
+static int32_t sTimeOffset = 0;
+static std::string sTimeOffsetOwner;
+
+static void ApplyTimeOffset(IEvent* event) {
+    auto* read = reinterpret_cast<ClockRead*>(event);
+    if (sTimeOffset > 0) {
+        lbRTC_Add_ss(read->time, sTimeOffset);
+    } else if (sTimeOffset < 0) {
+        lbRTC_Sub_ss(read->time, -sTimeOffset);
+    }
+}
+
+static RegisterShipInitFunc sTownInit([] {
+    REGISTER_LISTENER(ClockRead, EVENT_PRIORITY_NORMAL, ApplyTimeOffset);
+    ModOwner::AddReleaser([](const std::string& mod) {
+        if (sTimeOffsetOwner == mod) {
+            sTimeOffset = 0;
+            sTimeOffsetOwner.clear();
+        }
+    });
+});
+
+extern "C" void C_SetTimeOffset(int32_t seconds) {
+    sTimeOffset = seconds;
+    sTimeOffsetOwner = seconds != 0 ? ModOwner::Current() : std::string();
+}
+
+extern "C" int32_t C_GetTimeOffset(void) {
+    return sTimeOffset;
+}
 
 extern "C" int C_GetScene(void) {
     return C_GetPlay() != nullptr ? Save_Get(scene_no) : -1;

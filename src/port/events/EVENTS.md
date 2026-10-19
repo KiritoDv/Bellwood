@@ -666,6 +666,14 @@ Fires when a menu closes and control goes back to the player.
 
 ---
 
+### `ClockRead`
+```c
+struct OSRTCTime* time;
+```
+Fires whenever the game reads the system clock. Write through `time` to change what the game takes as now; growth, seasons and the daily changes follow. `C_SetTimeOffset` in `port/api/town.h` is built on it.
+
+---
+
 ### `TimeHourChanged`
 ```c
 int32_t prev;
@@ -706,6 +714,16 @@ Fires after the home save slot has been read into memory. `hasTown` is false for
 
 ---
 
+### `SaveRequest` _(cancellable)_
+```c
+int32_t slot;  // 0 for the home file
+bool hasTown;  // the file holds a town, not only passports
+```
+Fires before a save file is written: the town, a passport or both.
+**Cancel**: the file is not written, and the game carries on as if it had been. Use it to keep a visited town (`port/api/visit.h`) from being saved.
+
+---
+
 ### `SaveWritten`
 ```c
 int32_t mode;
@@ -728,6 +746,47 @@ struct private_s* player;
 ```
 Fires when the town loads and the player last quit or reset without saving.
 **Cancel**: Mr. Resetti does not visit and the reset is not counted.
+
+---
+
+## Field Events
+
+### `FieldItemChanged` _(polled)_
+```c
+int32_t block_x;
+int32_t block_z;
+int32_t ut_x;
+int32_t ut_z;
+uint16_t prev;
+uint16_t now;
+int32_t cause; // FIELD_CHANGE_*
+```
+Fires when the item on a tile of the scene changes: in town, on the island or in a room, where the room is block 0, 0. `cause` tells what changed it, from what the player was doing on or next to the tile:
+
+| `cause` | Meaning |
+|---|---|
+| `FIELD_CHANGE_GAME` | Not the player: growth, villagers, the day changing, events, mods |
+| `FIELD_CHANGE_DROP` | Put down or thrown |
+| `FIELD_CHANGE_PICK_UP` | Picked up, including digging something up |
+| `FIELD_CHANGE_BURY` | Buried or planted in a hole |
+| `FIELD_CHANGE_DIG` | Hole dug |
+| `FIELD_CHANGE_FILL` | Hole filled |
+| `FIELD_CHANGE_CHOP` | Hit with the axe |
+| `FIELD_CHANGE_SHAKE` | Tree shaken, so something fell |
+| `FIELD_CHANGE_WEED` | Weed pulled |
+| `FIELD_CHANGE_FURNITURE` | Furniture pushed, pulled, turned or picked up |
+
+---
+
+## Satella Events
+
+### `SatellaConnected`
+Fires once Satella is connected and has accepted the player key: at startup, and again after the connection drops and comes back. Relay channels are subscribed again by then; rooms are joined again right after.
+
+---
+
+### `SatellaDisconnected`
+Fires when the connection to Satella drops. It reconnects on its own.
 
 ---
 

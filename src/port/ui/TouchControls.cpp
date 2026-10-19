@@ -163,9 +163,9 @@ void ComputeLayout(OverlayState& state) {
     const ImU32 kPurple = IM_COL32(120, 85, 200, 255);
     const ImU32 kGray = IM_COL32(140, 140, 155, 255);
 
-    const auto make = [w, h](uint16_t mask, const char* id, const char* label, Shape shape, ImU32 color,
-                             ImVec2 center, float halfW, float halfH, float dirX = 0.0f, float dirY = 0.0f) {
-        TouchButton b {};
+    const auto make = [w, h](uint16_t mask, const char* id, const char* label, Shape shape, ImU32 color, ImVec2 center,
+                             float halfW, float halfH, float dirX = 0.0f, float dirY = 0.0f) {
+        TouchButton b{};
         b.mask = mask;
         b.id = id;
         b.label = label;
@@ -219,20 +219,20 @@ void ComputeLayout(OverlayState& state) {
         make(BTN_R, "R", "R", Shape::Pill, kGray, ImVec2(w - 4.2f * u, 1.7f * u), 1.8f * u, 0.6f * u));
     state.gameButtons.push_back(
         make(BTN_Z, "Z", "Z", Shape::Pill, kPurple, ImVec2(w - 4.2f * u, 3.5f * u), 1.4f * u, 0.55f * u));
-    state.gameButtons.push_back(make(BTN_START, "Start", "START", Shape::Pill, kGray,
-                                     ImVec2(w * 0.5f, h - 1.6f * u), 1.3f * u, 0.5f * u));
+    state.gameButtons.push_back(
+        make(BTN_START, "Start", "START", Shape::Pill, kGray, ImVec2(w * 0.5f, h - 1.6f * u), 1.3f * u, 0.5f * u));
 
     const ImVec2 d(3.4f * u, h - 10.2f * u);
     const float dOff = 1.0f * u;
     const float dArm = 0.55f * u;
-    state.gameButtons.push_back(make(BTN_DUP, "DUp", "", Shape::Arrow, kGray, ImVec2(d.x, d.y - dOff), dArm, dArm,
-                                     0.0f, -1.0f));
-    state.gameButtons.push_back(make(BTN_DDOWN, "DDown", "", Shape::Arrow, kGray, ImVec2(d.x, d.y + dOff), dArm,
-                                     dArm, 0.0f, 1.0f));
-    state.gameButtons.push_back(make(BTN_DLEFT, "DLeft", "", Shape::Arrow, kGray, ImVec2(d.x - dOff, d.y), dArm,
-                                     dArm, -1.0f, 0.0f));
-    state.gameButtons.push_back(make(BTN_DRIGHT, "DRight", "", Shape::Arrow, kGray, ImVec2(d.x + dOff, d.y), dArm,
-                                     dArm, 1.0f, 0.0f));
+    state.gameButtons.push_back(
+        make(BTN_DUP, "DUp", "", Shape::Arrow, kGray, ImVec2(d.x, d.y - dOff), dArm, dArm, 0.0f, -1.0f));
+    state.gameButtons.push_back(
+        make(BTN_DDOWN, "DDown", "", Shape::Arrow, kGray, ImVec2(d.x, d.y + dOff), dArm, dArm, 0.0f, 1.0f));
+    state.gameButtons.push_back(
+        make(BTN_DLEFT, "DLeft", "", Shape::Arrow, kGray, ImVec2(d.x - dOff, d.y), dArm, dArm, -1.0f, 0.0f));
+    state.gameButtons.push_back(
+        make(BTN_DRIGHT, "DRight", "", Shape::Arrow, kGray, ImVec2(d.x + dOff, d.y), dArm, dArm, 1.0f, 0.0f));
 }
 
 float Dist(const ImVec2& a, const ImVec2& b) {

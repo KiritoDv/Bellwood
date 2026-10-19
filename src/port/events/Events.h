@@ -21,6 +21,8 @@
 #include "list/SaveEvent.h"
 #include "list/AudioEvent.h"
 #include "list/RenderEvent.h"
+#include "list/NetEvent.h"
+#include "list/FieldEvent.h"
 
 #ifdef __cplusplus
 extern "C" {

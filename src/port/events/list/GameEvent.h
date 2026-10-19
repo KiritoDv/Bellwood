@@ -5,6 +5,7 @@
 struct actor_s;
 struct door_data_s;
 struct game_play_s;
+struct OSRTCTime;
 
 // Scenes
 
@@ -131,6 +132,11 @@ DEFINE_EVENT(SubmenuClosed,
 );
 
 // Clock and weather
+
+// Fires whenever the game reads the system clock. Write through time to change what the game takes as now.
+DEFINE_EVENT(ClockRead,
+    struct OSRTCTime* time;
+);
 
 // Fires when the in-game clock reaches a new hour.
 DEFINE_EVENT(TimeHourChanged,

@@ -52,12 +52,12 @@ class PlayerStoreGetPacket : public Satella::IPacket {
     }
 
     void OnResponse(int16_t status, const std::string& body) override {
-        Satella::Client::Instance().RunOnGameThread(
-            [caller = mCaller, callback = mCallback, key = mKey, found = status == 200, body] {
-                caller.Call([&] {
-                    callback(key.c_str(), found ? body.data() : nullptr, found ? static_cast<uint32_t>(body.size()) : 0);
-                });
+        Satella::Client::Instance().RunOnGameThread([caller = mCaller, callback = mCallback, key = mKey,
+                                                     found = status == 200, body] {
+            caller.Call([&] {
+                callback(key.c_str(), found ? body.data() : nullptr, found ? static_cast<uint32_t>(body.size()) : 0);
             });
+        });
     }
 
   private:
@@ -111,7 +111,12 @@ extern "C" int C_PlayerStoreSet(const char* channel_id, C_PlayerStoreScope scope
     const auto* bytes = reinterpret_cast<const uint8_t*>(data);
     std::vector<uint8_t> body = PlayerIdentity::Sign(bytes, size);
     body.insert(body.end(), bytes, bytes + size);
-    Satella::Client::Instance().SendRaw(Route(pub, channel_id, scope, key, "set"), body.data(), body.size());
+    Satella::Client::Instance().RegisterLive(std::make_unique<Satella::RequestPacket>(
+        Route(pub, channel_id, scope, key, "set"), std::move(body), [](int16_t status, const std::string&) {
+            if (status != 200) {
+                SPDLOG_WARN("C_PlayerStoreSet: Satella returned status {}", status);
+            }
+        }));
     return 1;
 }
 
@@ -151,13 +156,9 @@ extern "C" int C_PlayerStoreDelete(const char* channel_id, C_PlayerStoreScope sc
     }
     const std::string signedPart = std::string(channel_id) + "/" + ScopeName(scope) + "/" + key;
     const auto sig = PlayerIdentity::Sign(reinterpret_cast<const uint8_t*>(signedPart.data()), signedPart.size());
-    Satella::Client::Instance().SendRaw(Route(pub, channel_id, scope, key, "delete"), sig.data(), sig.size());
+    Satella::Client::Instance().RegisterLive(
+        std::make_unique<Satella::RequestPacket>(Route(pub, channel_id, scope, key, "delete"), sig));
     return 1;
-}
-
-extern "C" const char* C_PlayerPublicKey(void) {
-    static const std::string key = OwnKeyHex();
-    return key.c_str();
 }
 
 #else
@@ -177,9 +178,6 @@ extern "C" int C_PlayerStoreGet(const char*, const char*, C_PlayerStoreScope, co
 }
 extern "C" int C_PlayerStoreDelete(const char*, C_PlayerStoreScope, const char*) {
     return 0;
-}
-extern "C" const char* C_PlayerPublicKey(void) {
-    return "";
 }
 
 #endif

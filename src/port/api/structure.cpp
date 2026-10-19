@@ -103,7 +103,8 @@ void BuildLayout(CustomStructure& structure) {
         has_exit |= item == EXIT_DOOR || item == EXIT_DOOR1;
     }
     if (!has_exit) {
-        SPDLOG_WARN("Structure {}: the room has no EXIT_DOOR, adding one in the middle of the front wall", structure.id);
+        SPDLOG_WARN("Structure {}: the room has no EXIT_DOOR, adding one in the middle of the front wall",
+                    structure.id);
         AddDefaultExit(structure.layout, width, depth);
     }
 
@@ -246,8 +247,8 @@ ACTOR* FindLiveActor(int block_x, int block_z, int ut_x, int ut_z) {
             continue;
         }
         if (C_IsCustomStructure(actor->npc_id) &&
-            mFI_Wpos2BkandUtNuminBlock(&bx, &bz, &ux, &uz, actor->home.position) && bx == block_x &&
-            bz == block_z && ux == ut_x && uz == ut_z) {
+            mFI_Wpos2BkandUtNuminBlock(&bx, &bz, &ux, &uz, actor->home.position) && bx == block_x && bz == block_z &&
+            ux == ut_x && uz == ut_z) {
             return actor;
         }
     }
@@ -309,8 +310,8 @@ extern "C" mActor_name_t C_RegisterStructureSized(const C_StructureDef* structur
         return EMPTY_NO;
     }
     if (def->door_x < -(def->width - 1) / 2 || def->door_x > def->width / 2) {
-        SPDLOG_ERROR("Structure {}: door_x must be a column of the front row, {} to {}", def->id,
-                     -(def->width - 1) / 2, def->width / 2);
+        SPDLOG_ERROR("Structure {}: door_x must be a column of the front row, {} to {}", def->id, -(def->width - 1) / 2,
+                     def->width / 2);
         return EMPTY_NO;
     }
     if (def->room != nullptr) {
@@ -369,8 +370,7 @@ extern "C" void C_UnregisterStructure(mActor_name_t item) {
         return;
     }
     if (play != nullptr && InTown()) {
-        for (ACTOR* actor = play->actor_info.list[ACTOR_PART_ITEM].actor; actor != nullptr;
-             actor = actor->next_actor) {
+        for (ACTOR* actor = play->actor_info.list[ACTOR_PART_ITEM].actor; actor != nullptr; actor = actor->next_actor) {
             if (actor->npc_id == item && actor->dw_proc != nullptr &&
                 mFI_Wpos2BkandUtNuminBlock(&bx, &bz, &ux, &uz, actor->home.position)) {
                 SetCollision(structure->def, bx, bz, ux, uz, false);

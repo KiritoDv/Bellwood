@@ -80,8 +80,15 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(WeatherChanged);
 
     REGISTER_EVENT(SaveLoaded);
+    REGISTER_EVENT(SaveRequest);
     REGISTER_EVENT(SaveWritten);
     REGISTER_EVENT(SaveImported);
+
+    REGISTER_EVENT(FieldItemChanged);
+    REGISTER_EVENT(ClockRead);
+
+    REGISTER_EVENT(SatellaConnected);
+    REGISTER_EVENT(SatellaDisconnected);
     REGISTER_EVENT(ResetDetected);
 
     REGISTER_EVENT(PlayBgmEvent);

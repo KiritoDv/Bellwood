@@ -10,8 +10,9 @@ namespace Relay {
 
 enum class Permission { Pending, Allowed, Denied };
 
-// Runs on the game thread for every message that arrives on the channel.
-using MessageCallback = std::function<void(const std::string& channelId, const char* data, uint32_t size)>;
+// Runs on the game thread for every message that arrives on the channel, with the sender's key in hex.
+using MessageCallback =
+    std::function<void(const std::string& channelId, const std::string& senderHex, const char* data, uint32_t size)>;
 
 struct ChannelDef {
     std::string modName;     // shown in the permission prompt

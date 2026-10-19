@@ -33,10 +33,9 @@ BW_API void C_PlayerStoreRequestPermission(const char* channel_id);
 // Stores up to C_PLAYER_STORE_VALUE_MAX bytes. Returns FALSE when not allowed or not connected.
 BW_API int C_PlayerStoreSet(const char* channel_id, C_PlayerStoreScope scope, const char* key, const char* data,
                             uint32_t size);
-// Reads a value. pub_key_hex is another player's key in hex (64 characters), NULL for this player's own values.
+// Reads a value. pub_key_hex is another player's key in hex (C_PlayerPublicKey in port/api/online.h), NULL for this
+// player's own values.
 // Returns FALSE when the request can't be sent.
 BW_API int C_PlayerStoreGet(const char* pub_key_hex, const char* channel_id, C_PlayerStoreScope scope, const char* key,
                             C_PlayerStoreGetCallback callback);
 BW_API int C_PlayerStoreDelete(const char* channel_id, C_PlayerStoreScope scope, const char* key);
-// This player's public key in hex, as other players pass it to C_PlayerStoreGet. Empty without Satella.
-BW_API const char* C_PlayerPublicKey(void);

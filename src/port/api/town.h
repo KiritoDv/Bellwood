@@ -24,5 +24,10 @@ BW_API int C_InTown(void);
 // The game's date and time.
 #define C_GetTime(time) C_GetTimeSized((time), sizeof(*(time)))
 BW_API void C_GetTimeSized(C_Time* time, uint32_t size);
+// Moves the game's clock by seconds from the system clock, e.g. to share a host's time with visitors. Growth,
+// seasons and the daily changes follow it as if the system clock had moved. Not saved; it goes back to 0 when the
+// mod that set it unloads.
+BW_API void C_SetTimeOffset(int32_t seconds);
+BW_API int32_t C_GetTimeOffset(void);
 // Writes the ids of the villagers living in town to ids, up to capacity, and returns how many live there.
 BW_API int C_GetTownVillagers(mActor_name_t* ids, int capacity);

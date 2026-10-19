@@ -46,8 +46,9 @@ Permissions::State ReadState(const std::string& key) {
         return Permissions::State::Pending;
     }
     const int value = it->get<int>();
-    return value == 1 ? Permissions::State::Allowed
-                      : value == 2 ? Permissions::State::Denied : Permissions::State::Pending;
+    return value == 1   ? Permissions::State::Allowed
+           : value == 2 ? Permissions::State::Denied
+                        : Permissions::State::Pending;
 }
 
 void WriteState(const std::string& key, Permissions::State state) {

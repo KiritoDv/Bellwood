@@ -16,6 +16,7 @@
 #include <ixwebsocket/IXNetSystem.h>
 #include <ixwebsocket/IXWebSocket.h>
 
+#include <algorithm>
 #include <chrono>
 #include <cstring>
 #include <filesystem>
@@ -29,6 +30,12 @@
 static ix::WebSocket sWs;
 
 namespace Satella {
+
+static constexpr uint8_t kFrameJson = 0x02;
+static constexpr uint8_t kFrameRaw = 0x03;
+static constexpr uint8_t kFramePush = 0x04;
+// Signed with the nonce from /v1/player/challenge, so the signature can't be reused as anything else.
+static constexpr const char* kAuthTag = "satella-player-auth-v1:";
 
 static void WriteU32LE(std::vector<uint8_t>& buf, uint32_t value) {
     buf.push_back(static_cast<uint8_t>(value & 0xFF));
@@ -47,6 +54,24 @@ static std::vector<uint8_t> BuildFrame(uint8_t type, const std::string& route) {
     WriteU32LE(frame, static_cast<uint32_t>(route.size()));
     frame.insert(frame.end(), route.begin(), route.end());
     return frame;
+}
+
+// kind | u16 name length | name | 32-byte sender | payload, after the 5-byte header.
+static bool ParsePush(const uint8_t* data, size_t size, Push& push) {
+    if (size < 3) {
+        return false;
+    }
+    const size_t nameLen = static_cast<size_t>(data[1]) | (static_cast<size_t>(data[2]) << 8);
+    if (size < 3 + nameLen + 32) {
+        return false;
+    }
+    push.kind = static_cast<PushKind>(data[0]);
+    push.name.assign(reinterpret_cast<const char*>(data + 3), nameLen);
+    const uint8_t* sender = data + 3 + nameLen;
+    const bool anonymous = std::all_of(sender, sender + 32, [](uint8_t b) { return b == 0; });
+    push.senderHex = anonymous ? std::string() : StringHelper::BytesToHex({ sender, sender + 32 });
+    push.payload.assign(reinterpret_cast<const char*>(sender + 32), size - 3 - nameLen - 32);
+    return true;
 }
 
 Client& Client::Instance() {
@@ -78,12 +103,12 @@ bool Client::IsConnected() const {
     return sWs.getReadyState() == ix::ReadyState::Open;
 }
 
-void Client::Keep(std::unique_ptr<IPacket> packet) {
-    std::lock_guard<std::mutex> lock(mPacketsMtx);
-    if (packet->IsSubscription()) {
-        mSubscriptions.push_back(packet.get());
-        mPackets.push_back(std::move(packet));
+void Client::Keep(const std::shared_ptr<IPacket>& packet) {
+    if (!packet->IsSubscription()) {
+        return;
     }
+    std::lock_guard<std::mutex> lock(mPacketsMtx);
+    mSubscriptions.push_back(packet);
 }
 
 void Client::RegisterLive(std::unique_ptr<IPacket> packet) {
@@ -91,9 +116,17 @@ void Client::RegisterLive(std::unique_ptr<IPacket> packet) {
         Register(std::move(packet));
         return;
     }
+    std::shared_ptr<IPacket> shared = std::move(packet);
+    RunOnWorker([this, shared] {
+        SendAndReceive(*shared);
+        Keep(shared);
+    });
+}
+
+void Client::RunOnWorker(std::function<void()> work) {
     {
         std::lock_guard<std::mutex> lock(mQueueMtx);
-        mQueue.push_back(std::move(packet));
+        mQueue.push_back(std::move(work));
         if (!mWorker.joinable()) {
             mWorker = std::thread([this] { WorkerLoop(); });
         }
@@ -103,18 +136,17 @@ void Client::RegisterLive(std::unique_ptr<IPacket> packet) {
 
 void Client::WorkerLoop() {
     while (true) {
-        std::unique_ptr<IPacket> packet;
+        std::function<void()> work;
         {
             std::unique_lock<std::mutex> lock(mQueueMtx);
             mQueueCv.wait(lock, [this] { return mStopping || !mQueue.empty(); });
             if (mStopping) {
                 return;
             }
-            packet = std::move(mQueue.front());
+            work = std::move(mQueue.front());
             mQueue.pop_front();
         }
-        SendAndReceive(*packet);
-        Keep(std::move(packet));
+        work();
     }
 }
 
@@ -122,10 +154,20 @@ void Client::SendRaw(const std::string& route, const void* data, size_t size) {
     if (!IsConnected()) {
         return;
     }
-    std::vector<uint8_t> frame = BuildFrame(0x03, route);
+    std::vector<uint8_t> frame = BuildFrame(kFrameRaw, route);
     const auto* bytes = static_cast<const uint8_t*>(data);
     frame.insert(frame.end(), bytes, bytes + size);
     sWs.sendBinary(std::string(frame.begin(), frame.end()));
+}
+
+void Client::AddPushHandler(std::function<void(const Push& push)> handler) {
+    std::lock_guard<std::mutex> lock(mHandlersMtx);
+    mPushHandlers.push_back(std::move(handler));
+}
+
+void Client::AddReconnectHandler(std::function<void()> handler) {
+    std::lock_guard<std::mutex> lock(mHandlersMtx);
+    mReconnectHandlers.push_back(std::move(handler));
 }
 
 void Client::RunOnGameThread(std::function<void()> work) {
@@ -147,9 +189,18 @@ void Client::Poll() {
 void Client::OnMessage(const ix::WebSocketMessagePtr& msg) {
     switch (msg->type) {
         case ix::WebSocketMessageType::Open: {
-            std::lock_guard<std::mutex> lock(mMtx);
-            mConnected = true;
-            mCv.notify_all();
+            bool reconnected;
+            {
+                std::lock_guard<std::mutex> lock(mMtx);
+                mConnected = true;
+                reconnected = mEverConnected;
+                mEverConnected = true;
+                mCv.notify_all();
+            }
+            if (reconnected) {
+                SPDLOG_INFO("Satella: reconnected");
+                RunOnWorker([this] { Resume(); });
+            }
             break;
         }
         case ix::WebSocketMessageType::Message: {
@@ -164,6 +215,25 @@ void Client::OnMessage(const ix::WebSocketMessagePtr& msg) {
 
             const uint8_t type = data[2];
             const int16_t status = ReadI16LE(data + 3);
+
+            // Push frames are never a reply, so they can't be taken for the one a request waits for.
+            if (type == kFramePush) {
+                Push push;
+                if (!ParsePush(data + kHeaderSize, size - kHeaderSize, push)) {
+                    SPDLOG_WARN("Satella: malformed push ({} bytes)", size);
+                    break;
+                }
+                std::vector<std::function<void(const Push&)>> handlers;
+                {
+                    std::lock_guard<std::mutex> lock(mHandlersMtx);
+                    handlers = mPushHandlers;
+                }
+                for (const auto& handler : handlers) {
+                    handler(push);
+                }
+                break;
+            }
+
             const std::string body = (type != 0x01 && size > kHeaderSize)
                                          ? std::string(msg->str.begin() + kHeaderSize, msg->str.end())
                                          : std::string();
@@ -177,17 +247,18 @@ void Client::OnMessage(const ix::WebSocketMessagePtr& msg) {
                     mResponseBody = body;
                     mResponseValid = true;
                     mResponseReady = true;
+                    mWaitingForResponse = false;
                     mCv.notify_all();
                 }
             }
 
             if (!isResponse) {
-                std::vector<IPacket*> subscriptions;
+                std::vector<std::shared_ptr<IPacket>> subscriptions;
                 {
                     std::lock_guard<std::mutex> lock(mPacketsMtx);
                     subscriptions = mSubscriptions;
                 }
-                for (auto* sub : subscriptions) {
+                for (const auto& sub : subscriptions) {
                     sub->OnPush(status, type, body);
                 }
             }
@@ -197,11 +268,19 @@ void Client::OnMessage(const ix::WebSocketMessagePtr& msg) {
             SPDLOG_WARN("Satella: WebSocket error: {}", msg->errorInfo.reason);
             [[fallthrough]];
         case ix::WebSocketMessageType::Close: {
-            std::lock_guard<std::mutex> lock(mMtx);
-            mConnected = false;
-            mResponseReady = true;
-            mResponseValid = false;
-            mCv.notify_all();
+            bool wasConnected;
+            {
+                std::lock_guard<std::mutex> lock(mMtx);
+                wasConnected = mConnected;
+                mConnected = false;
+                mResponseReady = true;
+                mResponseValid = false;
+                mCv.notify_all();
+            }
+            mVerified = false;
+            if (wasConnected) {
+                RunOnGameThread([] { CALL_EVENT(SatellaDisconnected); });
+            }
             break;
         }
         default:
@@ -286,12 +365,15 @@ void Client::Connect(const std::string& url) {
 }
 
 void Client::SendAndReceive(IPacket& packet) {
+    std::lock_guard<std::mutex> request(mRequestMtx);
     if (!IsConnected()) {
         SPDLOG_WARN("Satella: not connected, skipping '{}'", packet.GetRoute());
         return;
     }
 
-    const std::vector<uint8_t> request = BuildFrame(0x02, packet.GetRoute());
+    const std::vector<uint8_t> body = packet.GetBody();
+    std::vector<uint8_t> frame = BuildFrame(body.empty() ? kFrameJson : kFrameRaw, packet.GetRoute());
+    frame.insert(frame.end(), body.begin(), body.end());
     {
         std::lock_guard<std::mutex> lock(mMtx);
         mResponseReady = false;
@@ -299,10 +381,10 @@ void Client::SendAndReceive(IPacket& packet) {
         mWaitingForResponse = true;
     }
 
-    sWs.sendBinary(std::string(request.begin(), request.end()));
+    sWs.sendBinary(std::string(frame.begin(), frame.end()));
 
     int16_t status;
-    std::string body;
+    std::string reply;
     {
         std::unique_lock<std::mutex> lock(mMtx);
         mCv.wait_for(lock, std::chrono::seconds(10), [this] { return mResponseReady; });
@@ -312,19 +394,103 @@ void Client::SendAndReceive(IPacket& packet) {
             return;
         }
         status = mResponseStatus;
-        body = std::move(mResponseBody);
+        reply = std::move(mResponseBody);
     }
 
-    packet.OnResponse(status, body);
+    packet.OnResponse(status, reply);
+}
+
+// Asks for a nonce, then proves the player key by signing it.
+class ChallengePacket : public IPacket {
+  public:
+    std::vector<uint8_t> nonce;
+
+    const char* GetRoute() const override {
+        return "/v1/player/challenge";
+    }
+
+    void OnResponse(int16_t status, const std::string& body) override {
+        const auto json = nlohmann::json::parse(body, nullptr, false);
+        if (status == 200 && json.is_object() && json.value("nonce", std::string()).size() == 64) {
+            nonce = StringHelper::HexToBytes(json["nonce"].get<std::string>());
+        }
+    }
+};
+
+class VerifyPacket : public IPacket {
+  public:
+    VerifyPacket(const std::string& pubKeyHex, const std::vector<uint8_t>& nonce)
+        : mRoute("/v1/player/" + pubKeyHex + "/verify") {
+        std::vector<uint8_t> message(kAuthTag, kAuthTag + strlen(kAuthTag));
+        message.insert(message.end(), nonce.begin(), nonce.end());
+        mSignature = PlayerIdentity::Sign(message.data(), message.size());
+    }
+
+    bool verified = false;
+
+    const char* GetRoute() const override {
+        return mRoute.c_str();
+    }
+
+    std::vector<uint8_t> GetBody() const override {
+        return mSignature;
+    }
+
+    void OnResponse(int16_t status, const std::string&) override {
+        verified = status == 200;
+    }
+
+  private:
+    std::string mRoute;
+    std::vector<uint8_t> mSignature;
+};
+
+void Client::Authenticate() {
+    const auto pub = PlayerIdentity::GetPublicKey();
+    if (pub.empty()) {
+        return;
+    }
+    ChallengePacket challenge;
+    SendAndReceive(challenge);
+    if (challenge.nonce.size() != 32) {
+        SPDLOG_WARN("Satella: the server didn't send a key challenge; pushes won't say who sent them");
+        return;
+    }
+    VerifyPacket verify(StringHelper::BytesToHex(pub), challenge.nonce);
+    SendAndReceive(verify);
+    mVerified = verify.verified;
+    if (!verify.verified) {
+        SPDLOG_WARN("Satella: the server refused the player key");
+    }
+}
+
+// After a reconnect: the new socket has no key and no subscriptions.
+void Client::Resume() {
+    Authenticate();
+    std::vector<std::shared_ptr<IPacket>> subscriptions;
+    std::vector<std::function<void()>> handlers;
+    {
+        std::lock_guard<std::mutex> lock(mPacketsMtx);
+        subscriptions = mSubscriptions;
+    }
+    {
+        std::lock_guard<std::mutex> lock(mHandlersMtx);
+        handlers = mReconnectHandlers;
+    }
+    for (const auto& sub : subscriptions) {
+        SendAndReceive(*sub);
+    }
+    for (const auto& handler : handlers) {
+        handler();
+    }
+    RunOnGameThread([] { CALL_EVENT(SatellaConnected); });
 }
 
 void Client::Execute() {
-    std::vector<IPacket*> packets;
+    std::vector<std::shared_ptr<IPacket>> packets;
     {
         std::lock_guard<std::mutex> lock(mPacketsMtx);
-        for (auto& packet : mPackets) {
-            packets.push_back(packet.get());
-        }
+        packets = mPackets;
     }
     if (packets.empty()) {
         return;
@@ -341,25 +507,29 @@ void Client::Execute() {
     }
 
     mPhase = Phase::FetchingKeys;
-    for (auto* packet : packets) {
+    Authenticate();
+    for (const auto& packet : packets) {
         if (packet->IsBlocking()) {
             SendAndReceive(*packet);
         }
     }
 
     mPhase = Phase::Done;
-    for (auto* packet : packets) {
+    for (const auto& packet : packets) {
         if (!packet->IsBlocking()) {
             SendAndReceive(*packet);
         }
     }
 
-    std::lock_guard<std::mutex> lock(mPacketsMtx);
-    for (auto* packet : packets) {
-        if (packet->IsSubscription()) {
-            mSubscriptions.push_back(packet);
+    {
+        std::lock_guard<std::mutex> lock(mPacketsMtx);
+        for (const auto& packet : packets) {
+            if (packet->IsSubscription()) {
+                mSubscriptions.push_back(packet);
+            }
         }
     }
+    RunOnGameThread([] { CALL_EVENT(SatellaConnected); });
 }
 
 // Registers this install's player key, so the stores can check its signatures.
@@ -438,7 +608,22 @@ class PublicKeysPacket : public IPacket {
 
 SATELLA_REGISTER_PACKET(PublicKeysPacket);
 
-// Shows the notifications Satella pushes.
+static void ShowNotification(const std::string& body) {
+    const auto data = nlohmann::json::parse(body, nullptr, false);
+    if (!data.is_object()) {
+        return;
+    }
+    Notification::Options opts;
+    opts.prefix = data.value("prefix", std::string());
+    opts.message = data.value("message", std::string());
+    opts.suffix = data.value("suffix", std::string());
+    if (data.contains("duration") && data["duration"].is_number()) {
+        opts.remainingTime = data["duration"].get<float>();
+    }
+    Client::Instance().RunOnGameThread([opts] { Notification::Emit(opts); });
+}
+
+// Shows the notifications Satella pushes. Servers without push frames send them as plain JSON.
 class NotificationsPacket : public IPacket {
   public:
     const char* GetRoute() const override {
@@ -456,22 +641,9 @@ class NotificationsPacket : public IPacket {
     }
 
     void OnPush(int16_t status, uint8_t packetType, const std::string& body) override {
-        if (status != 200 || packetType != 0x02 || body.empty()) {
-            return;
+        if (status == 200 && packetType == kFrameJson && !body.empty()) {
+            ShowNotification(body);
         }
-        const auto data = nlohmann::json::parse(body, nullptr, false);
-        if (!data.is_object()) {
-            return;
-        }
-
-        Notification::Options opts;
-        opts.prefix = data.value("prefix", std::string());
-        opts.message = data.value("message", std::string());
-        opts.suffix = data.value("suffix", std::string());
-        if (data.contains("duration") && data["duration"].is_number()) {
-            opts.remainingTime = data["duration"].get<float>();
-        }
-        Client::Instance().RunOnGameThread([opts] { Notification::Emit(opts); });
     }
 };
 
@@ -483,6 +655,13 @@ static void SatellaPoll(IEvent*) {
     Satella::Client::Instance().Poll();
 }
 
-static RegisterShipInitFunc sSatellaInit([] { REGISTER_LISTENER(GameLoopTick, EVENT_PRIORITY_NORMAL, SatellaPoll); });
+static RegisterShipInitFunc sSatellaInit([] {
+    REGISTER_LISTENER(GameLoopTick, EVENT_PRIORITY_NORMAL, SatellaPoll);
+    Satella::Client::Instance().AddPushHandler([](const Satella::Push& push) {
+        if (push.kind == Satella::PushKind::Notification) {
+            Satella::ShowNotification(push.payload);
+        }
+    });
+});
 
 #endif
