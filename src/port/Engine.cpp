@@ -515,12 +515,16 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
         return;
     }
 
-    const std::unordered_map<std::string, std::string> defines = {
+    std::unordered_map<std::string, std::string> defines = {
         { "F3DEX_GBI_2", "1" }, { "TARGET_PC", "1" },   { "VERSION", "VER_GAFE01_00" }, { "DEBUG", "0" },
         { "NDEBUG", "1" },      { "_LANGUAGE_C", "1" }, { "_USE_MATH_DEFINES", "1" },
     };
 #ifdef _WIN32
     const std::string buildOptions = "-g -rdynamic -funsigned-char -std=c11";
+#elif defined(__ANDROID__)
+    defines["__ANDROID_MIN_SDK_VERSION__"] = std::to_string(__ANDROID_MIN_SDK_VERSION__);
+    defines["__ANDROID_API__"] = std::to_string(__ANDROID_API__);
+    const std::string buildOptions = "-nostdlib -funsigned-char -std=c11";
 #else
     const std::string buildOptions = "-rdynamic -funsigned-char -std=c11";
 #endif
@@ -551,7 +555,7 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
         pclose(fp);
     }
 #endif
-#if defined(__linux__)
+#if defined(__linux__) && !defined(__ANDROID__)
     {
         const auto libcStub = std::filesystem::path(tccBase) / "lib" / "libc.so";
         std::error_code ec;
@@ -569,9 +573,17 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
         }
     }
 #endif
+#endif
+    std::vector<std::string> libraryPaths = { tccBase + "/lib" };
+#ifdef __ANDROID__
+    Dl_info self = {};
+    if (dladdr((void*)&SetupScriptLoader, &self) && self.dli_fname != nullptr) {
+        libraryPaths.push_back(std::filesystem::path(self.dli_fname).parent_path().string());
+    }
+    const std::vector<std::string> libraries = { "tcc1", "main" };
+#elif !defined(_WIN32)
     const std::vector<std::string> libraries = {};
 #endif
-    const std::vector<std::string> libraryPaths = { tccBase + "/lib" };
 
     auto scriptLoader = std::make_shared<Ship::ScriptLoader>(defines, BW_CODE_VERSION, buildOptions, includePaths,
                                                              libraryPaths, libraries, ShipCompat::GetResourceManager());

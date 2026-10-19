@@ -44,6 +44,10 @@ abstract class PackGameData : DefaultTask() {
     @get:PathSensitive(PathSensitivity.RELATIVE)
     abstract val config: RegularFileProperty
 
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val tccRuntime: DirectoryProperty
+
     @get:Input
     abstract val engineArchive: Property<String>
 
@@ -66,7 +70,8 @@ abstract class PackGameData : DefaultTask() {
         writeZip(
             bundle,
             listOf("config.yml" to config.get().asFile, engine.name to engine) +
-                filesUnder(recipesRoot, "assets/ymls")
+                filesUnder(recipesRoot, "assets/ymls") +
+                filesUnder(tccRuntime.get().asFile, ".tcc")
         )
         engine.delete()
 
@@ -95,6 +100,8 @@ abstract class PackGameData : DefaultTask() {
     }
 }
 
+val tccRuntimeDir: File = layout.buildDirectory.dir("generated/tccRuntime").get().asFile
+
 androidComponents {
     onVariants { variant ->
         val packGameData =
@@ -104,6 +111,8 @@ androidComponents {
                 lusShaders.set(File(repositoryRoot, "libultraship/src/fast/shaders"))
                 config.set(File(repositoryRoot, "config.yml"))
                 engineArchive.set("$portName.o2r")
+                tccRuntime.set(tccRuntimeDir)
+                dependsOn("externalNativeBuild${variant.name.replaceFirstChar(Char::titlecase)}")
             }
         variant.sources.assets?.addGeneratedSourceDirectory(packGameData, PackGameData::outputDir)
     }
@@ -135,6 +144,7 @@ android {
                     "-DSDL_SHARED=ON",
                     "-DSDL_STATIC=OFF",
                     "-DHAVE_LD_VERSION_SCRIPT=OFF",
+                    "-DBELLWOOD_TCC_RUNTIME_DIR=${tccRuntimeDir.absolutePath}",
                     "-DCMAKE_BUILD_TYPE=Release"
                 )
                 targets += portName
@@ -144,6 +154,12 @@ android {
 
     buildFeatures {
         buildConfig = true
+    }
+
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
+        }
     }
 
     signingConfigs {
