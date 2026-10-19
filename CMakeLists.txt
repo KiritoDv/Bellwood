@@ -882,6 +882,9 @@ configure_file(${CMAKE_SOURCE_DIR}/cmake/configure-packaging.cmake ${CPACK_PROJE
 include(cmake/packaging.cmake)
 
 if(NOT BELLWOOD_CROSS_BUILD)
+    if(TARGET zlibstatic AND NOT TARGET ZLIB::ZLIB)
+        add_library(ZLIB::ZLIB ALIAS zlibstatic)
+    endif()
     find_package(libzip REQUIRED)
     add_executable(make_mod_sdk EXCLUDE_FROM_ALL tools/make_mod_sdk.cpp)
     target_compile_features(make_mod_sdk PRIVATE cxx_std_17)

@@ -89,8 +89,8 @@ bool ModSound::Decode(const uint8_t* data, size_t size, std::vector<int16_t>& ou
     }
     unsigned channels = 0;
     unsigned rate = 0;
-    uint64_t frames = 0;
     if (memcmp(data, "RIFF", 4) == 0) {
+        drwav_uint64 frames = 0;
         int16_t* pcm = drwav_open_memory_and_read_pcm_frames_s16(data, size, &channels, &rate, &frames, nullptr);
         if (pcm == nullptr) {
             return false;
@@ -100,6 +100,7 @@ bool ModSound::Decode(const uint8_t* data, size_t size, std::vector<int16_t>& ou
         return true;
     }
     if (memcmp(data, "fLaC", 4) == 0) {
+        drflac_uint64 frames = 0;
         int16_t* pcm = drflac_open_memory_and_read_pcm_frames_s16(data, size, &channels, &rate, &frames, nullptr);
         if (pcm == nullptr) {
             return false;
