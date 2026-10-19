@@ -151,3 +151,7 @@ Open `http://localhost:8080/bellwood.html` and pick your disc image. It is read 
 * [ACreTeam](https://github.com/ACreTeam/ac-decomp) : for the Animal Crossing decompilation this port is built on.
 * [Kenix3](https://github.com/Kenix3) : for helping with the Engine development that were brought into other ports.
 * [HM64 Team](https://github.com/harbourMasters) : for creating Libultraship and Torch, and helping with various issues.
+
+# AI Disclosure
+
+Bellwood accepts pull requests that use AI, within policy guidelines. For more information please see the HarbourMasters [AI Policy](https://github.com/HarbourMasters/code-of-conduct/blob/main/AI_POLICY.md).
