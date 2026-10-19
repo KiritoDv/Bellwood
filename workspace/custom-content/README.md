@@ -13,7 +13,7 @@ Copy `CustomContent.o2r` into Bellwood's `mods/` folder.
 
 Everything a mod registers with these APIs is unregistered when it unloads, after its `MOD_EXIT` and before its code is freed, so `MOD_EXIT` doesn't need to undo `MOD_INIT`. The `C_Unregister*` functions are for taking content away while the mod runs. The same goes for its event listeners, menu entries and GUI callbacks, and for anything registered from its actor and furniture callbacks. Furniture placed in the room being shown is destroyed with the old code and constructed again with the new one when the mod reloads.
 
-The numbers given to content ids are kept next to the game in `custom_<kind>.json`, and in each town file under the ids it uses. When a town saved by another install loads, or one whose `custom_*.json` files were deleted, its content is renumbered to match. A town that uses content no loaded mod registers shows a warning naming the mods.
+Content ids get their numbers when they are registered. Each town file keeps the numbers of the ids it uses, and when it loads with different numbers, because mods were added, removed or loaded in another order, or it was saved by another install, its content is renumbered to match. A town that uses content no loaded mod registers shows a warning naming the mods.
 
 ## Custom actors (`port/api/actor.h`)
 
@@ -117,7 +117,7 @@ static C_FurnitureDef sTableDef = {
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The item number assigned to it is stored in `custom_furniture.json` next to the game and in the town files that use it, so saved rooms keep the right furniture across sessions. Never reuse an id for a different piece. |
+| `id` | Unique key. The item number assigned to it is stored in the town files that use it, so saved rooms keep the right furniture across sessions. Never reuse an id for a different piece. |
 | `name` | Name shown in game, up to 16 characters. |
 | `article` | `mIN_ARTICLE_*`, used in sentences like "You got a my table". |
 | `price` | Price in Bells. |
@@ -154,7 +154,7 @@ static C_ItemDef sGemDef = {
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The item number assigned to it is stored in `custom_items.json` next to the game and in the town files that use it. Never reuse an id for a different item. |
+| `id` | Unique key. The item number assigned to it is stored in the town files that use it. Never reuse an id for a different item. |
 | `name` | Name shown in game, up to 16 characters. |
 | `article` | `mIN_ARTICLE_*`. |
 | `price` | Price in Bells. 0 means Nook takes it for free. |
@@ -206,7 +206,7 @@ sTiles = C_RegisterCarpet(&sTilesDef);
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The item number assigned to it is stored in `custom_carpets.json` or `custom_wallpapers.json` next to the game and in the town files that use it, so rooms keep the right floor and wall across sessions. Never reuse an id for a different design. |
+| `id` | Unique key. The item number assigned to it is stored in the town files that use it, so rooms keep the right floor and wall across sessions. Never reuse an id for a different design. |
 | `name` | Name shown in game, up to 16 characters. |
 | `article` | `mIN_ARTICLE_*`. |
 | `price` | Price in Bells. |
@@ -237,7 +237,7 @@ sTee = C_RegisterCloth(&sTeeDef);
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The item number assigned to it is stored in `custom_clothes.json` next to the game and in the town files that use it. Never reuse an id for a different shirt. |
+| `id` | Unique key. The item number assigned to it is stored in the town files that use it. Never reuse an id for a different shirt. |
 | `name`, `article` | Name shown in game, up to 16 characters, and its `mIN_ARTICLE_*`. |
 | `price` | Price in Bells. |
 | `texture`, `palette` | A 32x32 CI4 texture and its 16 colour palette, laid out like an Able Sisters design: the texture wraps around the body, with the chest in the middle. |
@@ -273,7 +273,7 @@ A custom villager starts from one of the 236 built-in villagers, its `base`: the
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The villager id assigned to it is stored in `custom_villagers.json` next to the game and in the town files that use it. Never reuse an id for a different villager. |
+| `id` | Unique key. The villager id assigned to it is stored in the town files that use it. Never reuse an id for a different villager. |
 | `name` | Name shown in game, up to 8 characters. |
 | `catchphrase` | Added to the end of sentences, up to 10 characters. Villagers can still change it over time, like built-in ones. |
 | `base` | `NPC_*` id of the built-in villager it is built on, from `m_name_table.h`. |
@@ -346,7 +346,7 @@ A custom fish or insect is built on one of the 40 built-in ones, its `base`. It 
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The item number assigned to it is stored in `custom_fish.json` or `custom_insects.json` next to the game and in the town files that use it. Never reuse an id for a different creature. |
+| `id` | Unique key. The item number assigned to it is stored in the town files that use it. Never reuse an id for a different creature. |
 | `name`, `article` | Name shown in game, up to 16 characters, and its `mIN_ARTICLE_*`. |
 | `price` | Value in Bells. Nook pays a quarter of it, like for the built-in ones. |
 | `base` | `aGYO_TYPE_*` from `ac_gyoei.h` for fish, `aINS_INSECT_TYPE_*` from `ac_insect_h.h` for insects. |
@@ -404,7 +404,7 @@ A structure with a `name` is listed on the town map, in the panel of the acre it
 
 | Field | Description |
 |---|---|
-| `id` | Unique key. The item number assigned to it is stored in `custom_structures.json` next to the game and in the town files that use it. Never reuse an id for a different structure. |
+| `id` | Unique key. The item number assigned to it is stored in the town files that use it. Never reuse an id for a different structure. |
 | `name` | Shown on the town map, up to 8 characters. NULL keeps it off the map. |
 | `model`, `model_xlu` | Display lists of the structure, opaque and translucent, drawn with their origin at the centre of the anchor tile on the ground. `#asset "file.gltf" MODEL` and `MODEL_XLU` make them from a glTF file (see below). `model_xlu` can be NULL. |
 | `winter_model`, `winter_model_xlu` | Models used in winter, for a snowy roof. NULL keeps `model` or `model_xlu`. |

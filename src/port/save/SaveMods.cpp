@@ -373,7 +373,7 @@ bool SaveMods::Remap(const SaveJson& ship, Save_t* land, mCD_keep_mail_c* mail,
             }
         }
     }
-    SPDLOG_INFO("save: renumbered mod content saved by another install");
+    SPDLOG_INFO("save: renumbered mod content to the numbers of this session");
     return true;
 }
 

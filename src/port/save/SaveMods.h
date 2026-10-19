@@ -12,7 +12,8 @@
 // content each player in the file has owned, for the catalog. "museum" records who donated custom content.
 namespace SaveMods {
 
-// Renumbers the custom content of a file read from disk to this install's numbers. Returns true if anything changed.
+// Renumbers the custom content of a file read from disk to the numbers of this session. Returns true if anything
+// changed.
 bool Remap(const SaveJson& ship, Save_t* land, mCD_keep_mail_c* mail, const std::vector<mCD_foreigner_c*>& passports);
 // Writes the ids of the custom content used in the file.
 void WriteIds(SaveJson& ship, const Save_t* land, const mCD_keep_mail_c* mail,
