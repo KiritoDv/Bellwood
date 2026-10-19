@@ -214,9 +214,13 @@ extern "C" int C_WorldToScreen(float x, float y, float z, float* screen_x, float
     if (w <= 0.0f) {
         return 0;
     }
-    const float ndc_x = (m.xx * x + m.xy * y + m.xz * z + m.xw) / w;
-    const float ndc_y = (m.yx * x + m.yy * y + m.yz * z + m.yw) / w;
     const auto& viewport = interpreter->mGameWindowViewport;
+    if (viewport.width <= 0 || viewport.height <= 0) {
+        return 0;
+    }
+    const float aspect = (4.0f / 3.0f) / ((float)viewport.width / (float)viewport.height);
+    const float ndc_x = (m.xx * x + m.xy * y + m.xz * z + m.xw) / w * aspect;
+    const float ndc_y = (m.yx * x + m.yy * y + m.yz * z + m.yw) / w;
     if (screen_x != nullptr) {
         *screen_x = viewport.x + (ndc_x * 0.5f + 0.5f) * viewport.width;
     }
