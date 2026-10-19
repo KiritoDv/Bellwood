@@ -17,6 +17,7 @@ void SaveManager_SetTownFile(const char* path);
 
 #include <string>
 #include <vector>
+#include <cstdint>
 
 namespace SaveManager {
 
