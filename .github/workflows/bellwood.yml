@@ -195,9 +195,17 @@ jobs:
         run: |
           $mp = 'C:\Program Files\Windows Defender\MpCmdRun.exe'
           if (-not (Test-Path $mp)) { throw "MpCmdRun.exe not found; the runner image changed" }
-          & $mp -SignatureUpdate
-          if ($LASTEXITCODE -ne 0) { Write-Host "::warning::signature update returned $LASTEXITCODE" }
+          $code = 1
+          for ($i = 1; $i -le 6; $i++) {
+            & $mp -SignatureUpdate
+            $code = $LASTEXITCODE
+            if ($code -eq 0) { break }
+            Write-Host "signature update attempt $i returned $code, retrying in 30s"
+            Start-Sleep -Seconds 30
+          }
+          if ($code -ne 0) { Write-Host "::warning::signature update returned $code, scanning with current definitions" }
           Get-MpComputerStatus | Select-Object AntivirusSignatureVersion,AMEngineVersion | Format-List
+          exit 0
 
       - name: Scan every shipped binary
         shell: pwsh
