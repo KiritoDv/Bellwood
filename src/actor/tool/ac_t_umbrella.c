@@ -1,5 +1,7 @@
 #include "ac_t_umbrella.h"
 
+#include "ac_puppet.h"
+
 #include "m_name_table.h"
 #include "sys_matrix.h"
 #include "m_lib.h"
@@ -299,8 +301,13 @@ static void aTUMB_actor_draw(ACTOR* actor, GAME* game) {
         gSPSegment(gfx++, G_MWO_SEGMENT_8, custom->umbrella_pal);
         gSPSegment(gfx++, G_MWO_SEGMENT_9, custom->umbrella_tex);
     } else if (tool_name >= TOOL_ORG_UMBRELLA0) {
+        const aPUP_design_c* design = aPUP_GetActorDesign(parent, aPUP_DESIGN_UMBRELLA);
+
         umbrella_name = tool_name - TOOL_ORG_UMBRELLA0;
-        if (parent->part == ACTOR_PART_PLAYER) {
+        if (design != NULL) {
+            gSPSegment(gfx++, G_MWO_SEGMENT_8, design->pal);
+            gSPSegment(gfx++, G_MWO_SEGMENT_9, design->tex);
+        } else if (parent->part == ACTOR_PART_PLAYER) {
             umbrella_name = (umbrella_name & 7);
             gSPSegment(gfx++, G_MWO_SEGMENT_8, mNW_PaletteIdx2Palette(Player_Palette_Get(umbrella_name)));
             gSPSegment(gfx++, G_MWO_SEGMENT_9, Player_Design_Get(umbrella_name));

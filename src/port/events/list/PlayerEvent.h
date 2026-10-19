@@ -86,3 +86,34 @@ DEFINE_EVENT(HouseSizeChanged,
     int32_t previous;  // mHm_HOMESIZE_*
     int32_t size;
 );
+
+// How a PlayerSound is played.
+enum {
+    PLAYER_SOUND_EFFECT,    // a sound effect at a place (sAdo_OngenTrgStart)
+    PLAYER_SOUND_STEP,      // a footstep outdoors; id is the ground's walk sound (sAdo_PlyWalkSe)
+    PLAYER_SOUND_ROOM_STEP, // a footstep indoors; id is the floor (sAdo_PlyWalkSeRoom)
+};
+
+// Fires when the player makes a sound at a place: footsteps, tools, shaking trees and so on. Sounds the player only
+// hears, such as the camera moving, don't fire it.
+DEFINE_EVENT(PlayerSound,
+    int32_t kind; // PLAYER_SOUND_*
+    uint16_t id;
+    float x;
+    float y;
+    float z;
+);
+
+// Fires when the player makes an effect: footprints, dust, splashes, tool swings and so on. The fields are the
+// arguments of the effect clip's effect_make_proc.
+DEFINE_EVENT(PlayerEffect,
+    int32_t effect; // eEC_EFFECT_*
+    float x;
+    float y;
+    float z;
+    int32_t prio;
+    int16_t angle;
+    uint16_t item;
+    int16_t arg0;
+    int16_t arg1;
+);

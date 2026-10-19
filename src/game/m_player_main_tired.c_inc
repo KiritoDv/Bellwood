@@ -30,7 +30,7 @@ static void Player_actor_SetEffect_Tired(ACTOR* actorx, GAME* game) {
 
     if (Player_actor_Check_AnimationFrame(fc0_p, 10.0f)) {
         Player_actor_sound_araiiki(actorx);
-        eEC_CLIP->effect_make_proc(eEC_EFFECT_DUST, player->feel_pos, 2, actorx->shape_info.rotation.y, game, RSV_NO, 0,
+        Player_actor_effect_make(eEC_EFFECT_DUST, player->feel_pos, 2, actorx->shape_info.rotation.y, game, RSV_NO, 0,
                                    0);
     }
 }

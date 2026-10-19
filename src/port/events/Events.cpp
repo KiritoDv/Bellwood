@@ -85,6 +85,8 @@ extern "C" void PortEvents_Init(void) {
     REGISTER_EVENT(SaveImported);
 
     REGISTER_EVENT(FieldItemChanged);
+    REGISTER_EVENT(PlayerSound);
+    REGISTER_EVENT(PlayerEffect);
     REGISTER_EVENT(ClockRead);
 
     REGISTER_EVENT(SatellaConnected);

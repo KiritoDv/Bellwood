@@ -51,7 +51,7 @@ static int Player_actor_SetEffectRemoveFlower_Dash(ACTOR* actor, GAME* game, s16
                 xyz_t pos;
                 if (mFI_Wpos2UtCenterWpos(&pos, *actor_pos)) {
                     pos.y = mCoBG_GetBgY_OnlyCenter_FromWpos2(pos, 0.0f);
-                    Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_HANATIRI, pos, 2, angle, game, 0xFFFF,
+                    Player_actor_effect_make(eEC_EFFECT_HANATIRI, pos, 2, angle, game, 0xFFFF,
                                                                    (s16)name, 0);
 
                     if (Common_Get(clip).bg_item_clip != NULL) {
@@ -76,13 +76,13 @@ static void Player_actor_SetEffect_Dash(ACTOR* actor, GAME* game, f32 left_targe
 
     if (Player_actor_Check_AnimationFrame(fc, left_target_frame) != FALSE) {
         if (!Player_actor_SetEffectRemoveFlower_Dash(actor, game, player->left_foot_angle.y)) {
-            Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_DASH_ASIMOTO, player->left_foot_pos, 2,
+            Player_actor_effect_make(eEC_EFFECT_DASH_ASIMOTO, player->left_foot_pos, 2,
                                                            player->left_foot_angle.y, game, 0xFFFF,
                                                            actor->bg_collision_check.result.unit_attribute, 0);
         }
     } else if (Player_actor_Check_AnimationFrame(fc, right_target_frame) != FALSE) {
         if (!Player_actor_SetEffectRemoveFlower_Dash(actor, game, player->right_foot_angle.y)) {
-            Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_DASH_ASIMOTO, player->right_foot_pos, 2,
+            Player_actor_effect_make(eEC_EFFECT_DASH_ASIMOTO, player->right_foot_pos, 2,
                                                            player->right_foot_angle.y, game, 0xFFFF,
                                                            actor->bg_collision_check.result.unit_attribute, 0);
         }

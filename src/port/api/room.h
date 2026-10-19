@@ -21,7 +21,8 @@
 typedef void (*C_RoomMessageCallback)(const char* group, const char* room, const char* sender_key_hex, const char* data,
                                       uint32_t size, int direct);
 // Runs on the game thread when a player joins (joined TRUE) or leaves a room this player is in, including the players
-// already there when this player joins.
+// already there when this player joins. When the connection drops, everyone leaves; after reconnecting they join
+// again.
 typedef void (*C_RoomMemberCallback)(const char* group, const char* room, const char* member_key_hex, int joined);
 
 typedef struct C_RoomGroupDef_s {

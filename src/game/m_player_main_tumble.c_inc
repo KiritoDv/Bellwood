@@ -61,7 +61,7 @@ static int Player_actor_Get_PlayerAnimeIndex_fromItemKind_Tumble(int kind) {
 }
 
 static void Player_actor_effect_Tumble(ACTOR* actor, GAME* game, s16 arg) {
-    Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_TUMBLE, actor->world.position, 2, actor->world.angle.y,
+    Player_actor_effect_make(eEC_EFFECT_TUMBLE, actor->world.position, 2, actor->world.angle.y,
                                                    game, 0xFFFF, actor->bg_collision_check.result.unit_attribute, arg);
 }
 
@@ -107,7 +107,7 @@ static void Player_actor_SetEffect_Tumble(ACTOR* actor, GAME* game, int base) {
     } else if (Player_actor_Check_AnimationFrame(fc, 15.0f) != FALSE) {
         Player_actor_effect_Tumble(actor, game, 1);
     } else if (Player_actor_Check_AnimationFrame(fc, 17.0f) != FALSE) {
-        Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_TUMBLE_BODYPRINT, actor->world.position, 2,
+        Player_actor_effect_make(eEC_EFFECT_TUMBLE_BODYPRINT, actor->world.position, 2,
                                                        actor->world.angle.y, game, 0xFFFF,
                                                        actor->bg_collision_check.result.unit_attribute, 0);
     }

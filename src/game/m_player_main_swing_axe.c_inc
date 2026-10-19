@@ -86,7 +86,7 @@ static void Player_actor_SetEffectHit_axe_common(ACTOR* actor, GAME* game, s16 a
         pos.y += offset.y;
         pos.z += (offset.z * cos) - (offset.x * sin);
         pos.x += (offset.z * sin) + (offset.x * cos);
-        Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_SWING_AXE, pos, 2, actor->shape_info.rotation.y, game,
+        Player_actor_effect_make(eEC_EFFECT_SWING_AXE, pos, 2, actor->shape_info.rotation.y, game,
                                                        RSV_NO, actor->bg_collision_check.result.unit_attribute, arg2);
     }
 }

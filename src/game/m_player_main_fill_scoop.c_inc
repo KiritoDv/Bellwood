@@ -82,14 +82,14 @@ static void Player_actor_SetEffectHit_Fill_scoop(ACTOR* actor, GAME* game, const
         arg = 5;
     } else {
         if (Player_actor_Check_AnimationFrame(fc, c4)) {
-            Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_DIG_SCOOP, *pos, 2, actor->shape_info.rotation.y,
+            Player_actor_effect_make(eEC_EFFECT_DIG_SCOOP, *pos, 2, actor->shape_info.rotation.y,
                                                            game, RSV_NO, mCoBG_Wpos2Attribute(*pos, NULL), 2);
             return;
         } else {
             return;
         }
     }
-    Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_DIG_HOLE, *pos, 2, actor->shape_info.rotation.y, game,
+    Player_actor_effect_make(eEC_EFFECT_DIG_HOLE, *pos, 2, actor->shape_info.rotation.y, game,
                                                    RSV_NO, mCoBG_Wpos2Attribute(*pos, NULL), arg);
 }
 

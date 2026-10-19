@@ -63,7 +63,7 @@ static void Player_actor_setup_main_Change_cloth(ACTOR* actorx, GAME* game) {
     Player_actor_setup_main_Base(actorx, game);
 
     if (try_on_flag == FALSE) {
-        eEC_CLIP->effect_make_proc(eEC_EFFECT_HALLOWEEN, player->feel_pos, 2, actorx->shape_info.rotation.y, game,
+        Player_actor_effect_make(eEC_EFFECT_HALLOWEEN, player->feel_pos, 2, actorx->shape_info.rotation.y, game,
                                    RSV_NO, 0, 0);
     }
 }
@@ -100,7 +100,7 @@ static void Player_actor_SetEffect_Change_cloth(ACTOR* actorx, GAME* game) {
 
         if (Player_actor_Check_AnimationFrame(fc0_p, 16.0f)) {
             Player_actor_sound_wear(actorx);
-            eEC_CLIP->effect_make_proc(eEC_EFFECT_KIGAE, player->feel_pos, 2, actorx->shape_info.rotation.y, game,
+            Player_actor_effect_make(eEC_EFFECT_KIGAE, player->feel_pos, 2, actorx->shape_info.rotation.y, game,
                                        RSV_NO, 0, 0);
         }
     }

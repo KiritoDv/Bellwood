@@ -212,6 +212,9 @@ class SaveManagerWindow final : public Ship::GuiWindow {
             case SaveManager::QuitPrompt::Visiting:
                 ImGui::Text("You are visiting another town.");
                 ImGui::TextDisabled("Take the train home before quitting, or your travel is lost.");
+                if (!unsafe && ImGui::Button("Quit anyway")) {
+                    SaveManager::QuitWithoutSaving();
+                }
                 break;
             case SaveManager::QuitPrompt::Saving:
                 ImGui::Text("Saving...");

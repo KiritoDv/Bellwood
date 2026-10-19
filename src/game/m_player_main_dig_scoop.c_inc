@@ -91,7 +91,7 @@ static void Player_actor_SetEffectHit_Dig_scoop(ACTOR* actor, GAME* game, const 
         }
     }
 
-    Common_Get(clip).effect_clip->effect_make_proc(effect_idx, *pos, 2, actor->shape_info.rotation.y, game, RSV_NO,
+    Player_actor_effect_make(effect_idx, *pos, 2, actor->shape_info.rotation.y, game, RSV_NO,
                                                    mCoBG_Wpos2Attribute(*pos, NULL), arg);
 }
 

@@ -3599,7 +3599,7 @@ static void Player_actor_SetEffectStart_axe_common(ACTOR* actorx, GAME* game) {
     PLAYER_ACTOR* player = (PLAYER_ACTOR*)actorx;
 
     if (Player_actor_Check_AnimationFrame(&player->keyframe0.frame_control, 12.0f)) {
-        eEC_CLIP->effect_make_proc(eEC_EFFECT_SWING_AXE, actorx->world.position, 2, actorx->shape_info.rotation.y, game,
+        Player_actor_effect_make(eEC_EFFECT_SWING_AXE, actorx->world.position, 2, actorx->shape_info.rotation.y, game,
                                    RSV_NO, actorx->bg_collision_check.result.unit_attribute, 1);
     }
 }
@@ -3861,10 +3861,10 @@ static void Player_actor_SetFootMark_for_settle_main(ACTOR* actorx, GAME* game) 
         // clang-format on
 
         if (value[main_index] != FALSE) {
-            eEC_CLIP->effect_make_proc(eEC_EFFECT_FOOTPRINT, player->left_foot_pos, 2, player->left_foot_angle.y, game,
+            Player_actor_effect_make(eEC_EFFECT_FOOTPRINT, player->left_foot_pos, 2, player->left_foot_angle.y, game,
                                        RSV_NO, actorx->bg_collision_check.result.unit_attribute, 0);
 
-            eEC_CLIP->effect_make_proc(eEC_EFFECT_FOOTPRINT, player->right_foot_pos, 2, player->right_foot_angle.y,
+            Player_actor_effect_make(eEC_EFFECT_FOOTPRINT, player->right_foot_pos, 2, player->right_foot_angle.y,
                                        game, RSV_NO, actorx->bg_collision_check.result.unit_attribute, 0);
         }
     }
@@ -4764,10 +4764,10 @@ static void Player_actor_SetEffect_forTakeout_item(ACTOR* actorx, GAME* game) {
     s8 item_kind = player->item_kind;
 
     if (mPlayer_ITEM_IS_AXE(item_kind) != FALSE) {
-        eEC_CLIP->effect_make_proc(eEC_EFFECT_KIGAE_LIGHT, actorx->world.position, 2, actorx->shape_info.rotation.y,
+        Player_actor_effect_make(eEC_EFFECT_KIGAE_LIGHT, actorx->world.position, 2, actorx->shape_info.rotation.y,
                                    game, RSV_NO, 1, 0);
     } else if (mPlayer_ITEM_IS_SHOVEL(item_kind) != FALSE) {
-        eEC_CLIP->effect_make_proc(eEC_EFFECT_KIGAE_LIGHT, actorx->world.position, 2, actorx->shape_info.rotation.y,
+        Player_actor_effect_make(eEC_EFFECT_KIGAE_LIGHT, actorx->world.position, 2, actorx->shape_info.rotation.y,
                                    game, RSV_NO, 2, 0);
     }
 }
@@ -5821,7 +5821,7 @@ static int Player_actor_Set_FootMark_MarkOnly(ACTOR* actorx, GAME* game, int dis
 
     if (Player_actor_Check_RightFootMark_AnimeFrame_fromAnimeIndex(cur_frame, speed, end_frame, anime_index)) {
         if (disable_footprint == FALSE) {
-            eEC_CLIP->effect_make_proc(eEC_EFFECT_FOOTPRINT, player->right_foot_pos, 2, player->right_foot_angle.y,
+            Player_actor_effect_make(eEC_EFFECT_FOOTPRINT, player->right_foot_pos, 2, player->right_foot_angle.y,
                                        game, RSV_NO, actorx->bg_collision_check.result.unit_attribute, 0);
         }
 
@@ -5830,7 +5830,7 @@ static int Player_actor_Set_FootMark_MarkOnly(ACTOR* actorx, GAME* game, int dis
 
     if (Player_actor_Check_LeftFootMark_AnimeFrame_fromAnimeIndex(cur_frame, speed, end_frame, anime_index)) {
         if (disable_footprint == FALSE) {
-            eEC_CLIP->effect_make_proc(eEC_EFFECT_FOOTPRINT, player->left_foot_pos, 2, player->left_foot_angle.y, game,
+            Player_actor_effect_make(eEC_EFFECT_FOOTPRINT, player->left_foot_pos, 2, player->left_foot_angle.y, game,
                                        RSV_NO, actorx->bg_collision_check.result.unit_attribute, 0);
         }
 
@@ -6743,11 +6743,11 @@ static void Player_actor_set_ripple(ACTOR* actorx, GAME* game) {
             s16 attr = actorx->bg_collision_check.result.unit_attribute;
 
             if (player->ripple_foot_idx != 0) {
-                eEC_CLIP->effect_make_proc(eEC_EFFECT_WAIT_ASIMOTO, player->right_foot_pos, 2,
+                Player_actor_effect_make(eEC_EFFECT_WAIT_ASIMOTO, player->right_foot_pos, 2,
                                            player->right_foot_angle.y, game, RSV_NO, attr, 0);
                 player->ripple_foot_idx = 0;
             } else {
-                eEC_CLIP->effect_make_proc(eEC_EFFECT_WAIT_ASIMOTO, player->left_foot_pos, 2, player->left_foot_angle.y,
+                Player_actor_effect_make(eEC_EFFECT_WAIT_ASIMOTO, player->left_foot_pos, 2, player->left_foot_angle.y,
                                            game, RSV_NO, attr, 0);
                 player->ripple_foot_idx = 1;
             }

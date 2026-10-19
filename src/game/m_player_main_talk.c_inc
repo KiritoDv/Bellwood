@@ -156,7 +156,7 @@ static void Player_actor_SetEffect_FromDemoOrder_common(ACTOR* actorx, GAME* gam
     if (order > 0) {
         switch (order) {
             case 0xFD:
-                eEC_CLIP->effect_make_proc(eEC_EFFECT_HALLOWEEN, player->feel_pos, 2, actorx->shape_info.rotation.y,
+                Player_actor_effect_make(eEC_EFFECT_HALLOWEEN, player->feel_pos, 2, actorx->shape_info.rotation.y,
                                            game, RSV_NO, 0, 0);
                 break;
         }

@@ -501,6 +501,34 @@ Fires when a player's house changes size (`mHm_HOMESIZE_*`).
 
 ---
 
+### `PlayerSound`
+```c
+int32_t kind;
+uint16_t id;
+float x;
+float y;
+float z;
+```
+Fires when the player makes a sound at a place: footsteps, tools, shaking trees and so on. `kind` is `PLAYER_SOUND_EFFECT` (a sound effect, `id` as for `sAdo_OngenTrgStart`), `PLAYER_SOUND_STEP` (a footstep outdoors, `id` the ground's walk sound) or `PLAYER_SOUND_ROOM_STEP` (a footstep indoors, `id` the floor). Sounds only the player hears, such as the camera moving, don't fire it.
+
+---
+
+### `PlayerEffect`
+```c
+int32_t effect;
+float x;
+float y;
+float z;
+int32_t prio;
+int16_t angle;
+uint16_t item;
+int16_t arg0;
+int16_t arg1;
+```
+Fires when the player makes an effect (`eEC_EFFECT_*`): footprints, dust, splashes, tool swings and so on. The fields are the arguments of the effect clip's `effect_make_proc`.
+
+---
+
 ## Game Events
 
 ### `SceneChangeRequest` _(cancellable)_

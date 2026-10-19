@@ -11,7 +11,7 @@ static void Player_actor_setup_main_Rotate_umbrella(ACTOR* actorx, GAME* game) {
     Player_actor_InitAnimation_Base2(actorx, game, mPlayer_ANIM_UMB_ROT1, mPlayer_ANIM_UMB_ROT1, 1.0f, 1.0f, 1.0f,
                                      -5.0f, cKF_FRAMECONTROL_STOP, mPlayer_PART_TABLE_NORMAL);
     Player_actor_setup_main_Base(actorx, game);
-    eEC_CLIP->effect_make_proc(eEC_EFFECT_KASAMIZU, actorx->world.position, 2, actorx->shape_info.rotation.y, game,
+    Player_actor_effect_make(eEC_EFFECT_KASAMIZU, actorx->world.position, 2, actorx->shape_info.rotation.y, game,
                                RSV_NO, 0, 0);
     Player_actor_sound_umbrella_rotate(actorx);
 }

@@ -52,7 +52,7 @@ static void Player_actor_ChangeFGNumber_Remove_grass(ACTOR* actorx, GAME* game) 
                     s16 angle_y = DEG2SHORT_ANGLE2(110.0f) + actorx->shape_info.rotation.y;
 
                     Common_Get(clip).bg_item_clip->fly_entry_proc(*fg_p, grass_pos_p, angle_y);
-                    eEC_CLIP->effect_make_proc(eEC_EFFECT_DIG_MUD, *grass_pos_p, 2, 0, game, RSV_NO,
+                    Player_actor_effect_make(eEC_EFFECT_DIG_MUD, *grass_pos_p, 2, 0, game, RSV_NO,
                                                mCoBG_Wpos2Attribute(*grass_pos_p, NULL), 8);
                     Player_actor_sound_zassou_nuku(grass_pos_p);
                     Player_actor_set_viblation_Remove_grass();

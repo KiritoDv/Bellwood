@@ -149,6 +149,17 @@ void OnPush(const Satella::Push& push) {
     }
 }
 
+// The socket is gone, and with it every room: tell the mods everyone left, so the joins after reconnecting add up.
+void DropAllMembers() {
+    for (auto& [wireId, room] : sRooms) {
+        const std::set<std::string> members = std::move(room.members);
+        room.members.clear();
+        for (const auto& key : members) {
+            NotifyMember(room, key, false);
+        }
+    }
+}
+
 void RejoinAll() {
     for (const auto& [wireId, room] : sRooms) {
         SendJoin(wireId);
@@ -316,6 +327,7 @@ static RegisterShipInitFunc sRoomsInit([] {
     });
     // At startup and after every reconnect: the new socket is in no room.
     REGISTER_LISTENER(SatellaConnected, EVENT_PRIORITY_NORMAL, [](IEvent*) { RejoinAll(); });
+    REGISTER_LISTENER(SatellaDisconnected, EVENT_PRIORITY_NORMAL, [](IEvent*) { DropAllMembers(); });
 });
 
 #else

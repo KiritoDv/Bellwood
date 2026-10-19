@@ -147,6 +147,7 @@ set(BELLWOOD_GAME_SOURCES
     src/actor/ac_present_demo.c
     src/actor/ac_psnowman.c
     src/actor/ac_pterminal.c
+    src/actor/ac_puppet.c
     src/actor/ac_quest_manager.c
     src/actor/ac_quest_talk_fj_init.c
     src/actor/ac_quest_talk_greeting.c

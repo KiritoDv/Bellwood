@@ -80,7 +80,7 @@ static void Player_actor_SetEffect_Throw_money(ACTOR* actorx, GAME* game) {
     cKF_FrameControl_c* fc0_p = &kf0_p->frame_control;
 
     if (Player_actor_Check_AnimationFrame(fc0_p, 33.0f)) {
-        eEC_CLIP->effect_make_proc(eEC_EFFECT_COIN, actorx->world.position, 2, 0, game, RSV_NO, 0, 0);
+        Player_actor_effect_make(eEC_EFFECT_COIN, actorx->world.position, 2, 0, game, RSV_NO, 0, 0);
     }
 }
 

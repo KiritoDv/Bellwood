@@ -26,7 +26,7 @@ static void Player_actor_setup_main_Turn_dash_common(ACTOR* actor, GAME* game) {
                                      part_table_idx);
     Player_actor_setup_main_Base(actor, game);
     Player_actor_sound_slip(actor);
-    Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_TURN_ASIMOTO, actor->world.position, 2,
+    Player_actor_effect_make(eEC_EFFECT_TURN_ASIMOTO, actor->world.position, 2,
                                                    actor->world.angle.y, game, 0xFFFF,
                                                    actor->bg_collision_check.result.unit_attribute, 0);
 }
@@ -38,7 +38,7 @@ static void Player_actor_setup_main_Turn_dash(ACTOR* actor, GAME* game) {
 static void Player_actor_settle_main_Turn_dash(ACTOR* actor, GAME* game) {
     PLAYER_ACTOR* player = (PLAYER_ACTOR*)actor;
 
-    Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_TURN_FOOTPRINT, player->right_foot_pos, 2,
+    Player_actor_effect_make(eEC_EFFECT_TURN_FOOTPRINT, player->right_foot_pos, 2,
                                                    actor->world.angle.y, game, 0xFFFF,
                                                    actor->bg_collision_check.result.unit_attribute, 0);
     actor->world.angle.y = actor->shape_info.rotation.y;
