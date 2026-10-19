@@ -412,4 +412,32 @@ extern "C" ACTOR* C_GetPuppetActor(int puppet) {
     return target != nullptr ? target->actor : nullptr;
 }
 
+#else
+#include "port/interpolation/FrameInterpolation.h"
+
+#define this this_
+extern "C" {
+#include "ac_puppet.h"
+}
+#undef this
+
+extern "C" const aPUP_pose_c* aPUP_GetPose(int slot) {
+    return nullptr;
+}
+
+extern "C" u32 aPUP_GetPoseCount(int slot) {
+    return 0;
+}
+
+extern "C" void aPUP_SetActor(int slot, ACTOR* actor) {
+}
+
+extern "C" const aPUP_design_c* aPUP_GetDesign(int slot, int which) {
+    return nullptr;
+}
+
+extern "C" const aPUP_design_c* aPUP_GetActorDesign(ACTOR* actor, int which) {
+    return nullptr;
+}
+
 #endif
