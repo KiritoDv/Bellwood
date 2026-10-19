@@ -42,6 +42,18 @@ jobs:
       - name: Trim the package down to the site
         run: rm -f site/readme.txt
 
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          path: source
+          sparse-checkout: |
+            docs/wiki
+            src/port/api
+            src/port/events
+
+      - name: Build the modding wiki
+        run: python3 source/docs/wiki/build_wiki.py source site/wiki/index.html
+
       - uses: actions/upload-pages-artifact@v4
         with:
           path: site
