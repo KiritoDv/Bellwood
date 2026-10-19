@@ -6,6 +6,7 @@ ports:
   - name: libzip
   - name: nlohmann-json
   - name: tinyxml2
+  - name: mbedtls
   - name: vulkan-headers
   - name: vulkan-loader
   - name: MoltenVK

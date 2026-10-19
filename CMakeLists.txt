@@ -49,6 +49,22 @@ if(ANDROID OR IOS OR EMSCRIPTEN)
     set(BELLWOOD_CROSS_BUILD TRUE)
 endif()
 
+option(USE_SATELLA "Connect to Satella at startup for mod signing keys and online features" ON)
+
+if(IOS OR EMSCRIPTEN OR NOT USE_SATELLA)
+    set(USE_NETWORKING_DEFAULT OFF)
+else()
+    set(USE_NETWORKING_DEFAULT ON)
+endif()
+option(USE_NETWORKING "Build the Satella client and the online mod APIs" ${USE_NETWORKING_DEFAULT})
+if(NOT USE_SATELLA AND USE_NETWORKING)
+    set(USE_NETWORKING OFF CACHE BOOL "Disabled because USE_SATELLA is OFF" FORCE)
+endif()
+if(NOT USE_NETWORKING)
+    message(STATUS "Satella is off: signed mods from Satella's keys need trusting by hand, and the relay and "
+                   "store APIs do nothing.")
+endif()
+
 set(NATO_PHONETIC_ALPHABET
   "Alfa" "Bravo" "Charlie" "Delta" "Echo" "Foxtrot" "Golf" "Hotel"
   "India" "Juliett" "Kilo" "Lima" "Mike" "November" "Oscar" "Papa"
@@ -126,7 +142,7 @@ include(cmake/automate-vcpkg.cmake)
 set(VCPKG_TRIPLET x64-windows-static)
 set(VCPKG_TARGET_TRIPLET x64-windows-static)
 vcpkg_bootstrap()
-vcpkg_install_packages(zlib bzip2 libzip libpng sdl2[vulkan] glew glfw3 nlohmann-json tinyxml2 spdlog)
+vcpkg_install_packages(zlib bzip2 libzip libpng sdl2[vulkan] glew glfw3 nlohmann-json tinyxml2 spdlog mbedtls)
 
 add_compile_definitions(WIN32_LEAN_AND_MEAN NOMINMAX)
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
@@ -664,6 +680,68 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
 endif()
 
 set(PORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
+
+if(USE_NETWORKING)
+    if(APPLE)
+        find_program(BREW_EXECUTABLE brew)
+        if(BREW_EXECUTABLE)
+            execute_process(COMMAND ${BREW_EXECUTABLE} --prefix mbedtls@3
+                            OUTPUT_VARIABLE MBEDTLS3_PREFIX OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET)
+            if(NOT EXISTS "${MBEDTLS3_PREFIX}/lib")
+                set(MBEDTLS3_PREFIX "")
+            endif()
+            if(MBEDTLS3_PREFIX)
+                list(APPEND CMAKE_PREFIX_PATH "${MBEDTLS3_PREFIX}")
+            endif()
+        endif()
+    endif()
+    if(ANDROID)
+        FetchContent_Declare(
+            mbedtls
+            URL https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-3.6.7/mbedtls-3.6.7.tar.bz2
+            URL_HASH SHA256=a7e8bcbec0e6f761b4af24f25677626b35f762f68eef79c08677a363212d11f6
+        )
+        set(ENABLE_PROGRAMS OFF CACHE BOOL "" FORCE)
+        set(ENABLE_TESTING OFF CACHE BOOL "" FORCE)
+        set(GEN_FILES OFF CACHE BOOL "" FORCE)
+        set(MBEDTLS_FATAL_WARNINGS OFF CACHE BOOL "" FORCE)
+        set(USE_SHARED_MBEDTLS_LIBRARY OFF CACHE BOOL "" FORCE)
+        set(USE_STATIC_MBEDTLS_LIBRARY ON CACHE BOOL "" FORCE)
+        FetchContent_MakeAvailable(mbedtls)
+        set(MBEDTLS_FOUND TRUE)
+        set(MBEDTLS_VERSION_GREATER_THAN_3 TRUE)
+        set(MBEDTLS_INCLUDE_DIRS "${mbedtls_SOURCE_DIR}/include")
+        set(MBEDTLS_LIBRARIES mbedtls mbedx509 mbedcrypto)
+        target_link_libraries(${PROJECT_NAME} PRIVATE mbedtls mbedx509 mbedcrypto)
+    endif()
+    FetchContent_Declare(
+        ixwebsocket
+        GIT_REPOSITORY https://github.com/machinezone/IXWebSocket.git
+        GIT_TAG v11.4.5
+    )
+    set(USE_TLS ON CACHE BOOL "" FORCE)
+    set(USE_MBED_TLS ON CACHE BOOL "" FORCE)
+    set(IXWEBSOCKET_INSTALL OFF CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(ixwebsocket)
+    if(ANDROID)
+        target_compile_definitions(ixwebsocket PRIVATE IXWEBSOCKET_USE_MBED_TLS_MIN_VERSION_3)
+    endif()
+    target_link_libraries(${PROJECT_NAME} PRIVATE ixwebsocket)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE USE_NETWORKING BELLWOOD_VERSION="${PORT_VERSION_STRING}")
+    if(APPLE)
+        find_path(MBEDTLS_INCLUDE_DIR NAMES mbedtls/ctr_drbg.h HINTS "${MBEDTLS3_PREFIX}/include")
+        if(NOT MBEDTLS_INCLUDE_DIR)
+            message(FATAL_ERROR "mbedtls 2.x/3.x headers not found; install Homebrew's mbedtls@3 or MacPorts' mbedtls.")
+        endif()
+        get_filename_component(MBEDTLS_ROOT "${MBEDTLS_INCLUDE_DIR}" DIRECTORY)
+        find_library(MBEDTLS_LIB mbedtls PATHS "${MBEDTLS_ROOT}/lib" NO_DEFAULT_PATH)
+        find_library(MBEDX509_LIB mbedx509 PATHS "${MBEDTLS_ROOT}/lib" NO_DEFAULT_PATH)
+        find_library(MBEDCRYPTO_LIB mbedcrypto PATHS "${MBEDTLS_ROOT}/lib" NO_DEFAULT_PATH)
+        target_include_directories(${PROJECT_NAME} PRIVATE "${MBEDTLS_INCLUDE_DIR}")
+        target_link_libraries(${PROJECT_NAME} PRIVATE ${MBEDTLS_LIB} ${MBEDX509_LIB} ${MBEDCRYPTO_LIB})
+    endif()
+endif()
+
 set(PORT_O2R_STAGING ${CMAKE_BINARY_DIR}/port-o2r)
 file(GLOB_RECURSE PORT_O2R_INPUTS CONFIGURE_DEPENDS
     "${CMAKE_SOURCE_DIR}/port/*"

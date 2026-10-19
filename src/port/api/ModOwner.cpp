@@ -6,6 +6,7 @@
 #include <ship/events/Events.h>
 
 #include <cstring>
+#include <unordered_map>
 #include <unordered_set>
 #include <vector>
 
@@ -24,6 +25,11 @@ std::vector<ScopeEntry>& Scopes() {
 const std::string* Intern(const std::string& mod) {
     static std::unordered_set<std::string> names;
     return &*names.insert(mod).first;
+}
+
+std::unordered_map<std::string, std::shared_ptr<bool>>& AliveFlags() {
+    static std::unordered_map<std::string, std::shared_ptr<bool>> flags;
+    return flags;
 }
 
 std::vector<std::function<void(const std::string&)>>& Releasers() {
@@ -74,6 +80,22 @@ void ModOwner::Release(const std::string& mod) {
     for (const auto& releaser : Releasers()) {
         releaser(mod);
     }
+    if (auto it = AliveFlags().find(mod); it != AliveFlags().end()) {
+        *it->second = false;
+        AliveFlags().erase(it);
+    }
+}
+
+std::shared_ptr<const bool> ModOwner::Alive(const std::string& mod) {
+    static const auto game = std::make_shared<const bool>(true);
+    if (mod.empty()) {
+        return game;
+    }
+    auto& flag = AliveFlags()[mod];
+    if (flag == nullptr) {
+        flag = std::make_shared<bool>(true);
+    }
+    return flag;
 }
 
 #endif

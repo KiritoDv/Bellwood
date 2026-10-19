@@ -54,6 +54,14 @@ void PortMenu::AddMenuDevTools() {
     AddWidget(path, "Debug Mode", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_DEVELOPER_TOOLS("DebugMode"))
         .Options(CheckboxOptions().Tooltip("Enables the game's debug features."));
+#ifdef USE_NETWORKING
+    AddWidget(path, "Connect to Satella", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_DEVELOPER_TOOLS("Satella"))
+        .Options(CheckboxOptions()
+                     .DefaultValue(true)
+                     .Tooltip("Connects to Satella when the game starts, for the keys trusted mods are signed with "
+                              "and for mods' online features. Takes effect on the next start."));
+#endif
 
     // Console
     path.sidebarName = "Console";

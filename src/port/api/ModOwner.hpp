@@ -1,6 +1,7 @@
 #pragma once
 
 #include <functional>
+#include <memory>
 #include <string>
 
 namespace ModOwner {
@@ -22,5 +23,9 @@ class Scope {
 void AddReleaser(std::function<void(const std::string& mod)> releaser);
 // Unregisters everything the mod still has registered. Runs after its ModExit, before its code is freed.
 void Release(const std::string& mod);
+
+// True until the mod is released. A callback into a mod that can run later, such as a network reply, keeps one and
+// skips the call once it turns false. Always true for the game (an empty mod).
+std::shared_ptr<const bool> Alive(const std::string& mod);
 
 } // namespace ModOwner

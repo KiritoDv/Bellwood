@@ -21,6 +21,7 @@
 #include "port/ui/cvar_prefixes.h"
 #include "port/ui/Notification.h"
 #include "port/ModList.h"
+#include "port/net/SatellaClient.h"
 #include "port/events/Events.h"
 #include "port/console/DevConsole.h"
 #include "port/input/GcButtons.h"
@@ -905,6 +906,10 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     std::string installPath = Ship::Context::GetAppBundlePath();
     std::string file;
     std::shared_ptr<BS::thread_pool> threadPool = std::make_shared<BS::thread_pool>(1);
+#ifdef USE_NETWORKING
+    bool satellaStarted = false;
+    std::atomic<bool> satellaDone = false;
+#endif
 
     auto startExtraction = [&]() {
         if (!GameExtractor::IsDiscInputAvailable()) {
@@ -1273,6 +1278,18 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 continue;
             }
             case GS_LOAD: {
+#ifdef USE_NETWORKING
+                if (!satellaStarted && CVarGetInteger(CVAR_DEVELOPER_TOOLS("Satella"), 1)) {
+                    satellaStarted = true;
+                    threadPool->submit_task([&]() -> void {
+                        Satella::Client::Instance().Execute();
+                        satellaDone = true;
+                    });
+                }
+                if (satellaStarted && !satellaDone) {
+                    break;
+                }
+#endif
                 LoadResourceFiles();
 #ifdef ENABLE_SCRIPTING
                 if (totalScripts > 0) {
@@ -1441,6 +1458,26 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             modName = compileName;
             modError = compileError;
         }
+#ifdef USE_NETWORKING
+        const auto satellaPhase = Satella::Client::Instance().GetPhase();
+        const bool satellaPopup =
+            satellaPhase == Satella::Phase::Connecting || satellaPhase == Satella::Phase::FetchingKeys;
+        if (satellaPopup && !ImGui::IsPopupOpen("Satella")) {
+            ImGui::OpenPopup("Satella");
+        }
+        if (ImGui::BeginPopupModal("Satella", NULL,
+                                   ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoResize |
+                                       ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings)) {
+            if (!satellaPopup) {
+                ImGui::CloseCurrentPopup();
+            } else {
+                ImGui::Text("%s", satellaPhase == Satella::Phase::Connecting ? "Connecting to Satella..."
+                                                                             : "Getting mod signing keys...");
+                ImGui::ProgressBar(-1.0f * (float)ImGui::GetTime(), ImVec2(600.0f, 20.0f), "");
+            }
+            ImGui::EndPopup();
+        }
+#endif
         const bool modsPopup =
             extractStep == GS_COMPILE && (!extractDone || (!modError.empty() && !compileErrorDismissed));
         if (modsPopup && !ImGui::IsPopupOpen("Loading Mods")) {

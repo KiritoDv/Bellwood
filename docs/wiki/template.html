@@ -351,10 +351,72 @@ static const u8 sBoltModel[] = { #asset "models/bolt.gltf" NPC_MODEL };</pre>
             <tbody>
               <tr><td>Windows, macOS, Linux</td><td>Yes</td><td>Sources are compiled at load time; a mod may also ship prebuilt <code>binaries</code>.</td></tr>
               <tr><td>Android</td><td>Yes</td><td>Sources only. Mods compile on the device against Android's C library headers, which ship with the app.</td></tr>
+              <tr><td>Online features</td><td>Desktop, Android</td><td>The relay and the stores go through Satella wherever code mods run. On iOS and the web their calls return FALSE and nothing arrives.</td></tr>
               <tr><td>iOS, Web</td><td>Not yet</td><td>Code mods are skipped on these platforms for now.</td></tr>
             </tbody>
           </table></div>
           <p class="prose">On Windows a mod can only read or write a game variable whose declaration uses <code>extern_s</code>, which becomes <code>__declspec(dllimport)</code> when TinyCC builds a mod. The core globals (<code>common_data</code>, <code>gamePT</code>, <code>graph_class</code>, <code>padmgr_class</code>) already do; functions don't need it. Include <code>port/api/cvar.h</code> instead of libultraship's console variable bridge, whose colour types conflict with the game's. Unsigned mods load with a warning; archives can be signed with <code>libultraship/tools/sign.py</code>.</p>
+        </section>
+
+        <section id="online">
+          <div class="head"><span class="eyebrow">Guide</span><h2>Online features with Satella</h2></div>
+          <p class="prose">Satella is the online service Bellwood connects to when it starts, at <code>wss://satella.net64.dev</code>. It gives the game the keys trusted mods are signed with, and gives mods three ways to go online: <a href="#mod-relay">relay channels</a> for messages between players, the <a href="#mod-player_store">player store</a> for values kept for one player, and the <a href="#mod-channel_store">channel store</a> for values shared by everyone on a channel.</p>
+          <div class="tbl"><table>
+            <thead><tr><th>Feature</th><th>Who reads</th><th>Who writes</th><th>Limit</th></tr></thead>
+            <tbody>
+              <tr><td><a href="#mod-relay">Relay channel</a></td><td>Every player subscribed to the channel</td><td>Any of them</td><td class="num">64 KB per message</td></tr>
+              <tr><td><a href="#mod-player_store">Player store</a>, private</td><td>The player</td><td>The player, signed with their key</td><td class="num">4 KB per value</td></tr>
+              <tr><td><a href="#mod-player_store">Player store</a>, public</td><td>Anyone with the player's key</td><td>The player, signed with their key</td><td class="num">4 KB per value</td></tr>
+              <tr><td><a href="#mod-channel_store">Channel store</a></td><td>Anyone</td><td>Any player, signed with their key</td><td class="num">4 KB per value</td></tr>
+            </tbody>
+          </table></div>
+          <h3>Permission comes first</h3>
+          <p class="prose">A mod registers each channel with a name and one sentence about what it is for. The player is asked once per channel with an Allow / Deny prompt, and the answer is remembered in <code>permissions.json</code>. Until they allow it, sending and writing return FALSE. Reading the channel store and public player values needs no permission. Relay channels registered while mods load are asked about once the game is up; for the stores, call <code>C_PlayerStoreRequestPermission</code> or <code>C_ChannelStoreRequestPermission</code> when the player first uses the feature. <a href="#mod-permissions">permissions.h</a> gives a mod the same prompt for its own needs.</p>
+          <h3>A chat channel</h3>
+<pre>#include "mod.h"
+#include "port/api/relay.h"
+#include &lt;string.h&gt;
+
+static void OnChat(const char* channel_id, const char* data, uint32_t size) {
+    // Runs on the game thread for every message on the channel.
+}
+
+static C_RelayChannelDef sChat = {
+    .mod_name = "Town Chat",
+    .description = "Sends what you type to other players in town chat.",
+    .on_message = OnChat,
+    .mod_version = "1.0",
+};
+
+void SayHello(void) {
+    const char* text = "Hello from Bellwood!";
+    if (!C_RelaySend("towns.chat", text, strlen(text))) {
+        // Not allowed yet, or Satella isn't connected.
+    }
+}
+
+MOD_INIT() {
+    C_RegisterRelayChannel("towns.chat", &amp;sChat);
+}</pre>
+          <h3>Reading stored values</h3>
+<pre>static void OnBest(const char* key, const char* data, uint32_t size) {
+    if (data == NULL) {
+        return; // nothing stored yet
+    }
+}
+
+static C_PlayerStoreDef sRecords = {
+    .mod_name = "Fishing Records",
+    .description = "Keeps your biggest catches.",
+};
+
+MOD_INIT() {
+    C_RegisterPlayerStore("fishing.records", &amp;sRecords);
+    C_PlayerStoreGet(NULL, "fishing.records", C_PLAYER_STORE_PUBLIC, "best", OnBest);
+}</pre>
+          <p class="prose">Reads answer later, through the callback. Every callback runs on the game thread, as the mod that asked, and is skipped if the mod has unloaded by then. Writes and deletes are sent without waiting for an answer.</p>
+          <h3>Where it works</h3>
+          <p class="prose">Satella is in every build that runs code mods, desktop and Android, and players can turn it off under <b>Dev Tools › General › Connect to Satella</b>. Without it, or on iOS and the web, these calls return FALSE or a denied permission and nothing arrives, so a mod should treat online features as optional. Relay channels are kept apart by game version, and by <code>mod_version</code> when the mod gives one, so players on different versions don't receive each other's messages.</p>
         </section>
 
         <section id="events-guide">
@@ -431,6 +493,12 @@ const MODULES = [
     ["player", "Player", ""],
     ["town", "Town", ""],
   ]},
+  { group: "Online", items: [
+    ["permissions", "Permissions", ""],
+    ["relay", "Relay channels", ""],
+    ["player_store", "Player store", ""],
+    ["channel_store", "Channel store", ""],
+  ]},
 ];
 
 const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -493,7 +561,7 @@ function renderEvents() {
 
 function renderNav() {
   const guide = [["start", "Your first mod"], ["manifest", "manifest.json"], ["lifecycle", "Loading and cleanup"], ["versions", "Versions"],
-    ["numbers", "Content ids and saves"], ["assets", "Assets"], ["text", "Text and messages"], ["platforms", "Platforms"], ["events-guide", "Listening to events"]];
+    ["numbers", "Content ids and saves"], ["assets", "Assets"], ["text", "Text and messages"], ["platforms", "Platforms"], ["online", "Online with Satella"], ["events-guide", "Listening to events"]];
   let html = `<div><h4>Guide</h4><ul>${guide.map(([id, t]) => `<li><a href="#${id}">${t}</a></li>`).join("")}</ul></div>`;
   for (const g of MODULES) {
     html += `<div><h4>${g.group} API</h4><ul>${g.items.map(([k, t]) => `<li><a href="#mod-${k}">${t}<span class="file">${k}.h</span></a></li>`).join("")}</ul></div>`;
