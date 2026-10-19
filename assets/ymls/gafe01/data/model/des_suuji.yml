@@ -87,7 +87,7 @@ des_suuji_v:
   count: 16
 
 des_win_suuji_before:
-  type: BLOB
+  type: GFX
   offset: 0x813FAE40
   size: 0x28
 
