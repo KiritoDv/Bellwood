@@ -289,16 +289,34 @@ jobs:
             }
           }
 
+          if (-not (Get-ChildItem "$vs\VC\Tools\MSVC\*\lib\x64\store" -ErrorAction SilentlyContinue)) {
+            throw "App container CRT (lib/x64/store) still missing after installing the UWP workload"
+          }
+
           $vcvars = "$vs\VC\Auxiliary\Build\vcvars64.bat"
           if (-not (Test-Path $vcvars)) { throw "vcvars64.bat not found at $vcvars" }
           "VCVARS=$vcvars" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "VSPATH=$vs" | Out-File -FilePath $env:GITHUB_ENV -Append
 
       - name: Install Ninja
         shell: pwsh
         run: |
-          if (-not (Get-Command ninja -ErrorAction SilentlyContinue)) {
-            choco install ninja -y --no-progress
+          # A step only inherits the environment the runner started with, so a
+          # PATH entry written by choco is not visible to later steps. Resolve
+          # ninja here and publish its directory through GITHUB_PATH.
+          $ninja = (Get-Command ninja -ErrorAction SilentlyContinue).Source
+          if (-not $ninja) {
+            $bundled = "$env:VSPATH\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe"
+            if (Test-Path $bundled) {
+              $ninja = $bundled
+            } else {
+              choco install ninja -y --no-progress
+              $ninja = "C:\ProgramData\chocolatey\bin\ninja.exe"
+            }
+            if (-not (Test-Path $ninja)) { throw "ninja not found after install" }
+            Split-Path $ninja | Out-File -FilePath $env:GITHUB_PATH -Append
           }
+          Write-Host "ninja: $ninja"
 
       - name: Create a sideloading certificate
         shell: pwsh
@@ -316,10 +334,26 @@ jobs:
           Export-Certificate -Cert $cert -FilePath bellwood-ci.cer | Out-Null
           "UWP_CERT_THUMBPRINT=$($cert.Thumbprint)" | Out-File -FilePath $env:GITHUB_ENV -Append
 
+      - name: Verify the toolchain
+        shell: cmd
+        run: |
+          call "%VCVARS%" || exit /b 1
+          where ninja || exit /b 1
+          where clang-cl || exit /b 1
+          where makeappx || exit /b 1
+          where signtool || exit /b 1
+          if not exist "%VCToolsInstallDir%lib\x64\store" exit /b 1
+          echo VCToolsInstallDir=%VCToolsInstallDir%
+
       - name: Build
         shell: cmd
         run: |
           call "%VCVARS%" || exit /b 1
+          REM vcvars points VCPKG_ROOT at the vcpkg bundled with Visual Studio, which
+          REM is not a git checkout, so automate-vcpkg fails trying to update it.
+          REM Cleared (quoted, or the value keeps the space before the newline) so it
+          REM falls back to cloning into the build directory.
+          set "VCPKG_ROOT="
           cmake -S . -B build-uwp -G Ninja -DCMAKE_BUILD_TYPE=Release ^
             -DCMAKE_TOOLCHAIN_FILE=cmake/uwp.bellwood.toolchain.cmake ^
             -DUWP_PACKAGE_PUBLISHER="CN=Bellwood CI" ^
