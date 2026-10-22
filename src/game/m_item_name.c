@@ -7,6 +7,11 @@
 #include "m_font.h"
 #include "assets/data/item/item_name.h"
 #include "ac_asset.h"
+#include "port/api/furniture.h"
+#include "port/api/interior.h"
+#include "port/api/creature.h"
+#include "port/api/cloth.h"
+#include "port/api/item.h"
 
 static u8 itemArt_Paper[PAPER_NUM] = {
     mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE, mIN_ARTICLE_NONE,
@@ -511,6 +516,28 @@ extern void mIN_copy_name_str(u8* dst, mActor_name_t item) {
     } else {
         switch (ITEM_NAME_GET_TYPE(item_no)) {
             case NAME_TYPE_ITEM1: {
+                const C_ItemDef* custom = C_FindItem(item_no);
+                const C_InteriorDef* interior = C_FindInterior(item_no);
+                const C_CreatureDef* creature = C_FindCreature(item_no);
+                const C_ClothDef* cloth = C_FindCloth(item_no);
+
+                if (custom != NULL) {
+                    mem_copy(dst, (u8*)custom->name, mIN_ITEM_NAME_LEN);
+                    break;
+                }
+                if (cloth != NULL) {
+                    mem_copy(dst, (u8*)cloth->name, mIN_ITEM_NAME_LEN);
+                    break;
+                }
+                if (interior != NULL) {
+                    mem_copy(dst, (u8*)interior->name, mIN_ITEM_NAME_LEN);
+                    break;
+                }
+                if (creature != NULL) {
+                    mem_copy(dst, (u8*)creature->name, mIN_ITEM_NAME_LEN);
+                    break;
+                }
+
                 mIN_dma_itemName(item_name, itemName_table[ITEM_NAME_GET_CAT(item_no)],
                                  ITEM_NAME_GET_INDEX(item_no) * mIN_ITEM_NAME_LEN);
                 mem_copy(dst, item_name, mIN_ITEM_NAME_LEN);
@@ -524,6 +551,19 @@ extern void mIN_copy_name_str(u8* dst, mActor_name_t item) {
             }
 
             case NAME_TYPE_FTR1: {
+                int ftr_idx = mRmTp_FtrItemNo2FtrIdx(item_no);
+
+                if (ftr_idx >= FTR_NUM) {
+                    const C_FurnitureDef* furniture = C_FindFurniture(ftr_idx);
+
+                    if (furniture != NULL) {
+                        mem_copy(dst, (u8*)furniture->name, mIN_ITEM_NAME_LEN);
+                    } else {
+                        mem_clear(dst, mIN_ITEM_NAME_LEN, CHAR_SPACE);
+                    }
+                    break;
+                }
+
                 mIN_dma_itemName(item_name, ftrName2_table, ((item_no / 4) & 0x3FF) * mIN_ITEM_NAME_LEN);
                 mem_copy(dst, item_name, mIN_ITEM_NAME_LEN);
                 break;
@@ -577,6 +617,26 @@ extern int mIN_get_item_article(mActor_name_t item) {
 
     switch (ITEM_NAME_GET_TYPE(item_no)) {
         case NAME_TYPE_ITEM1: {
+            const C_ItemDef* custom = C_FindItem(item_no);
+            const C_InteriorDef* interior = C_FindInterior(item_no);
+            const C_CreatureDef* creature = C_FindCreature(item_no);
+            const C_ClothDef* cloth = C_FindCloth(item_no);
+
+            if (custom != NULL) {
+                return custom->article;
+            }
+            if (cloth != NULL) {
+                return cloth->article;
+            }
+            if (interior != NULL) {
+                return interior->article;
+            }
+            if (creature != NULL) {
+                return creature->article;
+            }
+            if (mNT_check_unknown(item_no)) {
+                return mIN_ARTICLE_NONE;
+            }
             article = itemArt_table[ITEM_NAME_GET_CAT(item_no)][index];
             break;
         }
@@ -586,6 +646,12 @@ extern int mIN_get_item_article(mActor_name_t item) {
             int ftr_idx = mRmTp_FtrItemNo2FtrIdx(item_no);
             if (ftr_idx < FTR_NUM) {
                 return ftrArt[ftr_idx];
+            } else {
+                const C_FurnitureDef* furniture = C_FindFurniture(ftr_idx);
+
+                if (furniture != NULL) {
+                    return furniture->article;
+                }
             }
             return mIN_ARTICLE_NONE;
         }

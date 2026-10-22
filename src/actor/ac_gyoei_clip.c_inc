@@ -105,7 +105,7 @@ static void aGYO_setupActor(aGYO_Init_c* init_data, int idx) {
     {
         mActor_proc* init_proc;
 
-        switch (ctrl->gyo_type) {
+        switch (C_FishBase(ctrl->gyo_type)) {
             case aGYO_TYPE_SALMON2:
                 ctrl->gyo_type = aGYO_TYPE_SALMON;
             // fallthrough

@@ -33,7 +33,7 @@ static void Player_actor_setup_main_Slip_net(ACTOR* actor, GAME* game) {
     Player_actor_setup_main_Base(actor, game);
     Player_actor_sound_slip(actor);
 
-    Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_TURN_ASIMOTO, actor->world.position, 2,
+    Player_actor_effect_make(eEC_EFFECT_TURN_ASIMOTO, actor->world.position, 2,
                                                    actor->world.angle.y, game, RSV_NO,
                                                    actor->bg_collision_check.result.unit_attribute, 1);
 }
@@ -41,7 +41,7 @@ static void Player_actor_setup_main_Slip_net(ACTOR* actor, GAME* game) {
 static void Player_actor_Set_FootMark(ACTOR* actor, GAME* game) {
     PLAYER_ACTOR* player = (PLAYER_ACTOR*)actor;
 
-    Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_SLIP_FOOTPRINT, player->right_foot_pos, 2,
+    Player_actor_effect_make(eEC_EFFECT_SLIP_FOOTPRINT, player->right_foot_pos, 2,
                                                    actor->world.angle.y, game, RSV_NO,
                                                    actor->bg_collision_check.result.unit_attribute, 0);
 }
@@ -82,7 +82,7 @@ static void Player_actor_SearchAnimation_Slip_net(ACTOR* actor, GAME* game) {
     arg = (int)main_net->_00;
 
     if (!(arg & 1)) {
-        Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_SLIP, actor->world.position, 2, actor->world.angle.y,
+        Player_actor_effect_make(eEC_EFFECT_SLIP, actor->world.position, 2, actor->world.angle.y,
                                                        game, RSV_NO, actor->bg_collision_check.result.unit_attribute,
                                                        arg);
     }

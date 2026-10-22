@@ -43,3 +43,77 @@ DEFINE_EVENT(PlayerAcreChanged,
     int32_t x;
     int32_t z;
 );
+
+// Fires when the player catches a fish with the rod, as the catch is shown.
+DEFINE_EVENT(FishCaught,
+    uint16_t item;  // fish item number, built-in or custom
+);
+
+// Fires when the player catches an insect with the net, as the catch is shown.
+DEFINE_EVENT(InsectCaught,
+    uint16_t item;  // insect item number, built-in or custom
+);
+
+// Fires when the player digs a hole with the shovel.
+DEFINE_EVENT(PlayerDig,
+    const float* pos;  // world position of the hole, x/y/z
+    uint16_t item;     // item dug up, EMPTY_NO for none
+);
+
+// Fires when the player starts shaking a tree.
+DEFINE_EVENT(PlayerShakeTree,
+    uint16_t tree;  // tree item on the tile
+    int32_t utX;    // tile, in town units
+    int32_t utZ;
+);
+
+// Fires when a letter lands in a player's mailbox.
+DEFINE_EVENT(LetterReceived,
+    int32_t player;  // player of the town, 0-3
+    int32_t slot;    // mailbox slot, 0-9
+);
+
+// Fires when a player's loan changes: a payment, or a new loan for a bigger house.
+DEFINE_EVENT(LoanChanged,
+    int32_t player;
+    uint32_t previous;
+    uint32_t loan;
+);
+
+// Fires when a player's house changes size.
+DEFINE_EVENT(HouseSizeChanged,
+    int32_t player;
+    int32_t previous;  // mHm_HOMESIZE_*
+    int32_t size;
+);
+
+// How a PlayerSound is played.
+enum {
+    PLAYER_SOUND_EFFECT,    // a sound effect at a place (sAdo_OngenTrgStart)
+    PLAYER_SOUND_STEP,      // a footstep outdoors; id is the ground's walk sound (sAdo_PlyWalkSe)
+    PLAYER_SOUND_ROOM_STEP, // a footstep indoors; id is the floor (sAdo_PlyWalkSeRoom)
+};
+
+// Fires when the player makes a sound at a place: footsteps, tools, shaking trees and so on. Sounds the player only
+// hears, such as the camera moving, don't fire it.
+DEFINE_EVENT(PlayerSound,
+    int32_t kind; // PLAYER_SOUND_*
+    uint16_t id;
+    float x;
+    float y;
+    float z;
+);
+
+// Fires when the player makes an effect: footprints, dust, splashes, tool swings and so on. The fields are the
+// arguments of the effect clip's effect_make_proc.
+DEFINE_EVENT(PlayerEffect,
+    int32_t effect; // eEC_EFFECT_*
+    float x;
+    float y;
+    float z;
+    int32_t prio;
+    int16_t angle;
+    uint16_t item;
+    int16_t arg0;
+    int16_t arg1;
+);

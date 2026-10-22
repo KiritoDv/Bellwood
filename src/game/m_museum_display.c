@@ -4,6 +4,7 @@
 #include "m_room_type.h"
 #include "m_scene_table.h"
 #include "m_common_data.h"
+#include "port/events/Events.h"
 
 extern int mMmd_FossilInfo(int fossil_no) {
   int valid = FALSE;
@@ -159,7 +160,20 @@ extern int mMmd_GetDisplayInfo(mActor_name_t item) {
     }
   }
 
+  {
+    int donator = mMmd_ItemDonator(item);
+
+    if (donator >= 0) {
+      return mMmd_IS_DONATED(donator) ? mMmd_DISPLAY_ALREADY_DONATED : mMmd_DISPLAY_CAN_DONATE;
+    }
+  }
+
   return mMmd_DISPLAY_CANNOT_DONATE;
+}
+
+extern int mMmd_ItemDonator(mActor_name_t item) {
+  CALL_EVENT(MuseumDonatorLookup, item, -1);
+  return MuseumDonatorLookup_.donator;
 }
 
 extern int mMmd_RequestMuseumDisplay(mActor_name_t item) {
@@ -223,6 +237,10 @@ extern int mMmd_RequestMuseumDisplay(mActor_name_t item) {
         mMmd_SetFish(fish_idx);
         return TRUE;
       }
+    }
+    else {
+      CALL_EVENT(MuseumDonate, item, Common_Get(player_no) + 1, FALSE);
+      return MuseumDonate_.accepted;
     }
   }
 
@@ -375,6 +393,10 @@ extern void mMmd_DeletePresentedByPlayer(u8 player_no) {
         mMmd_FISH_CLR(Save_Get(museum_display), i);
         mMmd_FISH_SET(Save_Get(museum_display), i, mMmd_DONATOR_DELETED_PLAYER);
       }
+    }
+
+    {
+      CALL_EVENT(MuseumDonatorRemoved, search_no);
     }
   }
 }

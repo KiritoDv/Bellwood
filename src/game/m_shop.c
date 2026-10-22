@@ -11,6 +11,11 @@
 #include "m_name_table.h"
 #include "m_room_type.h"
 #include "m_fg_type.h"
+#include "port/api/furniture.h"
+#include "port/api/interior.h"
+#include "port/api/creature.h"
+#include "port/api/cloth.h"
+#include "port/api/item.h"
 
 extern mActor_name_t* mSP_ftr_list[];
 extern mActor_name_t* mSP_binsen_list[];
@@ -220,8 +225,10 @@ extern int mSP_CollectCheck(mActor_name_t item) {
     switch (ITEM_NAME_GET_TYPE(ftr_item)) {
         case NAME_TYPE_FTR0:
         case NAME_TYPE_FTR1: {
-            bitfield = Common_Get(now_private)->furniture_collected_bitfield;
             idx = mRmTp_FtrItemNo2FtrIdx(ftr_item);
+            if (idx < FTR_NUM) {
+                bitfield = Common_Get(now_private)->furniture_collected_bitfield;
+            }
             break;
         }
 
@@ -234,14 +241,18 @@ extern int mSP_CollectCheck(mActor_name_t item) {
                 }
 
                 case ITEM1_CAT_WALL: {
-                    bitfield = Common_Get(now_private)->wall_collected_bitfield;
                     idx = ftr_item - ITM_WALL_START;
+                    if (idx < WALL_NUM) {
+                        bitfield = Common_Get(now_private)->wall_collected_bitfield;
+                    }
                     break;
                 }
 
                 case ITEM1_CAT_CARPET: {
-                    bitfield = Common_Get(now_private)->carpet_collected_bitfield;
                     idx = ftr_item - ITM_CARPET_START;
+                    if (idx < CARPET_NUM) {
+                        bitfield = Common_Get(now_private)->carpet_collected_bitfield;
+                    }
                     break;
                 }
 
@@ -671,6 +682,23 @@ extern u32 mSP_ItemNo2ItemPrice(mActor_name_t item_no) {
     switch (ITEM_NAME_GET_TYPE(item_no)) {
         case NAME_TYPE_ITEM1: {
             u16** price_list_pp = l_price_info[ITEM_NAME_GET_CAT(item_no)];
+            const C_ItemDef* custom = C_FindItem(item_no);
+            const C_InteriorDef* interior = C_FindInterior(item_no);
+            const C_CreatureDef* creature = C_FindCreature(item_no);
+            const C_ClothDef* cloth = C_FindCloth(item_no);
+
+            if (custom != NULL) {
+                return custom->price;
+            }
+            if (cloth != NULL) {
+                return cloth->price;
+            }
+            if (interior != NULL) {
+                return interior->price;
+            }
+            if (creature != NULL) {
+                return creature->price;
+            }
 
             if (price_list_pp != NULL && &price != NULL) {
                 u16* price_list_p = *price_list_pp;
@@ -721,6 +749,14 @@ extern u32 mSP_ItemNo2ItemPrice(mActor_name_t item_no) {
                 if (ftr_idx < mSP_CountPriceTableElement(price_list_p)) {
                     price = price_list_p[ftr_idx];
                     return price;
+                }
+
+                if (ftr_idx >= FTR_NUM) {
+                    const C_FurnitureDef* furniture = C_FindFurniture(ftr_idx);
+
+                    if (furniture != NULL) {
+                        return furniture->price;
+                    }
                 }
 
                 return 0;
@@ -1039,6 +1075,9 @@ static void mSP_MakeGoodsList(GAME* game) {
             mSP_SelectTool(shop_items, &count, tool_count, shop_level & 3);
             mSP_SelectPlant(shop_items, &count, flower_count, sapling_count, shop_level & 3);
         }
+
+        CALL_EVENT(ShopStockGenerated, shop_items, count, mSP_GOODS_COUNT, goods_count[mSP_GOODS_TYPE_FTR],
+                   goods_count[mSP_GOODS_TYPE_RARE_FTR] != 0 ? &shop->rare_item : NULL, shop_level);
     }
 }
 

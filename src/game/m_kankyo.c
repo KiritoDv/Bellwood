@@ -1,4 +1,5 @@
 #include "m_kankyo.h"
+#include "port/api/structure.h"
 
 #include "m_room_type.h"
 #include "m_scene_table.h"
@@ -990,9 +991,12 @@ static int mEnv_GetNowRoomPointLightInfo(GAME_PLAY* play, s_xyz* pos, u8* color,
 
                 case SCENE_NPC_HOUSE:
                 case SCENE_COTTAGE_NPC: {
-                    pos->x = 160;
+                    int width = C_HouseRoomSize(Common_Get(house_owner_name), FALSE);
+                    int depth = C_HouseRoomSize(Common_Get(house_owner_name), TRUE);
+
+                    pos->x = width != 0 ? width * (mFI_UT_WORLDSIZE_X / 2) : 160;
                     pos->y = 180;
-                    pos->z = 240;
+                    pos->z = depth != 0 ? depth * mFI_UT_WORLDSIZE_Z * 3 / 4 : 240;
 
                     color[0] = 220; // r
                     color[1] = 220; // g
@@ -2198,6 +2202,10 @@ extern void Global_kankyo_set(GAME_PLAY* play, Kankyo* kankyo, Global_light* glo
 static int mEnv_CheckNpcRoomPointLightNiceStatus() {
     mNPS_schedule_c* schedule;
     Animal_c* animal;
+
+    if (Save_Get(scene_no) == SCENE_NPC_HOUSE && C_IsCustomStructure(Common_Get(house_owner_name))) {
+        return Common_Get(time).now_sec < mEnv_NPC_LIGHTS_OFF_TIME || Common_Get(time).now_sec >= mEnv_NPC_LIGHTS_ON_TIME;
+    }
 
     if (Save_Get(scene_no) == SCENE_COTTAGE_NPC) {
         animal = Save_GetPointer(island.animal);

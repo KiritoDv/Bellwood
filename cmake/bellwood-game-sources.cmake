@@ -72,6 +72,7 @@ set(BELLWOOD_GAME_SOURCES
     src/actor/ac_cottage.c
     src/actor/ac_count02.c
     src/actor/ac_countdown.c
+    src/actor/ac_custom_structure.c
     src/actor/ac_depart.c
     src/actor/ac_douzou.c
     src/actor/ac_dummy.c
@@ -146,6 +147,7 @@ set(BELLWOOD_GAME_SOURCES
     src/actor/ac_present_demo.c
     src/actor/ac_psnowman.c
     src/actor/ac_pterminal.c
+    src/actor/ac_puppet.c
     src/actor/ac_quest_manager.c
     src/actor/ac_quest_talk_fj_init.c
     src/actor/ac_quest_talk_greeting.c
@@ -199,6 +201,7 @@ set(BELLWOOD_GAME_SOURCES
     src/actor/ac_yatai.c
     src/actor/npc/ac_countdown_npc0.c
     src/actor/npc/ac_countdown_npc1.c
+    src/actor/npc/ac_custom_npc.c
     src/actor/npc/ac_go_home_npc.c
     src/actor/npc/ac_groundhog_npc0.c
     src/actor/npc/ac_halloween_npc.c

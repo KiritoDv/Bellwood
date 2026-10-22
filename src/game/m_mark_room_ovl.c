@@ -8,6 +8,8 @@
 #include "m_font.h"
 #include "m_string.h"
 #include "m_house.h"
+#include "port/api/furniture.h"
+#include "port/api/interior.h"
 
 typedef struct series_info_s {
     u8 type;
@@ -2763,6 +2765,36 @@ static void mMkRm_GetSeriesName(u8* buf, int series) {
     }
 }
 
+static mMkRm_ftr_info_c mMkRm_GetFtrInfo(int ftr_idx) {
+    mMkRm_ftr_info_c info = { mMkRm_SERIES_OTHER,        mMkRm_NOT_NECESSITY,    mMkRm_FACE_TYPE_NO_FACE,
+                              mMkRm_LUCK_TYPE_NOT_LUCKY, mRmTp_BIRTH_TYPE_GRP_A, mMkRm_SURFACE_TYPE_NONE };
+    const C_FurnitureDef* furniture;
+
+    if (ftr_idx >= 0 && ftr_idx < FTR_NUM) {
+        return mMkRm_ftr_info[ftr_idx];
+    }
+
+    furniture = C_FindFurniture(ftr_idx);
+    if (furniture != NULL) {
+        info.has_face = furniture->has_face ? mMkRm_FACE_TYPE_HAS_FACE : mMkRm_FACE_TYPE_NO_FACE;
+        info.is_lucky = furniture->is_lucky ? mMkRm_LUCK_TYPE_LUCKY : mMkRm_LUCK_TYPE_NOT_LUCKY;
+        if (furniture->set_type == aFTR_SET_TYPE_SURFACE) {
+            info.surface_type = mMkRm_SURFACE_TYPE_SURFACE;
+        } else if (furniture->set_type == aFTR_SET_TYPE_ON_SURFACE) {
+            info.surface_type = mMkRm_SURFACE_TYPE_PLACEABLE;
+        }
+        if (furniture->profile.interaction_type & aFTR_INTERACTION_FISH) {
+            info.birth_type = mRmTp_BIRTH_TYPE_FTR_FISH;
+        } else if (furniture->profile.interaction_type & aFTR_INTERACTION_INSECT) {
+            info.birth_type = mRmTp_BIRTH_TYPE_FTR_INSECT;
+        } else if (furniture->profile.interaction_type & aFTR_INTERACTION_MANNEKIN) {
+            info.birth_type = mRmTp_BIRTH_TYPE_FTR_CLOTH;
+        }
+    }
+
+    return info;
+}
+
 static mActor_name_t mMkRm_GetRemainOneFtr(int idx, int series) {
     int i;
 
@@ -2995,7 +3027,7 @@ static void mMkRm_EvaluateLetsClean(int* points, mActor_name_t** layer_ut_info, 
                                 /* Check that the item below is furniture which has a surface (prevents storage from
                                  * taking away points)*/
                                 if (item != EMPTY_NO && ITEM_IS_FTR(item) &&
-                                    mMkRm_ftr_info[mRmTp_FtrItemNo2FtrIdx(item)].surface_type ==
+                                    mMkRm_GetFtrInfo(mRmTp_FtrItemNo2FtrIdx(item)).surface_type ==
                                         mMkRm_SURFACE_TYPE_SURFACE) {
                                     remove_points++;
                                 }
@@ -3035,7 +3067,7 @@ static void mMkRm_EvaluateCompleteObstacle(int* points, mActor_name_t** layer_ut
 
                         if (ITEM_IS_FTR(item)) {
                             int ftr_no = mRmTp_FtrItemNo2FtrIdx(item);
-                            int series = mMkRm_ftr_info[ftr_no].series;
+                            int series = mMkRm_GetFtrInfo(ftr_no).series;
 
                             if (series != theme_idx) {
                                 obstacles++;
@@ -3122,7 +3154,7 @@ static void mMkRm_EvaluateDirect(int* points, mActor_name_t** layer_ut_info, int
 
                     if (ITEM_IS_FTR(item)) {
                         int ftr_idx = mRmTp_FtrItemNo2FtrIdx(item);
-                        int has_face = mMkRm_ftr_info[ftr_idx].has_face;
+                        int has_face = mMkRm_GetFtrInfo(ftr_idx).has_face;
 
                         if (has_face) {
                             int dir = FTR_GET_ROTATION(item);
@@ -3174,7 +3206,7 @@ static void mMkRm_EvaluateLuckyFurniture(int* points, mActor_name_t** layer_ut_i
                 for (ut_x = 1; ut_x < ut_max; ut_x++) {
                     item = ut_info[(ut_z * UT_Z_NUM) + ut_x];
 
-                    if (ITEM_IS_FTR(item) && mMkRm_ftr_info[mRmTp_FtrItemNo2FtrIdx(item)].is_lucky) {
+                    if (ITEM_IS_FTR(item) && mMkRm_GetFtrInfo(mRmTp_FtrItemNo2FtrIdx(item)).is_lucky) {
                         lucky++;
                     }
                 }
@@ -3434,7 +3466,7 @@ static void mMkRm_EvaluateBasePoint(int* points, mActor_name_t** layer_ut_info, 
                     if (ITEM_IS_FTR(item)) {
                         int ftr_idx = mRmTp_FtrItemNo2FtrIdx(item);
 
-                        birth_type_occur_tbl[mMkRm_ftr_info[ftr_idx].birth_type]++;
+                        birth_type_occur_tbl[mMkRm_GetFtrInfo(ftr_idx).birth_type]++;
                     }
                 }
             }
@@ -3448,12 +3480,16 @@ static void mMkRm_EvaluateBasePoint(int* points, mActor_name_t** layer_ut_info, 
 
     if (FLOOR_IS_MY_ORIG(floor_num)) {
         base_points += mMkRm_birth_point_table[mRmTp_BIRTH_TYPE_MY_ORIGINAL];
+    } else if (floor_num >= C_CARPET_FIRST) {
+        base_points += mMkRm_birth_point_table[mRmTp_BIRTH_TYPE_GRP_A];
     } else {
         base_points += mMkRm_birth_point_table[mMkRm_floor_from[floor_num]];
     }
 
     if (WALL_IS_MY_ORIG(wall_num)) {
         base_points += mMkRm_birth_point_table[mRmTp_BIRTH_TYPE_MY_ORIGINAL];
+    } else if (wall_num >= C_WALLPAPER_FIRST) {
+        base_points += mMkRm_birth_point_table[mRmTp_BIRTH_TYPE_GRP_A];
     } else {
         base_points += mMkRm_birth_point_table[mMkRm_wall_from[wall_num]];
     }
@@ -3572,10 +3608,10 @@ static void mMkRm_MakeFtrTable(mActor_name_t** layer_ut_info, int ut_max) {
 
                     if (ITEM_IS_FTR(item)) {
                         int ftr_idx = mRmTp_FtrItemNo2FtrIdx(item);
-                        int series = mMkRm_ftr_info[ftr_idx].series;
+                        int series = mMkRm_GetFtrInfo(ftr_idx).series;
 
                         if (series != mMkRm_SERIES_OTHER) {
-                            mMkRm_search_table[series] |= (1 << mMkRm_ftr_info[ftr_idx].group_idx);
+                            mMkRm_search_table[series] |= (1 << mMkRm_GetFtrInfo(ftr_idx).group_idx);
                         }
                     }
                 }

@@ -1,4 +1,6 @@
 #include "m_player_lib.h"
+#include "port/api/villager.h"
+#include "port/api/creature.h"
 #include "port/events/Events.h"
 
 #include "libultra/libultra.h"
@@ -354,6 +356,27 @@ static int Player_actor_request_main_notice_mosquito(GAME* game, uintptr_t label
 static int Player_actor_request_main_demo_geton_boat_sitdown_all(GAME* game, int prio);
 static int Player_actor_request_main_demo_geton_boat_wait_all(GAME* game, int prio);
 static int Player_actor_request_main_demo_getoff_boat_all(GAME* game, const xyz_t* pos_p, s16 angle_y, int prio);
+
+static void Player_actor_effect_make(int effect, xyz_t pos, int prio, s16 angle, GAME* game, u16 item, s16 arg0,
+                                     s16 arg1) {
+    eEC_CLIP->effect_make_proc(effect, pos, prio, angle, game, item, arg0, arg1);
+    CALL_EVENT(PlayerEffect, effect, pos.x, pos.y, pos.z, prio, angle, item, arg0, arg1);
+}
+
+static void Player_actor_sound_make(int kind, u16 id, const xyz_t* pos) {
+    switch (kind) {
+        case PLAYER_SOUND_STEP:
+            sAdo_PlyWalkSe(id, pos);
+            break;
+        case PLAYER_SOUND_ROOM_STEP:
+            sAdo_PlyWalkSeRoom(id, pos);
+            break;
+        default:
+            sAdo_OngenTrgStart(id, pos);
+            break;
+    }
+    CALL_EVENT(PlayerSound, kind, id, pos->x, pos->y, pos->z);
+}
 
 /* Tool Models */
 #include "../src/game/m_player_tools.c_inc"

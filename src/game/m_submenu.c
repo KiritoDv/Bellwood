@@ -1,4 +1,5 @@
 #include "m_submenu.h"
+#include "port/api/cloth.h"
 #include "m_submenu_ovl.h"
 #include "port/events/Events.h"
 
@@ -654,7 +655,7 @@ static void mSM_Object_Exchange_keep_new_MenuTexAndPallet(GAME_PLAY* play, int i
 
     play->submenu_ground_tex[idx] = tex_p;
     play->submenu_ground_pallet[idx] = pal_p;
-    mPlib_Load_PlayerTexAndPallet(tex_p, pal_p, Common_Get(now_private)->backgound_texture - ITM_CLOTH_START);
+    mPlib_Load_PlayerTexAndPallet(tex_p, pal_p, C_ClothTexIdx(Common_Get(now_private)->backgound_texture));
 }
 
 extern void mSM_Object_Exchange_keep_new_Menu(GAME_PLAY* play) {

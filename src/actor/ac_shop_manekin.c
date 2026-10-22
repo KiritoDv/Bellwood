@@ -1,4 +1,5 @@
 #include "ac_shop_manekin.h"
+#include "port/api/cloth.h"
 
 #include "m_common_data.h"
 #include "m_malloc.h"
@@ -51,7 +52,7 @@ static int aSM_CountCurrentBlockManekin(xyz_t pos) {
 
     count = 0;
     for (i = 0; i < UT_TOTAL_NUM; i++) {
-        if (ITEM_IS_CLOTH(*fg_p) || *fg_p == RSV_SHOP_SOLD_CLOTH) {
+        if (C_IsCloth(*fg_p) || *fg_p == RSV_SHOP_SOLD_CLOTH) {
             count++;
         }
 
@@ -148,7 +149,7 @@ static void aSM_SearchManekinPlace(int* ux, int* uz, mActor_name_t* item, int id
     *ux = 0;
     *uz = 0;
     for (i = 0; i < UT_TOTAL_NUM; i++) {
-        if (ITEM_IS_CLOTH(fg_p[i]) || fg_p[i] == RSV_SHOP_SOLD_CLOTH) {
+        if (C_IsCloth(fg_p[i]) || fg_p[i] == RSV_SHOP_SOLD_CLOTH) {
             if (count == idx) {
                 *ux = i % UT_X_NUM;
                 *uz = i / UT_X_NUM;
@@ -230,7 +231,7 @@ static void aSM_DmaManekinTexPal(ACTOR* actorx) {
         for (i = 0; i < count; i++) {
             u8* tex_p = manekin[i].tex_p;
             u8* pal_p = manekin[i].palette_p;
-            int idx = ITEM_IS_CLOTH(manekin[i].item) != FALSE ? (manekin[i].item - ITM_CLOTH_START) : 0;
+            int idx = C_ClothTexIdx(manekin[i].item);
 
             mPlib_Load_PlayerTexAndPallet(tex_p, pal_p, idx);
         }
@@ -342,7 +343,7 @@ static void aSM_ManekinDmaAgain(void) {
             for (i = 0; i < count; i++) {
                 u8* tex_p = manekin[i].tex_p;
                 u8* pal_p = manekin[i].palette_p;
-                int idx = ITEM_IS_CLOTH(manekin[i].item) != FALSE ? (manekin[i].item - ITM_CLOTH_START) : 0;
+                int idx = C_ClothTexIdx(manekin[i].item);
 
                 mPlib_Load_PlayerTexAndPallet(tex_p, pal_p, idx);
             }

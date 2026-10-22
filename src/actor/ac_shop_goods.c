@@ -6,6 +6,7 @@
 #include "sys_matrix.h"
 #include "ac_my_room.h"
 #include "m_malloc.h"
+#include "port/api/interior.h"
 
 static void Shop_Goods_Actor_ct(ACTOR* actorx, GAME* game);
 static void Shop_Goods_Actor_dt(ACTOR* actorx, GAME* game);
@@ -262,11 +263,23 @@ static void Shop_Goods_Actor_drop_move(SHOP_GOODS_ACTOR* shop_goods) {
     }
 }
 
+static mActor_name_t aSG_GetDisplayItem(mActor_name_t item) {
+    if (C_FindCarpet(item) != NULL) {
+        return ITM_CARPET00;
+    }
+    if (C_FindWallpaper(item) != NULL) {
+        return ITM_WALL00;
+    }
+    return item;
+}
+
 static void Shop_Goods_Actor_single_drawR(GAME* game, mActor_name_t item, xyz_t* pos, xyz_t* scale, s16 angle_y,
                                           int layer) {
     GAME_PLAY* play = (GAME_PLAY*)game;
     const aSG_data_c* src_data_p = l_shop_goods_dsp_table;
     int i;
+
+    item = aSG_GetDisplayItem(item);
 
     for (i = 0; i < picture_count; i++) {
         const aSG_data_c* data_p = &src_data_p[i];
@@ -492,8 +505,10 @@ static void aSG_DrawGoodsPicture(ACTOR* actorx, GAME* game) {
         for (uz = 0; uz < UT_Z_NUM; uz++) {
             for (ux = 0; ux < UT_X_NUM; ux++) {
                 if (*fg_p != RSV_NO) {
+                    mActor_name_t item = aSG_GetDisplayItem(*fg_p);
+
                     for (i = 0; i < picture_count; i++) {
-                        if (*fg_p >= data_p[i].item_start && *fg_p <= data_p[i].item_end) {
+                        if (item >= data_p[i].item_start && item <= data_p[i].item_end) {
                             FrameInterpolation_RecordOpenChild(fg_p, 0);
                             aSG_DrawGoods(game->graph, glight, shop_goods, bx, bz, ux, uz, &data_p[i], mCoBG_LAYER0);
                             FrameInterpolation_RecordCloseChild();
@@ -511,8 +526,10 @@ static void aSG_DrawGoodsPicture(ACTOR* actorx, GAME* game) {
         for (uz = 0; uz < UT_Z_NUM; uz++) {
             for (ux = 0; ux < UT_X_NUM; ux++) {
                 if (*fg2_p != RSV_NO) {
+                    mActor_name_t item = aSG_GetDisplayItem(*fg2_p);
+
                     for (i = 0; i < picture_count; i++) {
-                        if (*fg2_p >= data_p[i].item_start && *fg2_p <= data_p[i].item_end) {
+                        if (item >= data_p[i].item_start && item <= data_p[i].item_end) {
                             FrameInterpolation_RecordOpenChild(fg2_p, 0);
                             aSG_DrawGoods(game->graph, glight, shop_goods, bx, bz, ux, uz, &data_p[i], mCoBG_LAYER1);
                             FrameInterpolation_RecordCloseChild();

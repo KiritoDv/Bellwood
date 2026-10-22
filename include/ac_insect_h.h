@@ -175,6 +175,7 @@ typedef struct insect_actor_s {
     int light_flag;
     s16 light_counter;
     s16 light_step;
+    int custom_type;
 } aINS_INSECT_ACTOR;
 
 /* sizeof(aINS_CTRL_ACTOR) == 0x183C */

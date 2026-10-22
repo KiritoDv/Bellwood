@@ -22,7 +22,7 @@ static void Player_actor_setup_main_Air_rod(ACTOR* actor, GAME* game) {
                                      player_frame, player_frame, 0.5f, 0.0f, 0, 0);
     Player_actor_setup_main_Base(actor, game);
 
-    Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_SWING_ROD, actor->world.position, 2,
+    Player_actor_effect_make(eEC_EFFECT_SWING_ROD, actor->world.position, 2,
                                                    actor->shape_info.rotation.y, game, RSV_NO,
                                                    actor->bg_collision_check.result.unit_attribute, 0);
 }

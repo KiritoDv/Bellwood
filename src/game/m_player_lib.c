@@ -1,4 +1,6 @@
 #include "ac_asset.h"
+#include "port/api/cloth.h"
+#include "port/api/item.h"
 #include "m_player_lib.h"
 #include "ac_port.h"
 
@@ -915,7 +917,7 @@ extern void mPlib_Object_Exchange_keep_new_PlayerPallet(GAME_PLAY* play, int ban
 }
 
 extern int mPlib_Check_PlayerClothInAram(int idx) {
-    if (idx < (CLOTH_NUM + 1)) {
+    if (idx < (CLOTH_NUM + 1) || idx >= C_CLOTH_TEX_FIRST) {
         return TRUE;
     }
 
@@ -1098,7 +1100,7 @@ extern void mPlib_DMA_player_Part_Table(s8* part_table_p, int idx) {
 
 extern void mPlib_change_player_cloth_info(mPr_cloth_c* cloth_p, mActor_name_t item) {
     cloth_p->item = item;
-    cloth_p->idx = ITEM_IS_CLOTH(item) ? (item - ITM_CLOTH_START) : 0;
+    cloth_p->idx = C_ClothTexIdx(item);
 }
 
 extern void mPlib_change_player_cloth_info_lv2(Private_c* priv, mActor_name_t item) {
@@ -1106,7 +1108,7 @@ extern void mPlib_change_player_cloth_info_lv2(Private_c* priv, mActor_name_t it
 }
 
 extern void mPlib_Load_PlayerTexAndPallet(void* tex_p, void* pal_p, int idx) {
-    if (idx >= 0 && idx < (CLOTH_NUM + 1 + mPr_ORIGINAL_DESIGN_COUNT) && tex_p != NULL && pal_p != NULL) {
+    if (idx >= 0 && idx <= (C_CLOTH_TEX_FIRST + C_CLOTH_LAST - C_CLOTH_FIRST) && tex_p != NULL && pal_p != NULL) {
         uintptr_t tex_rom_p = mPlib_Get_PlayerTexRom_p(idx);
         uintptr_t pal_rom_p = mPlib_Get_PlayerPalletRom_p(idx);
 
@@ -1355,7 +1357,7 @@ extern s8 mPlib_Get_ItemNoToItemKind(mActor_name_t itemNo) {
         case ITM_LEAF_FAN:
             return mPlayer_ITEM_KIND_LEAF_FAN;
         default:
-            return -1;
+            return C_IsCustomUmbrella(itemNo) ? mPlayer_ITEM_KIND_ORG_UMBRELLA00 : -1;
     }
 }
 

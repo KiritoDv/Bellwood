@@ -5,6 +5,9 @@ static void mChoice_determimation_set(mChoice_c* choice) {
     bcopy(choice_data->strings[idx], choice_data->determination_string, mChoice_CHOICE_STRING_LEN);
     choice_data->determination_len = choice_data->string_lens[idx];
     choice_data->selected_choice_idx = idx;
+    {
+        CALL_EVENT(ChoiceSelected, mMsg_Get_base_window_p()->msg_no, idx);
+    }
 }
 
 static int mChoice_Main_Normal_SetChoice(mChoice_c* choice, GAME* game) {

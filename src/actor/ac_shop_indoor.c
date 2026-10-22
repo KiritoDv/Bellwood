@@ -4,6 +4,7 @@
 #include "m_malloc.h"
 #include "m_rcp.h"
 #include "sys_matrix.h"
+#include "port/api/interior.h"
 #include "assets/data/field/bg/acre/rom_shop4_fuku/rom_shop4_fuku.h"
 #include "assets/data/model/rom_shop1_fuku.h"
 #include "assets/data/model/rom_shop1f.h"
@@ -448,7 +449,7 @@ static int aSI_ChangeCarpet(mActor_name_t item) {
     if (Common_Get(clip).shop_indoor_clip != NULL) {
         ACTOR* actorx = Common_Get(clip).shop_indoor_clip->shop_indoor_actor;
 
-        if (actorx != NULL && ITEM_IS_CARPET(item)) {
+        if (actorx != NULL && (ITEM_IS_CARPET(item) || C_FindCarpet(item) != NULL)) {
             SHOP_INDOOR_ACTOR* shop_indoor = (SHOP_INDOOR_ACTOR*)actorx;
             int floor_data_idx = shop_indoor->floor_data_idx;
 
@@ -471,7 +472,7 @@ static int aSI_ChangeWall(mActor_name_t item) {
     if (Common_Get(clip).shop_indoor_clip != NULL) {
         ACTOR* actorx = Common_Get(clip).shop_indoor_clip->shop_indoor_actor;
 
-        if (actorx != NULL && ITEM_IS_WALL(item)) {
+        if (actorx != NULL && (ITEM_IS_WALL(item) || C_FindWallpaper(item) != NULL)) {
             SHOP_INDOOR_ACTOR* shop_indoor = (SHOP_INDOOR_ACTOR*)actorx;
             int wall_data_idx = shop_indoor->wall_data_idx;
 

@@ -1,4 +1,5 @@
 #include "ac_set_ovl_gyoei.h"
+#include "port/api/creature.h"
 
 #include "m_field_info.h"
 #include "m_collision_bg.h"
@@ -1334,7 +1335,7 @@ static int aSOG_gyoei_place_check(u8 spawn_area, u32 block_type) {
  * @param block_type Current acre type flags
  * @param info_count Number of spawns in spawn_info
  * @param env_rate Town environment rating spawn % modifier rate
- * @return Spawn is invalid: aGYO_TYPE_INVALID/aGYO_TYPE_NUM, otherwise index into the spawn_info table to try spawning
+ * @return Spawn is invalid: aGYO_TYPE_INVALID/aSetMgr_GYOEI_NUM, otherwise index into the spawn_info table to try spawning
  **/
 static int aSOG_gyoei_get_idx_sub(aSOG_gyoei_spawn_info_weight_f_c* spawn_info, int* set_table, u32 block_type, int info_count, f32 env_rate) {
   f32 total_spawn_weight = 0.0f;
@@ -1371,7 +1372,7 @@ static int aSOG_gyoei_get_idx_sub(aSOG_gyoei_spawn_info_weight_f_c* spawn_info, 
       if (selected_weight >= now_weight) {
         *set_table_p = TRUE;
         if (!aSOG_gyoei_place_check(spawn_info_p->spawn_area, block_type)) {
-          selected_idx = aGYO_TYPE_NUM;
+          selected_idx = aSetMgr_GYOEI_NUM;
         }
         else {
           selected_idx = i;
@@ -1394,7 +1395,7 @@ static int aSOG_gyoei_get_idx_sub(aSOG_gyoei_spawn_info_weight_f_c* spawn_info, 
  * @param spawn_info Pointer to the possible spawns
  * @param info_count Number of spawns in spawn_info
  * @param block_type Current acre type flags
- * @return Spawn is invalid: aGYO_TYPE_INVALID/aGYO_TYPE_NUM, otherwise index into the spawn_info table to try spawning
+ * @return Spawn is invalid: aGYO_TYPE_INVALID/aSetMgr_GYOEI_NUM, otherwise index into the spawn_info table to try spawning
  **/
 static int aSOG_gyoei_get_idx(aSOG_gyoei_spawn_info_weight_f_c* spawn_info, int info_count, u32 block_type) {
   static f32 env_rate_table[mFAs_FIELDRANK_NUM] = {
@@ -1407,13 +1408,13 @@ static int aSOG_gyoei_get_idx(aSOG_gyoei_spawn_info_weight_f_c* spawn_info, int 
     1.000f  /* Field Rank 6 */
   };
 
-  int set_table[aGYO_TYPE_NUM];
+  int set_table[aSetMgr_GYOEI_NUM];
   f32 env_rate;
   int field_rank;
   int i;
   int idx = aGYO_TYPE_INVALID;
   
-  bzero(set_table, aGYO_TYPE_NUM * sizeof(int));
+  bzero(set_table, aSetMgr_GYOEI_NUM * sizeof(int));
   field_rank = mFAs_GetFieldRank();
 
   if (field_rank < mFAs_FIELDRANK_ZERO || field_rank > mFAs_FIELDRANK_SIX) {
@@ -1430,7 +1431,7 @@ static int aSOG_gyoei_get_idx(aSOG_gyoei_spawn_info_weight_f_c* spawn_info, int 
   /* keep trying to roll a fish until a valid one is found for the current acre or all have been exhausted */
   for (i = 0; i < info_count; i++) {
     idx = aSOG_gyoei_get_idx_sub(spawn_info, set_table, block_type, info_count, env_rate);
-    if (idx == aGYO_TYPE_INVALID || idx != aGYO_TYPE_NUM) {
+    if (idx == aGYO_TYPE_INVALID || idx != aSetMgr_GYOEI_NUM) {
       break;
     }
   }
@@ -1473,7 +1474,7 @@ static int aSOG_gyoei_set_gyoei_data(aSOG_set_data_c* set_data, int* block_xz, i
         for (ut_x = 0; ut_x < UT_X_NUM; ut_x++) {
           if (ut_z >= 2 && ut_z < UT_Z_NUM - 2 && ut_x >= 2 && ut_x < UT_X_NUM - 2) {
             attribute = collision_data->data.unit_attribute;
-            switch (set_data->type) {
+            switch (C_FishBase(set_data->type)) {
               case aGYO_TYPE_LARGE_CHAR:
               {
                 if (attribute == mCoBG_ATTRIBUTE_WATERFALL) {
@@ -1592,7 +1593,7 @@ static int aSOG_gyoei_set_gyoei_data(aSOG_set_data_c* set_data, int* block_xz, i
 static int aSOG_gyoei_decide_gyoei(aSOG_set_data_c* set_data, int* block_xz, aSOG_gyoei_spawn_info_weight_f_c* spawn_info, int info_count, u32 block_type) {
   int res = FALSE;
   int idx = aSOG_gyoei_get_idx(spawn_info, info_count, block_type); // decide fish
-  if (idx != aGYO_TYPE_INVALID) {
+  if (idx != aGYO_TYPE_INVALID && idx < info_count) {
     aSOG_gyoei_spawn_info_weight_f_c* selected_info = spawn_info + idx;
     int spawn_area = selected_info->spawn_area;
     if (spawn_area < aSOG_SPAWN_AREA_NUM) {
@@ -1620,7 +1621,7 @@ static int aSOG_gyoei_make(aSOG_set_data_c* set_data, int* block_xz, GAME* game)
     mFI_BkandUtNum2Wpos(&wpos, block_xz[0], block_xz[1], set_data->ut_x, set_data->ut_z);
     init_data.fish_type = set_data->type;
 
-    switch (init_data.fish_type) {
+    switch (C_FishBase(init_data.fish_type)) {
       case aGYO_TYPE_LARGE_CHAR:
       {
         aSOG_get_fall_attribute_position(&wpos);
@@ -2147,6 +2148,13 @@ static void aSOG_gyoei_make_range_data(SET_MANAGER* set_manager, u32 block_type)
   /* if the term0 rate isn't 100% (1.0f), populate the next term with the inverse rate used for term0 (1.0f-x) */
   if (term0_rate != 1.0f) {
     (*make_range_data_proc[range_proc])(gyoei_keep, time_no, term1, TRUE, 1.0f - term0_rate);
+  }
+
+  {
+    int32_t count = gyoei_keep->possible_gyoei_num;
+
+    CALL_EVENT(FishSpawnList, range_proc, gyoei_keep->spawn_weights, &count, aSetMgr_GYOEI_NUM);
+    gyoei_keep->possible_gyoei_num = count;
   }
 }
 

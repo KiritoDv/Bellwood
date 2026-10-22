@@ -1,10 +1,13 @@
 #include "ac_t_umbrella.h"
 
+#include "ac_puppet.h"
+
 #include "m_name_table.h"
 #include "sys_matrix.h"
 #include "m_lib.h"
 #include "m_rcp.h"
 #include "m_common_data.h"
+#include "port/api/item.h"
 #include "assets/data/model/tol_umb_01.h"
 #include "assets/data/model/tol_umb_02.h"
 #include "assets/data/model/tol_umb_03.h"
@@ -292,9 +295,19 @@ static void aTUMB_actor_draw(ACTOR* actor, GAME* game) {
 
     gSPMatrix(gfx++, _Matrix_to_Mtx_new(graph), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
-    if (tool_name >= TOOL_ORG_UMBRELLA0) {
+    if (parent->part == ACTOR_PART_PLAYER && C_IsCustomUmbrella(Now_Private->equipment)) {
+        const C_ItemDef* custom = C_FindItem(Now_Private->equipment);
+
+        gSPSegment(gfx++, G_MWO_SEGMENT_8, custom->umbrella_pal);
+        gSPSegment(gfx++, G_MWO_SEGMENT_9, custom->umbrella_tex);
+    } else if (tool_name >= TOOL_ORG_UMBRELLA0) {
+        const aPUP_design_c* design = aPUP_GetActorDesign(parent, aPUP_DESIGN_UMBRELLA);
+
         umbrella_name = tool_name - TOOL_ORG_UMBRELLA0;
-        if (parent->part == ACTOR_PART_PLAYER) {
+        if (design != NULL) {
+            gSPSegment(gfx++, G_MWO_SEGMENT_8, design->pal);
+            gSPSegment(gfx++, G_MWO_SEGMENT_9, design->tex);
+        } else if (parent->part == ACTOR_PART_PLAYER) {
             umbrella_name = (umbrella_name & 7);
             gSPSegment(gfx++, G_MWO_SEGMENT_8, mNW_PaletteIdx2Palette(Player_Palette_Get(umbrella_name)));
             gSPSegment(gfx++, G_MWO_SEGMENT_9, Player_Design_Get(umbrella_name));

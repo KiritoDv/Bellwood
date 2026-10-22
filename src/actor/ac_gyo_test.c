@@ -1,4 +1,5 @@
 #include "ac_gyoei.h"
+#include "port/api/creature.h"
 
 #include "m_common_data.h"
 #include "m_player_lib.h"
@@ -72,7 +73,7 @@ extern void aGTT_actor_init(ACTOR* actorx, GAME* game) {
         actorx->world.position.y = aGTT_Get_water_surface_position_y(actorx->world.position);
     }
 
-    gyo->size_type = gyoei_type[gyo->gyo_type].size;
+    gyo->size_type = gyoei_type[C_FishBase(gyo->gyo_type)].size;
     gyo->action = aGTT_ACTION_SWIM;
     gyo->fwork0 = 19.0f;
     scale = aGYO_shadow_scale[gyo->size_type] * 0.02f;
@@ -309,7 +310,7 @@ static int aGTT_search_Uki(ACTOR* actorx, GAME* game) {
     int ret;
 
     play = (GAME_PLAY*)game;
-    search_area = gyoei_type[gyo->gyo_type].search_area;
+    search_area = gyoei_type[C_FishBase(gyo->gyo_type)].search_area;
     ret = FALSE;
     {
         UKI_ACTOR* uki = (UKI_ACTOR*)Actor_info_name_search(&play->actor_info, mAc_PROFILE_UKI, ACTOR_PART_BG);
@@ -539,7 +540,7 @@ static void aGTT_near(ACTOR* actorx, GAME* game) {
     f32 target_y;
     s16 angle_y;
     UKI_ACTOR* uki = (UKI_ACTOR*)gyo->linked_actor;
-    s16 search_area = gyoei_type[gyo->gyo_type].search_area;
+    s16 search_area = gyoei_type[C_FishBase(gyo->gyo_type)].search_area;
     int rod_type = aGYO_get_uki_type();
     
     angle_y = search_position_angleY(&actorx->world.position, &uki->actor_class.world.position);
@@ -805,7 +806,7 @@ static void aGTT_touch_init(aGYO_CTRL_ACTOR* gyo) {
 }
 
 static void aGTT_bite_init(aGYO_CTRL_ACTOR* gyo) {    
-    gyo->work0 = (int)(aGYO_bite_time[aGYO_get_uki_type()][gyoei_type[gyo->gyo_type].bite_time] * 2.0f);
+    gyo->work0 = (int)(aGYO_bite_time[aGYO_get_uki_type()][gyoei_type[C_FishBase(gyo->gyo_type)].bite_time] * 2.0f);
     gyo->swork0 = 3;
     aGTT_speed_reset((ACTOR*)gyo);
 }

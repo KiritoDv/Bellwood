@@ -1,4 +1,6 @@
 #include "m_npc.h"
+#include "port/api/cloth.h"
+#include "port/api/structure.h"
 
 #include "m_font.h"
 #include "m_name_table.h"
@@ -1300,7 +1302,7 @@ static int mNpc_SetPresentCloth(Animal_c* animal, PersonalID_c* player_id, mActo
     int res = FALSE;
 
     if (animal != NULL && player_id != NULL && ITEM_NAME_GET_TYPE(cloth) == NAME_TYPE_ITEM1 &&
-        ITEM_NAME_GET_CAT(cloth) == ITEM1_CAT_CLOTH && !mNpc_CheckFreeAnimalPersonalID(&animal->id) &&
+        C_ItemCategory(cloth) == ITEM1_CAT_CLOTH && !mNpc_CheckFreeAnimalPersonalID(&animal->id) &&
         !mPr_NullCheckPersonalID(player_id)) {
         int memory_idx = mNpc_GetAnimalMemoryIdx(player_id, animal->memories, ANIMAL_MEMORY_NUM);
 
@@ -2029,7 +2031,7 @@ extern void mNpc_ChangePresentCloth() {
 
         if (mNpc_CheckFreeAnimalPersonalID(&animal->id) == FALSE && present_cloth != EMPTY_NO &&
             ITEM_NAME_GET_TYPE(present_cloth) == NAME_TYPE_ITEM1 &&
-            ITEM_NAME_GET_CAT(present_cloth) == ITEM1_CAT_CLOTH) {
+            C_ItemCategory(present_cloth) == ITEM1_CAT_CLOTH) {
             memory = animal->memories;
 
             for (j = 0; j < ANIMAL_MEMORY_NUM; j++) {
@@ -2076,9 +2078,11 @@ extern void mNpc_ResetWordEnding(NPC_ACTOR* nactorx) {
     if (nactorx != NULL && nactorx->actor_class.part == ACTOR_PART_NPC) {
         Animal_c* animal = nactorx->npc_info.animal;
 
-        if (animal != NULL) {
+        if (animal != NULL && C_VillagerCatchphrase(animal->id.npc_id) != NULL) {
+            mem_copy(animal->catchphrase, (u8*)C_VillagerCatchphrase(animal->id.npc_id), ANIMAL_CATCHPHRASE_LEN);
+        } else if (animal != NULL) {
             mString_Load_StringFromRom(animal->catchphrase, ANIMAL_CATCHPHRASE_LEN,
-                                       npc_def_list[animal->id.npc_id & 0xFFF].catchphrase_str_idx);
+                                       npc_def_list[C_VillagerBase(animal->id.npc_id) & 0xFFF].catchphrase_str_idx);
         }
     }
 }
@@ -2107,7 +2111,8 @@ extern int mNpc_RegistEventNpc(mActor_name_t event_id, mActor_name_t texture_id,
         mNpc_EventNpc_c* event_npc = Common_GetPointer(event_npc[free_idx]);
 
         if (cloth_id != EMPTY_NO) {
-            int valid = (cloth_id == RSV_CLOTH) || (cloth_id >= ITM_CLOTH_START && cloth_id < ITM_CLOTH_END);
+            int valid = (cloth_id == RSV_CLOTH) || (cloth_id >= ITM_CLOTH_START && cloth_id < ITM_CLOTH_END) ||
+                        C_FindCloth(cloth_id) != NULL;
 
             if (valid == FALSE) {
                 cloth_id = ITM_CLOTH000;
@@ -2183,7 +2188,8 @@ extern int mNpc_RegistMaskNpc(mActor_name_t mask_id, mActor_name_t npc_id, mActo
         mNpc_MaskNpc_c* mask_npc = Common_GetPointer(mask_npc[free_idx]);
 
         if (cloth_id != EMPTY_NO) {
-            int valid = (cloth_id == RSV_CLOTH) || (cloth_id >= ITM_CLOTH_START && cloth_id < ITM_CLOTH_END);
+            int valid = (cloth_id == RSV_CLOTH) || (cloth_id >= ITM_CLOTH_START && cloth_id < ITM_CLOTH_END) ||
+                        C_FindCloth(cloth_id) != NULL;
 
             if (valid == FALSE) {
                 cloth_id = ITM_CLOTH000;
@@ -2250,14 +2256,21 @@ extern mNpc_MaskNpc_c* mNpc_GetSameMaskNpc(mActor_name_t mask_id) {
         mask_npc++;
     }
 
+    if (ITEM_NAME_GET_TYPE(mask_id) == NAME_TYPE_SPNPC) {
+        CALL_EVENT(MaskNpcLookup, mask_id, NULL);
+        return (mNpc_MaskNpc_c*)MaskNpcLookup_.mask;
+    }
+
     return NULL;
 }
 
 extern u8 mNpc_GetLooks(mActor_name_t npc_id) {
     u8 looks = mNpc_LOOKS_GIRL;
 
-    if (ITEM_NAME_GET_TYPE(npc_id) == NAME_TYPE_NPC) {
-        looks = npc_looks_table[npc_id & 0xFFF];
+    if (C_FindVillager(npc_id) != NULL) {
+        looks = C_FindVillager(npc_id)->looks;
+    } else if (ITEM_NAME_GET_TYPE(npc_id) == NAME_TYPE_NPC) {
+        looks = npc_looks_table[C_VillagerBase(npc_id) & 0xFFF];
     }
 
     return looks;
@@ -2288,6 +2301,14 @@ extern void mNpc_SetDefAnimalCloth(Animal_c* animal) {
         return;
     }
 
+    if (C_FindVillager(npc_id) != NULL) {
+        const C_VillagerDef* villager = C_FindVillager(npc_id);
+
+        animal->cloth = villager->cloth != EMPTY_NO ? villager->cloth : npc_def_list[villager->base & 0xFFF].cloth;
+        animal->cloth_original_id = 0xFF;
+        return;
+    }
+
     if ((npc_id & 0xFFF) >= NPC_NUM) {
         return;
     }
@@ -2307,6 +2328,11 @@ extern void mNpc_SetDefAnimalUmbrella(Animal_c* animal) {
         return;
     }
 
+    if (C_FindVillager(npc_id) != NULL) {
+        animal->umbrella_id = npc_def_list[C_FindVillager(npc_id)->base & 0xFFF].umbrella;
+        return;
+    }
+
     if ((npc_id & 0xFFF) >= NPC_NUM) {
         return;
     }
@@ -2314,12 +2340,36 @@ extern void mNpc_SetDefAnimalUmbrella(Animal_c* animal) {
     animal->umbrella_id = npc_def_list[npc_id & 0xFFF].umbrella;
 }
 
+static void mNpc_SetCustomAnimalInfo(Animal_c* animal, mActor_name_t npc_id, const C_VillagerDef* villager) {
+    mNpc_Default_Data_c def_data = npc_def_list[villager->base & 0xFFF];
+
+    if (villager->cloth != EMPTY_NO) {
+        def_data.cloth = villager->cloth;
+    }
+    mNpc_SetDefAnimalInfo(animal, npc_id, villager->looks, &def_data);
+    mem_copy(animal->catchphrase, (u8*)C_VillagerCatchphrase(npc_id), ANIMAL_CATCHPHRASE_LEN);
+}
+
 extern void mNpc_SetDefAnimal(Animal_c* animal, mActor_name_t npc_id, mNpc_Default_Data_c* def_data) {
     int idx = npc_id & 0xFFF;
 
-    if (ITEM_NAME_GET_TYPE(npc_id) == NAME_TYPE_NPC) {
+    if (C_FindVillager(npc_id) != NULL) {
+        mNpc_SetCustomAnimalInfo(animal, npc_id, C_FindVillager(npc_id));
+    } else if (ITEM_NAME_GET_TYPE(npc_id) == NAME_TYPE_NPC && idx < NPC_NUM + 2) {
         mNpc_SetDefAnimalInfo(animal, npc_id, npc_looks_table[idx], &def_data[idx]);
     }
+}
+
+#define mNpc_SELECT_NUM (C_VILLAGER_LAST - NPC_START + 1)
+
+static int mNpc_IdxLooks(int idx) {
+    const C_VillagerDef* villager;
+
+    if (idx < NPC_NUM) {
+        return npc_looks_table[idx];
+    }
+    villager = C_FindVillager(NPC_START | idx);
+    return villager != NULL ? villager->looks : mNpc_LOOKS_UNSET;
 }
 
 static void mNpc_SetHaveAppeared(mActor_name_t npc_id) {
@@ -2362,26 +2412,33 @@ static int mNpc_GetDefGrowPermission(int idx, s8* grow_list, int count) {
     return res;
 }
 
+static int mNpc_IdxGrowPermission(int idx) {
+    const C_VillagerDef* villager;
+
+    if (idx < NPC_NUM) {
+        return mNpc_GetDefGrowPermission(idx, npc_grow_list, NPC_NUM);
+    }
+    villager = C_FindVillager(NPC_START | idx);
+    if (villager == NULL) {
+        return mNpc_GROW_NUM;
+    }
+    return villager->starter ? mNpc_GROW_STARTER : mNpc_GROW_MOVE_IN;
+}
+
 static int mNpc_GetLooks2NotHaveAppearedNum(u8 looks) {
-    u8* looks_tbl;
-    s8* grow_list = npc_grow_list;
     int num = 0;
     int i;
 
     if (looks < mNpc_LOOKS_NUM) {
-        looks_tbl = npc_looks_table;
-
-        for (i = 0; i < NPC_NUM; i++) {
-            if (looks == looks_tbl[0]) {
-                int grow_type = mNpc_GetDefGrowPermission(i, grow_list, NPC_NUM);
+        for (i = 0; i < mNpc_SELECT_NUM; i++) {
+            if (looks == mNpc_IdxLooks(i)) {
+                int grow_type = mNpc_IdxGrowPermission(i);
 
                 if (mNpc_GetHaveAppeared_idx(i) == FALSE &&
                     (grow_type == mNpc_GROW_STARTER || grow_type == mNpc_GROW_MOVE_IN)) {
                     num++;
                 }
             }
-
-            looks_tbl++;
         }
     }
 
@@ -2402,11 +2459,10 @@ static void mNpc_ResetHaveAppeared_common(u8* npc_used_tbl, Animal_c* animal) {
 }
 
 static void mNpc_ResetHaveAppeared() {
-    s8* grow_list = npc_grow_list;
     int i;
 
-    for (i = 0; i < NPC_NUM; i++) {
-        u32 grow_perm = mNpc_GetDefGrowPermission(i, grow_list, NPC_NUM);
+    for (i = 0; i < mNpc_SELECT_NUM; i++) {
+        u32 grow_perm = mNpc_IdxGrowPermission(i);
 
         if (mNpc_GetHaveAppeared_idx(i) == FALSE && grow_perm <= mNpc_GROW_MOVE_IN) {
             break;
@@ -2414,13 +2470,13 @@ static void mNpc_ResetHaveAppeared() {
     }
 
     /* All animals have appeared in town (islanders excluded) */
-    if (i == NPC_NUM) {
+    if (i == mNpc_SELECT_NUM) {
         mNpc_ResetHaveAppeared_common(Save_Get(npc_used_tbl), Save_Get(animals));
     }
 }
 
 static void mNpc_DecideLivingNpcMax(Animal_c* animal, u8 count, int malloc_flag) {
-    static int fakeTable[NPC_NUM];
+    static int fakeTable[mNpc_SELECT_NUM];
 
     mNpc_Default_Data_c* def_list;
     s8* grow_list;
@@ -2429,7 +2485,7 @@ static void mNpc_DecideLivingNpcMax(Animal_c* animal, u8 count, int malloc_flag)
     int animal_idx = 0;
 
     bzero(fakeTable, sizeof(fakeTable));
-    mNpc_MakeRandTable(fakeTable, NPC_NUM, NPC_NUM);
+    mNpc_MakeRandTable(fakeTable, mNpc_SELECT_NUM, mNpc_SELECT_NUM);
     def_list = npc_def_list;
     grow_list = npc_grow_list;
 
@@ -2441,10 +2497,10 @@ static void mNpc_DecideLivingNpcMax(Animal_c* animal, u8 count, int malloc_flag)
         if (animal->id.npc_id == EMPTY_NO) {
             int idx = fakeTable[i];
             mActor_name_t npc_id = NPC_START | idx;
-            int grow_perm = mNpc_GetDefGrowPermission(idx, grow_list, NPC_NUM);
+            int grow_perm = mNpc_IdxGrowPermission(idx);
 
             if (grow_perm == mNpc_GROW_STARTER) {
-                int looks = npc_looks_table[idx];
+                int looks = mNpc_IdxLooks(idx);
 
                 if (((looks_bitfield >> looks) & 1) == 0) {
                     mNpc_SetDefAnimal(animal, npc_id, def_list);
@@ -2813,12 +2869,23 @@ extern void mNpc_SetNpcList(mNpc_NpcList_c* npclist, Animal_c* animal, int count
             npclist->appear_flag = TRUE;
             npclist->reward_furniture = EMPTY_NO;
 
-            npclist->house_data.type = house_list[npc_id & 0xFFF].type;
-            npclist->house_data.palette = house_list[npc_id & 0xFFF].palette;
-            npclist->house_data.wall_id = house_list[npc_id & 0xFFF].wall_id;
-            npclist->house_data.floor_id = house_list[npc_id & 0xFFF].floor_id;
-            npclist->house_data.main_layer_id = house_list[npc_id & 0xFFF].main_layer_id;
-            npclist->house_data.secondary_layer_id = house_list[npc_id & 0xFFF].secondary_layer_id;
+            npclist->house_data = house_list[C_VillagerBase(npc_id) & 0xFFF];
+            if (C_FindVillager(npc_id) != NULL) {
+                const C_VillagerDef* villager = C_FindVillager(npc_id);
+
+                if (villager->house_type >= 0) {
+                    npclist->house_data.type = villager->house_type;
+                }
+                if (villager->house_palette >= 0) {
+                    npclist->house_data.palette = villager->house_palette;
+                }
+                if (villager->wallpaper != EMPTY_NO) {
+                    npclist->house_data.wall_id = (u8)(villager->wallpaper - ITM_WALL_START);
+                }
+                if (villager->carpet != EMPTY_NO) {
+                    npclist->house_data.floor_id = (u8)(villager->carpet - ITM_CARPET_START);
+                }
+            }
         }
 
         npclist++;
@@ -2867,6 +2934,15 @@ extern void mNpc_SetNpcinfo(ACTOR* actor, s8 npc_info_idx) {
 static void mNpc_AddNpc_inNpcRoom(mFM_move_actor_c* move_actor, int move_actor_idx, u8 bx, u8 bz) {
     u32 owner_id = Common_Get(house_owner_name);
     mActor_name_t id = owner_id;
+    u8 ut_x = 4;
+    u8 ut_z = 7;
+
+    if (C_IsCustomStructure(owner_id)) {
+        id = C_HouseRoomResident(owner_id);
+        owner_id = id;
+        ut_x = C_HouseRoomEntry(Common_Get(house_owner_name), FALSE) / mFI_UT_WORLDSIZE_X;
+        ut_z = C_HouseRoomEntry(Common_Get(house_owner_name), TRUE) / mFI_UT_WORLDSIZE_Z - 1;
+    }
 
     if (id != RSV_NO) {
         if (id != EMPTY_NO && mEvNM_CheckJointEvent(owner_id) != TRUE) {
@@ -2874,8 +2950,8 @@ static void mNpc_AddNpc_inNpcRoom(mFM_move_actor_c* move_actor, int move_actor_i
 
             if (idx != -1) {
                 move_actor->name_id = id;
-                move_actor->ut_x = 4;
-                move_actor->ut_z = 7;
+                move_actor->ut_x = ut_x;
+                move_actor->ut_z = ut_z;
                 move_actor->npc_info_idx = idx;
                 move_actor->arg = -1;
                 mFI_SetMoveActorBitData_ON(move_actor_idx, bx, bz);
@@ -2958,6 +3034,9 @@ extern void mNpc_RenewalNpcRoom(s16* wall_floor) {
                 floor = island_floor;
             }
         }
+    } else if (mFI_GET_TYPE(field_id) == mFI_FIELD_NPCROOM0 && C_IsCustomStructure(owner_id)) {
+        wall = (u8)C_HouseRoomInterior(owner_id, TRUE);
+        floor = (u8)C_HouseRoomInterior(owner_id, FALSE);
     } else if (mFI_GET_TYPE(field_id) == mFI_FIELD_NPCROOM0 && owner_id != EMPTY_NO && owner_id != RSV_NO) {
         int idx = mNpc_SearchAnimalinfo(Save_Get(animals), owner_id, ANIMAL_NUM_MAX);
         mNpc_NpcList_c* npclist;
@@ -3071,6 +3150,12 @@ static int mNpc_CheckSelectFurniture(mActor_name_t item) {
     return res;
 }
 
+static mActor_name_t* mNpc_GetNpcRoomItems(mFM_fg_data_c** fg_data_table, int data_idx, mActor_name_t npc_id) {
+    const mActor_name_t* room = C_VillagerRoom(npc_id, 0);
+
+    return room != NULL ? (mActor_name_t*)room : fg_data_table[data_idx]->items[0];
+}
+
 static mActor_name_t mNpc_DecideNpcFurniture(mFM_fg_data_c** fg_data_table, mNpc_NpcList_c* npclist, int fg_base_id) {
     int data_idx = npclist->house_data.main_layer_id - fg_base_id;
     mActor_name_t* fg_items;
@@ -3082,7 +3167,7 @@ static mActor_name_t mNpc_DecideNpcFurniture(mFM_fg_data_c** fg_data_table, mNpc
         data_idx = 0;
     }
 
-    fg_items = fg_data_table[data_idx]->items[0];
+    fg_items = mNpc_GetNpcRoomItems(fg_data_table, data_idx, npclist->name);
 
     for (ut_z = 0; ut_z < 10; ut_z++) {
         for (ut_x = 0; ut_x < 10; ut_x++) {
@@ -3099,7 +3184,7 @@ static mActor_name_t mNpc_DecideNpcFurniture(mFM_fg_data_c** fg_data_table, mNpc
     if (num != 0) {
         num = RANDOM(num);
 
-        fg_items = fg_data_table[data_idx]->items[0];
+        fg_items = mNpc_GetNpcRoomItems(fg_data_table, data_idx, npclist->name);
         for (ut_z = 0; ut_z < 10; ut_z++) {
             for (ut_x = 0; ut_x < 10; ut_x++) {
                 if (ITEM_IS_FTR(*fg_items) && mNpc_CheckSelectFurniture(*fg_items) == TRUE) {
@@ -3771,6 +3856,14 @@ extern void mNpc_LoadNpcNameString(u8* dst, u8 name_id) {
     mem_clear(dma_area, sizeof(dma_area), CHAR_SPACE);
     addr = JW_GetAramAddress(RESOURCE_NPC_NAME_STR_TABLE);
 
+    if (dst != NULL && C_IsCustomVillager(NPC_START | name_id)) {
+        if (C_VillagerName(NPC_START | name_id) != NULL) {
+            mem_copy(dst, (u8*)C_VillagerName(NPC_START | name_id), ANIMAL_NAME_LEN);
+            return;
+        }
+        name_id = C_VillagerBase(NPC_START | name_id) & 0xFF;
+    }
+
     if (name_id < 0xFF && dst != NULL && addr != 0) {
         ofs = (name_id)*ANIMAL_NAME_LEN; /* offset into dma table */
         base_addr = ALIGN_PREV(ofs, 32); /* align it to the nearest 32 bytes for DMA */
@@ -4285,78 +4378,40 @@ static int mNpc_GetMinSex() {
 }
 
 static int mNpc_GrowLooksNpcIdx(u8 looks) {
-    static u8 candidate_table[ALIGN_NEXT(NPC_NUM, 8) / 8];
+    static u8 candidate_table[ALIGN_NEXT(mNpc_SELECT_NUM, 8) / 8];
 
-    u8* looks_table = npc_looks_table;
-    s8* grow_list = npc_grow_list;
     int npc_idx;
-    int candidates;
-    int res;
-    int i;
-    int j;
+    int candidates = 0;
+    int res = -1;
     int selected;
-
-    npc_idx = 0;
-    candidates = 0;
-    res = -1;
 
     if (looks < mNpc_LOOKS_UNSET) {
         bzero(candidate_table, sizeof(candidate_table));
 
-        for (i = 0; i < ARRAY_COUNT(candidate_table); i++) {
-            for (j = 0; j < 8; j++) {
-                if (looks == *looks_table) {
-                    int grow_perm = mNpc_GetDefGrowPermission(npc_idx, grow_list, NPC_NUM);
+        for (npc_idx = 0; npc_idx < mNpc_SELECT_NUM; npc_idx++) {
+            if (looks == mNpc_IdxLooks(npc_idx)) {
+                int grow_perm = mNpc_IdxGrowPermission(npc_idx);
 
-                    if ((mNpc_SearchAnimalinfo(Save_Get(animals), npc_idx | NPC_START, ANIMAL_NUM_MAX) == -1) &&
-                        (mNpc_GetHaveAppeared_idx(npc_idx) == FALSE) &&
-                        (grow_perm == mNpc_GROW_STARTER || grow_perm == mNpc_GROW_MOVE_IN)) {
-                        candidates++;
-                        candidate_table[i] |= 1 << j;
-                    }
+                if ((mNpc_SearchAnimalinfo(Save_Get(animals), npc_idx | NPC_START, ANIMAL_NUM_MAX) == -1) &&
+                    (mNpc_GetHaveAppeared_idx(npc_idx) == FALSE) &&
+                    (grow_perm == mNpc_GROW_STARTER || grow_perm == mNpc_GROW_MOVE_IN)) {
+                    candidates++;
+                    candidate_table[npc_idx >> 3] |= 1 << (npc_idx & 7);
                 }
-
-                npc_idx++;
-                looks_table++;
-
-                if (npc_idx >= NPC_NUM) {
-                    break;
-                }
-            }
-
-            if (npc_idx >= NPC_NUM) {
-                break;
             }
         }
     }
 
     if (candidates > 0) {
-        looks_table = npc_looks_table;
         selected = RANDOM(candidates);
-        npc_idx = 0;
 
-        for (i = 0; i < ARRAY_COUNT(candidate_table); i++) {
-            if (npc_idx >= NPC_NUM) {
-                break;
-            }
-
-            for (j = 0; j < 8; looks_table++, npc_idx++, j++) {
-                if (npc_idx >= NPC_NUM) {
+        for (npc_idx = 0; npc_idx < mNpc_SELECT_NUM; npc_idx++) {
+            if (((candidate_table[npc_idx >> 3] >> (npc_idx & 7)) & 1) == 1) {
+                if (selected <= 0) {
+                    res = npc_idx;
                     break;
                 }
-
-                if (((candidate_table[i] >> j) & 1) == 1) {
-                    if (selected <= 0) {
-                        res = npc_idx;
-                        break;
-                    } else {
-                        selected--;
-                    }
-                }
-            }
-
-            if (res != -1) {
-                break;
+                selected--;
             }
         }
     }
@@ -4367,6 +4422,8 @@ static int mNpc_GrowLooksNpcIdx(u8 looks) {
 static void mNpc_SetAnimalInfoNpcIdx(Animal_c* animal, int idx) {
     if (idx >= 0 && idx < NPC_NUM) {
         mNpc_SetDefAnimalInfo(animal, NPC_START | idx, npc_looks_table[idx], &npc_def_list[idx]);
+    } else if (C_FindVillager(NPC_START | idx) != NULL) {
+        mNpc_SetCustomAnimalInfo(animal, NPC_START | idx, C_FindVillager(NPC_START | idx));
     }
 }
 
@@ -4544,7 +4601,8 @@ extern int mNpc_RegistMaskNpc_summercamp(mActor_name_t mask_id, mActor_name_t np
         mNpc_MaskNpc_c* mask_npc = Common_GetPointer(mask_npc[free_mask_idx]);
 
         if (cloth_id != EMPTY_NO) {
-            int valid_cloth = (cloth_id == RSV_CLOTH) || (cloth_id >= ITM_CLOTH_START && cloth_id < ITM_CLOTH_END);
+            int valid_cloth =
+                (cloth_id == RSV_CLOTH) || (cloth_id >= ITM_CLOTH_START && cloth_id < ITM_CLOTH_END) || C_FindCloth(cloth_id) != NULL;
 
             if (valid_cloth == FALSE) {
                 cloth_id = ITM_CLOTH_START;
@@ -5017,7 +5075,9 @@ extern int mNpc_GetNpcFloorNo() {
 
     if (mFI_GET_TYPE(field_id) == mFI_FIELD_NPCROOM0) {
 
-        if (owner_name != EMPTY_NO && owner_name != RSV_NO) {
+        if (C_IsCustomStructure(owner_name)) {
+            floor_no = C_HouseRoomInterior(owner_name, FALSE);
+        } else if (owner_name != EMPTY_NO && owner_name != RSV_NO) {
             int idx = mNpc_SearchAnimalinfo(Save_Get(animals), owner_name, ANIMAL_NUM_MAX);
 
             floor_no = Common_Get(npclist[idx]).house_data.floor_id;
@@ -5034,7 +5094,9 @@ extern int mNpc_GetNpcWallNo() {
 
     if (mFI_GET_TYPE(field_id) == mFI_FIELD_NPCROOM0) {
 
-        if (owner_name != EMPTY_NO && owner_name != RSV_NO) {
+        if (C_IsCustomStructure(owner_name)) {
+            wall_no = C_HouseRoomInterior(owner_name, TRUE);
+        } else if (owner_name != EMPTY_NO && owner_name != RSV_NO) {
             int idx = mNpc_SearchAnimalinfo(Save_Get(animals), owner_name, ANIMAL_NUM_MAX);
 
             wall_no = Common_Get(npclist[idx]).house_data.wall_id;
@@ -6883,8 +6945,10 @@ static int mNpc_GetHit(u8 hitrate) {
 }
 
 static void mNPC_get_gobi_str_from_name(u8* str, mActor_name_t npc_id) {
-    if (str != NULL && ITEM_NAME_GET_TYPE(npc_id) == NAME_TYPE_NPC) {
-        int idx = npc_id & 0xFFF;
+    if (str != NULL && C_VillagerCatchphrase(npc_id) != NULL) {
+        mem_copy(str, (u8*)C_VillagerCatchphrase(npc_id), ANIMAL_CATCHPHRASE_LEN);
+    } else if (str != NULL && ITEM_NAME_GET_TYPE(npc_id) == NAME_TYPE_NPC) {
+        int idx = C_VillagerBase(npc_id) & 0xFFF;
 
 /* @BUG - devs used && instead of || */
 #ifndef BUGFIXES

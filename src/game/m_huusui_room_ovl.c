@@ -7,6 +7,7 @@
 #include "m_home_h.h"
 #include "m_common_data.h"
 #include "m_name_table.h"
+#include "port/api/furniture.h"
 
 #define mHsRm_UNIT_MAX_S 6
 #define mHsRm_UNIT_MAX_M 8
@@ -109,8 +110,15 @@ static void mHsRm_EvaluateHuusuiPoint_Single(mActor_name_t ftr, int ut_x, int ut
 
     ftr_idx = mRmTp_FtrItemNo2FtrIdx(ftr);
     ftr_rot = FTR_GET_ROTATION(ftr);
-    huusui_type = mMkRm_ftr_info[ftr_idx].huusui_type;
-    has_face = mMkRm_ftr_info[ftr_idx].has_face;
+    if (ftr_idx >= 0 && ftr_idx < FTR_NUM) {
+        huusui_type = mMkRm_ftr_info[ftr_idx].huusui_type;
+        has_face = mMkRm_ftr_info[ftr_idx].has_face;
+    } else {
+        const C_FurnitureDef* furniture = C_FindFurniture(ftr_idx);
+
+        huusui_type = furniture != NULL ? furniture->huusui_type : mHsRm_HUUSUI_NONE;
+        has_face = furniture != NULL ? furniture->has_face : FALSE;
+    }
     ut_value = mHsRm_unit_value[mRmTp_GetFurnitureData(ftr, ut_x, ut_z,
                                                        place_info)]; /* number of units occupied by this furniture */
 

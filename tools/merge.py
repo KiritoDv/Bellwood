@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 import argparse
 import struct
 from enum import Enum
@@ -405,7 +406,108 @@ def write_header(resource_type: int, version: int) -> bytes:
 
     return header_data
 
-def preprocess_asset(bytes_data: bytes, filename: str) -> bytes:
+ASSET_FORMATS = ('RGBA32', 'RGBA16', 'CI4', 'CI8', 'I4', 'I8', 'IA4', 'IA8', 'IA16', 'CI4_PAL', 'CI8_PAL',
+                 'NPC_MODEL', 'NPC_ANIM', 'MODEL', 'MODEL_XLU', 'ROOM_MODEL', 'ROOM_MODEL_XLU')
+
+_palette_cache = {}
+
+def to_rgba5551(r: int, g: int, b: int, a: int) -> int:
+    if a < 128:
+        return 0
+    return ((r >> 3) << 11) | ((g >> 3) << 6) | ((b >> 3) << 1) | 1
+
+def image_pixels(img) -> list:
+    flattened = getattr(img, "get_flattened_data", None)
+    return list(flattened() if flattened is not None else img.getdata())
+
+def png_palette_indices(img, colors: int):
+    if img.mode != "P":
+        return None
+    indices = image_pixels(img)
+    if max(indices, default=0) >= colors:
+        return None
+    rgb = img.getpalette() or []
+    alpha = [255] * colors
+    transparency = img.info.get("transparency")
+    if isinstance(transparency, bytes):
+        for i, a in enumerate(transparency[:colors]):
+            alpha[i] = a
+    elif isinstance(transparency, int) and transparency < colors:
+        alpha[transparency] = 0
+    palette = []
+    for i in range(colors):
+        r, g, b = rgb[i * 3:i * 3 + 3] if len(rgb) >= i * 3 + 3 else (0, 0, 0)
+        palette.append(to_rgba5551(r, g, b, alpha[i]))
+    return indices, palette
+
+def quantize_indices(img, colors: int):
+    values = [to_rgba5551(*p) for p in image_pixels(img.convert("RGBA"))]
+    has_clear = 0 in values
+    offset = 1 if has_clear else 0
+    opaque = sorted(set(v for v in values if v != 0))
+    palette = [0] if has_clear else []
+
+    if len(opaque) <= colors - offset:
+        lookup = {v: i + offset for i, v in enumerate(opaque)}
+        palette += opaque
+        indices = [lookup[v] if v != 0 else 0 for v in values]
+    else:
+        def expand(v):
+            return (((v >> 11) & 31) << 3, ((v >> 6) & 31) << 3, ((v >> 1) & 31) << 3)
+
+        strip_pixels = [expand(v) for v in values if v != 0]
+        strip = Image.new("RGB", (len(strip_pixels), 1))
+        strip.putdata(strip_pixels)
+        method = getattr(Image, "Quantize", Image).MEDIANCUT
+        dither = getattr(Image, "Dither", Image).NONE
+        quantized = strip.quantize(colors=colors - offset, method=method, dither=dither)
+        rgb = quantized.getpalette()
+        palette += [to_rgba5551(rgb[i * 3], rgb[i * 3 + 1], rgb[i * 3 + 2], 255) for i in range(colors - offset)]
+        strip_indices = iter(image_pixels(quantized))
+        indices = [next(strip_indices) + offset if v != 0 else 0 for v in values]
+
+    palette += [0] * (colors - len(palette))
+    return indices, palette[:colors]
+
+def palette_texture(img, colors: int, key: str):
+    cache_key = (key, colors)
+    if cache_key not in _palette_cache:
+        _palette_cache[cache_key] = png_palette_indices(img, colors) or quantize_indices(img, colors)
+    return _palette_cache[cache_key]
+
+def write_otex(texture_type: TextureType, width: int, height: int, data: bytes) -> bytes:
+    otr_header = write_header(resource_type=0x4F544558, version=0)
+    return otr_header + struct.pack('<IIII', texture_type.value, width, height, len(data)) + bytes(data)
+
+def convert_png_asset(bytes_data: bytes, key: str, fmt: str) -> bytes:
+    img = Image.open(BytesIO(bytes_data))
+    img.load()
+    width, height = img.size
+
+    if fmt in ('CI4', 'CI8', 'CI4_PAL', 'CI8_PAL'):
+        colors = 16 if fmt.startswith('CI4') else 256
+        indices, palette = palette_texture(img, colors, key)
+        if fmt.endswith('_PAL'):
+            data = bytearray()
+            for color in palette:
+                data += bytes(((color >> 8) & 0xFF, color & 0xFF))
+            return write_otex(TextureType.RGBA16bpp, colors, 1, data)
+        if colors == 256:
+            return write_otex(TextureType.Palette8bpp, width, height, bytes(indices))
+        data = bytearray()
+        for y in range(height):
+            row = indices[y * width:(y + 1) * width]
+            if width % 2:
+                row = row + [0]
+            for x in range(0, len(row), 2):
+                data.append(((row[x] & 0x0F) << 4) | (row[x + 1] & 0x0F))
+        return write_otex(TextureType.Palette4bpp, width, height, data)
+
+    texture = Texture(0, 0, TextureTypeUtils.str_to_texture_type(fmt))
+    N64Graphics.convert_raw_to_n64(texture, img)
+    return write_otex(texture.texture_type, texture.width, texture.height, texture.tex_data)
+
+def preprocess_asset(bytes_data: bytes, filename: str, fmt: Optional[str] = None) -> bytes:
     file = filename.lower()
 
     if file.lower().endswith('.bin'):
@@ -414,6 +516,8 @@ def preprocess_asset(bytes_data: bytes, filename: str) -> bytes:
     elif file.endswith('.png'):
         if Image is None:
             raise RuntimeError("Pillow is required for .png assets (pip install Pillow)")
+        if fmt is not None and fmt != 'RGBA32':
+            return convert_png_asset(bytes_data, filename, fmt)
         img = Image.open(BytesIO(bytes_data))
         width, height = img.size
         texture_type = TextureType.RGBA32bpp.value
@@ -454,9 +558,9 @@ def amalgamate(file_path, include_dirs, processed, out_file, assets_dir):
             content = f.read()
 
         # Step 1: Find and process `#asset` blocks ONLY
-        # Replaces `u8 array[] = { #asset ... };` with ALIGN_ASSET macro and extracts .bin
+        # Replaces `u8 array[] = { #asset ... };` with an aligned asset path and extracts .bin
         asset_block_pattern = re.compile(
-            r'(?:(?:static|const|ALIGNED8|extern)\s+)*u8\s+([a-zA-Z0-9_]+)\s*\[\]\s*=\s*\{\s*#asset\s+([<"])([^>"]+)[>"]\s*\};',
+            r'(?:(?:static|const|ALIGNED8|extern)\s+)*u8\s+([a-zA-Z0-9_]+)\s*\[\]\s*=\s*\{\s*#asset\s+([<"])([^>"]+)[>"]\s*([A-Za-z0-9_]+)?\s*\};',
             re.MULTILINE
         )
 
@@ -464,6 +568,11 @@ def amalgamate(file_path, include_dirs, processed, out_file, assets_dir):
             var_name = match.group(1)
             delimiter = match.group(2)
             target_name = match.group(3)
+            fmt = match.group(4).upper() if match.group(4) else None
+
+            if fmt is not None and fmt not in ASSET_FORMATS:
+                print(f"Warning: Unknown asset format {fmt} for {target_name}, expected one of {', '.join(ASSET_FORMATS)}")
+                return f"/* ERROR: Unknown asset format {fmt} for {target_name} */"
 
             target_path = None
             search_paths = list(include_dirs)
@@ -476,6 +585,35 @@ def amalgamate(file_path, include_dirs, processed, out_file, assets_dir):
                     target_path = potential_path
                     break
 
+            if target_path and fmt in ('NPC_MODEL', 'NPC_ANIM', 'MODEL', 'MODEL_XLU', 'ROOM_MODEL', 'ROOM_MODEL_XLU'):
+                sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+                import npc_model
+                stem = os.path.splitext(target_name)[0]
+                prefix = os.path.dirname(stem) + '/' if os.path.dirname(stem) else ''
+                out_dir = os.path.join(assets_dir, os.path.dirname(stem)) if assets_dir else None
+                try:
+                    if fmt == 'NPC_MODEL':
+                        resource_name = stem + '.skeleton'
+                        if out_dir is not None:
+                            resource_name = npc_model.convert_model(target_path, out_dir, os.path.basename(stem), prefix)
+                    elif fmt in ('MODEL', 'MODEL_XLU', 'ROOM_MODEL', 'ROOM_MODEL_XLU'):
+                        translucent = fmt.endswith('_XLU')
+                        resource_name = stem + ('.xlu.dl' if translucent else '.dl')
+                        units = npc_model.ROOM_UNITS_PER_WORLD_UNIT if fmt.startswith('ROOM') else npc_model.MODEL_UNITS_PER_WORLD_UNIT
+                        if out_dir is not None:
+                            resource_name = npc_model.convert_static_model(target_path, out_dir, os.path.basename(stem),
+                                                                           prefix, units_per_world=units,
+                                                                           translucent=translucent)
+                    else:
+                        resource_name = stem + '.anim'
+                        if out_dir is not None:
+                            os.makedirs(out_dir, exist_ok=True)
+                            npc_model.convert_animation(target_path, os.path.join(assets_dir, resource_name))
+                    return f'static const char {var_name}[] __attribute__((aligned(2))) = "__OTR__{resource_name}";'
+                except Exception as e:
+                    print(f"Warning: Failed to convert {target_name}: {e}")
+                    return f"/* ERROR: Failed to convert {target_name}: {e} */"
+
             if target_path:
                 try:
                     with open(target_path, 'rb') as bin_file:
@@ -484,16 +622,18 @@ def amalgamate(file_path, include_dirs, processed, out_file, assets_dir):
                     resource_name = target_name
                     if resource_name.lower().endswith('.png'):
                         resource_name = resource_name[:-4]
+                        if fmt is not None and fmt != 'RGBA32':
+                            resource_name += '.' + fmt.lower()
 
                     # Write the .bin companion file mirroring directory tree
                     if assets_dir:
                         companion_path = os.path.join(assets_dir, resource_name)
                         os.makedirs(os.path.dirname(companion_path), exist_ok=True)
                         with open(companion_path, 'wb') as cf:
-                            cf.write(preprocess_asset(raw_bytes, target_name))
+                            cf.write(preprocess_asset(raw_bytes, target_path, fmt))
 
                     # Return formatted string literal block for C
-                    return f'static const ALIGN_ASSET(2) char {var_name}[] = "__OTR__{resource_name}";'
+                    return f'static const char {var_name}[] __attribute__((aligned(2))) = "__OTR__{resource_name}";'
 
                 except Exception as e:
                     print(f"Warning: Failed to read asset file {target_path}: {e}")

@@ -20,6 +20,7 @@ class PortMenu : public Ship::Menu {
     void RemoveMenuEntry(std::string entryName);
     void RemoveSidebarEntry(std::string sectionName, std::string sidebarName);
     WidgetInfo& AddWidget(WidgetPath& pathInfo, std::string widgetName, WidgetType widgetType);
+    void RemoveWidget(const WidgetPath& pathInfo, const std::string& widgetName);
     void AddMenuSettings();
     void AddMenuEnhancements();
     void AddMenuDevTools();

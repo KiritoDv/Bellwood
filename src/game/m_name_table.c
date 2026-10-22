@@ -3,6 +3,11 @@
 #include "m_actor.h"
 #include "m_npc_personal_id.h"
 #include "m_common_data.h"
+#include "port/api/furniture.h"
+#include "port/api/interior.h"
+#include "port/api/creature.h"
+#include "port/api/cloth.h"
+#include "port/api/item.h"
 
 s16 move_obj_profile_table[] = {
     mAc_PROFILE_AIRPLANE,        mAc_PROFILE_BALL,         mAc_PROFILE_MY_ROOM,      mAc_PROFILE_MBG,
@@ -191,6 +196,26 @@ extern int mNT_get_itemTableNo(mActor_name_t item) {
         case NAME_TYPE_ITEM1: {
             int category = ITEM_NAME_GET_CAT((mActor_name_t)item);
             int idx = ITEM_NAME_GET_INDEX((mActor_name_t)item);
+            const C_ItemDef* custom = C_FindItem(item);
+
+            if (custom != NULL) {
+                return custom->shape;
+            }
+            if (C_FindCarpet(item) != NULL) {
+                return mNT_ITEM_TYPE_CARPET;
+            }
+            if (C_FindWallpaper(item) != NULL) {
+                return mNT_ITEM_TYPE_WALL;
+            }
+            if (C_FindCreature(item) != NULL) {
+                return category == ITEM1_CAT_FISH ? mNT_ITEM_TYPE_FISH : mNT_ITEM_TYPE_CAGE;
+            }
+            if (C_FindCloth(item) != NULL) {
+                return mNT_ITEM_TYPE_CLOTH;
+            }
+            if (mNT_check_unknown(item)) {
+                return mNT_ITEM_TYPE_ETC;
+            }
 
             return item1_tableNo[category][idx];
         }
@@ -413,7 +438,9 @@ extern int mNT_check_unknown(mActor_name_t item_no) {
         case NAME_TYPE_ITEM1: {
             int category = ITEM_NAME_GET_CAT(item_no);
 
-            if (index < 0 || index >= item1_kinds[category]) {
+            if (index < 0 ||
+                (index >= item1_kinds[category] && C_FindItem(item_no) == NULL && C_FindInterior(item_no) == NULL &&
+                 C_FindCreature(item_no) == NULL && C_FindCloth(item_no) == NULL)) {
                 res = TRUE;
             }
             break;
@@ -422,7 +449,7 @@ extern int mNT_check_unknown(mActor_name_t item_no) {
         case NAME_TYPE_FTR1: {
             int FtrIdx = mRmTp_FtrItemNo2FtrIdx(item_no);
 
-            if (FtrIdx < 0 || FtrIdx >= FTR_NUM) {
+            if (FtrIdx < 0 || (FtrIdx >= FTR_NUM && C_FindFurniture(FtrIdx) == NULL)) {
                 res = TRUE;
             }
 

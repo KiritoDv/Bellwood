@@ -128,7 +128,7 @@ static void Player_actor_SetEffectHit_Reflect_scoop(ACTOR* actor, GAME* game) {
         }
 
         if (attr >= 0) {
-            Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_DIG_SCOOP, ac_pos, 2, rot, game, RSV_NO, attr, 1);
+            Player_actor_effect_make(eEC_EFFECT_DIG_SCOOP, ac_pos, 2, rot, game, RSV_NO, attr, 1);
         }
     }
 }

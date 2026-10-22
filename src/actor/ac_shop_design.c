@@ -2,6 +2,8 @@
 
 #include "m_common_data.h"
 #include "m_name_table.h"
+#include "port/api/interior.h"
+#include "port/api/cloth.h"
 
 static void Shop_Design_Actor_ct(ACTOR* actorx, GAME* game);
 static void Shop_Design_Actor_dt(ACTOR* actorx, GAME* game);
@@ -49,7 +51,7 @@ static mActor_name_t aSD_ItemName2ReservePointName(mActor_name_t item) {
         return RSV_SHOP_PAPER;
     }
 
-    if (item >= ITM_CARPET_START && item <= (ITM_CARPET_END - 4)) {
+    if ((item >= ITM_CARPET_START && item <= (ITM_CARPET_END - 4)) || C_FindCarpet(item) != NULL) {
         return RSV_SHOP_CARPET;
     }
 
@@ -57,7 +59,7 @@ static mActor_name_t aSD_ItemName2ReservePointName(mActor_name_t item) {
         return RSV_SHOP_CARPET;
     }
 
-    if (item >= ITM_WALL_START && item <= (ITM_WALL_END - 4)) {
+    if ((item >= ITM_WALL_START && item <= (ITM_WALL_END - 4)) || C_FindWallpaper(item) != NULL) {
         return RSV_SHOP_WALL;
     }
 
@@ -65,7 +67,7 @@ static mActor_name_t aSD_ItemName2ReservePointName(mActor_name_t item) {
         return RSV_SHOP_WALL;
     }
 
-    if (item >= ITM_CLOTH_START && item <= ITM_CLOTH_END) {
+    if ((item >= ITM_CLOTH_START && item <= ITM_CLOTH_END) || C_FindCloth(item) != NULL) {
         return RSV_SHOP_CLOTH;
     }
 
@@ -170,7 +172,7 @@ static void aSD_MakeGoodsFg(mActor_name_t* goods_p, int count) {
     int i;
 
     for (i = 0; i < count; i++) {
-        if (goods_p[i] != EMPTY_NO) {
+        if (goods_p[i] != EMPTY_NO && mNT_check_unknown(goods_p[i]) == FALSE) {
             mActor_name_t reserve_name = aSD_ItemName2ReservePointName(goods_p[i]);
 
             if (reserve_name != EMPTY_NO) {
@@ -182,7 +184,7 @@ static void aSD_MakeGoodsFg(mActor_name_t* goods_p, int count) {
 
 /* Mispelling of 'rare' */
 static void aSD_MakeReaGoodsFg(mActor_name_t item) {
-    if (item != EMPTY_NO) {
+    if (item != EMPTY_NO && mNT_check_unknown(item) == FALSE) {
         mSP_SetGoods2ReservedPoint(item, RSV_SHOP_RARE);
     }
 }
@@ -329,7 +331,9 @@ static mActor_name_t aSD_UnitNum2ItemNo(int ux, int uz) {
         (item >= ITM_PAPER_START && item <= ITM_PAPER_END) ||
         (item >= ITM_CARPET_START && item <= ITM_CARPET_END - 4) ||
         (item >= ITM_WALL_START && item <= ITM_WALL_END - 4) ||
+        C_FindInterior(item) != NULL ||
         (item >= ITM_CLOTH_START && item <= ITM_CLOTH_END) ||
+        C_FindCloth(item) != NULL ||
         (item >= ITM_TOOL_START && item <= ITM_TOOL_END) ||
         (item >= ITM_SAPLING && item <= ITM_CEDAR_SAPLING) ||
         (item >= ITM_WHITE_PANSY_BAG && item <= ITM_YELLOW_TULIP_BAG) ||
@@ -378,7 +382,7 @@ static int aSD_ReportGoodsSales(int ux, int uz) {
                 mFI_UtNumtoFGSet_common(RSV_SHOP_SOLD_PLANT, ux, uz, FALSE);
                 return FALSE;
             }
-        } else if (item >= ITM_CLOTH_START && item <= ITM_CLOTH_END) {
+        } else if ((item >= ITM_CLOTH_START && item <= ITM_CLOTH_END) || C_FindCloth(item) != NULL) {
             mSP_ShopSaleReport(item, shop_design->goods_list, shop_design->goods_list_max, RSV_SHOP_SOLD_CLOTH);
             Common_Get(clip).shop_manekin_clip->change2naked_manekin_proc(ux, uz);
             mFI_UtNumtoFGSet_common(RSV_NO, ux, uz, FALSE);
@@ -396,11 +400,11 @@ static int aSD_ReportGoodsSales(int ux, int uz) {
             }
         }
 
-        if (item >= ITM_CARPET_START && item <= (ITM_CARPET_END - 4)) {
+        if ((item >= ITM_CARPET_START && item <= (ITM_CARPET_END - 4)) || C_FindCarpet(item) != NULL) {
             rsv_item = RSV_SHOP_SOLD_CARPET;
         }
 
-        if (item >= ITM_WALL_START && item <= (ITM_WALL_END - 4)) {
+        if ((item >= ITM_WALL_START && item <= (ITM_WALL_END - 4)) || C_FindWallpaper(item) != NULL) {
             rsv_item = RSV_SHOP_SOLD_WALL;
         }
 

@@ -38,7 +38,7 @@ static void Player_actor_sound_SetStatus(ACTOR* actor) {
 }
 
 static void Player_actor_set_sound_common1(xyz_t* pos, u16 id) {
-    sAdo_OngenTrgStart(id, pos);
+    Player_actor_sound_make(PLAYER_SOUND_EFFECT, id, pos);
 }
 
 static void Player_actor_set_sound_common2(ACTOR* actor, u16 id) {
@@ -58,7 +58,7 @@ static void Player_actor_sound_FootStep1(ACTOR* actor, u16 id) {
         id = 0x420A;
     }
 
-    sAdo_PlyWalkSe(id, pos);
+    Player_actor_sound_make(PLAYER_SOUND_STEP, id, pos);
 }
 
 static void Player_actor_sound_FootStep2(ACTOR* actor) {
@@ -67,9 +67,9 @@ static void Player_actor_sound_FootStep2(ACTOR* actor) {
     floorId = Common_Get(floor_idx);
     if (floorId >= 0) {
         if (mRmTp_SoundStepWalkSE(&actor->world.position) != 0) {
-            sAdo_PlyWalkSeRoom(0xFF, &actor->world.position);
+            Player_actor_sound_make(PLAYER_SOUND_ROOM_STEP, 0xFF, &actor->world.position);
         } else if (floorId < FLOOR_ETC_END) {
-            sAdo_PlyWalkSeRoom(floorId, &actor->world.position);
+            Player_actor_sound_make(PLAYER_SOUND_ROOM_STEP, floorId, &actor->world.position);
         }
     } else {
         u16 label = sAdo_Get_WalkLabel(actor->bg_collision_check.result.unit_attribute);
@@ -209,11 +209,11 @@ static void Player_actor_sound_slip(ACTOR* actor) {
 }
 
 static void Player_actor_sound_tree_touch(xyz_t* pos) {
-    sAdo_OngenTrgStart(NA_SE_TREE_TOUCH, pos);
+    Player_actor_sound_make(PLAYER_SOUND_EFFECT, NA_SE_TREE_TOUCH, pos);
 }
 
 static void Player_actor_sound_tree_yurasu(xyz_t* pos) {
-    sAdo_OngenTrgStart(NA_SE_TREE_YURASU, pos);
+    Player_actor_sound_make(PLAYER_SOUND_EFFECT, NA_SE_TREE_YURASU, pos);
 }
 
 static void Player_actor_sound_kirikabu_scoop(ACTOR* actor) {
@@ -239,7 +239,7 @@ static void Player_actor_sound_araiiki(ACTOR* actor) {
 }
 
 static void Player_actor_sound_zassou_nuku(xyz_t* pos) {
-    sAdo_OngenTrgStart(NA_SE_ZASSOU_NUKU, pos);
+    Player_actor_sound_make(PLAYER_SOUND_EFFECT, NA_SE_ZASSOU_NUKU, pos);
 }
 
 static void Player_actor_sound_hachi_sasareru(ACTOR* actor) {

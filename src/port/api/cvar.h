@@ -5,6 +5,10 @@
 
 #include "api.h"
 
+// Settings of a mod go under "gMods.<mod>.", so they don't clash with the game's or other mods' settings. The Mods
+// menu keeps its own under "gModList.".
+#define C_MOD_CVAR(mod, name) "gMods." mod "." name
+
 BW_API int32_t CVarGetInteger(const char* name, int32_t defaultValue);
 BW_API float CVarGetFloat(const char* name, float defaultValue);
 BW_API const char* CVarGetString(const char* name, const char* defaultValue);

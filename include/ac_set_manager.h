@@ -13,7 +13,7 @@ typedef struct actor_set_manager_s SET_MANAGER;
 
 #define aSetMgr_SET_OVERLAY_BUF_SIZE 0x4000
 
-#define aSetMgr_INSECT_SPAWN_INFO_COUNT 43
+#define aSetMgr_INSECT_SPAWN_INFO_COUNT 96
 
 /* sizeof(aSOI_insect_spawn_info_f_c) == 0xC */
 typedef struct insect_spawn_info_f_s {
@@ -33,7 +33,7 @@ typedef struct insect_keep_s {
 
 #define aSetMgr_WAIT_TIME 5 // wait time between aSetMgr_move_check_wait -> aSetMgr_move_set
 
-#define aSetMgr_GYOEI_NUM 40
+#define aSetMgr_GYOEI_NUM 96
 
 /* sizeof(aSOG_gyoei_spawn_info_weight_f_c) == 8 */
 typedef struct gyoei_spawn_info_weight_f_s {

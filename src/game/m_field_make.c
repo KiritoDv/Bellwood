@@ -1,4 +1,5 @@
 #include "m_field_make.h"
+#include "port/api/structure.h"
 
 #include "m_island.h"
 #include "m_name_table.h"
@@ -295,6 +296,9 @@ static void mFM_SetSoundSource(mFM_bg_sound_source_c* sound_source, mFM_bg_sound
 
 static void mFM_SetBG(mFM_bg_info_c* bg_info, mFM_bg_data_c* bg_data, u16 height, u8 type, mActor_name_t bg_name,
                       int block_x, int block_z) {
+    const uint32_t* room_collision =
+        Save_Get(scene_no) == SCENE_NPC_HOUSE ? C_HouseRoomCollision(Common_Get(house_owner_name)) : NULL;
+
     bg_info->bg_id.height = height;
     bg_info->bg_id.combination_type = bg_name;
     bg_info->opaque_gfx = bg_data->opaque_gfx;
@@ -307,7 +311,8 @@ static void mFM_SetBG(mFM_bg_info_c* bg_info, mFM_bg_data_c* bg_data, u16 height
     bg_info->block_kind = mRF_Type2BlockInfo(type);
 
     mFM_SetSoundSource(bg_info->sound_source, bg_data->sound_source, mFM_SOUND_SOURCE_NUM, block_x, block_z);
-    mFM_BgUtDataSet(bg_info->collision[0], bg_info->keep_h[0], bg_data->collision[0]);
+    mFM_BgUtDataSet(bg_info->collision[0], bg_info->keep_h[0],
+                    room_collision != NULL ? (mCoBG_Collision_u*)room_collision : bg_data->collision[0]);
 }
 
 static void mFM_SetFG(mFM_fg_info_c* fg_info, mFM_fg_data_c* data, mActor_name_t fg_name) {
@@ -337,6 +342,8 @@ static void mFM_SetFG(mFM_fg_info_c* fg_info, mFM_fg_data_c* data, mActor_name_t
                 items_p[(8 << 4) | 3] = EXIT_DOOR;
                 items_p[(8 << 4) | 4] = EXIT_DOOR;
             }
+        } else if (scene == SCENE_NPC_HOUSE && C_HouseRoom(Common_Get(house_owner_name), 0) != NULL) {
+            mFM_FgUtDataSet(fg_info->items_p, (mActor_name_t*)C_HouseRoom(Common_Get(house_owner_name), 0));
         } else {
             mFM_FgUtDataSet(fg_info->items_p, data->items[0]);
         }
@@ -372,9 +379,13 @@ static void mFM_SetFG2(mActor_name_t* items_p, mFM_fg_data_c** data, mActor_name
                 secondary_idx = 0;
             }
 
-            if (data[secondary_idx] != NULL) {
+            if (C_VillagerRoom(house_owner_name, 1) != NULL) {
+                mFM_FgUtDataSet(items_p, (mActor_name_t*)C_VillagerRoom(house_owner_name, 1));
+            } else if (data[secondary_idx] != NULL) {
                 mFM_FgUtDataSet(items_p, data[secondary_idx]->items[0]);
             }
+        } else if (items_p != NULL && field_name == mFI_FIELD_NPCROOM0 && C_HouseRoom(house_owner_name, 1) != NULL) {
+            mFM_FgUtDataSet(items_p, (mActor_name_t*)C_HouseRoom(house_owner_name, 1));
         }
     }
 }

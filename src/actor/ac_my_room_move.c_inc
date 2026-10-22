@@ -941,7 +941,7 @@ static int aMR_CheckDiaryOnMe(FTR_ACTOR* ftr_actor, GAME* game) {
     GAME_PLAY* play = (GAME_PLAY*)game;
     mActor_name_t* fg_layer1_p = aMR_GetLayerTopFg(mCoBG_LAYER1);
 
-    if (ftr_actor->layer == mCoBG_LAYER0 && aMR_layer_set_info[ftr_actor->name] == aFTR_SET_TYPE_SURFACE &&
+    if (ftr_actor->layer == mCoBG_LAYER0 && aMR_GetLayerSetType(ftr_actor->name) == aFTR_SET_TYPE_SURFACE &&
         fg_layer1_p != NULL) {
         int ut_info[4];
         int ut_count = aMR_PosType2FurniturePoccessUnitNo(ut_info, &ftr_actor->position, ftr_actor->shape_type);
@@ -1474,7 +1474,7 @@ static void aMR_RewriteFactorInfo(GAME* game) {
 }
 
 static mActor_name_t aMR_GetBirthFurniture(u16 ftr_no, int angle_idx) {
-    if (ftr_no < FTR_NUM) {
+    if (ftr_no < mRmTp_FTR_INDEX_MAX) {
         return mRmTp_FtrIdx2FtrItemNo(ftr_no, angle_idx & 3);
     }
 
@@ -1981,8 +1981,6 @@ static int aMR_JudgeBreedNewFurniture(GAME* game, u16 ftr_no, int* ut_x, int* ut
                         }
                     }
                 } else { /* Process 1x1 and 2x2 furniture */
-                    u8* layer_set_info = aMR_layer_set_info;
-
                     for (i = 0; i < 5; i++) {
                         angle_idx = (int)angle_idx;
                         if (aMR_WeightPossible((ACTOR*)my_room, profile->shape) == FALSE) {
@@ -1995,7 +1993,7 @@ static int aMR_JudgeBreedNewFurniture(GAME* game, u16 ftr_no, int* ut_x, int* ut
                         target_ut = target_ut_x + target_ut_z * UT_X_NUM;
 
                         /* Check that the item we're setting down is placeable on the surface and it's 1x1 */
-                        if (layer_set_info[ftr_no] == aFTR_SET_TYPE_ON_SURFACE && profile->shape == aFTR_SHAPE_TYPEA) {
+                        if (aMR_GetLayerSetType(ftr_no) == aFTR_SET_TYPE_ON_SURFACE && profile->shape == aFTR_SHAPE_TYPEA) {
                             mActor_name_t* fg_layer1_p = aMR_GetLayerTopFg(mCoBG_LAYER1);
                             mActor_name_t item;
                             int ftrID;
@@ -2005,7 +2003,7 @@ static int aMR_JudgeBreedNewFurniture(GAME* game, u16 ftr_no, int* ut_x, int* ut
                                 aMR_UnitNum2FtrItemNoFtrID(&item, &ftrID, target_ut_x, target_ut_z, mCoBG_LAYER0)) {
                                 FTR_ACTOR* ftr_actor = &l_aMR_work.ftr_actor_list[ftrID];
 
-                                if (aMR_layer_set_info[ftr_actor->name] == aFTR_SET_TYPE_SURFACE) {
+                                if (aMR_GetLayerSetType(ftr_actor->name) == aFTR_SET_TYPE_SURFACE) {
                                     *ut_x = target_ut_x;
                                     *ut_z = target_ut_z;
                                     *rotation = angle_idx & 3;
@@ -3154,7 +3152,7 @@ static int aMR_JudgePlace2ndLayer(int ut_x, int ut_z) {
                     FTR_ACTOR* ftr_actor = &l_aMR_work.ftr_actor_list[ftrID];
                     u8 used = l_aMR_work.used_list[ftrID];
 
-                    if (used && aMR_layer_set_info[ftr_actor->name] == aFTR_SET_TYPE_SURFACE &&
+                    if (used && aMR_GetLayerSetType(ftr_actor->name) == aFTR_SET_TYPE_SURFACE &&
                         fg_layer1_p[ut] == EMPTY_NO) {
                         return TRUE;
                     }

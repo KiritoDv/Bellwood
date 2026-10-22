@@ -20,6 +20,8 @@
 #include "audio/GameAudio.h"
 #include "port/ui/cvar_prefixes.h"
 #include "port/ui/Notification.h"
+#include "port/ModList.h"
+#include "port/net/SatellaClient.h"
 #include "port/events/Events.h"
 #include "port/console/DevConsole.h"
 #include "port/input/GcButtons.h"
@@ -79,6 +81,8 @@
 #include <ship/resource/archive/Archive.h>
 #include <ship/scripting/ScriptLoader.h>
 #include <ship/security/Keystore.h>
+#include "port/api/ModOwner.hpp"
+#include "port/api/api.h"
 #endif
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
@@ -512,13 +516,16 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
         return;
     }
 
-    constexpr int kCodeVersion = 1;
-    const std::unordered_map<std::string, std::string> defines = {
+    std::unordered_map<std::string, std::string> defines = {
         { "F3DEX_GBI_2", "1" }, { "TARGET_PC", "1" },   { "VERSION", "VER_GAFE01_00" }, { "DEBUG", "0" },
         { "NDEBUG", "1" },      { "_LANGUAGE_C", "1" }, { "_USE_MATH_DEFINES", "1" },
     };
 #ifdef _WIN32
     const std::string buildOptions = "-g -rdynamic -funsigned-char -std=c11";
+#elif defined(__ANDROID__)
+    defines["__ANDROID_MIN_SDK_VERSION__"] = std::to_string(__ANDROID_MIN_SDK_VERSION__);
+    defines["__ANDROID_API__"] = std::to_string(__ANDROID_API__);
+    const std::string buildOptions = "-nostdlib -funsigned-char -std=c11";
 #else
     const std::string buildOptions = "-rdynamic -funsigned-char -std=c11";
 #endif
@@ -549,7 +556,7 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
         pclose(fp);
     }
 #endif
-#if defined(__linux__)
+#if defined(__linux__) && !defined(__ANDROID__)
     {
         const auto libcStub = std::filesystem::path(tccBase) / "lib" / "libc.so";
         std::error_code ec;
@@ -567,12 +574,31 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
         }
     }
 #endif
+#endif
+    std::vector<std::string> libraryPaths = { tccBase + "/lib" };
+#ifdef __ANDROID__
+    Dl_info self = {};
+    if (dladdr((void*)&SetupScriptLoader, &self) && self.dli_fname != nullptr) {
+        libraryPaths.push_back(std::filesystem::path(self.dli_fname).parent_path().string());
+    }
+    const std::vector<std::string> libraries = { "tcc1", "main" };
+#elif !defined(_WIN32)
     const std::vector<std::string> libraries = {};
 #endif
-    const std::vector<std::string> libraryPaths = { tccBase + "/lib" };
 
-    auto scriptLoader = std::make_shared<Ship::ScriptLoader>(defines, kCodeVersion, buildOptions, includePaths,
+    auto scriptLoader = std::make_shared<Ship::ScriptLoader>(defines, BW_CODE_VERSION, buildOptions, includePaths,
                                                              libraryPaths, libraries, ShipCompat::GetResourceManager());
+    scriptLoader->SetApiVersion(BW_API_VERSION);
+    scriptLoader->SetEntryHook(
+        [](const std::string& name, const std::string& symbol, Ship::Scripting::LibraryFunc_t entry) {
+            if (entry != nullptr) {
+                ModOwner::Scope scope(name);
+                entry();
+            }
+            if (symbol == "ModExit") {
+                ModOwner::Release(name);
+            }
+        });
     context->GetChildren().Add(scriptLoader);
     ScriptSetLoader(scriptLoader);
 #endif
@@ -632,6 +658,8 @@ void GameEngine::LoadResourceFiles() {
         }
     }
 
+    ModList::Apply();
+
 #ifdef ENABLE_SCRIPTING
     totalScripts = 0;
     const auto loadedArchives = ShipCompat::GetResourceManager()->GetArchiveManager()->GetArchives();
@@ -652,6 +680,7 @@ static std::vector<std::string> CompileScripts(const std::function<void(const st
     if (scripts == nullptr) {
         return errors;
     }
+    ModList::ClearStatus();
     const auto archives = ShipCompat::GetResourceManager()->GetArchiveManager()->GetArchives();
     for (const auto& archive : *archives) {
         const auto& info = archive->GetManifest();
@@ -666,12 +695,36 @@ static std::vector<std::string> CompileScripts(const std::function<void(const st
         } catch (const std::exception& e) {
             SPDLOG_ERROR("Failed to build {}: {}", info.Name, e.what());
             errors.push_back(info.Name + ": " + e.what());
+            ModList::SetStatus(info.Name, std::string("Failed to build: ") + e.what(), true);
         }
         if (onFinish) {
             onFinish();
         }
     }
     return errors;
+}
+
+static void ReportLoad(const std::shared_ptr<Ship::ScriptLoader>& scripts) {
+    for (const auto& error : scripts->GetLoadErrors()) {
+        for (auto& entry : ModList::Entries()) {
+            const std::string& name = entry.archive->GetManifest().Name;
+            if (error.rfind(name + ": ", 0) == 0) {
+                entry.status = "Skipped: " + error.substr(name.size() + 2);
+                entry.failed = true;
+            }
+        }
+    }
+    for (auto& entry : ModList::Entries()) {
+        if (entry.enabled && entry.status.empty()) {
+            entry.status = "Loaded";
+        }
+    }
+    for (const auto& error : scripts->GetLoadErrors()) {
+        Notification::Emit({ .message = "Skipped " + error,
+                             .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
+                             .remainingTime = 8.0f,
+                             .mute = true });
+    }
 }
 #endif
 
@@ -690,6 +743,7 @@ void GameEngine::LoadScripts() {
     }
     try {
         scripts->LoadAll();
+        ReportLoad(scripts);
         Notification::Emit({ .message = "Finished loading mods", .remainingTime = 4.0f, .mute = true });
     } catch (const std::exception& e) {
         SPDLOG_ERROR("Failed to load mods: {}", e.what());
@@ -777,6 +831,7 @@ void GameEngine::FinishInit() {
     if (auto scripts = ShipCompat::GetScriptLoader()) {
         try {
             scripts->LoadAll();
+            ReportLoad(scripts);
         } catch (const std::exception& e) { SPDLOG_ERROR("Failed to load mods: {}", e.what()); }
     }
 #endif
@@ -851,6 +906,10 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     std::string installPath = Ship::Context::GetAppBundlePath();
     std::string file;
     std::shared_ptr<BS::thread_pool> threadPool = std::make_shared<BS::thread_pool>(1);
+#ifdef USE_NETWORKING
+    bool satellaStarted = false;
+    std::atomic<bool> satellaDone = false;
+#endif
 
     auto startExtraction = [&]() {
         if (!GameExtractor::IsDiscInputAvailable()) {
@@ -1219,6 +1278,18 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 continue;
             }
             case GS_LOAD: {
+#ifdef USE_NETWORKING
+                if (!satellaStarted && CVarGetInteger(CVAR_DEVELOPER_TOOLS("Satella"), 1)) {
+                    satellaStarted = true;
+                    threadPool->submit_task([&]() -> void {
+                        Satella::Client::Instance().Execute();
+                        satellaDone = true;
+                    });
+                }
+                if (satellaStarted && !satellaDone) {
+                    break;
+                }
+#endif
                 LoadResourceFiles();
 #ifdef ENABLE_SCRIPTING
                 if (totalScripts > 0) {
@@ -1387,6 +1458,26 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             modName = compileName;
             modError = compileError;
         }
+#ifdef USE_NETWORKING
+        const auto satellaPhase = Satella::Client::Instance().GetPhase();
+        const bool satellaPopup =
+            satellaPhase == Satella::Phase::Connecting || satellaPhase == Satella::Phase::FetchingKeys;
+        if (satellaPopup && !ImGui::IsPopupOpen("Satella")) {
+            ImGui::OpenPopup("Satella");
+        }
+        if (ImGui::BeginPopupModal("Satella", NULL,
+                                   ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoResize |
+                                       ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings)) {
+            if (!satellaPopup) {
+                ImGui::CloseCurrentPopup();
+            } else {
+                ImGui::Text("%s", satellaPhase == Satella::Phase::Connecting ? "Connecting to Satella..."
+                                                                             : "Getting mod signing keys...");
+                ImGui::ProgressBar(-1.0f * (float)ImGui::GetTime(), ImVec2(600.0f, 20.0f), "");
+            }
+            ImGui::EndPopup();
+        }
+#endif
         const bool modsPopup =
             extractStep == GS_COMPILE && (!extractDone || (!modError.empty() && !compileErrorDismissed));
         if (modsPopup && !ImGui::IsPopupOpen("Loading Mods")) {

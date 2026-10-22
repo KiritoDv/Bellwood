@@ -84,6 +84,7 @@ void AC_SetFrameDivisor(int divisor);
 void AC_RequestReset(void);
 void AC_ResetTick(void);
 int AC_TakeRebootRequest(void);
+void AC_AramWriteRecord(int res_no, u32 offset, const void* data, u32 size);
 
 void gfx_texture_cache_clear(void);
 void gfx_texture_cache_invalidate_range(const void* addr, size_t size);

@@ -11,7 +11,7 @@
 extern "C" {
 #endif
 
-#define mCL_MENU_ITEM_MAX 742
+#define mCL_MENU_ITEM_MAX 1524
 #define mCL_MENU_PAGE_SIZE 7
 #define mCL_ITEM_DATA_NUM 2
 #define mCL_TAG_STR_SIZE 10

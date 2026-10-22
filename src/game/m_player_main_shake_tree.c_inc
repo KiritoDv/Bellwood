@@ -27,6 +27,9 @@ static void Player_actor_setup_main_Shake_tree(ACTOR* actorx, GAME* game) {
     main_shake_tree_p->tree_ut_x = req_shake_tree_p->ut_x;
     main_shake_tree_p->tree_ut_z = req_shake_tree_p->ut_z;
     main_shake_tree_p->bee_flag = FALSE;
+    {
+        CALL_EVENT(PlayerShakeTree, main_shake_tree_p->item, main_shake_tree_p->tree_ut_x, main_shake_tree_p->tree_ut_z);
+    }
     main_shake_tree_p->bee_angle_y = 0;
     main_shake_tree_p->bee_spawn_timer = 0;
 

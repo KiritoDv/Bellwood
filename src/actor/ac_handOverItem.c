@@ -1,4 +1,5 @@
 #include "ac_handOverItem.h"
+#include "port/api/creature.h"
 
 #include "libultra/libultra.h"
 #include "m_common_data.h"

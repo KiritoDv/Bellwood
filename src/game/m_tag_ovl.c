@@ -30,6 +30,9 @@
 #include "assets/data/model/sen_itemw.h"
 #include "assets/data/model/sen_qitem.h"
 #include "assets/data/model/sen_win.h"
+#include "port/api/item.h"
+#include "port/api/creature.h"
+#include "port/api/cloth.h"
 
 static void mTG_mark_main_CLR(Submenu* submenu, const mSM_MenuInfo_c* menu_info);
 
@@ -213,6 +216,7 @@ static void mTG_order_proc(Submenu*, mSM_MenuInfo_c*);
 static void mTG_bury_proc(Submenu*, mSM_MenuInfo_c*);
 static void mTG_release_proc(Submenu*, mSM_MenuInfo_c*);
 static void mTG_fly_proc(Submenu*, mSM_MenuInfo_c*);
+static void mTG_use_proc(Submenu*, mSM_MenuInfo_c*);
 static void mTG_hukubukuro_open_proc(Submenu*, mSM_MenuInfo_c*);
 static void mTG_cp_data_delete_proc(Submenu*, mSM_MenuInfo_c*);
 static void mTG_nw_room_put_manekin_proc(Submenu*, mSM_MenuInfo_c*);
@@ -337,6 +341,11 @@ static mTG_tag_word_c mTG_tag_word_yameru = {
 static mTG_tag_word_c mTG_tag_word_heyanioku = {
     "Drop            ",
     &mTG_room_put_proc,
+};
+
+static mTG_tag_word_c mTG_tag_word_use = {
+    "Use             ",
+    &mTG_use_proc,
 };
 
 static mTG_tag_word_c mTG_tag_word_yukanisiku = {
@@ -692,6 +701,19 @@ static mTG_tag_word_c* mTG_present_item[] = {
 static mTG_tag_word_c* mTG_room_default[] = {
     &mTG_tag_word_tukamu,
     &mTG_tag_word_heyanioku,
+    &mTG_tag_word_yameru,
+};
+
+static mTG_tag_word_c* mTG_field_custom_use[] = {
+    &mTG_tag_word_tukamu,
+    &mTG_tag_word_use,
+    &mTG_tag_word_zimennioku,
+    &mTG_tag_word_yameru,
+};
+
+static mTG_tag_word_c* mTG_custom_use[] = {
+    &mTG_tag_word_tukamu,
+    &mTG_tag_word_use,
     &mTG_tag_word_yameru,
 };
 
@@ -1144,6 +1166,8 @@ static mTG_tag_data_c mTG_label_table[] = {
     { mTG_tag_nw_select_put, ARRAY_COUNT(mTG_tag_nw_select_put) },           /* mTG_TYPE_TAG_NW_SELECT_PUT */
     { NULL, 0 },                                                             /* mTG_TYPE_76 */
     { mTG_tag_password_item, ARRAY_COUNT(mTG_tag_password_item) },           /* mTG_TYPE_TAG_PASSWORD_ITEM */
+    { mTG_field_custom_use, ARRAY_COUNT(mTG_field_custom_use) },             /* mTG_TYPE_FIELD_CUSTOM_USE */
+    { mTG_custom_use, ARRAY_COUNT(mTG_custom_use) },                         /* mTG_TYPE_CUSTOM_USE */
 };
 
 static void mTG_init_tag_data_item_win(Submenu*);
@@ -4385,7 +4409,7 @@ static int mTG_mark_main_sub(Submenu* submenu, int menu_type, int param, int tab
                  (mark_type != mTG_MARK_TYPE_INV_PLAYERROOM_ITEM ||
                   ((mark_type == mTG_MARK_TYPE_INV_PLAYERROOM_ITEM && type != NAME_TYPE_FTR0 &&
                     type != NAME_TYPE_FTR1) &&
-                   (!ITEM_IS_UMBRELLA2(item) && !ITEM_IS_CLOTH(item)))) &&
+                   (!ITEM_IS_UMBRELLA2(item) && !C_IsCloth(item)))) &&
                  (mEv_CheckFirstJob() == FALSE || mark_type == mTG_MARK_TYPE_INV_PLAYERROOM_ITEM ||
                   type != NAME_TYPE_ITEM1 || category != ITEM1_CAT_PLANT))) {
                 return TRUE;
@@ -4747,7 +4771,7 @@ static void mTG_take_proc(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
         if (menu_info->data3 == 1) {
             submenu->after_mode = aHOI_REQUEST_PUTAWAY;
         } else if (ITEM_NAME_GET_TYPE(item_p->item) == NAME_TYPE_ITEM1) {
-            int category = ITEM_NAME_GET_CAT(item_p->item);
+            int category = C_ItemCategory(item_p->item);
 
             if (category == ITEM1_CAT_FRUIT || category == ITEM1_CAT_FISH) {
                 submenu->after_mode = aHOI_REQUEST_EAT;
@@ -4869,8 +4893,9 @@ static void mTG_insect_release_sub(mActor_name_t item, int gold_scoop) {
     if (ITEM_IS_WISP(item)) {
         mPlib_request_main_release_creature_insect_from_submenu(aINS_INSECT_TYPE_SPIRIT, gold_scoop);
     } else {
-        mPlib_request_main_release_creature_insect_from_submenu(ITEM_IS_INSECT(item) ? item - ITM_INSECT_START : 0,
-                                                                gold_scoop);
+        mPlib_request_main_release_creature_insect_from_submenu(
+            (ITEM_IS_INSECT(item) || C_FindInsect(item - ITM_INSECT_START) != NULL) ? item - ITM_INSECT_START : 0,
+            gold_scoop);
     }
 }
 
@@ -4948,6 +4973,16 @@ static void mTG_fly_proc(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
     mTG_close_window(submenu, menu_info, TRUE);
 
     mPlib_request_main_release_creature_balloon_from_submenu(item, FALSE);
+}
+
+static void mTG_use_proc(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
+    int idx = mTG_get_table_idx(&submenu->overlay->tag_ovl->tags[0]);
+    mActor_name_t item = Now_Private->inventory.pockets[idx];
+
+    mTG_return_tag_init(submenu, mTG_TYPE_NONE, mTG_RETURN_CLOSE);
+    mTG_close_window(submenu, menu_info, TRUE);
+
+    CALL_EVENT(ItemUse, item, idx);
 }
 
 static void mTG_exchange_proc(Submenu* submenu, mSM_MenuInfo_c* menu_info) {
@@ -5956,7 +5991,7 @@ static int mTG_move_cursol_base_lower(mTG_tag_c* tag) {
 }
 
 static int mTG_move_check_hand_item_on_player(mActor_name_t item) {
-    int category = ITEM_NAME_GET_CAT(item);
+    int category = C_ItemCategory(item);
 
     return (ITEM_NAME_GET_TYPE(item) == NAME_TYPE_ITEM1 &&
             (category == ITEM1_CAT_CLOTH || category == ITEM1_CAT_FRUIT || category == ITEM1_CAT_TOOL ||
@@ -5975,7 +6010,7 @@ static int mTG_move_check_hand_item(Submenu* submenu, int table) {
             return TRUE;
         }
     } else {
-        int category = ITEM_NAME_GET_CAT(hand_ovl->info.item);
+        int category = C_ItemCategory(hand_ovl->info.item);
 
         if (table == mTG_TABLE_MONEY) {
             if (category == ITEM1_CAT_MONEY) {
@@ -6658,6 +6693,7 @@ static int mTG_select_tag_decide_item_normal(Submenu* submenu, mActor_name_t ite
     u32 item_cond = mPr_GET_ITEM_COND(Now_Private->inventory.item_conditions, idx);
     int type = ITEM_NAME_GET_TYPE(item);
     int category = ITEM_NAME_GET_CAT(item);
+    const C_ItemDef* custom_item;
     int ret_tag_type;
 
     if (inv_ovl->item_mark_bitfield != 0 && (inv_ovl->item_mark_bitfield & (1 << idx)) != 0) {
@@ -6670,6 +6706,12 @@ static int mTG_select_tag_decide_item_normal(Submenu* submenu, mActor_name_t ite
         ret_tag_type = mTG_TYPE_FIELD_SIGN;
     } else if (ITEM_IS_EXERCISE_CARD(item) || item == ITM_KNIFE_AND_FORK) {
         ret_tag_type = mTG_TYPE_TAISOU_CARD;
+    } else if ((custom_item = C_FindItem(item)) != NULL) {
+        if (Common_Get(field_type) == mFI_FIELDTYPE2_FG) {
+            ret_tag_type = custom_item->on_use != NULL ? mTG_TYPE_FIELD_CUSTOM_USE : mTG_TYPE_FIELD_DEFAULT;
+        } else {
+            ret_tag_type = custom_item->on_use != NULL ? mTG_TYPE_CUSTOM_USE : mTG_TYPE_CATCH_ITEM;
+        }
     } else if (type == NAME_TYPE_FTR0 || type == NAME_TYPE_FTR1) {
         ret_tag_type = tag_type[Common_Get(field_type)][ITEM1_CAT_CLOTH];
     } else if (ITEM_IS_WISP(item)) {
@@ -7187,7 +7229,7 @@ static void mTG_hand_drop_item(Submenu* submenu, mTG_tag_c* tag) {
         }
 
         if (table == mTG_TABLE_PLAYER) {
-            category = ITEM_NAME_GET_CAT(hand_ovl->info.item);
+            category = C_ItemCategory(hand_ovl->info.item);
             switch (category) {
                 case ITEM1_CAT_TOOL:
                     submenu->overlay->segment.change_player_main_anime_idx = mIV_ANIM_CATCH;

@@ -2,17 +2,42 @@
 
 #include "ui.h"
 
+#include "port/ShipInit.hpp"
+#include "port/api/ModOwner.hpp"
+#include "port/api/SizedDef.hpp"
 #include "port/ui/MenuTypes.h"
 #include "port/ui/PortGui.hpp"
 #include "port/ui/UIWidgets.hpp"
 
+#include <imgui.h>
+#include <imgui_internal.h>
+
 #include <algorithm>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
 namespace {
 
-std::vector<C_GuiDrawFunc> sGuiDrawCallbacks;
+struct GuiDraw {
+    C_GuiDrawFunc callback;
+    std::string owner;
+};
+
+struct OwnedSidebar {
+    std::string name;
+    std::string owner;
+};
+
+struct OwnedWidget {
+    WidgetPath path;
+    std::string label;
+    std::string owner;
+};
+
+std::vector<GuiDraw> sGuiDrawCallbacks;
+std::vector<OwnedSidebar> sSidebars;
+std::vector<OwnedWidget> sWidgets;
 
 UIWidgets::ComponentAlignments MapAlign(C_ComponentAlign align) {
     return align == C_ALIGN_RIGHT ? UIWidgets::ComponentAlignments::Right : UIWidgets::ComponentAlignments::Left;
@@ -26,23 +51,66 @@ const char* Tooltip(const char* tooltip) {
     return tooltip != nullptr ? tooltip : "";
 }
 
+WidgetFunc InOwner(void (*func)(void), const std::string& owner) {
+    return [func, owner](WidgetInfo&) {
+        ModOwner::Scope scope(owner);
+        func();
+    };
+}
+
+void RemoveSidebar(const std::string& name) {
+    if (PortGui::mPortMenu != nullptr) {
+        PortGui::mPortMenu->RemoveSidebarEntry("Mods", name);
+    }
+    std::erase_if(sSidebars, [&](const OwnedSidebar& sidebar) { return sidebar.name == name; });
+    std::erase_if(sWidgets, [&](const OwnedWidget& widget) { return widget.path.sidebarName == name; });
+}
+
+void ReleaseUi(const std::string& mod) {
+    std::erase_if(sGuiDrawCallbacks, [&](const GuiDraw& draw) { return draw.owner == mod; });
+    for (const OwnedWidget& widget : sWidgets) {
+        if (widget.owner == mod && PortGui::mPortMenu != nullptr) {
+            PortGui::mPortMenu->RemoveWidget(widget.path, widget.label);
+        }
+    }
+    std::erase_if(sWidgets, [&](const OwnedWidget& widget) { return widget.owner == mod; });
+    std::vector<std::string> sidebars;
+    for (const OwnedSidebar& sidebar : sSidebars) {
+        if (sidebar.owner == mod) {
+            sidebars.push_back(sidebar.name);
+        }
+    }
+    for (const std::string& name : sidebars) {
+        RemoveSidebar(name);
+    }
+}
+
+void InitUiApi() {
+    ModOwner::AddReleaser(ReleaseUi);
+}
+
+RegisterShipInitFunc sInitUiApi(InitUiApi);
+
 } // namespace
 
 void C_RunGuiDrawCallbacks() {
-    for (auto& callback : sGuiDrawCallbacks) {
-        callback();
+    for (const GuiDraw& draw : sGuiDrawCallbacks) {
+        ModOwner::Scope scope(draw.owner);
+        ImGuiErrorRecoveryState state;
+        ImGui::ErrorRecoveryStoreState(&state);
+        draw.callback();
+        ImGui::ErrorRecoveryTryToRecoverState(&state);
     }
 }
 
 extern "C" void C_AddGuiDraw(C_GuiDrawFunc callback) {
     if (callback != nullptr) {
-        sGuiDrawCallbacks.push_back(callback);
+        sGuiDrawCallbacks.push_back({ callback, ModOwner::Current() });
     }
 }
 
 extern "C" void C_RemoveGuiDraw(C_GuiDrawFunc callback) {
-    sGuiDrawCallbacks.erase(std::remove(sGuiDrawCallbacks.begin(), sGuiDrawCallbacks.end(), callback),
-                            sGuiDrawCallbacks.end());
+    std::erase_if(sGuiDrawCallbacks, [callback](const GuiDraw& draw) { return draw.callback == callback; });
 }
 
 extern "C" void C_AddSidebarEntry(const char* label, int column) {
@@ -50,21 +118,27 @@ extern "C" void C_AddSidebarEntry(const char* label, int column) {
         return;
     }
     PortGui::mPortMenu->AddSidebarEntry("Mods", label, column);
+    sSidebars.push_back({ label, ModOwner::Current() });
 }
 
 extern "C" void C_RemoveSidebarEntry(const char* sidebarName) {
     if (PortGui::mPortMenu == nullptr || sidebarName == nullptr) {
         return;
     }
-    PortGui::mPortMenu->RemoveSidebarEntry("Mods", sidebarName);
+    RemoveSidebar(sidebarName);
 }
 
-extern "C" void C_AddWidget(const char* sidebar, int column, const char* label, C_WidgetConfig* config) {
+extern "C" void C_AddWidgetSized(const char* sidebar, int column, const char* label, C_WidgetConfig* widget_config,
+                                 uint32_t size) {
+    const SizedDef<C_WidgetConfig> sized(widget_config, size);
+    const C_WidgetConfig* config = sized.get();
     if (PortGui::mPortMenu == nullptr || sidebar == nullptr || label == nullptr || config == nullptr) {
         return;
     }
 
+    const std::string owner = ModOwner::Current();
     WidgetPath path = { "Mods", sidebar, static_cast<SectionColumns>(column) };
+    sWidgets.push_back({ path, label, owner });
     WidgetInfo& widget = PortGui::mPortMenu->AddWidget(path, label, static_cast<WidgetType>(config->type))
                              .RaceDisable(config->race_disable)
                              .SameLine(config->same_line)
@@ -77,13 +151,13 @@ extern "C" void C_AddWidget(const char* sidebar, int column, const char* label, 
         widget.WindowName(config->window_name);
     }
     if (config->callback != nullptr) {
-        widget.Callback([config](WidgetInfo&) { config->callback(); });
+        widget.Callback(InOwner(config->callback, owner));
     }
     if (config->pre_func != nullptr) {
-        widget.PreFunc([config](WidgetInfo&) { config->pre_func(); });
+        widget.PreFunc(InOwner(config->pre_func, owner));
     }
     if (config->post_func != nullptr) {
-        widget.PostFunc([config](WidgetInfo&) { config->post_func(); });
+        widget.PostFunc(InOwner(config->post_func, owner));
     }
 
     switch (config->type) {

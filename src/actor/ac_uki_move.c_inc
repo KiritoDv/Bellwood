@@ -70,6 +70,8 @@ static mActor_name_t aUKI_get_fish_type(ACTOR* actorx) {
 
     if (uki->gyo_type >= 0 && uki->gyo_type < aGYO_TYPE_EXTENDED_NUM) {
         item = fish_data[uki->gyo_type];
+    } else if (C_FindFish(uki->gyo_type) != NULL) {
+        item = ITM_FISH_START + uki->gyo_type;
     }
 
     return item;
@@ -176,7 +178,7 @@ static void aUKI_touch_vib_proc(UKI_ACTOR* uki) {
     };
 
     if (uki->gyo_type >= 0) {
-        s16 idx = gyoei_type[uki->gyo_type].size;
+        s16 idx = gyoei_type[C_FishBase(uki->gyo_type)].size;
         aUKI_vib_c* vib_p = &vib_data_table[idx];
 
         mVibctl_simple_entry(vib_p->n_frames, mVibctl_VIB_PROG_FFF, vib_p->attack_frames, vib_p->sustain_frames,
@@ -200,7 +202,7 @@ static void aUKI_bite_vib_proc(ACTOR* actorx) {
     };
 
     if (uki->gyo_type >= 0) {
-        s16 idx = gyoei_type[uki->gyo_type].size;
+        s16 idx = gyoei_type[C_FishBase(uki->gyo_type)].size;
         aUKI_vib_c* vib_p = &vib_data_table[idx];
 
         mVibctl_simple_entry(vib_p->n_frames, mVibctl_VIB_PROG_IMPACT, vib_p->attack_frames, vib_p->sustain_frames,
@@ -722,7 +724,7 @@ static void aUKI_bite(ACTOR* actorx, GAME* game) {
                     aUKI_parabola_init(uki, &uki->uki_pos, &uki->left_hand_pos, uki->frame_timer, 2);
                     uki->gyo_status = 5;
                 } else {
-                    s16 idx = gyoei_type[uki->gyo_type].size;
+                    s16 idx = gyoei_type[C_FishBase(uki->gyo_type)].size;
                     f32 angle = angl[idx];
 
                     actorx->world.angle.y += (int)(angle * 0.5f);
@@ -898,7 +900,7 @@ static void aUKI_set_proc_bite(ACTOR* actorx, GAME* game, int arg) {
             uki->frame_timer = 26;
             break;
         default:
-            uki->frame_timer = (int)((f32)(int)timer[gyoei_type[uki->gyo_type].size] * 2.0f);
+            uki->frame_timer = (int)((f32)(int)timer[gyoei_type[C_FishBase(uki->gyo_type)].size] * 2.0f);
             break;
     }
 

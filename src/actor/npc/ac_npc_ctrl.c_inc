@@ -499,7 +499,15 @@ static int aNPC_setupActor_proc(GAME_PLAY* play, mActor_name_t name, s8 idx, int
                     }
                     break;
             }
-            profile = event_npc_profile_table[name - SP_NPC_START];
+            if (name - SP_NPC_START < ARRAY_COUNT(event_npc_profile_table)) {
+                profile = event_npc_profile_table[name - SP_NPC_START];
+            } else {
+                CALL_EVENT(NpcProfileLookup, name, -1);
+                if (NpcProfileLookup_.profile < 0) {
+                    return FALSE;
+                }
+                profile = NpcProfileLookup_.profile;
+            }
             break;
         case NAME_TYPE_NPC:
             profile = mAc_PROFILE_NORMAL_NPC;
@@ -687,8 +695,80 @@ static void aNPC_free_actor_area_proc(ACTOR* actorx) {
 }
 #endif
 
+static mActor_name_t aNPC_get_draw_villager(mActor_name_t npc_name) {
+    if (ITEM_NAME_GET_TYPE(npc_name) == NAME_TYPE_NPC) {
+        return npc_name;
+    }
+    if (ITEM_NAME_GET_TYPE(npc_name) == NAME_TYPE_SPNPC) {
+        mNpc_EventNpc_c* event_npc = mNpc_GetSameEventNpc(npc_name);
+        mNpc_MaskNpc_c* mask_npc = event_npc == NULL ? mNpc_GetSameMaskNpc(npc_name) : NULL;
+
+        if (event_npc != NULL && ITEM_NAME_GET_TYPE(event_npc->texture_id) == NAME_TYPE_NPC) {
+            return event_npc->texture_id;
+        }
+        if (mask_npc != NULL && ITEM_NAME_GET_TYPE(mask_npc->npc_id) == NAME_TYPE_NPC) {
+            return mask_npc->npc_id;
+        }
+    }
+    return EMPTY_NO;
+}
+
+static void aNPC_apply_custom_villager(aNPC_draw_data_c* draw_data_p, const C_VillagerDef* custom) {
+    int i;
+
+    if (custom->texture != NULL) {
+        draw_data_p->tex_data.texture = (u8*)custom->texture;
+    }
+    if (custom->palette != NULL) {
+        draw_data_p->tex_data.palette = (u16*)custom->palette;
+    }
+    if (custom->eyes != NULL) {
+        for (i = 0; i < aNPC_EYE_TEX_NUM; i++) {
+            draw_data_p->tex_data.eye_texture[i] = (u8*)custom->eyes[i];
+        }
+    }
+    if (custom->mouths != NULL) {
+        for (i = 0; i < aNPC_MOUTH_TEX_NUM; i++) {
+            draw_data_p->tex_data.mouth_texture[i] = (u8*)custom->mouths[i];
+        }
+    }
+    if (custom->skeleton != NULL) {
+        draw_data_p->model_skeleton = (cKF_Skeleton_R_c*)custom->skeleton;
+    }
+    if (custom->voice != 0) {
+        draw_data_p->voice_type = custom->voice;
+    }
+    if (custom->scale != 0.0f) {
+        draw_data_p->scale = custom->scale;
+    }
+    if (custom->eye_height != 0) {
+        draw_data_p->eye_height = custom->eye_height;
+    }
+    if (custom->col_radius != 0) {
+        draw_data_p->col_radius = custom->col_radius;
+    }
+    if (custom->col_height != 0) {
+        draw_data_p->col_height = custom->col_height;
+    }
+    if (custom->talk_type >= 0) {
+        draw_data_p->talk_type = custom->talk_type;
+    }
+}
+
 static void aNPC_dma_draw_data_proc(aNPC_draw_data_c* draw_data_p, mActor_name_t npc_name) {
+    mActor_name_t villager = aNPC_get_draw_villager(npc_name);
     int idx = aNPC_get_draw_data_idx(npc_name);
+
+    if (C_IsCustomVillager(villager)) {
+        const C_VillagerDef* custom = C_FindVillager(villager);
+
+        mem_copy((u8*)draw_data_p, (u8*)&npc_draw_data_tbl[C_VillagerBase(villager) - NPC_START],
+                 sizeof(aNPC_draw_data_c));
+        if (custom != NULL) {
+            aNPC_apply_custom_villager(draw_data_p, custom);
+        }
+        return;
+    }
 
     mem_copy((u8*)draw_data_p, (u8*)&npc_draw_data_tbl[idx], sizeof(aNPC_draw_data_c));
 }

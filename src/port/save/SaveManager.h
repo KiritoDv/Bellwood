@@ -17,6 +17,7 @@ void SaveManager_SetTownFile(const char* path);
 
 #include <string>
 #include <vector>
+#include <cstdint>
 
 namespace SaveManager {
 
@@ -72,6 +73,16 @@ void RequestImport(const std::string& path);
 bool RoundTripSelfTest(std::string* report);
 bool IoSelfTest(std::string* report);
 bool InPlay();
+
+// The home town file as last saved, packed to send to another player. Empty when there is none.
+std::vector<uint8_t> ExportTown();
+// Makes a town packed by ExportTown the second town, so the train station takes the player there as a visitor. The
+// town chosen in the settings is left alone and comes back with EndVisit. Fails for a broken file or this town.
+bool VisitTown(const std::vector<uint8_t>& packed);
+// Puts back the second town chosen in the settings. Fails while the player is in the visited town.
+bool EndVisit();
+// The player is a visitor in another town.
+bool IsVisitor();
 
 } // namespace SaveManager
 #endif

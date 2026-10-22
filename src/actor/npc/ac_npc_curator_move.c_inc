@@ -208,10 +208,15 @@ typedef struct {
     mMmd_ArtInfo(((item_no) >= FTR_START(FTR_SUM_ART01) && (item_no) <= FTR_END(FTR_SUM_ART15)) \
                      ? FTR_IDX_2_NO((item_no - FTR_START(FTR_SUM_ART01)))                   \
                      : 0)
-#define aCR_GetInsectDonator(item_no) \
-    mMmd_InsectInfo(((item_no) >= ITM_INSECT_START && (item_no) < ITM_INSECT_END) ? (item_no - ITM_INSECT_START) : 0)
-#define aCR_GetFishDonator(item_no) \
-    mMmd_FishInfo(((item_no) >= ITM_FISH_START && (item_no) <= ITM_FISH_END) ? (item_no - ITM_FISH_START) : 0)
+#define aCR_GetInsectDonator(item_no)                                                                           \
+    (C_FindCreature(item_no) != NULL                                                                             \
+         ? mMmd_ItemDonator(item_no)                                                                             \
+         : mMmd_InsectInfo(((item_no) >= ITM_INSECT_START && (item_no) < ITM_INSECT_END) ? (item_no - ITM_INSECT_START) \
+                                                                                        : 0))
+#define aCR_GetFishDonator(item_no)                                                                             \
+    (C_FindCreature(item_no) != NULL                                                                           \
+         ? mMmd_ItemDonator(item_no)                                                                           \
+         : mMmd_FishInfo(((item_no) >= ITM_FISH_START && (item_no) <= ITM_FISH_END) ? (item_no - ITM_FISH_START) : 0))
 
 static int aCR_chk_fossil_parts_complete_sub(int type) {
     static mActor_name_t trikera_parts[] = { FTR_START(FTR_DIN_TRIKERA_HEAD), FTR_START(FTR_DIN_TRIKERA_TAIL), FTR_START(FTR_DIN_TRIKERA_BODY) };
@@ -331,7 +336,7 @@ static void aCR_set_after_explain_insect(NPC_CURATOR_ACTOR* curator, GAME_PLAY* 
                             0x3A5B, 0x3A5B, 0x3A61, 0x3A62, 0x3A5C, 0x3A5C, 0x3A63, 0x3A64, 0x3A56, 0x3A5B,
                             0x3A5B, 0x3A60, 0x3A6B, 0x3A69, 0x3A65, 0x3A6C, 0x3A68, 0x3A6A, 0x3A66, 0x3A67 };
 
-    int insect_type = curator->donated_item - ITM_INSECT_START;
+    int insect_type = C_InsectBase(curator->donated_item - ITM_INSECT_START);
 
     if (insect_type < 0 || insect_type >= INSECT_ONLY_NUM) {
         insect_type = 0;
@@ -606,9 +611,13 @@ static void aCR_get_demo_end_wait(NPC_CURATOR_ACTOR* curator, GAME_PLAY* play) {
 
 #define aCR_IS_ART(item) ((item) >= FTR_START(FTR_SUM_ART01) && (item) <= FTR_END(FTR_SUM_ART15))
 
-#define aCR_IS_INSECT(item) ((item) >= ITM_INSECT_START && (item) < ITM_INSECT_END)
+#define aCR_IS_CUSTOM_CREATURE(item, cat) (C_FindCreature(item) != NULL && ITEM_NAME_GET_CAT(item) == (cat))
 
-#define aCR_IS_FISH(item) ((item) >= ITM_FISH_START && (item) <= ITM_FISH_END)
+#define aCR_IS_INSECT(item) \
+    (((item) >= ITM_INSECT_START && (item) < ITM_INSECT_END) || aCR_IS_CUSTOM_CREATURE(item, ITEM1_CAT_INSECT))
+
+#define aCR_IS_FISH(item) \
+    (((item) >= ITM_FISH_START && (item) <= ITM_FISH_END) || aCR_IS_CUSTOM_CREATURE(item, ITEM1_CAT_FISH))
 
 typedef struct {
     int msg_no;
@@ -756,7 +765,7 @@ static void aCR_putaway_demo_start_wait5_2(NPC_CURATOR_ACTOR* curator, GAME_PLAY
     mMsg_Window_c* msg_p = mMsg_Get_base_window_p();
 
     if (mMsg_Get_msg_num(msg_p) == 0x2F89) {
-        int fish_type = curator->donated_item - ITM_FISH_START;
+        int fish_type = C_FishBase(curator->donated_item - ITM_FISH_START);
 
         if (fish_type < 0 || fish_type >= (FISH_NUM + 1)) {
             fish_type = 0;

@@ -6,7 +6,10 @@
 #include "graph.h"
 #include "jaudio_NES/emusound.h"
 #include "m_personal_id.h"
+#include "port/api/famicom.h"
+#include "port/events/Events.h"
 
+#include <stdio.h>
 #include <string.h>
 
 #define FAMICOM_FRAME_WIDTH 640
@@ -57,6 +60,9 @@ static NesCore* l_core = NULL;
 static FamicomNesState l_nes_state;
 static u8* l_noise = NULL;
 static int l_rom_loaded = FALSE;
+static const u8* l_custom_rom = NULL;
+static const u8* l_custom_tags = NULL;
+static size_t l_custom_tags_size = 0;
 static FAMICOM_GETSAVECHAN_PROC l_getSaveChan_proc = NULL;
 
 static u8 l_texture[2][FAMICOM_TEXTURE_SIZE] ATTRIBUTE_ALIGN(8);
@@ -205,6 +211,7 @@ extern int famicom_init(int rom_idx, Famicom_MallocInfo* malloc_info, int player
     my_malloc_current = malloc_info;
     l_rom_loaded = FALSE;
     l_noise = NULL;
+    l_custom_rom = NULL;
 
     famicomCommon.save_pl_no = (player_no >= 0 && player_no < PLAYER_NUM) ? player_no : 0;
 
@@ -219,6 +226,19 @@ extern int famicom_init(int rom_idx, Famicom_MallocInfo* malloc_info, int player
         memcpy(famicomCommon.famicom_save_name, game.save_name, sizeof(famicomCommon.famicom_save_name));
         rom_size = game.rom_size;
         FamicomCard_Release();
+    } else if (rom_idx >= C_FAMICOM_FIRST && rom_idx <= C_FAMICOM_LAST) {
+        CALL_EVENT(FamicomRomLookup, rom_idx, NULL, 0, NULL, 0, NULL);
+        if (FamicomRomLookup_.rom == NULL || FamicomRomLookup_.size == 0) {
+            return -1;
+        }
+        l_custom_rom = FamicomRomLookup_.rom;
+        l_custom_tags = FamicomRomLookup_.tags;
+        l_custom_tags_size = FamicomRomLookup_.tagsSize;
+        famicomCommon.nesrom_memcard = TRUE;
+        famicomCommon.rom_no = (u8)rom_idx;
+        snprintf(famicomCommon.famicom_save_name, sizeof(famicomCommon.famicom_save_name), "%s",
+                 FamicomRomLookup_.saveName != NULL ? FamicomRomLookup_.saveName : "Bellwood_famicom");
+        rom_size = FamicomRomLookup_.size;
     } else if (rom_idx == 0 || rom_idx > FAMICOM_INTERNAL_ROM_NUM) {
         return -1;
     } else {
@@ -301,7 +321,13 @@ static int famicom_rom_load(void) {
     u32 max_ofs = 0;
     int highscore_num;
 
-    if (famicomCommon.nesrom_memcard) {
+    if (l_custom_rom != NULL) {
+        nesinfo_init();
+        memcpy(famicomCommon.nesromp, l_custom_rom, famicomCommon.nesrom_size);
+        nesinfo_tags_start = (u8*)l_custom_tags;
+        nesinfo_tags_end = l_custom_tags != NULL ? (u8*)l_custom_tags + l_custom_tags_size : NULL;
+        nesinfo_tags_size = (u32)l_custom_tags_size;
+    } else if (famicomCommon.nesrom_memcard) {
         if (famicom_card_rom_load() != 0) {
             return -1;
         }
@@ -385,6 +411,9 @@ extern int famicom_cleanup(void) {
                                         famicomCommon.save_data_name) == 0) {
                 famicom_save_data_setup(famicomCommon.save_data_header, famicomCommon.save_data_single_size,
                                         famicomCommon.save_data_name);
+                if (l_custom_rom != NULL) {
+                    famicom_external_data_save();
+                }
             } else {
                 res = TRUE;
             }
@@ -398,6 +427,7 @@ extern int famicom_cleanup(void) {
 
     famicom_free_buffers();
     l_rom_loaded = FALSE;
+    l_custom_rom = NULL;
     my_malloc_current = NULL;
     return res;
 }

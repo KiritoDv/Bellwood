@@ -1,4 +1,5 @@
 #include "ac_house.h"
+#include "port/api/villager.h"
 
 #include "m_common_data.h"
 #include "m_player_lib.h"

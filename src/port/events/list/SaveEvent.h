@@ -11,6 +11,13 @@ DEFINE_EVENT(SaveLoaded,
     bool hasTown;  // true when a valid town was loaded
 );
 
+// Fires before a save file is written: the town, a passport or both. Cancellable.
+// Cancel — the file is not written, and the game carries on as if it had been.
+DEFINE_EVENT(SaveRequest,
+    int32_t slot;  // save slot, 0 for the home file
+    bool hasTown;  // the file holds a town, not only passports
+);
+
 // Fires after the town has been written to disk.
 DEFINE_EVENT(SaveWritten,
     int32_t mode;  // save mode from the game, 0 ends the session

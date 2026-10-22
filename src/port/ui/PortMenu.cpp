@@ -70,15 +70,25 @@ void PortMenu::RemoveSidebarEntry(std::string sectionName, std::string sidebarNa
     assert(!sectionName.empty());
     assert(!sidebarName.empty());
     auto& sidebars = menuEntries.at(sectionName).sidebars;
-    // Delete directly
-    if (sidebars.contains(sidebarName)) {
-        sidebars.erase(sidebarName);
-        auto& sidebarOrder = menuEntries.at(sectionName).sidebarOrder;
-        sidebarOrder.erase(std::remove(sidebarOrder.begin(), sidebarOrder.end(), sidebarName), sidebarOrder.end());
-    } else {
-        // Mark for deletion if not found, will be deleted when encountered in Draw()
-        menuEntries.at(sectionName).sidebars.at(sidebarName).markForDelete = true;
+    if (!sidebars.contains(sidebarName)) {
+        return;
     }
+    sidebars.erase(sidebarName);
+    auto& sidebarOrder = menuEntries.at(sectionName).sidebarOrder;
+    sidebarOrder.erase(std::remove(sidebarOrder.begin(), sidebarOrder.end(), sidebarName), sidebarOrder.end());
+}
+
+void PortMenu::RemoveWidget(const WidgetPath& pathInfo, const std::string& widgetName) {
+    if (!menuEntries.contains(pathInfo.sectionName)) {
+        return;
+    }
+    auto& sidebars = menuEntries.at(pathInfo.sectionName).sidebars;
+    auto sidebar = sidebars.find(pathInfo.sidebarName);
+    if (sidebar == sidebars.end() || pathInfo.column >= sidebar->second.columnWidgets.size()) {
+        return;
+    }
+    std::erase_if(sidebar->second.columnWidgets.at(pathInfo.column),
+                  [&](const WidgetInfo& widget) { return widget.name == widgetName; });
 }
 
 WidgetInfo& PortMenu::AddWidget(WidgetPath& pathInfo, std::string widgetName, WidgetType widgetType) {

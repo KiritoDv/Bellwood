@@ -118,7 +118,7 @@ static void Player_actor_AppearMark_Notice_rod(ACTOR* actor) {
                 }
 
                 if (killfish) {
-                    Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_YAJIRUSHI, player->left_hand_pos, 2, 0,
+                    Player_actor_effect_make(eEC_EFFECT_YAJIRUSHI, player->left_hand_pos, 2, 0,
                                                                    gamePT, RSV_NO, 0, 0);
                     main_notice->end_effect_flag = TRUE;
                 }
@@ -158,6 +158,8 @@ static void Player_actor_Notice_rod_demo_ct(ACTOR* actor) {
         int type = uki->gyo_type;
 
         if (type >= aGYO_TYPE_CRUCIAN_CARP) {
+            CALL_EVENT(FishCaught, uki->get_fish_type_proc(&uki->actor_class));
+
             if (type < aGYO_TYPE_NUM + 1) {
                 if (player->now_main_index == mPlayer_INDEX_NOTICE_ROD) {
                     mPlayer_main_notice_rod_c* main_notice = &player->main_data.notice_rod;
@@ -174,6 +176,8 @@ static void Player_actor_Notice_rod_demo_ct(ACTOR* actor) {
                 } else {
                     msg_no = Player_actor_Get_sakana_msg_num(type);
                 }
+            } else if (C_FindFish(type) != NULL) {
+                msg_no = C_CreatureCatchMessage(ITM_FISH_START + type);
             } else {
                 msg_no = type + 0x1997;
             }

@@ -1,4 +1,6 @@
 #include "ac_arrange_room.h"
+#include "port/api/interior.h"
+#include "port/api/structure.h"
 #include "m_common_data.h"
 #include "m_malloc.h"
 #include "m_rcp.h"
@@ -60,13 +62,13 @@ static void Arrange_Room_Actor_ct(ACTOR* actor, GAME* game) {
 
     if (floor_num < 0) {
         floor_num = 0;
-    } else if (floor_num > 0x42) {
+    } else if (floor_num > 0x42 && C_FindInteriorIndex(floor_num, FALSE) == NULL) {
         floor_num = 0x42;
     }
 
     if (wall_num < 0) {
         wall_num = 0;
-    } else if (wall_num > 0x42) {
+    } else if (wall_num > 0x42 && C_FindInteriorIndex(wall_num, TRUE) == NULL) {
         wall_num = 0x42;
     }
 
@@ -161,11 +163,45 @@ static void aAR_DrawWall(ACTOR* actor, GAME* game) {
     CLOSE_DISP(graph);
 }
 
+static void aAR_DrawRoomModel(ACTOR* actor, GAME* game, const void* model, const void* model_xlu) {
+    ARRANGE_ROOM_ACTOR* arrange_room = (ARRANGE_ROOM_ACTOR*)actor;
+    GRAPH* graph = game->graph;
+
+    _texture_z_light_fog_prim(graph);
+    _texture_z_light_fog_prim_xlu(graph);
+
+    Matrix_translate(0.0f, 40.0f, 0.0f, MTX_LOAD);
+    Matrix_scale(0.0625f, 0.0625f, 0.0625f, MTX_MULT);
+
+    OPEN_DISP(graph);
+
+    gSPMatrix(NEXT_POLY_OPA_DISP, _Matrix_to_Mtx_new(graph), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPSegment(NEXT_POLY_OPA_DISP, G_MWO_SEGMENT_8, arrange_room->wall_data_p + 0x20);
+    gSPSegment(NEXT_POLY_OPA_DISP, G_MWO_SEGMENT_9, arrange_room->floor_data_p + 0x20);
+    gSPDisplayList(NEXT_POLY_OPA_DISP, (Gfx*)model);
+
+    if (model_xlu != NULL) {
+        gSPMatrix(NEXT_POLY_XLU_DISP, _Matrix_to_Mtx_new(graph), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPDisplayList(NEXT_POLY_XLU_DISP, (Gfx*)model_xlu);
+    }
+
+    CLOSE_DISP(graph);
+}
+
 static void Arrange_Room_Actor_draw(ACTOR* actor, GAME* game) {
     ARRANGE_ROOM_ACTOR* arrange_room = (ARRANGE_ROOM_ACTOR*)actor;
     GAME_PLAY* play = (GAME_PLAY*)game;
+    const void* room_model =
+        Save_Get(scene_no) == SCENE_NPC_HOUSE ? C_HouseRoomModel(Common_Get(house_owner_name), FALSE) : NULL;
 
     Global_kankyo_set_room_prim(game);
+
+    if (room_model != NULL) {
+        aAR_DrawRoomModel(&arrange_room->actor_class, &play->game, room_model,
+                          C_HouseRoomModel(Common_Get(house_owner_name), TRUE));
+        return;
+    }
+
     aAR_DrawFloor(&arrange_room->actor_class, &play->game);
     aAR_DrawWall(&arrange_room->actor_class, &play->game);
 }

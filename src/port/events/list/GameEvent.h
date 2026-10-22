@@ -5,6 +5,7 @@
 struct actor_s;
 struct door_data_s;
 struct game_play_s;
+struct OSRTCTime;
 
 // Scenes
 
@@ -37,6 +38,17 @@ DEFINE_EVENT(FamicomStart,
     int16_t* romId;  // mutable Famicom ROM id
 );
 
+// Fires when a Famicom ROM id in the custom range is started.
+// Set rom, size and saveName to run the game; tags are optional save data descriptions.
+DEFINE_EVENT(FamicomRomLookup,
+    int32_t romId;
+    const uint8_t* rom;    // set by the listener that owns the game
+    uint32_t size;
+    const uint8_t* tags;   // nesinfo tags, may stay NULL
+    uint32_t tagsSize;
+    const char* saveName;  // name of the game's save file
+);
+
 // New game
 
 // Fires when K.K. starts his welcome on a new game. Cancellable.
@@ -57,6 +69,14 @@ DEFINE_EVENT(MessageLoad,
     int32_t* msgNo;  // mutable message number
 );
 
+// Fires when a message number in the custom message range is loaded.
+// Set text and size to the encoded message, ending with an end code.
+DEFINE_EVENT(MessageLookup,
+    int32_t msgNo;
+    const uint8_t* text;  // set by the listener that owns the message
+    uint32_t size;        // size of text in bytes
+);
+
 // Fires after a message is copied into the text buffer, before its length is measured.
 // Rewrite text in place to change what is shown; keep it terminated with an end code.
 DEFINE_EVENT(MessageLoaded,
@@ -75,6 +95,20 @@ DEFINE_EVENT(MessageOpened,
 // Fires when a dialogue window starts closing.
 DEFINE_EVENT(MessageClosed,
     int32_t msgNo;
+);
+
+// Fires when the player picks one of the choices a message offers.
+DEFINE_EVENT(ChoiceSelected,
+    int32_t msgNo;  // message showing the choices
+    int choice;     // 0 for the first choice
+);
+
+// Fires when a choice text past the game's own is loaded for a SETSELSTR control code.
+// Set text and size to the encoded text, up to 16 bytes.
+DEFINE_EVENT(ChoiceStringLookup,
+    int32_t strNo;
+    const uint8_t* text;  // set by the listener that owns the choice text
+    uint32_t size;        // size of text in bytes
 );
 
 // Menus
@@ -98,6 +132,11 @@ DEFINE_EVENT(SubmenuClosed,
 );
 
 // Clock and weather
+
+// Fires whenever the game reads the system clock. Write through time to change what the game takes as now.
+DEFINE_EVENT(ClockRead,
+    struct OSRTCTime* time;
+);
 
 // Fires when the in-game clock reaches a new hour.
 DEFINE_EVENT(TimeHourChanged,

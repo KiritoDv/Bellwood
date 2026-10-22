@@ -110,12 +110,12 @@ static void Player_actor_SetEffect_Walk(ACTOR* actor, GAME* game, f32 left_targe
     cKF_FrameControl_c* fc = &player->keyframe0.frame_control;
 
     if (Player_actor_Check_AnimationFrame(fc, left_target_frame) != FALSE) {
-        Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_WALK_ASIMOTO, player->left_foot_pos, 2,
+        Player_actor_effect_make(eEC_EFFECT_WALK_ASIMOTO, player->left_foot_pos, 2,
                                                        player->left_foot_angle.y, game, 0xFFFF,
                                                        actor->bg_collision_check.result.unit_attribute, 0);
 
     } else if (Player_actor_Check_AnimationFrame(fc, right_target_frame) != FALSE) {
-        Common_Get(clip).effect_clip->effect_make_proc(eEC_EFFECT_WALK_ASIMOTO, player->right_foot_pos, 2,
+        Player_actor_effect_make(eEC_EFFECT_WALK_ASIMOTO, player->right_foot_pos, 2,
                                                        player->right_foot_angle.y, game, 0xFFFF,
                                                        actor->bg_collision_check.result.unit_attribute, 0);
     }

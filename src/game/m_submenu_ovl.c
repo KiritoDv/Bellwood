@@ -82,6 +82,9 @@
 #include "assets/data/model/inv_mwin_taisou.h"
 #include "assets/data/model/inv_mwin_unknown.h"
 #include "assets/data/model/inv_mwin_yashi.h"
+#include "port/api/item.h"
+#include "port/api/creature.h"
+#include "port/api/cloth.h"
 
 static Submenu_Overlay_c ovl_base;
 
@@ -969,6 +972,9 @@ static void mSM_draw_item(GRAPH* graph, f32 pos_x, f32 pos_y, f32 scale, mActor_
     // clang-format on
 
     mSM_inventory_icon_info_c* icon;
+    mSM_inventory_icon_info_c custom_icon;
+    const C_ItemDef* custom_item;
+    const C_CreatureDef* creature;
     u16* palette;
     rgba_t color;
     int category = -1;
@@ -994,6 +1000,22 @@ static void mSM_draw_item(GRAPH* graph, f32 pos_x, f32 pos_y, f32 scale, mActor_
             icon = &haniwa_tex_data;
         } else if (item >= FTR_DINO_START && item <= FTR_DINO_END) {
             icon = &fossil_tex_data;
+        } else if ((custom_item = C_FindItem(item)) != NULL) {
+            if (custom_item->icon_tex != NULL && custom_item->icon_pal != NULL) {
+                custom_icon.pal = (u16*)custom_item->icon_pal;
+                custom_icon.tex = (u8*)custom_item->icon_tex;
+                icon = &custom_icon;
+            } else {
+                icon = &item_tex_data_table[ITEM1_CAT_ETC][ITEM_NAME_GET_INDEX(ITM_QST_ORGANIZER)];
+            }
+        } else if ((creature = C_FindCreature(item)) != NULL) {
+            if (creature->icon_tex != NULL && creature->icon_pal != NULL) {
+                custom_icon.pal = (u16*)creature->icon_pal;
+                custom_icon.tex = (u8*)creature->icon_tex;
+                icon = &custom_icon;
+            } else {
+                icon = &item_tex_data_table[ITEM_NAME_GET_CAT(item)][creature->base];
+            }
         } else if (mNT_check_unknown(item) == TRUE) {
             icon = &unknown_tex_data;
         } else if (ITEM_IS_FTR(item)) {
@@ -1001,7 +1023,7 @@ static void mSM_draw_item(GRAPH* graph, f32 pos_x, f32 pos_y, f32 scale, mActor_
         } else {
             int groupNo = mSM_get_groupNo(item);
 
-            category = ITEM_NAME_GET_CAT(item);
+            category = C_ItemCategory(item);
             switch (category) {
                 case ITEM1_CAT_HUKUBUKURO:
                     icon = &item_tex_data_table[category][anim_frame];

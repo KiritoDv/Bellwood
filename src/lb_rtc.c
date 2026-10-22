@@ -46,6 +46,7 @@
 #include "m_lib.h"
 #include "types.h"
 #include "ac_port.h"
+#include "port/events/Events.h"
 
 static BOOL l_lbRTC_isInitial = TRUE;
 static lbRTC_time_c l_lbRTC_Time;
@@ -262,6 +263,7 @@ extern void lbRTC_SetTime(lbRTC_time_c* time) {
 extern void lbRTC_GetTime(lbRTC_time_c* time) {
   if (Common_Get(time.rtc_enabled) == TRUE && !Common_Get(time.rtc_crashed)) {
     lbRTC_GetGameTime(time);
+    CALL_EVENT(ClockRead, time);
   }
   else {
     lbRTC_TimeCopy(time, Common_GetPointer(time.rtc_time));

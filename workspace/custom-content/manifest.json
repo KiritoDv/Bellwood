@@ -1,0 +1,9 @@
+{
+    "name": "Custom Content Example",
+    "main": "build.gen",
+    "version": "1.0.0",
+    "website": "https://example.com",
+    "description": "Adds a spinning actor and a new piece of furniture.",
+    "author": "Your Name",
+    "license": "MIT"
+}

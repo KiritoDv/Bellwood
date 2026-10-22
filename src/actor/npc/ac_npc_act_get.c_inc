@@ -75,7 +75,7 @@ static void aNPC_act_get_chg_step(NPC_ACTOR* nactorx, u8 step) {
         case aNPC_ACT_GET_STEP_CHG_CLOTH:
             aNPC_OngenTrgStart(nactorx, NA_SE_WEAR);
             nactorx->draw.cloth_change_step = aNPC_CLOTH_CHG_STEP_START;
-            if (ITEM_IS_CLOTH(Common_Get(npc_chg_cloth)) == FALSE) {
+            if (C_IsCloth(Common_Get(npc_chg_cloth)) == FALSE) {
                 aNPC_setup_chg_cloth(nactorx, ITM_CLOTH_START, 0xFF);
             } else {
                 aNPC_setup_chg_cloth(nactorx, Common_Get(npc_chg_cloth), 0xFF);

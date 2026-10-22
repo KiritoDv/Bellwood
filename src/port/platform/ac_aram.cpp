@@ -258,6 +258,18 @@ extern "C" u32 JW_GetAramAddress(int res_no) {
     return (u32)(res_no + 1) << kAramShift;
 }
 
+extern "C" void AC_AramWriteRecord(int res_no, u32 offset, const void* data, u32 size) {
+    if (!ValidRes(res_no) || data == nullptr || size == 0) {
+        return;
+    }
+    std::lock_guard<std::mutex> lock(sMutex);
+    AramFile& f = Get(res_no);
+    if (f.data.size() < (size_t)offset + size) {
+        f.data.resize((size_t)offset + size, 0);
+    }
+    memcpy(f.data.data() + offset, data, size);
+}
+
 extern "C" u32 JW_GetResSizeFileNo(int res_no) {
     if (!ValidRes(res_no)) {
         return 0;
